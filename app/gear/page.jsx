@@ -38,8 +38,8 @@ const ArticlePage = () => {
 
 				{/* TAB */}
 				<AnimatedText>
-					<div>
-						<div className="mt-10 flex space-x-1">
+					<div >
+						<div className="mt-10 flex flex-wrap  space-x-1">
 							{tabs.map((tab) => (
 								<button
 									key={tab.id}
