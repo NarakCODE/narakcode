@@ -1,0 +1,18 @@
+1. Design windows form interface
+2. Set properties
+3. write code & logic
+
+4. What is visual studio 2022
+5. How many steps to create a project in Visual studio
+6. Using datatype, controll
+7. How to store imformation // use convertion
+8. Convertion has 2 types: implicit and explicit
+9. Controll has 2 types: controll statement and controll loop
+10. Exception has: fetch, general
+
+11. Array has 3 types:
+   - Single-Dimensional Arrays
+   - Multi-Dimensional Arrays
+   - Jagged Arrays
+12. How to get image from file
+13. Selected index means???
