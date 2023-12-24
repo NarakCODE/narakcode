@@ -38,8 +38,8 @@ const ArticlePage = () => {
 
 				{/* TAB */}
 				<AnimatedText>
-					<div >
-						<div className="mt-10 flex flex-wrap  space-x-1">
+					<div>
+						<div className="mt-10 flex scrollbar-hide space-x-1">
 							{tabs.map((tab) => (
 								<button
 									key={tab.id}
@@ -66,7 +66,7 @@ const ArticlePage = () => {
 						</div>
 					</div>
 
-					<div className="mt-20 grid grid-cols-2 md:gap-6 gap-4">
+					<div className="mt-10 grid grid-cols-2 md:gap-6 gap-4">
 						{/* {gearData.map((gear, index) => {
 							const activeCat = gear.category === current
 							return <GearCard key={index} data={gear} activeCat={activeCat}/>;

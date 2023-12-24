@@ -95,7 +95,7 @@ const AboutPage = () => {
 						}
 					>
 						<div className="h-full p-6  text-foreground ">
-							<div className="w-fit rounded-full px-4 py-2 bg-[#527853] flex items-center gap-2 ">
+							<div className="w-fit rounded-full px-4 py-2 bg-[#65B741] flex items-center gap-2 ">
 								<h2 className="font-semibold text-white">Projects</h2>
 								<Image src={FileIcon} alt="Icon" width={26} height={26} />
 							</div>

@@ -101,7 +101,7 @@ const Navbar = () => {
 	];
 
 	return (
-		<header className="fixed top-4 right-0 left-0 z-[99] w-full lg:max-w-4xl md:max-w-3xl max-w-xl mx-auto px-4 md:px-6 py-2 flex items-center justify-between bg-card rounded-xl shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:border-b border-gray-800">
+		<header className="fixed top-4 right-0 left-0 z-[99] w-full lg:max-w-4xl md:max-w-3xl max-w-xl mx-auto px-4 md:px-6 py-2 flex items-center justify-between bg-card rounded-xl shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] dark:border-b border-gray-800">
 			<nav className="hidden items-center space-x-6 lg:flex">
 				<CustomLink href={'/'} title={'Home'} />
 				<CustomLink href={'/projects'} title={'Projects'} />
