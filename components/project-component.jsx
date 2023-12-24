@@ -22,20 +22,26 @@ const Project = () => {
 				{projects.map((item, index) => (
 					<Reveal key={index}>
 						<Link href={item.href} className="group">
-							<div className="overflow-hidden aspect-square rounded-xl">
+							<div className="relative overflow-hidden aspect-square rounded-xl">
 								<img
 									src={item.imgUrl}
 									alt=""
 									className="object-center object-cover h-full group-hover:scale-105 duration-300"
 								/>
+
+								<div className="absolute right-0 left-0 bottom-0 top-0 bg-black/50 text-white flex items-center justify-center">
+									<span>
+										<p className="text-sm">Coming Soon</p>
+									</span>
+								</div>
 							</div>
 
 							<div className="flex flex-col gap-1 py-4">
 								<h2 className="text-sm md:text-md font-semibold">
 									{item.name}
 								</h2>
-								<p className="text-xs md:text-sm text-gray-500">{item.desc}</p>
-								<p className="dark:text-[#93ff7a] text-xs text-black]">
+								<p className="text-sm text-gray-500">{item.desc}</p>
+								<p className="dark:text-[#93ff7a] text-sm text-black">
 									{item.date}
 								</p>
 							</div>

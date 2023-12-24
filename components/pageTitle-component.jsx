@@ -5,7 +5,12 @@ import React from 'react';
 
 const PageTitle = ({ className, title, desc }) => {
 	return (
-		<div className={className + 'w-full max-w-xl flex flex-col gap-2'}>
+		<div
+			className={
+				className +
+				'w-full max-w-xl flex flex-col gap-2 md:text-start text-center'
+			}
+		>
 			<motion.h1
 				initial={{ opacity: 0, x: -10 }}
 				animate={{

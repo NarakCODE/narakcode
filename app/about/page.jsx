@@ -91,7 +91,7 @@ const AboutPage = () => {
 				<section className="grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-6 mt-10">
 					<Reveal
 						className={
-							'w-full md:col-span-2 dark:bg-[#111] bg-white rounded-3xl shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
+							'w-full md:col-span-2 dark:bg-[#191919] bg-white rounded-3xl shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
 						}
 					>
 						<div className="h-full p-6  text-foreground ">
@@ -114,7 +114,7 @@ const AboutPage = () => {
 
 					<Reveal
 						className={
-							'w-full dark:bg-[#111] bg-white rounded-3xl shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
+							'w-full dark:bg-[#191919] bg-white rounded-3xl shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
 						}
 					>
 						<div className="  h-full p-6 rounded-3xl text-foreground ">
@@ -128,7 +128,7 @@ const AboutPage = () => {
 
 					<Reveal
 						className={
-							'w-full dark:bg-[#111] bg-white rounded-3xl shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
+							'w-full dark:bg-[#191919] bg-white rounded-3xl shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
 						}
 					>
 						<div ref={ref} className=" h-full p-6 rounded-3xl text-foreground ">

@@ -28,7 +28,7 @@ const GearCard = ({ data }) => {
 			initial="initial"
 			animate="animate"
 			exit="exit"
-			className="dark:bg-[#111] bg-white rounded-2xl p-4 "
+			className="dark:bg-[#191919] bg-white rounded-2xl md:p-4 p-2"
 		>
 			{/* IMAGE */}
 			<div className="rounded-xl overflow-hidden aspect-video group">
@@ -41,7 +41,7 @@ const GearCard = ({ data }) => {
 
 			{/* INFO */}
 			<div className="flex md:flex-row flex-col gap-4 items-center justify-between pt-4">
-				<h2 className="text-sm md:text-md">{name}</h2>
+				<h2 className="text-sm md:text-md font-medium">{name}</h2>
 				<Link
 					href={href}
 					target="_blank"

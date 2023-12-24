@@ -33,13 +33,13 @@ const ArticlePage = () => {
 			<section className="mt-40">
 				<PageTitle
 					title="My Gear"
-					desc="This is gear I actually own and recommend. The affiliate links come at no extra cost, but it does however help support my content creation."
+					desc="This is gear I actually own and recommend. Click the button to watch the reviews. I think all of those is not quiet cheap but it is really helpful, however I really love it for my day life routine."
 				/>
 
 				{/* TAB */}
 				<AnimatedText>
 					<div>
-						<div className="mt-10 flex scrollbar-hide space-x-1">
+						<div className="mt-10 flex overflow-x-scroll scrollbar-hide border-b pb-4">
 							{tabs.map((tab) => (
 								<button
 									key={tab.id}
