@@ -6,6 +6,7 @@ import AnimatedTextWrite from '@/common/AnimatedTextWrite';
 import { ParallaxText } from '@/common/ParallaxText';
 import Experience from '@/components/experience-component';
 import HeadGradientBackground from '@/components/head-gradient-bg';
+import MainExpertise from '@/components/mainExpertise-component';
 import Project from '@/components/project-component';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -97,6 +98,7 @@ const HomePage = () => {
 
 				<Project />
 				<Experience />
+				<MainExpertise />
 			</div>
 		</>
 	);

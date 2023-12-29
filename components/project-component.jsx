@@ -1,5 +1,6 @@
 import { Reveal } from '@/common/Reveal';
 import { projects } from '@/lib/data';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -18,22 +19,26 @@ const Project = () => {
 				</p>
 			</Reveal>
 
-			<div className="grid md:grid-cols-2 gap-6 ">
+			<div className="grid md:grid-cols-2 grid-cols-1 gap-6 ">
 				{projects.map((item, index) => (
 					<Reveal key={index}>
-						<Link href={item.href} className="group">
-							<div className="relative overflow-hidden aspect-square rounded-xl">
-								<img
+						<Link href={item.href} className="group" target="_blank">
+							<div className="relative w-full h-full overflow-hidden aspect-square rounded-xl">
+								<Image
 									src={item.imgUrl}
 									alt=""
-									className="object-center object-cover h-full group-hover:scale-105 duration-300"
+									className="object-center object-cover w-full h-full group-hover:scale-105 duration-300"
+									width={1920}
+									height={1080}
 								/>
 
-								<div className="absolute right-0 left-0 bottom-0 top-0 bg-black/50 text-white flex items-center justify-center">
-									<span>
-										<p className="text-sm">Coming Soon</p>
-									</span>
-								</div>
+								{item.href === '/' && (
+									<div className="absolute right-0 left-0 bottom-0 top-0 bg-black/70 text-white flex items-center justify-center backdrop-blur-sm">
+										<span>
+											<p className="text-sm">Coming Soon</p>
+										</span>
+									</div>
+								)}
 							</div>
 
 							<div className="flex flex-col gap-1 py-4">
