@@ -2,8 +2,8 @@
 
 import bgImage1 from '@/asset/bg-image-1.webp';
 import FileIcon from '@/asset/folder.png';
+import MyPhoto from '@/asset/me-2.jpg';
 import EducationIcon from '@/asset/mortarboard.png';
-import MyPhoto from '@/asset/my-photo.png';
 import SkillIcon from '@/asset/skill.png';
 import AnimatedText from '@/common/AnimatedText';
 import { Reveal } from '@/common/Reveal';

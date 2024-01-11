@@ -12,21 +12,21 @@ import styles from './style.module.css';
 
 const ProjectPage = () => {
 	const container = useRef(null);
-	const { scrollYProgress } = useScroll({
-		target: container,
-		offset: ['start start', 'end end'],
-	});
+	// const { scrollYProgress } = useScroll({
+	// 	target: container,
+	// 	offset: ['start start', 'end end'],
+	// });
 
-	useEffect(() => {
-		const lenis = new Lenis();
+	// useEffect(() => {
+	// 	const lenis = new Lenis();
 
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
+	// 	function raf(time) {
+	// 		lenis.raf(time);
+	// 		requestAnimationFrame(raf);
+	// 	}
 
-		requestAnimationFrame(raf);
-	});
+	// 	requestAnimationFrame(raf);
+	// });
 
 	return (
 		<>
@@ -46,15 +46,15 @@ const ProjectPage = () => {
 				<main ref={container} className={styles.main}>
 					<div className="flex flex-col gap-2">
 						{projects.map((project, i) => {
-							const targetScale = 1 - (projects.length - i) * 0.05;
+							// const targetScale = 1 - (projects.length - i) * 0.05;
 							return (
 								<Card
 									key={`p_${i}`}
 									i={i}
 									{...project}
-									progress={scrollYProgress}
+									// progress={scrollYProgress}
 									range={[i * 0.25, 1]}
-									targetScale={targetScale}
+									// targetScale={targetScale}
 								/>
 							);
 						})}
