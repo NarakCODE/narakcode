@@ -17,6 +17,7 @@ import {
 	useInView,
 } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
+import MysqlLogo from '../asset/mysql-logo.png';
 import ExperienceCard from './experienceCard-component';
 
 const exp = [
@@ -31,6 +32,7 @@ const exp = [
 	{ name: 'Framer Motion', logo: FramerLogo },
 	{ name: 'Github', logo: GithubLogo },
 	{ name: 'Next.Js', logo: NextLogo },
+	{ name: 'MySQL', logo: MysqlLogo },
 ];
 
 const variants = {
@@ -71,7 +73,7 @@ const Experience = () => {
 				<h1 className="text-2xl font-bold">Experience</h1>
 				<p className="text-gray-500 text-sm mt-2">
 					{
-						"I'm a skilled software developer with experience in TypeScript and JavaScript, and expertise in frameworks like React.js, Next.js, and Express.js. I'm a quick learner to create efficient, scalable, and user-friendly solutions that solve real-world problems. I'm happy to share my skills with you!"
+						"I'm a skilled frontend & backend developer with experience in TypeScript and JavaScript, and expertise in frameworks like React.js, Next.js, and Express.js. I'm a quick learner to create efficient, scalable, and user-friendly solutions that solve real-world problems. I'm happy to share my skills with you!"
 					}
 				</p>
 			</Reveal>

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -32,7 +33,7 @@ const GearCard = ({ data }) => {
 		>
 			{/* IMAGE */}
 			<div className="rounded-xl overflow-hidden aspect-video group">
-				<img
+				<Image
 					src={imgUrl}
 					alt="Gear image"
 					className="object-cover object-center w-full h-full group-hover:scale-105 duration-500 ease-in-out"
