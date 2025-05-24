@@ -1,0 +1,145 @@
+---
+title: My Minimalist VS Code Setup for Maximum Productivity
+description: Discover how I use a clean and distraction-free VS Code configuration to boost focus and coding efficiency.
+image: /images/blog/minimalist-vscode-settings.png
+createdAt: 2025-05-24
+updatedAt: 2025-05-24
+---
+
+## Why I Use a Minimalist Setup
+
+As someone who codes daily, a cluttered interface can hurt my flow. This minimalist setup for Visual Studio Code strips away distractions and keeps only what’s essential — a calm theme, cleaner tabs, and ergonomic layout.
+
+---
+
+## Key Features
+
+<Steps>
+<Step>🎨 Bearded Theme Arc Reversed for a visually soothing coding environment</Step>
+
+<Step>🧭 Sidebar moved to the right for better accessibility and focus</Step>
+
+<Step>🛠️ Custom CSS styles to hide shadows, outlines, and clutter</Step>
+
+<Step>🔧 Tabs and breadcrumbs disabled for a clean editor window</Step>
+
+<Step>💾 Auto-save on focus change with consistent formatting (Prettier)</Step>
+
+<Step>⌨️ JetBrains Mono + FiraCode Nerd Font for optimal readability</Step>
+</Steps>
+
+---
+
+## Settings Overview
+
+```json
+{
+  "workbench.colorTheme": "Bearded Theme Arc Reversed",
+  "workbench.activityBar.location": "top",
+  "workbench.editor.showTabs": "none",
+  "workbench.sideBar.location": "right",
+  "files.autoSave": "onFocusChange",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "JetBrains Mono, monospace",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "editor.stickyScroll.enabled": false,
+  "editor.lineHeight": 2,
+  "editor.tabSize": 4,
+  "editor.smoothScrolling": true
+}
+```
+
+This config disables tabs and breadcrumbs, applies consistent spacing, and removes UI fluff using the `custom-ui-style` extension.
+
+---
+
+## Custom UI Styling
+
+With the `custom-ui-style` extension, I modified parts of the UI using CSS-like overrides:
+
+```ts
+".monaco-editor .cursors-layer .cursor": "background-image: linear-gradient(135deg, #ffaffc 10%, #DA70D6 100%)",
+".monaco-scrollable-element > .shadow.top": "display: none",
+".sidebar": "border: none !important",
+".notification-toast": "box-shadow: none !important"
+```
+
+This makes the interface feel smooth and focused — no unnecessary shadows or outlines.
+
+---
+
+## Fonts and Terminal
+
+```json
+"editor.fontFamily": "JetBrains Mono, monospace",
+"terminal.integrated.fontFamily": "FiraCode Nerd Font",
+"editor.fontSize": 12,
+"terminal.integrated.fontSize": 11
+```
+
+I use **JetBrains Mono** for a clean coding look and **FiraCode Nerd Font** in the terminal for enhanced ligatures and clarity.
+
+---
+
+## Formatting Setup
+
+My setup uses **Prettier** across supported languages:
+
+```json
+"[typescript]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[json]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[html]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
+This ensures consistent code style without manual adjustments.
+
+---
+
+## Extensions I Recommend
+
+```bash
+code --install-extension esbenp.prettier-vscode
+code --install-extension PKief.material-icon-theme
+code --install-extension beardedtheme.beardedtheme
+code --install-extension yourname.custom-ui-style
+```
+
+These are all lightweight and help reinforce the minimalist feel.
+
+---
+
+## Screenshot
+
+<img
+  src="/images/blog/minimalist-vscode-settings.png"
+  alt="Minimalist VS Code Setup Preview"
+  className="my-4 h-auto w-full object-contain"
+/>
+
+---
+
+## Acknowledgments
+
+- [Bearded Theme](https://marketplace.visualstudio.com/items?itemName=beardedtheme.beardedtheme)
+- [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+- [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+- [Prettier VS Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+---
+
+## Conclusion
+
+This minimalist setup works well for me as a developer who values focus and aesthetics. Feel free to clone [my config](https://github.com/NarakCODE/minimalist-vscode-settings) and tweak it for your own workflow.
+
+---
+
+## Related Links
+
+- [VS Code Settings Guide](https://code.visualstudio.com/docs/getstarted/settings)
+- [VS Code Custom UI](https://marketplace.visualstudio.com/items?itemName=subframe7536.custom-ui-style)

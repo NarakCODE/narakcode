@@ -1,0 +1,105 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "narakcode",
+  "homepage": "https://narakcode.vercel.app",
+  "items": [
+    {
+      "name": "cn",
+      "type": "registry:lib",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "src/lib/cn.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "spotify-playlist-card",
+      "type": "registry:component",
+      "dependencies": [
+        "next-themes",
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/spotify-playlist-card/spotify-playlist-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "theme-switcher",
+      "type": "registry:component",
+      "dependencies": [
+        "next-themes",
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/theme-switcher/theme-switcher.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "flip-sentences",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/flip-sentences/flip-sentences.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "apple-hello-effect",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/apple-hello-effect/apple-hello-effect.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "wheel-picker",
+      "type": "registry:component",
+      "dependencies": [
+        "@ncdai/react-wheel-picker"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/wheel-picker/wheel-picker.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
