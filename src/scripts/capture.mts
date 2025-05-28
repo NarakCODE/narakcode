@@ -63,7 +63,7 @@ async function captureScreenshot({
     );
 
     await page.screenshot({
-      path: filePath,
+      path: filePath as `${string}.webp` | `${string}.png` | `${string}.jpeg`,
       type,
       quality: type !== "png" ? 90 : undefined,
     });

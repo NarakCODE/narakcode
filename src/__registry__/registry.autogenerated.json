@@ -101,5 +101,23 @@
         }
       ]
     }
+    ,
+    {
+      "name": "morphing-pill",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/morphing-pill/morphing-pill.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
   ]
 }
