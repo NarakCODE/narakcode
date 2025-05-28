@@ -14,10 +14,12 @@ export function ComponentPreview({
   name,
   openInV0Url,
   children,
+  hide,
   ...props
 }: React.ComponentProps<"div"> & {
   name: string;
   openInV0Url?: string;
+  hide?: boolean;
 }) {
   const Codes = React.Children.toArray(children) as React.ReactElement[];
   const Code = Codes[0];
@@ -46,7 +48,7 @@ export function ComponentPreview({
 
         <TabsContent value="preview">
           <div className="rounded-lg border bg-zinc-950/0.75 bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center p-4 [--pattern-foreground:var(--color-zinc-950)]/5 dark:bg-white/0.75 dark:[--pattern-foreground:var(--color-white)]/5">
-            {openInV0Url && (
+            {openInV0Url && !hide && (
               <div className="flex justify-end">
                 <OpenInV0Button url={openInV0Url} />
               </div>

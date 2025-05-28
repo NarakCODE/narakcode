@@ -113,4 +113,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(() => import("@/registry/examples/spotify-playlist-card-demo.tsx")),
   },
+  "morphing-pill": {
+    name: "morphing-pill",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/morphing-pill/morphing-pill.tsx",
+      type: "registry:component",
+    }],
+  },
+  "morphing-pill-demo": {
+    name: "morphing-pill-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/morphing-pill-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/morphing-pill-demo.tsx")),
+  },
 }

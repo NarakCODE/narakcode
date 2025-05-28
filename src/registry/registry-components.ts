@@ -61,4 +61,16 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "morphing-pill",
+    type: "registry:component",
+    dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    files: [
+      {
+        path: "morphing-pill/morphing-pill.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

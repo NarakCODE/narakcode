@@ -52,4 +52,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "morphing-pill-demo",
+    type: "registry:example",
+    registryDependencies: ["https://narakcode.vercel.app/r/morphing-pill.json"],
+    files: [
+      {
+        path: "examples/morphing-pill-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];
