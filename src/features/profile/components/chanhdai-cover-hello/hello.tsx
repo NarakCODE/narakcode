@@ -4,10 +4,10 @@ import { RepeatIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import React, { useCallback, useEffect, useState } from "react";
 
+import { SimpleTooltip } from "@/components/animate-ui/components/tooltip";
 // import { NarakCODEMark } from "@/components/chanhdai-mark";
 import { NarakCodeMark } from "@/components/narakcode-mark";
 import { Button } from "@/components/ui/button";
-import { SimpleTooltip } from "@/components/ui/tooltip";
 import { AppleHelloVietnameseEffect } from "@/registry/apple-hello-effect";
 
 const layers = ["xin-chao", "chanhdai-wordmark"] as const;

@@ -30,7 +30,7 @@ export function Projects() {
       >
         <CollapsibleList
           items={PROJECTS}
-          max={4}
+          max={3}
           renderItem={(item) => <ProjectItem project={item} />}
         />
       </AccordionPrimitive.Root>

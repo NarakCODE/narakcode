@@ -118,6 +118,23 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "icon-button",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/icon-button/icon-button.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
