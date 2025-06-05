@@ -8,7 +8,7 @@ import {
 } from "motion/react";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 const sizes = {
   default: "size-8 [&_svg]:size-5",
