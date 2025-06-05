@@ -1,7 +1,7 @@
 ---
 title: Icon Button
 description: An icon button that displays particles when clicked.
-image: /images/blog/spotify-playlist-card.png
+image: /images/blog/icon-button.png
 createdAt: 2025-06-05
 updatedAt: 2025-06-05
 ---
@@ -9,6 +9,8 @@ updatedAt: 2025-06-05
 <ComponentPreview name="icon-button-demo" />
 
 ## Installation
+
+> **⚠️ Notes** : The following guide is for Tailwind v4. If you are using Tailwind v3, use `shadcn@2.3.0`.
 
 <CodeTabs className="gap-0">
 
@@ -28,10 +30,17 @@ npx shadcn@latest add "https://narakcode.vercel.app/r/icon-button.json"
 <TabsContent value="manual">
 
 <Steps>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
 npm install motion
+```
+
+If you want to animated the icon (Recommend):
+
+```bash
+npx shadcn@latest add "https://animate-ui.com/r/icon.json"
 ```
 
 <Step>Copy and paste the following code into your project:</Step>
