@@ -165,7 +165,7 @@ export const EXPERIENCES: Experience[] = [
         year: "2025 — Present",
         employmentType: "Full-time",
         description:
-          "-  Developed a web application for E-Commerce platforms.\n-  Designed and implemented a user-friendly interface with mirco frontend architecture.\n- Optimized the application's performance and scalability.\n-  Collaborated with cross-functional teams to deliver high-quality software.\n-  Conducted code reviews, provided technical support, and resolved issues effectively.\n-  Maintained and updated the application's documentation and user manuals.\n-  Contributed to the development of new features and enhancements.\n-  Stayed up-to-date with industry trends and best practices.",
+          "-  Developed a web application for E-Commerce platforms.\n-  Designed and implemented a user-friendly interface with mirco frontend architecture and microservices.\n- Optimized the application's performance and scalability.\n-  Collaborated with cross-functional teams to deliver high-quality software.\n-  Conducted code reviews, provided technical support, and resolved issues effectively.\n-  Maintained and updated the application's documentation and user manuals.\n-  Contributed to the development of new features and enhancements.\n-  Stayed up-to-date with industry trends and best practices.",
         icon: "code",
         skills: ["Angular", "Spring Boot", "Java", "Oracle", "Docker", "NGINX"],
       },
@@ -180,7 +180,7 @@ export const EXPERIENCES: Experience[] = [
         year: "2021 — Present",
         icon: "education",
         description:
-          "- Currently pursuing a Bachelor's degree in Computer Science (3rd year).\n- Strong foundation in programming, software development, and systems design.\n- Actively involved in practical projects using React, Vue, Angular, Node.js, NestJS, and MongoDB.\n- Gained experience in Agile methodologies, team collaboration, and project management.\n- Relevant awards and achievements include hackathons and coding competitions.",
+          "- Currently pursuing a Bachelor's degree in Computer Science (3rd year).\n- Strong foundation in programming, software development, and systems design.\n- Actively involved in practical projects.\n- Gained experience in Agile methodologies, team collaboration, and project management.\n- Relevant awards and achievements include hackathons and coding competitions.",
         skills: [
           "C/C++ Programming",
           "C# Programming",

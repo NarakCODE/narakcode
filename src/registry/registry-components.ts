@@ -73,4 +73,10 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "icon-button",
+    type: "registry:component",
+    dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+  },
 ];

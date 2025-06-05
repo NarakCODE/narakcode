@@ -132,4 +132,14 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(() => import("@/registry/examples/morphing-pill-demo.tsx")),
   },
+  "icon-button-demo": {
+    name: "icon-button-demo",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/icon-button/icon-button.tsx",
+      type: "registry:component",
+    }],
+    component: React.lazy(() => import("@/registry/examples/icon-button-demo.tsx")),
+  },
 }
