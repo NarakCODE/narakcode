@@ -1,3 +1,4 @@
+import { CircleAlert } from "lucide-react";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeExternalLinks from "rehype-external-links";
@@ -29,6 +30,7 @@ import type { NpmCommands } from "@/types/unist";
 import { CodeBlockCommand } from "./code-block-command";
 import { CodeTabs } from "./code-tabs";
 import { CopyButton } from "./copy-button";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 const components: MDXRemoteProps["components"] = {
   table: Table,
@@ -93,6 +95,11 @@ const components: MDXRemoteProps["components"] = {
   },
   code: Code,
   ComponentPreview,
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  CircleAlert,
+
   ComponentSource,
   CodeTabs,
   Steps: (props) => (

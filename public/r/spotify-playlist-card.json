@@ -3,8 +3,6 @@
   "name": "spotify-playlist-card",
   "type": "registry:component",
   "dependencies": [
-    "next-themes",
-    "lucide-react",
     "motion"
   ],
   "registryDependencies": [

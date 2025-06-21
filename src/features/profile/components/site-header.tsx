@@ -35,7 +35,6 @@ export function SiteHeader() {
           >
             <BrandContextMenu>
               <Link href="/" aria-label="Home">
-                {/* <NarakCODEMark className="h-8" /> */}
                 <NarakCodeMark className="h-8" />
               </Link>
             </BrandContextMenu>

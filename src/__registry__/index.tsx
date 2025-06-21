@@ -34,13 +34,21 @@ export const Index: Record<string, any> = {
       type: "registry:component",
     }],
   },
-
   "apple-hello-effect": {
     name: "apple-hello-effect",
     description: "",
     type: "registry:component",
     files: [{
       path: "src/registry/apple-hello-effect/apple-hello-effect.tsx",
+      type: "registry:component",
+    }],
+  },
+  "spotify-playlist-card": {
+    name: "spotify-playlist-card",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/spotify-playlist-card/spotify-playlist-card.tsx",
       type: "registry:component",
     }],
   },
@@ -53,12 +61,30 @@ export const Index: Record<string, any> = {
       type: "registry:component",
     }],
   },
-  "spotify-playlist-card": {
-    name: "spotify-playlist-card",
+  "morphing-pill": {
+    name: "morphing-pill",
     description: "",
     type: "registry:component",
     files: [{
-      path: "src/registry/spotify-playlist-card/spotify-playlist-card.tsx",
+      path: "src/registry/morphing-pill/morphing-pill.tsx",
+      type: "registry:component",
+    }],
+  },
+  "icon-button": {
+    name: "icon-button",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/icon-button/icon-button.tsx",
+      type: "registry:component",
+    }],
+  },
+  "pin-list": {
+    name: "pin-list",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/pin-list/pin-list.tsx",
       type: "registry:component",
     }],
   },
@@ -102,26 +128,6 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(() => import("@/registry/examples/wheel-picker-form-demo.tsx")),
   },
-
-  "spotify-playlist-card-demo": {
-    name: "spotify-playlist-card-demo",
-    description: "",
-    type: "registry:example",
-    files: [{
-      path: "src/registry/examples/spotify-playlist-card-demo.tsx",
-      type: "registry:example",
-    }],
-    component: React.lazy(() => import("@/registry/examples/spotify-playlist-card-demo.tsx")),
-  },
-  "morphing-pill": {
-    name: "morphing-pill",
-    description: "",
-    type: "registry:component",
-    files: [{
-      path: "src/registry/morphing-pill/morphing-pill.tsx",
-      type: "registry:component",
-    }],
-  },
   "morphing-pill-demo": {
     name: "morphing-pill-demo",
     description: "",
@@ -135,11 +141,21 @@ export const Index: Record<string, any> = {
   "icon-button-demo": {
     name: "icon-button-demo",
     description: "",
-    type: "registry:component",
+    type: "registry:example",
     files: [{
-      path: "src/registry/icon-button/icon-button.tsx",
-      type: "registry:component",
+      path: "src/registry/examples/icon-button-demo.tsx",
+      type: "registry:example",
     }],
     component: React.lazy(() => import("@/registry/examples/icon-button-demo.tsx")),
+  },
+  "pin-list-demo": {
+    name: "pin-list-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/pin-list-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/pin-list-demo.tsx")),
   },
 }

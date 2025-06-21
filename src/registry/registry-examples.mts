@@ -74,4 +74,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "pin-list-demo",
+    type: "registry:example",
+    registryDependencies: ["https://narakcode.vercel.app/r/pin-list.json"],
+    files: [
+      {
+        path: "examples/pin-list-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];
