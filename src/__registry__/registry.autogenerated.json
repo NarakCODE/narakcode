@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "narakcode",
+  "name": "ncdai",
   "homepage": "https://narakcode.vercel.app",
   "items": [
     {
@@ -14,24 +14,6 @@
         {
           "path": "src/lib/cn.ts",
           "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "spotify-playlist-card",
-      "type": "registry:component",
-      "dependencies": [
-        "next-themes",
-        "lucide-react",
-        "motion"
-      ],
-      "registryDependencies": [
-        "https://narakcode.vercel.app/r/cn.json"
-      ],
-      "files": [
-        {
-          "path": "src/registry/spotify-playlist-card/spotify-playlist-card.tsx",
-          "type": "registry:component"
         }
       ]
     },
@@ -86,6 +68,22 @@
       ]
     },
     {
+      "name": "spotify-playlist-card",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/spotify-playlist-card/spotify-playlist-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "wheel-picker",
       "type": "registry:component",
       "dependencies": [
@@ -100,8 +98,7 @@
           "type": "registry:component"
         }
       ]
-    }
-    ,
+    },
     {
       "name": "morphing-pill",
       "type": "registry:component",
@@ -132,6 +129,23 @@
       "files": [
         {
           "path": "src/registry/icon-button/icon-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pin-list",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://narakcode.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/pin-list/pin-list.tsx",
           "type": "registry:component"
         }
       ]

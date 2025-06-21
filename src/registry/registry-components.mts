@@ -78,5 +78,23 @@ export const components: Registry["items"] = [
     type: "registry:component",
     dependencies: ["lucide-react", "motion"],
     registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    files: [
+      {
+        path: "icon-button/icon-button.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "pin-list",
+    type: "registry:component",
+    dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    files: [
+      {
+        path: "pin-list/pin-list.tsx",
+        type: "registry:component",
+      },
+    ],
   },
 ];

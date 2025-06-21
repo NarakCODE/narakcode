@@ -5,7 +5,7 @@ import { rimraf } from "rimraf";
 import type { Registry } from "shadcn/registry";
 import { registrySchema } from "shadcn/registry";
 
-import { registry } from "../registry";
+import { registry } from "../registry/index.mts";
 
 const REGISTRY_PATH = path.join(process.cwd(), "src/__registry__");
 

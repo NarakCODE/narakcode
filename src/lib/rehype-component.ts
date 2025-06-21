@@ -106,7 +106,10 @@ export function rehypeComponent() {
 
         try {
           const component = Index[name];
-
+          if (!component || !component.files?.length) {
+            console.warn(`Component "${name}" not found or missing 'files'.`);
+            return null;
+          }
           const src = component.files[0]?.path;
 
           // Read the source file.
