@@ -4,8 +4,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Modern React with Redux [2024 Update]",
     issuer: "Udemy",
-    issuerLogo:
-      "https://freelogopng.com/images/all_img/1683006968udemy-icon-png.png",
+    issuerLogo: "simple-icons:udemy",
     issueDate: "2024-07-10", // Update this if needed
     credentialID: "UC-9f8a1c2b",
     credentialURL:
@@ -14,8 +13,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Vue - The Complete Guide (incl. Router & Composition API)",
     issuer: "Udemy",
-    issuerLogo:
-      "https://freelogopng.com/images/all_img/1683006968udemy-icon-png.png",
+    issuerLogo: "simple-icons:udemy",
     issueDate: "2024-07-10", // Update this if needed
     credentialID: "UC-9f8a1c2b",
     credentialURL: "https://www.udemy.com/course/vuejs-2-the-complete-guide/",
@@ -23,8 +21,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Complete Angular Course 2025 - Master Angular in only 6 days",
     issuer: "Udemy",
-    issuerLogo:
-      "https://freelogopng.com/images/all_img/1683006968udemy-icon-png.png",
+    issuerLogo: "simple-icons:udemy",
     issueDate: "2024-10-15", // Estimate if unsure
     credentialID: "UC-a1b2c3d4", // Replace with your actual Udemy ID later
     credentialURL:
@@ -33,8 +30,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Node.js, Express, MongoDB & More: The Complete Bootcamp",
     issuer: "Udemy",
-    issuerLogo:
-      "https://freelogopng.com/images/all_img/1683006968udemy-icon-png.png",
+    issuerLogo: "simple-icons:udemy",
     issueDate: "2024-09-20",
     credentialID: "UC-4f9d7a12",
     credentialURL:
@@ -44,8 +40,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "React Query / TanStack Query: React Server State Management",
     issuer: "Udemy",
-    issuerLogo:
-      "https://freelogopng.com/images/all_img/1683006968udemy-icon-png.png",
+    issuerLogo: "simple-icons:udemy",
     issueDate: "2025-02-05",
     credentialID: "UC-2c6e9b23",
     credentialURL:
@@ -54,8 +49,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "The Ultimate Redux Course - [LATEST Redux-toolkit]",
     issuer: "Udemy",
-    issuerLogo:
-      "https://freelogopng.com/images/all_img/1683006968udemy-icon-png.png",
+    issuerLogo: "simple-icons:udemy",
     issueDate: "2024-11-30",
     credentialID: "UC-7d1a2f6e",
     credentialURL:
@@ -64,8 +58,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "NestJS Zero to Hero - Modern TypeScript Back-end Development",
     issuer: "Udemy",
-    issuerLogo:
-      "https://freelogopng.com/images/all_img/1683006968udemy-icon-png.png",
+    issuerLogo: "simple-icons:udemy",
     issueDate: "2024-10-30",
     credentialID: "UC-7d1a2f6e",
     credentialURL:
@@ -74,8 +67,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Introduction to Cloud Computing on AWS for Beginners [2025]",
     issuer: "Udemy",
-    issuerLogo:
-      "https://freelogopng.com/images/all_img/1683006968udemy-icon-png.png",
+    issuerLogo: "simple-icons:udemy",
     issueDate: "2024-10-30",
     credentialID: "UC-7d1a2f6e",
     credentialURL:

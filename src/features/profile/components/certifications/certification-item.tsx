@@ -1,6 +1,7 @@
+import { Icon } from "@iconify/react";
 import dayjs from "dayjs";
 import { ArrowUpRightIcon } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 import React from "react";
 
 import { cn } from "@/lib/cn";
@@ -22,13 +23,19 @@ export function CertificationItem({
       rel="noopener"
     >
       {certification.issuerLogo ? (
-        <Image
-          src={certification.issuerLogo}
-          alt={certification.issuer}
-          width={32}
-          height={32}
-          quality={100}
-          className="mx-4 flex size-6 shrink-0"
+        // <Image
+        //   src={certification.issuerLogo}
+        //   alt={certification.issuer}
+        //   width={32}
+        //   height={32}
+        //   quality={100}
+        //   className="mx-4 flex size-6 shrink-0"
+        // />
+        <Icon
+          icon={certification.issuerLogo}
+          width={16}
+          height={16}
+          className="mx-4 flex size-6 shrink-0 text-muted-foreground"
         />
       ) : (
         <div

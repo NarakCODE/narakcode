@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import React from "react";
 
@@ -22,44 +23,52 @@ export default function TechStack() {
         )}
       >
         <div className="flex flex-wrap gap-4 select-none">
-          {TECH_STACK.map((item) => {
-            return (
-              <SimpleTooltip key={item.key} content={item.title}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={item.title}
-                >
-                  {item.theme ? (
-                    <>
-                      <Image
-                        src={`https://assets.chanhdai.com/images/tech-stack-icons/${item.key}-light.svg`}
-                        alt={`${item.title} light icon`}
-                        width={32}
-                        height={32}
-                        className="hidden [html.light_&]:block"
-                      />
-                      <Image
-                        src={`https://assets.chanhdai.com/images/tech-stack-icons/${item.key}-dark.svg`}
-                        alt={`${item.title} dark icon`}
-                        width={32}
-                        height={32}
-                        className="hidden [html.dark_&]:block"
-                      />
-                    </>
-                  ) : (
+          {TECH_STACK.map((item) => (
+            <SimpleTooltip key={item.key} content={item.title}>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={item.title}
+              >
+                {item.icon ? (
+                  // Iconify version
+                  <Icon
+                    icon={item.icon}
+                    width={32}
+                    height={32}
+                    className="mx-2 flex size-8 shrink-0 text-muted-foreground"
+                  />
+                ) : item.theme ? (
+                  // Theme-aware light/dark SVGs from CDN
+                  <>
                     <Image
-                      src={`https://assets.chanhdai.com/images/tech-stack-icons/${item.key}.svg`}
-                      alt={`${item.title} icon`}
+                      src={`https://assets.chanhdai.com/images/tech-stack-icons/${item.key}-light.svg`}
+                      alt={`${item.title} light icon`}
                       width={32}
                       height={32}
+                      className="hidden [html.light_&]:block"
                     />
-                  )}
-                </a>
-              </SimpleTooltip>
-            );
-          })}
+                    <Image
+                      src={`https://assets.chanhdai.com/images/tech-stack-icons/${item.key}-dark.svg`}
+                      alt={`${item.title} dark icon`}
+                      width={32}
+                      height={32}
+                      className="hidden [html.dark_&]:block"
+                    />
+                  </>
+                ) : (
+                  // Default single icon from CDN
+                  <Image
+                    src={`https://assets.chanhdai.com/images/tech-stack-icons/${item.key}.svg`}
+                    alt={`${item.title} icon`}
+                    width={32}
+                    height={32}
+                  />
+                )}
+              </a>
+            </SimpleTooltip>
+          ))}
         </div>
       </PanelContent>
     </Panel>
