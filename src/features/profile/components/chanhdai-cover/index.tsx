@@ -1,3 +1,5 @@
+// import Image from "next/image";
+
 import { BrandContextMenu } from "@/components/brand-context-menu";
 // import { NarakCODEMark } from "@/components/chanhdai-mark";
 import { NarakCodeMark } from "@/components/narakcode-mark";
@@ -6,6 +8,16 @@ import { cn } from "@/lib/cn";
 export function NarakCODECover() {
   return (
     <BrandContextMenu>
+      {/* <div>
+        <Image
+          src={
+            "https://covernotion.com/wp-content/uploads/Lines-16-scaled.webp"
+          }
+          width={1000}
+          height={1000}
+          alt="cover"
+        />
+      </div> */}
       <div
         className={cn(
           "aspect-2/1 border-x border-edge select-none sm:aspect-3/1",
