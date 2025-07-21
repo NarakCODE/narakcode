@@ -1,7 +1,10 @@
 "use client";
 
+import { cva } from "class-variance-authority";
+
 import type { InstallationType, PackageManager } from "@/hooks/use-config";
 import { useConfig } from "@/hooks/use-config";
+import { cn } from "@/lib/cn";
 
 import { Tabs } from "./ui/tabs";
 
@@ -88,6 +91,24 @@ const BunIcon = ({
   </svg>
 );
 
+// Package manager tab button variants using shadcn patterns
+const packageManagerTabVariants = cva(
+  "inline-flex items-center justify-center gap-1 rounded-t-md border-b-2 px-4 py-2 text-sm whitespace-nowrap transition-all duration-200 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      state: {
+        active:
+          "border-amber-400 bg-background font-bold text-foreground shadow-sm",
+        inactive:
+          "border-transparent font-medium text-muted-foreground hover:bg-muted/60 hover:text-foreground",
+      },
+    },
+    defaultVariants: {
+      state: "inactive",
+    },
+  }
+);
+
 export function CodeTabs(props: React.ComponentProps<typeof Tabs>) {
   const [config, setConfig] = useConfig();
 
@@ -129,21 +150,26 @@ export function PackageManagerTabs({
 
   return (
     <div
-      className={`relative mx-auto mt-2 w-full rounded-lg border border-zinc-200 dark:border-zinc-700 ${className}`}
+      className={cn(
+        "relative mx-auto mt-2 w-full rounded-lg border border-border",
+        className
+      )}
     >
-      <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-950">
-        <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-100 px-4 py-2 dark:border-zinc-800 dark:bg-zinc-950">
+      <div className="relative w-full overflow-hidden rounded-lg border border-border bg-muted">
+        <div className="flex items-center justify-between border-b border-border bg-muted px-4 py-2">
           <div className="flex items-center gap-2 overflow-x-auto pb-1">
             {packageManagers.map((pm) => {
               const IconComponent = packageManagerIcons[pm];
+              const isActive = packageManager === pm;
+
               return (
                 <button
                   key={pm}
-                  className={`flex cursor-pointer items-center gap-1 rounded-t-md border-b-2 px-4 py-2 text-sm transition-all duration-200 focus:outline-none ${
-                    packageManager === pm
-                      ? "border-amber-400 bg-white font-bold text-zinc-900 shadow-sm dark:bg-zinc-900/80 dark:text-zinc-50"
-                      : "border-transparent text-zinc-500 hover:bg-zinc-200/60 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200"
-                  }`}
+                  className={cn(
+                    packageManagerTabVariants({
+                      state: isActive ? "active" : "inactive",
+                    })
+                  )}
                   onClick={() => {
                     setConfig((prev) => ({
                       ...prev,
@@ -152,17 +178,14 @@ export function PackageManagerTabs({
                   }}
                   style={{ borderRadius: "0.5rem 0.5rem 0px 0px" }}
                 >
-                  <IconComponent
-                    className="h-4 w-4"
-                    active={packageManager === pm}
-                  />
+                  <IconComponent className="size-4" active={isActive} />
                   <span>{pm}</span>
                 </button>
               );
             })}
           </div>
         </div>
-        <div className="bg-white dark:bg-zinc-950">{children}</div>
+        <div className="bg-background">{children}</div>
       </div>
     </div>
   );
