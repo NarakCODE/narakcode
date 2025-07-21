@@ -9,10 +9,11 @@ import { USER } from "@/data/user";
 import { About } from "@/features/profile/components/about";
 // import { Awards } from "@/features/profile/components/awards";
 import { Blog } from "@/features/profile/components/blog";
-import { Certifications } from "@/features/profile/components/certifications";
+// import { Certifications } from "@/features/profile/components/certifications";
 import { Experiences } from "@/features/profile/components/experiences";
 import { Header } from "@/features/profile/components/header";
-import { Logo } from "@/features/profile/components/logo";
+import { Lens } from "@/features/profile/components/lens";
+// import { Logo } from "@/features/profile/components/logo";
 import { Overview } from "@/features/profile/components/overview";
 import { Projects } from "@/features/profile/components/projects";
 import { QuickActions } from "@/features/profile/components/quick-actions";
@@ -36,19 +37,16 @@ export default function Page() {
         <div className="mx-auto px-4 md:max-w-3xl">
           <Header />
           <Pattern />
+          <About />
+          <Pattern />
+
           <Overview />
           <Pattern />
 
           <SocialLinks />
           <Pattern />
 
-          <About />
-          <Pattern />
-
           <TechStack />
-          <Pattern />
-
-          <Blog />
           <Pattern />
 
           <Experiences />
@@ -58,12 +56,16 @@ export default function Page() {
           <Pattern />
 
           {/* <Awards /> */}
+          {/* <Pattern /> */}
+
+          {/* <Certifications /> */}
+          <Blog />
+          {/* <Pattern />
+           */}
+          {/* <Logo /> */}
           <Pattern />
 
-          <Certifications />
-          <Pattern />
-
-          <Logo />
+          <Lens />
           <Pattern />
 
           <SiteFooter />

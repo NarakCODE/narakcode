@@ -170,7 +170,7 @@ export const TECH_STACK: TechStack[] = [
     title: "ChatGPT",
     href: "https://chatgpt.com/",
     categories: ["Tools", "AI"],
-    icon: "simple-icons:openai-icon",
+    icon: "arcticons:openai-chatgpt",
     theme: true,
   },
 ];

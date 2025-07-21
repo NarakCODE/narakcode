@@ -1,0 +1,58 @@
+import type { LensImage } from "../types/lens";
+
+export const lensImages: LensImage[] = [
+  {
+    id: "1",
+    src: "/images/lens/IMG_1.JPG",
+    alt: "View of the ACLEDA Building from above",
+    title: "",
+    description: "",
+    category: "",
+    aspectRatio: "portrait",
+  },
+  {
+    id: "2",
+    src: "/images/lens/IMG_2.JPG",
+    alt: "Colorful ball pool at PU Cafe",
+    title: "",
+    description: "",
+    category: "",
+    aspectRatio: "portrait",
+  },
+  {
+    id: "3",
+    src: "/images/lens/IMG_3.JPG",
+    alt: "Milk tea with matcha latte on top",
+    title: "",
+    description: "",
+    category: "",
+    aspectRatio: "portrait",
+  },
+  {
+    id: "4",
+    src: "/images/lens/IMG_4.JPG",
+    alt: "Abstract artwork at PU Cafe",
+    title: "",
+    description: "",
+    category: "",
+    aspectRatio: "portrait",
+  },
+  {
+    id: "5",
+    src: "/images/lens/IMG_8.JPG",
+    alt: "Minimalist cafe interior setup for studying",
+    title: "",
+    description: "",
+    category: "",
+    aspectRatio: "portrait",
+  },
+  {
+    id: "6",
+    src: "/images/lens/IMG_9.JPG",
+    alt: "Minimalist interior design",
+    title: "",
+    description: "",
+    category: "",
+    aspectRatio: "portrait",
+  },
+];
