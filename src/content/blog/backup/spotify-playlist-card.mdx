@@ -1,0 +1,148 @@
+---
+title: Spotify Playlist Card
+description: Interactive Spotify playlist embed with theme switching, loading states, and error handling.
+image: /images/blog/spotify-playlist-card.png
+createdAt: 2025-05-24
+updatedAt: 2025-05-24
+---
+
+<ComponentPreview
+  name="spotify-playlist-card-demo"
+  openInV0Url="https://v0.dev/chat/spotify-playlist-card-oL0ZnP89u6C"
+/>
+
+## Installation
+
+<CodeTabs className="gap-0">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli" className="[&>figure]:mb-0">
+
+```bash
+npx shadcn@latest add "https://v0.dev/chat/b/2rfN6xKP3jp?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..5ShYK1wK0bFQOOK2.XeehaCZqz6Z0YBrDq2KLDsYDdEBET5yGQxStVgeS48tP9SdO7Ux2Qnz0.RB_d0WXIzZbgVwSOjnsWlg"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install framer-motion next-themes lucide-react @radix-ui/react-slot class-variance-authority clsx tailwind-merge
+```
+
+<Step>Install shadcn/ui components</Step>
+
+```bash
+npx shadcn@latest add badge button card skeleton
+```
+
+<Step>Set up next-themes</Step>
+
+Add the ThemeProvider to your app layout:
+
+```tsx
+import { ThemeProvider } from "next-themes";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource
+  name="spotify-playlist-card"
+  title="components/spotify-playlist-card.tsx"
+/>
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { SpotifyPlaylistCard } from "@/components/spotify-playlist-card";
+```
+
+### Basic Usage
+
+```tsx
+export function SpotifyPlaylistDemo() {
+  return (
+    <SpotifyPlaylistCard
+      playlistId="677KIyayzcVJeA77I9hEi0"
+      title="My Awesome Playlist"
+      description="The perfect soundtrack for coding"
+    />
+  );
+}
+```
+
+### Custom Styling
+
+```tsx
+export function CustomSpotifyCard() {
+  return (
+    <SpotifyPlaylistCard
+      playlistId="your-playlist-id"
+      title="Chill Vibes"
+      description="Relaxing music for focus and productivity"
+      className="mx-auto max-w-2xl shadow-2xl"
+    />
+  );
+}
+```
+
+## API Reference
+
+### SpotifyPlaylistCardProps
+
+| Prop          | Type     | Default                          | Description                               |
+| ------------- | -------- | -------------------------------- | ----------------------------------------- |
+| `playlistId`  | `string` | `"677KIyayzcVJeA77I9hEi0"`       | Spotify playlist ID from the playlist URL |
+| `title`       | `string` | `"Spotify Playlist"`             | Display title for the playlist card       |
+| `description` | `string` | `"Curated music for every mood"` | Description text shown below the title    |
+| `className`   | `string` | `""`                             | Additional CSS classes for styling        |
+
+### Getting Playlist ID
+
+To get a Spotify playlist ID:
+
+1. Open Spotify and navigate to your playlist
+2. Click the three dots (⋯) next to the playlist name
+3. Select "Share" → "Copy link to playlist"
+4. Extract the ID from the URL: `https://open.spotify.com/playlist/[PLAYLIST_ID]`
+
+## References
+
+`spotify-playlist-card` is built with [Framer Motion](https://www.framer.com/motion/), [Next.js](https://nextjs.org/), [Spotify Web API](https://developer.spotify.com/documentation/web-api/), and [Tailwind CSS](https://tailwindcss.com/).
