@@ -1,22 +1,12 @@
 "use client";
+import React, { useState } from "react";
 
-import { useMemo, useState } from "react";
-
-// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { PackageManager } from "@/hooks/use-config";
-import { useConfig } from "@/hooks/use-config";
-import type { NpmCommands } from "@/types/unist";
-
-// import { CopyButton } from "./copy-button";
-
-// Package manager icons
-const NpmIcon = ({
-  className,
-  active,
-}: {
+interface IconProps {
   className?: string;
   active?: boolean;
-}) => (
+}
+
+const NpmIcon = ({ className, active }: IconProps) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -28,13 +18,7 @@ const NpmIcon = ({
   </svg>
 );
 
-const PnpmIcon = ({
-  className,
-  active,
-}: {
-  className?: string;
-  active?: boolean;
-}) => (
+const PnpmIcon = ({ className, active }: IconProps) => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -45,18 +29,14 @@ const PnpmIcon = ({
     xmlns="http://www.w3.org/2000/svg"
     style={{ color: active ? "#F69220" : "currentColor" }}
   >
+    {" "}
+    {/* Using a distinct color for active pnpm */}
     <title></title>
     <path d="M0 0v7.5h7.5V0zm8.25 0v7.5h7.498V0zm8.25 0v7.5H24V0zM8.25 8.25v7.5h7.498v-7.5zm8.25 0v7.5H24v-7.5zM0 16.5V24h7.5v-7.5zm8.25 0V24h7.498v-7.5zm8.25 0V24H24v-7.5z"></path>
   </svg>
 );
 
-const YarnIcon = ({
-  className,
-  active,
-}: {
-  className?: string;
-  active?: boolean;
-}) => (
+const YarnIcon = ({ className, active }: IconProps) => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -66,17 +46,13 @@ const YarnIcon = ({
     xmlns="http://www.w3.org/2000/svg"
     style={{ color: active ? "#2C8EBB" : "currentColor" }}
   >
+    {" "}
+    {/* Using a distinct color for active yarn */}
     <path d="M393.9 345.2c-39 9.3-48.4 32.1-104 47.4 0 0-2.7 4-10.4 5.8-13.4 3.3-63.9 6-68.5 6.1-12.4.1-19.9-3.2-22-8.2-6.4-15.3 9.2-22 9.2-22-8.1-5-9-9.9-9.8-8.1-2.4 5.8-3.6 20.1-10.1 26.5-8.8 8.9-25.5 5.9-35.3.8-10.8-5.7.8-19.2.8-19.2s-5.8 3.4-10.5-3.6c-6-9.3-17.1-37.3 11.5-62-1.3-10.1-4.6-53.7 40.6-85.6 0 0-20.6-22.8-12.9-43.3 5-13.4 7-13.3 8.6-13.9 5.7-2.2 11.3-4.6 15.4-9.1 20.6-22.2 46.8-18 46.8-18s12.4-37.8 23.9-30.4c3.5 2.3 16.3 30.6 16.3 30.6s13.6-7.9 15.1-5c8.2 16 9.2 46.5 5.6 65.1-6.1 30.6-21.4 47.1-27.6 57.5-1.4 2.4 16.5 10 27.8 41.3 10.4 28.6 1.1 52.7 2.8 55.3.8 1.4 13.7.8 36.4-13.2 12.8-7.9 28.1-16.9 45.4-17 16.7-.5 17.6 19.2 4.9 22.2zM496 256c0 136.9-111.1 248-248 248S0 392.9 0 256 111.1 8 248 8s248 111.1 248 248zm-79.3 75.2c-1.7-13.6-13.2-23-28-22.8-22 .3-40.5 11.7-52.8 19.2-4.8 3-8.9 5.2-12.4 6.8 3.1-44.5-22.5-73.1-28.7-79.4 7.8-11.3 18.4-27.8 23.4-53.2 4.3-21.7 3-55.5-6.9-74.5-1.6-3.1-7.4-11.2-21-7.4-9.7-20-13-22.1-15.6-23.8-1.1-.7-23.6-16.4-41.4 28-12.2.9-31.3 5.3-47.5 22.8-2 2.2-5.9 3.8-10.1 5.4h.1c-8.4 3-12.3 9.9-16.9 22.3-6.5 17.4.2 34.6 6.8 45.7-17.8 15.9-37 39.8-35.7 82.5-34 36-11.8 73-5.6 79.6-1.6 11.1 3.7 19.4 12 23.8 12.6 6.7 30.3 9.6 43.9 2.8 4.9 5.2 13.8 10.1 30 10.1 6.8 0 58-2.9 72.6-6.5 6.8-1.6 11.5-4.5 14.6-7.1 9.8-3.1 36.8-12.3 62.2-28.7 18-11.7 24.2-14.2 37.6-17.4 12.9-3.2 21-15.1 19.4-28.2z"></path>
   </svg>
 );
 
-const BunIcon = ({
-  className,
-  active,
-}: {
-  className?: string;
-  active?: boolean;
-}) => (
+const BunIcon = ({ className, active }: IconProps) => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -129,49 +105,76 @@ const CheckIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export function CodeBlockCommand({
-  __pnpmCommand__,
-  __yarnCommand__,
-  __npmCommand__,
-  __bunCommand__,
-}: NpmCommands) {
-  const [config, setConfig] = useConfig();
+// --- Main Component ---
+
+const CopyButton = () => {
+  return <CodeBlock />;
+};
+
+const CodeBlock = () => {
+  const [activeTab, setActiveTab] = useState<"npm" | "pnpm" | "yarn" | "bun">(
+    "npm"
+  );
   const [copied, setCopied] = useState(false);
 
-  const packageManager = config.packageManager || "pnpm";
-
-  const tabs = useMemo(() => {
-    return {
-      pnpm: __pnpmCommand__,
-      yarn: __yarnCommand__,
-      npm: __npmCommand__,
-      bun: __bunCommand__,
-    };
-  }, [__pnpmCommand__, __yarnCommand__, __npmCommand__, __bunCommand__]);
-
-  const packageManagerIcons = {
-    npm: NpmIcon,
-    pnpm: PnpmIcon,
-    yarn: YarnIcon,
-    bun: BunIcon,
+  const commands: Record<
+    "npm" | "pnpm" | "yarn" | "bun",
+    { command: string; package: string; url: string }
+  > = {
+    npm: {
+      command: "npx",
+      package: "shadcn@latest",
+      url: "add button",
+    },
+    pnpm: {
+      command: "pnpm dlx",
+      package: "shadcn@latest",
+      url: "add button",
+    },
+    yarn: {
+      command: "yarn dlx",
+      package: "shadcn@latest",
+      url: "add button",
+    },
+    bun: {
+      command: "bunx",
+      package: "shadcn@latest",
+      url: "add button",
+    },
   };
 
-  const handleCopy = () => {
-    const commandText = tabs[packageManager] || "";
+  const tabs: Array<{
+    id: "npm" | "pnpm" | "yarn" | "bun";
+    label: string;
+    icon: React.ComponentType<IconProps>;
+  }> = [
+    { id: "npm", label: "npm", icon: NpmIcon },
+    { id: "pnpm", label: "pnpm", icon: PnpmIcon },
+    { id: "yarn", label: "yarn", icon: YarnIcon },
+    { id: "bun", label: "bun", icon: BunIcon },
+  ];
 
+  const activeCommand = commands[activeTab];
+
+  const handleCopy = () => {
+    const commandText = `${activeCommand.command} ${activeCommand.package} ${activeCommand.url}`;
+
+    // Create a temporary textarea element to copy the text
     const textarea = document.createElement("textarea");
     textarea.value = commandText;
-    textarea.style.position = "fixed";
-    textarea.style.opacity = "0";
+    textarea.style.position = "fixed"; // Prevent scrolling to bottom of page
+    textarea.style.opacity = "0"; // Make it invisible
     document.body.appendChild(textarea);
     textarea.select();
 
     try {
+      // Attempt to copy using document.execCommand
       document.execCommand("copy");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy text using execCommand: ", err);
+      // Fallback to Clipboard API if execCommand fails (though less likely to work in restricted iframes)
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard
           .writeText(commandText)
@@ -181,12 +184,13 @@ export function CodeBlockCommand({
           })
           .catch((clipErr) => {
             console.error("Failed to copy text using Clipboard API: ", clipErr);
+            // If both fail, log an error or provide user feedback
           });
       } else {
         console.error("Clipboard API not available and execCommand failed.");
       }
     } finally {
-      document.body.removeChild(textarea);
+      document.body.removeChild(textarea); // Clean up the temporary textarea
     }
   };
 
@@ -195,32 +199,22 @@ export function CodeBlockCommand({
       <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-950">
         <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-100 px-4 py-2 dark:border-zinc-800 dark:bg-zinc-950">
           <div className="flex items-center gap-2 overflow-x-auto pb-1">
-            {Object.entries(tabs).map(([key]) => {
-              const IconComponent = packageManagerIcons[key as PackageManager];
-              return (
-                <button
-                  key={key}
-                  className={`flex cursor-pointer items-center gap-1 rounded-t-md border-b-2 px-4 py-2 text-sm transition-all duration-200 focus:outline-none ${
-                    packageManager === key
-                      ? "border-amber-400 bg-white font-bold text-zinc-900 shadow-sm dark:bg-zinc-900/80 dark:text-zinc-50"
-                      : "border-transparent text-zinc-500 hover:bg-zinc-200/60 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200"
-                  }`}
-                  onClick={() => {
-                    setConfig((prev) => ({
-                      ...prev,
-                      packageManager: key as PackageManager,
-                    }));
-                  }}
-                  style={{ borderRadius: "0.5rem 0.5rem 0px 0px" }}
-                >
-                  <IconComponent
-                    className="h-4 w-4"
-                    active={packageManager === key}
-                  />
-                  <span>{key}</span>
-                </button>
-              );
-            })}
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                className={`flex cursor-pointer items-center gap-1 rounded-t-md border-b-2 px-4 py-2 text-sm transition-all duration-200 focus:outline-none ${
+                  activeTab === tab.id
+                    ? "border-amber-400 bg-white font-bold text-zinc-900 shadow-sm dark:bg-zinc-900/80 dark:text-zinc-50"
+                    : "border-transparent text-zinc-500 hover:bg-zinc-200/60 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200"
+                }`}
+                onClick={() => setActiveTab(tab.id)}
+                style={{ borderRadius: "0.5rem 0.5rem 0px 0px" }}
+              >
+                {/* Render the icon component and pass the 'active' prop */}
+                <tab.icon className="h-4 w-4" active={activeTab === tab.id} />
+                <span>{tab.label}</span>
+              </button>
+            ))}
           </div>
           <div className="flex items-center gap-1">
             <button
@@ -242,11 +236,15 @@ export function CodeBlockCommand({
           </div>
         </div>
         <div className="max-w-full min-w-0 overflow-x-auto bg-white px-4 py-4 text-left font-mono text-sm font-medium text-nowrap dark:bg-zinc-950">
+          <span className="text-amber-400">{activeCommand.command}</span>{" "}
+          <span className="text-teal-500">{activeCommand.package}</span>{" "}
           <span className="text-zinc-700 dark:text-zinc-300">
-            {tabs[packageManager] || ""}
+            {activeCommand.url}
           </span>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default CopyButton;

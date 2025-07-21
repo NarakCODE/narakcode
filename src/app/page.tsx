@@ -36,13 +36,13 @@ export default function Page() {
         <div className="mx-auto px-4 md:max-w-3xl">
           <Header />
           <Pattern />
+          <About />
+          <Pattern />
+
           <Overview />
           <Pattern />
 
           <SocialLinks />
-          <Pattern />
-
-          <About />
           <Pattern />
 
           <TechStack />
