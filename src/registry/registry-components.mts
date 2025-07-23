@@ -97,4 +97,21 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dropdrawer",
+    type: "registry:component",
+    dependencies: [
+      "@radix-ui/react-dropdown-menu",
+      "vaul",
+      "lucide-react",
+      "framer-motion",
+    ],
+    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    files: [
+      {
+        path: "dropdrawer/dropdrawer.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

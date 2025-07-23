@@ -85,4 +85,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dropdown-drawer-demo",
+    type: "registry:example",
+    registryDependencies: ["https://narakcode.vercel.app/r/dropdrawer.json"],
+    files: [
+      {
+        path: "examples/dropdown-drawer-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

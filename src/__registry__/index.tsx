@@ -88,6 +88,15 @@ export const Index: Record<string, any> = {
       type: "registry:component",
     }],
   },
+  "dropdrawer": {
+    name: "dropdrawer",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/dropdrawer/dropdrawer.tsx",
+      type: "registry:component",
+    }],
+  },
   "apple-hello-effect-demo": {
     name: "apple-hello-effect-demo",
     description: "",
@@ -157,5 +166,15 @@ export const Index: Record<string, any> = {
       type: "registry:example",
     }],
     component: React.lazy(() => import("@/registry/examples/pin-list-demo.tsx")),
+  },
+  "dropdown-drawer-demo": {
+    name: "dropdown-drawer-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/dropdown-drawer-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/dropdown-drawer-demo.tsx")),
   },
 }
