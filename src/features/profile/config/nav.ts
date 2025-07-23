@@ -15,10 +15,10 @@ export const NAV_LINKS = [
   //   title: "Awards",
   //   href: "#awards",
   // },
-  {
-    title: "Certs",
-    href: "#certs",
-  },
+  // {
+  //   title: "Certs",
+  //   href: "#certs",
+  // },
   {
     title: "Blog",
     href: "/blog",
