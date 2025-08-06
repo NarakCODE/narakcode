@@ -114,7 +114,20 @@ export default function RootLayout({
       </head>
 
       <body>
-        <Providers>{children}</Providers>
+        <div className="absolute -z-1 min-h-screen w-full bg-background">
+          {/* Pearl Mist Background with Top Glow - Only in dark mode */}
+          <div
+            className="absolute inset-0 z-0 hidden dark:block"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%), var(--d-background)",
+            }}
+          />
+        </div>
+        <Providers>
+          {/* Your Content/Components */}
+          {children}
+        </Providers>
       </body>
     </html>
   );

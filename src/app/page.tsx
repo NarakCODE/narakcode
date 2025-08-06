@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
 import { Confetti } from "@/components/confetti";
+// import { FloatingAiSummary } from "@/components/floating-ai-summary";
 import { ScrollTop } from "@/components/scroll-top";
 import { SiteFooter } from "@/components/site-footer";
 import { CAMBODIA_HOLIDAYS } from "@/config/site";
@@ -21,6 +22,7 @@ import { SiteHeader } from "@/features/profile/components/site-header";
 import { SocialLinks } from "@/features/profile/components/social-links";
 import TechStack from "@/features/profile/components/teck-stack";
 import { cn } from "@/lib/cn";
+// import { extractPortfolioContent } from "@/utils/content-extractor";
 
 export default function Page() {
   const websiteJsonLd = getPageJsonLd();
@@ -76,6 +78,7 @@ export default function Page() {
 
       <Confetti datesWithoutYear={[USER.dateOfBirth, ...CAMBODIA_HOLIDAYS]} />
       <ScrollTop className="[--bottom:4rem] lg:[--bottom:5.5rem]" />
+      {/* <FloatingAiSummary content={extractPortfolioContent()} /> */}
     </>
   );
 }

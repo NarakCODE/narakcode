@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@bprogress/next": "^3.2.12",
+    "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^4.1.0",
     "@iconify/react": "^6.0.0",
     "@ncdai/react-wheel-picker": "^1.0.5",

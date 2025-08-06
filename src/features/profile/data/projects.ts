@@ -1,24 +1,24 @@
 import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
-  {
-    id: "react-wheel-picker",
-    title: "React Wheel Picker",
-    time: "05.2025 — present",
-    link: "https://react-wheel-picker.narakcode.vercel.app",
-    tags: [
-      "React",
-      "TypeScript",
-      "Monorepo",
-      "Turborepo",
-      "pnpm-workspace",
-      "Package Publishing",
-      "NPM Registry",
-    ],
-    description:
-      "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
-    logo: "https://assets.chanhdai.com/images/project-logos/react-wheel-picker.svg",
-  },
+  // {
+  //   id: "react-wheel-picker",
+  //   title: "React Wheel Picker",
+  //   time: "05.2025 — present",
+  //   link: "https://react-wheel-picker.narakcode.vercel.app",
+  //   tags: [
+  //     "React",
+  //     "TypeScript",
+  //     "Monorepo",
+  //     "Turborepo",
+  //     "pnpm-workspace",
+  //     "Package Publishing",
+  //     "NPM Registry",
+  //   ],
+  //   description:
+  //     "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
+  //   logo: "https://assets.chanhdai.com/images/project-logos/react-wheel-picker.svg",
+  // },
   {
     id: "apple-clone-website",
     title: "Apple Clone",

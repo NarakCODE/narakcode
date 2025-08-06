@@ -1,27 +1,36 @@
 import type { TechStack } from "../types/tech-stack";
 
 export const TECH_STACK: TechStack[] = [
+  // {
+  //   key: "typescript",
+  //   title: "TypeScript",
+  //   href: "https://www.typescriptlang.org/",
+  //   categories: ["Language"],
+  //   icon: "teenyicons:typescript-solid",
+  // },
+  // {
+  //   key: "js",
+  //   title: "JavaScript",
+  //   href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  //   categories: ["Language"],
+  //   icon: "simple-icons:javascript",
+  // },
   {
-    key: "typescript",
-    title: "TypeScript",
-    href: "https://www.typescriptlang.org/",
-    categories: ["Language"],
-    icon: "teenyicons:typescript-solid",
+    key: "react",
+    title: "React",
+    href: "https://react.dev/",
+    categories: ["Library", "UI Library"],
+    icon: "simple-icons:react",
   },
   {
-    key: "js",
-    title: "JavaScript",
-    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    categories: ["Language"],
-    icon: "simple-icons:javascript",
+    key: "nextjs2",
+    title: "Next.js",
+    href: "https://nextjs.org/",
+    categories: ["Framework"],
+    icon: "akar-icons:nextjs-fill",
+    theme: true,
   },
-  {
-    key: "python",
-    title: "Python",
-    href: "https://www.python.org/",
-    categories: ["Language"],
-    icon: "simple-icons:python",
-  },
+
   {
     key: "java",
     title: "Java",
@@ -43,21 +52,7 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Runtime Environment"],
     icon: "simple-icons:bun",
   },
-  {
-    key: "react",
-    title: "React",
-    href: "https://react.dev/",
-    categories: ["Library", "UI Library"],
-    icon: "simple-icons:react",
-  },
-  {
-    key: "nextjs2",
-    title: "Next.js",
-    href: "https://nextjs.org/",
-    categories: ["Framework"],
-    icon: "akar-icons:nextjs-fill",
-    theme: true,
-  },
+
   {
     key: "tailwindcss",
     title: "Tailwind CSS",
@@ -102,13 +97,7 @@ export const TECH_STACK: TechStack[] = [
     categories: ["State Management"],
     icon: "simple-icons:redux",
   },
-  {
-    key: "antd",
-    title: "Ant Design",
-    href: "https://ant.design/",
-    categories: ["Library", "UI Library"],
-    icon: "simple-icons:antdesign",
-  },
+
   {
     key: "tansatack-query",
     title: "Tanstack Query",
@@ -136,6 +125,13 @@ export const TECH_STACK: TechStack[] = [
     href: "https://www.docker.com/",
     categories: ["Containerization"],
     icon: "teenyicons:docker-outline",
+  },
+  {
+    key: "postgresql",
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
+    categories: ["Language"],
+    icon: "simple-icons:postgresql",
   },
   {
     key: "mysql",
@@ -171,6 +167,12 @@ export const TECH_STACK: TechStack[] = [
     href: "https://chatgpt.com/",
     categories: ["Tools", "AI"],
     icon: "arcticons:openai-chatgpt",
-    theme: true,
+  },
+  {
+    key: "claude",
+    title: "Claude",
+    href: "https://claude.ai/",
+    categories: ["Tools", "AI"],
+    icon: "ri:claude-fill",
   },
 ];
