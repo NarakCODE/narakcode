@@ -112,6 +112,22 @@ export const components: Registry["items"] = [
         path: "dropdrawer/dropdrawer.tsx",
         type: "registry:component",
       },
+      {
+        path: "ui/drawer.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/dropdown-menu.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "lib/utils.ts",
+        type: "registry:lib",
+      },
+      {
+        path: "hooks/use-mobile.ts",
+        type: "registry:hook",
+      },
     ],
   },
 ];
