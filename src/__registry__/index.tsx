@@ -95,6 +95,18 @@ export const Index: Record<string, any> = {
     files: [{
       path: "src/registry/dropdrawer/dropdrawer.tsx",
       type: "registry:component",
+    },{
+      path: "src/registry/ui/drawer.tsx",
+      type: "registry:ui",
+    },{
+      path: "src/registry/ui/dropdown-menu.tsx",
+      type: "registry:ui",
+    },{
+      path: "src/registry/lib/utils.ts",
+      type: "registry:lib",
+    },{
+      path: "src/registry/hooks/use-mobile.ts",
+      type: "registry:hook",
     }],
   },
   "apple-hello-effect-demo": {

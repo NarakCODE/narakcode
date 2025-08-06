@@ -25,8 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-import { cn } from "../lib/utils";
+import { cn } from "@/lib/utils";
 
 const DropDrawerContext = React.createContext<{ isMobile: boolean }>({
   isMobile: false,
@@ -457,7 +456,7 @@ function DropDrawerItem({
         data-disabled={disabled}
         className={cn(
           "flex cursor-pointer items-center justify-between px-4 py-4",
-          // Only apply margin, background and corners if not in a group
+          // Only apply margin, background and  corners if not in a group
           !isInsideGroup && "mx-2 my-1.5 rounded-md bg-accent dark:bg-accent",
           // For items in a group, don't add background but add more padding
           isInsideGroup && "bg-transparent py-4",
@@ -897,7 +896,7 @@ function DropDrawerSubTrigger({
         data-inset={inset}
         className={cn(
           "flex cursor-pointer items-center justify-between px-4 py-4",
-          // Only apply margin, background and corners if not in a group
+          // Only apply margin, background and  corners if not in a group
           !isInsideGroup && "mx-2 my-1.5 rounded-md bg-accent dark:bg-accent",
           // For items in a group, don't add background but add more padding
           isInsideGroup && "bg-transparent py-4",

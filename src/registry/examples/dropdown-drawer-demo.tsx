@@ -17,7 +17,6 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import {
   DropDrawer,
   DropDrawerContent,
@@ -28,7 +27,8 @@ import {
   DropDrawerSubContent,
   DropDrawerSubTrigger,
   DropDrawerTrigger,
-} from "@/components/ui/components/ui/dropdrawer";
+} from "@/components/dropdrawer";
+import { Button } from "@/components/ui/button";
 import { USER } from "@/data/user";
 
 export default function PostExample() {
