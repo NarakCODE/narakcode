@@ -1,4 +1,8 @@
+"use client";
+
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
+import { useState } from "react";
 
 import { BrandContextMenu } from "@/components/brand-context-menu";
 // import { NarakCODEMark } from "@/components/chanhdai-mark";
@@ -9,16 +13,38 @@ import { ToggleTheme } from "@/components/toggle-theme";
 import { DesktopNav } from "./desktop-nav";
 
 export function SiteHeader() {
+  const { scrollY } = useScroll();
+
+  const [showBackground, setShowBackground] = useState(false);
+  const [showLogo, setShowLogo] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latestValue) => {
+    setShowBackground(latestValue > 0);
+    setShowLogo(latestValue >= 200);
+  });
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-background pt-2">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 pt-2 duration-300 ${showBackground ? "bg-background/70 backdrop-blur-lg backdrop-saturate-150" : ""}`}
+    >
       <div className="mx-auto px-4 md:max-w-3xl">
-        <div className="screen-line-before screen-line-after flex h-12 items-center justify-between gap-4 border-x border-edge px-2">
-          <BrandContextMenu>
-            <Link href="/" aria-label="Home">
-              {/* <NarakCODEMark className="h-8" /> */}
-              <NarakCodeMark className="h-8" />
-            </Link>
-          </BrandContextMenu>
+        <div
+          className={`flex h-12 items-center gap-4 px-2 ${showBackground && "screen-line-before screen-line-after border-x border-edge"}`}
+        >
+          <motion.div
+            initial={{ opacity: 0, visibility: "hidden" }}
+            animate={{
+              opacity: showLogo ? 1 : 0,
+              visibility: showLogo ? "visible" : "hidden",
+            }}
+          >
+            <BrandContextMenu>
+              <Link href="/" aria-label="Home">
+                {/* <NarakCODEMark className="h-8" /> */}
+                <NarakCodeMark className="h-8" />
+              </Link>
+            </BrandContextMenu>
+          </motion.div>
 
           <div className="flex-1" />
 
