@@ -6,6 +6,10 @@ export const NAV_LINKS: NavItemType[] = [
     href: "/",
   },
   {
+    title: "Notes",
+    href: "/notes",
+  },
+  {
     title: "Blog",
     href: "/blog",
   },

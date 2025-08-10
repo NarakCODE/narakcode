@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -16,11 +16,9 @@ export function SiteHeader() {
   const { scrollY } = useScroll();
 
   const [showBackground, setShowBackground] = useState(false);
-  const [showLogo, setShowLogo] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latestValue) => {
     setShowBackground(latestValue > 0);
-    setShowLogo(latestValue >= 200);
   });
 
   return (
@@ -31,20 +29,12 @@ export function SiteHeader() {
         <div
           className={`flex h-12 items-center gap-4 px-2 ${showBackground && "screen-line-before screen-line-after border-x border-edge"}`}
         >
-          <motion.div
-            initial={{ opacity: 0, visibility: "hidden" }}
-            animate={{
-              opacity: showLogo ? 1 : 0,
-              visibility: showLogo ? "visible" : "hidden",
-            }}
-          >
-            <BrandContextMenu>
-              <Link href="/" aria-label="Home">
-                {/* <NarakCODEMark className="h-8" /> */}
-                <NarakCodeMark className="h-8" />
-              </Link>
-            </BrandContextMenu>
-          </motion.div>
+          <BrandContextMenu>
+            <Link href="/" aria-label="Home">
+              {/* <NarakCODEMark className="h-8" /> */}
+              <NarakCodeMark className="h-8" />
+            </Link>
+          </BrandContextMenu>
 
           <div className="flex-1" />
 
