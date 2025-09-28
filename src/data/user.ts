@@ -26,7 +26,7 @@ export const USER = {
   about: `
 Hello, World! I am Narak. I focused on delivering high-quality products. I enjoy working where design and engineering intersect, building software that's visually appealing and technically solid.
   `,
-  avatar: "/images/profile.JPG",
+  avatar: "/images/profile.jpg",
   ogImage:
     "https://cdn.dribbble.com/userupload/43411836/file/original-1ea9c7650e0c37a6c6d46afee634ec3c.png?resize=1905x1429&vertical=center",
   keywords:
