@@ -141,7 +141,10 @@ const options: MDXRemoteProps["options"] = {
       [
         rehypePrettyCode,
         {
-          theme: "github-dark",
+          theme: {
+            dark: "github-dark",
+            light: "github-light",
+          },
           keepBackground: false,
           onVisitLine(node: LineElement) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty

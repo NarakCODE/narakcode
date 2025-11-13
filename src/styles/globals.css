@@ -217,7 +217,7 @@
   @apply my-6;
 
   pre {
-    @apply max-h-[512px] overflow-x-auto rounded-lg bg-zinc-900 py-4;
+    @apply max-h-[512px] overflow-x-auto rounded-lg bg-zinc-50 py-4 dark:bg-zinc-900;
   }
 
   code {
@@ -273,4 +273,3 @@
     content: counter(step);
   }
 }
-
