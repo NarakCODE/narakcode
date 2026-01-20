@@ -1,21 +1,16 @@
-import { FlatCompat } from "@eslint/eslintrc";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
+import prettier from "eslint-config-prettier";
 import boundaries from "eslint-plugin-boundaries";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
 
 /**
- * @type {import("eslint").Linter.Config}
+ * @type {import("eslint").Linter.Config[]}
  * */
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
+  ...nextVitals,
+  ...nextTypescript,
+  prettier,
   {
     files: ["**/*.{ts,tsx}"],
     rules: {

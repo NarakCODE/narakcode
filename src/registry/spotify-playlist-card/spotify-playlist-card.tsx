@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, Music, Palette, RefreshCw, Volume2 } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useIsClient } from "@/hooks/use-is-client";
 
 interface SpotifyPlaylistCardProps {
   playlistId?: string;
@@ -30,23 +31,20 @@ export const SpotifyPlaylistCard = ({
   className = "",
 }: SpotifyPlaylistCardProps) => {
   const { theme, systemTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const isMounted = useIsClient();
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const currentTheme = theme === "system" ? systemTheme : theme;
+  const [prevTheme, setPrevTheme] = useState(currentTheme);
 
-  useEffect(() => {
-    if (mounted) {
-      setIsLoading(true);
-      setHasError(false);
-    }
-  }, [currentTheme, mounted]);
+  // Derived state pattern for theme changes
+  if (isMounted && currentTheme !== prevTheme) {
+    setPrevTheme(currentTheme);
+    setIsLoading(true);
+    setHasError(false);
+  }
 
   const handleIframeLoad = () => {
     setIsLoading(false);
@@ -74,7 +72,7 @@ export const SpotifyPlaylistCard = ({
 
   const iframeHeight = "500px";
 
-  if (!mounted) {
+  if (!isMounted) {
     return (
       <Card className={`w-full overflow-hidden ${className}`}>
         <CardHeader className="pb-4">

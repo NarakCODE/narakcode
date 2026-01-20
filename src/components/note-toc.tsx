@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface TocItem {
   id: string;
@@ -13,10 +13,9 @@ interface NoteTocProps {
 }
 
 export function NoteToc({ content }: NoteTocProps) {
-  const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
 
-  useEffect(() => {
+  const toc = useMemo(() => {
     // Extract headings from content
     const headingRegex = /^(#{1,6})\s+(.+)$/gm;
     const headings: TocItem[] = [];
@@ -33,8 +32,7 @@ export function NoteToc({ content }: NoteTocProps) {
 
       headings.push({ id, text, level });
     }
-
-    setToc(headings);
+    return headings;
   }, [content]);
 
   useEffect(() => {
