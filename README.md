@@ -43,9 +43,8 @@
 This repository contains the source code for **[narakcode.vercel.app](https://narakcode.vercel.app)**, my minimal portfolio website showcasing my work and experience.
 
 <div align="center">
-  <a href="https://narakcode.vercel.app">
-    <img src="https://assets.chanhdai.com/images/screenshot-desktop-light.webp" alt="Portfolio Screenshot" width="800" style="border-radius: 10px;" />
-  </a>
+  <iframe src="https://narakcode.vercel.app" width="100%" height="600px" style="border-radius: 10px; border: 1px solid #333;" title="Narak Portfolio"></iframe>
+  <p><em>(Note: Interactive previews via iframe may not render on GitHub. <a href="https://narakcode.vercel.app">Click here to view live site</a>)</em></p>
 </div>
 
 <br/>
