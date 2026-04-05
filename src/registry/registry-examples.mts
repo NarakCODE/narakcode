@@ -4,9 +4,7 @@ export const examples: Registry["items"] = [
   {
     name: "apple-hello-effect-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://narakcode.vercel.app/r/apple-hello-effect.json",
-    ],
+    registryDependencies: ["https://narakcode.dev/r/apple-hello-effect.json"],
     files: [
       {
         path: "examples/apple-hello-effect-demo.tsx",
@@ -17,9 +15,7 @@ export const examples: Registry["items"] = [
   {
     name: "theme-switcher-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://narakcode.vercel.app/r/theme-switcher.json",
-    ],
+    registryDependencies: ["https://narakcode.dev/r/theme-switcher.json"],
     files: [
       {
         path: "examples/theme-switcher-demo.tsx",
@@ -30,7 +26,7 @@ export const examples: Registry["items"] = [
   {
     name: "wheel-picker-demo",
     type: "registry:example",
-    registryDependencies: ["https://narakcode.vercel.app/r/wheel-picker.json"],
+    registryDependencies: ["https://narakcode.dev/r/wheel-picker.json"],
     files: [
       {
         path: "examples/wheel-picker-demo.tsx",
@@ -41,10 +37,7 @@ export const examples: Registry["items"] = [
   {
     name: "wheel-picker-form-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://narakcode.vercel.app/r/wheel-picker.json",
-      "form",
-    ],
+    registryDependencies: ["https://narakcode.dev/r/wheel-picker.json", "form"],
     files: [
       {
         path: "examples/wheel-picker-form-demo.tsx",
@@ -55,7 +48,7 @@ export const examples: Registry["items"] = [
   {
     name: "morphing-pill-demo",
     type: "registry:example",
-    registryDependencies: ["https://narakcode.vercel.app/r/morphing-pill.json"],
+    registryDependencies: ["https://narakcode.dev/r/morphing-pill.json"],
     files: [
       {
         path: "examples/morphing-pill-demo.tsx",
@@ -66,7 +59,7 @@ export const examples: Registry["items"] = [
   {
     name: "icon-button-demo",
     type: "registry:example",
-    registryDependencies: ["https://narakcode.vercel.app/r/icon-button.json"],
+    registryDependencies: ["https://narakcode.dev/r/icon-button.json"],
     files: [
       {
         path: "examples/icon-button-demo.tsx",
@@ -77,7 +70,7 @@ export const examples: Registry["items"] = [
   {
     name: "pin-list-demo",
     type: "registry:example",
-    registryDependencies: ["https://narakcode.vercel.app/r/pin-list.json"],
+    registryDependencies: ["https://narakcode.dev/r/pin-list.json"],
     files: [
       {
         path: "examples/pin-list-demo.tsx",
@@ -88,7 +81,7 @@ export const examples: Registry["items"] = [
   {
     name: "dropdown-drawer-demo",
     type: "registry:example",
-    registryDependencies: ["https://narakcode.vercel.app/r/dropdrawer.json"],
+    registryDependencies: ["https://narakcode.dev/r/dropdrawer.json"],
     files: [
       {
         path: "examples/dropdown-drawer-demo.tsx",

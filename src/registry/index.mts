@@ -6,6 +6,6 @@ import { lib } from "./registry-lib.mjs";
 
 export const registry = {
   name: "narakcode",
-  homepage: "https://narakcode.vercel.app",
+  homepage: "https://narakcode.dev",
   items: [...lib, ...components, ...examples],
 } satisfies Registry;

@@ -5,7 +5,7 @@ export const PROJECTS: Project[] = [
   //   id: "react-wheel-picker",
   //   title: "React Wheel Picker",
   //   time: "05.2025 — present",
-  //   link: "https://react-wheel-picker.narakcode.vercel.app",
+  //   link: "https://react-wheel-picker.narakcode.dev",
   //   tags: [
   //     "React",
   //     "TypeScript",
@@ -65,9 +65,9 @@ export const PROJECTS: Project[] = [
   },
   // {
   //   id: "portfolio-website",
-  //   title: "narakcode.vercel.app",
+  //   title: "narakcode.dev",
   //   time: "10.2023 — present",
-  //   link: "https://github.com/ncdai/narakcode.vercel.app",
+  //   link: "https://github.com/ncdai/narakcode.dev",
   //   tags: [
   //     "Open Source",
   //     "Next.js 15",
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
   //     "Vercel",
   //   ],
   //   description:
-  //     "narakcode.vercel.app is my portfolio website, showcasing my work and experience as a Software Developer & UI/UX Designer.\n- Elegant & Minimalistic UI: Clean and modern design\n- Dark Mode: Supports light and dark themes for a better user experience\n- vCard Integration: Digital business card with contact details\n- SEO Optimization: JSON-LD schema, sitemap, robots\n- Email Protection: Obfuscation to prevent spam\n- Installable PWA\n- [Next.js 15](https://nextjs.org/): Latest React framework for optimized performance and scalability\n- [Tailwind CSS v4](https://tailwindcss.com/): Modern utility-first CSS framework for styling\n\nBlog Features:\n- MDX & Markdown support\n- [Syntax Highlighting](https://narakcode.vercel.app/blog/writing-effect-inspired-by-apple) for better readability\n - [RSS Feed](https://narakcode.vercel.app/rss) for easy content distribution\n- Dynamic OG Images for rich previews",
+  //     "narakcode.dev is my portfolio website, showcasing my work and experience as a Software Developer & UI/UX Designer.\n- Elegant & Minimalistic UI: Clean and modern design\n- Dark Mode: Supports light and dark themes for a better user experience\n- vCard Integration: Digital business card with contact details\n- SEO Optimization: JSON-LD schema, sitemap, robots\n- Email Protection: Obfuscation to prevent spam\n- Installable PWA\n- [Next.js 15](https://nextjs.org/): Latest React framework for optimized performance and scalability\n- [Tailwind CSS v4](https://tailwindcss.com/): Modern utility-first CSS framework for styling\n\nBlog Features:\n- MDX & Markdown support\n- [Syntax Highlighting](https://narakcode.dev/blog/writing-effect-inspired-by-apple) for better readability\n - [RSS Feed](https://narakcode.dev/rss) for easy content distribution\n- Dynamic OG Images for rich previews",
   //   logo: "https://assets.chanhdai.com/images/project-logos/chanhdaidotcom.svg",
   // },
   // {

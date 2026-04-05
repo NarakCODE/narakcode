@@ -9,11 +9,8 @@ export const USER = {
   address: "Phnom Penh, Cambodia",
   phoneNumber: "Kzg1NTk2NDEwNDIzMA==",
   email: "Y2hhbm5hcmFrbHV5QGdtYWlsLmNvbQ==",
-  website: "https://narakcode.vercel.app",
-  otherWebsites: [
-    "https://narakcode-dev.vercel.app",
-    "https://narakcode.vercel.app",
-  ],
+  website: "https://narakcode.dev",
+  otherWebsites: ["https://narakcode-dev.vercel.app", "https://narakcode.dev"],
   dateOfBirth: "2003-04-10",
   jobTitle: "Software Developer",
   jobs: [

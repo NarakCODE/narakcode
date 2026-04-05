@@ -15,7 +15,7 @@ Ensure you have the following installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ncdai/narakcode.vercel.app.git minimal-portfolio
+git clone https://github.com/NarakCODE/narakcode.dev.git minimal-portfolio
 cd minimal-portfolio
 ```
 
@@ -64,11 +64,11 @@ This project utilizes **shadcn Registry**, which allows you to manage and distri
 If you're working on a different React project and want to reuse the custom components from this repository, you can add them using the **shadcn CLI** with the following commands:
 
 ```bash
-npx shadcn@latest add https://narakcode.vercel.app/r/cn.json
-npx shadcn@latest add https://narakcode.vercel.app/r/theme-switcher.json
-npx shadcn@latest add https://narakcode.vercel.app/r/flip-sentences.json
-npx shadcn@latest add https://narakcode.vercel.app/r/apple-hello-effect.json
-npx shadcn@latest add https://narakcode.vercel.app/r/wheel-picker.json
+npx shadcn@latest add https://narakcode.dev/r/cn.json
+npx shadcn@latest add https://narakcode.dev/r/theme-switcher.json
+npx shadcn@latest add https://narakcode.dev/r/flip-sentences.json
+npx shadcn@latest add https://narakcode.dev/r/apple-hello-effect.json
+npx shadcn@latest add https://narakcode.dev/r/wheel-picker.json
 ```
 
 > Note: These components are compatible with [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4) and [React 19](https://react.dev/blog/2024/12/05/react-19).
