@@ -4,6 +4,11 @@ import Link from "next/link"
 
 import { Button } from "@/components/base/ui/button"
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/base/ui/tooltip"
+import {
   PageHeading,
   PageHeadingTagline,
   PageHeadingTitle,
@@ -72,19 +77,43 @@ export default function ComponentsShowcasePage() {
       </PageHeading>
 
       <div className="flex items-center justify-end gap-1 p-1">
-        <Button
-          className="size-7 border-none text-muted-foreground"
-          variant="ghost"
-          size="icon-sm"
-          nativeButton={false}
-          render={<Link href="/components" />}
-        >
-          <Grip />
-        </Button>
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <Button
+                className="size-7 border-none text-muted-foreground"
+                variant="ghost"
+                size="icon-sm"
+                nativeButton={false}
+                render={<Link href="/components" />}
+                aria-label="List"
+              >
+                <Grip />
+              </Button>
+            }
+          />
+          <TooltipContent>
+            <p>List</p>
+          </TooltipContent>
+        </Tooltip>
 
-        <Button className="size-7" variant="outline" size="icon-sm">
-          <LayoutDashboard />
-        </Button>
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <Button
+                className="size-7"
+                variant="outline"
+                size="icon-sm"
+                aria-label="Showcase"
+              >
+                <LayoutDashboard />
+              </Button>
+            }
+          />
+          <TooltipContent>
+            <p>Showcase</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
 
       <div className="screen-line-bottom h-px" />
