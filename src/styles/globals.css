@@ -486,7 +486,7 @@
     @apply has-data-[slot=code-block-command]:pt-0;
 
     pre {
-      @apply no-scrollbar overflow-x-auto overscroll-x-contain p-4 has-data-line-numbers:px-0;
+      @apply no-scrollbar overflow-x-auto overscroll-x-contain p-4 outline-none has-data-line-numbers:px-0;
     }
 
     code {
