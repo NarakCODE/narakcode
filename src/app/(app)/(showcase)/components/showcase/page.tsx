@@ -1,5 +1,8 @@
+import { Grip, LayoutDashboard } from "lucide-react"
 import type { Metadata } from "next"
+import Link from "next/link"
 
+import { Button } from "@/components/base/ui/button"
 import {
   PageHeading,
   PageHeadingTagline,
@@ -68,7 +71,21 @@ export default function ComponentsShowcasePage() {
         <PageHeadingTitle>Pixel-perfect, uniquely crafted.</PageHeadingTitle>
       </PageHeading>
 
-      <div className="h-4" />
+      <div className="flex items-center justify-end gap-1 p-1">
+        <Button
+          className="size-7 border-none text-muted-foreground"
+          variant="ghost"
+          size="icon-sm"
+          nativeButton={false}
+          render={<Link href="/components" />}
+        >
+          <Grip />
+        </Button>
+
+        <Button className="size-7" variant="outline" size="icon-sm">
+          <LayoutDashboard />
+        </Button>
+      </div>
 
       <div className="screen-line-bottom h-px" />
 
