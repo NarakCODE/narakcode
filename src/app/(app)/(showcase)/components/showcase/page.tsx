@@ -109,7 +109,7 @@ export default function ComponentsShowcasePage() {
           <TestimonialSpotlightDemo />
         </GridItem>
 
-        <GridItem className="md:col-span-2 md:row-span-2">
+        <GridItem className="p-0 md:col-span-2 md:row-span-2">
           <GitHubContributionsDemo />
         </GridItem>
 
