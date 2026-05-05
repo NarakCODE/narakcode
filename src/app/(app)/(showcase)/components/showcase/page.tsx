@@ -86,6 +86,7 @@ export default function ComponentsShowcasePage() {
                 size="icon-sm"
                 nativeButton={false}
                 render={<Link href="/components" />}
+                aria-label="List"
               >
                 <Grip />
               </Button>
@@ -99,7 +100,12 @@ export default function ComponentsShowcasePage() {
         <Tooltip>
           <TooltipTrigger
             render={
-              <Button className="size-7" variant="outline" size="icon-sm">
+              <Button
+                className="size-7"
+                variant="outline"
+                size="icon-sm"
+                aria-label="Showcase"
+              >
                 <LayoutDashboard />
               </Button>
             }
