@@ -59,6 +59,22 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "apple-hello-effect-languages-demo",
+    type: "registry:example",
+    registryDependencies: [
+      getRegistryItemUrl("apple-hello-effect-english"),
+      getRegistryItemUrl("apple-hello-effect-hindi"),
+      getRegistryItemUrl("apple-hello-effect-spanish"),
+      getRegistryItemUrl("apple-hello-effect-vietnamese"),
+    ],
+    files: [
+      {
+        path: "examples/apple-hello-effect-languages-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "theme-switcher-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("theme-switcher")],

@@ -18,7 +18,10 @@ import {
 export default function TestimonialsMarqueeDemo1() {
   return (
     <div className="w-full bg-background">
-      <Marquee className="border-y border-line [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!">
+      <Marquee
+        data-slot="marquee"
+        className="border-y border-line [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
+      >
         <MarqueeFade side="left" />
         <MarqueeFade side="right" />
 
