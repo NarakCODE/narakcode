@@ -9,7 +9,7 @@ const tags = Array.from({ length: 50 }).map(
 
 export default function ScrollFadeEffectDemo() {
   return (
-    <div className="rounded-lg border">
+    <div data-slot="scroll-fade-effect-demo" className="rounded-lg border">
       <ScrollFadeEffect className="h-72 w-48">
         <div className="p-4">
           <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
