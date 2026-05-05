@@ -173,7 +173,7 @@ export function ComponentPreview({
           value="code"
           className={cn(
             "**:data-rehype-pretty-code-figure:m-0 **:data-rehype-pretty-code-figure:pt-0",
-            "**:data-[slot=copy-button]:top-1",
+            "**:data-[slot=copy-button]:top-1 **:data-[slot=copy-button]:opacity-100",
             "**:data-fade-overlay:top-px"
           )}
         >
