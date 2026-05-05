@@ -13,6 +13,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/base/ui/dialog"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/base/ui/tooltip"
 import { ComponentIcon } from "@/components/icons"
 import { MDX } from "@/components/mdx"
 import {
@@ -132,19 +137,37 @@ export default function Page() {
       <div className="screen-line-bottom h-px" />
 
       <div className="flex items-center justify-end gap-1.5 p-1.5">
-        <Button className="size-7" variant="outline" size="icon-sm">
-          <Grip />
-        </Button>
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <Button className="size-7" variant="outline" size="icon-sm">
+                <Grip />
+              </Button>
+            }
+          />
+          <TooltipContent>
+            <p>List</p>
+          </TooltipContent>
+        </Tooltip>
 
-        <Button
-          className="size-7 border-none text-muted-foreground"
-          variant="ghost"
-          size="icon-sm"
-          nativeButton={false}
-          render={<Link href="/components/showcase" />}
-        >
-          <LayoutDashboard />
-        </Button>
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <Button
+                className="size-7 border-none text-muted-foreground"
+                variant="ghost"
+                size="icon-sm"
+                nativeButton={false}
+                render={<Link href="/components/showcase" />}
+              >
+                <LayoutDashboard />
+              </Button>
+            }
+          />
+          <TooltipContent>
+            <p>Showcase</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
 
       <div className="screen-line-bottom h-px" />
