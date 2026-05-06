@@ -89,7 +89,7 @@ export const mdxCodeBlockComponents = {
                 <div
                   aria-hidden
                   data-fade-overlay
-                  className="top-1.25 right-1.25"
+                  className="top-1.25 right-1.25 opacity-0 transition-opacity group-hover/pre:opacity-100"
                   style={
                     {
                       "--fade-color": "var(--code)",
