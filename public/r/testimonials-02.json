@@ -21,6 +21,9 @@
       "type": "registry:component"
     }
   ],
+  "meta": {
+    "createdAt": "2026-03-29"
+  },
   "categories": [
     "marketing",
     "testimonials"

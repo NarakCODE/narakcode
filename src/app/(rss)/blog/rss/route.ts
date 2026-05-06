@@ -5,16 +5,14 @@ export const revalidate = false
 export const dynamic = "force-static"
 
 export function GET() {
-  const allPosts = getAllDocs()
-
-  const itemsXml = allPosts
+  const itemsXml = getAllDocs()
     .map(
-      (post) =>
+      (doc) =>
         `<item>
-          <title>${post.metadata.title}</title>
-          <link>${SITE_INFO.url}/blog/${post.slug}</link>
-          <description>${post.metadata.description || ""}</description>
-          <pubDate>${new Date(post.metadata.createdAt).toISOString()}</pubDate>
+          <title>${doc.metadata.title}</title>
+          <link>${SITE_INFO.url}/blog/${doc.slug}</link>
+          <description>${doc.metadata.description || ""}</description>
+          <pubDate>${new Date(doc.metadata.createdAt).toISOString()}</pubDate>
         </item>`
     )
     .join("\n")
@@ -23,8 +21,8 @@ export function GET() {
   <rss version="2.0">
     <channel>
       <title>Blog | ${SITE_INFO.name}</title>
-      <link>${SITE_INFO.url}</link>
-      <description>${SITE_INFO.description}</description>
+      <link>${SITE_INFO.url}/blog</link>
+      <description>Writing about code, design, and everything in between.</description>
       ${itemsXml}
     </channel>
   </rss>`

@@ -1,9 +1,14 @@
 import type { MetadataRoute } from "next"
 
+import { registryCategories } from "@/config/registry"
 import { SITE_INFO } from "@/config/site"
 import { getAllDocs, getDocsByCategory } from "@/features/doc/data/documents"
+import { getAllBlockStaticParams } from "@/lib/blocks"
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = false
+export const dynamic = "force-static"
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = getAllDocs().map((post) => ({
     url: `${SITE_INFO.url}/blog/${post.slug}`,
     lastModified: new Date(post.metadata.updatedAt).toISOString(),
@@ -14,10 +19,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.metadata.updatedAt).toISOString(),
   }))
 
-  const routes = ["", "/blog", "/components"].map((route) => ({
+  const blockCategories = registryCategories.map((category) => ({
+    url: `${SITE_INFO.url}/blocks/${category.slug}`,
+    lastModified: new Date().toISOString(),
+  }))
+
+  const blocks = (await getAllBlockStaticParams()).map(
+    ({ category, name }) => ({
+      url: `${SITE_INFO.url}/blocks/${category}/${name}`,
+      lastModified: new Date().toISOString(),
+    })
+  )
+
+  const routes = [
+    "",
+    "/blog",
+    "/components",
+    "/components/showcase",
+    "/blocks",
+    "/sponsors",
+    "/testimonials",
+  ].map((route) => ({
     url: `${SITE_INFO.url}${route}`,
     lastModified: new Date().toISOString(),
   }))
 
-  return [...routes, ...posts, ...components]
+  return [...routes, ...posts, ...components, ...blockCategories, ...blocks]
 }
