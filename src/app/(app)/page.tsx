@@ -63,7 +63,7 @@ export default function Page() {
         <TechStack />
       </div>
 
-      <div className="container mx-auto">
+      <div className="mx-auto xl:container">
         <Separator />
         <ComponentsShowcase />
       </div>
