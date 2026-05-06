@@ -10,6 +10,7 @@ export const lib: Registry["items"] = [
       {
         path: "src/lib/utils.ts",
         type: "registry:lib",
+        target: "@lib/utils.ts",
       },
     ],
   },
@@ -22,6 +23,7 @@ export const lib: Registry["items"] = [
       {
         path: "lib/haptic/haptic.ts",
         type: "registry:lib",
+        target: "@lib/haptic.ts",
       },
     ],
   },

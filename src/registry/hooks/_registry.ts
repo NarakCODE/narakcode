@@ -11,17 +11,17 @@ export const hook: Registry["items"] = [
       {
         path: "hooks/sound/use-sound.ts",
         type: "registry:hook",
-        target: "hooks/sound/use-sound.ts",
+        target: "@hooks/sound/use-sound.ts",
       },
       {
         path: "lib/sound/sound-engine.ts",
         type: "registry:lib",
-        target: "lib/sound/sound-engine.ts",
+        target: "@lib/sound/sound-engine.ts",
       },
       {
         path: "lib/sound/sound-types.ts",
         type: "registry:lib",
-        target: "lib/sound/sound-types.ts",
+        target: "@lib/sound/sound-types.ts",
       },
     ],
   },
@@ -33,6 +33,7 @@ export const hook: Registry["items"] = [
       {
         path: "hooks/use-controllable-state/use-controllable-state.tsx",
         type: "registry:hook",
+        target: "@hooks/use-controllable-state.tsx",
       },
     ],
   },

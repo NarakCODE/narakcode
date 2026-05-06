@@ -18,6 +18,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/login-01/components/login-form.tsx",
         type: "registry:component",
+        target: "@components/login-form.tsx",
       },
     ],
     categories: ["application", "login"],
@@ -33,10 +34,12 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/hero-01/hero-01.tsx",
         type: "registry:component",
+        target: "@components/hero-01.tsx",
       },
       {
         path: "blocks/hero-01/components/hero-01-icons.tsx",
         type: "registry:component",
+        target: "@components/hero-01-icons.tsx",
       },
     ],
     categories: ["marketing", "hero"],
@@ -56,10 +59,12 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/blog-01/blog-01.tsx",
         type: "registry:component",
+        target: "@components/blog-01.tsx",
       },
       {
         path: "blocks/blog-01/components/article-item.tsx",
         type: "registry:component",
+        target: "@components/article-item.tsx",
       },
     ],
     categories: ["content", "blog"],
@@ -78,10 +83,12 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/blog-02/blog-02.tsx",
         type: "registry:component",
+        target: "@components/blog-02.tsx",
       },
       {
         path: "blocks/blog-02/components/article-item.tsx",
         type: "registry:component",
+        target: "@components/article-item.tsx",
       },
     ],
     categories: ["content", "blog"],
@@ -102,10 +109,12 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/testimonials-01/testimonials-01.tsx",
         type: "registry:component",
+        target: "@components/testimonials-01.tsx",
       },
       {
         path: "blocks/testimonials-01/components/testimonial-list.tsx",
         type: "registry:component",
+        target: "@components/testimonial-list.tsx",
       },
     ],
     categories: ["marketing", "testimonials"],
@@ -127,10 +136,12 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/testimonials-02/testimonials-02.tsx",
         type: "registry:component",
+        target: "@components/testimonials-02.tsx",
       },
       {
         path: "blocks/testimonials-02/components/testimonial-list.tsx",
         type: "registry:component",
+        target: "@components/testimonial-list.tsx",
       },
     ],
     categories: ["marketing", "testimonials"],
@@ -148,6 +159,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/experience-01/experience-01.tsx",
         type: "registry:component",
+        target: "@components/experience-01.tsx",
       },
     ],
     categories: ["content", "portfolio"],
@@ -165,6 +177,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/team-01/team-01.tsx",
         type: "registry:component",
+        target: "@components/team-01.tsx",
       },
     ],
     categories: ["content", "team"],
