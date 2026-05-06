@@ -39,7 +39,7 @@ import TwemojiDemo from "@/registry/examples/twemoji-demo"
 import WheelPickerDemo from "@/registry/examples/wheel-picker-demo"
 import WorkExperienceDemo from "@/registry/examples/work-experience-demo"
 
-const title = "Components"
+const title = "Component Showcase"
 const description = "Pixel-perfect, uniquely crafted."
 
 const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
@@ -48,10 +48,10 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: {
-    canonical: "/components",
+    canonical: "/components/showcase",
   },
   openGraph: {
-    url: "/components",
+    url: "/components/showcase",
     type: "website",
     images: {
       url: ogImage,
@@ -72,7 +72,7 @@ export default function ComponentsShowcasePage() {
   return (
     <>
       <PageHeading>
-        <PageHeadingTagline>Components</PageHeadingTagline>
+        <PageHeadingTagline>Component Showcase</PageHeadingTagline>
         <PageHeadingTitle>Pixel-perfect, uniquely crafted.</PageHeadingTitle>
       </PageHeading>
 
