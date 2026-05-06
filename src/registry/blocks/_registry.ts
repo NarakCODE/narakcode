@@ -21,6 +21,7 @@ export const blocks: Registry["items"] = [
       },
     ],
     categories: ["application", "login"],
+    meta: { createdAt: "2026-02-22" },
   },
   {
     name: "hero-01",
@@ -40,6 +41,7 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["marketing", "hero"],
     meta: {
+      createdAt: "2026-03-12",
       previewClassName: "pt-8",
     },
   },
@@ -61,6 +63,9 @@ export const blocks: Registry["items"] = [
       },
     ],
     categories: ["content", "blog"],
+    meta: {
+      createdAt: "2026-03-13",
+    },
   },
   {
     name: "blog-02",
@@ -80,6 +85,9 @@ export const blocks: Registry["items"] = [
       },
     ],
     categories: ["content", "blog"],
+    meta: {
+      createdAt: "2026-03-18",
+    },
   },
   {
     name: "testimonials-01",
@@ -102,6 +110,7 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["marketing", "testimonials"],
     meta: {
+      createdAt: "2026-03-20",
       previewClassName: "container mx-auto min-h-svh content-center-safe",
     },
   },
@@ -125,6 +134,9 @@ export const blocks: Registry["items"] = [
       },
     ],
     categories: ["marketing", "testimonials"],
+    meta: {
+      createdAt: "2026-03-29",
+    },
   },
   {
     name: "experience-01",
@@ -139,6 +151,9 @@ export const blocks: Registry["items"] = [
       },
     ],
     categories: ["content", "portfolio"],
+    meta: {
+      createdAt: "2026-03-28",
+    },
   },
   {
     name: "team-01",
@@ -154,6 +169,7 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["content", "team"],
     meta: {
+      createdAt: "2026-03-30",
       previewClassName: "min-h-svh place-items-center-safe content-center-safe",
     },
   },

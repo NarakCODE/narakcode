@@ -710,6 +710,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "createdAt": "2026-02-22"
+      },
       "categories": [
         "application",
         "login"
@@ -736,6 +739,7 @@
         }
       ],
       "meta": {
+        "createdAt": "2026-03-12",
         "previewClassName": "pt-8"
       },
       "categories": [
@@ -765,6 +769,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "createdAt": "2026-03-13"
+      },
       "categories": [
         "content",
         "blog"
@@ -793,6 +800,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "createdAt": "2026-03-18"
+      },
       "categories": [
         "content",
         "blog"
@@ -819,6 +829,7 @@
         }
       ],
       "meta": {
+        "createdAt": "2026-03-20",
         "previewClassName": "container mx-auto min-h-svh content-center-safe"
       },
       "categories": [
@@ -847,6 +858,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "createdAt": "2026-03-29"
+      },
       "categories": [
         "marketing",
         "testimonials"
@@ -868,6 +882,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "createdAt": "2026-03-28"
+      },
       "categories": [
         "content",
         "portfolio"
@@ -889,6 +906,7 @@
         }
       ],
       "meta": {
+        "createdAt": "2026-03-30",
         "previewClassName": "min-h-svh place-items-center-safe content-center-safe"
       },
       "categories": [

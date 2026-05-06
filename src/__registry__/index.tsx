@@ -564,7 +564,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["application","login"],
-    meta: undefined,
+    meta: {"createdAt":"2026-02-22"},
   },
   "hero-01": {
     name: "hero-01",
@@ -585,7 +585,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["marketing","hero"],
-    meta: {"previewClassName":"pt-8"},
+    meta: {"createdAt":"2026-03-12","previewClassName":"pt-8"},
   },
   "blog-01": {
     name: "blog-01",
@@ -606,7 +606,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["content","blog"],
-    meta: undefined,
+    meta: {"createdAt":"2026-03-13"},
   },
   "blog-02": {
     name: "blog-02",
@@ -627,7 +627,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["content","blog"],
-    meta: undefined,
+    meta: {"createdAt":"2026-03-18"},
   },
   "testimonials-01": {
     name: "testimonials-01",
@@ -648,7 +648,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["marketing","testimonials"],
-    meta: {"previewClassName":"container mx-auto min-h-svh content-center-safe"},
+    meta: {"createdAt":"2026-03-20","previewClassName":"container mx-auto min-h-svh content-center-safe"},
   },
   "testimonials-02": {
     name: "testimonials-02",
@@ -669,7 +669,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["marketing","testimonials"],
-    meta: undefined,
+    meta: {"createdAt":"2026-03-29"},
   },
   "experience-01": {
     name: "experience-01",
@@ -686,7 +686,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["content","portfolio"],
-    meta: undefined,
+    meta: {"createdAt":"2026-03-28"},
   },
   "team-01": {
     name: "team-01",
@@ -703,7 +703,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["content","team"],
-    meta: {"previewClassName":"min-h-svh place-items-center-safe content-center-safe"},
+    meta: {"createdAt":"2026-03-30","previewClassName":"min-h-svh place-items-center-safe content-center-safe"},
   },
   "text-flip-demo": {
     name: "text-flip-demo",

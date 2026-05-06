@@ -5,16 +5,14 @@ export const revalidate = false
 export const dynamic = "force-static"
 
 export function GET() {
-  const allPosts = getDocsByCategory("components")
-
-  const itemsXml = allPosts
+  const itemsXml = getDocsByCategory("components")
     .map(
-      (post) =>
+      (doc) =>
         `<item>
-          <title>${post.metadata.title}</title>
-          <link>${SITE_INFO.url}/components/${post.slug}</link>
-          <description>${post.metadata.description || ""}</description>
-          <pubDate>${new Date(post.metadata.createdAt).toISOString()}</pubDate>
+          <title>${doc.metadata.title}</title>
+          <link>${SITE_INFO.url}/components/${doc.slug}</link>
+          <description>${doc.metadata.description || ""}</description>
+          <pubDate>${new Date(doc.metadata.createdAt).toISOString()}</pubDate>
         </item>`
     )
     .join("\n")
@@ -23,8 +21,8 @@ export function GET() {
   <rss version="2.0">
     <channel>
       <title>Components | ${SITE_INFO.name}</title>
-      <link>${SITE_INFO.url}</link>
-      <description>A collection of reusable components.</description>
+      <link>${SITE_INFO.url}/components</link>
+      <description>Pixel-perfect, uniquely crafted.</description>
       ${itemsXml}
     </channel>
   </rss>`
