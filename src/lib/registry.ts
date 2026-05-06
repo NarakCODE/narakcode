@@ -154,9 +154,35 @@ function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
     if (file.type === "registry:lib") {
       target = `lib/${fileName}`
     }
+
+    return target ?? ""
   }
 
-  return target ?? ""
+  return normalizeAliasTarget(target)
+}
+
+function normalizeAliasTarget(target: string) {
+  const regex = /^@(components|ui|hooks|lib)\/(.+)$/
+
+  return target.replace(regex, (_, type, rest) => {
+    if (type === "components") {
+      return `components/${rest}`
+    }
+
+    if (type === "ui") {
+      return `components/ui/${rest}`
+    }
+
+    if (type === "hooks") {
+      return `hooks/${rest}`
+    }
+
+    if (type === "lib") {
+      return `lib/${rest}`
+    }
+
+    return target
+  })
 }
 
 export type FileTree = {
