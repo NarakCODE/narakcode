@@ -15,7 +15,7 @@ export default function TestimonialSpotlightDemo() {
   return (
     <TestimonialSpotlight className="w-72 max-w-full cursor-default">
       <Testimonial>
-        <TestimonialQuote>
+        <TestimonialQuote className="font-serif">
           <p>You’re doing amazing work.</p>
         </TestimonialQuote>
 

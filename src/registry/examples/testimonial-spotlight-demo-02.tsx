@@ -18,7 +18,7 @@ export default function TestimonialSpotlightDemo02() {
       spotlightColor="rgba(219, 39, 119, 0.15)"
     >
       <Testimonial>
-        <TestimonialQuote>
+        <TestimonialQuote className="font-serif">
           <p>You’re doing amazing work.</p>
         </TestimonialQuote>
 
