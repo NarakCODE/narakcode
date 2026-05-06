@@ -14,6 +14,7 @@ export const components: Registry["items"] = [
       {
         path: "components/theme-switcher/theme-switcher.tsx",
         type: "registry:component",
+        target: "@components/theme-switcher.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/theme-switcher",
@@ -29,6 +30,7 @@ export const components: Registry["items"] = [
       {
         path: "components/text-flip/text-flip.tsx",
         type: "registry:component",
+        target: "@components/text-flip.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/text-flip",
@@ -43,6 +45,7 @@ export const components: Registry["items"] = [
       {
         path: "components/apple-hello-effect/apple-hello-effect-english.tsx",
         type: "registry:component",
+        target: "@components/apple-hello-effect-english.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/apple-hello-effect",
@@ -57,6 +60,7 @@ export const components: Registry["items"] = [
       {
         path: "components/apple-hello-effect/apple-hello-effect-hindi.tsx",
         type: "registry:component",
+        target: "@components/apple-hello-effect-hindi.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/apple-hello-effect",
@@ -71,6 +75,7 @@ export const components: Registry["items"] = [
       {
         path: "components/apple-hello-effect/apple-hello-effect-spanish.tsx",
         type: "registry:component",
+        target: "@components/apple-hello-effect-spanish.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/apple-hello-effect",
@@ -85,6 +90,7 @@ export const components: Registry["items"] = [
       {
         path: "components/apple-hello-effect/apple-hello-effect-vietnamese.tsx",
         type: "registry:component",
+        target: "@components/apple-hello-effect-vietnamese.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/apple-hello-effect",
@@ -100,6 +106,7 @@ export const components: Registry["items"] = [
       {
         path: "components/wheel-picker/wheel-picker.tsx",
         type: "registry:component",
+        target: "@components/wheel-picker.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/react-wheel-picker",
@@ -113,6 +120,7 @@ export const components: Registry["items"] = [
       {
         path: "components/chevrons-up-down-icon/chevrons-up-down-icon.tsx",
         type: "registry:component",
+        target: "@components/chevrons-up-down-icon.tsx",
       },
     ],
   },
@@ -167,6 +175,7 @@ export const components: Registry["items"] = [
       {
         path: "components/work-experience/work-experience.tsx",
         type: "registry:component",
+        target: "@components/work-experience.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/work-experience-component",
@@ -181,6 +190,7 @@ export const components: Registry["items"] = [
       {
         path: "components/shimmering-text/shimmering-text.tsx",
         type: "registry:component",
+        target: "@components/shimmering-text.tsx",
       },
     ],
   },
@@ -196,6 +206,7 @@ export const components: Registry["items"] = [
       {
         path: "components/slide-to-unlock/slide-to-unlock.tsx",
         type: "registry:component",
+        target: "@components/slide-to-unlock.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/slide-to-unlock",
@@ -221,6 +232,7 @@ export const components: Registry["items"] = [
       {
         path: "components/testimonial/testimonial.tsx",
         type: "registry:component",
+        target: "@components/testimonial.tsx",
       },
     ],
   },
@@ -235,6 +247,7 @@ export const components: Registry["items"] = [
       {
         path: "components/github-stars/github-stars.tsx",
         type: "registry:component",
+        target: "@components/github-stars.tsx",
       },
     ],
   },
@@ -248,6 +261,7 @@ export const components: Registry["items"] = [
       {
         path: "components/scroll-fade-effect/scroll-fade-effect.tsx",
         type: "registry:component",
+        target: "@components/scroll-fade-effect.tsx",
       },
     ],
     css: {
@@ -345,6 +359,7 @@ export const components: Registry["items"] = [
       {
         path: "components/consent-manager/consent-manager.tsx",
         type: "registry:component",
+        target: "@components/consent-manager.tsx",
       },
     ],
   },
@@ -365,10 +380,12 @@ export const components: Registry["items"] = [
       {
         path: "components/copy-button/copy-button.tsx",
         type: "registry:component",
+        target: "@components/copy-button.tsx",
       },
       {
         path: "src/hooks/use-copy-to-clipboard.ts",
         type: "registry:hook",
+        target: "@hooks/use-copy-to-clipboard.ts",
       },
     ],
   },
@@ -384,10 +401,12 @@ export const components: Registry["items"] = [
       {
         path: "components/code-block-command/code-block-command.tsx",
         type: "registry:component",
+        target: "@components/code-block-command.tsx",
       },
       {
         path: "src/components/base/ui/tabs.tsx",
         type: "registry:component",
+        target: "@components/tabs.tsx",
       },
     ],
     cssVars: {
@@ -415,6 +434,7 @@ export const components: Registry["items"] = [
       {
         path: "components/testimonial-spotlight/testimonial-spotlight.tsx",
         type: "registry:component",
+        target: "@components/testimonial-spotlight.tsx",
       },
     ],
   },
@@ -427,10 +447,12 @@ export const components: Registry["items"] = [
       {
         path: "components/glow-card-grid/glow-card-grid.tsx",
         type: "registry:component",
+        target: "@components/glow-card-grid.tsx",
       },
       {
         path: "components/glow-card-grid/glow-card.tsx",
         type: "registry:component",
+        target: "@components/glow-card.tsx",
       },
     ],
   },
@@ -443,6 +465,7 @@ export const components: Registry["items"] = [
       {
         path: "components/middle-truncation/middle-truncation.tsx",
         type: "registry:component",
+        target: "@components/middle-truncation.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/middle-truncation",
@@ -456,10 +479,12 @@ export const components: Registry["items"] = [
       {
         path: "components/twemoji/twemoji.tsx",
         type: "registry:component",
+        target: "@components/twemoji.tsx",
       },
       {
         path: "components/twemoji/lib/twemoji-regex.ts",
         type: "registry:lib",
+        target: "@lib/twemoji-regex.ts",
       },
     ],
     css: {
@@ -487,6 +512,7 @@ export const components: Registry["items"] = [
       {
         path: "components/elastic-slider/elastic-slider.tsx",
         type: "registry:component",
+        target: "@components/elastic-slider.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/elastic-slider",
@@ -502,6 +528,7 @@ export const components: Registry["items"] = [
       {
         path: "components/contribution-graph/contribution-graph.tsx",
         type: "registry:component",
+        target: "@components/contribution-graph.tsx",
       },
     ],
     docs: "https://www.kibo-ui.com/components/contribution-graph",
@@ -518,10 +545,12 @@ export const components: Registry["items"] = [
       {
         path: "components/github-contributions/github-contributions.tsx",
         type: "registry:component",
+        target: "@components/github-contributions.tsx",
       },
       {
         path: "components/github-contributions/lib/get-cached-contributions.ts",
         type: "registry:lib",
+        target: "@lib/get-cached-contributions.ts",
       },
     ],
     css: {
@@ -543,6 +572,7 @@ export const components: Registry["items"] = [
       {
         path: "components/toc-minimap/toc-minimap.tsx",
         type: "registry:component",
+        target: "@components/toc-minimap.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/toc-minimap",
@@ -558,6 +588,7 @@ export const components: Registry["items"] = [
       {
         path: "components/fluid-gradient-text/fluid-gradient-text.tsx",
         type: "registry:component",
+        target: "@components/fluid-gradient-text.tsx",
       },
     ],
     docs: "https://chanhdai.com/components/fluid-gradient-text",
