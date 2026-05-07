@@ -1,8 +1,8 @@
 "use client"
 
-import { Download, SquareDashed, Type } from "lucide-react"
 import { toast } from "sonner"
 
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -49,7 +49,13 @@ export function BrandAssetsMenu({
             toast.success("Logotype as SVG copied")
           }}
         >
-          <Type />
+          <IconPlaceholder
+            lucide="Type"
+            tabler="IconLetterT"
+            hugeicons="TextIcon"
+            phosphor="TextTIcon"
+            remixicon="RiText"
+          />
           Copy Logotype as SVG
         </ContextMenuItem>
 
@@ -61,7 +67,13 @@ export function BrandAssetsMenu({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SquareDashed />
+            <IconPlaceholder
+              lucide="SquareDashed"
+              tabler="IconShape"
+              hugeicons="DashedLine02Icon"
+              phosphor="BoundingBoxIcon"
+              remixicon="RiShapeLine"
+            />
             Brand Guidelines
           </a>
         </ContextMenuItem>
@@ -73,7 +85,13 @@ export function BrandAssetsMenu({
             rel="noopener noreferrer"
             download
           >
-            <Download />
+            <IconPlaceholder
+              lucide="Download"
+              tabler="IconDownload"
+              hugeicons="Download01Icon"
+              phosphor="DownloadSimpleIcon"
+              remixicon="RiDownloadLine"
+            />
             Download Brand Assets
           </a>
         </ContextMenuItem>

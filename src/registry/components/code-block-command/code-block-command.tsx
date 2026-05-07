@@ -3,7 +3,6 @@
 import { ScrollArea } from "@base-ui/react/scroll-area"
 import { useAtom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
-import { TerminalIcon, TextAlignStartIcon } from "lucide-react"
 import { useMemo } from "react"
 
 import {
@@ -13,6 +12,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/base/ui/tabs"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { CopyButton } from "@/registry/components/copy-button"
 
@@ -205,7 +205,15 @@ export function CodeBlockCommand({
 function getIconForPackageManager(manager: PackageManager) {
   switch (manager) {
     case "prompt":
-      return <TextAlignStartIcon />
+      return (
+        <IconPlaceholder
+          lucide="TextAlignStartIcon"
+          tabler="IconAlignLeft"
+          hugeicons="TextAlignLeftIcon"
+          phosphor="TextAlignLeftIcon"
+          remixicon="RiAlignLeft"
+        />
+      )
     case "pnpm":
       return (
         <svg viewBox="0 0 24 24">
@@ -243,7 +251,15 @@ function getIconForPackageManager(manager: PackageManager) {
         </svg>
       )
     default:
-      return <TerminalIcon />
+      return (
+        <IconPlaceholder
+          lucide="Terminal"
+          tabler="IconTerminal"
+          hugeicons="TerminalIcon"
+          phosphor="TerminalIcon"
+          remixicon="RiTerminalLine"
+        />
+      )
   }
 }
 

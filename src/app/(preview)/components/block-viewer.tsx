@@ -1,5 +1,6 @@
 "use client"
 
+import { IconCheck, IconCopy, IconX } from "@tabler/icons-react"
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import React, {
   createContext,
@@ -606,7 +607,9 @@ function BlockCopyCodeButton() {
       variant="ghost"
       size="icon-xs"
       text={content}
-      idleIcon={<Icons.copy />}
+      idleIcon={<IconCopy />}
+      doneIcon={<IconCheck />}
+      errorIcon={<IconX />}
       onCopySuccess={() => {
         trackEvent({
           name: "copy_block_code",

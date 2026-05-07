@@ -1,11 +1,11 @@
 "use client"
 
 import { useTiks } from "@rexa-developer/tiks/react"
+import { IconCopy } from "@tabler/icons-react"
 import { MailIcon } from "lucide-react"
 import { useHotkeys } from "react-hotkeys-hook"
 import { toast } from "sonner"
 
-import { Icons } from "@/components/icons"
 import { useIsClient } from "@/hooks/use-is-client"
 import { trackEvent } from "@/lib/events"
 import { CopyButton } from "@/registry/components/copy-button"
@@ -59,7 +59,7 @@ export function EmailItem({ email }: EmailItemProps) {
           variant="ghost"
           size="icon-xs"
           text={() => emailDecoded}
-          idleIcon={<Icons.copy />}
+          idleIcon={<IconCopy />}
           onCopySuccess={() => {
             trackEvent({
               name: "copy_email",

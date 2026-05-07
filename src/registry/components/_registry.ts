@@ -9,7 +9,7 @@ export const components: Registry["items"] = [
     title: "Theme Switcher",
     description:
       "Toggle between system, light, and dark themes in Next.js apps.",
-    dependencies: ["next-themes", "lucide-react", "motion"],
+    dependencies: ["next-themes", "motion"],
     files: [
       {
         path: "components/theme-switcher/theme-switcher.tsx",
@@ -164,7 +164,7 @@ export const components: Registry["items"] = [
     title: "Work Experience",
     description:
       "Display work experiences with role details, company logos, and durations.",
-    dependencies: ["react-markdown", "lucide-react"],
+    dependencies: ["react-markdown"],
     registryDependencies: [
       "collapsible",
       "separator",
@@ -369,12 +369,7 @@ export const components: Registry["items"] = [
     title: "Copy Button",
     description:
       "Copy text to clipboard with visual, haptic, and audio feedback.",
-    dependencies: [
-      "lucide-react",
-      "motion",
-      "@rexa-developer/tiks",
-      "web-haptics",
-    ],
+    dependencies: ["motion", "@rexa-developer/tiks", "web-haptics"],
     registryDependencies: ["button"],
     files: [
       {
@@ -395,7 +390,7 @@ export const components: Registry["items"] = [
     title: "Code Block Command",
     description:
       "Display install commands with package manager switcher and copy button.",
-    dependencies: ["@base-ui/react", "lucide-react", "motion", "jotai"],
+    dependencies: ["@base-ui/react", "motion", "jotai"],
     registryDependencies: [getRegistryItemUrl("copy-button")],
     files: [
       {
@@ -540,7 +535,11 @@ export const components: Registry["items"] = [
     description:
       "Visualize year-long GitHub contribution activity with daily counts, tooltips, and a profile link.",
     dependencies: ["date-fns"],
-    registryDependencies: ["tooltip", getRegistryItemUrl("contribution-graph")],
+    registryDependencies: [
+      "tooltip",
+      "spinner",
+      getRegistryItemUrl("contribution-graph"),
+    ],
     files: [
       {
         path: "components/github-contributions/github-contributions.tsx",

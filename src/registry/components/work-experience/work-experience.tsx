@@ -1,10 +1,10 @@
 "use client"
 
 import { differenceInMonths, parse } from "date-fns"
-import { BriefcaseBusinessIcon, InfinityIcon } from "lucide-react"
 import { type ComponentProps, useCallback, useRef } from "react"
 import ReactMarkdown from "react-markdown"
 
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import {
   Collapsible,
   CollapsibleContent,
@@ -183,7 +183,15 @@ export function ExperiencePositionItem({
                 "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
               )}
             >
-              {position.icon ?? <BriefcaseBusinessIcon />}
+              {position.icon ?? (
+                <IconPlaceholder
+                  lucide="BriefcaseBusiness"
+                  tabler="IconBriefcase"
+                  hugeicons="Briefcase01Icon"
+                  phosphor="BriefcaseIcon"
+                  remixicon="RiBriefcaseLine"
+                />
+              )}
             </div>
 
             <h4 className="flex-1 text-base font-medium text-balance text-foreground">
@@ -216,7 +224,12 @@ export function ExperiencePositionItem({
                 <span>{start}</span>
                 <span className="font-mono">—</span>
                 {isOngoing ? (
-                  <InfinityIcon
+                  <IconPlaceholder
+                    lucide="Infinity"
+                    tabler="IconInfinity"
+                    hugeicons="Infinity01Icon"
+                    phosphor="InfinityIcon"
+                    remixicon="RiInfinityFill"
                     className="size-4.5 translate-y-[0.5px]"
                     aria-label="Present"
                   />
