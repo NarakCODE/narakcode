@@ -3,6 +3,7 @@
 "use client"
 
 import { useTiks } from "@rexa-developer/tiks/react"
+import { IconCheck, IconCopy, IconX } from "@tabler/icons-react"
 import { ChevronDownIcon } from "lucide-react"
 import { useMemo, useRef, useState } from "react"
 
@@ -75,7 +76,12 @@ export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
       disabled={isCopying}
       onClick={handleCopy}
     >
-      <CopyStateIcon state={state} idleIcon={<Icons.copy />} />
+      <CopyStateIcon
+        state={state}
+        idleIcon={<IconCopy />}
+        doneIcon={<IconCheck />}
+        errorIcon={<IconX />}
+      />
       <span className="max-[28rem]:hidden">Copy Page</span>
     </Button>
   )
