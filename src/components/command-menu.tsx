@@ -1,6 +1,7 @@
 "use client"
 
 import { useRouter } from "@bprogress/next/app"
+import { useTiks } from "@rexa-developer/tiks/react"
 import { useCommandState } from "cmdk"
 import {
   Bookmark,
@@ -179,11 +180,13 @@ export function CommandMenu({
 }) {
   const router = useRouter()
 
-  const { setTheme, resolvedTheme } = useTheme()
+  const { setTheme } = useTheme()
 
   const [open, setOpen] = useState(false)
 
   const [click] = useClickSound()
+
+  const { success: tiksSuccess } = useTiks()
 
   useHotkeys(
     "mod+k, slash",
@@ -228,17 +231,21 @@ export function CommandMenu({
     [router]
   )
 
-  const handleCopyText = useCallback((text: string, message: string) => {
-    setOpen(false)
-    copyToClipboardWithEvent(text, {
-      name: "command_menu_action",
-      properties: {
-        action: "copy",
-        text: text,
-      },
-    })
-    toast.success(message)
-  }, [])
+  const handleCopyText = useCallback(
+    (text: string, message: string) => {
+      setOpen(false)
+      copyToClipboardWithEvent(text, {
+        name: "command_menu_action",
+        properties: {
+          action: "copy",
+          text: text,
+        },
+      })
+      toast.success(message)
+      tiksSuccess()
+    },
+    [tiksSuccess]
+  )
 
   const createThemeHandler = useCallback(
     (theme: "light" | "dark" | "system") => () => {
@@ -347,10 +354,7 @@ export function CommandMenu({
           <CommandGroup heading="Brand Assets">
             <CommandItem
               onSelect={() => {
-                handleCopyText(
-                  getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff"),
-                  "Mark as SVG copied"
-                )
+                handleCopyText(getMarkSVG(), "Mark as SVG copied")
               }}
             >
               <ChanhDaiMark />
@@ -359,10 +363,7 @@ export function CommandMenu({
 
             <CommandItem
               onSelect={() => {
-                handleCopyText(
-                  getWordmarkSVG(resolvedTheme === "light" ? "#000" : "#fff"),
-                  "Logotype as SVG copied"
-                )
+                handleCopyText(getWordmarkSVG(), "Logotype as SVG copied")
               }}
             >
               <Type />
