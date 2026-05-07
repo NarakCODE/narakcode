@@ -1,9 +1,9 @@
 "use client"
 
 import { format } from "date-fns"
-import { LoaderIcon } from "lucide-react"
 import { use } from "react"
 
+import { Spinner } from "@/components/ui/spinner"
 import {
   Tooltip,
   TooltipContent,
@@ -88,7 +88,7 @@ export function GitHubContributions({
 export function GitHubContributionsFallback() {
   return (
     <div className="flex h-40.5 w-full items-center justify-center">
-      <LoaderIcon className="animate-spin text-muted-foreground" />
+      <Spinner className="text-muted-foreground" />
     </div>
   )
 }

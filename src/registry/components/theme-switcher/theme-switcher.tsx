@@ -1,11 +1,11 @@
 "use client"
 
-import { MonitorIcon, MoonStarIcon, SunIcon } from "lucide-react"
 import { motion } from "motion/react"
 import { useTheme } from "next-themes"
 import type { JSX } from "react"
 import { useSyncExternalStore } from "react"
 
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 
 function ThemeOption({
@@ -47,15 +47,39 @@ function ThemeOption({
 
 const THEME_OPTIONS = [
   {
-    icon: <MonitorIcon />,
+    icon: (
+      <IconPlaceholder
+        lucide="Monitor"
+        tabler="IconDeviceDesktop"
+        hugeicons="ComputerIcon"
+        phosphor="DesktopIcon"
+        remixicon="RiComputerLine"
+      />
+    ),
     value: "system",
   },
   {
-    icon: <SunIcon />,
+    icon: (
+      <IconPlaceholder
+        lucide="Sun"
+        tabler="IconSun"
+        hugeicons="Sun03Icon"
+        phosphor="SunIcon"
+        remixicon="RiSunLine"
+      />
+    ),
     value: "light",
   },
   {
-    icon: <MoonStarIcon />,
+    icon: (
+      <IconPlaceholder
+        lucide="Moon"
+        tabler="IconMoon"
+        hugeicons="Moon02Icon"
+        phosphor="MoonIcon"
+        remixicon="RiMoonLine"
+      />
+    ),
     value: "dark",
   },
 ]

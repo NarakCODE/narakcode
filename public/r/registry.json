@@ -77,7 +77,6 @@
       "description": "Toggle between system, light, and dark themes in Next.js apps.",
       "dependencies": [
         "next-themes",
-        "lucide-react",
         "motion"
       ],
       "files": [
@@ -252,8 +251,7 @@
       "title": "Work Experience",
       "description": "Display work experiences with role details, company logos, and durations.",
       "dependencies": [
-        "react-markdown",
-        "lucide-react"
+        "react-markdown"
       ],
       "registryDependencies": [
         "collapsible",
@@ -468,7 +466,6 @@
       "title": "Copy Button",
       "description": "Copy text to clipboard with visual, haptic, and audio feedback.",
       "dependencies": [
-        "lucide-react",
         "motion",
         "@rexa-developer/tiks",
         "web-haptics"
@@ -497,7 +494,6 @@
       "description": "Display install commands with package manager switcher and copy button.",
       "dependencies": [
         "@base-ui/react",
-        "lucide-react",
         "motion",
         "jotai"
       ],
@@ -663,6 +659,7 @@
       ],
       "registryDependencies": [
         "tooltip",
+        "spinner",
         "https://chanhdai.com/r/contribution-graph.json"
       ],
       "files": [
