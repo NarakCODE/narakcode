@@ -29,11 +29,7 @@ export default function AppleHelloEffectLanguagesDemo() {
       durationScale={0.8}
       onAnimationComplete={handleAnimationEnd}
     />,
-    <AppleHelloEffectVietnamese
-      key="vietnamese"
-      durationScale={0.8}
-      onAnimationComplete={handleAnimationEnd}
-    />,
+    <AppleHelloEffectVietnamese key="vietnamese" durationScale={0.8} />,
   ]
 
   return <AnimatePresence mode="wait">{demos[index]}</AnimatePresence>
