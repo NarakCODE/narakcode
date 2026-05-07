@@ -40,13 +40,13 @@ export const PROJECTS: Project[] = [
       "Next.js 16",
       "Tailwind CSS v4",
       "Radix UI",
+      "Base UI",
       "Motion",
       "shadcn/ui",
       "shadcn registry",
       "Vercel",
     ],
-    description:
-      "A minimal, pixel-perfect dev portfolio, shadcn registry, and blog.",
+    description: "A pixel-perfect dev portfolio and shadcn registry.",
     logo: "https://assets.chanhdai.com/images/project-logos/chanhdaidotcom.svg",
   },
   {
