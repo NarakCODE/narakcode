@@ -598,6 +598,7 @@ export const components: Registry["items"] = [
     title: "Brand Assets Menu",
     description: "Context menu for copying brand SVGs and opening asset links.",
     registryDependencies: ["context-menu", "sonner"],
+    dependencies: ["@rexa-developer/tiks"],
     files: [
       {
         path: "components/brand-assets-menu/brand-assets-menu.tsx",

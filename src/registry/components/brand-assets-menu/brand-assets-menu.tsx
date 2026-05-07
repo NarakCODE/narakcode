@@ -1,5 +1,6 @@
 "use client"
 
+import { useTiks } from "@rexa-developer/tiks/react"
 import { toast } from "sonner"
 
 import { IconPlaceholder } from "@/components/icon-placeholder"
@@ -28,6 +29,8 @@ export function BrandAssetsMenu({
   brandAssetsURL,
   children,
 }: BrandAssetsMenuProps) {
+  const { success } = useTiks()
+
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>{children}</ContextMenuTrigger>
@@ -37,6 +40,7 @@ export function BrandAssetsMenu({
           onClick={() => {
             copyText(logomarkSVG)
             toast.success("Logomark as SVG copied")
+            success()
           }}
         >
           {logomark}
@@ -47,6 +51,7 @@ export function BrandAssetsMenu({
           onClick={() => {
             copyText(logotypeSVG)
             toast.success("Logotype as SVG copied")
+            success()
           }}
         >
           <IconPlaceholder
