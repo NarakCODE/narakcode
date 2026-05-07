@@ -1,3 +1,5 @@
+"use client"
+
 import { Download, SquareDashed, Type } from "lucide-react"
 import { toast } from "sonner"
 
