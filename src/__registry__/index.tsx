@@ -545,6 +545,23 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "brand-assets-menu": {
+    name: "brand-assets-menu",
+    description: "Context menu for copying brand SVGs and opening asset links.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/brand-assets-menu/brand-assets-menu.tsx",
+      type: "registry:component",
+      target: "@components/brand-assets-menu.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/brand-assets-menu/brand-assets-menu.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "login-01": {
     name: "login-01",
     description: "A simple login form.",
@@ -1367,5 +1384,22 @@ export const Index: Record<string, any> = {
     }),
     categories: undefined,
     meta: {"previewClassName":"min-h-svh place-items-center-safe content-center-safe"},
+  },
+  "brand-assets-menu-demo": {
+    name: "brand-assets-menu-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/brand-assets-menu-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/brand-assets-menu-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
   },
 }

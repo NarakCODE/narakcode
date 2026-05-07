@@ -723,6 +723,24 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "brand-assets-menu",
+      "title": "Brand Assets Menu",
+      "description": "Context menu for copying brand SVGs and opening asset links.",
+      "registryDependencies": [
+        "context-menu",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/brand-assets-menu/brand-assets-menu.tsx",
+          "type": "registry:component",
+          "target": "@components/brand-assets-menu.tsx"
+        }
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",
