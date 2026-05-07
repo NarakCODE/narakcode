@@ -22,7 +22,7 @@ export const USER: User = {
     {
       title: "Design Engineer",
       company: "shadcncraft",
-      website: "https://shadcncraft.com",
+      website: "https://shadcncraft.com?atp=ncdai",
       experienceId: "shadcncraft",
     },
     {
