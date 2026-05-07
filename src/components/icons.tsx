@@ -11,6 +11,7 @@ import {
   QuoteIcon,
   ScissorsIcon,
   SeparatorHorizontalIcon,
+  SquareDashed,
   SunDimIcon,
   TerminalIcon,
   TerminalSquareIcon,
@@ -856,6 +857,10 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
 
     case "fluid-gradient-text": {
       return <Droplet {...props} />
+    }
+
+    case "brand-assets-menu": {
+      return <SquareDashed {...props} />
     }
 
     default: {

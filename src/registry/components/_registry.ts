@@ -593,4 +593,18 @@ export const components: Registry["items"] = [
     ],
     docs: "https://chanhdai.com/components/fluid-gradient-text",
   },
+  {
+    name: "brand-assets-menu",
+    type: "registry:component",
+    title: "Brand Assets Menu",
+    description: "Context menu for copying brand SVGs and opening asset links.",
+    registryDependencies: ["context-menu", "sonner"],
+    files: [
+      {
+        path: "components/brand-assets-menu/brand-assets-menu.tsx",
+        type: "registry:component",
+        target: "@components/brand-assets-menu.tsx",
+      },
+    ],
+  },
 ]
