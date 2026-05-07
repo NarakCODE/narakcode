@@ -723,6 +723,9 @@
       "name": "brand-assets-menu",
       "title": "Brand Assets Menu",
       "description": "Context menu for copying brand SVGs and opening asset links.",
+      "dependencies": [
+        "@rexa-developer/tiks"
+      ],
       "registryDependencies": [
         "context-menu",
         "sonner"

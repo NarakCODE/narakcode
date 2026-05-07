@@ -1,8 +1,8 @@
 "use client"
 
+import { useTiks } from "@rexa-developer/tiks/react"
 import { Download, SquareDashed, Type } from "lucide-react"
 import Link from "next/link"
-import { useTheme } from "next-themes"
 import { toast } from "sonner"
 
 import { copyText } from "@/utils/copy"
@@ -18,7 +18,7 @@ import {
 } from "./ui/context-menu"
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
-  const { resolvedTheme } = useTheme()
+  const { success } = useTiks()
 
   return (
     <ContextMenu>
@@ -27,9 +27,9 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
       <ContextMenuContent className="w-fit dark:liquid-glass-border dark:ring-0">
         <ContextMenuItem
           onClick={() => {
-            const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff")
-            copyText(svg)
+            copyText(getMarkSVG())
             toast.success("Mark as SVG copied")
+            success()
           }}
         >
           <ChanhDaiMark />
@@ -38,11 +38,9 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
 
         <ContextMenuItem
           onClick={() => {
-            const svg = getWordmarkSVG(
-              resolvedTheme === "light" ? "#000" : "#fff"
-            )
-            copyText(svg)
+            copyText(getWordmarkSVG())
             toast.success("Logotype as SVG copied")
+            success()
           }}
         >
           <Type />
