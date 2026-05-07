@@ -143,7 +143,7 @@ export const SPONSORS: Sponsor[] = [
   },
   {
     name: "Shadcnblocks",
-    url: "https://www.shadcnblocks.com",
+    url: "https://www.shadcnblocks.com?via=ncdai",
     logo: function (props: React.ComponentProps<"svg">) {
       return (
         <svg viewBox="0 0 320 96" fill="currentColor" {...props}>
