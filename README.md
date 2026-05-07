@@ -136,13 +136,13 @@ This project is proudly supported by:
     </tr>
     <tr>
       <td>
-        <a href="https://shadcncraft.com?utm_source=chanhdai.com#gh-light-mode-only">
+        <a href="https://shadcncraft.com?atp=ncdai&utm_source=chanhdai.com#gh-light-mode-only">
           <img
             src="https://assets.chanhdai.com/images/sponsors/shadcncraft.svg?v=1#gh-light-mode-only"
             alt="shadcncraft"
           />
         </a>
-        <a href="https://shadcncraft.com?utm_source=chanhdai.com#gh-dark-mode-only">
+        <a href="https://shadcncraft.com?atp=ncdai&utm_source=chanhdai.com#gh-dark-mode-only">
           <img
             src="https://assets.chanhdai.com/images/sponsors/shadcncraft-dark.svg?v=1#gh-dark-mode-only"
             alt="shadcncraft"
