@@ -35,7 +35,7 @@ export function Heading<T extends HeadingTypes = "h1">({
       </a>
 
       <CopyButton
-        className="size-7 shrink-0 text-muted-foreground opacity-0 will-change-transform group-hover/heading:opacity-100"
+        className="size-7 shrink-0 text-muted-foreground opacity-0 group-hover/heading:opacity-100"
         variant="ghost"
         text={() => createHeadingUrl(props.id || "")}
         idleIcon={<LinkIcon />}

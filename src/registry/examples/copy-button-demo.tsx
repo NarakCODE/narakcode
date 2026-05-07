@@ -6,7 +6,7 @@ export default function CopyButtonDemo() {
       <CopyButton variant="secondary" text="Text 1" />
 
       <CopyButton
-        className="pr-3 pl-2.5 will-change-transform"
+        className="pr-3 pl-2.5"
         variant="outline"
         size="default"
         text="Text 2"

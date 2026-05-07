@@ -113,6 +113,7 @@ export function CopyButton({
 
   return (
     <Button
+      className="will-change-transform"
       size={size}
       onClick={(e) => {
         copy(text)

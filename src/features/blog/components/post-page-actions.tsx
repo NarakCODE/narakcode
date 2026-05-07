@@ -69,7 +69,7 @@ export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
 
   return (
     <Button
-      className="h-7 gap-1.5 border-none px-2 text-[0.8125rem] active:scale-none"
+      className="h-7 gap-1.5 border-none px-2 text-[0.8125rem] will-change-transform active:scale-none"
       variant="secondary"
       size="sm"
       aria-busy={isCopying}
