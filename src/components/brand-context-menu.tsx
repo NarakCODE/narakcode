@@ -13,6 +13,7 @@ import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
+  ContextMenuSeparator,
   ContextMenuTrigger,
 } from "./ui/context-menu"
 
@@ -47,6 +48,8 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
           <Type />
           Copy Logotype as SVG
         </ContextMenuItem>
+
+        <ContextMenuSeparator />
 
         <ContextMenuItem asChild>
           <Link href="/blog/chanhdai-brand">
