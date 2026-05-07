@@ -22,7 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Code, Heading } from "@/components/ui/typography"
+import { Code } from "@/components/ui/typography"
 import { UTM_PARAMS } from "@/config/site"
 import { DocSponsors } from "@/features/doc/components/doc-sponsors"
 import { generator } from "@/lib/auto-type-table"
@@ -42,6 +42,7 @@ import { Callout } from "./callout"
 import { CodeTabs } from "./code-tabs"
 import { ComponentPreview } from "./component-preview"
 import { FramedImage, IframeEmbed, YouTubeEmbed } from "./embed"
+import { Heading } from "./heading"
 import { mdxCodeBlockComponents } from "./mdx-code-block"
 import { Testimonial } from "./testimonial"
 

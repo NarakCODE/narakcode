@@ -1,4 +1,3 @@
-import { LinkIcon } from "lucide-react"
 import { Slot } from "radix-ui"
 import React from "react"
 
@@ -49,37 +48,4 @@ function Code({ className, ...props }: React.ComponentProps<"code">) {
   )
 }
 
-type HeadingTypes = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-type HeadingProps<T extends HeadingTypes> = React.ComponentProps<T> & {
-  as?: T
-}
-
-function Heading<T extends HeadingTypes = "h1">({
-  as,
-  className,
-  ...props
-}: HeadingProps<T>): React.ReactElement {
-  const Comp = as ?? "h1"
-
-  if (!props.id) {
-    return <Comp className={className} {...props} />
-  }
-
-  return (
-    <Comp
-      className={cn("flex flex-row items-center gap-2", className)}
-      {...props}
-    >
-      <a href={`#${props.id}`} className="peer not-prose">
-        {props.children}
-      </a>
-
-      <LinkIcon
-        className="size-4 shrink-0 translate-y-px text-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100"
-        aria-label="Link to section"
-      />
-    </Comp>
-  )
-}
-
-export { Code, Heading, Prose, ProseMono }
+export { Code, Prose, ProseMono }
