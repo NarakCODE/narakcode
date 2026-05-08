@@ -9,6 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { cn } from "@/lib/utils"
 import type { Activity } from "@/registry/components/contribution-graph"
 import {
   ContributionGraph,
@@ -22,15 +23,17 @@ import {
 export function GitHubContributions({
   contributions,
   githubProfileUrl,
+  className,
 }: {
   contributions: Promise<Activity[]>
   githubProfileUrl: string
+  className?: string
 }) {
   const data = use(contributions)
 
   return (
     <ContributionGraph
-      className="mx-auto py-2"
+      className={cn("mx-auto py-2", className)}
       data={data}
       blockSize={11}
       blockMargin={3}
