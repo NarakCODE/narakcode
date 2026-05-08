@@ -6,7 +6,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/base/ui/hover-card"
+} from "@/components/ui/hover-card"
 import { useSound } from "@/hooks/soundcn/use-sound"
 import { uMiniMapOpenSound } from "@/lib/soundcn/u-mini-map-open"
 import { cn } from "@/lib/utils"
@@ -40,31 +40,29 @@ export function TOCMinimap({ items, className }: TOCMinimapProps) {
   return (
     <div className={cn("ml-auto w-18", className)}>
       <HoverCard
+        openDelay={0}
+        closeDelay={0}
         onOpenChange={(open) => {
           if (open) play()
         }}
       >
-        <HoverCardTrigger
-          delay={0}
-          closeDelay={0}
-          render={
-            <div className="flex max-h-[50dvh] flex-col gap-3 overflow-hidden py-3 pl-6 opacity-100 transition-opacity duration-200 data-popup-open:opacity-0">
-              {items.map((item) => (
-                <div
-                  key={item.url}
-                  data-depth={item.depth}
-                  data-active={item.url === `#${activeHeading}`}
-                  className={cn(
-                    "h-0.5 w-6 shrink-0 rounded-xs bg-ring/50 transition-[background-color] duration-200",
-                    "data-[depth=3]:ml-2 data-[depth=3]:w-4",
-                    "data-[depth=4]:ml-4 data-[depth=4]:w-2",
-                    "data-active:bg-foreground"
-                  )}
-                />
-              ))}
-            </div>
-          }
-        />
+        <HoverCardTrigger asChild>
+          <div className="flex max-h-[50dvh] flex-col gap-3 overflow-hidden py-3 pl-6 opacity-100 transition-opacity duration-200 data-popup-open:opacity-0">
+            {items.map((item) => (
+              <div
+                key={item.url}
+                data-depth={item.depth}
+                data-active={item.url === `#${activeHeading}`}
+                className={cn(
+                  "h-0.5 w-6 shrink-0 rounded-xs bg-ring/50 transition-[background-color] duration-200",
+                  "data-[depth=3]:ml-2 data-[depth=3]:w-4",
+                  "data-[depth=4]:ml-4 data-[depth=4]:w-2",
+                  "data-active:bg-foreground"
+                )}
+              />
+            ))}
+          </div>
+        </HoverCardTrigger>
 
         <HoverCardContent
           className="w-56 overflow-hidden p-0 duration-200 data-[side=left]:slide-in-from-right-3 data-[side=left]:slide-out-to-right-3 data-open:zoom-in-100 data-closed:zoom-out-100"
@@ -72,7 +70,6 @@ export function TOCMinimap({ items, className }: TOCMinimapProps) {
           alignOffset={0}
           side="left"
           sideOffset={-60}
-          positionMethod="fixed"
         >
           <div className="flex max-h-[50dvh] overflow-y-auto overscroll-contain">
             <ul className="flex size-full flex-col px-6 py-4 text-sm">
