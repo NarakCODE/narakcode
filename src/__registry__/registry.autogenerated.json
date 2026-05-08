@@ -688,7 +688,8 @@
       "title": "TOC Minimap",
       "description": "Navigate page sections with a compact, hoverable TOC minimap.",
       "registryDependencies": [
-        "hover-card"
+        "hover-card",
+        "@soundcn/u-mini-map-open"
       ],
       "files": [
         {

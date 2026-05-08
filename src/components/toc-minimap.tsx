@@ -69,21 +69,18 @@ export function TOCMinimap({ items }: { items: TOCItemType[] }) {
             positionMethod="fixed"
           >
             <div className="flex max-h-[calc(100dvh-var(--doc-cols-top,0)+--spacing(-24))] overflow-y-auto overscroll-contain">
-              <ul className="flex h-full flex-col px-6 py-4 text-sm">
+              <ul className="flex size-full flex-col px-6 py-4 text-sm">
                 {items.map((item) => (
-                  <li
-                    key={item.url}
-                    data-depth={item.depth}
-                    data-active={item.url === `#${activeHeading}`}
-                    className={cn(
-                      "flex py-1 data-active:[&_a]:text-accent-foreground",
-                      "data-[depth=3]:pl-4 data-[depth=4]:pl-8"
-                    )}
-                  >
+                  <li key={item.url} className="flex py-1">
                     <a
                       href={item.url}
                       data-depth={item.depth}
-                      className="line-clamp-2 text-muted-foreground transition-[color] duration-200 hover:text-accent-foreground"
+                      data-active={item.url === `#${activeHeading}`}
+                      className={cn(
+                        "line-clamp-2 w-full text-muted-foreground transition-[color,font-weight] duration-200 hover:font-medium hover:text-accent-foreground",
+                        "data-active:font-medium data-active:text-accent-foreground",
+                        "data-[depth=3]:pl-4 data-[depth=4]:pl-8"
+                      )}
                       onClick={handleItemClick}
                     >
                       {item.title}

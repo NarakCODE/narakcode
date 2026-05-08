@@ -566,7 +566,7 @@ export const components: Registry["items"] = [
     title: "TOC Minimap",
     description:
       "Navigate page sections with a compact, hoverable TOC minimap.",
-    registryDependencies: ["hover-card"],
+    registryDependencies: ["hover-card", "@soundcn/u-mini-map-open"],
     files: [
       {
         path: "components/toc-minimap/toc-minimap.tsx",
