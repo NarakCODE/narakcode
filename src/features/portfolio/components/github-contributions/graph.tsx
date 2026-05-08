@@ -10,7 +10,6 @@ import {
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
 import { GITHUB_USERNAME, UTM_PARAMS } from "@/config/site"
-import { cn } from "@/lib/utils"
 import type { Activity } from "@/registry/components/contribution-graph"
 import {
   ContributionGraph,
@@ -31,14 +30,7 @@ export function GitHubContributionGraph({
 
   return (
     <ContributionGraph
-      className={cn(
-        "mx-auto py-2",
-        'not-dark:**:data-[level="0"]:fill-[#eff2f5]',
-        'not-dark:**:data-[level="1"]:fill-[#aceebb]',
-        'not-dark:**:data-[level="2"]:fill-[#4ac26b]',
-        'not-dark:**:data-[level="3"]:fill-[#2da44e]',
-        'not-dark:**:data-[level="4"]:fill-[#116329]'
-      )}
+      className="mx-auto py-2"
       data={data}
       blockSize={11}
       blockMargin={3}
