@@ -19,7 +19,7 @@ import { CopyButton } from "@/registry/components/copy-button"
 export type PackageManager = "prompt" | "pnpm" | "yarn" | "npm" | "bun"
 
 const packageManagerAtom = atomWithStorage<PackageManager>(
-  "@acme/packageManager",
+  "packageManager",
   "pnpm"
 )
 
