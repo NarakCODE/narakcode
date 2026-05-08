@@ -21,7 +21,7 @@ import CodeBlockCommandDemo from "@/registry/examples/code-block-command-demo"
 import CopyButtonDemo from "@/registry/examples/copy-button-demo"
 import ElasticSliderDemo from "@/registry/examples/elastic-slider-demo"
 import FluidGradientTextDemo from "@/registry/examples/fluid-gradient-text-demo-01"
-import GitHubContributionsDemo from "@/registry/examples/github-contributions-demo"
+import GitHubContributionsDemo1 from "@/registry/examples/github-contributions-demo-01"
 import GitHubStarsDemo from "@/registry/examples/github-stars-demo"
 import GlowCardGridDemo01 from "@/registry/examples/glow-card-grid-demo-01"
 import HapticDemo from "@/registry/examples/haptic-demo"
@@ -156,7 +156,7 @@ export default function ComponentsShowcasePage() {
         </GridItem>
 
         <GridItem className="p-0 md:col-span-2 md:row-span-2">
-          <GitHubContributionsDemo />
+          <GitHubContributionsDemo1 />
         </GridItem>
 
         <GridItem>

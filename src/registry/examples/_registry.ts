@@ -410,12 +410,45 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "github-contributions-demo",
+    name: "github-contributions-demo-01",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("github-contributions")],
     files: [
       {
-        path: "examples/github-contributions-demo.tsx",
+        path: "examples/github-contributions-demo-01.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "github-contributions-demo-02",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("github-contributions")],
+    files: [
+      {
+        path: "examples/github-contributions-demo-02.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "github-contributions-demo-03",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("github-contributions")],
+    files: [
+      {
+        path: "examples/github-contributions-demo-03.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "github-contributions-demo-04",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("github-contributions")],
+    files: [
+      {
+        path: "examples/github-contributions-demo-04.tsx",
         type: "registry:example",
       },
     ],
