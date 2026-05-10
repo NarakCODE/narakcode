@@ -38,6 +38,12 @@ export const USER: User = {
 - Creator of [chanhdai.com](https://github.com/ncdai/chanhdai.com) (1.8k stars), [React Wheel Picker](https://react-wheel-picker.chanhdai.com) (16k+ weekly downloads, ▲Vercel OSS Program), and [ZaDark](https://zadark.com) (80k+ downloads, 30k+ users) — peak metrics.
 `,
   avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
+  avatarVariants: {
+    lightOff: "https://assets.chanhdai.com/images/avatar-light-off.webp",
+    lightOn: "https://assets.chanhdai.com/images/avatar-light-on.webp",
+    darkOff: "https://assets.chanhdai.com/images/avatar-dark-off.webp",
+    darkOn: "https://assets.chanhdai.com/images/avatar-dark-on.webp",
+  },
   ogImage:
     "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?t=1778130487",
   namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3",
