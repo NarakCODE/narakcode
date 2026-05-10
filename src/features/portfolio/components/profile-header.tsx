@@ -1,7 +1,8 @@
 import { USER } from "@/features/portfolio/data/user"
+import { AvatarLights } from "@/registry/components/avatar-lights"
 import { TextFlip } from "@/registry/components/text-flip"
 
-import { AvatarElectricEffect } from "./avatar-electric-effect"
+import { AvatarLightsToggle } from "./avatar-lights-toggle"
 import { PronounceMyName } from "./pronounce-my-name"
 import { VerifiedIcon } from "./verified-icon"
 
@@ -10,14 +11,19 @@ export function ProfileHeader() {
     <div className="screen-line-bottom flex border-x border-line">
       <div className="shrink-0 border-r border-line">
         <div className="relative mx-0.5 my-0.75">
-          <AvatarElectricEffect>
+          <AvatarLights
+            className="ring-1 ring-border ring-offset-2 ring-offset-background"
+            variants={USER.avatarVariants}
+          />
+          <AvatarLightsToggle />
+          {/* <AvatarElectricEffect>
             <img
               className="size-30 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
               alt="Avatar"
               src={USER.avatar}
               fetchPriority="high"
             />
-          </AvatarElectricEffect>
+          </AvatarElectricEffect> */}
         </div>
       </div>
 

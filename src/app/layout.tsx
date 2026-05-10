@@ -127,6 +127,17 @@ export default function RootLayout({
          */}
         <Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
         <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var value = localStorage.getItem('avatarLights');
+                document.documentElement.dataset.avatarLights = JSON.parse(value || '"on"');
+              } catch(_) {}
+            `,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
