@@ -16,7 +16,10 @@ export function AvatarLights({
 }) {
   return (
     <div
-      className={cn("relative size-30 rounded-full sm:size-40", className)}
+      className={cn(
+        "relative size-30 rounded-full min-[24rem]:size-32 sm:size-40",
+        className
+      )}
       {...props}
     >
       <div className="absolute inset-0">
