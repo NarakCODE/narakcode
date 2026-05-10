@@ -52,7 +52,7 @@
     "@openpanel/web": "^1.2.0",
     "@phosphor-icons/react": "^2.1.10",
     "@remixicon/react": "^4.9.0",
-    "@rexa-developer/tiks": "^0.1.8",
+    "@rexa-developer/tiks": "^0.1.9",
     "@tabler/icons-react": "^3.42.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
