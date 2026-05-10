@@ -10,21 +10,12 @@ export function ProfileHeader() {
   return (
     <div className="screen-line-bottom flex border-x border-line">
       <div className="shrink-0 border-r border-line">
-        <div className="relative mx-0.5 my-0.75">
+        <AvatarLightsToggle className="group/avatar-lights-toggle mx-0.5 my-0.75 flex outline-none">
           <AvatarLights
-            className="ring-1 ring-border ring-offset-2 ring-offset-background"
+            className="ring-1 ring-border ring-offset-2 ring-offset-background group-focus-visible/avatar-lights-toggle:ring-2 group-focus-visible/avatar-lights-toggle:ring-ring/50"
             variants={USER.avatarVariants}
           />
-          <AvatarLightsToggle />
-          {/* <AvatarElectricEffect>
-            <img
-              className="size-30 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
-              alt="Avatar"
-              src={USER.avatar}
-              fetchPriority="high"
-            />
-          </AvatarElectricEffect> */}
-        </div>
+        </AvatarLightsToggle>
       </div>
 
       <div className="flex flex-1 flex-col">
