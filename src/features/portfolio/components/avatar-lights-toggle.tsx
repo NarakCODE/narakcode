@@ -1,9 +1,13 @@
 "use client"
 
+import { useHotkeys } from "react-hotkeys-hook"
+
 import { useAvatarLights } from "@/hooks/use-avatar-lights"
 
 export function AvatarLightsToggle() {
   const { toggleLights } = useAvatarLights()
+
+  useHotkeys("l", toggleLights)
 
   return (
     <button
