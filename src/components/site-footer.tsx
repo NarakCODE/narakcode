@@ -121,7 +121,7 @@ export function SiteFooter() {
       <SiteFooterInteractiveLogotype />
 
       <div className="pb-[env(safe-area-inset-bottom,0px)]">
-        <div className="flex h-16 sm:h-2" />
+        <div className="flex h-24" />
       </div>
     </footer>
   )
