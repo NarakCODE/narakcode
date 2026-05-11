@@ -22,7 +22,7 @@ export function Bookmarks() {
 
       <CollapsibleList
         items={SORTED_BOOKMARKS}
-        max={3}
+        max={6}
         renderItem={(item) => <BookmarkItem bookmark={item} />}
       />
     </Panel>
