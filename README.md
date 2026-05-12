@@ -223,4 +223,4 @@ This project is proudly supported by:
 
 ## Star History
 
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive&line=%23fbbf24)](https://starchart.cc/ncdai/chanhdai.com)
+[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive&line=%23f59e0b)](https://starchart.cc/ncdai/chanhdai.com)
