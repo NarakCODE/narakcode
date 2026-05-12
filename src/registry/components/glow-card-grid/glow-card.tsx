@@ -12,7 +12,7 @@ export function GlowCard({ name, handle, avatar, className }: GlowCardProps) {
     <div
       data-slot="glow-card"
       className={cn(
-        "@container-[size] relative h-52 w-full overflow-hidden rounded-(--card-radius) ring-1 ring-border transition-[translate,scale] select-none active:scale-[0.98]",
+        "@container-size relative h-52 w-full overflow-hidden rounded-(--card-radius) ring-1 ring-border transition-[translate,scale] select-none active:scale-[0.98]",
         className
       )}
     >

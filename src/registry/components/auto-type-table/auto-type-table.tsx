@@ -58,8 +58,7 @@ export interface GenerateTypeTableOptions {
 }
 
 export interface AutoTypeTableProps
-  extends BaseTypeTableProps,
-    ComponentProps<"div"> {
+  extends BaseTypeTableProps, ComponentProps<"div"> {
   generator: Generator
 
   shiki?: ShikiOptions
