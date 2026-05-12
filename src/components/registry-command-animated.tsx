@@ -80,7 +80,6 @@ export function RegistryCommandAnimated() {
                   value={key}
                   render={<span className="block sm:inline-block" />}
                 >
-                  <span className="select-none">$ </span>
                   {command} shadcn add{" "}
                   <span className="select-none sm:hidden" aria-hidden="true">
                     \
