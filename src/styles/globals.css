@@ -497,6 +497,14 @@
     }
   }
 
+  [data-rehype-pretty-code-figure] pre[data-language="text"] code,
+  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] code {
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    font-variant-ligatures: none;
+  }
+
   [data-line] span {
     @apply text-(--shiki-light) dark:text-(--shiki-dark);
   }
