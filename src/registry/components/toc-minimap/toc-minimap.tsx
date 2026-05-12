@@ -80,9 +80,9 @@ export function TOCMinimap({ items, className }: TOCMinimapProps) {
                     data-depth={item.depth}
                     data-active={item.url === `#${activeHeading}`}
                     className={cn(
-                      "line-clamp-2 w-full text-muted-foreground transition-[color,font-weight] duration-200 hover:font-medium hover:text-accent-foreground",
-                      "data-[depth=3]:pl-4 data-[depth=4]:pl-8",
-                      "data-active:font-medium data-active:text-accent-foreground"
+                      "line-clamp-2 w-full transition-[color] duration-200",
+                      "text-muted-foreground hover:text-foreground data-active:text-foreground",
+                      "data-[depth=3]:pl-4 data-[depth=4]:pl-8"
                     )}
                     onClick={handleItemClick}
                   >
