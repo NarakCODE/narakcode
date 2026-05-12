@@ -70,6 +70,7 @@ export function CodeBlockCommand({
                   <code
                     data-slot="code-block"
                     data-language="bash"
+                    data-line=""
                     className="font-mono text-sm/none text-muted-foreground"
                   >
                     {value}

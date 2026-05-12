@@ -111,7 +111,7 @@ function Item({
       <CollapsibleTrigger className="not-prose relative flex w-full flex-row items-center rounded-lg px-3 py-2 text-start text-sm ring-border outline-none ring-inset group-data-open/type-item:rounded-b-none group-data-open/type-item:ring-1 hover:bg-accent focus-visible:ring-1 focus-visible:ring-ring/50 dark:hover:bg-[color-mix(in_oklab,var(--accent)_60%,var(--surface))] [&_svg]:size-4">
         <code
           className={cn(
-            "[--shiki-dark:#FFC799] [--shiki-light:#005CC5]",
+            "[--shiki-dark:#FFF] [--shiki-light:#6F42C1]",
             "w-1/4 min-w-fit shrink-0 pr-2 font-mono text-(--shiki-light) dark:text-(--shiki-dark)",
             deprecated && "line-through opacity-50"
           )}
