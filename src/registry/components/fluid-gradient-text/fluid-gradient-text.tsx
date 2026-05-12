@@ -47,7 +47,7 @@ export function FluidGradientText({
 
   return (
     <div
-      className="relative size-full overflow-hidden after:absolute after:bottom-0 after:h-px after:w-full after:bg-current/10"
+      className="relative size-full overflow-hidden after:absolute after:bottom-0 after:h-px after:w-full after:bg-current/15"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
