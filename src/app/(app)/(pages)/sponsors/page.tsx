@@ -110,9 +110,7 @@ function SponsorsGroup({
 
   return (
     <div>
-      <h2 className="p-4 font-heading text-xl/none font-medium tracking-tight">
-        {title}
-      </h2>
+      <h2 className="p-4 font-heading text-base/none font-semibold">{title}</h2>
 
       <div className="relative">
         <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
