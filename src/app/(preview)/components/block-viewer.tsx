@@ -328,7 +328,7 @@ function BlockViewerToolbar() {
         />
 
         <Button
-          className="w-fit gap-1.5 px-2 font-mono text-[0.8125rem] shadow-none will-change-transform active:scale-none [&_svg]:text-muted-foreground"
+          className="w-fit gap-1.5 px-2 font-mono text-[0.8125rem] font-normal shadow-none will-change-transform active:scale-none [&_svg]:text-muted-foreground"
           variant="outline"
           size="sm"
           onClick={() => {
@@ -508,7 +508,7 @@ function BlockViewerFileTree() {
     <SidebarProvider className="flex min-h-full flex-col [--sidebar:var(--surface)] dark:[--sidebar-accent:var(--muted)]/50">
       <Sidebar collapsible="none" className="w-full flex-1 rounded-xl p-1 pt-0">
         <SidebarGroupLabel className="h-10 rounded-none px-4 text-sm">
-          Explorer
+          Files
         </SidebarGroupLabel>
 
         <SidebarGroup className="flex-1 rounded-[9px] border bg-background px-0">

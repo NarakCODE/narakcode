@@ -110,7 +110,7 @@ function SponsorsGroup({
 
   return (
     <div>
-      <h2 className="p-4 font-pixel text-sm/none font-medium text-muted-foreground uppercase">
+      <h2 className="p-4 font-heading text-xl/none font-medium tracking-tight">
         {title}
       </h2>
 

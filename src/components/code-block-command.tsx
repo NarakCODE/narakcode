@@ -72,7 +72,6 @@ export function CodeBlockCommand({
                     data-language="bash"
                     className="font-mono text-sm/none text-muted-foreground"
                   >
-                    <span className="select-none">$ </span>
                     {value}
                   </code>
                 </pre>

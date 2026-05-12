@@ -12,6 +12,7 @@ import {
   ScissorsIcon,
   SeparatorHorizontalIcon,
   SquareDashed,
+  Star,
   SunDimIcon,
   TerminalIcon,
   TerminalSquareIcon,
@@ -726,9 +727,25 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
       return <GalleryHorizontalEndIcon {...props} />
     }
 
-    case "github-stars":
+    case "github-stars": {
+      return <Star {...props} />
+    }
+
     case "github-contributions": {
-      return <Icons.github {...props} />
+      return (
+        // Icon designed by @ncdai
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          aria-hidden
+          {...props}
+        >
+          <path
+            fill="currentColor"
+            d="M11 5h2v2h-2zM15 17h2v2h-2zM7 17h2v2H7zM15 5h2v2h-2zM15 13h2v2h-2zM11 13h2v2h-2zM11 17h2v2h-2zM15 9h2v2h-2zM3 13h2v2H3zM3 17h2v2H3zM3 9h2v2H3zM3 5h2v2H3zM7 9h2v2H7zM19 17h2v2h-2zM19 9h2v2h-2zM7 5h2v2H7z"
+          />
+        </svg>
+      )
     }
 
     case "scroll-fade-effect": {
