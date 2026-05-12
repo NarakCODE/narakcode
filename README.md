@@ -223,5 +223,4 @@ This project is proudly supported by:
 
 ## Star History
 
-[![RepoStars-dark](https://www.repostars.dev/api/embed?repo=ncdai%2Fchanhdai.com&theme=dark#gh-dark-mode-only)](https://www.repostars.dev/?repos=ncdai%2Fchanhdai.com&theme=dark#gh-dark-mode-only)
-[![RepoStars-light](https://www.repostars.dev/api/embed?repo=ncdai%2Fchanhdai.com&theme=light#gh-light-mode-only)](https://www.repostars.dev/?repos=ncdai%2Fchanhdai.com&theme=light#gh-light-mode-only)
+[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive&line=%23fbbf24)](https://starchart.cc/ncdai/chanhdai.com)
