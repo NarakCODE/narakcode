@@ -45,7 +45,7 @@ export const USER: User = {
     darkOn: "https://assets.chanhdai.com/images/avatar-dark-on.webp",
   },
   ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?t=1778130487",
+    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?t=1778602757",
   namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3",
   timeZone: "Asia/Ho_Chi_Minh",
   keywords: [
