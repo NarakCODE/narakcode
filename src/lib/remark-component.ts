@@ -33,7 +33,7 @@ export function remarkComponent() {
           let src: string
 
           if (srcPath) {
-            src = path.join(process.cwd(), srcPath)
+            src = path.join(/*turbopackIgnore: true*/ process.cwd(), srcPath)
           } else {
             const component = Index[name]
             src = fileName
@@ -51,7 +51,10 @@ export function remarkComponent() {
 
           // Read the source file.
           const filePath = src
-          let source = fs.readFileSync(filePath, "utf8")
+          let source = fs.readFileSync(
+            /*turbopackIgnore: true*/ filePath,
+            "utf8"
+          )
 
           // Replace imports.
           // TODO: Use @swc/core and a visitor to replace this.
@@ -96,7 +99,10 @@ export function remarkComponent() {
 
           // Read the source file.
           const filePath = src
-          let source = fs.readFileSync(filePath, "utf8")
+          let source = fs.readFileSync(
+            /*turbopackIgnore: true*/ filePath,
+            "utf8"
+          )
 
           // Replace imports.
           // TODO: Use @swc/core and a visitor to replace this.
