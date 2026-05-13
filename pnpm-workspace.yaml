@@ -1,1 +1,7 @@
+allowBuilds:
+  core-js: true
+  msw: true
+  protobufjs: true
+  puppeteer: true
+  sharp: true
 minimumReleaseAge: 1440
