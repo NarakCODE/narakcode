@@ -81,7 +81,7 @@ export function TestimonialSpotlight({
       ref={itemRef}
       data-slot="testimonial-spotlight"
       className={cn(
-        "relative overflow-hidden rounded-xl bg-card/50 ring-1 ring-foreground/10 ring-inset",
+        "relative overflow-hidden rounded-xl bg-card/50 inset-ring-1 inset-ring-foreground/10",
         className
       )}
       onFocus={handleFocus}

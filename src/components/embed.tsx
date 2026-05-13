@@ -20,7 +20,7 @@ export function YouTubeEmbed({
         allowFullScreen
       />
 
-      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
+      <div className="pointer-events-none absolute inset-0 rounded-xl inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10" />
     </div>
   )
 }
@@ -36,7 +36,7 @@ export function IframeEmbed({
         {...props}
       />
 
-      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
+      <div className="pointer-events-none absolute inset-0 rounded-xl inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10" />
     </div>
   )
 }
@@ -54,7 +54,7 @@ export function FramedImage({
     <figure className="relative [&_img]:rounded-xl">
       {canZoom ? <ImageZoom>{image}</ImageZoom> : image}
 
-      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
+      <div className="pointer-events-none absolute inset-0 rounded-xl inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10" />
     </figure>
   )
 }

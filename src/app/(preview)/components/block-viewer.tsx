@@ -377,7 +377,7 @@ function BlockViewerView() {
         <ResizablePanelGroup orientation="horizontal">
           <ResizablePanel
             panelRef={resizablePanelRef}
-            className="relative overflow-hidden rounded-xl after:pointer-events-none after:absolute after:inset-0 after:rounded-xl after:ring-1 after:ring-foreground/10 after:ring-inset"
+            className="relative overflow-hidden rounded-xl after:pointer-events-none after:absolute after:inset-0 after:rounded-xl after:inset-ring-1 after:inset-ring-foreground/10"
             minSize="30%"
             defaultSize="100%"
           >
@@ -774,7 +774,7 @@ function ThemePalette({ cssVars }: { cssVars?: RegistryItem["cssVars"] }) {
         <div
           key={key}
           className={cn(
-            "flex h-4 w-2.5 shrink-0 rounded-xs ring-1 ring-foreground/15 ring-inset",
+            "flex h-4 w-2.5 shrink-0 rounded-xs inset-ring-1 inset-ring-foreground/15",
             "bg-(--color-palette) dark:bg-(--color-palette-dark)"
           )}
           style={

@@ -92,7 +92,7 @@ export function SlideToUnlock({
       <div
         data-slot="slide-to-unlock"
         className={cn(
-          "w-54 rounded-xl bg-muted p-1 shadow-inner ring-1 ring-foreground/10 ring-inset",
+          "w-54 rounded-xl bg-muted p-1 shadow-inner inset-ring-1 inset-ring-foreground/10",
           className
         )}
         {...props}

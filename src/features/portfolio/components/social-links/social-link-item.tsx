@@ -28,7 +28,7 @@ export function SocialLinkItem({ icon, title, href }: SocialLink) {
           quality={100}
           unoptimized
         />
-        <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-black/10 ring-inset dark:ring-white/15" />
+        <div className="pointer-events-none absolute inset-0 rounded-lg inset-ring-1 inset-ring-black/10 dark:inset-ring-white/15" />
       </div>
 
       <h3 className="flex-1 font-medium">{title}</h3>
