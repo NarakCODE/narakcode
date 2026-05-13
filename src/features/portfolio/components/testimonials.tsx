@@ -108,7 +108,7 @@ function TestimonialList({
                 href={item.url}
                 target="_blank"
                 rel="noopener"
-                className="block h-full rounded-xl ring-1 ring-foreground/10 transition-[background-color] ease-out ring-inset hover:bg-accent-muted"
+                className="block h-full rounded-xl inset-ring-1 inset-ring-foreground/10 transition-[background-color] ease-out hover:bg-accent-muted"
               >
                 <TestimonialItem {...item} />
               </a>

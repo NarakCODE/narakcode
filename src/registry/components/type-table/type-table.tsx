@@ -106,9 +106,9 @@ function Item({
   return (
     <Collapsible
       id={id}
-      className="group/type-item rounded-lg ring-border ring-inset data-open:bg-background data-open:ring-1 data-open:not-last:mb-0.75"
+      className="group/type-item rounded-lg inset-ring-border data-open:bg-background data-open:inset-ring-1 data-open:not-last:mb-0.75"
     >
-      <CollapsibleTrigger className="not-prose relative flex w-full flex-row items-center rounded-lg px-3 py-2 text-start text-sm ring-border outline-none ring-inset group-data-open/type-item:rounded-b-none group-data-open/type-item:ring-1 hover:bg-accent focus-visible:ring-1 focus-visible:ring-ring/50 dark:hover:bg-[color-mix(in_oklab,var(--accent)_60%,var(--surface))] [&_svg]:size-4">
+      <CollapsibleTrigger className="not-prose relative flex w-full flex-row items-center rounded-lg px-3 py-2 text-start text-sm inset-ring-border outline-none group-data-open/type-item:rounded-b-none group-data-open/type-item:ring-1 hover:bg-accent focus-visible:inset-ring-1 focus-visible:inset-ring-ring/50 dark:hover:bg-[color-mix(in_oklab,var(--accent)_60%,var(--surface))] [&_svg]:size-4">
         <code
           className={cn(
             "[--shiki-dark:#FFF] [--shiki-light:#6F42C1]",

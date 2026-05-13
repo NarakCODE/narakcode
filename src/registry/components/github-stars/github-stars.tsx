@@ -46,7 +46,7 @@ export function GitHubStars({
         </Button>
       </TooltipTrigger>
 
-      <TooltipContent className="font-sans">
+      <TooltipContent className="tabular-nums">
         {new Intl.NumberFormat(locales).format(stargazersCount)} stars
       </TooltipContent>
     </Tooltip>

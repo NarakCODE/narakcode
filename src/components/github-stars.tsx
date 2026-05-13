@@ -46,7 +46,7 @@ export function GitHubStars({ repo, stargazersCount }: GitHubStarsProps) {
           </Button>
         }
       />
-      <TooltipContent className="font-sans">
+      <TooltipContent className="tabular-nums">
         {new Intl.NumberFormat("en-US").format(stargazersCount)} stars
       </TooltipContent>
     </Tooltip>
