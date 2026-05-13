@@ -67,7 +67,7 @@ export function ComponentPreview({
   return (
     <div
       className={cn(
-        "my-[1.25em] rounded-xl bg-surface",
+        "my-[1.25em] rounded-xl bg-surface inset-ring-1 inset-ring-line",
         prose === false && "not-prose",
         className
       )}
@@ -75,7 +75,7 @@ export function ComponentPreview({
     >
       <Tabs defaultValue="preview" className="gap-0">
         <div className="z-1 px-4">
-          <TabsList className="h-10 rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:me-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
+          <TabsList className="h-10 rounded-none bg-transparent p-0 inset-ring-0 dark:bg-transparent [&_svg]:me-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
             <TabsTrigger className="h-7 rounded-lg p-0 px-2" value="preview">
               Preview
             </TabsTrigger>
