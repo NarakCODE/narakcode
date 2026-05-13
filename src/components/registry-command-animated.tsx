@@ -49,7 +49,7 @@ export function RegistryCommandAnimated() {
         }}
       >
         <div className="px-4 shadow-[inset_0_-1px_0_0] shadow-line">
-          <TabsList className="h-10 rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:me-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
+          <TabsList className="h-10 rounded-none bg-transparent p-0 inset-ring-0 dark:bg-transparent [&_svg]:me-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
             {getIconForPackageManager(packageManager)}
 
             {Object.entries(pmCommands).map(([key]) => {
