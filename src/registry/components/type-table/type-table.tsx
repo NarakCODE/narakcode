@@ -64,7 +64,7 @@ export function TypeTable({
     <div
       id={id}
       className={cn(
-        "@container my-[1.25em] flex flex-col gap-px overflow-hidden rounded-xl bg-surface p-1 text-sm",
+        "@container my-[1.25em] flex flex-col gap-px overflow-hidden rounded-xl bg-surface p-1 text-sm inset-ring-1 inset-ring-line",
         className
       )}
       {...props}

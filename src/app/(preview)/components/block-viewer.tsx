@@ -506,7 +506,10 @@ function BlockViewerFileTree() {
 
   return (
     <SidebarProvider className="flex min-h-full flex-col [--sidebar:var(--surface)] dark:[--sidebar-accent:var(--muted)]/50">
-      <Sidebar collapsible="none" className="w-full flex-1 rounded-xl p-1 pt-0">
+      <Sidebar
+        collapsible="none"
+        className="w-full flex-1 rounded-xl p-1 pt-0 inset-ring-1 inset-ring-line"
+      >
         <SidebarGroupLabel className="h-10 rounded-none px-4 text-sm">
           Files
         </SidebarGroupLabel>

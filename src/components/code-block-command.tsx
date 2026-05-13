@@ -43,7 +43,7 @@ export function CodeBlockCommand({
         }}
       >
         <div className="px-3">
-          <TabsList className="h-10 rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:mr-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
+          <TabsList className="h-10 rounded-none bg-transparent p-0 inset-ring-0 dark:bg-transparent [&_svg]:mr-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
             {getIconForPackageManager(packageManager)}
 
             {Object.entries(tabs).map(([key]) => {

@@ -479,7 +479,7 @@
 
 @layer components {
   [data-rehype-pretty-code-figure] {
-    @apply relative my-[1.25em] rounded-xl bg-surface p-1 text-surface-foreground;
+    @apply relative my-[1.25em] rounded-xl bg-surface p-1 text-surface-foreground inset-ring-1 inset-ring-line;
     @apply has-data-rehype-pretty-code-title:pt-0;
     @apply has-data-[slot=code-block-command]:pt-0;
 

@@ -138,7 +138,7 @@ export function CodeBlockCommand({
         <ScrollArea.Root className="w-full pr-10 shadow-[inset_0_-1px_0_0] shadow-border">
           <TabsList
             className={cn(
-              "h-10 max-w-full justify-start rounded-none bg-transparent p-0 pl-4 dark:bg-transparent [&_svg]:mr-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
+              "h-10 max-w-full justify-start rounded-none bg-transparent p-0 pl-4 inset-ring-0 dark:bg-transparent [&_svg]:mr-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
               "[--scroll-area-overflow-x-end:inherit] [--scroll-area-overflow-x-start:inherit]",
               "mask-linear-[to_right,transparent_0,black_min(2.5rem,var(--scroll-area-overflow-x-start)),black_calc(100%-min(2.5rem,var(--scroll-area-overflow-x-end,2.5rem))),transparent_100%]"
             )}
