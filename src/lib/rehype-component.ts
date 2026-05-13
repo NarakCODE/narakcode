@@ -68,7 +68,10 @@ export function rehypeComponent() {
             let src: string
 
             if (item.srcPath) {
-              src = path.join(process.cwd(), item.srcPath)
+              src = path.join(
+                /*turbopackIgnore: true*/ process.cwd(),
+                item.srcPath
+              )
             } else {
               const component = Index[item.name]
               src = item.fileName
@@ -86,7 +89,10 @@ export function rehypeComponent() {
 
             // Read the source file.
             const filePath = src
-            const raw = fs.readFileSync(filePath, "utf8")
+            const raw = fs.readFileSync(
+              /*turbopackIgnore: true*/ filePath,
+              "utf8"
+            )
             const source = await formatCode(raw, "radix-vega")
 
             const title = getNodeAttributeByName(item.node, "title")
@@ -140,7 +146,10 @@ export function rehypeComponent() {
 
             // Read the source file.
             const filePath = src
-            const raw = fs.readFileSync(filePath, "utf8")
+            const raw = fs.readFileSync(
+              /*turbopackIgnore: true*/ filePath,
+              "utf8"
+            )
             const source = await formatCode(raw, "radix-vega")
 
             const codeMeta = getNodeAttributeByName(item.node, "data-code-meta")
