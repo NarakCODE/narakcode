@@ -286,8 +286,7 @@
   --code: var(--background);
   --code-foreground: var(--foreground);
   --code-number: oklch(0.24 0.01 0 / 0.3);
-
-  --code-highlight: oklch(0.9584 0.0013 286.37);
+  --code-highlight: oklch(0.49 0.18 257.61 / 0.06);
 
   /* zinc-950 */
   --selection: oklch(0.141 0.005 285.823);
@@ -397,9 +396,7 @@
   --code: var(--background);
   --code-foreground: var(--foreground);
   --code-number: oklch(0.43 0 0);
-
-  /* zinc-900 */
-  --code-highlight: oklch(0.21 0.006 285.885);
+  --code-highlight: oklch(0.71 0.24 42.36 / 0.06);
 
   /* zinc-50 */
   --selection: oklch(0.985 0 0);
@@ -518,15 +515,15 @@
   [data-line-numbers] [data-line]::before {
     counter-increment: line;
     content: counter(line);
-    @apply sticky left-0 inline-block w-16 bg-code pe-6 text-right text-sm text-code-number;
-  }
-
-  [data-line-numbers] [data-highlighted-line][data-line]::before {
-    @apply bg-code-highlight;
+    @apply sticky left-0 z-1 inline-block w-16 bg-code pe-6 text-right text-sm text-code-number;
   }
 
   [data-highlighted-line] {
-    @apply bg-code-highlight;
+    @apply relative after:pointer-events-none after:absolute after:inset-0 after:z-2 after:bg-code-highlight;
+  }
+
+  [data-highlighted-chars] {
+    @apply relative bg-transparent before:pointer-events-none before:absolute before:inset-0 before:rounded-sm before:bg-code-highlight;
   }
 
   [data-fade-overlay] {
