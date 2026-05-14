@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { MiddleTruncation } from "@/registry/components/middle-truncation"
 import type { NpmCommands } from "@/types/unist"
 
 import { CodeBlockCommand } from "./code-block-command"
@@ -22,12 +23,19 @@ export const mdxCodeBlockComponents = {
         ? getIconForLanguageExtension(props["data-language"])
         : null
 
-    const hasCodeTitle = "data-rehype-pretty-code-title" in props
+    const hasCodeTitle =
+      "data-rehype-pretty-code-title" in props && typeof children === "string"
 
     return (
       <figcaption {...props}>
         {iconExtension}
-        {hasCodeTitle ? <p className="truncate">{children}</p> : children}
+        {hasCodeTitle ? (
+          <MiddleTruncation className="min-w-0 flex-1" ellipsis="…">
+            {children}
+          </MiddleTruncation>
+        ) : (
+          children
+        )}
       </figcaption>
     )
   },

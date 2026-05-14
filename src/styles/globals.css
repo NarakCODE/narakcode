@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./scroll-fade-effect.css";
-@import "./gradient-border.css";
 
 @plugin "@tailwindcss/typography";
 
@@ -197,16 +196,6 @@
   &::-webkit-scrollbar {
     display: none;
   }
-}
-
-@utility liquid-glass-border {
-  @apply gradient-border gradient-border-to-tl;
-  @apply gradient-border-from-zinc-200 gradient-border-to-zinc-200 gradient-border-via-zinc-100;
-  @apply dark:gradient-border-from-zinc-700 dark:gradient-border-to-zinc-700 dark:gradient-border-via-zinc-800;
-}
-
-@utility liquid-glass-border-none {
-  @apply gradient-border-none;
 }
 
 :root {
@@ -479,7 +468,7 @@
 
 @layer components {
   [data-rehype-pretty-code-figure] {
-    @apply relative my-[1.25em] rounded-xl bg-surface p-1 text-surface-foreground inset-ring-1 inset-ring-line;
+    @apply relative my-[1.25em] rounded-xl bg-surface p-1 text-surface-foreground inset-ring-1 inset-ring-border/64;
     @apply has-data-rehype-pretty-code-title:pt-0;
     @apply has-data-[slot=code-block-command]:pt-0;
 
@@ -501,7 +490,7 @@
   }
 
   [data-rehype-pretty-code-title] {
-    @apply flex items-center gap-3 px-3 py-2.5 font-mono text-sm text-muted-foreground group-data-[slot=collapsible]/collapsible:pe-20 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground;
+    @apply flex items-center gap-3 py-2.5 pr-8.5 pl-3 font-mono text-sm text-muted-foreground [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground;
   }
 
   [data-line-numbers] {

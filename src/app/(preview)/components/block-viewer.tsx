@@ -483,7 +483,7 @@ function BlockViewerCode() {
           className="h-10 shrink-0"
         >
           {getIconForLanguageExtension(language)}
-          <p className="truncate">{file.target}</p>
+          <span className="truncate">{file.target}</span>
           <BlockCopyCodeButton />
         </figcaption>
 
@@ -508,7 +508,7 @@ function BlockViewerFileTree() {
     <SidebarProvider className="flex min-h-full flex-col [--sidebar:var(--surface)] dark:[--sidebar-accent:var(--muted)]/50">
       <Sidebar
         collapsible="none"
-        className="w-full flex-1 rounded-xl p-1 pt-0 inset-ring-1 inset-ring-line"
+        className="w-full flex-1 rounded-xl p-1 pt-0 inset-ring-1 inset-ring-border/64"
       >
         <SidebarGroupLabel className="h-10 rounded-none px-4 text-sm">
           Files
@@ -694,7 +694,7 @@ function ThemePicker() {
       </Tooltip>
 
       <PopoverContent
-        className="rounded-2xl p-0 dark:liquid-glass-border dark:ring-0"
+        className="rounded-2xl p-0"
         align="start"
         alignOffset={-8}
       >

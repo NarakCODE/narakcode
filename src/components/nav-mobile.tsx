@@ -37,7 +37,7 @@ export function NavMobile({ items }: { items: NavItem[] }) {
       </PopoverTrigger>
 
       <PopoverContent
-        className="w-48 rounded-xl p-1 dark:liquid-glass-border dark:ring-0"
+        className="w-48 rounded-xl p-1"
         side="top"
         align="center"
         sideOffset={8}

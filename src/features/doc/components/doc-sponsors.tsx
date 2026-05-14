@@ -7,7 +7,7 @@ const GOLD_SPONSORS = SPONSORS.filter((sponsor) => sponsor.tier === "gold")
 export function DocSponsors() {
   return (
     <aside
-      className="not-prose my-[1.25em] rounded-xl bg-surface p-1 inset-ring-1 inset-ring-line"
+      className="not-prose my-[1.25em] rounded-xl bg-surface p-1 inset-ring-1 inset-ring-border/64"
       aria-labelledby="doc-sponsors-heading"
     >
       <h2
