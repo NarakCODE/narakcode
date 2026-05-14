@@ -17,9 +17,7 @@ import { Button } from "@/components/ui/button"
 import { Kbd } from "@/components/ui/kbd"
 import { Prose } from "@/components/ui/typography"
 import { SITE_INFO, X_HANDLE } from "@/config/site"
-import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts"
-import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions"
-import { PostShareMenu } from "@/features/blog/components/post-share-menu"
+import { DocKeyboardShortcuts } from "@/features/doc/components/doc-keyboard-shortcuts"
 import {
   DocContainer,
   DocContentCol,
@@ -27,7 +25,9 @@ import {
   DocLeftCol,
   DocRightCol,
 } from "@/features/doc/components/doc-layout"
+import { LLMCopyButtonWithViewOptions } from "@/features/doc/components/doc-page-actions"
 import { DocPageRoot } from "@/features/doc/components/doc-page-root"
+import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
 import {
   findNeighbour,
   getAllDocs,
@@ -133,7 +133,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
         }}
       />
 
-      <PostKeyboardShortcuts
+      <DocKeyboardShortcuts
         previous={previous ? `/blog/${previous.slug}` : null}
         next={next ? `/blog/${next.slug}` : null}
       />
@@ -161,7 +161,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
                 isComponent={doc.metadata.category === "components"}
               />
 
-              <PostShareMenu title={doc.metadata.title} url={getDocUrl(doc)} />
+              <DocShareMenu title={doc.metadata.title} url={getDocUrl(doc)} />
 
               {previous && (
                 <Tooltip>

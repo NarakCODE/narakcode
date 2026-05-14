@@ -13,8 +13,8 @@ import { Button } from "@/components/ui/button"
 import { Kbd } from "@/components/ui/kbd"
 import { registryCategories } from "@/config/registry"
 import { X_HANDLE } from "@/config/site"
-import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts"
-import { PostShareMenu } from "@/features/blog/components/post-share-menu"
+import { DocKeyboardShortcuts } from "@/features/doc/components/doc-keyboard-shortcuts"
+import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
 import { getAllBlockStaticParams } from "@/lib/blocks"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
@@ -91,7 +91,7 @@ export default async function BlockViewPage({
 
   return (
     <>
-      <PostKeyboardShortcuts
+      <DocKeyboardShortcuts
         previous={previous ? `/blocks/${previous}` : null}
         next={next ? `/blocks/${next}` : null}
       />
@@ -112,7 +112,7 @@ export default async function BlockViewPage({
         </Button>
 
         <div className="flex items-center gap-2">
-          <PostShareMenu title={name} url={`/blocks/${category}/${name}`} />
+          <DocShareMenu title={name} url={`/blocks/${category}/${name}`} />
 
           {previous && (
             <Tooltip>
