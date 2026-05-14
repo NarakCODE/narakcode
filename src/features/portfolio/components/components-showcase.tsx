@@ -87,7 +87,7 @@ export function ComponentsShowcase() {
           <TwemojiDemo />
         </GridItem>
 
-        <GridItem className="p-0 pb-4 md:col-span-2 md:row-span-2">
+        <GridItem className="p-0 py-4 md:col-span-2 md:row-span-2">
           <FluidGradientTextDemo />
         </GridItem>
 
