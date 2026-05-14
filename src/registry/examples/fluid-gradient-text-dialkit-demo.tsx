@@ -12,10 +12,21 @@ export default function FluidGradientTextDialKitDemo() {
   })
 
   return (
-    <FluidGradientText
-      text={params.text || "shadcn"}
-      svgViewBoxWidth={params.svgViewBoxWidth}
-      svgViewBoxHeight={params.svgViewBoxHeight}
-    />
+    <div className="relative w-full">
+      <div className="pointer-events-none absolute inset-x-0 top-0 text-center text-sm text-muted-foreground select-none">
+        <span className="hidden pointer-fine:inline-block">
+          Move your cursor within the text below
+        </span>
+        <span className="hidden pointer-coarse:inline-block">
+          Press anywhere within the text below
+        </span>
+      </div>
+
+      <FluidGradientText
+        text={params.text || "shadcn"}
+        svgViewBoxWidth={params.svgViewBoxWidth}
+        svgViewBoxHeight={params.svgViewBoxHeight}
+      />
+    </div>
   )
 }

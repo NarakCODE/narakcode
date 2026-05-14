@@ -2,7 +2,7 @@ import { FluidGradientText } from "@/registry/components/fluid-gradient-text"
 
 export default function FluidGradientTextDemo() {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full text-foreground">
       <div className="pointer-events-none absolute inset-x-0 top-0 text-center text-xs text-muted-foreground select-none">
         <span className="hidden pointer-fine:inline-block">
           Move your cursor within the text below
