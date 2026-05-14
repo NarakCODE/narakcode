@@ -24,7 +24,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
     <ContextMenu>
       <ContextMenuTrigger asChild>{children}</ContextMenuTrigger>
 
-      <ContextMenuContent className="w-fit dark:liquid-glass-border dark:ring-0">
+      <ContextMenuContent className="w-fit">
         <ContextMenuItem
           onClick={() => {
             copyText(getMarkSVG())

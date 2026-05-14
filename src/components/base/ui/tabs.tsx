@@ -20,8 +20,8 @@ function TabsList({ className, ...props }: TabsPrimitive.List.Props) {
       data-slot="tabs-list"
       className={cn(
         "relative z-0 flex h-8 w-fit items-center justify-center rounded-lg p-0.5",
-        "bg-zinc-100 text-muted-foreground dark:bg-zinc-900",
-        "inset-ring-1 inset-ring-line",
+        "bg-zinc-50 text-muted-foreground dark:bg-zinc-900",
+        "inset-ring-1 inset-ring-border/64",
         className
       )}
       {...props}

@@ -67,7 +67,7 @@ export function ComponentPreview({
   return (
     <div
       className={cn(
-        "my-[1.25em] rounded-xl bg-surface inset-ring-1 inset-ring-line",
+        "my-[1.25em] rounded-xl bg-surface inset-ring-1 inset-ring-border/64",
         prose === false && "not-prose",
         className
       )}

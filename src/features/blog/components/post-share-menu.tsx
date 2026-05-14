@@ -35,7 +35,7 @@ export function PostShareMenu({ title, url }: { title: string; url: string }) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="w-fit dark:liquid-glass-border dark:ring-0"
+        className="w-fit"
         align="start"
         alignOffset={-6}
         collisionPadding={16}

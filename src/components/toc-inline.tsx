@@ -30,7 +30,7 @@ export function TOCInline({
   return (
     <Collapsible
       className={cn(
-        "not-prose group/inline-toc rounded-xl bg-surface font-sans inset-ring-1 inset-ring-line",
+        "not-prose group/inline-toc rounded-xl bg-surface font-sans inset-ring-1 inset-ring-border/64",
         className
       )}
       onOpenChange={(open, eventDetails) => {
@@ -50,15 +50,11 @@ export function TOCInline({
       <CollapsibleContent>
         <ul className="flex flex-col px-4 pb-2">
           {items.map((item) => (
-            <li
-              key={item.url}
-              data-depth={item.depth}
-              className="flex py-1 data-[depth=3]:pl-4 data-[depth=4]:pl-8"
-            >
+            <li key={item.url} className="flex py-1">
               <a
                 href={item.url}
                 data-depth={item.depth}
-                className="text-sm text-muted-foreground transition-colors hover:text-accent-foreground"
+                className="text-sm text-muted-foreground transition-colors hover:text-accent-foreground data-[depth=3]:pl-4 data-[depth=4]:pl-8"
                 onClick={handleItemClick}
               >
                 {item.title}
