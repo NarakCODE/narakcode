@@ -7,6 +7,7 @@ import { registryConfig } from "@/config/registry"
 import type { PackageManager } from "@/hooks/use-package-manager"
 import { usePackageManager } from "@/hooks/use-package-manager"
 import { components } from "@/registry/components/_registry"
+import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
 import { TextFlip } from "@/registry/components/text-flip"
 
 import {
@@ -49,8 +50,12 @@ export function RegistryCommandAnimated() {
         }}
       >
         <div className="px-4 shadow-[inset_0_-1px_0_0] shadow-line">
-          <TabsList className="h-10 rounded-none bg-transparent p-0 inset-ring-0 dark:bg-transparent [&_svg]:me-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
-            {getIconForPackageManager(packageManager)}
+          <TabsList className="h-10 rounded-none bg-transparent p-0 inset-ring-0 dark:bg-transparent [&_svg]:size-4 [&_svg]:text-muted-foreground">
+            <IconSwap>
+              <IconSwapItem className="mr-2" key={packageManager}>
+                {getIconForPackageManager(packageManager)}
+              </IconSwapItem>
+            </IconSwap>
 
             {Object.entries(pmCommands).map(([key]) => {
               return (
