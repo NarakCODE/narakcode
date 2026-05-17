@@ -501,4 +501,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "icon-swap-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("icon-swap")],
+    files: [
+      {
+        path: "examples/icon-swap-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

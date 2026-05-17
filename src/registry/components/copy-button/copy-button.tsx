@@ -1,12 +1,13 @@
 "use client"
 
-import { AnimatePresence, motion } from "motion/react"
+import { motion } from "motion/react"
 import type { ComponentProps } from "react"
 
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
 import type { CopyState } from "@/hooks/use-copy-to-clipboard"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
 
 export type CopyStateIconProps = {
   state: CopyState
@@ -25,18 +26,8 @@ export function CopyStateIcon({
   errorIcon,
 }: CopyStateIconProps) {
   return (
-    <AnimatePresence mode="popLayout" initial={false}>
-      <motion.span
-        key={state}
-        initial={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
-        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-        exit={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
-        transition={{
-          type: "spring",
-          duration: 0.3,
-          bounce: 0,
-        }}
-      >
+    <IconSwap>
+      <IconSwapItem key={state} as={motion.span}>
         {state === "idle" &&
           (idleIcon ?? (
             <IconPlaceholder
@@ -72,8 +63,8 @@ export function CopyStateIcon({
               remixicon="RiCloseCircleLine"
             />
           ))}
-      </motion.span>
-    </AnimatePresence>
+      </IconSwapItem>
+    </IconSwap>
   )
 }
 

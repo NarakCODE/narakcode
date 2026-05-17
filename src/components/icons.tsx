@@ -1,3 +1,4 @@
+import { IconCircleSquare } from "@tabler/icons-react"
 import {
   BriefcaseBusinessIcon,
   CopyIcon,
@@ -860,6 +861,10 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
 
     case "brand-assets-menu": {
       return <SquareDashed {...props} />
+    }
+
+    case "icon-swap": {
+      return <IconCircleSquare {...props} />
     }
 
     default: {
