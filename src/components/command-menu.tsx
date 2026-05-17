@@ -2,7 +2,6 @@
 
 import { useRouter } from "@bprogress/next/app"
 import { useTiks } from "@rexa-developer/tiks/react"
-import { useCommandState } from "cmdk"
 import {
   Bookmark,
   Box,
@@ -38,6 +37,7 @@ import {
 import type { DocPreview } from "@/features/doc/types/document"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 import { useClickSound } from "@/hooks/soundcn/use-click-sound"
+import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { trackEvent } from "@/lib/events"
 import { copyToClipboardWithEvent } from "@/utils/copy"
 
@@ -46,12 +46,13 @@ import { getWordmarkSVG } from "./chanhdai-wordmark"
 import { ComponentIcon, Icons } from "./icons"
 import { Button } from "./ui/button"
 import { Kbd, KbdGroup } from "./ui/kbd"
-import { Separator } from "./ui/separator"
+
+type CommandKind = "command" | "page" | "link" | "component" | "block"
 
 type CommandLinkItem = {
   title: string
   href: string
-
+  kind: CommandKind
   icon?: React.ReactElement
   iconImage?: string
   shortcut?: string
@@ -59,40 +60,52 @@ type CommandLinkItem = {
   openInNewTab?: boolean
 }
 
+type BlockItem = {
+  name: string
+  description: string
+  categories: string[]
+}
+
 const MENU_LINKS: CommandLinkItem[] = [
   {
     title: "Home",
     href: "/",
+    kind: "page",
     icon: <ChanhDaiMark />,
     shortcut: "GH",
   },
   {
     title: "Components",
     href: "/components",
+    kind: "page",
     icon: <Icons.react />,
     shortcut: "GC",
   },
   {
     title: "Blocks",
     href: "/blocks",
+    kind: "page",
     icon: <Icons.gridView />,
     shortcut: "GB",
   },
   {
     title: "Blog",
     href: "/blog",
+    kind: "page",
     icon: <Icons.news />,
     shortcut: "GL",
   },
   {
     title: "Sponsors",
     href: "/sponsors",
+    kind: "page",
     icon: <Icons.favourite />,
     shortcut: "GS",
   },
   {
     title: "Testimonials",
     href: "/testimonials",
+    kind: "page",
     icon: <Quote strokeWidth={1.5} />,
     shortcut: "GT",
   },
@@ -102,72 +115,77 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
   {
     title: "About",
     href: "/#about",
+    kind: "page",
     icon: <TextInitial />,
   },
   {
     title: "Stack",
     href: "/#stack",
+    kind: "page",
     icon: <Layers />,
   },
   {
     title: "Experience",
     href: "/#experience",
+    kind: "page",
     icon: <BriefcaseBusiness />,
   },
   {
     title: "Projects",
     href: "/#projects",
+    kind: "page",
     icon: <Box />,
   },
   {
     title: "Awards",
     href: "/#awards",
+    kind: "page",
     icon: <Crown />,
   },
   {
     title: "Certifications",
     href: "/#certs",
+    kind: "page",
     icon: <CircleCheckBig />,
   },
   {
     title: "Bookmarks",
     href: "/#bookmarks",
+    kind: "page",
     icon: <Bookmark />,
-  },
-  {
-    title: "Download vCard",
-    href: "/vcard",
-    icon: <Download />,
   },
 ]
 
 const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
   title: item.title,
   href: item.href,
+  kind: "link",
   iconImage: item.icon,
   openInNewTab: true,
 }))
 
 const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   {
+    title: "Download vCard",
+    href: "/vcard",
+    kind: "command",
+    icon: <Download />,
+  },
+  {
     title: "llms.txt",
     href: "/llms.txt",
+    kind: "link",
     icon: <FileText />,
     openInNewTab: true,
   },
   {
     title: "RSS Feed",
     href: "/rss",
+    kind: "link",
     icon: <RssIcon />,
     openInNewTab: true,
   },
 ]
-
-type BlockItem = {
-  name: string
-  description: string
-  categories: string[]
-}
 
 export function CommandMenu({
   docs,
@@ -183,6 +201,9 @@ export function CommandMenu({
   const { setTheme } = useTheme()
 
   const [open, setOpen] = useState(false)
+
+  const [selectedCommandKind, setSelectedCommandKind] =
+    useState<CommandKind | null>(null)
 
   const [click] = useClickSound()
 
@@ -265,32 +286,97 @@ export function CommandMenu({
     [click, setTheme]
   )
 
-  const { componentLinks, blogLinks } = useMemo(
-    () => ({
-      componentLinks: docs
+  const components = useMemo(
+    () =>
+      docs
         .filter((doc) => doc.category === "components")
         .sort((a, b) =>
           a.title.localeCompare(b.title, "en", {
             sensitivity: "base",
           })
-        )
-        .map(docToCommandLinkItem),
-      blogLinks: docs
-        .filter((doc) => doc.category !== "components")
-        .map(docToCommandLinkItem),
-    }),
+        ),
     [docs]
   )
 
-  const blockLinks = useMemo(
+  const componentsGroup = useMemo(() => {
+    if (!components || components.length === 0) {
+      return null
+    }
+
+    return (
+      <CommandGroup heading="Components">
+        {components.map((component) => {
+          return (
+            <CommandMenuItem
+              key={component.slug}
+              keywords={["component"]}
+              onHighlight={() => {
+                setSelectedCommandKind("component")
+              }}
+              onSelect={() => {
+                handleOpenLink(`/components/${component.slug}`)
+              }}
+            >
+              <ComponentIcon variant={component.slug} />
+              <p className="line-clamp-1">{component.title}</p>
+            </CommandMenuItem>
+          )
+        })}
+      </CommandGroup>
+    )
+  }, [components, handleOpenLink])
+
+  const blocksGroup = useMemo(() => {
+    if (!blocks || blocks.length === 0) {
+      return null
+    }
+
+    return (
+      <CommandGroup heading="Blocks">
+        {blocks.map((block) => {
+          return (
+            <CommandMenuItem
+              key={block.name}
+              keywords={["block"]}
+              onHighlight={() => {
+                setSelectedCommandKind("block")
+              }}
+              onSelect={() => {
+                handleOpenLink(`/blocks/${block.categories[0]}/${block.name}`)
+              }}
+            >
+              <Icons.gridView />
+              <p className="line-clamp-1">{block.description}</p>
+              <span className="ml-auto font-mono text-xs font-normal text-muted-foreground tabular-nums max-sm:hidden">
+                {block.name}
+              </span>
+            </CommandMenuItem>
+          )
+        })}
+      </CommandGroup>
+    )
+  }, [blocks, handleOpenLink])
+
+  const blogLinks = useMemo(
     () =>
-      blocks.map((block) => ({
-        title: block.name,
-        href: `/blocks/${block.categories[0]}/${block.name}`,
-        keywords: ["block"],
-      })),
-    [blocks]
+      docs
+        .filter((doc) => doc.category !== "components")
+        .map<CommandLinkItem>((doc) => ({
+          title: doc.title,
+          href: `/blog/${doc.slug}`,
+          kind: "page",
+          keywords: ["blog"],
+        })),
+    [docs]
   )
+
+  const handleLinkHighlight = useCallback((link: CommandLinkItem) => {
+    setSelectedCommandKind(link.kind)
+  }, [])
+
+  const handleCommandHighlight = useCallback(() => {
+    setSelectedCommandKind("command")
+  }, [])
 
   return (
     <>
@@ -316,69 +402,68 @@ export function CommandMenu({
             <CommandLinkGroup
               heading="Menu"
               links={MENU_LINKS}
+              onLinkHighlight={handleLinkHighlight}
               onLinkSelect={handleOpenLink}
             />
 
             <CommandLinkGroup
               heading="Portfolio"
               links={PORTFOLIO_LINKS}
+              onLinkHighlight={handleLinkHighlight}
               onLinkSelect={handleOpenLink}
             />
 
-            <CommandLinkGroup
-              heading="Components"
-              links={componentLinks}
-              fallbackIcon={<Icons.react />}
-              onLinkSelect={handleOpenLink}
-            />
+            {componentsGroup}
 
-            <CommandLinkGroup
-              heading="Blocks"
-              links={blockLinks}
-              fallbackIcon={<Icons.gridView />}
-              onLinkSelect={handleOpenLink}
-            />
+            {blocksGroup}
 
             <CommandLinkGroup
               heading="Blog"
               links={blogLinks}
               fallbackIcon={<Icons.news />}
+              onLinkHighlight={handleLinkHighlight}
               onLinkSelect={handleOpenLink}
             />
 
             <CommandLinkGroup
               heading="Social Links"
               links={SOCIAL_LINK_ITEMS}
+              onLinkHighlight={handleLinkHighlight}
               onLinkSelect={handleOpenLink}
             />
 
             <CommandGroup heading="Brand Assets">
-              <CommandItem
+              <CommandMenuItem
+                onHighlight={handleCommandHighlight}
                 onSelect={() => {
                   handleCopyText(getMarkSVG(), "Mark as SVG copied")
                 }}
               >
                 <ChanhDaiMark />
                 Copy Mark as SVG
-              </CommandItem>
+              </CommandMenuItem>
 
-              <CommandItem
+              <CommandMenuItem
+                onHighlight={handleCommandHighlight}
                 onSelect={() => {
                   handleCopyText(getWordmarkSVG(), "Logotype as SVG copied")
                 }}
               >
                 <Type />
                 Copy Logotype as SVG
-              </CommandItem>
+              </CommandMenuItem>
 
-              <CommandItem
+              <CommandMenuItem
+                onHighlight={() => {
+                  setSelectedCommandKind("link")
+                }}
                 onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
               >
                 <SquareDashed />
                 Brand Guidelines
-              </CommandItem>
+              </CommandMenuItem>
 
-              <CommandItem asChild>
+              <CommandMenuItem onHighlight={handleCommandHighlight} asChild>
                 <a
                   href="https://assets.chanhdai.com/chanhdai-brand.zip"
                   download
@@ -386,42 +471,46 @@ export function CommandMenu({
                   <Download />
                   Download Brand Assets
                 </a>
-              </CommandItem>
+              </CommandMenuItem>
             </CommandGroup>
 
             <CommandGroup heading="Theme">
-              <CommandItem
+              <CommandMenuItem
                 keywords={["theme"]}
+                onHighlight={handleCommandHighlight}
                 onSelect={createThemeHandler("light")}
               >
                 <SunMedium />
                 Light
-              </CommandItem>
-              <CommandItem
+              </CommandMenuItem>
+              <CommandMenuItem
                 keywords={["theme"]}
+                onHighlight={handleCommandHighlight}
                 onSelect={createThemeHandler("dark")}
               >
                 <MoonStar />
                 Dark
-              </CommandItem>
-              <CommandItem
+              </CommandMenuItem>
+              <CommandMenuItem
                 keywords={["theme"]}
+                onHighlight={handleCommandHighlight}
                 onSelect={createThemeHandler("system")}
               >
                 <Icons.contrast />
                 Auto
-              </CommandItem>
+              </CommandMenuItem>
             </CommandGroup>
 
             <CommandLinkGroup
               heading="Other"
               links={OTHER_LINK_ITEMS}
+              onLinkHighlight={handleLinkHighlight}
               onLinkSelect={handleOpenLink}
             />
           </CommandList>
         </div>
 
-        <CommandMenuFooter />
+        <CommandMenuFooter selectedCommandKind={selectedCommandKind} />
       </CommandDialog>
     </>
   )
@@ -481,15 +570,47 @@ function CommandMenuInput() {
   )
 }
 
+function CommandMenuItem({
+  children,
+  onHighlight,
+  ...props
+}: React.ComponentProps<typeof CommandItem> & {
+  onHighlight?: () => void
+  "data-selected"?: string
+  "aria-selected"?: string
+}) {
+  const ref = React.useRef<HTMLDivElement>(null)
+
+  useMutationObserver(ref, (mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "aria-selected" &&
+        ref.current?.getAttribute("aria-selected") === "true"
+      ) {
+        onHighlight?.()
+      }
+    })
+  })
+
+  return (
+    <CommandItem ref={ref} {...props}>
+      {children}
+    </CommandItem>
+  )
+}
+
 function CommandLinkGroup({
   heading,
   links,
   fallbackIcon,
+  onLinkHighlight,
   onLinkSelect,
 }: {
   heading: string
   links: CommandLinkItem[]
   fallbackIcon?: React.ReactElement
+  onLinkHighlight: (link: CommandLinkItem) => void
   onLinkSelect: (href: string, openInNewTab?: boolean) => void
 }) {
   return (
@@ -498,9 +619,10 @@ function CommandLinkGroup({
         const icon = link?.icon ?? fallbackIcon ?? <React.Fragment />
 
         return (
-          <CommandItem
+          <CommandMenuItem
             key={link.href}
             keywords={link.keywords}
+            onHighlight={() => onLinkHighlight(link)}
             onSelect={() => onLinkSelect(link.href, link.openInNewTab)}
           >
             {link?.iconImage ? (
@@ -520,63 +642,26 @@ function CommandLinkGroup({
                 {link.shortcut}
               </CommandShortcut>
             )}
-          </CommandItem>
+          </CommandMenuItem>
         )
       })}
     </CommandGroup>
   )
 }
 
-type CommandKind = "command" | "page" | "link"
-
-type CommandMetaMap = Map<
-  string,
-  {
-    commandKind: CommandKind
-  }
->
-
-function buildCommandMetaMap() {
-  const commandMetaMap: CommandMetaMap = new Map()
-
-  commandMetaMap.set("Download vCard", { commandKind: "command" })
-
-  commandMetaMap.set("Light", { commandKind: "command" })
-  commandMetaMap.set("Dark", { commandKind: "command" })
-  commandMetaMap.set("Auto", { commandKind: "command" })
-
-  commandMetaMap.set("Copy Mark as SVG", {
-    commandKind: "command",
-  })
-  commandMetaMap.set("Copy Logotype as SVG", {
-    commandKind: "command",
-  })
-  commandMetaMap.set("Download Brand Assets", {
-    commandKind: "command",
-  })
-
-  SOCIAL_LINK_ITEMS.forEach((item) => {
-    commandMetaMap.set(item.title, {
-      commandKind: "link",
-    })
-  })
-
-  return commandMetaMap
-}
-
-const COMMAND_META_MAP = buildCommandMetaMap()
-
 const ENTER_ACTION_LABELS: Record<CommandKind, string> = {
   command: "Run Command",
   page: "Go to Page",
   link: "Open Link",
+  component: "Go to Component",
+  block: "Go to Block",
 }
 
-function CommandMenuFooter() {
-  const selectedCommandKind = useCommandState(
-    (state) => COMMAND_META_MAP.get(state.value)?.commandKind ?? "page"
-  )
-
+function CommandMenuFooter({
+  selectedCommandKind,
+}: {
+  selectedCommandKind: CommandKind | null
+}) {
   return (
     <>
       <div className="flex h-10" />
@@ -584,30 +669,13 @@ function CommandMenuFooter() {
       <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 rounded-b-2xl px-4 text-xs font-medium">
         <ChanhDaiMark className="size-6 text-muted-foreground" />
 
-        <div className="flex shrink-0 items-center gap-2 max-sm:hidden">
-          <span>{ENTER_ACTION_LABELS[selectedCommandKind]}</span>
+        <div className="flex items-center gap-2 max-sm:hidden">
+          <span>{ENTER_ACTION_LABELS[selectedCommandKind ?? "page"]}</span>
           <Kbd>
             <CornerDownLeft />
           </Kbd>
-          <Separator
-            orientation="vertical"
-            className="data-vertical:h-4 data-vertical:self-center"
-          />
-          <span className="text-muted-foreground">Exit</span>
-          <Kbd>Esc</Kbd>
         </div>
       </div>
     </>
   )
-}
-
-function docToCommandLinkItem(doc: DocPreview): CommandLinkItem {
-  const isComponent = doc.category === "components"
-
-  return {
-    title: doc.title,
-    href: isComponent ? `/components/${doc.slug}` : `/blog/${doc.slug}`,
-    keywords: isComponent ? ["component"] : undefined,
-    icon: isComponent ? <ComponentIcon variant={doc.slug} /> : undefined,
-  }
 }
