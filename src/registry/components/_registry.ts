@@ -370,7 +370,7 @@ export const components: Registry["items"] = [
     description:
       "Copy text to clipboard with visual, haptic, and audio feedback.",
     dependencies: ["motion", "@rexa-developer/tiks", "web-haptics"],
-    registryDependencies: ["button"],
+    registryDependencies: ["button", getRegistryItemUrl("icon-swap")],
     files: [
       {
         path: "components/copy-button/copy-button.tsx",
@@ -606,5 +606,20 @@ export const components: Registry["items"] = [
         target: "@components/brand-assets-menu.tsx",
       },
     ],
+  },
+  {
+    name: "icon-swap",
+    type: "registry:component",
+    title: "Icon Swap",
+    description: "Animate icon swaps with scale, blur, and fade transitions.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "components/icon-swap/icon-swap.tsx",
+        type: "registry:component",
+        target: "@components/icon-swap.tsx",
+      },
+    ],
+    docs: "https://chanhdai.com/components/icon-swap",
   },
 ]

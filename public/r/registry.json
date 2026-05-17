@@ -471,7 +471,8 @@
         "web-haptics"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "https://chanhdai.com/r/icon-swap.json"
       ],
       "files": [
         {
@@ -738,6 +739,24 @@
           "target": "@components/brand-assets-menu.tsx"
         }
       ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
+      "name": "icon-swap",
+      "title": "Icon Swap",
+      "description": "Animate icon swaps with scale, blur, and fade transitions.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/icon-swap/icon-swap.tsx",
+          "type": "registry:component",
+          "target": "@components/icon-swap.tsx"
+        }
+      ],
+      "docs": "https://chanhdai.com/components/icon-swap",
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },

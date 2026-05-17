@@ -562,6 +562,23 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "icon-swap": {
+    name: "icon-swap",
+    description: "Animate icon swaps with scale, blur, and fade transitions.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/icon-swap/icon-swap.tsx",
+      type: "registry:component",
+      target: "@components/icon-swap.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/icon-swap/icon-swap.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "login-01": {
     name: "login-01",
     description: "A simple login form.",
@@ -1447,6 +1464,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/examples/brand-assets-menu-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "icon-swap-demo": {
+    name: "icon-swap-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/icon-swap-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/icon-swap-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
