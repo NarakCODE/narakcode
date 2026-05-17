@@ -5,7 +5,7 @@ import { useHotkeys } from "react-hotkeys-hook"
 
 import { trackEvent } from "@/lib/events"
 
-export function PostKeyboardShortcuts({
+export function DocKeyboardShortcuts({
   previous,
   next,
 }: {
