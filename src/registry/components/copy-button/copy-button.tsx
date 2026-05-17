@@ -1,6 +1,5 @@
 "use client"
 
-import type { HTMLMotionProps, Variants } from "motion/react"
 import { AnimatePresence, motion } from "motion/react"
 import type { ComponentProps } from "react"
 
@@ -8,20 +7,6 @@ import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
 import type { CopyState } from "@/hooks/use-copy-to-clipboard"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
-
-export const motionIconVariants: Variants = {
-  initial: { opacity: 0, scale: 0.8, filter: "blur(2px)" },
-  animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
-  exit: { opacity: 0, scale: 0.8 },
-}
-
-export const motionIconProps: HTMLMotionProps<"span"> = {
-  variants: motionIconVariants,
-  initial: "initial",
-  animate: "animate",
-  exit: "exit",
-  transition: { duration: 0.15, ease: "easeOut" },
-}
 
 export type CopyStateIconProps = {
   state: CopyState
@@ -41,9 +26,19 @@ export function CopyStateIcon({
 }: CopyStateIconProps) {
   return (
     <AnimatePresence mode="popLayout" initial={false}>
-      {state === "idle" ? (
-        <motion.span key="idle" {...motionIconProps}>
-          {idleIcon ?? (
+      <motion.span
+        key={state}
+        initial={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
+        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        exit={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
+        transition={{
+          type: "spring",
+          duration: 0.3,
+          bounce: 0,
+        }}
+      >
+        {state === "idle" &&
+          (idleIcon ?? (
             <IconPlaceholder
               data-slot="idle-icon"
               lucide="Copy"
@@ -52,11 +47,10 @@ export function CopyStateIcon({
               phosphor="CopyIcon"
               remixicon="RiFileCopyLine"
             />
-          )}
-        </motion.span>
-      ) : state === "done" ? (
-        <motion.span key="done" {...motionIconProps}>
-          {doneIcon ?? (
+          ))}
+
+        {state === "done" &&
+          (doneIcon ?? (
             <IconPlaceholder
               data-slot="done-icon"
               lucide="Check"
@@ -65,11 +59,10 @@ export function CopyStateIcon({
               phosphor="CheckIcon"
               remixicon="RiCheckLine"
             />
-          )}
-        </motion.span>
-      ) : state === "error" ? (
-        <motion.span key="error" {...motionIconProps}>
-          {errorIcon ?? (
+          ))}
+
+        {state === "error" &&
+          (errorIcon ?? (
             <IconPlaceholder
               data-slot="error-icon"
               lucide="CircleX"
@@ -78,9 +71,8 @@ export function CopyStateIcon({
               phosphor="XCircleIcon"
               remixicon="RiCloseCircleLine"
             />
-          )}
-        </motion.span>
-      ) : null}
+          ))}
+      </motion.span>
     </AnimatePresence>
   )
 }
