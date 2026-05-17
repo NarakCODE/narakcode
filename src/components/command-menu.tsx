@@ -309,112 +309,117 @@ export function CommandMenu({
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandMenuInput />
 
-        <CommandList className="min-h-80 supports-timeline-scroll:scroll-fade-effect-y">
-          <CommandEmpty>No results found.</CommandEmpty>
+        <div className="rounded-xl bg-background ring-1 ring-border">
+          <CommandList className="min-h-80 supports-timeline-scroll:scroll-fade-effect-y">
+            <CommandEmpty>No results found.</CommandEmpty>
 
-          <CommandLinkGroup
-            heading="Menu"
-            links={MENU_LINKS}
-            onLinkSelect={handleOpenLink}
-          />
+            <CommandLinkGroup
+              heading="Menu"
+              links={MENU_LINKS}
+              onLinkSelect={handleOpenLink}
+            />
 
-          <CommandLinkGroup
-            heading="Portfolio"
-            links={PORTFOLIO_LINKS}
-            onLinkSelect={handleOpenLink}
-          />
+            <CommandLinkGroup
+              heading="Portfolio"
+              links={PORTFOLIO_LINKS}
+              onLinkSelect={handleOpenLink}
+            />
 
-          <CommandLinkGroup
-            heading="Components"
-            links={componentLinks}
-            fallbackIcon={<Icons.react />}
-            onLinkSelect={handleOpenLink}
-          />
+            <CommandLinkGroup
+              heading="Components"
+              links={componentLinks}
+              fallbackIcon={<Icons.react />}
+              onLinkSelect={handleOpenLink}
+            />
 
-          <CommandLinkGroup
-            heading="Blocks"
-            links={blockLinks}
-            fallbackIcon={<Icons.gridView />}
-            onLinkSelect={handleOpenLink}
-          />
+            <CommandLinkGroup
+              heading="Blocks"
+              links={blockLinks}
+              fallbackIcon={<Icons.gridView />}
+              onLinkSelect={handleOpenLink}
+            />
 
-          <CommandLinkGroup
-            heading="Blog"
-            links={blogLinks}
-            fallbackIcon={<Icons.news />}
-            onLinkSelect={handleOpenLink}
-          />
+            <CommandLinkGroup
+              heading="Blog"
+              links={blogLinks}
+              fallbackIcon={<Icons.news />}
+              onLinkSelect={handleOpenLink}
+            />
 
-          <CommandLinkGroup
-            heading="Social Links"
-            links={SOCIAL_LINK_ITEMS}
-            onLinkSelect={handleOpenLink}
-          />
+            <CommandLinkGroup
+              heading="Social Links"
+              links={SOCIAL_LINK_ITEMS}
+              onLinkSelect={handleOpenLink}
+            />
 
-          <CommandGroup heading="Brand Assets">
-            <CommandItem
-              onSelect={() => {
-                handleCopyText(getMarkSVG(), "Mark as SVG copied")
-              }}
-            >
-              <ChanhDaiMark />
-              Copy Mark as SVG
-            </CommandItem>
+            <CommandGroup heading="Brand Assets">
+              <CommandItem
+                onSelect={() => {
+                  handleCopyText(getMarkSVG(), "Mark as SVG copied")
+                }}
+              >
+                <ChanhDaiMark />
+                Copy Mark as SVG
+              </CommandItem>
 
-            <CommandItem
-              onSelect={() => {
-                handleCopyText(getWordmarkSVG(), "Logotype as SVG copied")
-              }}
-            >
-              <Type />
-              Copy Logotype as SVG
-            </CommandItem>
+              <CommandItem
+                onSelect={() => {
+                  handleCopyText(getWordmarkSVG(), "Logotype as SVG copied")
+                }}
+              >
+                <Type />
+                Copy Logotype as SVG
+              </CommandItem>
 
-            <CommandItem
-              onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
-            >
-              <SquareDashed />
-              Brand Guidelines
-            </CommandItem>
+              <CommandItem
+                onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
+              >
+                <SquareDashed />
+                Brand Guidelines
+              </CommandItem>
 
-            <CommandItem asChild>
-              <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download>
-                <Download />
-                Download Brand Assets
-              </a>
-            </CommandItem>
-          </CommandGroup>
+              <CommandItem asChild>
+                <a
+                  href="https://assets.chanhdai.com/chanhdai-brand.zip"
+                  download
+                >
+                  <Download />
+                  Download Brand Assets
+                </a>
+              </CommandItem>
+            </CommandGroup>
 
-          <CommandGroup heading="Theme">
-            <CommandItem
-              keywords={["theme"]}
-              onSelect={createThemeHandler("light")}
-            >
-              <SunMedium />
-              Light
-            </CommandItem>
-            <CommandItem
-              keywords={["theme"]}
-              onSelect={createThemeHandler("dark")}
-            >
-              <MoonStar />
-              Dark
-            </CommandItem>
-            <CommandItem
-              keywords={["theme"]}
-              onSelect={createThemeHandler("system")}
-            >
-              <Icons.contrast />
-              Auto
-            </CommandItem>
-          </CommandGroup>
+            <CommandGroup heading="Theme">
+              <CommandItem
+                keywords={["theme"]}
+                onSelect={createThemeHandler("light")}
+              >
+                <SunMedium />
+                Light
+              </CommandItem>
+              <CommandItem
+                keywords={["theme"]}
+                onSelect={createThemeHandler("dark")}
+              >
+                <MoonStar />
+                Dark
+              </CommandItem>
+              <CommandItem
+                keywords={["theme"]}
+                onSelect={createThemeHandler("system")}
+              >
+                <Icons.contrast />
+                Auto
+              </CommandItem>
+            </CommandGroup>
 
-          <CommandLinkGroup
-            heading="Other"
-            links={OTHER_LINK_ITEMS}
-            onLinkSelect={handleOpenLink}
-          />
-        </CommandList>
+            <CommandLinkGroup
+              heading="Other"
+              links={OTHER_LINK_ITEMS}
+              onLinkSelect={handleOpenLink}
+            />
+          </CommandList>
+        </div>
 
         <CommandMenuFooter />
       </CommandDialog>
@@ -576,7 +581,7 @@ function CommandMenuFooter() {
     <>
       <div className="flex h-10" />
 
-      <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 rounded-b-2xl border-t px-4 text-xs font-medium">
+      <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 rounded-b-2xl px-4 text-xs font-medium">
         <ChanhDaiMark className="size-6 text-muted-foreground" />
 
         <div className="flex shrink-0 items-center gap-2 max-sm:hidden">
