@@ -620,6 +620,24 @@ export const Icons = {
       />
     </svg>
   ),
+
+  // Designed by @ncdai
+  trustedRegistry: (props: React.SVGProps<SVGSVGElement>) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M6 18.5145C4.76261 17.1236 4 15.3344 4 13.0004V6.00045C4 5.73523 4.10536 5.48088 4.29289 5.29334C4.48043 5.10581 4.73478 5.00045 5 5.00045C7 5.00045 9.5 3.80045 11.24 2.28045C11.4519 2.09945 11.7214 2 12 2C12.2786 2 12.5481 2.09945 12.76 2.28045C14.51 3.81045 17 5.00045 19 5.00045C19.2652 5.00045 19.5196 5.10581 19.7071 5.29334C19.8946 5.48088 20 5.73523 20 6.00045V9" />
+      <path d="M19 17L14 22" />
+      <path d="M18 12L9 21" />
+    </svg>
+  ),
 }
 
 export function getIconForLanguageExtension(language: string) {
