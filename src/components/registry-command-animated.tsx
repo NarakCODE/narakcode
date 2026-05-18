@@ -115,7 +115,8 @@ export function RegistryCommandAnimated() {
       </Tabs>
 
       <CopyButton
-        className="absolute top-1.5 right-1.5 z-10 size-7 border-none"
+        className="absolute top-1.5 right-1.5 z-10 size-7 border-none text-muted-foreground"
+        variant="ghost"
         size="icon-sm"
         text={() => {
           const baseCommand = pmCommands[packageManager] || pmCommands["pnpm"]

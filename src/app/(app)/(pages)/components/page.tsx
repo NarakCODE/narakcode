@@ -1,25 +1,14 @@
-import { Grip, LayoutDashboard, PlusIcon } from "lucide-react"
+import { Grip, LayoutDashboard } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
 
 import { Button } from "@/components/base/ui/button"
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/base/ui/dialog"
-import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
-import { ComponentIcon } from "@/components/icons"
-import { MDX } from "@/components/mdx"
+import { ComponentIcon, Icons } from "@/components/icons"
 import {
   PageHeading,
   PageHeadingTagline,
@@ -68,15 +57,23 @@ export const metadata: Metadata = {
   },
 }
 
-const addRegistryCode = `\`\`\`bash
-npx shadcn@latest registry add ${registryConfig.namespace}
-\`\`\``
+// const addRegistryCode = `\`\`\`bash
+// npx shadcn@latest registry add ${registryConfig.namespace}
+// \`\`\``
 
 export default function Page() {
   const posts = getDocsByCategory("components")
 
+  const trustedRegistryUrl = addQueryParams(
+    "https://ui.shadcn.com/docs/directory",
+    {
+      q: registryConfig.namespace,
+      ...UTM_PARAMS,
+    }
+  )
+
   return (
-    <div className="min-h-svh">
+    <div>
       <PageHeading>
         <PageHeadingTagline>Components</PageHeadingTagline>
         <PageHeadingTitle>Pixel-perfect, uniquely crafted.</PageHeadingTitle>
@@ -86,57 +83,19 @@ export default function Page() {
 
       <div className="screen-line-top screen-line-bottom">
         <RegistryCommandAnimated />
-
-        <Dialog>
-          <DialogTrigger
-            render={
-              <Button
-                className="absolute top-1.5 right-10 h-7 gap-1.5 border-none pr-2.5 pl-2"
-                variant="secondary"
-                size="sm"
-              >
-                <PlusIcon />
-                Add
-              </Button>
-            }
-          />
-
-          <DialogContent className="sm:max-w-lg">
-            <DialogHeader>
-              <DialogTitle>Add Registry</DialogTitle>
-              <DialogDescription className="text-balance">
-                Run this command to add{" "}
-                <a
-                  className="text-foreground link-underline"
-                  href={addQueryParams("https://ui.shadcn.com/docs/directory", {
-                    q: registryConfig.namespace,
-                    ...UTM_PARAMS,
-                  })}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {registryConfig.namespace}
-                </a>{" "}
-                to your project.
-              </DialogDescription>
-            </DialogHeader>
-
-            <div className="overflow-auto *:data-rehype-pretty-code-figure:my-0">
-              <MDX code={addRegistryCode} />
-            </div>
-
-            <DialogFooter>
-              <DialogClose render={<Button>Done</Button>} />
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
       </div>
 
       <Separator />
 
       <div className="screen-line-bottom h-px" />
 
-      <div className="flex items-center justify-end gap-1.5 p-1.5">
+      <div className="flex items-center gap-1.5 p-1.5 pl-4">
+        <div className="flex flex-1">
+          <span className="text-sm font-medium text-muted-foreground">
+            {posts.length} components
+          </span>
+        </div>
+
         <Tooltip>
           <TooltipTrigger
             render={
@@ -174,6 +133,47 @@ export default function Page() {
             <p>Showcase</p>
           </TooltipContent>
         </Tooltip>
+
+        {/* <Dialog>
+          <DialogTrigger
+            render={
+              <Button
+                className="h-7 gap-1.5 border-none pr-2.5 pl-2"
+                variant="secondary"
+                size="sm"
+              >
+                <PlusIcon />
+                Add
+              </Button>
+            }
+          />
+
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle>Add Registry</DialogTitle>
+              <DialogDescription className="text-balance">
+                Run this command to add{" "}
+                <a
+                  className="text-foreground link-underline"
+                  href={trustedRegistryUrl}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {registryConfig.namespace}
+                </a>{" "}
+                to your project.
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="overflow-auto *:data-rehype-pretty-code-figure:my-0">
+              <MDX code={addRegistryCode} />
+            </div>
+
+            <DialogFooter>
+              <DialogClose render={<Button>Done</Button>} />
+            </DialogFooter>
+          </DialogContent>
+        </Dialog> */}
       </div>
 
       <div className="screen-line-bottom h-px" />
@@ -210,7 +210,27 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="h-2" />
+      <div
+        className={cn(
+          "relative before:absolute before:left-[-100vw] before:-z-1 before:h-full before:w-[200vw]",
+          "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-line)]/56"
+        )}
+      >
+        <div className="flex justify-center p-4">
+          <a
+            className="flex h-7 items-center gap-1 rounded-full bg-primary pr-2.5 pl-2 text-sm font-medium whitespace-nowrap text-primary-foreground select-none [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
+            href={trustedRegistryUrl}
+            target="_blank"
+            rel="noopener"
+          >
+            <Icons.trustedRegistry />
+            Trusted Registry
+          </a>
+        </div>
+      </div>
+
+      <div className="screen-line-bottom h-px" />
+      <div className="h-4" />
     </div>
   )
 }
