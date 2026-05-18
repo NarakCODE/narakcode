@@ -7,10 +7,8 @@ import {
 
 export default function CodeBlockCommandConvertDemo() {
   return (
-    <div className="w-full max-w-md">
-      <CodeBlockCommand
-        {...convertNpmCommand("npx shadcn add @ncdai/code-block-command")}
-      />
+    <div className="w-full max-w-sm">
+      <CodeBlockCommand {...convertNpmCommand("npx shadcn add button")} />
     </div>
   )
 }

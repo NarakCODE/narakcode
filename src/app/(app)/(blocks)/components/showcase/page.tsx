@@ -15,8 +15,8 @@ import {
 } from "@/components/page-heading"
 import { RemountOnThemeChange } from "@/components/remount-on-theme-change"
 import { X_HANDLE } from "@/config/site"
-import { cn } from "@/lib/utils"
 import AppleHelloEffectAllDemo from "@/registry/examples/apple-hello-effect-languages-demo"
+import BrandAssetsMenuDemo from "@/registry/examples/brand-assets-menu-demo"
 import CodeBlockCommandDemo from "@/registry/examples/code-block-command-demo"
 import CopyButtonDemo from "@/registry/examples/copy-button-demo"
 import ElasticSliderDemo from "@/registry/examples/elastic-slider-demo"
@@ -25,6 +25,7 @@ import GitHubContributionsDemo1 from "@/registry/examples/github-contributions-d
 import GitHubStarsDemo from "@/registry/examples/github-stars-demo"
 import GlowCardGridDemo01 from "@/registry/examples/glow-card-grid-demo-01"
 import HapticDemo from "@/registry/examples/haptic-demo"
+import IconSwapDemo from "@/registry/examples/icon-swap-demo"
 import MiddleTruncationDemo from "@/registry/examples/middle-truncation-demo"
 import ScrollFadeEffectDemo from "@/registry/examples/scroll-fade-effect-demo-01"
 import ShimmeringTextDemo2 from "@/registry/examples/shimmering-text-demo-02"
@@ -38,6 +39,8 @@ import TOCMinimapDemo from "@/registry/examples/toc-minimap-demo"
 import TwemojiDemo from "@/registry/examples/twemoji-demo"
 import WheelPickerDemo from "@/registry/examples/wheel-picker-demo"
 import WorkExperienceDemo from "@/registry/examples/work-experience-demo"
+
+import { GridItem } from "./grid-item"
 
 const title = "Component Showcase"
 const description = "Pixel-perfect, uniquely crafted."
@@ -168,6 +171,18 @@ export default function ComponentsShowcasePage() {
         </GridItem>
 
         <GridItem>
+          <BrandAssetsMenuDemo />
+        </GridItem>
+
+        <GridItem className="[--code:var(--surface)]">
+          <CodeBlockCommandDemo />
+        </GridItem>
+
+        <GridItem>
+          <IconSwapDemo />
+        </GridItem>
+
+        <GridItem>
           <TwemojiDemo />
         </GridItem>
 
@@ -195,16 +210,12 @@ export default function ComponentsShowcasePage() {
           <ScrollFadeEffectDemo />
         </GridItem>
 
-        <GridItem className="[--code:var(--surface)] md:col-span-2">
-          <CodeBlockCommandDemo />
-        </GridItem>
-
-        <GridItem className="px-0 md:col-span-1">
-          <TOCMinimapDemo />
-        </GridItem>
-
-        <GridItem className="px-0 md:col-span-2">
+        <GridItem className="px-0 md:col-span-2 md:row-span-2">
           <WorkExperienceDemo />
+        </GridItem>
+
+        <GridItem className="px-0">
+          <TOCMinimapDemo />
         </GridItem>
 
         <GridItem>
@@ -212,23 +223,5 @@ export default function ComponentsShowcasePage() {
         </GridItem>
       </div>
     </>
-  )
-}
-
-function GridItem({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "flex items-center justify-center rounded-lg border border-line bg-background p-4 transition-[border-color] hover:border-border",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </div>
   )
 }

@@ -1,15 +1,18 @@
 import { ArrowRightIcon } from "lucide-react"
 import Link from "next/link"
 
+import { GridItem } from "@/app/(app)/(blocks)/components/showcase/grid-item"
 import { Button } from "@/components/base/ui/button"
 import { RemountOnThemeChange } from "@/components/remount-on-theme-change"
 import { getDocsByCategory } from "@/features/doc/data/documents"
-import { cn } from "@/lib/utils"
 import AppleHelloEffectAllDemo from "@/registry/examples/apple-hello-effect-languages-demo"
+import BrandAssetsMenuDemo from "@/registry/examples/brand-assets-menu-demo"
+import CodeBlockCommandDemo from "@/registry/examples/code-block-command-demo"
 import CopyButtonDemo from "@/registry/examples/copy-button-demo"
 import ElasticSliderDemo from "@/registry/examples/elastic-slider-demo"
 import FluidGradientTextDemo from "@/registry/examples/fluid-gradient-text-demo-01"
 import GitHubContributionsDemo1 from "@/registry/examples/github-contributions-demo-01"
+import IconSwapDemo from "@/registry/examples/icon-swap-demo"
 import MiddleTruncationDemo from "@/registry/examples/middle-truncation-demo"
 import ShimmeringTextDemo2 from "@/registry/examples/shimmering-text-demo-02"
 import SlideToUnlockDemo1 from "@/registry/examples/slide-to-unlock-demo-01"
@@ -84,6 +87,18 @@ export function ComponentsShowcase() {
         </GridItem>
 
         <GridItem>
+          <BrandAssetsMenuDemo />
+        </GridItem>
+
+        <GridItem className="[--code:var(--surface)]">
+          <CodeBlockCommandDemo />
+        </GridItem>
+
+        <GridItem>
+          <IconSwapDemo />
+        </GridItem>
+
+        <GridItem>
           <TwemojiDemo />
         </GridItem>
 
@@ -110,23 +125,5 @@ export function ComponentsShowcase() {
         </Button>
       </div>
     </Panel>
-  )
-}
-
-function GridItem({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "flex items-center justify-center rounded-lg border border-line bg-background p-4 transition-[border-color] hover:border-border",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </div>
   )
 }
