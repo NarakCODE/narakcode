@@ -20,7 +20,10 @@ export default function IconSwapDemo() {
   const Icon = ICONS[icon]
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div
+      data-slot="icon-swap-demo"
+      className="flex flex-col items-center gap-4"
+    >
       <Button variant="outline" size="icon-sm">
         <IconSwap>
           <IconSwapItem key={icon}>
@@ -29,11 +32,11 @@ export default function IconSwapDemo() {
         </IconSwap>
       </Button>
 
-      <div className="flex rounded-xl p-1 ring-1 ring-line">
+      <div className="flex gap-0.5 rounded-lg p-0.5 ring-1 ring-line">
         {Object.keys(ICONS).map((key) => (
           <Button
             key={key}
-            className="border-none capitalize"
+            className="rounded-md border-none capitalize"
             size="xs"
             variant={icon === key ? "secondary" : "ghost"}
             onClick={() => setIcon(key as IconKey)}

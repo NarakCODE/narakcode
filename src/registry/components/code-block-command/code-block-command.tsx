@@ -15,6 +15,7 @@ import {
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { CopyButton } from "@/registry/components/copy-button"
+import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
 
 export type PackageManager = "prompt" | "pnpm" | "yarn" | "npm" | "bun"
 
@@ -138,13 +139,17 @@ export function CodeBlockCommand({
         <ScrollArea.Root className="w-full pr-10 shadow-[inset_0_-1px_0_0] shadow-border">
           <TabsList
             className={cn(
-              "h-10 max-w-full justify-start rounded-none bg-transparent p-0 pl-4 inset-ring-0 dark:bg-transparent [&_svg]:mr-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
+              "h-10 max-w-full justify-start rounded-none bg-transparent p-0 pl-4 inset-ring-0 dark:bg-transparent [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
               "[--scroll-area-overflow-x-end:inherit] [--scroll-area-overflow-x-start:inherit]",
               "mask-linear-[to_right,transparent_0,black_min(2.5rem,var(--scroll-area-overflow-x-start)),black_calc(100%-min(2.5rem,var(--scroll-area-overflow-x-end,2.5rem))),transparent_100%]"
             )}
             render={<ScrollArea.Viewport />}
           >
-            {getIconForPackageManager(packageManager)}
+            <IconSwap>
+              <IconSwapItem className="mr-2" key={packageManager}>
+                {getIconForPackageManager(packageManager)}
+              </IconSwapItem>
+            </IconSwap>
 
             {tabsFiltered.map(([key]) => {
               return (
@@ -186,9 +191,9 @@ export function CodeBlockCommand({
       </Tabs>
 
       <CopyButton
-        className="absolute top-2 right-2 z-10 rounded-md border-none"
-        variant="secondary"
-        size="icon-xs"
+        className="absolute top-2 right-2 z-10 size-6 rounded-md border-none [&_svg:not([class*='size-'])]:size-3.5"
+        variant="ghost"
+        size="icon-sm"
         text={tabs[packageManager] || ""}
         onCopySuccess={(copiedCommand) => {
           onCopySuccess?.({
