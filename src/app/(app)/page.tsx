@@ -52,14 +52,8 @@ export default function HomePage() {
         <Separator />
 
         <About />
-        <div className="flex h-2 w-full border-x border-line" />
-
         <Testimonials />
-        <div className="flex h-2 w-full border-x border-line" />
-
         <GitHubContributions />
-        <Separator />
-
         <TechStack />
       </div>
 
