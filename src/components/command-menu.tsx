@@ -11,7 +11,6 @@ import {
   Crown,
   Download,
   FileText,
-  Layers,
   MoonStar,
   Quote,
   RssIcon,
@@ -117,12 +116,6 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#about",
     kind: "page",
     icon: <TextInitial />,
-  },
-  {
-    title: "Stack",
-    href: "/#stack",
-    kind: "page",
-    icon: <Layers />,
   },
   {
     title: "Experience",
