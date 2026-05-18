@@ -328,7 +328,7 @@ function BlockViewerToolbar() {
         />
 
         <Button
-          className="w-fit gap-1.5 px-2 font-mono text-[0.8125rem] font-normal shadow-none will-change-transform active:scale-none [&_svg]:text-muted-foreground"
+          className="w-fit gap-1.5 px-2 font-mono text-[0.8125rem] font-normal shadow-none active:scale-none [&_svg]:text-muted-foreground"
           variant="outline"
           size="sm"
           onClick={() => {
