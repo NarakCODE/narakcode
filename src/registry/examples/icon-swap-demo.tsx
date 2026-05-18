@@ -20,10 +20,7 @@ export default function IconSwapDemo() {
   const Icon = ICONS[icon]
 
   return (
-    <div
-      data-slot="icon-swap-demo"
-      className="flex flex-col items-center gap-4"
-    >
+    <div className="flex flex-col items-center gap-4">
       <Button variant="outline" size="icon-sm">
         <IconSwap>
           <IconSwapItem key={icon}>

@@ -36,7 +36,7 @@ export default function TestimonialsMarqueeDemo2() {
                   rel="noopener noreferrer"
                 >
                   <Testimonial>
-                    <TestimonialQuote>
+                    <TestimonialQuote className="font-serif">
                       <p>{item.quote}</p>
                     </TestimonialQuote>
 

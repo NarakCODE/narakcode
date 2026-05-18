@@ -13,13 +13,13 @@ import {
 export default function TestimonialDemo() {
   return (
     <a
-      className="block w-80 max-w-full rounded-xl border bg-card ring-1 ring-border/50 ring-offset-2 ring-offset-background transition-[background-color] ease-out hover:bg-accent/60"
+      className="block w-80 max-w-full rounded-xl inset-ring-1 inset-ring-foreground/10 transition-[background-color] ease-out hover:bg-accent/50"
       href="https://x.com/rauchg/status/1978913158514237669"
       target="_blank"
       rel="noopener noreferrer"
     >
       <Testimonial>
-        <TestimonialQuote>
+        <TestimonialQuote className="font-serif">
           <p>
             awesome. Love the components, especially slide-to-unlock. Great job
           </p>
