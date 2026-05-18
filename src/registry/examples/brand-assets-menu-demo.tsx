@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 
 import { BrandAssetsMenu } from "@/registry/components/brand-assets-menu"
