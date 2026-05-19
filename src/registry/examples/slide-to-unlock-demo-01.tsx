@@ -2,14 +2,14 @@
 
 import { toast } from "sonner"
 
-import { ShimmeringText } from "@/registry/components/shimmering-text"
+import { useSound } from "@/registry/hooks/sound/use-sound"
+import { ShimmeringText } from "@/registry/transformed/components/shimmering-text"
 import {
   SlideToUnlock,
   SlideToUnlockHandle,
   SlideToUnlockText,
   SlideToUnlockTrack,
-} from "@/registry/components/slide-to-unlock"
-import { useSound } from "@/registry/hooks/sound/use-sound"
+} from "@/registry/transformed/components/slide-to-unlock"
 
 export default function SlideToUnlockDemo1() {
   const [play] = useSound("https://assets.chanhdai.com/sounds/ios/unlock.mp3", {

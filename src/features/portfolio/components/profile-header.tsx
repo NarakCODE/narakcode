@@ -1,8 +1,8 @@
 import { USER } from "@/features/portfolio/data/user"
 import { AvatarLights } from "@/registry/components/avatar-lights"
-import { TextFlip } from "@/registry/components/text-flip"
 
 import { AvatarLightsToggle } from "./avatar-lights-toggle"
+import { FlipSentences } from "./flip-sentences"
 import { PronounceMyName } from "./pronounce-my-name"
 import { VerifiedIcon } from "./verified-icon"
 
@@ -49,19 +49,9 @@ export function ProfileHeader() {
             )}
           </div>
 
-          <div className="h-12.5 border-t border-line py-1 pl-4 sm:h-9">
-            <TextFlip
-              className="font-mono text-sm text-balance text-muted-foreground"
-              variants={{
-                initial: { y: -10, opacity: 0 },
-                animate: { y: -1, opacity: 1 },
-                exit: { y: 10, opacity: 0 },
-              }}
-              interval={1.5}
-            >
-              {USER.flipSentences}
-            </TextFlip>
-          </div>
+          <FlipSentences className="h-12.5 border-t border-line py-1 pl-4 sm:h-9">
+            {USER.flipSentences}
+          </FlipSentences>
         </div>
       </div>
     </div>

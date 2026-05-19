@@ -1,4 +1,8 @@
+"use client"
+
 import { ArrowUpRightIcon } from "lucide-react"
+import { useInView, usePageInView } from "motion/react"
+import { useRef } from "react"
 
 import {
   Marquee,
@@ -33,8 +37,14 @@ const FEATURED_TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2]
   .sort((a, b) => Number(a.order ?? 999) - Number(b.order ?? 999))
 
 export function Testimonials() {
+  const panelRef = useRef<HTMLDivElement>(null)
+  const isPageInView = usePageInView()
+  const isInView = useInView(panelRef)
+  const play = isPageInView && isInView
+
   return (
     <Panel
+      ref={panelRef}
       id="testimonials"
       className="before:content-none [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
     >
@@ -60,9 +70,8 @@ export function Testimonials() {
           ))}
         </div>
 
-        <TestimonialList data={TESTIMONIALS_1} />
-
-        <TestimonialList data={TESTIMONIALS_2} direction="right" />
+        <TestimonialList data={TESTIMONIALS_1} play={play} />
+        <TestimonialList data={TESTIMONIALS_2} direction="right" play={play} />
       </div>
 
       <div className="absolute right-0 bottom-0 z-10 -translate-x-2 -translate-y-2 rounded-lg bg-background">
@@ -91,16 +100,18 @@ export function Testimonials() {
 function TestimonialList({
   data,
   direction,
+  play,
 }: {
   data: TestimonialType[]
   direction?: "right" | "left"
+  play?: boolean
 }) {
   return (
     <Marquee>
       <MarqueeFade side="left" />
       <MarqueeFade side="right" />
 
-      <MarqueeContent direction={direction} autoFill={false}>
+      <MarqueeContent direction={direction} autoFill={false} play={play}>
         {data
           .filter((item) => !item.isFeatured)
           .map((item) => (
