@@ -1,5 +1,5 @@
-import { GlowCard } from "@/registry/components/glow-card-grid/glow-card"
-import { GlowCardGrid } from "@/registry/components/glow-card-grid/glow-card-grid"
+import { GlowCard } from "@/registry/transformed/components/glow-card-grid/glow-card"
+import { GlowCardGrid } from "@/registry/transformed/components/glow-card-grid/glow-card-grid"
 
 export default function GlowCardGridDemo01() {
   return (

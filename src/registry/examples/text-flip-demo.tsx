@@ -3,7 +3,7 @@
 import { motion, useInView, usePageInView } from "motion/react"
 import { useRef } from "react"
 
-import { TextFlip } from "@/registry/components/text-flip"
+import { TextFlip } from "@/registry/transformed/components/text-flip"
 
 export default function TextFlipDemo() {
   const ref = useRef<HTMLDivElement>(null)

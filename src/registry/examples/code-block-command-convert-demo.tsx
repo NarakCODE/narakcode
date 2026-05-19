@@ -3,7 +3,7 @@
 import {
   CodeBlockCommand,
   convertNpmCommand,
-} from "@/registry/components/code-block-command"
+} from "@/registry/transformed/components/code-block-command"
 
 export default function CodeBlockCommandConvertDemo() {
   return (

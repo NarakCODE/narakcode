@@ -4,7 +4,10 @@ import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
+import {
+  IconSwap,
+  IconSwapItem,
+} from "@/registry/transformed/components/icon-swap"
 
 const ICONS = {
   sun: SunIcon,

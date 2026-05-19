@@ -13,11 +13,11 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field"
-import type { WheelPickerOption } from "@/registry/components/wheel-picker"
+import type { WheelPickerOption } from "@/registry/transformed/components/wheel-picker"
 import {
   WheelPicker,
   WheelPickerWrapper,
-} from "@/registry/components/wheel-picker"
+} from "@/registry/transformed/components/wheel-picker"
 
 const formSchema = z.object({
   framework: z.string(),

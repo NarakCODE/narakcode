@@ -2,7 +2,7 @@
 
 import { useDialKit } from "dialkit"
 
-import { FluidGradientText } from "@/registry/components/fluid-gradient-text"
+import { FluidGradientText } from "@/registry/transformed/components/fluid-gradient-text"
 
 export default function FluidGradientTextDialKitDemo() {
   const params = useDialKit("FluidGradientText", {

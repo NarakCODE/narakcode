@@ -1,6 +1,4 @@
-import { Check, CircleX, Copy } from "lucide-react"
-
-import { CopyButton } from "@/registry/components/copy-button"
+import { CopyButton } from "@/registry/transformed/components/copy-button"
 
 export default function CopyButtonDemo() {
   return (
@@ -10,9 +8,6 @@ export default function CopyButtonDemo() {
         variant="secondary"
         size="icon-sm"
         text="Text 1"
-        idleIcon={<Copy />}
-        doneIcon={<Check />}
-        errorIcon={<CircleX />}
       />
 
       <CopyButton
@@ -20,9 +15,6 @@ export default function CopyButtonDemo() {
         variant="outline"
         size="sm"
         text="Text 2"
-        idleIcon={<Copy />}
-        doneIcon={<Check />}
-        errorIcon={<CircleX />}
       >
         Copy
       </CopyButton>
