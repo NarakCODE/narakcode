@@ -37,6 +37,9 @@ export type TextFlipProps = {
   /** Motion variants for enter/exit animations. */
   variants?: Variants
 
+  /** Controls whether the flip animation runs. */
+  play?: boolean
+
   /** Called with the new index after each flip. */
   onIndexChange?: (index: number) => void
 }
@@ -49,6 +52,7 @@ export function TextFlip({
   interval = 2,
   transition = { duration: 0.3 },
   variants = defaultVariants,
+  play = true,
 
   onIndexChange,
 }: TextFlipProps) {
@@ -57,6 +61,8 @@ export function TextFlip({
   const items = Children.toArray(children)
 
   useEffect(() => {
+    if (!play) return
+
     const timer = setInterval(() => {
       setCurrentIndex((prev) => {
         const next = (prev + 1) % items.length
@@ -66,7 +72,7 @@ export function TextFlip({
     }, interval * 1000)
 
     return () => clearInterval(timer)
-  }, [items.length, interval, onIndexChange])
+  }, [play, interval, items.length, onIndexChange])
 
   return (
     <AnimatePresence mode="wait" initial={false}>
