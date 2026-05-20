@@ -5,3 +5,5 @@ allowBuilds:
   puppeteer: false
   sharp: false
 minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@base-ui/*"

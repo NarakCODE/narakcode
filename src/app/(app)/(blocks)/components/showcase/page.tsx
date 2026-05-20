@@ -141,9 +141,7 @@ export default function ComponentsShowcasePage() {
         </GridItem>
 
         <GridItem>
-          <div className="flex min-h-12 items-center">
-            <ThemeToggleEffectDemo />
-          </div>
+          <ThemeToggleEffectDemo />
         </GridItem>
 
         <GridItem className="**:data-rwp-wrapper:rounded-xl md:row-span-2">
