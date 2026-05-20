@@ -3,7 +3,7 @@
 import { ScrollArea } from "@base-ui/react/scroll-area"
 import { useAtom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
-import { Terminal, TextAlignStartIcon } from "lucide-react"
+import { TerminalIcon, TextAlignStartIcon } from "lucide-react"
 import { useMemo } from "react"
 
 import {
@@ -251,7 +251,7 @@ function getIconForPackageManager(manager: PackageManager) {
         </svg>
       )
     default:
-      return <Terminal />
+      return <TerminalIcon />
   }
 }
 

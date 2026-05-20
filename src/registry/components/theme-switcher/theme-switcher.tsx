@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 import type { JSX } from "react"
 import { useSyncExternalStore } from "react"
 
-import { IconPlaceholder } from "@/components/icon-placeholder"
+import { IconPlaceholder } from "@/registry/icons/icon-placeholder"
 
 function ThemeOption({
   icon,
@@ -44,7 +44,7 @@ const THEME_OPTIONS = [
   {
     icon: (
       <IconPlaceholder
-        lucide="Monitor"
+        lucide="MonitorIcon"
         tabler="IconDeviceDesktop"
         hugeicons="ComputerIcon"
         phosphor="DesktopIcon"
@@ -56,7 +56,7 @@ const THEME_OPTIONS = [
   {
     icon: (
       <IconPlaceholder
-        lucide="Sun"
+        lucide="SunIcon"
         tabler="IconSun"
         hugeicons="Sun03Icon"
         phosphor="SunIcon"
@@ -68,7 +68,7 @@ const THEME_OPTIONS = [
   {
     icon: (
       <IconPlaceholder
-        lucide="Moon"
+        lucide="MoonIcon"
         tabler="IconMoon"
         hugeicons="Moon02Icon"
         phosphor="MoonIcon"

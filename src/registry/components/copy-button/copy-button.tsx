@@ -3,11 +3,11 @@
 import { motion } from "motion/react"
 import type { ComponentProps } from "react"
 
-import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
 import type { CopyState } from "@/hooks/use-copy-to-clipboard"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
+import { IconPlaceholder } from "@/registry/icons/icon-placeholder"
 
 export type CopyStateIconProps = {
   state: CopyState
@@ -32,7 +32,7 @@ export function CopyStateIcon({
           (idleIcon ?? (
             <IconPlaceholder
               data-slot="idle-icon"
-              lucide="Copy"
+              lucide="CopyIcon"
               tabler="IconCopy"
               hugeicons="Copy01Icon"
               phosphor="CopyIcon"
@@ -44,7 +44,7 @@ export function CopyStateIcon({
           (doneIcon ?? (
             <IconPlaceholder
               data-slot="done-icon"
-              lucide="Check"
+              lucide="CheckIcon"
               tabler="IconCheck"
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
@@ -56,7 +56,7 @@ export function CopyStateIcon({
           (errorIcon ?? (
             <IconPlaceholder
               data-slot="error-icon"
-              lucide="CircleX"
+              lucide="CircleXIcon"
               tabler="IconX"
               hugeicons="CancelCircleIcon"
               phosphor="XCircleIcon"

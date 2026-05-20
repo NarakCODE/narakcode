@@ -1,7 +1,7 @@
 "use client"
 
 import { useTiks } from "@rexa-developer/tiks/react"
-import { Download, SquareDashed, Type } from "lucide-react"
+import { DownloadIcon, SquareDashedIcon, TypeIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import {
@@ -54,7 +54,7 @@ export function BrandAssetsMenu({
             success()
           }}
         >
-          <Type />
+          <TypeIcon />
           Copy Logotype as SVG
         </ContextMenuItem>
 
@@ -66,7 +66,7 @@ export function BrandAssetsMenu({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SquareDashed />
+            <SquareDashedIcon />
             Brand Guidelines
           </a>
         </ContextMenuItem>
@@ -78,7 +78,7 @@ export function BrandAssetsMenu({
             rel="noopener noreferrer"
             download
           >
-            <Download />
+            <DownloadIcon />
             Download Brand Assets
           </a>
         </ContextMenuItem>

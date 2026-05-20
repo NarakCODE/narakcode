@@ -1,6 +1,6 @@
 "use client"
 
-import { Monitor, Moon, Sun } from "lucide-react"
+import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
 import { motion } from "motion/react"
 import { useTheme } from "next-themes"
 import type { JSX } from "react"
@@ -41,15 +41,15 @@ function ThemeOption({
 
 const THEME_OPTIONS = [
   {
-    icon: <Monitor />,
+    icon: <MonitorIcon />,
     value: "system",
   },
   {
-    icon: <Sun />,
+    icon: <SunIcon />,
     value: "light",
   },
   {
-    icon: <Moon />,
+    icon: <MoonIcon />,
     value: "dark",
   },
 ]

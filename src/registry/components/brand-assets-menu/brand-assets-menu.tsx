@@ -3,7 +3,6 @@
 import { useTiks } from "@rexa-developer/tiks/react"
 import { toast } from "sonner"
 
-import { IconPlaceholder } from "@/components/icon-placeholder"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -11,6 +10,7 @@ import {
   ContextMenuSeparator,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
+import { IconPlaceholder } from "@/registry/icons/icon-placeholder"
 
 export type BrandAssetsMenuProps = {
   logomark: React.ReactElement
@@ -55,7 +55,7 @@ export function BrandAssetsMenu({
           }}
         >
           <IconPlaceholder
-            lucide="Type"
+            lucide="TypeIcon"
             tabler="IconLetterT"
             hugeicons="TextIcon"
             phosphor="TextTIcon"
@@ -73,7 +73,7 @@ export function BrandAssetsMenu({
             rel="noopener noreferrer"
           >
             <IconPlaceholder
-              lucide="SquareDashed"
+              lucide="SquareDashedIcon"
               tabler="IconShape"
               hugeicons="DashedLine02Icon"
               phosphor="BoundingBoxIcon"
@@ -91,7 +91,7 @@ export function BrandAssetsMenu({
             download
           >
             <IconPlaceholder
-              lucide="Download"
+              lucide="DownloadIcon"
               tabler="IconDownload"
               hugeicons="Download01Icon"
               phosphor="DownloadSimpleIcon"
