@@ -27,8 +27,7 @@
     "previewClassName": "container mx-auto min-h-svh content-center-safe"
   },
   "categories": [
-    "marketing",
-    "testimonials"
+    "marketing"
   ],
   "type": "registry:block"
 }

@@ -15,7 +15,7 @@ export function Blog() {
       <PanelHeader>
         <PanelTitle>
           Blog
-          <PanelTitleSup>({allPosts.length})</PanelTitleSup>
+          <PanelTitleSup>[{allPosts.length}]</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 

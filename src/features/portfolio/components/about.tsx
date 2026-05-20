@@ -7,8 +7,19 @@ import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel"
 export function About() {
   return (
     <Panel id="about">
-      <PanelHeader>
-        <PanelTitle>About</PanelTitle>
+      <PanelHeader className="pl-2">
+        <PanelTitle>
+          {/* <span
+            className="mr-2 inline-block font-mono text-base font-normal text-muted-foreground"
+            aria-hidden="true"
+          >
+            01
+          </span> */}
+          <span className="mr-2 font-mono text-base font-normal text-muted-foreground">
+            01
+          </span>
+          About
+        </PanelTitle>
       </PanelHeader>
 
       <PanelContent>

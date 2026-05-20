@@ -10,7 +10,7 @@ export function Projects() {
       <PanelHeader>
         <PanelTitle>
           Projects
-          <PanelTitleSup>({PROJECTS.length})</PanelTitleSup>
+          <PanelTitleSup>[{PROJECTS.length}]</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 

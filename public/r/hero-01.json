@@ -27,8 +27,7 @@
     "previewClassName": "pt-8"
   },
   "categories": [
-    "marketing",
-    "hero"
+    "marketing"
   ],
   "type": "registry:block"
 }

@@ -597,7 +597,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["application","login"],
+    categories: ["application"],
     meta: {"createdAt":"2026-02-22"},
   },
   "hero-01": {
@@ -618,7 +618,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["marketing","hero"],
+    categories: ["marketing"],
     meta: {"createdAt":"2026-03-12","previewClassName":"pt-8"},
   },
   "blog-01": {
@@ -639,7 +639,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["content","blog"],
+    categories: ["marketing"],
     meta: {"createdAt":"2026-03-13"},
   },
   "blog-02": {
@@ -660,7 +660,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["content","blog"],
+    categories: ["marketing"],
     meta: {"createdAt":"2026-03-18"},
   },
   "testimonials-01": {
@@ -681,7 +681,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["marketing","testimonials"],
+    categories: ["marketing"],
     meta: {"createdAt":"2026-03-20","previewClassName":"container mx-auto min-h-svh content-center-safe"},
   },
   "testimonials-02": {
@@ -702,7 +702,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["marketing","testimonials"],
+    categories: ["marketing"],
     meta: {"createdAt":"2026-03-29"},
   },
   "experience-01": {
@@ -719,7 +719,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["content","portfolio"],
+    categories: ["marketing"],
     meta: {"createdAt":"2026-03-28"},
   },
   "team-01": {
@@ -736,7 +736,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["content","team"],
+    categories: ["marketing"],
     meta: {"createdAt":"2026-03-30","previewClassName":"min-h-svh place-items-center-safe content-center-safe"},
   },
   "text-flip-demo": {

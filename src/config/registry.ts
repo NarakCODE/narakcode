@@ -21,16 +21,19 @@ export const registryCategories = [
   {
     name: "Marketing",
     slug: "marketing",
-    description: "Hero sections, landing pages, testimonials, CTAs",
-  },
-  {
-    name: "Content",
-    slug: "content",
-    description: "Blog layouts, article pages, documentation",
+    description:
+      "Landing pages, sections, blog templates, and high-converting testimonial blocks.",
   },
   {
     name: "Application",
     slug: "application",
-    description: "Dashboards, login, signup, app layouts, sidebars",
+    description:
+      "Dashboard layouts, metric cards, settings pages, and core web app interfaces.",
+  },
+  {
+    name: "Ecommerce",
+    slug: "ecommerce",
+    description:
+      "Product grids, shopping carts, filters, and streamlined checkout components.",
   },
 ]

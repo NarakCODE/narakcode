@@ -10,7 +10,7 @@ export function Certifications() {
       <PanelHeader>
         <PanelTitle>
           Certifications
-          <PanelTitleSup>({CERTIFICATIONS.length})</PanelTitleSup>
+          <PanelTitleSup>[{CERTIFICATIONS.length}]</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 

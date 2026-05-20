@@ -25,9 +25,7 @@ export default function BlocksLayout({
 
       <div className="screen-line-bottom flex h-px" />
 
-      <div className="no-scrollbar max-w-full overflow-x-auto scroll-fade-effect-x p-4 whitespace-nowrap">
-        <BlocksNav />
-      </div>
+      <BlocksNav />
 
       <div className="screen-line-top screen-line-bottom">
         <div

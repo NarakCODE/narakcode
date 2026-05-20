@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Fragment } from "react"
 
+import blocks from "@/__registry__/__blocks__.json"
 import { BlockDisplay } from "@/app/(preview)/components/block-display"
 import { X_HANDLE } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -37,20 +38,10 @@ export const metadata: Metadata = {
   },
 }
 
-const FEATURED_BLOCKS = [
-  "team-01",
-  "hero-01",
-  "blog-02",
-  "blog-01",
-  "testimonials-01",
-  "testimonials-02",
-  "experience-01",
-]
-
 export default function BlocksPage() {
   return (
     <>
-      {FEATURED_BLOCKS.map((name) => (
+      {blocks.map(({ name }) => (
         <Fragment key={name}>
           <BlockDisplay name={name} />
           <Separator />
