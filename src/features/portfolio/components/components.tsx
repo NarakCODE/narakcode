@@ -21,7 +21,7 @@ export function Components() {
       <PanelHeader>
         <PanelTitle>
           Components
-          <PanelTitleSup>({components.length})</PanelTitleSup>
+          <PanelTitleSup>[{components.length}]</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 

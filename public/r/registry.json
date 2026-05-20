@@ -788,8 +788,7 @@
         "createdAt": "2026-02-22"
       },
       "categories": [
-        "application",
-        "login"
+        "application"
       ],
       "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"
@@ -819,8 +818,7 @@
         "previewClassName": "pt-8"
       },
       "categories": [
-        "marketing",
-        "hero"
+        "marketing"
       ],
       "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"
@@ -851,8 +849,7 @@
         "createdAt": "2026-03-13"
       },
       "categories": [
-        "content",
-        "blog"
+        "marketing"
       ],
       "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"
@@ -884,8 +881,7 @@
         "createdAt": "2026-03-18"
       },
       "categories": [
-        "content",
-        "blog"
+        "marketing"
       ],
       "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"
@@ -915,8 +911,7 @@
         "previewClassName": "container mx-auto min-h-svh content-center-safe"
       },
       "categories": [
-        "marketing",
-        "testimonials"
+        "marketing"
       ],
       "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"
@@ -946,8 +941,7 @@
         "createdAt": "2026-03-29"
       },
       "categories": [
-        "marketing",
-        "testimonials"
+        "marketing"
       ],
       "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"
@@ -971,8 +965,7 @@
         "createdAt": "2026-03-28"
       },
       "categories": [
-        "content",
-        "portfolio"
+        "marketing"
       ],
       "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"
@@ -996,8 +989,7 @@
         "previewClassName": "min-h-svh place-items-center-safe content-center-safe"
       },
       "categories": [
-        "content",
-        "team"
+        "marketing"
       ],
       "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"

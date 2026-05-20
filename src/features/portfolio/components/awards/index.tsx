@@ -16,7 +16,7 @@ export function Awards() {
       <PanelHeader>
         <PanelTitle>
           Awards
-          <PanelTitleSup>({AWARDS.length})</PanelTitleSup>
+          <PanelTitleSup>[{AWARDS.length}]</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 

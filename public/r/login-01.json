@@ -29,8 +29,7 @@
     "createdAt": "2026-02-22"
   },
   "categories": [
-    "application",
-    "login"
+    "application"
   ],
   "type": "registry:block"
 }

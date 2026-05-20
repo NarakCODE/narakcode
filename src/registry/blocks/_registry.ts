@@ -21,7 +21,7 @@ export const blocks: Registry["items"] = [
         target: "@components/login-form.tsx",
       },
     ],
-    categories: ["application", "login"],
+    categories: ["application"],
     meta: { createdAt: "2026-02-22" },
   },
   {
@@ -42,7 +42,7 @@ export const blocks: Registry["items"] = [
         target: "@components/hero-01-icons.tsx",
       },
     ],
-    categories: ["marketing", "hero"],
+    categories: ["marketing"],
     meta: {
       createdAt: "2026-03-12",
       previewClassName: "pt-8",
@@ -67,7 +67,7 @@ export const blocks: Registry["items"] = [
         target: "@components/article-item.tsx",
       },
     ],
-    categories: ["content", "blog"],
+    categories: ["marketing"],
     meta: {
       createdAt: "2026-03-13",
     },
@@ -91,7 +91,7 @@ export const blocks: Registry["items"] = [
         target: "@components/article-item.tsx",
       },
     ],
-    categories: ["content", "blog"],
+    categories: ["marketing"],
     meta: {
       createdAt: "2026-03-18",
     },
@@ -117,7 +117,7 @@ export const blocks: Registry["items"] = [
         target: "@components/testimonial-list.tsx",
       },
     ],
-    categories: ["marketing", "testimonials"],
+    categories: ["marketing"],
     meta: {
       createdAt: "2026-03-20",
       previewClassName: "container mx-auto min-h-svh content-center-safe",
@@ -144,7 +144,7 @@ export const blocks: Registry["items"] = [
         target: "@components/testimonial-list.tsx",
       },
     ],
-    categories: ["marketing", "testimonials"],
+    categories: ["marketing"],
     meta: {
       createdAt: "2026-03-29",
     },
@@ -162,7 +162,7 @@ export const blocks: Registry["items"] = [
         target: "@components/experience-01.tsx",
       },
     ],
-    categories: ["content", "portfolio"],
+    categories: ["marketing"],
     meta: {
       createdAt: "2026-03-28",
     },
@@ -180,7 +180,7 @@ export const blocks: Registry["items"] = [
         target: "@components/team-01.tsx",
       },
     ],
-    categories: ["content", "team"],
+    categories: ["marketing"],
     meta: {
       createdAt: "2026-03-30",
       previewClassName: "min-h-svh place-items-center-safe content-center-safe",

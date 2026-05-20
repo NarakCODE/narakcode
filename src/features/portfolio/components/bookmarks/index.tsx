@@ -16,7 +16,7 @@ export function Bookmarks() {
       <PanelHeader>
         <PanelTitle>
           Bookmarks
-          <PanelTitleSup>({SORTED_BOOKMARKS.length})</PanelTitleSup>
+          <PanelTitleSup>[{SORTED_BOOKMARKS.length}]</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 
