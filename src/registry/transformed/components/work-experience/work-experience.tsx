@@ -1,7 +1,7 @@
 "use client"
 
 import { differenceInMonths, parse } from "date-fns"
-import { BriefcaseBusiness, Infinity } from "lucide-react"
+import { BriefcaseBusinessIcon, InfinityIcon } from "lucide-react"
 import { type ComponentProps, useCallback, useRef } from "react"
 import ReactMarkdown from "react-markdown"
 
@@ -183,7 +183,7 @@ export function ExperiencePositionItem({
                 "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
               )}
             >
-              {position.icon ?? <BriefcaseBusiness />}
+              {position.icon ?? <BriefcaseBusinessIcon />}
             </div>
 
             <h4 className="flex-1 text-base font-medium text-balance text-foreground">
@@ -216,7 +216,7 @@ export function ExperiencePositionItem({
                 <span>{start}</span>
                 <span className="font-mono">—</span>
                 {isOngoing ? (
-                  <Infinity
+                  <InfinityIcon
                     className="size-4.5 translate-y-[0.5px]"
                     aria-label="Present"
                   />

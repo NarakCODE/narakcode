@@ -4,7 +4,6 @@ import { differenceInMonths, parse } from "date-fns"
 import { type ComponentProps, useCallback, useRef } from "react"
 import ReactMarkdown from "react-markdown"
 
-import { IconPlaceholder } from "@/components/icon-placeholder"
 import {
   Collapsible,
   CollapsibleContent,
@@ -14,6 +13,7 @@ import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 import type { ChevronsUpDownIconHandle } from "@/registry/components/chevrons-up-down-icon"
 import { ChevronsUpDownIcon } from "@/registry/components/chevrons-up-down-icon"
+import { IconPlaceholder } from "@/registry/icons/icon-placeholder"
 
 export type ExperiencePositionItemType = {
   /** Unique identifier for the position */
@@ -185,7 +185,7 @@ export function ExperiencePositionItem({
             >
               {position.icon ?? (
                 <IconPlaceholder
-                  lucide="BriefcaseBusiness"
+                  lucide="BriefcaseBusinessIcon"
                   tabler="IconBriefcase"
                   hugeicons="Briefcase01Icon"
                   phosphor="BriefcaseIcon"
@@ -225,7 +225,7 @@ export function ExperiencePositionItem({
                 <span className="font-mono">—</span>
                 {isOngoing ? (
                   <IconPlaceholder
-                    lucide="Infinity"
+                    lucide="InfinityIcon"
                     tabler="IconInfinity"
                     hugeicons="Infinity01Icon"
                     phosphor="InfinityIcon"

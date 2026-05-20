@@ -1,6 +1,6 @@
 "use client"
 
-import { Check, CircleX, Copy } from "lucide-react"
+import { CheckIcon, CircleXIcon, CopyIcon } from "lucide-react"
 import { motion } from "motion/react"
 import type { ComponentProps } from "react"
 
@@ -31,11 +31,12 @@ export function CopyStateIcon({
   return (
     <IconSwap>
       <IconSwapItem key={state} as={motion.span}>
-        {state === "idle" && (idleIcon ?? <Copy data-slot="idle-icon" />)}
+        {state === "idle" && (idleIcon ?? <CopyIcon data-slot="idle-icon" />)}
 
-        {state === "done" && (doneIcon ?? <Check data-slot="done-icon" />)}
+        {state === "done" && (doneIcon ?? <CheckIcon data-slot="done-icon" />)}
 
-        {state === "error" && (errorIcon ?? <CircleX data-slot="error-icon" />)}
+        {state === "error" &&
+          (errorIcon ?? <CircleXIcon data-slot="error-icon" />)}
       </IconSwapItem>
     </IconSwap>
   )

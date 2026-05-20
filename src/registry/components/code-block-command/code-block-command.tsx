@@ -12,10 +12,10 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/base/ui/tabs"
-import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { CopyButton } from "@/registry/components/copy-button"
 import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
+import { IconPlaceholder } from "@/registry/icons/icon-placeholder"
 
 export type PackageManager = "prompt" | "pnpm" | "yarn" | "npm" | "bun"
 
@@ -258,7 +258,7 @@ function getIconForPackageManager(manager: PackageManager) {
     default:
       return (
         <IconPlaceholder
-          lucide="Terminal"
+          lucide="TerminalIcon"
           tabler="IconTerminal"
           hugeicons="TerminalIcon"
           phosphor="TerminalIcon"
