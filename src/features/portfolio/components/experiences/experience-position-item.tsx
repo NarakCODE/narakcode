@@ -27,10 +27,12 @@ export function ExperiencePositionItem({
 
   return (
     <Collapsible
-      className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background"
+      className="group/experience-position relative"
       defaultOpen={position.isExpanded}
       disabled={!position.description}
     >
+      <div className="pointer-events-none absolute bottom-0 left-3 hidden h-px w-3 bg-border group-last/experience-position:flex" />
+
       <CollapsibleTrigger
         className={cn(
           "group block w-full text-left",
