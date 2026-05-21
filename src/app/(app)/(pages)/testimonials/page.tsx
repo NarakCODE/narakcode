@@ -63,7 +63,10 @@ export default function TestimonialsPage() {
     <div className="min-h-svh">
       <PageHeading>
         <PageHeadingTagline>Testimonials</PageHeadingTagline>
-        <PageHeadingTitle>Trusted by top builders.</PageHeadingTitle>
+        <PageHeadingTitle>
+          Trusted by top builders on{" "}
+          <span className="font-medium tracking-wide">𝕏.</span>
+        </PageHeadingTitle>
       </PageHeading>
 
       <div className="relative pt-4">
