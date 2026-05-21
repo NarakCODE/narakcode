@@ -209,9 +209,9 @@ export const TESTIMONIALS_2: Testimonial[] = [
     order: 4,
   },
   {
-    authorAvatar: "https://unavatar.io/x/nuqs47ng",
-    authorName: "nuqs",
-    authorTagline: "nuqs.dev",
+    authorAvatar: "https://unavatar.io/x/fortysevenfx",
+    authorName: "François Best",
+    authorTagline: "Creator of nuqs.dev",
     url: "https://x.com/fortysevenfx/status/2040166992305328371",
     quote: "This looks insanely good 👀🔥",
     date: "2026-04-04",
