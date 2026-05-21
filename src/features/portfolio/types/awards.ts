@@ -11,6 +11,7 @@ export type Award = {
    * School level or context label (e.g., "Grade 10", "University", "Personal Project").
    */
   grade: string
+  icon?: React.ReactElement
   /** Optional rich text description; Markdown and line breaks supported. */
   description?: string
   /** Optional URL to certificate, announcement, or reference material. */
