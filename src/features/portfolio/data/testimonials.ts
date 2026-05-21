@@ -171,6 +171,15 @@ export const TESTIMONIALS_1: Testimonial[] = [
 // Short quotes (50 characters or fewer), ordered by date ascending
 export const TESTIMONIALS_2: Testimonial[] = [
   {
+    authorAvatar: "https://unavatar.io/x/legionsdev",
+    authorName: "Gurbinder",
+    authorTagline: "Creator of evilcharts.com",
+    url: "https://x.com/legionsdev/status/2057222692789756152",
+    quote: "cool",
+    date: "2026-05-21",
+    isVerified: true,
+  },
+  {
     authorAvatar: "https://unavatar.io/x/MrAhmadAwais",
     authorName: "Ahmad Awais",
     authorTagline: "CEO @CommandCodeAI",
@@ -206,6 +215,7 @@ export const TESTIMONIALS_2: Testimonial[] = [
     url: "https://x.com/fortysevenfx/status/2040166992305328371",
     quote: "This looks insanely good 👀🔥",
     date: "2026-04-04",
+    isVerified: true,
   },
   {
     authorAvatar: "https://unavatar.io/x/evilrabbit_",
