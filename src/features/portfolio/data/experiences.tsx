@@ -1,4 +1,5 @@
 import {
+  BriefcaseBusinessIcon,
   CodeXmlIcon,
   DraftingCompassIcon,
   GraduationCapIcon,
@@ -219,6 +220,7 @@ In-house Project: [ZaDark](https://zadark.com)
   {
     id: "freelance",
     companyName: "Freelance",
+    companyIcon: <BriefcaseBusinessIcon strokeWidth={1.8} />,
     positions: [
       {
         id: "2",
@@ -269,6 +271,7 @@ In-house Project: [ZaDark](https://zadark.com)
   {
     id: "education",
     companyName: "Education",
+    companyIcon: <GraduationCapIcon strokeWidth={1.8} />,
     positions: [
       {
         id: "3",

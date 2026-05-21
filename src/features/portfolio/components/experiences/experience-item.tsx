@@ -13,7 +13,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
       className="screen-line-bottom scroll-mt-14 space-y-4 py-4"
     >
       <div className="flex items-center gap-3">
-        <div className="flex size-6 shrink-0 items-center justify-center select-none">
+        <div className="flex size-6 shrink-0 items-center justify-center select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground [&_svg:not([class*='size-'])]:size-5">
           {experience.companyLogo ? (
             <Image
               src={experience.companyLogo}
@@ -26,7 +26,9 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
               aria-hidden
             />
           ) : (
-            <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+            (experience.companyIcon ?? (
+              <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+            ))
           )}
         </div>
 
