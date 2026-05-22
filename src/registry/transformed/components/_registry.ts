@@ -625,4 +625,19 @@ export const components: Registry["items"] = [
     ],
     docs: "https://chanhdai.com/components/icon-swap",
   },
+  {
+    name: "dot-grid-spotlight",
+    type: "registry:component",
+    title: "Dot Grid Spotlight",
+    description:
+      "Interactive dot grid with a cursor-tracking spotlight effect.",
+    files: [
+      {
+        path: "components/dot-grid-spotlight/dot-grid-spotlight.tsx",
+        type: "registry:component",
+        target: "@components/dot-grid-spotlight.tsx",
+      },
+    ],
+    docs: "https://chanhdai.com/components/dot-grid-spotlight",
+  },
 ]

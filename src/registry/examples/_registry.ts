@@ -512,4 +512,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dot-grid-spotlight-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("dot-grid-spotlight")],
+    files: [
+      {
+        path: "examples/dot-grid-spotlight-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

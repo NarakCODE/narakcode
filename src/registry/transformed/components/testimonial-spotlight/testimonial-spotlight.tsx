@@ -4,11 +4,6 @@ import { useRef, useState } from "react"
 
 import { cn } from "@/lib/utils"
 
-type Position = {
-  x: number
-  y: number
-}
-
 const SPOTLIGHT_OPACITY = 0.5
 
 export type TestimonialSpotlightProps = Omit<
@@ -49,7 +44,6 @@ export function TestimonialSpotlight({
 
   const [isFocused, setIsFocused] = useState<boolean>(false)
   const [opacity, setOpacity] = useState<number>(0)
-  const [position, setPosition] = useState<Position>({ x: 0, y: 0 })
 
   const handleFocus = () => {
     setIsFocused(true)
@@ -73,7 +67,9 @@ export function TestimonialSpotlight({
     if (!itemRef.current || isFocused) return
 
     const rect = itemRef.current.getBoundingClientRect()
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+
+    itemRef.current.style.setProperty("--x", `${e.clientX - rect.left}px`)
+    itemRef.current.style.setProperty("--y", `${e.clientY - rect.top}px`)
   }
 
   return (
@@ -95,7 +91,7 @@ export function TestimonialSpotlight({
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out"
         style={{
           opacity,
-          background: `radial-gradient(circle at ${position.x}px ${position.y}px, var(--spotlight-color, ${spotlightColor}), transparent var(--spotlight-size, ${spotlightSize}))`,
+          background: `radial-gradient(circle at var(--x) var(--y), var(--spotlight-color, ${spotlightColor}), transparent var(--spotlight-size, ${spotlightSize}))`,
         }}
       />
       {children}

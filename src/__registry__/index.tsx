@@ -579,6 +579,23 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "dot-grid-spotlight": {
+    name: "dot-grid-spotlight",
+    description: "Interactive dot grid with a cursor-tracking spotlight effect.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/dot-grid-spotlight/dot-grid-spotlight.tsx",
+      type: "registry:component",
+      target: "@components/dot-grid-spotlight.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/dot-grid-spotlight/dot-grid-spotlight.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "login-01": {
     name: "login-01",
     description: "A simple login form.",
@@ -1481,6 +1498,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/examples/icon-swap-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "dot-grid-spotlight-demo": {
+    name: "dot-grid-spotlight-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/dot-grid-spotlight-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/dot-grid-spotlight-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

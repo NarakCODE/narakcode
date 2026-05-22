@@ -1,4 +1,4 @@
-import { IconCircleSquare } from "@tabler/icons-react"
+import { IconCircleSquare, IconGridDots } from "@tabler/icons-react"
 import {
   BriefcaseBusinessIcon,
   CopyIcon,
@@ -883,6 +883,10 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
 
     case "icon-swap": {
       return <IconCircleSquare {...props} />
+    }
+
+    case "dot-grid-spotlight": {
+      return <IconGridDots {...props} />
     }
 
     default: {
