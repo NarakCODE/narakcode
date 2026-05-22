@@ -21,7 +21,7 @@ import {
   TestimonialAvatarRing,
   TestimonialQuote,
   TestimonialVerifiedBadge,
-} from "@/registry/components/testimonial"
+} from "@/registry/transformed/components/testimonial"
 import { TestimonialSpotlight } from "@/registry/transformed/components/testimonial-spotlight"
 import { Twemoji } from "@/registry/transformed/components/twemoji/twemoji"
 import { Panel } from "@/features/portfolio/components/panel"
@@ -60,10 +60,7 @@ export function Testimonials() {
               target="_blank"
               rel="noopener"
             >
-              <TestimonialSpotlight
-                className="flex-1 bg-accent-muted"
-                spotlightSize="50%"
-              >
+              <TestimonialSpotlight className="flex-1 bg-accent-muted [--spotlight-size:50%]">
                 <TestimonialItem {...item} />
               </TestimonialSpotlight>
             </a>

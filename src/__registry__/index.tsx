@@ -1215,34 +1215,17 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "testimonial-spotlight-demo-01": {
-    name: "testimonial-spotlight-demo-01",
+  "testimonial-spotlight-demo": {
+    name: "testimonial-spotlight-demo",
     description: "",
     type: "registry:example",
     files: [{
-      path: "src/registry/examples/testimonial-spotlight-demo-01.tsx",
+      path: "src/registry/examples/testimonial-spotlight-demo.tsx",
       type: "registry:example",
       target: "",
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/examples/testimonial-spotlight-demo-01.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "testimonial-spotlight-demo-02": {
-    name: "testimonial-spotlight-demo-02",
-    description: "",
-    type: "registry:example",
-    files: [{
-      path: "src/registry/examples/testimonial-spotlight-demo-02.tsx",
-      type: "registry:example",
-      target: "",
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/examples/testimonial-spotlight-demo-02.tsx")
+      const mod = await import("@/registry/examples/testimonial-spotlight-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

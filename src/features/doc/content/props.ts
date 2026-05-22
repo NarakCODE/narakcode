@@ -69,12 +69,7 @@ export type TestimonialSpotlightProps = Omit<
   ComponentProps<typeof TestimonialSpotlight>,
   keyof Omit<
     React.ComponentPropsWithoutRef<"div">,
-    | "children"
-    | "onFocus"
-    | "onBlur"
-    | "onMouseEnter"
-    | "onMouseLeave"
-    | "onMouseMove"
+    "children" | "className" | "style" | "onMouseMove"
   >
 >
 
