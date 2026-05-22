@@ -1,23 +1,16 @@
 "use client"
 
+import { useRef } from "react"
 import { ArrowUpRightIcon } from "lucide-react"
 import { useInView, usePageInView } from "motion/react"
-import { useRef } from "react"
 
+import { Button } from "@/components/ui/button"
 import {
   Marquee,
   MarqueeContent,
   MarqueeFade,
   MarqueeItem,
 } from "@/components/kibo-ui/marquee"
-import { Button } from "@/components/ui/button"
-import { Panel } from "@/features/portfolio/components/panel"
-import { VerifiedIcon } from "@/features/portfolio/components/verified-icon"
-import {
-  TESTIMONIALS_1,
-  TESTIMONIALS_2,
-} from "@/features/portfolio/data/testimonials"
-import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
 import {
   Testimonial,
   TestimonialAuthor,
@@ -31,6 +24,13 @@ import {
 } from "@/registry/components/testimonial"
 import { TestimonialSpotlight } from "@/registry/transformed/components/testimonial-spotlight"
 import { Twemoji } from "@/registry/transformed/components/twemoji/twemoji"
+import { Panel } from "@/features/portfolio/components/panel"
+import { VerifiedIcon } from "@/features/portfolio/components/verified-icon"
+import {
+  TESTIMONIALS_1,
+  TESTIMONIALS_2,
+} from "@/features/portfolio/data/testimonials"
+import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
 
 const FEATURED_TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2]
   .filter((item) => item.isFeatured)

@@ -1,10 +1,11 @@
 "use client"
 
+import { useMemo } from "react"
 import { ScrollArea } from "@base-ui/react/scroll-area"
 import { useAtom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
-import { useMemo } from "react"
 
+import { cn } from "@/lib/utils"
 import {
   Tabs,
   TabsContent,
@@ -12,7 +13,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/base/ui/tabs"
-import { cn } from "@/lib/utils"
 import { CopyButton } from "@/registry/components/copy-button"
 import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
 import { IconPlaceholder } from "@/registry/icons/icon-placeholder"

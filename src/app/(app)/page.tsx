@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts"
 
+import { cn } from "@/lib/utils"
 import { About } from "@/features/portfolio/components/about"
 import { Awards } from "@/features/portfolio/components/awards"
 import { Blog } from "@/features/portfolio/components/blog"
@@ -18,7 +19,6 @@ import { Sponsors } from "@/features/portfolio/components/sponsors"
 import { TechStack } from "@/features/portfolio/components/tech-stack"
 import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
-import { cn } from "@/lib/utils"
 
 const ComponentsShowcase = dynamic(() =>
   import("@/features/portfolio/components/components-showcase").then(

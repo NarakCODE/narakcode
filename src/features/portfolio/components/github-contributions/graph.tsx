@@ -1,15 +1,16 @@
 "use client"
 
+import { use } from "react"
+import { addQueryParams } from "@/utils/url"
 import { format } from "date-fns"
 import { LoaderIcon } from "lucide-react"
-import { use } from "react"
 
+import { GITHUB_USERNAME, UTM_PARAMS } from "@/config/site"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
-import { GITHUB_USERNAME, UTM_PARAMS } from "@/config/site"
 import type { Activity } from "@/registry/components/contribution-graph"
 import {
   ContributionGraph,
@@ -19,7 +20,6 @@ import {
   ContributionGraphLegend,
   ContributionGraphTotalCount,
 } from "@/registry/components/contribution-graph"
-import { addQueryParams } from "@/utils/url"
 
 export function GitHubContributionGraph({
   contributions,

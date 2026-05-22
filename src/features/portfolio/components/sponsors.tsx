@@ -1,13 +1,13 @@
-import { ArrowRightIcon } from "lucide-react"
 import Link from "next/link"
+import { addQueryParams } from "@/utils/url"
+import { ArrowRightIcon } from "lucide-react"
 
+import { SPONSORSHIP_URL, UTM_PARAMS } from "@/config/site"
 import { PlusIcon } from "@/components/animated-icons/plus"
 import { Button } from "@/components/base/ui/button"
-import { SPONSORSHIP_URL, UTM_PARAMS } from "@/config/site"
 import { SponsorItem } from "@/features/sponsor/components/sponsor-item"
 import { SPONSORS } from "@/features/sponsor/data"
 import type { SponsorTier } from "@/features/sponsor/types"
-import { addQueryParams } from "@/utils/url"
 
 import { Panel, PanelDescription, PanelHeader, PanelTitle } from "./panel"
 

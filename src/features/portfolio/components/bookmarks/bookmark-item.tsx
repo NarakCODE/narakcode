@@ -1,11 +1,11 @@
+import { addQueryParams } from "@/utils/url"
 import { format } from "date-fns"
 import { ArrowUpRightIcon, BookmarkIcon } from "lucide-react"
 
-import { Separator } from "@/components/ui/separator"
 import { UTM_PARAMS } from "@/config/site"
-import type { Bookmark } from "@/features/portfolio/types/bookmarks"
 import { cn } from "@/lib/utils"
-import { addQueryParams } from "@/utils/url"
+import { Separator } from "@/components/ui/separator"
+import type { Bookmark } from "@/features/portfolio/types/bookmarks"
 
 export function BookmarkItem({
   className,

@@ -1,7 +1,11 @@
-import { Grip, LayoutDashboard } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
+import { addQueryParams } from "@/utils/url"
+import { Grip, LayoutDashboard } from "lucide-react"
 
+import { registryConfig } from "@/config/registry"
+import { UTM_PARAMS, X_HANDLE } from "@/config/site"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import {
   Tooltip,
@@ -15,11 +19,7 @@ import {
   PageHeadingTitle,
 } from "@/components/page-heading"
 import { RegistryCommandAnimated } from "@/components/registry-command-animated"
-import { registryConfig } from "@/config/registry"
-import { UTM_PARAMS, X_HANDLE } from "@/config/site"
 import { getDocsByCategory } from "@/features/doc/data/documents"
-import { cn } from "@/lib/utils"
-import { addQueryParams } from "@/utils/url"
 
 import {
   ComponentItem,

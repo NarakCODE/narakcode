@@ -1,5 +1,5 @@
-import type { motion } from "motion/react"
 import type { ComponentProps } from "react"
+import type { motion } from "motion/react"
 
 import type { Button } from "@/components/ui/button"
 import type { AppleHelloEffectEnglish } from "@/registry/components/apple-hello-effect/apple-hello-effect-english"

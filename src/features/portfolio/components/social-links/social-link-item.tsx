@@ -1,10 +1,10 @@
-import { ArrowUpRightIcon } from "lucide-react"
 import Image from "next/image"
+import { addQueryParams } from "@/utils/url"
+import { ArrowUpRightIcon } from "lucide-react"
 
 import { UTM_PARAMS } from "@/config/site"
-import type { SocialLink } from "@/features/portfolio/types/social-links"
 import { cn } from "@/lib/utils"
-import { addQueryParams } from "@/utils/url"
+import type { SocialLink } from "@/features/portfolio/types/social-links"
 
 export function SocialLinkItem({ icon, title, href }: SocialLink) {
   return (

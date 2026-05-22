@@ -1,6 +1,7 @@
+import { addQueryParams } from "@/utils/url"
+
 import { UTM_PARAMS } from "@/config/site"
 import { SPONSORS } from "@/features/sponsor/data"
-import { addQueryParams } from "@/utils/url"
 
 const GOLD_SPONSORS = SPONSORS.filter((sponsor) => sponsor.tier === "gold")
 

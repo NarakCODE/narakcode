@@ -1,16 +1,16 @@
 import "server-only"
 
-import type { GeneratedDoc, Generator } from "fumadocs-typescript"
-import type { Nodes } from "hast"
-import { type Jsx, toJsxRuntime } from "hast-util-to-jsx-runtime"
 import type { ComponentProps, ReactNode } from "react"
 import * as runtime from "react/jsx-runtime"
+import type { GeneratedDoc, Generator } from "fumadocs-typescript"
+import type { Nodes } from "hast"
+import { toJsxRuntime, type Jsx } from "hast-util-to-jsx-runtime"
 
 import { mdxCodeBlockComponents } from "@/components/mdx-code-block"
 import {
+  TypeTable,
   type ParameterNode,
   type TypeNode,
-  TypeTable,
 } from "@/registry/components/type-table"
 
 import type { ShikiOptions } from "./markdown"

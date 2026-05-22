@@ -1,6 +1,6 @@
+import type { NpmCommands } from "@/types/unist"
 import { cn } from "@/lib/utils"
 import { MiddleTruncation } from "@/registry/components/middle-truncation"
-import type { NpmCommands } from "@/types/unist"
 
 import { CodeBlockCommand } from "./code-block-command"
 import { CopyButton } from "./copy-button"

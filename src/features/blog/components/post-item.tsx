@@ -1,10 +1,10 @@
-import { format } from "date-fns"
 import type { ImageProps } from "next/image"
 import Image from "next/image"
 import Link from "next/link"
+import { format } from "date-fns"
 
-import type { Doc } from "@/features/doc/types/document"
 import { cn } from "@/lib/utils"
+import type { Doc } from "@/features/doc/types/document"
 
 export function PostItem({
   post,

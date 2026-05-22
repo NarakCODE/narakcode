@@ -3,6 +3,8 @@
 import type { TOCItemType } from "fumadocs-core/toc"
 import { TextIcon } from "lucide-react"
 
+import { trackEvent } from "@/lib/events"
+import { cn } from "@/lib/utils"
 import {
   Collapsible,
   CollapsibleChevronDownIcon,
@@ -11,8 +13,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/base/ui/collapsible"
-import { trackEvent } from "@/lib/events"
-import { cn } from "@/lib/utils"
 
 export function TOCInline({
   items,

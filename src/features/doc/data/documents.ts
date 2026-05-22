@@ -1,7 +1,7 @@
 import fs from "fs"
-import matter from "gray-matter"
 import path from "path"
 import { cache } from "react"
+import matter from "gray-matter"
 
 import type { Doc, DocMetadata } from "@/features/doc/types/document"
 

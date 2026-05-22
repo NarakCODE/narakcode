@@ -1,6 +1,9 @@
-import { ArrowUpRightIcon } from "lucide-react"
 import type { Metadata } from "next"
+import { addQueryParams } from "@/utils/url"
+import { ArrowUpRightIcon } from "lucide-react"
 
+import { SPONSORSHIP_URL, UTM_PARAMS, X_HANDLE } from "@/config/site"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import {
   PageHeading,
@@ -8,13 +11,10 @@ import {
   PageHeadingTagline,
   PageHeadingTitle,
 } from "@/components/page-heading"
-import { SPONSORSHIP_URL, UTM_PARAMS, X_HANDLE } from "@/config/site"
 import { SponsorItem } from "@/features/sponsor/components/sponsor-item"
 import { SPONSORS } from "@/features/sponsor/data"
 import type { Sponsor, SponsorTier } from "@/features/sponsor/types"
 import { SPONSOR_TIERS } from "@/features/sponsor/types"
-import { cn } from "@/lib/utils"
-import { addQueryParams } from "@/utils/url"
 
 const title = "Sponsors"
 const description =

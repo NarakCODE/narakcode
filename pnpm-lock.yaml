@@ -159,6 +159,9 @@ importers:
         specifier: ^3.25.76
         version: 3.25.76
     devDependencies:
+      '@ianvs/prettier-plugin-sort-imports':
+        specifier: ^4.7.1
+        version: 4.7.1(prettier@3.8.3)
       '@tailwindcss/postcss':
         specifier: ^4.3.0
         version: 4.3.0
@@ -192,9 +195,6 @@ importers:
       eslint-config-prettier:
         specifier: ^10.1.8
         version: 10.1.8(eslint@9.22.0(jiti@2.6.1))
-      eslint-plugin-simple-import-sort:
-        specifier: ^12.1.1
-        version: 12.1.1(eslint@9.22.0(jiti@2.6.1))
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
@@ -212,7 +212,7 @@ importers:
         version: 3.8.3
       prettier-plugin-tailwindcss:
         specifier: ^0.8.0
-        version: 0.8.0(prettier@3.8.3)
+        version: 0.8.0(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.3))(prettier@3.8.3)
       puppeteer:
         specifier: ^24.40.0
         version: 24.40.0(typescript@5.8.3)
@@ -606,6 +606,24 @@ packages:
   '@humanwhocodes/retry@0.4.2':
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
+
+  '@ianvs/prettier-plugin-sort-imports@4.7.1':
+    resolution: {integrity: sha512-jmTNYGlg95tlsoG3JLCcuC4BrFELJtLirLAkQW/71lXSyOhVt/Xj7xWbbGcuVbNq1gwWgSyMrPjJc9Z30hynVw==}
+    peerDependencies:
+      '@prettier/plugin-oxc': ^0.0.4 || ^0.1.0
+      '@vue/compiler-sfc': 2.7.x || 3.x
+      content-tag: ^4.0.0
+      prettier: 2 || 3 || ^4.0.0-0
+      prettier-plugin-ember-template-tag: ^2.1.0
+    peerDependenciesMeta:
+      '@prettier/plugin-oxc':
+        optional: true
+      '@vue/compiler-sfc':
+        optional: true
+      content-tag:
+        optional: true
+      prettier-plugin-ember-template-tag:
+        optional: true
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -3607,11 +3625,6 @@ packages:
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
-
-  eslint-plugin-simple-import-sort@12.1.1:
-    resolution: {integrity: sha512-6nuzu4xwQtE3332Uz0to+TxDQYRLTKRESSc2hefVT48Zc8JthmN23Gx9lnYhu0FtkRSL1oxny3kJ2aveVhmOVA==}
-    peerDependencies:
-      eslint: '>=5.0.0'
 
   eslint-scope@8.3.0:
     resolution: {integrity: sha512-pUNxi75F8MJ/GdeKtVLSbYg4ZI34J6C0C7sbL4YOp2exGwen7ZsuBqKzUhXd0qMQ362yET3z+uPwKeg/0C2XCQ==}
@@ -7147,6 +7160,17 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
+  '@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.3)':
+    dependencies:
+      '@babel/generator': 7.29.1
+      '@babel/parser': 7.29.3
+      '@babel/traverse': 7.29.0
+      '@babel/types': 7.29.0
+      prettier: 3.8.3
+      semver: 7.7.4
+    transitivePeerDependencies:
+      - supports-color
+
   '@img/colour@1.0.0':
     optional: true
 
@@ -7876,6 +7900,15 @@ snapshots:
     transitivePeerDependencies:
       - '@opentelemetry/api'
 
+  '@orpc/client@1.8.1(@opentelemetry/api@1.9.1)':
+    dependencies:
+      '@orpc/shared': 1.8.1(@opentelemetry/api@1.9.1)
+      '@orpc/standard-server': 1.8.1(@opentelemetry/api@1.9.1)
+      '@orpc/standard-server-fetch': 1.8.1(@opentelemetry/api@1.9.1)
+      '@orpc/standard-server-peer': 1.8.1(@opentelemetry/api@1.9.1)
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+
   '@orpc/contract@1.8.1(@opentelemetry/api@1.9.0)':
     dependencies:
       '@orpc/client': 1.8.1(@opentelemetry/api@1.9.0)
@@ -7960,6 +7993,13 @@ snapshots:
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
 
+  '@orpc/shared@1.8.1(@opentelemetry/api@1.9.1)':
+    dependencies:
+      radash: 12.1.1
+      type-fest: 4.41.0
+    optionalDependencies:
+      '@opentelemetry/api': 1.9.1
+
   '@orpc/standard-server-aws-lambda@1.8.1(@opentelemetry/api@1.9.0)':
     dependencies:
       '@orpc/shared': 1.8.1(@opentelemetry/api@1.9.0)
@@ -7973,6 +8013,13 @@ snapshots:
     dependencies:
       '@orpc/shared': 1.8.1(@opentelemetry/api@1.9.0)
       '@orpc/standard-server': 1.8.1(@opentelemetry/api@1.9.0)
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+
+  '@orpc/standard-server-fetch@1.8.1(@opentelemetry/api@1.9.1)':
+    dependencies:
+      '@orpc/shared': 1.8.1(@opentelemetry/api@1.9.1)
+      '@orpc/standard-server': 1.8.1(@opentelemetry/api@1.9.1)
     transitivePeerDependencies:
       - '@opentelemetry/api'
 
@@ -7991,9 +8038,22 @@ snapshots:
     transitivePeerDependencies:
       - '@opentelemetry/api'
 
+  '@orpc/standard-server-peer@1.8.1(@opentelemetry/api@1.9.1)':
+    dependencies:
+      '@orpc/shared': 1.8.1(@opentelemetry/api@1.9.1)
+      '@orpc/standard-server': 1.8.1(@opentelemetry/api@1.9.1)
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+
   '@orpc/standard-server@1.8.1(@opentelemetry/api@1.9.0)':
     dependencies:
       '@orpc/shared': 1.8.1(@opentelemetry/api@1.9.0)
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+
+  '@orpc/standard-server@1.8.1(@opentelemetry/api@1.9.1)':
+    dependencies:
+      '@orpc/shared': 1.8.1(@opentelemetry/api@1.9.1)
     transitivePeerDependencies:
       - '@opentelemetry/api'
 
@@ -9570,7 +9630,7 @@ snapshots:
     dependencies:
       '@c15t/backend': 1.8.0(@opentelemetry/instrumentation@0.203.0(@opentelemetry/api@1.9.1))(typeorm@0.3.27(reflect-metadata@0.2.2))(ws@8.20.0)
       '@c15t/translations': 1.8.0
-      '@orpc/client': 1.8.1(@opentelemetry/api@1.9.0)
+      '@orpc/client': 1.8.1(@opentelemetry/api@1.9.1)
       '@orpc/server': 1.8.1(@opentelemetry/api@1.9.1)(ws@8.20.0)
       zustand: 5.0.11(@types/react@19.2.14)(react@19.2.6)(use-sync-external-store@1.6.0(react@19.2.6))
     transitivePeerDependencies:
@@ -10258,10 +10318,6 @@ snapshots:
       semver: 6.3.1
       string.prototype.matchall: 4.0.12
       string.prototype.repeat: 1.0.0
-
-  eslint-plugin-simple-import-sort@12.1.1(eslint@9.22.0(jiti@2.6.1)):
-    dependencies:
-      eslint: 9.22.0(jiti@2.6.1)
 
   eslint-scope@8.3.0:
     dependencies:
@@ -12353,9 +12409,11 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-tailwindcss@0.8.0(prettier@3.8.3):
+  prettier-plugin-tailwindcss@0.8.0(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.3))(prettier@3.8.3):
     dependencies:
       prettier: 3.8.3
+    optionalDependencies:
+      '@ianvs/prettier-plugin-sort-imports': 4.7.1(prettier@3.8.3)
 
   prettier@3.8.3: {}
 

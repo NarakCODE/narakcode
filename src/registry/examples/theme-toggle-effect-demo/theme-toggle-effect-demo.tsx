@@ -3,8 +3,8 @@
 import { MoonIcon, SunMediumIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { Button } from "@/components/ui/button"
 import { useClickSound } from "@/hooks/soundcn/use-click-sound"
+import { Button } from "@/components/ui/button"
 
 import { ThemeToggleEffectSelector } from "./theme-toggle-effect-selector"
 

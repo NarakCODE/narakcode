@@ -1,15 +1,15 @@
 "use client"
 
-import { format } from "date-fns"
 import { use } from "react"
+import { format } from "date-fns"
 
+import { cn } from "@/lib/utils"
 import { Spinner } from "@/components/ui/spinner"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
 import type { Activity } from "@/registry/transformed/components/contribution-graph"
 import {
   ContributionGraph,

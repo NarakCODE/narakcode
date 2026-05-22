@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
 import { Fragment } from "react"
+import type { Metadata } from "next"
 
-import { BlockDisplay } from "@/app/(preview)/components/block-display"
 import { registryCategories } from "@/config/registry"
 import { X_HANDLE } from "@/config/site"
 import { getAllBlockIds } from "@/lib/blocks"
 import { cn } from "@/lib/utils"
+import { BlockDisplay } from "@/app/(preview)/components/block-display"
 
 export const revalidate = false
 export const dynamic = "force-static"

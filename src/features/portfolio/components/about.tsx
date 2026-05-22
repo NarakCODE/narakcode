@@ -1,5 +1,5 @@
-import { Markdown } from "@/components/markdown"
 import { Prose } from "@/components/ui/typography"
+import { Markdown } from "@/components/markdown"
 import { USER } from "@/features/portfolio/data/user"
 
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel"

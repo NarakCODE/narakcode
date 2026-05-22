@@ -1,17 +1,17 @@
 "use client"
 
+import { copyText } from "@/utils/copy"
 import { EllipsisIcon, LinkIcon, ShareIcon } from "lucide-react"
 import { toast } from "sonner"
 
-import { Button } from "@/components//ui/button"
-import { Icons } from "@/components/icons"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { copyText } from "@/utils/copy"
+import { Button } from "@/components//ui/button"
+import { Icons } from "@/components/icons"
 
 export function DocShareMenu({ title, url }: { title: string; url: string }) {
   const absoluteUrl = url.startsWith("http")

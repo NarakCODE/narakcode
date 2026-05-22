@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic"
 
-import blocks from "@/__registry__/__blocks__.json"
-import { Separator } from "@/components/ui/separator"
 import { MOBILE_NAV } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { Separator } from "@/components/ui/separator"
+import blocks from "@/__registry__/__blocks__.json"
 import { getAllDocs } from "@/features/doc/data/documents"
 import type { DocPreview } from "@/features/doc/types/document"
-import { cn } from "@/lib/utils"
 
 const CommandMenu = dynamic(() =>
   import("@/components/command-menu").then((mod) => mod.CommandMenu)

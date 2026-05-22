@@ -1,8 +1,8 @@
 "use client"
 
-import { useReducedMotion } from "motion/react"
-import dynamic from "next/dynamic"
 import { useMemo } from "react"
+import dynamic from "next/dynamic"
+import { useReducedMotion } from "motion/react"
 
 import { useIsClient } from "@/hooks/use-is-client"
 

@@ -1,10 +1,10 @@
+import Image from "next/image"
 import { format } from "date-fns"
 import { ArrowUpRightIcon, CircleCheckBigIcon } from "lucide-react"
-import Image from "next/image"
 
-import { getIcon } from "@/components/icons"
-import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
+import { Separator } from "@/components/ui/separator"
+import { getIcon } from "@/components/icons"
 
 import type { Certification } from "../../types/certifications"
 

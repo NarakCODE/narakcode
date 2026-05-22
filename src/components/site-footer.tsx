@@ -1,9 +1,9 @@
 import { RssIcon } from "lucide-react"
 
-import { Icons } from "@/components/icons"
-import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
+import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 
 export function SiteFooter() {
   return (

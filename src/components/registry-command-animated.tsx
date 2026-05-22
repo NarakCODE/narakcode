@@ -1,7 +1,7 @@
 "use client"
 
-import { motion } from "motion/react"
 import { useRef } from "react"
+import { motion } from "motion/react"
 
 import { registryConfig } from "@/config/registry"
 import type { PackageManager } from "@/hooks/use-package-manager"

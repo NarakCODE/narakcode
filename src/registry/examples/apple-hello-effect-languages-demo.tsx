@@ -1,7 +1,7 @@
 "use client"
 
-import { AnimatePresence } from "motion/react"
 import { useState } from "react"
+import { AnimatePresence } from "motion/react"
 
 import { AppleHelloEffectEnglish } from "@/registry/transformed/components/apple-hello-effect/apple-hello-effect-english"
 import { AppleHelloEffectHindi } from "@/registry/transformed/components/apple-hello-effect/apple-hello-effect-hindi"
