@@ -2,6 +2,9 @@
 
 import { useMemo } from "react"
 
+import type { NpmCommands } from "@/types/unist"
+import type { PackageManager } from "@/hooks/use-package-manager"
+import { usePackageManager } from "@/hooks/use-package-manager"
 import {
   Tabs,
   TabsContent,
@@ -9,10 +12,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/base/ui/tabs"
-import type { PackageManager } from "@/hooks/use-package-manager"
-import { usePackageManager } from "@/hooks/use-package-manager"
 import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
-import type { NpmCommands } from "@/types/unist"
 
 import { CopyButton } from "./copy-button"
 import { getIconForPackageManager } from "./icons"

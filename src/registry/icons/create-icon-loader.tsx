@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
 import { use } from "react"
+import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
 
 const iconPromiseCaches = new Map<string, Map<string, Promise<any>>>()
 

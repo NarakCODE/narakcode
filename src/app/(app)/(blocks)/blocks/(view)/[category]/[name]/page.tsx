@@ -1,23 +1,23 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
+import { cache } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { cache } from "react"
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 
-import { BlockDisplay } from "@/app/(preview)/components/block-display"
+import { registryCategories } from "@/config/registry"
+import { X_HANDLE } from "@/config/site"
+import { getAllBlockStaticParams } from "@/lib/blocks"
+import { getRegistryItem } from "@/lib/registry"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Kbd } from "@/components/ui/kbd"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
-import { Button } from "@/components/ui/button"
-import { Kbd } from "@/components/ui/kbd"
-import { registryCategories } from "@/config/registry"
-import { X_HANDLE } from "@/config/site"
+import { BlockDisplay } from "@/app/(preview)/components/block-display"
 import { DocKeyboardShortcuts } from "@/features/doc/components/doc-keyboard-shortcuts"
 import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
-import { getAllBlockStaticParams } from "@/lib/blocks"
-import { getRegistryItem } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 
 export const revalidate = false
 export const dynamic = "force-static"

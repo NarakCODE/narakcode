@@ -1,12 +1,12 @@
-import type { Metadata } from "next"
 import { Suspense } from "react"
+import type { Metadata } from "next"
 
+import { X_HANDLE } from "@/config/site"
 import {
   PageHeading,
   PageHeadingTagline,
   PageHeadingTitle,
 } from "@/components/page-heading"
-import { X_HANDLE } from "@/config/site"
 import { PostList } from "@/features/blog/components/post-list"
 import { PostListWithSearch } from "@/features/blog/components/post-list-with-search"
 import { PostSearchInput } from "@/features/blog/components/post-search-input"

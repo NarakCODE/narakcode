@@ -1,8 +1,8 @@
-import { Volume2Icon } from "lucide-react"
 import type { JSX } from "react"
+import { Volume2Icon } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   LaravelIcon,
   NextJSIcon,

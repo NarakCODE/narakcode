@@ -2,13 +2,13 @@ import { cache } from "react"
 import type { registryItemFileSchema } from "shadcn/schema"
 import type { z } from "zod"
 
-import { BlockViewer } from "@/app/(preview)/components/block-viewer"
-import { getCachedThemes } from "@/app/(preview)/lib/get-themes"
 import { highlightCode } from "@/lib/highlight-code"
 import {
   createFileTreeForRegistryItemFiles,
   getRegistryItem,
 } from "@/lib/registry"
+import { BlockViewer } from "@/app/(preview)/components/block-viewer"
+import { getCachedThemes } from "@/app/(preview)/lib/get-themes"
 
 export async function BlockDisplay({ name }: { name: string }) {
   const item = await getCachedRegistryItem(name)

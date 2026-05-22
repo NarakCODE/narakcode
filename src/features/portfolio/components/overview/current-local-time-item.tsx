@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { TZDate, tzOffset } from "@date-fns/tz"
 import { format } from "date-fns"
 import {
@@ -17,7 +18,6 @@ import {
   Clock12Icon,
   type LucideIcon,
 } from "lucide-react"
-import { useEffect, useState } from "react"
 
 import { IntroItem, IntroItemContent, IntroItemIcon } from "./intro-item"
 

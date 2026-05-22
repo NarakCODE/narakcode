@@ -1,6 +1,5 @@
-import type { Registry } from "shadcn/schema"
-
 import { getRegistryItemUrl, getRegistryItemUrls } from "@/utils/registry"
+import type { Registry } from "shadcn/schema"
 
 export const blocks: Registry["items"] = [
   {

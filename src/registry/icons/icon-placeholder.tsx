@@ -1,7 +1,7 @@
 "use client"
 
-import { SquareIcon } from "lucide-react"
 import { lazy, Suspense } from "react"
+import { SquareIcon } from "lucide-react"
 import type { IconLibraryName } from "shadcn/icons"
 
 const IconLucide = lazy(() =>

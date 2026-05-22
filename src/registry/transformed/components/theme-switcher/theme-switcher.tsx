@@ -1,10 +1,10 @@
 "use client"
 
+import type { JSX } from "react"
+import { useSyncExternalStore } from "react"
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
 import { motion } from "motion/react"
 import { useTheme } from "next-themes"
-import type { JSX } from "react"
-import { useSyncExternalStore } from "react"
 
 function ThemeOption({
   icon,

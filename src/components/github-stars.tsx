@@ -1,11 +1,12 @@
+import { addQueryParams } from "@/utils/url"
+
+import { UTM_PARAMS } from "@/config/site"
+import { Button } from "@/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
-import { Button } from "@/components/ui/button"
-import { UTM_PARAMS } from "@/config/site"
-import { addQueryParams } from "@/utils/url"
 
 type GitHubStarsProps = {
   repo: string

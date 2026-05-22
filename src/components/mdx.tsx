@@ -5,26 +5,7 @@ import rehypeExternalLinks from "rehype-external-links"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
-import {
-  Tabs,
-  TabsContent,
-  TabsIndicator,
-  TabsList,
-  TabsTrigger,
-} from "@/components/base/ui/tabs"
-import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import { ComponentSource } from "@/components/component-source"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import { Code } from "@/components/ui/typography"
 import { UTM_PARAMS } from "@/config/site"
-import { DocSponsors } from "@/features/doc/components/doc-sponsors"
 import { generator } from "@/lib/auto-type-table"
 import { rehypeAddQueryParams } from "@/lib/rehype-add-query-params"
 import {
@@ -36,7 +17,26 @@ import { rehypeComponent } from "@/lib/rehype-component"
 import { rehypeNpmCommand } from "@/lib/rehype-npm-command"
 import { remarkCodeImport } from "@/lib/remark-code-import"
 import { cn } from "@/lib/utils"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import { Code } from "@/components/ui/typography"
+import {
+  Tabs,
+  TabsContent,
+  TabsIndicator,
+  TabsList,
+  TabsTrigger,
+} from "@/components/base/ui/tabs"
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
+import { ComponentSource } from "@/components/component-source"
 import { AutoTypeTable } from "@/registry/components/auto-type-table"
+import { DocSponsors } from "@/features/doc/components/doc-sponsors"
 
 import { Callout } from "./callout"
 import { CodeTabs } from "./code-tabs"

@@ -1,18 +1,18 @@
 "use client"
 
+import { useCallback, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useCallback, useState } from "react"
 
+import type { NavItem } from "@/types/nav"
+import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { useMediaQuery } from "@/hooks/use-media-query"
 import { haptic } from "@/registry/lib/haptic"
-import type { NavItem } from "@/types/nav"
 
 export function NavMobile({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false)

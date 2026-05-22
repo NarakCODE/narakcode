@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server"
+import { decodeEmail, decodePhoneNumber } from "@/utils/string"
 import sharp from "sharp"
 import VCard from "vcard-creator"
 
 import { USER } from "@/features/portfolio/data/user"
-import { decodeEmail, decodePhoneNumber } from "@/utils/string"
 
 export const revalidate = false
 export const dynamic = "force-static"

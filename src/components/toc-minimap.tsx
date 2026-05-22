@@ -1,17 +1,17 @@
 "use client"
 
-import type { TOCItemType } from "fumadocs-core/toc"
 import { useEffect, useMemo, useState } from "react"
+import type { TOCItemType } from "fumadocs-core/toc"
 
+import { trackEvent } from "@/lib/events"
+import { uMiniMapOpenSound } from "@/lib/soundcn/u-mini-map-open"
+import { cn } from "@/lib/utils"
+import { useSound } from "@/hooks/soundcn/use-sound"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/base/ui/hover-card"
-import { useSound } from "@/hooks/soundcn/use-sound"
-import { trackEvent } from "@/lib/events"
-import { uMiniMapOpenSound } from "@/lib/soundcn/u-mini-map-open"
-import { cn } from "@/lib/utils"
 
 export function TOCMinimap({ items }: { items: TOCItemType[] }) {
   const itemIds = useMemo(

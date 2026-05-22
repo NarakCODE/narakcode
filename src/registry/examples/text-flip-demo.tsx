@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, useInView, usePageInView } from "motion/react"
 import { useRef } from "react"
+import { motion, useInView, usePageInView } from "motion/react"
 
 import { TextFlip } from "@/registry/transformed/components/text-flip"
 

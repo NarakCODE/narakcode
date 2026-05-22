@@ -1,7 +1,7 @@
 import "server-only"
 
-import { unstable_cache } from "next/cache"
 import { cache } from "react"
+import { unstable_cache } from "next/cache"
 import type { RegistryItem } from "shadcn/schema"
 
 import { getShadcnThemes } from "./shadcn"

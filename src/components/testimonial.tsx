@@ -1,5 +1,5 @@
-import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
 import { cn } from "@/lib/utils"
+import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
 
 export function Testimonial({
   className,

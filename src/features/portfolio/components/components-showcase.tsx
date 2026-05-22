@@ -1,10 +1,8 @@
-import { ArrowRightIcon } from "lucide-react"
 import Link from "next/link"
+import { ArrowRightIcon } from "lucide-react"
 
-import { GridItem } from "@/app/(app)/(blocks)/components/showcase/grid-item"
 import { Button } from "@/components/base/ui/button"
 import { RemountOnThemeChange } from "@/components/remount-on-theme-change"
-import { getDocsByCategory } from "@/features/doc/data/documents"
 import AppleHelloEffectAllDemo from "@/registry/examples/apple-hello-effect-languages-demo"
 import BrandAssetsMenuDemo from "@/registry/examples/brand-assets-menu-demo"
 import CodeBlockCommandDemo from "@/registry/examples/code-block-command-demo"
@@ -22,6 +20,8 @@ import ThemeSwitcherDemo from "@/registry/examples/theme-switcher-demo"
 import ThemeToggleEffectDemo from "@/registry/examples/theme-toggle-effect-demo/theme-toggle-effect-demo"
 import TwemojiDemo from "@/registry/examples/twemoji-demo"
 import WheelPickerDemo from "@/registry/examples/wheel-picker-demo"
+import { GridItem } from "@/app/(app)/(blocks)/components/showcase/grid-item"
+import { getDocsByCategory } from "@/features/doc/data/documents"
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
 

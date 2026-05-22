@@ -3,8 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { registryCategories } from "@/config/registry"
 import type { NavItem } from "@/types/nav"
+import { registryCategories } from "@/config/registry"
 
 const NAV_ITEMS: NavItem[] = [
   {

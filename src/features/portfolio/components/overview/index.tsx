@@ -1,3 +1,4 @@
+import { urlToName } from "@/utils/url"
 import {
   LinkIcon,
   MapPinIcon,
@@ -8,7 +9,6 @@ import {
 
 import { USER } from "@/features/portfolio/data/user"
 import type { User } from "@/features/portfolio/types/user"
-import { urlToName } from "@/utils/url"
 
 import { Panel, PanelContent } from "../panel"
 import { CurrentLocalTimeItem } from "./current-local-time-item"

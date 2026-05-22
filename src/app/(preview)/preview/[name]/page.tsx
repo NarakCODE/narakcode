@@ -1,12 +1,12 @@
+import { cache } from "react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { cache } from "react"
-
 import { Index } from "@/__registry__"
-import { PreviewProvider } from "@/app/(preview)/components/preview-provider"
-import { getCachedThemes } from "@/app/(preview)/lib/get-themes"
+
 import { X_HANDLE } from "@/config/site"
 import { getRegistryItem } from "@/lib/registry"
+import { PreviewProvider } from "@/app/(preview)/components/preview-provider"
+import { getCachedThemes } from "@/app/(preview)/lib/get-themes"
 
 export const revalidate = false
 export const dynamic = "force-static"

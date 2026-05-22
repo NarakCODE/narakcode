@@ -1,11 +1,9 @@
 import { promises as fs } from "node:fs"
 import path from "node:path"
-
-import { ESLint } from "eslint"
 import { availableParallelism } from "os"
 import prettier from "prettier"
 import { rimraf } from "rimraf"
-import { type Registry, registrySchema } from "shadcn/schema"
+import { registrySchema, type Registry } from "shadcn/schema"
 import { transformIcons } from "shadcn/utils"
 import { Project, ScriptKind } from "ts-morph"
 
@@ -350,17 +348,6 @@ async function copyComponentsToTransformed() {
   console.log("✅ registry/components → registry/transformed/components")
 }
 
-async function formatTransformedComponents() {
-  const eslint = new ESLint({ fix: true })
-
-  const results = await eslint.lintFiles(TRANSFORMED_COMPONENTS_PATH)
-  await ESLint.outputFixes(results)
-
-  console.log("✅ Formatted transformed components with ESLint")
-
-  return results
-}
-
 try {
   console.log("💽 Building registry...")
 
@@ -378,7 +365,6 @@ try {
   await buildBlocksIndex()
 
   await copyComponentsToTransformed()
-  await formatTransformedComponents()
 
   console.log("✅ Done!")
 } catch (error) {

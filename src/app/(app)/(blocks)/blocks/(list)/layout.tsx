@@ -1,9 +1,9 @@
+import { cn } from "@/lib/utils"
 import {
   PageHeading,
   PageHeadingTagline,
   PageHeadingTitle,
 } from "@/components/page-heading"
-import { cn } from "@/lib/utils"
 
 import { BlocksNav } from "./blocks-nav"
 

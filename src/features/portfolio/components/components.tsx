@@ -1,14 +1,14 @@
-import { ArrowRightIcon } from "lucide-react"
 import Link from "next/link"
+import { ArrowRightIcon } from "lucide-react"
 
+import { Button } from "@/components/base/ui/button"
+import { ComponentIcon } from "@/components/icons"
 import {
   ComponentItem,
   ComponentItemDot,
   ComponentItemIcon,
   ComponentItemTitle,
 } from "@/app/(app)/(pages)/components/component-item"
-import { Button } from "@/components/base/ui/button"
-import { ComponentIcon } from "@/components/icons"
 import { getDocsByCategory } from "@/features/doc/data/documents"
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"

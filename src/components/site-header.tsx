@@ -1,13 +1,13 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
 
-import blocks from "@/__registry__/__blocks__.json"
+import { MAIN_NAV } from "@/config/site"
+import { Separator } from "@/components/ui/separator"
 import { NavDesktop } from "@/components/nav-desktop"
 import { NavItemGitHub } from "@/components/nav-item-github"
 import { SiteHeaderMark } from "@/components/site-header-mark"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Separator } from "@/components/ui/separator"
-import { MAIN_NAV } from "@/config/site"
+import blocks from "@/__registry__/__blocks__.json"
 import { getAllDocs } from "@/features/doc/data/documents"
 import type { DocPreview } from "@/features/doc/types/document"
 

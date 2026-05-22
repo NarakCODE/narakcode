@@ -1,17 +1,17 @@
 "use client"
 
+import { useCallback, useRef, type ComponentProps } from "react"
 import { differenceInMonths, parse } from "date-fns"
 import { BriefcaseBusinessIcon, InfinityIcon } from "lucide-react"
-import { type ComponentProps, useCallback, useRef } from "react"
 import ReactMarkdown from "react-markdown"
 
+import { cn } from "@/lib/utils"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import { Separator } from "@/components/ui/separator"
-import { cn } from "@/lib/utils"
 import type { ChevronsUpDownIconHandle } from "@/registry/transformed/components/chevrons-up-down-icon"
 import { ChevronsUpDownIcon } from "@/registry/transformed/components/chevrons-up-down-icon"
 
