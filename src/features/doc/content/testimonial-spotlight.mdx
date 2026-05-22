@@ -4,10 +4,10 @@ description: Testimonial card with spotlight effect on hover.
 image: https://assets.chanhdai.com/images/blog/testimonial-spotlight.webp
 category: components
 createdAt: 2026-03-21
-updatedAt: 2026-03-27
+updatedAt: 2026-05-23
 ---
 
-<ComponentPreview name="testimonial-spotlight-demo-01" />
+<ComponentPreview name="testimonial-spotlight-demo" />
 
 <DocSponsors />
 
@@ -125,31 +125,29 @@ TestimonialSpotlight
   name="TestimonialSpotlightProps"
 />
 
-## Styling
-
-### CSS Variables
-
 <div data-table-nowrap="">
 
-| Variable            | Meaning                                                                         |
-| ------------------- | ------------------------------------------------------------------------------- |
-| `--spotlight-color` | The color of the spotlight effect.                                              |
-| `--spotlight-size`  | The size of the spotlight effect, defined as the radius of the radial gradient. |
+| CSS Variable          | Description                                                                     | Default                 |
+| --------------------- | ------------------------------------------------------------------------------- | ----------------------- |
+| `--spotlight-color`   | The color of the spotlight effect.                                              | `rgba(255,255,255,0.2)` |
+| `--spotlight-size`    | The size of the spotlight effect, defined as the radius of the radial gradient. | `60%`                   |
+| `--spotlight-opacity` | The opacity of the spotlight effect when hovered.                               | `0.5`                   |
 
 </div>
 
 ## Examples
 
-### Custom color
+### Custom color, size, and opacity
 
-Use the `spotlightColor` prop to change the spotlight color.
-
-<ComponentPreview name="testimonial-spotlight-demo-02" data-code-meta="{22}" />
-
-Alternatively, you can override the color using the `--spotlight-color` CSS variable. This is useful when you want to control the color from a parent element or a stylesheet without passing a prop.
+Tailwind CSS:
 
 ```tsx
-<TestimonialSpotlight className="[--spotlight-color:rgba(219,39,119,0.2)] dark:[--spotlight-color:rgba(219,39,119,0.15)]">
+<TestimonialSpotlight
+  className={cn(
+    "[--spotlight-color:rgba(219,39,119,0.15)] dark:[--spotlight-color:rgba(255,255,255,0.2)]",
+    "[--spotlight-opacity:0.8] [--spotlight-size:50%]"
+  )}
+>
   ...
 </TestimonialSpotlight>
 ```
@@ -159,11 +157,13 @@ Or with inline style:
 ```tsx
 <TestimonialSpotlight
   style={
-    { "--spotlight-color": "rgba(219, 39, 119, 0.15)" } as React.CSSProperties
+    {
+      "--spotlight-color": "rgba(219,39,119,0.15)",
+      "--spotlight-size": "50%",
+      "--spotlight-opacity": "0.8",
+    } as React.CSSProperties
   }
 >
   ...
 </TestimonialSpotlight>
 ```
-
-The `--spotlight-color` CSS variable takes precedence over the `spotlightColor` prop.

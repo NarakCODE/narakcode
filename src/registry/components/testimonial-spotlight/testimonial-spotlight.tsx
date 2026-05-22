@@ -1,75 +1,36 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
 import { cn } from "@/lib/utils"
 
-const SPOTLIGHT_OPACITY = 0.5
-
 export type TestimonialSpotlightProps = Omit<
   React.ComponentPropsWithoutRef<"div">,
-  | "children"
-  | "onFocus"
-  | "onBlur"
-  | "onMouseEnter"
-  | "onMouseLeave"
-  | "onMouseMove"
+  "children" | "onMouseMove"
 > & {
   children: React.ReactNode
-  /** The color of the spotlight effect.
-   * @defaultValue "rgba(255,255,255,0.2)"
-   */
-  spotlightColor?: string
-  /**
-   * The opacity of the spotlight effect.
-   * @defaultValue 0.5
-   */
-  spotlightOpacity?: number
-  /**
-   * The size of the spotlight effect.
-   * @defaultValue "60%"
-   */
-  spotlightSize?: string
 }
 
 export function TestimonialSpotlight({
   children,
   className,
-  spotlightColor = "rgba(255,255,255,0.2)",
-  spotlightOpacity = SPOTLIGHT_OPACITY,
-  spotlightSize = "60%",
   ...props
 }: TestimonialSpotlightProps) {
   const itemRef = useRef<HTMLDivElement>(null)
 
-  const [isFocused, setIsFocused] = useState<boolean>(false)
-  const [opacity, setOpacity] = useState<number>(0)
-
-  const handleFocus = () => {
-    setIsFocused(true)
-    setOpacity(spotlightOpacity)
-  }
-
-  const handleBlur = () => {
-    setIsFocused(false)
-    setOpacity(0)
-  }
-
-  const handleMouseEnter = () => {
-    setOpacity(spotlightOpacity)
-  }
-
-  const handleMouseLeave = () => {
-    setOpacity(0)
-  }
-
   const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    if (!itemRef.current || isFocused) return
+    if (!itemRef.current) return
 
     const rect = itemRef.current.getBoundingClientRect()
 
-    itemRef.current.style.setProperty("--x", `${e.clientX - rect.left}px`)
-    itemRef.current.style.setProperty("--y", `${e.clientY - rect.top}px`)
+    itemRef.current.style.setProperty(
+      "--spotlight-x",
+      `${e.clientX - rect.left}px`
+    )
+    itemRef.current.style.setProperty(
+      "--spotlight-y",
+      `${e.clientY - rect.top}px`
+    )
   }
 
   return (
@@ -77,21 +38,17 @@ export function TestimonialSpotlight({
       ref={itemRef}
       data-slot="testimonial-spotlight"
       className={cn(
-        "relative overflow-hidden rounded-xl bg-card/50 inset-ring-1 inset-ring-foreground/10",
+        "group/testimonial-spotlight relative overflow-hidden rounded-xl bg-card/50 inset-ring-1 inset-ring-foreground/10",
+        "*:data-[slot=testimonial]:relative *:data-[slot=testimonial]:z-1",
         className
       )}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       {...props}
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover/testimonial-spotlight:opacity-(--spotlight-opacity,0.5)"
         style={{
-          opacity,
-          background: `radial-gradient(circle at var(--x) var(--y), var(--spotlight-color, ${spotlightColor}), transparent var(--spotlight-size, ${spotlightSize}))`,
+          background: `radial-gradient(circle at var(--spotlight-x) var(--spotlight-y), var(--spotlight-color,rgba(255,255,255,0.2)), transparent var(--spotlight-size,60%))`,
         }}
       />
       {children}

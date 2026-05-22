@@ -11,7 +11,7 @@ import {
 } from "@/registry/transformed/components/testimonial"
 import { TestimonialSpotlight } from "@/registry/transformed/components/testimonial-spotlight"
 
-export default function TestimonialSpotlightDemo02() {
+export default function TestimonialSpotlightDemo() {
   return (
     <a
       className="block w-72 max-w-full"
@@ -19,7 +19,7 @@ export default function TestimonialSpotlightDemo02() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <TestimonialSpotlight spotlightColor="rgba(219, 39, 119, 0.15)">
+      <TestimonialSpotlight className="[--spotlight-color:rgba(219,39,119,0.15)] dark:[--spotlight-color:rgba(255,255,255,0.2)]">
         <Testimonial>
           <TestimonialQuote className="font-serif">
             <p>You’re doing amazing work.</p>
