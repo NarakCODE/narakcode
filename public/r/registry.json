@@ -762,6 +762,21 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "dot-grid-spotlight",
+      "title": "Dot Grid Spotlight",
+      "description": "Interactive dot grid with a cursor-tracking spotlight effect.",
+      "files": [
+        {
+          "path": "src/registry/components/dot-grid-spotlight/dot-grid-spotlight.tsx",
+          "type": "registry:component",
+          "target": "@components/dot-grid-spotlight.tsx"
+        }
+      ],
+      "docs": "https://chanhdai.com/components/dot-grid-spotlight",
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",

@@ -6,4 +6,5 @@ allowBuilds:
   sharp: false
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
+  - shadcn
   - "@base-ui/*"

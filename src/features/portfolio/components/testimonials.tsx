@@ -29,8 +29,8 @@ import {
   TestimonialQuote,
   TestimonialVerifiedBadge,
 } from "@/registry/components/testimonial"
-import { TestimonialSpotlight } from "@/registry/components/testimonial-spotlight"
-import { Twemoji } from "@/registry/components/twemoji/twemoji"
+import { TestimonialSpotlight } from "@/registry/transformed/components/testimonial-spotlight"
+import { Twemoji } from "@/registry/transformed/components/twemoji/twemoji"
 
 const FEATURED_TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2]
   .filter((item) => item.isFeatured)
