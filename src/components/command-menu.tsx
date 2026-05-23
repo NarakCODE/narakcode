@@ -5,21 +5,22 @@ import { copyToClipboardWithEvent } from "@/utils/copy"
 import { useRouter } from "@bprogress/next/app"
 import { useTiks } from "@rexa-developer/tiks/react"
 import {
-  Bookmark,
-  Box,
-  BriefcaseBusiness,
-  CircleCheckBig,
-  CornerDownLeft,
-  Crown,
-  Download,
-  FileText,
-  MoonStar,
-  Quote,
+  BookmarkIcon,
+  BoxIcon,
+  BriefcaseBusinessIcon,
+  CircleCheckBigIcon,
+  CornerDownLeftIcon,
+  CrownIcon,
+  DownloadIcon,
+  FileTextIcon,
+  LineChartIcon,
+  MoonStarIcon,
+  QuoteIcon,
   RssIcon,
-  SquareDashed,
-  SunMedium,
-  TextInitial,
-  Type,
+  SquareDashedIcon,
+  SunMediumIcon,
+  TextInitialIcon,
+  TypeIcon,
 } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useHotkeys } from "react-hotkeys-hook"
@@ -105,7 +106,7 @@ const MENU_LINKS: CommandLinkItem[] = [
     title: "Testimonials",
     href: "/testimonials",
     kind: "page",
-    icon: <Quote strokeWidth={1.5} />,
+    icon: <QuoteIcon strokeWidth={1.5} />,
     shortcut: "GT",
   },
 ]
@@ -115,37 +116,43 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     title: "About",
     href: "/#about",
     kind: "page",
-    icon: <TextInitial />,
+    icon: <TextInitialIcon />,
   },
   {
     title: "Experience",
     href: "/#experience",
     kind: "page",
-    icon: <BriefcaseBusiness />,
+    icon: <BriefcaseBusinessIcon />,
   },
   {
     title: "Projects",
     href: "/#projects",
     kind: "page",
-    icon: <Box />,
+    icon: <BoxIcon />,
   },
   {
     title: "Awards",
     href: "/#awards",
     kind: "page",
-    icon: <Crown />,
+    icon: <CrownIcon />,
   },
   {
     title: "Certifications",
     href: "/#certs",
     kind: "page",
-    icon: <CircleCheckBig />,
+    icon: <CircleCheckBigIcon />,
   },
   {
     title: "Bookmarks",
     href: "/#bookmarks",
     kind: "page",
-    icon: <Bookmark />,
+    icon: <BookmarkIcon />,
+  },
+  {
+    title: "Insights",
+    href: "/#insights",
+    kind: "page",
+    icon: <LineChartIcon />,
   },
 ]
 
@@ -162,13 +169,13 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
     title: "Download vCard",
     href: "/vcard",
     kind: "command",
-    icon: <Download />,
+    icon: <DownloadIcon />,
   },
   {
     title: "llms.txt",
     href: "/llms.txt",
     kind: "link",
-    icon: <FileText />,
+    icon: <FileTextIcon />,
     openInNewTab: true,
   },
   {
@@ -442,7 +449,7 @@ export function CommandMenu({
                   handleCopyText(getWordmarkSVG(), "Logotype as SVG copied")
                 }}
               >
-                <Type />
+                <TypeIcon />
                 Copy Logotype as SVG
               </CommandMenuItem>
 
@@ -452,7 +459,7 @@ export function CommandMenu({
                 }}
                 onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
               >
-                <SquareDashed />
+                <SquareDashedIcon />
                 Brand Guidelines
               </CommandMenuItem>
 
@@ -461,7 +468,7 @@ export function CommandMenu({
                   href="https://assets.chanhdai.com/chanhdai-brand.zip"
                   download
                 >
-                  <Download />
+                  <DownloadIcon />
                   Download Brand Assets
                 </a>
               </CommandMenuItem>
@@ -473,7 +480,7 @@ export function CommandMenu({
                 onHighlight={handleCommandHighlight}
                 onSelect={createThemeHandler("light")}
               >
-                <SunMedium />
+                <SunMediumIcon />
                 Light
               </CommandMenuItem>
               <CommandMenuItem
@@ -481,7 +488,7 @@ export function CommandMenu({
                 onHighlight={handleCommandHighlight}
                 onSelect={createThemeHandler("dark")}
               >
-                <MoonStar />
+                <MoonStarIcon />
                 Dark
               </CommandMenuItem>
               <CommandMenuItem
@@ -665,7 +672,7 @@ function CommandMenuFooter({
         <div className="flex items-center gap-2 max-sm:hidden">
           <span>{ENTER_ACTION_LABELS[selectedCommandKind ?? "page"]}</span>
           <Kbd>
-            <CornerDownLeft />
+            <CornerDownLeftIcon />
           </Kbd>
         </div>
       </div>
