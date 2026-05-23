@@ -15,5 +15,9 @@
       "target": "@components/shimmering-text.tsx"
     }
   ],
+  "docs": "https://chanhdai.com/components/shimmering-text",
+  "categories": [
+    "text-effects"
+  ],
   "type": "registry:component"
 }

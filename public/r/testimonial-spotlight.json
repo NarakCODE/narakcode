@@ -15,5 +15,9 @@
       "target": "@components/testimonial-spotlight.tsx"
     }
   ],
+  "docs": "https://chanhdai.com/components/testimonial-spotlight",
+  "categories": [
+    "marketing"
+  ],
   "type": "registry:component"
 }

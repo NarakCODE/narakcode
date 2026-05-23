@@ -17,5 +17,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/toc-minimap",
+  "categories": [
+    "navigation"
+  ],
   "type": "registry:component"
 }

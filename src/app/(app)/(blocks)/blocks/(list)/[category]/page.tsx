@@ -1,7 +1,7 @@
 import { Fragment } from "react"
 import type { Metadata } from "next"
 
-import { registryCategories } from "@/config/registry"
+import { blockCategories } from "@/config/registry"
 import { X_HANDLE } from "@/config/site"
 import { getAllBlockIds } from "@/lib/blocks"
 import { cn } from "@/lib/utils"
@@ -12,8 +12,8 @@ export const dynamic = "force-static"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  return registryCategories.map((category) => ({
-    category: category.slug,
+  return blockCategories.map((category) => ({
+    category: category.name,
   }))
 }
 
@@ -22,7 +22,7 @@ export async function generateMetadata({
 }: PageProps<"/blocks/[category]">): Promise<Metadata> {
   const { category } = await params
 
-  const item = registryCategories.find((item) => item.slug === category)
+  const item = blockCategories.find((item) => item.name === category)
 
   if (!item) {
     return {}
@@ -31,7 +31,7 @@ export async function generateMetadata({
   const title = item.name
   const description = item.description
 
-  const categoryUrl = `/blocks/${item.slug}`
+  const categoryUrl = `/blocks/${item.name}`
   const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
 
   return {

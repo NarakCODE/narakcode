@@ -16,5 +16,9 @@
       "target": "@components/github-stars.tsx"
     }
   ],
+  "docs": "https://chanhdai.com/components/github-stars",
+  "categories": [
+    "data-display"
+  ],
   "type": "registry:component"
 }

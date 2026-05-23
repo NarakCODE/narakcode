@@ -27,5 +27,9 @@
       "target": "@hooks/use-copy-to-clipboard.ts"
     }
   ],
+  "docs": "https://chanhdai.com/components/copy-button",
+  "categories": [
+    "utilities"
+  ],
   "type": "registry:component"
 }

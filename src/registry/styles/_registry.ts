@@ -52,6 +52,7 @@ export const styles: Registry["items"] = [
         },
       },
     },
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/theme-toggle-effect",
   },
   {
@@ -85,6 +86,7 @@ export const styles: Registry["items"] = [
         },
       },
     },
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/theme-toggle-effect",
   },
   {
@@ -118,6 +120,7 @@ export const styles: Registry["items"] = [
         },
       },
     },
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/theme-toggle-effect",
   },
   {
@@ -155,6 +158,7 @@ export const styles: Registry["items"] = [
         },
       },
     },
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/theme-toggle-effect",
   },
   {
@@ -191,6 +195,7 @@ export const styles: Registry["items"] = [
         },
       },
     },
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/theme-toggle-effect",
   },
   {
@@ -239,6 +244,7 @@ export const styles: Registry["items"] = [
         },
       },
     },
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/theme-toggle-effect",
   },
   {
@@ -274,6 +280,7 @@ export const styles: Registry["items"] = [
         },
       },
     },
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/theme-toggle-effect",
   },
   {

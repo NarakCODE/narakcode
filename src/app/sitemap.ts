@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-import { registryCategories } from "@/config/registry"
+import { blockCategories } from "@/config/registry"
 import { SITE_INFO } from "@/config/site"
 import { getAllBlockStaticParams } from "@/lib/blocks"
 import { getAllDocs, getDocsByCategory } from "@/features/doc/data/documents"
@@ -19,8 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(post.metadata.updatedAt).toISOString(),
   }))
 
-  const blockCategories = registryCategories.map((category) => ({
-    url: `${SITE_INFO.url}/blocks/${category.slug}`,
+  const blockCategoryPages = blockCategories.map((category) => ({
+    url: `${SITE_INFO.url}/blocks/${category.name}`,
     lastModified: new Date().toISOString(),
   }))
 
@@ -44,5 +44,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date().toISOString(),
   }))
 
-  return [...routes, ...posts, ...components, ...blockCategories, ...blocks]
+  return [...routes, ...posts, ...components, ...blockCategoryPages, ...blocks]
 }

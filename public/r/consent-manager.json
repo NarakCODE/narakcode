@@ -18,5 +18,9 @@
       "target": "@components/consent-manager.tsx"
     }
   ],
+  "docs": "https://chanhdai.com/components/consent-manager",
+  "categories": [
+    "utilities"
+  ],
   "type": "registry:component"
 }

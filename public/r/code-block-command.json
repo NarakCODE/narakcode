@@ -41,5 +41,9 @@
       "code-foreground": "oklch(0.985 0 0)"
     }
   },
+  "docs": "https://chanhdai.com/components/code-block-command",
+  "categories": [
+    "data-display"
+  ],
   "type": "registry:component"
 }

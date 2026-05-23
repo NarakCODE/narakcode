@@ -29,5 +29,8 @@
       "@apply prose-blockquote:border-l prose-blockquote:font-normal prose-blockquote:text-muted-foreground prose-blockquote:not-italic prose-blockquote:[&_p:first-of-type]:before:content-none prose-blockquote:[&_p:last-of-type]:after:content-none": {}
     }
   },
+  "categories": [
+    "typography"
+  ],
   "type": "registry:component"
 }

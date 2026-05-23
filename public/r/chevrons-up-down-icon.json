@@ -14,5 +14,8 @@
       "target": "@components/chevrons-up-down-icon.tsx"
     }
   ],
+  "categories": [
+    "effects"
+  ],
   "type": "registry:component"
 }

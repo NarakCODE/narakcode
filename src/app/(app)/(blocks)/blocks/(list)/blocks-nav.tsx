@@ -4,16 +4,16 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import type { NavItem } from "@/types/nav"
-import { registryCategories } from "@/config/registry"
+import { blockCategories } from "@/config/registry"
 
 const NAV_ITEMS: NavItem[] = [
   {
     href: "/blocks",
     title: "All",
   },
-  ...registryCategories.map((category) => ({
-    href: `/blocks/${category.slug}`,
-    title: category.name,
+  ...blockCategories.map((category) => ({
+    href: `/blocks/${category.name}`,
+    title: category.title,
   })),
 ]
 

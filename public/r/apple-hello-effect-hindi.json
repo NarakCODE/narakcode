@@ -16,5 +16,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/apple-hello-effect",
+  "categories": [
+    "text-effects"
+  ],
   "type": "registry:component"
 }

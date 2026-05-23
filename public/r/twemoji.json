@@ -30,5 +30,8 @@
     }
   },
   "docs": "https://chanhdai.com/components/twemoji",
+  "categories": [
+    "typography"
+  ],
   "type": "registry:component"
 }

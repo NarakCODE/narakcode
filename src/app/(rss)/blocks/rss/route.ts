@@ -1,4 +1,4 @@
-import { registryCategories } from "@/config/registry"
+import { blockCategories } from "@/config/registry"
 import { SITE_INFO } from "@/config/site"
 
 export const revalidate = false
@@ -16,15 +16,15 @@ export async function GET() {
 
   const blocks: BlockItem[] = []
 
-  for (const category of registryCategories) {
+  for (const category of blockCategories) {
     for (const itemName in Index) {
       const item = Index[itemName]
       if (
         item.type === "registry:block" &&
-        item.categories?.includes(category.slug)
+        item.categories?.includes(category.name)
       ) {
         blocks.push({
-          category: category.slug,
+          category: category.name,
           name: itemName,
           description: item.description,
           createdAt: item?.meta?.createdAt,

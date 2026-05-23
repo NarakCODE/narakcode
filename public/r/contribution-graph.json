@@ -16,5 +16,8 @@
     }
   ],
   "docs": "https://www.kibo-ui.com/components/contribution-graph",
+  "categories": [
+    "data-display"
+  ],
   "type": "registry:component"
 }

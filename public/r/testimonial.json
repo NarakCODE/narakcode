@@ -12,5 +12,9 @@
       "target": "@components/testimonial.tsx"
     }
   ],
+  "docs": "https://chanhdai.com/components/testimonial",
+  "categories": [
+    "marketing"
+  ],
   "type": "registry:component"
 }
