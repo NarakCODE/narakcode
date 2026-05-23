@@ -8,7 +8,7 @@ import { registryCategories } from "@/config/registry"
 export async function getAllBlockStaticParams(): Promise<
   Array<{ category: string; name: string }>
 > {
-  const { Index } = await import("@/__registry__")
+  const { Index } = await import("@/registry/__index__")
 
   const params: Array<{ category: string; name: string }> = []
 
@@ -39,7 +39,7 @@ export async function getAllBlocks(
   types: z.infer<typeof registryItemSchema>["type"][] = ["registry:block"],
   categories: string[] = []
 ) {
-  const { Index } = await import("@/__registry__")
+  const { Index } = await import("@/registry/__index__")
 
   // Collect all blocks from all styles.
   const allBlocks: z.infer<typeof registryItemSchema>[] = []

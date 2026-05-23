@@ -18,7 +18,6 @@
     "^@/components/ui/(.*)$",
     "^@/components/(.*)$",
     "^@/registry/(.*)$",
-    "^@/__registry__/(.*)$",
     "^@/styles/(.*)$",
     "^@/app/(.*)$",
     "^@/features/(.*)$",

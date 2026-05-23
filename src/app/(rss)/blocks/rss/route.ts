@@ -12,7 +12,7 @@ type BlockItem = {
 }
 
 export async function GET() {
-  const { Index } = await import("@/__registry__")
+  const { Index } = await import("@/registry/__index__")
 
   const blocks: BlockItem[] = []
 

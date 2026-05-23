@@ -21,7 +21,7 @@ import {
 } from "@/components/base/ui/tooltip"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { OpenInV0Button } from "@/components/v0-open-button"
-import { Index } from "@/__registry__/index"
+import { Index } from "@/registry/__index__"
 
 export function ComponentPreview({
   className,

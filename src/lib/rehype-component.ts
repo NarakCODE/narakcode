@@ -4,7 +4,7 @@ import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import type { UnistNode, UnistTree } from "@/types/unist"
-import { Index } from "@/__registry__/index"
+import { Index } from "@/registry/__index__"
 
 import { formatCode } from "./format-code"
 
