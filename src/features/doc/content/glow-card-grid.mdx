@@ -50,11 +50,6 @@ npm install clsx tailwind-merge
 <Step>Copy and paste the following code into your project</Step>
 
 <ComponentSource
-  src="src/registry/components/glow-card-grid/glow-card.tsx"
-  title="components/glow-card.tsx"
-/>
-
-<ComponentSource
   src="src/registry/components/glow-card-grid/glow-card-grid.tsx"
   title="components/glow-card-grid.tsx"
 />
@@ -70,8 +65,7 @@ npm install clsx tailwind-merge
 ## Usage
 
 ```tsx
-import { GlowCard } from "@/components/glow-card"
-import { GlowCardGrid } from "@/components/glow-card-grid"
+import { GlowCard, GlowCardGrid } from "@/components/glow-card-grid"
 ```
 
 ```tsx
@@ -93,10 +87,7 @@ GlowCardGrid
 
 ### GlowCard
 
-<AutoTypeTable
-  path="src/registry/components/glow-card-grid/glow-card.tsx"
-  name="GlowCardProps"
-/>
+<AutoTypeTable path="src/features/doc/content/props.ts" name="GlowCardProps" />
 
 ### GlowCardGrid
 
@@ -126,8 +117,7 @@ Use the hook to define parameter ranges and pass them to your component as props
 ```tsx
 import { useDialKit } from "dialkit"
 
-import { GlowCard } from "@/components/glow-card"
-import { GlowCardGrid } from "@/components/glow-card-grid/glow-card-grid"
+import { GlowCard, GlowCardGrid } from "@/components/glow-card-grid"
 ```
 
 ```tsx

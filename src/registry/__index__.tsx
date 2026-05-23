@@ -388,10 +388,6 @@ export const Index: Record<string, any> = {
       path: "src/registry/components/glow-card-grid/glow-card-grid.tsx",
       type: "registry:component",
       target: "@components/glow-card-grid.tsx",
-    },{
-      path: "src/registry/components/glow-card-grid/glow-card.tsx",
-      type: "registry:component",
-      target: "@components/glow-card.tsx",
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/components/glow-card-grid/glow-card-grid.tsx")

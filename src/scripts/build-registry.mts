@@ -15,10 +15,12 @@ import { getAllBlocks } from "@/lib/blocks"
  * build-registry.mts is the single registry pipeline.
  *
  * Source of truth:
- * - Authored raw component/registry source lives in registry/components.
+ * - Authored raw component source lives in registry/components.
  * - Authored demo source lives in registry/examples.
  *
  * Persistent outputs:
+ * - registry/__index__.tsx
+ * - registry/transformed/components/*
  * - public/r/*
  */
 
