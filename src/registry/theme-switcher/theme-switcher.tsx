@@ -4,7 +4,7 @@ import { MonitorIcon, MoonStarIcon, SunIcon } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import type { JSX } from "react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -60,14 +60,12 @@ const THEME_OPTIONS = [
   },
 ];
 
+import { useIsClient } from "@/hooks/use-is-client";
+
 function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
 
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useIsClient();
 
   if (!isMounted) {
     return <div className="flex h-8 w-24" />;

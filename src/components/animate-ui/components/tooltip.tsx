@@ -449,6 +449,7 @@ function TooltipTrigger({ children }: TooltipTriggerProps) {
     [hideTooltip, children.props]
   );
 
+  // eslint-disable-next-line react-hooks/refs
   return React.cloneElement(children, {
     ref: triggerRef,
     onMouseEnter: handleMouseEnter,
