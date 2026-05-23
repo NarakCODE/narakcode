@@ -10,6 +10,7 @@ import { Bookmarks } from "@/features/portfolio/components/bookmarks"
 import { Certifications } from "@/features/portfolio/components/certifications"
 import { Experiences } from "@/features/portfolio/components/experiences"
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
+import { Insights } from "@/features/portfolio/components/insights"
 import { Overview } from "@/features/portfolio/components/overview"
 import { ProfileCover } from "@/features/portfolio/components/profile-cover"
 import { ProfileHeader } from "@/features/portfolio/components/profile-header"
@@ -84,6 +85,9 @@ export default function HomePage() {
         <Separator />
 
         <Bookmarks />
+        <Separator />
+
+        <Insights />
         <Separator />
       </div>
     </>
