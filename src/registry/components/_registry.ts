@@ -446,11 +446,6 @@ export const components: Registry["items"] = [
         type: "registry:component",
         target: "@components/glow-card-grid.tsx",
       },
-      {
-        path: "components/glow-card-grid/glow-card.tsx",
-        type: "registry:component",
-        target: "@components/glow-card.tsx",
-      },
     ],
   },
   {

@@ -4,9 +4,10 @@ import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import type { UnistNode, UnistTree } from "@/types/unist"
-import { Index } from "@/__registry__/index"
+import { Index } from "@/registry/__index__"
 
 import { formatCode } from "./format-code"
+import { fixImport } from "./registry"
 
 type NodeToProcess = {
   node: UnistNode
@@ -149,7 +150,7 @@ export function rehypeComponent() {
               /*turbopackIgnore: true*/ filePath,
               "utf8"
             )
-            const source = await formatCode(raw, "radix-vega")
+            const source = fixImport(raw) // await formatCode(raw, "radix-vega")
 
             const codeMeta = getNodeAttributeByName(item.node, "data-code-meta")
 

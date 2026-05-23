@@ -5,7 +5,10 @@ import type { Button } from "@/components/ui/button"
 import type { AppleHelloEffectEnglish } from "@/registry/components/apple-hello-effect/apple-hello-effect-english"
 import type { CopyButton } from "@/registry/components/copy-button"
 import type { GitHubContributions } from "@/registry/components/github-contributions"
-import type { GlowCardGrid } from "@/registry/components/glow-card-grid/glow-card-grid"
+import type {
+  GlowCard,
+  GlowCardGrid,
+} from "@/registry/components/glow-card-grid/glow-card-grid"
 import type { MiddleTruncation } from "@/registry/components/middle-truncation/middle-truncation"
 import type { ScrollFadeEffect } from "@/registry/components/scroll-fade-effect"
 import type { ShimmeringText } from "@/registry/components/shimmering-text"
@@ -77,6 +80,8 @@ export type GlowCardGridProps = Omit<
   ComponentProps<typeof GlowCardGrid>,
   keyof Omit<ComponentProps<"div">, "children">
 >
+
+export type GlowCardProps = ComponentProps<typeof GlowCard>
 
 export type MiddleTruncationProps = Omit<
   ComponentProps<typeof MiddleTruncation>,

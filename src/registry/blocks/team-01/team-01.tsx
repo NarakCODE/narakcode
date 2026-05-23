@@ -1,5 +1,4 @@
-import { GlowCard } from "@/registry/components/glow-card-grid/glow-card"
-import { GlowCardGrid } from "@/registry/components/glow-card-grid/glow-card-grid"
+import { GlowCard, GlowCardGrid } from "@/registry/components/glow-card-grid"
 
 export default function Team01() {
   return (

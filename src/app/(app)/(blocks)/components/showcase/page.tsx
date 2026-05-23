@@ -20,21 +20,21 @@ import BrandAssetsMenuDemo from "@/registry/examples/brand-assets-menu-demo"
 import CodeBlockCommandDemo from "@/registry/examples/code-block-command-demo"
 import CopyButtonDemo from "@/registry/examples/copy-button-demo"
 import ElasticSliderDemo from "@/registry/examples/elastic-slider-demo"
-import FluidGradientTextDemo from "@/registry/examples/fluid-gradient-text-demo-01"
-import GitHubContributionsDemo1 from "@/registry/examples/github-contributions-demo-01"
+import FluidGradientTextDemo from "@/registry/examples/fluid-gradient-text-demo"
+import GitHubContributionsDemo from "@/registry/examples/github-contributions-demo"
 import GitHubStarsDemo from "@/registry/examples/github-stars-demo"
-import GlowCardGridDemo01 from "@/registry/examples/glow-card-grid-demo-01"
+import GlowCardGridDemo from "@/registry/examples/glow-card-grid-demo"
 import HapticDemo from "@/registry/examples/haptic-demo"
 import IconSwapDemo from "@/registry/examples/icon-swap-demo"
 import MiddleTruncationDemo from "@/registry/examples/middle-truncation-demo"
-import ScrollFadeEffectDemo from "@/registry/examples/scroll-fade-effect-demo-01"
+import ScrollFadeEffectDemo from "@/registry/examples/scroll-fade-effect-demo"
 import ShimmeringTextDemo2 from "@/registry/examples/shimmering-text-demo-02"
-import SlideToUnlockDemo1 from "@/registry/examples/slide-to-unlock-demo-01"
+import SlideToUnlockDemo from "@/registry/examples/slide-to-unlock-demo"
 import TestimonialSpotlightDemo from "@/registry/examples/testimonial-spotlight-demo"
-import TestimonialsMarqueeDemo1 from "@/registry/examples/testimonials-marquee-demo-01"
+import TestimonialsMarqueeDemo from "@/registry/examples/testimonials-marquee-demo"
 import TextFlipDemo from "@/registry/examples/text-flip-demo"
 import ThemeSwitcherDemo from "@/registry/examples/theme-switcher-demo"
-import ThemeToggleEffectDemo from "@/registry/examples/theme-toggle-effect-demo/theme-toggle-effect-demo"
+import ThemeToggleEffectDemo from "@/registry/examples/theme-toggle-effect-demo"
 import TOCMinimapDemo from "@/registry/examples/toc-minimap-demo"
 import TwemojiDemo from "@/registry/examples/twemoji-demo"
 import WheelPickerDemo from "@/registry/examples/wheel-picker-demo"
@@ -128,7 +128,7 @@ export default function ComponentsShowcasePage() {
 
         <GridItem>
           <RemountOnThemeChange>
-            <SlideToUnlockDemo1 />
+            <SlideToUnlockDemo />
           </RemountOnThemeChange>
         </GridItem>
 
@@ -157,7 +157,7 @@ export default function ComponentsShowcasePage() {
         </GridItem>
 
         <GridItem className="p-0 md:col-span-2 md:row-span-2">
-          <GitHubContributionsDemo1 />
+          <GitHubContributionsDemo />
         </GridItem>
 
         <GridItem>
@@ -193,11 +193,11 @@ export default function ComponentsShowcasePage() {
         </GridItem>
 
         <GridItem className="overflow-hidden p-0 **:data-[slot=marquee]:border-none md:col-span-3">
-          <TestimonialsMarqueeDemo1 />
+          <TestimonialsMarqueeDemo />
         </GridItem>
 
         <GridItem className="p-0 md:col-span-2 md:row-span-2">
-          <GlowCardGridDemo01 />
+          <GlowCardGridDemo />
         </GridItem>
 
         <GridItem>

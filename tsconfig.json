@@ -37,7 +37,6 @@
     "./src/scripts/build-registry.mts"
   ],
   "exclude": [
-    "node_modules",
-    "./src/__registry__",
+    "node_modules"
   ]
 }

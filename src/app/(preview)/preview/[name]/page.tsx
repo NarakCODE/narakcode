@@ -1,10 +1,10 @@
 import { cache } from "react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { Index } from "@/__registry__"
 
 import { X_HANDLE } from "@/config/site"
 import { getRegistryItem } from "@/lib/registry"
+import { Index } from "@/registry/__index__"
 import { PreviewProvider } from "@/app/(preview)/components/preview-provider"
 import { getCachedThemes } from "@/app/(preview)/lib/get-themes"
 
@@ -13,7 +13,7 @@ export const dynamic = "force-static"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const { Index } = await import("@/__registry__")
+  const { Index } = await import("@/registry/__index__")
 
   const params: Array<{ name: string }> = []
 

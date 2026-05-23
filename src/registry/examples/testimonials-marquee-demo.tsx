@@ -15,7 +15,7 @@ import {
   TestimonialQuote,
 } from "@/registry/transformed/components/testimonial"
 
-export default function TestimonialsMarqueeDemo1() {
+export default function TestimonialsMarqueeDemo() {
   return (
     <div className="w-full bg-background">
       <Marquee

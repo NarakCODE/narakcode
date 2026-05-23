@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 
 import { X_HANDLE } from "@/config/site"
 import { cn } from "@/lib/utils"
-import blocks from "@/__registry__/__blocks__.json"
+import blocks from "@/registry/__blocks__.json"
 import { BlockDisplay } from "@/app/(preview)/components/block-display"
 
 export const dynamic = "force-static"

@@ -118,12 +118,12 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "shimmering-text-demo-01",
+    name: "shimmering-text-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("shimmering-text")],
     files: [
       {
-        path: "examples/shimmering-text-demo-01.tsx",
+        path: "examples/shimmering-text-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -140,7 +140,7 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "slide-to-unlock-demo-01",
+    name: "slide-to-unlock-demo",
     type: "registry:example",
     registryDependencies: [
       getRegistryItemUrl("slide-to-unlock"),
@@ -148,7 +148,7 @@ export const examples: Registry["items"] = [
     ],
     files: [
       {
-        path: "examples/slide-to-unlock-demo-01.tsx",
+        path: "examples/slide-to-unlock-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -187,12 +187,12 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "testimonials-marquee-demo-01",
+    name: "testimonials-marquee-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("testimonials-marquee")],
     files: [
       {
-        path: "examples/testimonials-marquee-demo-01.tsx",
+        path: "examples/testimonials-marquee-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -220,12 +220,12 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "scroll-fade-effect-demo-01",
+    name: "scroll-fade-effect-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("scroll-fade-effect")],
     files: [
       {
-        path: "examples/scroll-fade-effect-demo-01.tsx",
+        path: "examples/scroll-fade-effect-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -282,12 +282,12 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "code-block-command-convert-demo",
+    name: "code-block-command-convert",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("code-block-command")],
     files: [
       {
-        path: "examples/code-block-command-convert-demo.tsx",
+        path: "examples/code-block-command-convert.tsx",
         type: "registry:example",
       },
     ],
@@ -326,24 +326,24 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "glow-card-grid-demo-01",
+    name: "glow-card-grid-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("glow-card-grid")],
     files: [
       {
-        path: "examples/glow-card-grid-demo-01.tsx",
+        path: "examples/glow-card-grid-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "glow-card-grid-dialkit-demo",
+    name: "glow-card-grid-dialkit",
     type: "registry:example",
     dependencies: ["dialkit"],
     registryDependencies: [getRegistryItemUrl("glow-card-grid")],
     files: [
       {
-        path: "examples/glow-card-grid-dialkit-demo.tsx",
+        path: "examples/glow-card-grid-dialkit.tsx",
         type: "registry:example",
       },
     ],
@@ -381,7 +381,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/theme-toggle-effect-demo/theme-toggle-effect-demo.tsx",
+        path: "examples/theme-toggle-effect-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -398,45 +398,45 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "github-contributions-demo-01",
+    name: "github-contributions-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("github-contributions")],
     files: [
       {
-        path: "examples/github-contributions-demo-01.tsx",
+        path: "examples/github-contributions-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "github-contributions-demo-02",
+    name: "github-contributions-default-theme",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("github-contributions")],
     files: [
       {
-        path: "examples/github-contributions-demo-02.tsx",
+        path: "examples/github-contributions-default-theme.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "github-contributions-demo-03",
+    name: "github-contributions-winter-theme",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("github-contributions")],
     files: [
       {
-        path: "examples/github-contributions-demo-03.tsx",
+        path: "examples/github-contributions-winter-theme.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "github-contributions-demo-04",
+    name: "github-contributions-halloween-theme",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("github-contributions")],
     files: [
       {
-        path: "examples/github-contributions-demo-04.tsx",
+        path: "examples/github-contributions-halloween-theme.tsx",
         type: "registry:example",
       },
     ],
@@ -453,24 +453,24 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "fluid-gradient-text-demo-01",
+    name: "fluid-gradient-text-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("fluid-gradient-text")],
     files: [
       {
-        path: "examples/fluid-gradient-text-demo-01.tsx",
+        path: "examples/fluid-gradient-text-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "fluid-gradient-text-dialkit-demo",
+    name: "fluid-gradient-text-dialkit",
     type: "registry:example",
     dependencies: ["dialkit"],
     registryDependencies: [getRegistryItemUrl("fluid-gradient-text")],
     files: [
       {
-        path: "examples/fluid-gradient-text-dialkit-demo.tsx",
+        path: "examples/fluid-gradient-text-dialkit.tsx",
         type: "registry:example",
       },
     ],

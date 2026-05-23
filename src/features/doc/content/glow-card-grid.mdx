@@ -8,9 +8,9 @@ updatedAt: 2026-03-30
 ---
 
 <ComponentPreview
-  name="glow-card-grid-demo-01"
-  openInV0Url="https://chanhdai.com/r/glow-card-grid-demo-01.json"
-  customizeUrl="https://chanhdai.com/preview/glow-card-grid-dialkit-demo"
+  name="glow-card-grid-demo"
+  openInV0Url="https://chanhdai.com/r/glow-card-grid-demo.json"
+  customizeUrl="https://chanhdai.com/preview/glow-card-grid-dialkit"
 />
 
 <DocSponsors />
@@ -50,11 +50,6 @@ npm install clsx tailwind-merge
 <Step>Copy and paste the following code into your project</Step>
 
 <ComponentSource
-  src="src/registry/components/glow-card-grid/glow-card.tsx"
-  title="components/glow-card.tsx"
-/>
-
-<ComponentSource
   src="src/registry/components/glow-card-grid/glow-card-grid.tsx"
   title="components/glow-card-grid.tsx"
 />
@@ -70,8 +65,7 @@ npm install clsx tailwind-merge
 ## Usage
 
 ```tsx
-import { GlowCard } from "@/components/glow-card"
-import { GlowCardGrid } from "@/components/glow-card-grid"
+import { GlowCard, GlowCardGrid } from "@/components/glow-card-grid"
 ```
 
 ```tsx
@@ -93,10 +87,7 @@ GlowCardGrid
 
 ### GlowCard
 
-<AutoTypeTable
-  path="src/registry/components/glow-card-grid/glow-card.tsx"
-  name="GlowCardProps"
-/>
+<AutoTypeTable path="src/features/doc/content/props.ts" name="GlowCardProps" />
 
 ### GlowCardGrid
 
@@ -111,7 +102,7 @@ GlowCardGrid
 
 This example shows how to use DialKit to create live controls for fine-tuning the glow effect parameters in real-time.
 
-[View live demo](/preview/glow-card-grid-dialkit-demo)
+[View live demo](/preview/glow-card-grid-dialkit)
 
 <Steps>
 
@@ -126,8 +117,7 @@ Use the hook to define parameter ranges and pass them to your component as props
 ```tsx
 import { useDialKit } from "dialkit"
 
-import { GlowCard } from "@/components/glow-card"
-import { GlowCardGrid } from "@/components/glow-card-grid/glow-card-grid"
+import { GlowCard, GlowCardGrid } from "@/components/glow-card-grid"
 ```
 
 ```tsx

@@ -4,7 +4,7 @@ import { useDialKit } from "dialkit"
 
 import { FluidGradientText } from "@/registry/transformed/components/fluid-gradient-text"
 
-export default function FluidGradientTextDialKitDemo() {
+export default function FluidGradientTextDialKit() {
   const params = useDialKit("FluidGradientText", {
     text: "shadcn",
     svgViewBoxWidth: 1200,

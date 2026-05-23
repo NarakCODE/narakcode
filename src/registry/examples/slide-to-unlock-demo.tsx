@@ -11,7 +11,7 @@ import {
   SlideToUnlockTrack,
 } from "@/registry/transformed/components/slide-to-unlock"
 
-export default function SlideToUnlockDemo1() {
+export default function SlideToUnlockDemo() {
   const [play] = useSound("https://assets.chanhdai.com/sounds/ios/unlock.mp3", {
     volume: 0.5,
   })

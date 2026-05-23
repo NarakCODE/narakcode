@@ -10,7 +10,7 @@ import { getCachedContributions } from "@/registry/transformed/components/github
 const GITHUB_USERNAME = "ncdai"
 const GITHUB_PROFILE_URL = "https://github.com/ncdai"
 
-export default function GitHubContributionsDemo03() {
+export default function GitHubContributionsWinterTheme() {
   const contributions = getCachedContributions(GITHUB_USERNAME)
 
   return (

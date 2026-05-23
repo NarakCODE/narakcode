@@ -8,16 +8,16 @@ import BrandAssetsMenuDemo from "@/registry/examples/brand-assets-menu-demo"
 import CodeBlockCommandDemo from "@/registry/examples/code-block-command-demo"
 import CopyButtonDemo from "@/registry/examples/copy-button-demo"
 import ElasticSliderDemo from "@/registry/examples/elastic-slider-demo"
-import FluidGradientTextDemo from "@/registry/examples/fluid-gradient-text-demo-01"
-import GitHubContributionsDemo1 from "@/registry/examples/github-contributions-demo-01"
+import FluidGradientTextDemo from "@/registry/examples/fluid-gradient-text-demo"
+import GitHubContributionsDemo1 from "@/registry/examples/github-contributions-demo"
 import IconSwapDemo from "@/registry/examples/icon-swap-demo"
 import MiddleTruncationDemo from "@/registry/examples/middle-truncation-demo"
 import ShimmeringTextDemo2 from "@/registry/examples/shimmering-text-demo-02"
-import SlideToUnlockDemo1 from "@/registry/examples/slide-to-unlock-demo-01"
+import SlideToUnlockDemo from "@/registry/examples/slide-to-unlock-demo"
 import TestimonialSpotlightDemo from "@/registry/examples/testimonial-spotlight-demo"
 import TextFlipDemo from "@/registry/examples/text-flip-demo"
 import ThemeSwitcherDemo from "@/registry/examples/theme-switcher-demo"
-import ThemeToggleEffectDemo from "@/registry/examples/theme-toggle-effect-demo/theme-toggle-effect-demo"
+import ThemeToggleEffectDemo from "@/registry/examples/theme-toggle-effect-demo"
 import TwemojiDemo from "@/registry/examples/twemoji-demo"
 import WheelPickerDemo from "@/registry/examples/wheel-picker-demo"
 import { GridItem } from "@/app/(app)/(blocks)/components/showcase/grid-item"
@@ -44,7 +44,7 @@ export function ComponentsShowcase() {
 
         <GridItem>
           <RemountOnThemeChange>
-            <SlideToUnlockDemo1 />
+            <SlideToUnlockDemo />
           </RemountOnThemeChange>
         </GridItem>
 
