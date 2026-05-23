@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-button-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://narakcode.dev/r/icon-button.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/examples/icon-button-demo.tsx",
+      "content": "\"use client\";\n\nimport { Star } from \"lucide-react\";\nimport * as React from \"react\";\n\nimport { IconButton } from \"@/registry/icon-button/icon-button\";\n\nexport default function IconButtonDemo() {\n  const [active, setActive] = React.useState(false);\n\n  return (\n    <IconButton\n      icon={Star}\n      active={active}\n      onClick={() => setActive(!active)}\n      color={[255, 255, 0]}\n    />\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

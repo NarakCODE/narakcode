@@ -1,11 +1,11 @@
-import type { Registry } from "shadcn/registry";
+import type { Registry } from "shadcn/schema";
 
 export const components: Registry["items"] = [
   {
     name: "theme-switcher",
     type: "registry:component",
     dependencies: ["next-themes", "lucide-react", "motion"],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils"],
     files: [
       {
         path: "theme-switcher/theme-switcher.tsx",
@@ -17,7 +17,7 @@ export const components: Registry["items"] = [
     name: "flip-sentences",
     type: "registry:component",
     dependencies: ["motion"],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils"],
     files: [
       {
         path: "flip-sentences/flip-sentences.tsx",
@@ -29,7 +29,7 @@ export const components: Registry["items"] = [
     name: "apple-hello-effect",
     type: "registry:component",
     dependencies: ["motion"],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils"],
     files: [
       {
         path: "apple-hello-effect/apple-hello-effect.tsx",
@@ -41,7 +41,7 @@ export const components: Registry["items"] = [
     name: "spotify-playlist-card",
     type: "registry:component",
     dependencies: ["motion"],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils"],
     files: [
       {
         path: "spotify-playlist-card/spotify-playlist-card.tsx",
@@ -53,7 +53,7 @@ export const components: Registry["items"] = [
     name: "wheel-picker",
     type: "registry:component",
     dependencies: ["@ncdai/react-wheel-picker"],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils"],
     files: [
       {
         path: "wheel-picker/wheel-picker.tsx",
@@ -65,7 +65,7 @@ export const components: Registry["items"] = [
     name: "morphing-pill",
     type: "registry:component",
     dependencies: ["lucide-react", "motion"],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils"],
     files: [
       {
         path: "morphing-pill/morphing-pill.tsx",
@@ -77,7 +77,7 @@ export const components: Registry["items"] = [
     name: "icon-button",
     type: "registry:component",
     dependencies: ["lucide-react", "motion"],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils"],
     files: [
       {
         path: "icon-button/icon-button.tsx",
@@ -89,7 +89,7 @@ export const components: Registry["items"] = [
     name: "pin-list",
     type: "registry:component",
     dependencies: ["lucide-react", "motion"],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils"],
     files: [
       {
         path: "pin-list/pin-list.tsx",
@@ -106,27 +106,11 @@ export const components: Registry["items"] = [
       "lucide-react",
       "framer-motion",
     ],
-    registryDependencies: ["https://narakcode.vercel.app/r/cn.json"],
+    registryDependencies: ["utils", "drawer", "dropdown-menu"],
     files: [
       {
         path: "dropdrawer/dropdrawer.tsx",
         type: "registry:component",
-      },
-      {
-        path: "ui/drawer.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "ui/dropdown-menu.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "lib/utils.ts",
-        type: "registry:lib",
-      },
-      {
-        path: "hooks/use-mobile.ts",
-        type: "registry:hook",
       },
     ],
   },

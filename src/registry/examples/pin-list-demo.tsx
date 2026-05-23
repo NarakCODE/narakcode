@@ -3,7 +3,7 @@
 import { Bug, Code, Cpu, Rocket, UploadCloud } from "lucide-react";
 import * as React from "react";
 
-import { PinList } from "../pin-list";
+import { PinList } from "@/registry/pin-list";
 
 const ITEMS = [
   {

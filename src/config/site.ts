@@ -2,7 +2,7 @@ import { USER } from "@/data/user";
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: process.env.APP_URL || "https://narakcode.vercel.app",
+  url: process.env.APP_URL || "https://narakcode.dev",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -40,7 +40,7 @@ export const CAMBODIA_HOLIDAYS = [
 ];
 
 export const UTM_PARAMS = {
-  utm_source: "narakcode.vercel.app",
+  utm_source: "narakcode.dev",
   utm_medium: "portfolio_website",
   utm_campaign: "referral",
 };

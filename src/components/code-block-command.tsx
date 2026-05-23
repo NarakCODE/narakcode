@@ -200,7 +200,7 @@ export function CodeBlockCommand({
               return (
                 <button
                   key={key}
-                  className={`flex cursor-pointer items-center gap-1 rounded-t-md border-b-2 px-4 py-2 text-sm transition-all duration-200 focus:outline-none ${
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-md border-b-2 px-2.5 py-1.25 text-xs transition-all duration-200 focus:outline-none ${
                     packageManager === key
                       ? "border-amber-400 bg-white font-bold text-zinc-900 shadow-sm dark:bg-zinc-900/80 dark:text-zinc-50"
                       : "border-transparent text-zinc-500 hover:bg-zinc-200/60 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200"
@@ -214,7 +214,7 @@ export function CodeBlockCommand({
                   style={{ borderRadius: "0.5rem 0.5rem 0px 0px" }}
                 >
                   <IconComponent
-                    className="h-4 w-4"
+                    className="h-3.5 w-3.5"
                     active={packageManager === key}
                   />
                   <span>{key}</span>

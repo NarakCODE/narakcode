@@ -37,20 +37,23 @@ export async function GET() {
   const card = new VCard();
 
   card
-    .addName(USER.lastName, USER.firstName)
-    .addPhoneNumber(decodePhoneNumber(USER.phoneNumber))
-    .addAddress(USER.address)
-    .addEmail(decodeEmail(USER.email))
-    .addURL(USER.website);
+    .addName({ familyName: USER.lastName, givenName: USER.firstName })
+    .addPhoneNumber({
+      number: decodePhoneNumber(USER.phoneNumber),
+      type: ["cell"],
+    })
+    .addAddress({ street: USER.address })
+    .addEmail({ address: decodeEmail(USER.email) })
+    .addUrl({ url: USER.website });
 
   const photo = await getVCardPhoto(USER.avatar);
   if (photo) {
-    card.addPhoto(photo.image, photo.mine);
+    card.addPhoto({ url: USER.avatar });
   }
 
   if (USER.jobs.length > 0) {
     const company = USER.jobs[0];
-    card.addCompany(company.company).addJobtitle(company.title);
+    card.addCompany({ name: company.company }).addJobtitle(company.title);
   }
 
   return new NextResponse(card.toString(), {

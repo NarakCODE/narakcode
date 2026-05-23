@@ -31,4 +31,8 @@ export const NAV_LINKS = [
     title: "Components",
     href: "/components",
   },
+  {
+    title: "Vault",
+    href: "/vault",
+  },
 ];

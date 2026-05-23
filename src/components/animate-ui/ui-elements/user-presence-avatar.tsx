@@ -53,13 +53,13 @@ const USERS = [
 ];
 
 const AVATAR_MOTION_TRANSITION = {
-  type: "spring",
+  type: "spring" as const,
   stiffness: 200,
   damping: 25,
 };
 
 const GROUP_CONTAINER_TRANSITION = {
-  type: "spring",
+  type: "spring" as const,
   stiffness: 150,
   damping: 20,
 };

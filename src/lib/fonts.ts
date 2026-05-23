@@ -1,5 +1,5 @@
 import {
-  Inter as FontSans,
+  Geist as FontSans,
   JetBrains_Mono as FontMono,
 } from "next/font/google";
 
@@ -13,4 +13,10 @@ export const fontMono = FontMono({
   display: "swap",
   subsets: ["latin"],
   variable: "--d-font-mono",
+});
+
+export const fontHeading = FontSans({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--d-font-heading",
 });

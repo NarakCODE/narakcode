@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pin-list-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://narakcode.dev/r/pin-list.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/examples/pin-list-demo.tsx",
+      "content": "\"use client\";\n\nimport { Bug, Code, Cpu, Rocket, UploadCloud } from \"lucide-react\";\nimport * as React from \"react\";\n\nimport { PinList } from \"@/registry/pin-list\";\n\nconst ITEMS = [\n  {\n    id: 1,\n    name: \"Code Your Dreams\",\n    info: \"Every keystroke counts · Never stop building\",\n    icon: Rocket,\n    pinned: true,\n  },\n  {\n    id: 2,\n    name: \"Debug Your Limits\",\n    info: \"Break barriers · You got this!\",\n    icon: Bug,\n    pinned: true,\n  },\n  {\n    id: 3,\n    name: \"Ship It Studio\",\n    info: \"Turn ideas into reality · Closes 8:00 PM\",\n    icon: UploadCloud,\n    pinned: false,\n  },\n  {\n    id: 4,\n    name: \"Focus Mode\",\n    info: \"Deep work zone · Flow state all day\",\n    icon: Cpu,\n    pinned: false,\n  },\n  {\n    id: 5,\n    name: \"Syntax Sanctuary\",\n    info: \"Find beauty in code · Until 9:00 PM\",\n    icon: Code,\n    pinned: false,\n  },\n];\n\nexport default function PinListDemo() {\n  return <PinList items={ITEMS} />;\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,16 +1,22 @@
-import nextVitals from "eslint-config-next/core-web-vitals";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 import nextTypescript from "eslint-config-next/typescript";
-import prettier from "eslint-config-prettier";
+import eslintConfigPrettier from "eslint-config-prettier";
 import boundaries from "eslint-plugin-boundaries";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 /**
  * @type {import("eslint").Linter.Config[]}
- * */
+ */
 const eslintConfig = [
-  ...nextVitals,
+  ...nextCoreWebVitals,
   ...nextTypescript,
-  prettier,
+  eslintConfigPrettier,
+  {
+    rules: {
+      "react-hooks/set-state-in-effect": "warn",
+      "react-hooks/refs": "warn",
+    },
+  },
   {
     files: ["**/*.{ts,tsx}"],
     rules: {
@@ -19,6 +25,7 @@ const eslintConfig = [
     },
   },
   {
+    files: ["**/*.{ts,tsx}"],
     plugins: {
       "simple-import-sort": simpleImportSort,
     },
@@ -28,7 +35,7 @@ const eslintConfig = [
     },
   },
   {
-    // Thanks @WebDevSimplified
+    files: ["**/*.{ts,tsx}"],
     plugins: {
       boundaries,
     },

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "apple-hello-effect-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://narakcode.dev/r/apple-hello-effect.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/examples/apple-hello-effect-demo.tsx",
+      "content": "import { AppleHelloVietnameseEffect } from \"@/registry/apple-hello-effect\";\n\nexport default function AppleHelloEffectDemo() {\n  return <AppleHelloVietnameseEffect />;\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

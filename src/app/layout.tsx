@@ -6,7 +6,7 @@ import type { WebSite, WithContext } from "schema-dts";
 import { Providers } from "@/components/providers";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
 import { USER } from "@/data/user";
-import { fontSans } from "@/lib/fonts";
+import { fontHeading, fontSans } from "@/lib/fonts";
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   keywords: SITE_INFO.keywords,
   authors: [
     {
-      name: "ncdai",
+      name: "NarakCODE",
       url: SITE_INFO.url,
     },
   ],
-  creator: "ncdai",
+  creator: "NarakCODE",
   openGraph: {
     siteName: SITE_INFO.name,
     url: "/",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@iamncdai", // Twitter username
+    creator: "@NarakCODE", // Twitter username
     images: [SITE_INFO.ogImage],
   },
   icons: {
@@ -92,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSans.variable} `}
+      className={`${fontSans.variable} ${fontHeading.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -101,7 +101,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage['chanhdai.theme'] === 'dark' || ((!('chanhdai.theme' in localStorage) || localStorage['chanhdai.theme'] === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                if (localStorage['narakcode.theme'] === 'dark' || ((!('narakcode.theme' in localStorage) || localStorage['narakcode.theme'] === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
               } catch (_) {}

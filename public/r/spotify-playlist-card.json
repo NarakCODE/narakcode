@@ -6,7 +6,7 @@
     "motion"
   ],
   "registryDependencies": [
-    "https://narakcode.vercel.app/r/cn.json"
+    "utils"
   ],
   "files": [
     {

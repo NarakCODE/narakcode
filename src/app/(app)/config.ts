@@ -17,4 +17,8 @@ export const NAV_LINKS: NavItemType[] = [
     title: "Components",
     href: "/components",
   },
+  {
+    title: "Vault",
+    href: "/vault",
+  },
 ];
