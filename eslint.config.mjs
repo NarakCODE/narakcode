@@ -1,21 +1,22 @@
-import { FlatCompat } from "@eslint/eslintrc";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
+import eslintConfigPrettier from "eslint-config-prettier";
 import boundaries from "eslint-plugin-boundaries";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
 
 /**
- * @type {import("eslint").Linter.Config}
- * */
+ * @type {import("eslint").Linter.Config[]}
+ */
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
+  ...nextCoreWebVitals,
+  ...nextTypescript,
+  eslintConfigPrettier,
+  {
+    rules: {
+      "react-hooks/set-state-in-effect": "warn",
+      "react-hooks/refs": "warn",
+    },
+  },
   {
     files: ["**/*.{ts,tsx}"],
     rules: {
@@ -24,6 +25,7 @@ const eslintConfig = [
     },
   },
   {
+    files: ["**/*.{ts,tsx}"],
     plugins: {
       "simple-import-sort": simpleImportSort,
     },
@@ -33,7 +35,7 @@ const eslintConfig = [
     },
   },
   {
-    // Thanks @WebDevSimplified
+    files: ["**/*.{ts,tsx}"],
     plugins: {
       boundaries,
     },

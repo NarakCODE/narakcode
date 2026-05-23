@@ -26,7 +26,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils"
       ],
       "files": [
         {
@@ -42,7 +42,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils"
       ],
       "files": [
         {
@@ -58,7 +58,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils"
       ],
       "files": [
         {
@@ -74,7 +74,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils"
       ],
       "files": [
         {
@@ -90,7 +90,7 @@
         "@ncdai/react-wheel-picker"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils"
       ],
       "files": [
         {
@@ -107,7 +107,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils"
       ],
       "files": [
         {
@@ -124,7 +124,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils"
       ],
       "files": [
         {
@@ -141,7 +141,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils"
       ],
       "files": [
         {
@@ -160,28 +160,119 @@
         "framer-motion"
       ],
       "registryDependencies": [
-        "https://narakcode.dev/r/cn.json"
+        "utils",
+        "drawer",
+        "dropdown-menu"
       ],
       "files": [
         {
           "path": "src/registry/dropdrawer/dropdrawer.tsx",
           "type": "registry:component"
-        },
+        }
+      ]
+    },
+    {
+      "name": "apple-hello-effect-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://narakcode.dev/r/apple-hello-effect.json"
+      ],
+      "files": [
         {
-          "path": "src/registry/ui/drawer.tsx",
-          "type": "registry:ui"
-        },
+          "path": "src/registry/examples/apple-hello-effect-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "theme-switcher-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://narakcode.dev/r/theme-switcher.json"
+      ],
+      "files": [
         {
-          "path": "src/registry/ui/dropdown-menu.tsx",
-          "type": "registry:ui"
-        },
+          "path": "src/registry/examples/theme-switcher-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "wheel-picker-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://narakcode.dev/r/wheel-picker.json"
+      ],
+      "files": [
         {
-          "path": "src/registry/lib/utils.ts",
-          "type": "registry:lib"
-        },
+          "path": "src/registry/examples/wheel-picker-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "wheel-picker-form-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://narakcode.dev/r/wheel-picker.json",
+        "form"
+      ],
+      "files": [
         {
-          "path": "src/registry/hooks/use-mobile.ts",
-          "type": "registry:hook"
+          "path": "src/registry/examples/wheel-picker-form-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "morphing-pill-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://narakcode.dev/r/morphing-pill.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/examples/morphing-pill-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "icon-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://narakcode.dev/r/icon-button.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/examples/icon-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "pin-list-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://narakcode.dev/r/pin-list.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/examples/pin-list-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-drawer-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://narakcode.dev/r/dropdrawer.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/examples/dropdown-drawer-demo.tsx",
+          "type": "registry:example"
         }
       ]
     }

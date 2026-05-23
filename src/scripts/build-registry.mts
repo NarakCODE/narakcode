@@ -2,8 +2,8 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 
 import { rimraf } from "rimraf";
-import type { Registry } from "shadcn/registry";
-import { registrySchema } from "shadcn/registry";
+import type { Registry } from "shadcn/schema";
+import { registrySchema } from "shadcn/schema";
 
 import { registry } from "../registry/index.mts";
 
@@ -60,9 +60,7 @@ export const Index: Record<string, any> = {`;
       $schema: "https://ui.shadcn.com/schema/registry.json",
       name: "narakcode",
       homepage: "https://narakcode.dev",
-      items: registry.items
-        .filter((item) => item.type !== "registry:example")
-        .map((item) => {
+      items: registry.items.map((item) => {
           return {
             ...item,
             files:

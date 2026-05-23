@@ -93,7 +93,7 @@ const BunIcon = ({
 
 // Package manager tab button variants using shadcn patterns
 const packageManagerTabVariants = cva(
-  "inline-flex items-center justify-center gap-1 rounded-t-md border-b-2 px-4 py-2 text-sm whitespace-nowrap transition-all duration-200 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-1.5 rounded-t-md border-b-2 px-2.5 py-1.25 text-xs whitespace-nowrap transition-all duration-200 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0",
   {
     variants: {
       state: {
@@ -109,7 +109,10 @@ const packageManagerTabVariants = cva(
   }
 );
 
-export function CodeTabs(props: React.ComponentProps<typeof Tabs>) {
+export function CodeTabs({
+  className,
+  ...props
+}: React.ComponentProps<typeof Tabs>) {
   const [config, setConfig] = useConfig();
 
   const installationType = config.installationType || "cli";
@@ -123,6 +126,13 @@ export function CodeTabs(props: React.ComponentProps<typeof Tabs>) {
           installationType: value as InstallationType,
         }));
       }}
+      className={cn(
+        // Make the tabs list smaller when inside CodeTabs
+        "[&_[data-slot=tabs-list]]:h-7 [&_[data-slot=tabs-list]]:rounded-md [&_[data-slot=tabs-list]]:p-0.5",
+        // Make the tabs triggers smaller when inside CodeTabs
+        "[&_[data-slot=tabs-trigger]]:h-6 [&_[data-slot=tabs-trigger]]:rounded-sm [&_[data-slot=tabs-trigger]]:px-2 [&_[data-slot=tabs-trigger]]:py-0.5 [&_[data-slot=tabs-trigger]]:text-xs [&_[data-slot=tabs-trigger]_svg]:size-3",
+        className
+      )}
       {...props}
     />
   );
@@ -155,9 +165,16 @@ export function PackageManagerTabs({
         className
       )}
     >
-      <div className="relative w-full overflow-hidden rounded-lg border border-border bg-muted">
-        <div className="flex items-center justify-between border-b border-border bg-muted px-4 py-2">
+      <div className="relative w-full overflow-hidden rounded-lg border border-border bg-muted/60 backdrop-blur-xs dark:bg-zinc-950/60">
+        <div className="flex items-center justify-between border-b border-border bg-muted/40 px-4 py-2 dark:bg-zinc-900/40">
           <div className="flex items-center gap-2 overflow-x-auto pb-1">
+            {/* Mac Window Control Dots */}
+            <div className="mr-4 flex items-center gap-1.5 select-none">
+              <span className="h-2.5 w-2.5 rounded-full bg-red-400/80 dark:bg-red-500/60" />
+              <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80 dark:bg-yellow-500/60" />
+              <span className="h-2.5 w-2.5 rounded-full bg-green-400/80 dark:bg-green-500/60" />
+            </div>
+
             {packageManagers.map((pm) => {
               const IconComponent = packageManagerIcons[pm];
               const isActive = packageManager === pm;
@@ -178,7 +195,7 @@ export function PackageManagerTabs({
                   }}
                   style={{ borderRadius: "0.5rem 0.5rem 0px 0px" }}
                 >
-                  <IconComponent className="size-4" active={isActive} />
+                  <IconComponent className="size-3.5" active={isActive} />
                   <span>{pm}</span>
                 </button>
               );

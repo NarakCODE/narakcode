@@ -160,7 +160,7 @@
 
   --font-sans: var(--d-font-sans);
   --font-mono: var(--d-font-mono);
-  --font-heading: var(--d-font-sans);
+  --font-heading: var(--d-font-heading);
 }
 
 @layer base {
@@ -174,6 +174,10 @@
 
   html {
     @apply scroll-smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
   }
 
   body {
@@ -215,44 +219,64 @@
 
 @utility rehype-pretty-code {
   @apply my-6;
+}
 
-  pre {
-    @apply max-h-[512px] overflow-x-auto rounded-lg bg-zinc-50 py-4 dark:bg-zinc-900;
-  }
+.rehype-pretty-code pre {
+  @apply max-h-[512px] overflow-x-auto rounded-lg border border-border bg-zinc-50/50 py-4 dark:bg-zinc-950/40 backdrop-blur-xs;
+}
 
-  code {
-    @apply font-mono text-sm;
-  }
+.rehype-pretty-code code {
+  @apply font-mono text-sm;
+}
 
-  [data-line] {
-    @apply px-4 first:pr-12;
-  }
+.rehype-pretty-code span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
 
-  [data-rehype-pretty-code-title] {
-    @apply mb-2 px-4 text-sm font-medium;
-  }
+.dark .rehype-pretty-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
 
-  code[data-line-numbers] {
-    counter-reset: line;
-  }
+.rehype-pretty-code [data-line] {
+  @apply px-4 first:pr-12;
+}
 
-  code[data-line-numbers] > [data-line]::before {
-    @apply mr-8 inline-block w-3 text-right text-xs text-muted-foreground;
-    counter-increment: line;
-    content: counter(line);
-  }
+.rehype-pretty-code [data-highlighted-line] {
+  @apply bg-amber-500/10 dark:bg-amber-400/10 border-l-2 border-amber-400 dark:border-amber-400;
+}
 
-  code[data-line-numbers-max-digits="2"] > [data-line]::before {
-    @apply w-5;
-  }
+.rehype-pretty-code [data-rehype-pretty-code-title] {
+  @apply mb-2 px-4 text-sm font-medium;
+}
 
-  code[data-line-numbers-max-digits="3"] > [data-line]::before {
-    @apply w-7;
-  }
+.rehype-pretty-code code[data-line-numbers] {
+  counter-reset: line;
+}
 
-  code[data-line-numbers-max-digits="4"] > [data-line]::before {
-    @apply w-9;
-  }
+.rehype-pretty-code code[data-line-numbers] > [data-line]::before {
+  @apply mr-8 inline-block w-3 text-right text-xs text-muted-foreground;
+  counter-increment: line;
+  content: counter(line);
+}
+
+.rehype-pretty-code code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  @apply w-5;
+}
+
+.rehype-pretty-code code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  @apply w-7;
+}
+
+.rehype-pretty-code code[data-line-numbers-max-digits="4"] > [data-line]::before {
+  @apply w-9;
 }
 
 @utility screen-line-before {

@@ -6,7 +6,7 @@
     "motion"
   ],
   "registryDependencies": [
-    "https://narakcode.dev/r/cn.json"
+    "utils"
   ],
   "files": [
     {

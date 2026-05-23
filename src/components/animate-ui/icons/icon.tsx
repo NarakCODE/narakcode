@@ -2,7 +2,7 @@
 
 import type { SVGMotionProps } from "motion/react";
 import {
-  type AnimationControls,
+  type LegacyAnimationControls,
   useAnimation,
   type Variants,
 } from "motion/react";
@@ -18,7 +18,7 @@ const staticAnimations = {
       opacity: [0, 1],
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
         opacity: { duration: 0.01 },
       },
     },
@@ -30,7 +30,7 @@ const staticAnimations = {
       opacity: [1, 0, 1],
       transition: {
         duration: 1.6,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
         opacity: { duration: 0.01 },
       },
     },
@@ -41,7 +41,7 @@ type StaticAnimations = keyof typeof staticAnimations;
 type TriggerProp<T = string> = boolean | StaticAnimations | T;
 
 interface AnimateIconContextValue {
-  controls: AnimationControls | undefined;
+  controls: LegacyAnimationControls | undefined;
   animation: StaticAnimations | string;
   loop: boolean;
   loopDelay: number;
@@ -68,7 +68,8 @@ interface AnimateIconProps<T = string> extends DefaultIconProps<T> {
 }
 
 interface IconProps<T>
-  extends DefaultIconProps<T>,
+  extends
+    DefaultIconProps<T>,
     Omit<
       SVGMotionProps<SVGSVGElement>,
       "animate" | "onAnimationStart" | "onAnimationEnd"

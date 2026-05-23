@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-switcher-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://narakcode.dev/r/theme-switcher.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/examples/theme-switcher-demo.tsx",
+      "content": "import { ThemeSwitcher } from \"@/registry/theme-switcher\";\n\nexport default function ThemeSwitcherDemo() {\n  return <ThemeSwitcher />;\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

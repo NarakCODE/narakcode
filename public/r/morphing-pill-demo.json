@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morphing-pill-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://narakcode.dev/r/morphing-pill.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/examples/morphing-pill-demo.tsx",
+      "content": "\"use client\";\n\nimport MorphingPill from \"@/registry/morphing-pill/morphing-pill\";\n\nexport default function MorphingPillDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-10\">\n      <MorphingPill />\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
