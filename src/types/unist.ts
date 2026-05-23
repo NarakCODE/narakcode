@@ -18,6 +18,7 @@ export interface UnistNode extends Node {
 }
 
 export interface UnistTree extends Node {
+  type: string;
   children: UnistNode[];
 }
 
