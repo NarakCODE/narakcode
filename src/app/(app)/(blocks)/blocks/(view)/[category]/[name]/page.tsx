@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 
-import { registryCategories } from "@/config/registry"
+import { blockCategories } from "@/config/registry"
 import { X_HANDLE } from "@/config/site"
 import { getAllBlockStaticParams } from "@/lib/blocks"
 import { getRegistryItem } from "@/lib/registry"
@@ -87,7 +87,7 @@ export default async function BlockViewPage({
     `${category}/${name}`
   )
 
-  const categoryItem = registryCategories.find((c) => c.slug === category)
+  const categoryItem = blockCategories.find((c) => c.name === category)
 
   return (
     <>
@@ -107,7 +107,7 @@ export default async function BlockViewPage({
         >
           <Link href={`/blocks/${category}`}>
             <ArrowLeftIcon />
-            {categoryItem?.name || "Blocks"}
+            {categoryItem?.title || "Blocks"}
           </Link>
         </Button>
 

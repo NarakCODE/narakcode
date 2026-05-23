@@ -19,5 +19,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/slide-to-unlock",
+  "categories": [
+    "controls"
+  ],
   "type": "registry:component"
 }

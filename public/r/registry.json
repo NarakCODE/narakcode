@@ -14,6 +14,10 @@
           "target": "@lib/haptic.ts"
         }
       ],
+      "docs": "https://chanhdai.com/components/haptic-feedback",
+      "categories": [
+        "utilities"
+      ],
       "type": "registry:lib",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -70,6 +74,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/theme-switcher",
+      "categories": [
+        "controls"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -88,6 +95,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/text-flip",
+      "categories": [
+        "text-effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -106,6 +116,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/apple-hello-effect",
+      "categories": [
+        "text-effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -124,6 +137,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/apple-hello-effect",
+      "categories": [
+        "text-effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -142,6 +158,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/apple-hello-effect",
+      "categories": [
+        "text-effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -160,6 +179,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/apple-hello-effect",
+      "categories": [
+        "text-effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -178,6 +200,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/react-wheel-picker",
+      "categories": [
+        "controls"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -193,6 +218,9 @@
           "type": "registry:component",
           "target": "@components/chevrons-up-down-icon.tsx"
         }
+      ],
+      "categories": [
+        "effects"
       ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
@@ -225,6 +253,9 @@
           "@apply prose-blockquote:border-l prose-blockquote:font-normal prose-blockquote:text-muted-foreground prose-blockquote:not-italic prose-blockquote:[&_p:first-of-type]:before:content-none prose-blockquote:[&_p:last-of-type]:after:content-none": {}
         }
       },
+      "categories": [
+        "typography"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []
@@ -250,6 +281,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/work-experience-component",
+      "categories": [
+        "marketing"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -266,6 +300,10 @@
           "type": "registry:component",
           "target": "@components/shimmering-text.tsx"
         }
+      ],
+      "docs": "https://chanhdai.com/components/shimmering-text",
+      "categories": [
+        "text-effects"
       ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
@@ -288,6 +326,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/slide-to-unlock",
+      "categories": [
+        "controls"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -300,6 +341,9 @@
         "https://chanhdai.com/r/testimonial.json"
       ],
       "docs": "https://chanhdai.com/components/testimonials-marquee",
+      "categories": [
+        "marketing"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []
@@ -314,6 +358,10 @@
           "type": "registry:component",
           "target": "@components/testimonial.tsx"
         }
+      ],
+      "docs": "https://chanhdai.com/components/testimonial",
+      "categories": [
+        "marketing"
       ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
@@ -332,6 +380,10 @@
           "type": "registry:component",
           "target": "@components/github-stars.tsx"
         }
+      ],
+      "docs": "https://chanhdai.com/components/github-stars",
+      "categories": [
+        "data-display"
       ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
@@ -421,6 +473,10 @@
           "animation-fill-mode": "both"
         }
       },
+      "docs": "https://chanhdai.com/components/scroll-fade-effect",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -440,6 +496,10 @@
           "type": "registry:component",
           "target": "@components/consent-manager.tsx"
         }
+      ],
+      "docs": "https://chanhdai.com/components/consent-manager",
+      "categories": [
+        "utilities"
       ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
@@ -468,6 +528,10 @@
           "type": "registry:hook",
           "target": "@hooks/use-copy-to-clipboard.ts"
         }
+      ],
+      "docs": "https://chanhdai.com/components/copy-button",
+      "categories": [
+        "utilities"
       ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
@@ -511,6 +575,10 @@
           "code-foreground": "oklch(0.985 0 0)"
         }
       },
+      "docs": "https://chanhdai.com/components/code-block-command",
+      "categories": [
+        "data-display"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -528,6 +596,10 @@
           "target": "@components/testimonial-spotlight.tsx"
         }
       ],
+      "docs": "https://chanhdai.com/components/testimonial-spotlight",
+      "categories": [
+        "marketing"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -541,6 +613,9 @@
           "type": "registry:component",
           "target": "@components/glow-card-grid.tsx"
         }
+      ],
+      "categories": [
+        "effects"
       ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
@@ -557,6 +632,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/middle-truncation",
+      "categories": [
+        "typography"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -588,6 +666,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/twemoji",
+      "categories": [
+        "typography"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -609,6 +690,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/elastic-slider",
+      "categories": [
+        "controls"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -627,6 +711,9 @@
         }
       ],
       "docs": "https://www.kibo-ui.com/components/contribution-graph",
+      "categories": [
+        "data-display"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -660,6 +747,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/github-contributions",
+      "categories": [
+        "data-display"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -679,6 +769,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/toc-minimap",
+      "categories": [
+        "navigation"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -697,6 +790,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/fluid-gradient-text",
+      "categories": [
+        "text-effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -718,6 +814,10 @@
           "target": "@components/brand-assets-menu.tsx"
         }
       ],
+      "docs": "https://chanhdai.com/components/brand-assets-menu",
+      "categories": [
+        "menus"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -736,6 +836,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/icon-swap",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -751,6 +854,9 @@
         }
       ],
       "docs": "https://chanhdai.com/components/dot-grid-spotlight",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:component",
       "author": "ncdai <dai@chanhdai.com>"
     },
@@ -1036,6 +1142,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:style",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []
@@ -1070,6 +1179,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:style",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []
@@ -1104,6 +1216,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:style",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []
@@ -1142,6 +1257,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:style",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []
@@ -1179,6 +1297,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:style",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []
@@ -1228,6 +1349,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:style",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []
@@ -1264,6 +1388,9 @@
         }
       },
       "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "categories": [
+        "effects"
+      ],
       "type": "registry:style",
       "author": "ncdai <dai@chanhdai.com>",
       "files": []

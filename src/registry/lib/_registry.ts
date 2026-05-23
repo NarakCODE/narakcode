@@ -13,5 +13,7 @@ export const lib: Registry["items"] = [
         target: "@lib/haptic.ts",
       },
     ],
+    categories: ["utilities"],
+    docs: "https://chanhdai.com/components/haptic-feedback",
   },
 ]

@@ -16,5 +16,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/text-flip",
+  "categories": [
+    "text-effects"
+  ],
   "type": "registry:component"
 }

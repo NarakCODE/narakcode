@@ -32,5 +32,8 @@
     }
   },
   "docs": "https://chanhdai.com/components/github-contributions",
+  "categories": [
+    "data-display"
+  ],
   "type": "registry:component"
 }

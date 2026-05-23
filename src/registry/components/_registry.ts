@@ -16,6 +16,7 @@ export const components: Registry["items"] = [
         target: "@components/theme-switcher.tsx",
       },
     ],
+    categories: ["controls"],
     docs: "https://chanhdai.com/components/theme-switcher",
   },
   {
@@ -32,6 +33,7 @@ export const components: Registry["items"] = [
         target: "@components/text-flip.tsx",
       },
     ],
+    categories: ["text-effects"],
     docs: "https://chanhdai.com/components/text-flip",
   },
   {
@@ -47,6 +49,7 @@ export const components: Registry["items"] = [
         target: "@components/apple-hello-effect-english.tsx",
       },
     ],
+    categories: ["text-effects"],
     docs: "https://chanhdai.com/components/apple-hello-effect",
   },
   {
@@ -62,6 +65,7 @@ export const components: Registry["items"] = [
         target: "@components/apple-hello-effect-hindi.tsx",
       },
     ],
+    categories: ["text-effects"],
     docs: "https://chanhdai.com/components/apple-hello-effect",
   },
   {
@@ -77,6 +81,7 @@ export const components: Registry["items"] = [
         target: "@components/apple-hello-effect-spanish.tsx",
       },
     ],
+    categories: ["text-effects"],
     docs: "https://chanhdai.com/components/apple-hello-effect",
   },
   {
@@ -92,6 +97,7 @@ export const components: Registry["items"] = [
         target: "@components/apple-hello-effect-vietnamese.tsx",
       },
     ],
+    categories: ["text-effects"],
     docs: "https://chanhdai.com/components/apple-hello-effect",
   },
   {
@@ -108,6 +114,7 @@ export const components: Registry["items"] = [
         target: "@components/wheel-picker.tsx",
       },
     ],
+    categories: ["controls"],
     docs: "https://chanhdai.com/components/react-wheel-picker",
   },
   {
@@ -122,6 +129,7 @@ export const components: Registry["items"] = [
         target: "@components/chevrons-up-down-icon.tsx",
       },
     ],
+    categories: ["effects"],
   },
   {
     name: "typography",
@@ -156,6 +164,7 @@ export const components: Registry["items"] = [
           {},
       },
     },
+    categories: ["typography"],
   },
   {
     name: "work-experience",
@@ -177,6 +186,7 @@ export const components: Registry["items"] = [
         target: "@components/work-experience.tsx",
       },
     ],
+    categories: ["marketing"],
     docs: "https://chanhdai.com/components/work-experience-component",
   },
   {
@@ -192,6 +202,8 @@ export const components: Registry["items"] = [
         target: "@components/shimmering-text.tsx",
       },
     ],
+    categories: ["text-effects"],
+    docs: "https://chanhdai.com/components/shimmering-text",
   },
   {
     name: "slide-to-unlock",
@@ -208,6 +220,7 @@ export const components: Registry["items"] = [
         target: "@components/slide-to-unlock.tsx",
       },
     ],
+    categories: ["controls"],
     docs: "https://chanhdai.com/components/slide-to-unlock",
   },
   {
@@ -219,6 +232,7 @@ export const components: Registry["items"] = [
       "@kibo-ui/marquee",
       getRegistryItemUrl("testimonial"),
     ],
+    categories: ["marketing"],
     docs: "https://chanhdai.com/components/testimonials-marquee",
   },
   {
@@ -234,6 +248,8 @@ export const components: Registry["items"] = [
         target: "@components/testimonial.tsx",
       },
     ],
+    categories: ["marketing"],
+    docs: "https://chanhdai.com/components/testimonial",
   },
   {
     name: "github-stars",
@@ -249,6 +265,8 @@ export const components: Registry["items"] = [
         target: "@components/github-stars.tsx",
       },
     ],
+    categories: ["data-display"],
+    docs: "https://chanhdai.com/components/github-stars",
   },
   {
     name: "scroll-fade-effect",
@@ -345,6 +363,8 @@ export const components: Registry["items"] = [
         "animation-fill-mode": "both",
       },
     },
+    categories: ["effects"],
+    docs: "https://chanhdai.com/components/scroll-fade-effect",
   },
   {
     name: "consent-manager",
@@ -361,6 +381,8 @@ export const components: Registry["items"] = [
         target: "@components/consent-manager.tsx",
       },
     ],
+    categories: ["utilities"],
+    docs: "https://chanhdai.com/components/consent-manager",
   },
   {
     name: "copy-button",
@@ -382,6 +404,8 @@ export const components: Registry["items"] = [
         target: "@hooks/use-copy-to-clipboard.ts",
       },
     ],
+    categories: ["utilities"],
+    docs: "https://chanhdai.com/components/copy-button",
   },
   {
     name: "code-block-command",
@@ -420,6 +444,8 @@ export const components: Registry["items"] = [
         "color-code-foreground": "var(--code-foreground)",
       },
     },
+    categories: ["data-display"],
+    docs: "https://chanhdai.com/components/code-block-command",
   },
   {
     name: "testimonial-spotlight",
@@ -434,6 +460,8 @@ export const components: Registry["items"] = [
         target: "@components/testimonial-spotlight.tsx",
       },
     ],
+    categories: ["marketing"],
+    docs: "https://chanhdai.com/components/testimonial-spotlight",
   },
   {
     name: "glow-card-grid",
@@ -447,6 +475,7 @@ export const components: Registry["items"] = [
         target: "@components/glow-card-grid.tsx",
       },
     ],
+    categories: ["effects"],
   },
   {
     name: "middle-truncation",
@@ -460,6 +489,7 @@ export const components: Registry["items"] = [
         target: "@components/middle-truncation.tsx",
       },
     ],
+    categories: ["typography"],
     docs: "https://chanhdai.com/components/middle-truncation",
   },
   {
@@ -490,6 +520,7 @@ export const components: Registry["items"] = [
         },
       },
     },
+    categories: ["typography"],
     docs: "https://chanhdai.com/components/twemoji",
   },
   {
@@ -507,6 +538,7 @@ export const components: Registry["items"] = [
         target: "@components/elastic-slider.tsx",
       },
     ],
+    categories: ["controls"],
     docs: "https://chanhdai.com/components/elastic-slider",
   },
   {
@@ -523,6 +555,7 @@ export const components: Registry["items"] = [
         target: "@components/contribution-graph.tsx",
       },
     ],
+    categories: ["data-display"],
     docs: "https://www.kibo-ui.com/components/contribution-graph",
   },
   {
@@ -555,6 +588,7 @@ export const components: Registry["items"] = [
           {},
       },
     },
+    categories: ["data-display"],
     docs: "https://chanhdai.com/components/github-contributions",
   },
   {
@@ -571,6 +605,7 @@ export const components: Registry["items"] = [
         target: "@components/toc-minimap.tsx",
       },
     ],
+    categories: ["navigation"],
     docs: "https://chanhdai.com/components/toc-minimap",
   },
   {
@@ -587,6 +622,7 @@ export const components: Registry["items"] = [
         target: "@components/fluid-gradient-text.tsx",
       },
     ],
+    categories: ["text-effects"],
     docs: "https://chanhdai.com/components/fluid-gradient-text",
   },
   {
@@ -603,6 +639,8 @@ export const components: Registry["items"] = [
         target: "@components/brand-assets-menu.tsx",
       },
     ],
+    categories: ["menus"],
+    docs: "https://chanhdai.com/components/brand-assets-menu",
   },
   {
     name: "icon-swap",
@@ -617,6 +655,7 @@ export const components: Registry["items"] = [
         target: "@components/icon-swap.tsx",
       },
     ],
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/icon-swap",
   },
   {
@@ -632,6 +671,7 @@ export const components: Registry["items"] = [
         target: "@components/dot-grid-spotlight.tsx",
       },
     ],
+    categories: ["effects"],
     docs: "https://chanhdai.com/components/dot-grid-spotlight",
   },
 ]

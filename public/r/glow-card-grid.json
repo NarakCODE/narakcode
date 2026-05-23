@@ -12,5 +12,8 @@
       "target": "@components/glow-card-grid.tsx"
     }
   ],
+  "categories": [
+    "effects"
+  ],
   "type": "registry:component"
 }

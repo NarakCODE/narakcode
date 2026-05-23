@@ -16,5 +16,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/fluid-gradient-text",
+  "categories": [
+    "text-effects"
+  ],
   "type": "registry:component"
 }

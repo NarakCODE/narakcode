@@ -17,5 +17,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/theme-switcher",
+  "categories": [
+    "controls"
+  ],
   "type": "registry:component"
 }

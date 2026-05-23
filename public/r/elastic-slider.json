@@ -19,5 +19,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/elastic-slider",
+  "categories": [
+    "controls"
+  ],
   "type": "registry:component"
 }

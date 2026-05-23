@@ -16,5 +16,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/icon-swap",
+  "categories": [
+    "effects"
+  ],
   "type": "registry:component"
 }

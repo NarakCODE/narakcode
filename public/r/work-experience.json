@@ -22,5 +22,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/work-experience-component",
+  "categories": [
+    "marketing"
+  ],
   "type": "registry:component"
 }

@@ -16,5 +16,8 @@
     }
   ],
   "docs": "https://chanhdai.com/components/react-wheel-picker",
+  "categories": [
+    "controls"
+  ],
   "type": "registry:component"
 }

@@ -3,7 +3,7 @@
 import { registryItemSchema } from "shadcn/schema"
 import type { z } from "zod"
 
-import { registryCategories } from "@/config/registry"
+import { blockCategories } from "@/config/registry"
 
 export async function getAllBlockStaticParams(): Promise<
   Array<{ category: string; name: string }>
@@ -12,14 +12,14 @@ export async function getAllBlockStaticParams(): Promise<
 
   const params: Array<{ category: string; name: string }> = []
 
-  for (const category of registryCategories) {
+  for (const category of blockCategories) {
     for (const itemName in Index) {
       const item = Index[itemName]
       if (
         item.type === "registry:block" &&
-        item.categories?.includes(category.slug)
+        item.categories?.includes(category.name)
       ) {
-        params.push({ category: category.slug, name: itemName })
+        params.push({ category: category.name, name: itemName })
       }
     }
   }
