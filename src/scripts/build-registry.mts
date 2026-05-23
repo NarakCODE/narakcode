@@ -9,6 +9,17 @@ import { Project, ScriptKind } from "ts-morph"
 
 import { getAllBlocks } from "@/lib/blocks"
 
+/**
+ * build-registry.mts is the single registry pipeline.
+ *
+ * Source of truth:
+ * - Authored raw component/registry source lives in registry/components.
+ * - Authored demo source lives in registry/examples.
+ *
+ * Persistent outputs:
+ * - public/r/*
+ */
+
 const REGISTRY_PATH = path.join(process.cwd(), "src/__registry__")
 const PUBLIC_REGISTRY_PATH = path.join(process.cwd(), "public/r")
 

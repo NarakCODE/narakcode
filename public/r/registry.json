@@ -4,23 +4,6 @@
   "homepage": "https://chanhdai.com/components",
   "items": [
     {
-      "name": "utils",
-      "title": "Utility Functions",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
-      "files": [
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:lib",
-          "target": "@lib/utils.ts"
-        }
-      ],
-      "type": "registry:lib",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
       "name": "haptic",
       "title": "Haptic Feedback",
       "description": "Trigger haptic feedback on mobile devices.",

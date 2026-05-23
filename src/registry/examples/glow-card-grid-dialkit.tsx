@@ -5,7 +5,7 @@ import { useDialKit } from "dialkit"
 import { GlowCard } from "@/registry/transformed/components/glow-card-grid/glow-card"
 import { GlowCardGrid } from "@/registry/transformed/components/glow-card-grid/glow-card-grid"
 
-export default function GlowCardGridDialKitDemo() {
+export default function GlowCardGridDialKit() {
   const params = useDialKit("GlowCard", {
     cardRadius: [16, 0, 32, 1],
     icon: {

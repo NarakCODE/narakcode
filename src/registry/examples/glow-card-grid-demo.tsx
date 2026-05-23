@@ -1,7 +1,7 @@
 import { GlowCard } from "@/registry/transformed/components/glow-card-grid/glow-card"
 import { GlowCardGrid } from "@/registry/transformed/components/glow-card-grid/glow-card-grid"
 
-export default function GlowCardGridDemo01() {
+export default function GlowCardGridDemo() {
   return (
     <div className="w-full p-4">
       <GlowCardGrid>
