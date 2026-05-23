@@ -19,6 +19,7 @@ import AppleHelloEffectAllDemo from "@/registry/examples/apple-hello-effect-lang
 import BrandAssetsMenuDemo from "@/registry/examples/brand-assets-menu-demo"
 import CodeBlockCommandDemo from "@/registry/examples/code-block-command-demo"
 import CopyButtonDemo from "@/registry/examples/copy-button-demo"
+import DotGridSpotlightDemo from "@/registry/examples/dot-grid-spotlight-demo"
 import ElasticSliderDemo from "@/registry/examples/elastic-slider-demo"
 import FluidGradientTextDemo from "@/registry/examples/fluid-gradient-text-demo"
 import GitHubContributionsDemo from "@/registry/examples/github-contributions-demo"
@@ -200,24 +201,30 @@ export default function ComponentsShowcasePage() {
           <GlowCardGridDemo />
         </GridItem>
 
-        <GridItem>
-          <GitHubStarsDemo />
-        </GridItem>
+        <div className="grid grid-cols-2 gap-1">
+          <GridItem className="p-0">
+            <GitHubStarsDemo />
+          </GridItem>
+
+          <GridItem className="p-0">
+            <TOCMinimapDemo />
+          </GridItem>
+        </div>
 
         <GridItem className="**:data-[slot=scroll-fade-effect-demo]:rounded-xl">
           <ScrollFadeEffectDemo />
         </GridItem>
 
-        <GridItem className="px-0 md:col-span-2 md:row-span-2">
+        <GridItem className="items-start overflow-clip p-0 md:col-span-2 md:row-span-2">
           <WorkExperienceDemo />
         </GridItem>
 
-        <GridItem className="px-0">
-          <TOCMinimapDemo />
+        <GridItem className="p-0">
+          <HapticDemo />
         </GridItem>
 
-        <GridItem>
-          <HapticDemo />
+        <GridItem className="overflow-clip p-0 *:aspect-video *:w-full *:rounded-none *:border-none">
+          <DotGridSpotlightDemo />
         </GridItem>
       </div>
     </>
