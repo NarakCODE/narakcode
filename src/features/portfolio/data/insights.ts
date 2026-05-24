@@ -1,17 +1,28 @@
 import { unstable_cache } from "next/cache"
 
-type Serie = {
-  date: string
+type ISODateString = string
+
+type InsightsSummary = {
+  unique_visitors: number
+  total_sessions: number
+  total_screen_views: number
+}
+
+type InsightsSeriesItem = {
+  date: ISODateString
   unique_visitors: number
   total_sessions: number
 }
 
 type InsightsResponse = {
-  series: Serie[]
+  summary: InsightsSummary
+  series: InsightsSeriesItem[]
+  startDate: ISODateString
+  endDate: ISODateString
 }
 
 export const getInsights = unstable_cache(
-  async () => {
+  async (): Promise<InsightsResponse | null> => {
     try {
       const res = await fetch(
         `https://api.openpanel.dev/insights/${process.env.OPENPANEL_PROJECT_ID}/overview`,
@@ -24,13 +35,13 @@ export const getInsights = unstable_cache(
       )
 
       if (!res.ok) {
-        return []
+        return null
       }
 
       const data = (await res.json()) as InsightsResponse
-      return data.series
+      return data
     } catch {
-      return []
+      return null
     }
   },
   ["openpanel-insights"],
