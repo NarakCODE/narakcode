@@ -1097,6 +1097,9 @@
       "name": "metrics-01",
       "title": "Metrics 01",
       "description": "A metrics section with a line chart.",
+      "dependencies": [
+        "date-fns"
+      ],
       "registryDependencies": [
         "@bklit/line-chart",
         "https://chanhdai.com/r/style.json"

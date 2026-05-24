@@ -190,6 +190,7 @@ export const blocks: Registry["items"] = [
     title: "Metrics 01",
     description: "A metrics section with a line chart.",
     type: "registry:block",
+    dependencies: ["date-fns"],
     registryDependencies: ["@bklit/line-chart", getRegistryItemUrl("style")],
     files: [
       {

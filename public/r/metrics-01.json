@@ -4,6 +4,9 @@
   "title": "Metrics 01",
   "author": "ncdai <dai@chanhdai.com>",
   "description": "A metrics section with a line chart.",
+  "dependencies": [
+    "date-fns"
+  ],
   "registryDependencies": [
     "@bklit/line-chart",
     "https://chanhdai.com/r/style.json"
