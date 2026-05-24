@@ -122,7 +122,7 @@ const TESTIMONIALS_1 = [
   },
 ]
 
-export const TESTIMONIALS_2 = [
+const TESTIMONIALS_2 = [
   {
     authorAvatar: "https://unavatar.io/x/mannupaaji",
     authorName: "Manu Arora",
