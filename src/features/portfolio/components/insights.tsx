@@ -1,7 +1,6 @@
 import Grid from "@/components/charts/grid"
 import LineChart, { Line } from "@/components/charts/line-chart"
 import { ChartTooltip } from "@/components/charts/tooltip"
-import XAxis from "@/components/charts/x-axis"
 import {
   Panel,
   PanelHeader,
@@ -17,24 +16,22 @@ export async function Insights() {
     <Panel id="insights">
       <PanelHeader>
         <PanelTitle>
-          Insights<PanelTitleSup>[unique_visitors]</PanelTitleSup>
+          Insights<PanelTitleSup>[Unique Visitors]</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 
       {data.length > 0 ? (
         <LineChart
+          className="sm:aspect-3/1!"
           data={data}
-          animationDuration={1100}
-          animationEasing="cubic-bezier(0.85, 0, 0.15, 1)"
-          aspectRatio="3/1"
+          margin={{ top: 16, right: 32, bottom: 40, left: 32 }}
         >
           <Grid horizontal />
-          <Line dataKey="unique_visitors" />
-          <XAxis />
-          <ChartTooltip />
+          <Line dataKey="unique_visitors" strokeWidth={2} />
+          <ChartTooltip rowLabels={{ unique_visitors: "Unique Visitors" }} />
         </LineChart>
       ) : (
-        <div className="grid aspect-3/1 w-full place-content-center">
+        <div className="grid aspect-2/1 w-full place-content-center sm:aspect-3/1">
           <p className="text-muted-foreground">No insights available.</p>
         </div>
       )}

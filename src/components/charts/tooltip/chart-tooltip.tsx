@@ -35,6 +35,8 @@ export interface ChartTooltipProps {
   }) => React.ReactNode
   /** Custom row renderer - return array of TooltipRow */
   rows?: (point: Record<string, unknown>) => TooltipRow[]
+  /** Optional mapping of dataKey to label for default row generation */
+  rowLabels?: Record<string, string>
   /** Additional content to show below rows (e.g., markers) */
   children?: React.ReactNode
   /** Custom class name */
@@ -48,6 +50,7 @@ export function ChartTooltip({
   indicatorColor: indicatorColorProp,
   content,
   rows: rowsRenderer,
+  rowLabels,
   children,
   className = "",
 }: ChartTooltipProps) {
@@ -104,10 +107,10 @@ export function ChartTooltip({
     // Default: generate rows from registered lines
     return lines.map((line) => ({
       color: line.stroke,
-      label: line.dataKey,
+      label: rowLabels?.[line.dataKey] || line.dataKey,
       value: (tooltipData.point[line.dataKey] as number) ?? 0,
     }))
-  }, [tooltipData, lines, rowsRenderer])
+  }, [tooltipData, lines, rowLabels, rowsRenderer])
 
   // Resolve indicator color (static or from hovered point)
   const indicatorColor = useMemo(() => {
