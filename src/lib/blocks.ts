@@ -59,10 +59,16 @@ export async function getAllBlocks(
       (block): block is z.infer<typeof registryItemSchema> => block !== null
     )
 
-  return validatedBlocks.filter(
-    (block) =>
-      types.includes(block.type) &&
-      (categories.length === 0 ||
-        block.categories?.some((category) => categories.includes(category)))
-  )
+  return validatedBlocks
+    .filter(
+      (block) =>
+        types.includes(block.type) &&
+        (categories.length === 0 ||
+          block.categories?.some((category) => categories.includes(category)))
+    )
+    .sort((a, b) => {
+      const dateA = new Date(a.meta?.createdAt).getTime()
+      const dateB = new Date(b.meta?.createdAt).getTime()
+      return dateB - dateA
+    })
 }

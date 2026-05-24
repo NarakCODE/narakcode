@@ -1094,6 +1094,36 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "metrics-01",
+      "title": "Metrics 01",
+      "description": "A metrics section with a line chart.",
+      "registryDependencies": [
+        "@bklit/line-chart",
+        "https://chanhdai.com/r/style.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/metrics-01/metrics-01.tsx",
+          "type": "registry:component",
+          "target": "@components/metrics-01.tsx"
+        },
+        {
+          "path": "src/registry/blocks/metrics-01/components/metric.tsx",
+          "type": "registry:component",
+          "target": "@components/metric.tsx"
+        }
+      ],
+      "meta": {
+        "createdAt": "2026-05-24",
+        "previewClassName": "min-h-svh content-center-safe"
+      },
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:block",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "style",
       "cssVars": {
         "theme": {
