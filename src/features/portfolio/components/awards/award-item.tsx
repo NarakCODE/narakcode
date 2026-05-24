@@ -48,36 +48,36 @@ export function AwardItem({
                 {award.title}
               </h3>
 
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-                <dl>
+              <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+                <div>
                   <dt className="sr-only">Prize</dt>
                   <dd>{award.prize}</dd>
-                </dl>
+                </div>
 
                 <Separator
                   className="data-vertical:h-4 data-vertical:self-center"
                   orientation="vertical"
                 />
 
-                <dl>
+                <div>
                   <dt className="sr-only">Awarded in</dt>
                   <dd>
                     <time dateTime={new Date(award.date).toISOString()}>
                       {format(new Date(award.date), "MM.yyyy")}
                     </time>
                   </dd>
-                </dl>
+                </div>
 
                 <Separator
                   className="data-vertical:h-4 data-vertical:self-center"
                   orientation="vertical"
                 />
 
-                <dl>
+                <div>
                   <dt className="sr-only">Received in Grade</dt>
                   <dd>{award.grade}</dd>
-                </dl>
-              </div>
+                </div>
+              </dl>
             </div>
 
             {award.referenceLink && (

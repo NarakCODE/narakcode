@@ -50,29 +50,29 @@ export function CertificationItem({
           {certification.title}
         </h3>
 
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-          <dl>
+        <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+          <div>
             <dt className="sr-only">Issued by</dt>
             <dd>
               <span aria-hidden>@</span>
               <span className="ml-0.5">{certification.issuer}</span>
             </dd>
-          </dl>
+          </div>
 
           <Separator
             className="data-vertical:h-4 data-vertical:self-center"
             orientation="vertical"
           />
 
-          <dl>
+          <div>
             <dt className="sr-only">Issued on</dt>
             <dd>
               <time dateTime={new Date(certification.issueDate).toISOString()}>
                 {format(new Date(certification.issueDate), "dd.MM.yyyy")}
               </time>
             </dd>
-          </dl>
-        </div>
+          </div>
+        </dl>
       </div>
 
       {certification.credentialURL && (

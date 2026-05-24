@@ -60,13 +60,13 @@ export function ExperiencePositionItem({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
+        <dl className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
           {position.employmentType && (
             <>
-              <dl>
+              <div>
                 <dt className="sr-only">Employment Type</dt>
                 <dd>{position.employmentType}</dd>
-              </dl>
+              </div>
               <Separator
                 className="data-vertical:h-4 data-vertical:self-center"
                 orientation="vertical"
@@ -74,7 +74,7 @@ export function ExperiencePositionItem({
             </>
           )}
 
-          <dl>
+          <div>
             <dt className="sr-only">Employment Period</dt>
             <dd className="flex items-center gap-0.5 tabular-nums">
               <span>{start}</span>
@@ -88,7 +88,7 @@ export function ExperiencePositionItem({
                 <span>{end}</span>
               )}
             </dd>
-          </dl>
+          </div>
 
           {duration && (
             <>
@@ -96,13 +96,13 @@ export function ExperiencePositionItem({
                 className="data-vertical:h-4 data-vertical:self-center"
                 orientation="vertical"
               />
-              <dl>
+              <div>
                 <dt className="sr-only">Duration</dt>
                 <dd className="tabular-nums">{duration}</dd>
-              </dl>
+              </div>
             </>
           )}
-        </div>
+        </dl>
       </CollapsibleTrigger>
 
       <CollapsibleContent className="overflow-hidden">
