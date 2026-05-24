@@ -6,6 +6,7 @@ import { useTheme } from "next-themes"
 import { useClickSound } from "@/hooks/soundcn/use-click-sound"
 import { Button } from "@/components/ui/button"
 
+/** @internal */
 import { ThemeToggleEffectSelector } from "./theme-toggle-effect-selector"
 
 export default function ThemeToggleEffectDemo() {
