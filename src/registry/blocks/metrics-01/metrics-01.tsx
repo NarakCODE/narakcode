@@ -63,7 +63,7 @@ export function Metrics01() {
 
             {data.series.length > 0 ? (
               <LineChart
-                className="sm:aspect-3/1!"
+                className="md:aspect-3/1!"
                 data={data.series}
                 margin={{ top: 16, right: 32, bottom: 40, left: 32 }}
               >
@@ -86,7 +86,7 @@ export function Metrics01() {
                 />
               </LineChart>
             ) : (
-              <div className="grid aspect-2/1 w-full place-content-center sm:aspect-3/1">
+              <div className="grid aspect-2/1 w-full place-content-center md:aspect-3/1">
                 <p className="text-muted-foreground">No insights available.</p>
               </div>
             )}
