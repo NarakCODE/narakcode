@@ -36,13 +36,13 @@ export function BookmarkItem({
           {bookmark.title}
         </h3>
 
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+        <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
           {bookmark.author && (
             <>
-              <dl>
+              <div>
                 <dt className="sr-only">Author</dt>
                 <dd>{bookmark.author}</dd>
-              </dl>
+              </div>
 
               <Separator
                 className="data-vertical:h-4 data-vertical:self-center"
@@ -51,15 +51,15 @@ export function BookmarkItem({
             </>
           )}
 
-          <dl>
+          <div>
             <dt className="sr-only">Bookmarked on</dt>
             <dd>
               <time dateTime={new Date(bookmark.bookmarkedAt).toISOString()}>
                 {format(new Date(bookmark.bookmarkedAt), "dd.MM.yyyy")}
               </time>
             </dd>
-          </dl>
-        </div>
+          </div>
+        </dl>
       </div>
 
       <ArrowUpRightIcon className="size-4 text-muted-foreground" />
