@@ -3,6 +3,7 @@ import { unstable_cache } from "next/cache"
 type Serie = {
   date: string
   unique_visitors: number
+  total_sessions: number
 }
 
 type InsightsResponse = {
