@@ -1,3 +1,5 @@
+import { format } from "date-fns"
+
 import { cn } from "@/lib/utils"
 import Grid from "@/components/charts/grid"
 import LineChart, { Line } from "@/components/charts/line-chart"
@@ -13,22 +15,60 @@ import { getInsights } from "@/features/portfolio/data/insights"
 export async function Insights() {
   const data = await getInsights()
 
+  if (data === null) {
+    return null
+  }
+
   return (
     <Panel id="insights">
       <PanelHeader>
         <PanelTitle>
-          Insights<PanelTitleSup>[Unique Visitors]</PanelTitleSup>
+          Insights
+          <PanelTitleSup>
+            [{format(new Date(data.startDate), "dd.MM")} –{" "}
+            {format(new Date(data.endDate), "dd.MM")}]
+          </PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 
-      {data.length > 0 ? (
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-2 sm:grid-cols-3">
+          <div className="border-r border-line" />
+          <div className="border-r border-line max-sm:hidden" />
+        </div>
+
+        <dl className="grid grid-cols-2 sm:grid-cols-3">
+          <Metric>
+            <MetricLabel>Unique Visitors</MetricLabel>
+            <MetricValue>
+              {data.summary.unique_visitors.toLocaleString()}
+            </MetricValue>
+          </Metric>
+
+          <Metric>
+            <MetricLabel>Sessions</MetricLabel>
+            <MetricValue>
+              {data.summary.total_sessions.toLocaleString()}
+            </MetricValue>
+          </Metric>
+
+          <Metric>
+            <MetricLabel>Views</MetricLabel>
+            <MetricValue>
+              {data.summary.total_screen_views.toLocaleString()}
+            </MetricValue>
+          </Metric>
+        </dl>
+      </div>
+
+      {data.series.length > 0 ? (
         <LineChart
           className={cn(
             "sm:aspect-3/1!",
             "[--chart-1:var(--color-zinc-900)] [--chart-2:var(--color-zinc-400)]",
             "dark:[--chart-1:var(--color-zinc-100)] dark:[--chart-2:var(--color-zinc-600)]"
           )}
-          data={data}
+          data={data.series}
           margin={{ top: 16, right: 32, bottom: 40, left: 32 }}
         >
           <Grid horizontal />
@@ -55,5 +95,42 @@ export async function Insights() {
         </div>
       )}
     </Panel>
+  )
+}
+
+function Metric({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="metric"
+      className={cn(
+        "flex flex-col gap-2 p-4",
+        "max-sm:nth-[2n+1]:screen-line-bottom sm:nth-[3n+1]:screen-line-bottom",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function MetricLabel({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <dt
+      data-slot="metric-label"
+      className={cn("text-sm leading-none text-muted-foreground", className)}
+      {...props}
+    />
+  )
+}
+
+function MetricValue({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <dd
+      data-slot="metric-value"
+      className={cn(
+        "text-lg leading-none font-semibold tabular-nums",
+        className
+      )}
+      {...props}
+    />
   )
 }
