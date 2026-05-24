@@ -185,4 +185,28 @@ export const blocks: Registry["items"] = [
       previewClassName: "min-h-svh place-items-center-safe content-center-safe",
     },
   },
+  {
+    name: "metrics-01",
+    title: "Metrics 01",
+    description: "A metrics section with a line chart.",
+    type: "registry:block",
+    registryDependencies: ["@bklit/line-chart", getRegistryItemUrl("style")],
+    files: [
+      {
+        path: "blocks/metrics-01/metrics-01.tsx",
+        type: "registry:component",
+        target: "@components/metrics-01.tsx",
+      },
+      {
+        path: "blocks/metrics-01/components/metric.tsx",
+        type: "registry:component",
+        target: "@components/metric.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    meta: {
+      createdAt: "2026-05-24",
+      previewClassName: "min-h-svh content-center-safe",
+    },
+  },
 ]

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 
 import { X_HANDLE } from "@/config/site"
 import { getRegistryItem } from "@/lib/registry"
+import { cn } from "@/lib/utils"
 import { Index } from "@/registry/__index__"
 import { PreviewProvider } from "@/app/(preview)/components/preview-provider"
 import { getCachedThemes } from "@/app/(preview)/lib/get-themes"
@@ -95,7 +96,7 @@ export default async function PreviewPage({
   }
 
   return (
-    <div className={item?.meta?.previewClassName}>
+    <div className={cn("style-preview", item?.meta?.previewClassName)}>
       <PreviewProvider themes={themes}>
         <Component />
       </PreviewProvider>
