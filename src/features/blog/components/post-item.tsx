@@ -13,13 +13,11 @@ export function PostItem({
   imageLoading?: ImageProps["loading"]
 }) {
   return (
-    <Link
-      href={`/blog/${post.slug}`}
-      className="flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted"
-    >
+    <div className="relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted">
       {post.metadata.image && (
-        <div className="relative select-none [&_img]:aspect-1200/630 [&_img]:rounded-xl">
+        <div className="relative select-none [--image-radius:var(--radius-xl)]">
           <Image
+            className="aspect-1200/630 rounded-(--image-radius)"
             src={post.metadata.image}
             alt={post.metadata.title}
             width={1200}
@@ -28,17 +26,20 @@ export function PostItem({
             loading={imageLoading}
             unoptimized
           />
-
-          <div className="pointer-events-none absolute inset-0 rounded-xl inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10" />
+          <div className="pointer-events-none absolute inset-0 rounded-(--image-radius) inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10" />
         </div>
       )}
 
       <div className="flex flex-col gap-1 p-2">
         <h3 className="text-lg leading-snug font-medium text-balance">
-          {post.metadata.title}
+          <Link href={`/blog/${post.slug}`}>
+            <span className="absolute inset-0" aria-hidden />
+            {post.metadata.title}
+          </Link>
+
           {post.metadata.new && (
             <span
-              className="ml-2 inline-block size-2 -translate-y-px rounded-full bg-info"
+              className="pointer-events-none ml-2 inline-block size-2 -translate-y-px rounded-full bg-info"
               aria-label="New"
             />
           )}
@@ -53,6 +54,6 @@ export function PostItem({
           </dd>
         </dl>
       </div>
-    </Link>
+    </div>
   )
 }
