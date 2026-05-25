@@ -10,10 +10,7 @@ export function ComponentItem({
     <Link
       data-slot="component-item"
       className={cn(
-        "group flex items-center gap-4 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent-muted",
-        "max-sm:screen-line-bottom",
-        "sm:max-md:nth-[2n+1]:screen-line-bottom",
-        "md:nth-[3n+1]:screen-line-bottom",
+        "flex items-center gap-4 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent-muted",
         className
       )}
       {...props}

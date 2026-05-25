@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import { PostItem } from "@/features/blog/components/post-item"
 import { getAllDocs } from "@/features/doc/data/documents"
@@ -25,11 +26,19 @@ export function Blog() {
           <div className="border-l border-line"></div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {allPosts.slice(0, 4).map((post) => (
-            <PostItem key={post.slug} post={post} imageLoading="lazy" />
+            <li
+              key={post.slug}
+              className={cn(
+                "max-sm:screen-line-top max-sm:screen-line-bottom",
+                "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom"
+              )}
+            >
+              <PostItem post={post} imageLoading="lazy" />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div className="screen-line-top flex justify-center py-2">
