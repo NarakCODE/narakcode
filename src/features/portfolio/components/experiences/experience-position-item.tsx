@@ -41,7 +41,7 @@ export function ExperiencePositionItem({
           "data-disabled:before:content-none"
         )}
       >
-        <div className="relative z-1 mb-1 flex items-center gap-3">
+        <div className="relative z-1 mb-1 flex items-start gap-3 text-base">
           <div
             className={cn(
               "flex size-6 shrink-0 items-center justify-center rounded-lg",
@@ -55,7 +55,7 @@ export function ExperiencePositionItem({
 
           <h4 className="flex-1 font-medium text-balance">{position.title}</h4>
 
-          <div className="shrink-0 text-muted-foreground group-data-disabled:hidden [&_svg]:size-4">
+          <div className="shrink-0 text-muted-foreground group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
             <CollapsibleChevronsIcon duration={0.15} />
           </div>
         </div>
