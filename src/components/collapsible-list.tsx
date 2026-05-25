@@ -23,18 +23,22 @@ export function CollapsibleList<T>({
 }) {
   return (
     <Collapsible className="group/collapsible">
-      {items.slice(0, max).map((item, index) => (
-        <div
-          key={typeof keyExtractor === "function" ? keyExtractor(item) : index}
-          className="border-b border-line"
-        >
-          {renderItem(item)}
-        </div>
-      ))}
+      <ul>
+        {items.slice(0, max).map((item, index) => (
+          <li
+            key={
+              typeof keyExtractor === "function" ? keyExtractor(item) : index
+            }
+            className="border-b border-line"
+          >
+            {renderItem(item)}
+          </li>
+        ))}
+      </ul>
 
-      <CollapsibleContent>
+      <CollapsibleContent render={<ul />}>
         {items.slice(max).map((item, index) => (
-          <div
+          <li
             key={
               typeof keyExtractor === "function"
                 ? keyExtractor(item)
@@ -43,7 +47,7 @@ export function CollapsibleList<T>({
             className="border-b border-line"
           >
             {renderItem(item)}
-          </div>
+          </li>
         ))}
       </CollapsibleContent>
 

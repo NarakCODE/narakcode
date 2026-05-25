@@ -16,11 +16,11 @@ export function CertificationItem({
   certification: Certification
 }) {
   return (
-    <a
-      className={cn("flex items-center pr-2 hover:bg-accent-muted", className)}
-      href={certification.credentialURL}
-      target="_blank"
-      rel="noopener"
+    <div
+      className={cn(
+        "relative flex items-center pr-2 hover:bg-accent-muted",
+        className
+      )}
     >
       {certification.issuerLogoURL ? (
         <Image
@@ -47,7 +47,10 @@ export function CertificationItem({
 
       <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
         <h3 className="leading-snug font-medium text-balance">
-          {certification.title}
+          <a href={certification.credentialURL} target="_blank" rel="noopener">
+            <span className="absolute inset-0" aria-hidden />
+            {certification.title}
+          </a>
         </h3>
 
         <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
@@ -78,6 +81,6 @@ export function CertificationItem({
       {certification.credentialURL && (
         <ArrowUpRightIcon className="size-4 text-muted-foreground" />
       )}
-    </a>
+    </div>
   )
 }
