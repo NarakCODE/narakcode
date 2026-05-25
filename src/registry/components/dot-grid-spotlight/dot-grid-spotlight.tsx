@@ -118,7 +118,6 @@ export function DotGridSpotlight({
         }
       }
       ctx.globalAlpha = 1.0
-      console.log("rendering")
     }
 
     const resizeCanvas = () => {
