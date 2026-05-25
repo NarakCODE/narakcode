@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import { ComponentIcon } from "@/components/icons"
 import {
@@ -28,28 +29,37 @@ export function Components() {
       <div className="screen-line-bottom h-2" />
 
       <div className="relative">
-        <div className="absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
+        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
           <div className="border-r border-line" />
           <div className="border-r border-line max-md:hidden" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {components.slice(0, 9).map((c) => (
-            <ComponentItem key={c.slug} href={`/components/${c.slug}`}>
-              <ComponentItemIcon>
-                <ComponentIcon variant={c.slug} />
-                {(c.metadata.new || c.metadata.updated) && (
-                  <ComponentItemDot
-                    aria-label={c.metadata.new ? "New" : "Updated"}
-                  />
-                )}
-              </ComponentItemIcon>
-              <ComponentItemTitle as="h3">
-                {c.metadata.title}
-              </ComponentItemTitle>
-            </ComponentItem>
+            <li
+              key={c.slug}
+              className={cn(
+                "max-sm:screen-line-bottom",
+                "sm:max-md:nth-[2n+1]:screen-line-bottom",
+                "md:nth-[3n+1]:screen-line-bottom"
+              )}
+            >
+              <ComponentItem href={`/components/${c.slug}`}>
+                <ComponentItemIcon>
+                  <ComponentIcon variant={c.slug} />
+                  {(c.metadata.new || c.metadata.updated) && (
+                    <ComponentItemDot
+                      aria-label={c.metadata.new ? "New" : "Updated"}
+                    />
+                  )}
+                </ComponentItemIcon>
+                <ComponentItemTitle as="h3">
+                  {c.metadata.title}
+                </ComponentItemTitle>
+              </ComponentItem>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div className="-mt-px flex justify-center py-2">

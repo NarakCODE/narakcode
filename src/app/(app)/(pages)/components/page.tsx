@@ -179,12 +179,12 @@ export default function Page() {
       <div className="screen-line-bottom h-px" />
 
       <div className="relative">
-        <div className="absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
+        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
           <div className="border-r border-line" />
           <div className="border-r border-line max-md:hidden" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {posts
             .slice()
             .sort((a, b) =>
@@ -193,21 +193,30 @@ export default function Page() {
               })
             )
             .map((c) => (
-              <ComponentItem key={c.slug} href={`/components/${c.slug}`}>
-                <ComponentItemIcon>
-                  <ComponentIcon variant={c.slug} />
-                  {(c.metadata.new || c.metadata.updated) && (
-                    <ComponentItemDot
-                      aria-label={c.metadata.new ? "New" : "Updated"}
-                    />
-                  )}
-                </ComponentItemIcon>
-                <ComponentItemTitle as="h2">
-                  {c.metadata.title}
-                </ComponentItemTitle>
-              </ComponentItem>
+              <li
+                key={c.slug}
+                className={cn(
+                  "max-sm:screen-line-bottom",
+                  "sm:max-md:nth-[2n+1]:screen-line-bottom",
+                  "md:nth-[3n+1]:screen-line-bottom"
+                )}
+              >
+                <ComponentItem href={`/components/${c.slug}`}>
+                  <ComponentItemIcon>
+                    <ComponentIcon variant={c.slug} />
+                    {(c.metadata.new || c.metadata.updated) && (
+                      <ComponentItemDot
+                        aria-label={c.metadata.new ? "New" : "Updated"}
+                      />
+                    )}
+                  </ComponentItemIcon>
+                  <ComponentItemTitle as="h2">
+                    {c.metadata.title}
+                  </ComponentItemTitle>
+                </ComponentItem>
+              </li>
             ))}
-        </div>
+        </ul>
       </div>
 
       <div

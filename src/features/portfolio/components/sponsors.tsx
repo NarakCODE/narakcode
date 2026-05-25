@@ -3,6 +3,7 @@ import { addQueryParams } from "@/utils/url"
 import { ArrowRightIcon } from "lucide-react"
 
 import { SPONSORSHIP_URL, UTM_PARAMS } from "@/config/site"
+import { cn } from "@/lib/utils"
 import { PlusIcon } from "@/components/animated-icons/plus"
 import { Button } from "@/components/base/ui/button"
 import { SponsorItem } from "@/features/sponsor/components/sponsor-item"
@@ -33,35 +34,38 @@ export function Sponsors() {
       </PanelHeader>
 
       <div className="relative">
-        <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
+        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
           <div className="border-r border-line" />
           <div className="border-l border-line" />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {FEATURED_SPONSORS.map((item) => (
-            <SponsorItem
-              key={item.name}
-              className="min-h-22.5 [&_svg]:w-full [&_svg]:max-w-75 [&_svg]:shrink-0"
-              href={addQueryParams(item.url, UTM_PARAMS)}
-              aria-label={`${item.name} logo`}
-            >
-              <item.logo aria-hidden />
-            </SponsorItem>
+            <ListItem key={item.name}>
+              <SponsorItem
+                className="min-h-22.5 [&_svg]:w-full [&_svg]:max-w-75 [&_svg]:shrink-0"
+                href={addQueryParams(item.url, UTM_PARAMS)}
+                aria-label={`${item.name} logo`}
+              >
+                <item.logo aria-hidden />
+              </SponsorItem>
+            </ListItem>
           ))}
 
-          <SponsorItem
-            className="min-h-22.5"
-            href={SPONSORSHIP_URL}
-            aria-label="Sponsor My Work"
-          >
-            <PlusIcon
-              className="flex size-full items-center justify-center text-muted-foreground"
-              size={24}
-              aria-hidden
-            />
-          </SponsorItem>
-        </div>
+          <ListItem>
+            <SponsorItem
+              className="min-h-22.5"
+              href={SPONSORSHIP_URL}
+              aria-label="Sponsor My Work"
+            >
+              <PlusIcon
+                className="flex size-full items-center justify-center text-muted-foreground"
+                size={24}
+                aria-hidden
+              />
+            </SponsorItem>
+          </ListItem>
+        </ul>
       </div>
 
       <div className="-mt-px flex justify-center py-2">
@@ -76,5 +80,18 @@ export function Sponsors() {
         </Button>
       </div>
     </Panel>
+  )
+}
+
+function ListItem({ className, ...props }: React.ComponentProps<"li">) {
+  return (
+    <li
+      className={cn(
+        "max-sm:screen-line-top max-sm:screen-line-bottom",
+        "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom",
+        className
+      )}
+      {...props}
+    />
   )
 }

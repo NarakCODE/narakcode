@@ -118,24 +118,31 @@ function SponsorsGroup({
           <div className="border-l border-line" />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {sponsors.map((item) => (
-            <SponsorItem
+            <li
               key={item.name}
-              href={addQueryParams(item.url, UTM_PARAMS)}
-              aria-label={`${item.name} logo`}
-              data-tier={item.tier.replaceAll("_", "-")}
               className={cn(
-                "[&_svg]:w-full [&_svg]:max-w-75 [&_svg]:shrink-0",
-                "data-[tier=osp]:[&_svg]:max-w-60",
-                "data-[tier=silver]:[&_svg]:max-w-60",
-                "data-[tier=spark-supporter]:[&_svg]:max-w-50"
+                "max-sm:screen-line-top max-sm:screen-line-bottom",
+                "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom"
               )}
             >
-              <item.logo aria-hidden />
-            </SponsorItem>
+              <SponsorItem
+                href={addQueryParams(item.url, UTM_PARAMS)}
+                aria-label={`${item.name} logo`}
+                data-tier={item.tier.replaceAll("_", "-")}
+                className={cn(
+                  "[&_svg]:w-full [&_svg]:max-w-75 [&_svg]:shrink-0",
+                  "data-[tier=osp]:[&_svg]:max-w-60",
+                  "data-[tier=silver]:[&_svg]:max-w-60",
+                  "data-[tier=spark-supporter]:[&_svg]:max-w-50"
+                )}
+              >
+                <item.logo aria-hidden />
+              </SponsorItem>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   )

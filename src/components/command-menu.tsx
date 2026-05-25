@@ -14,6 +14,7 @@ import {
   DownloadIcon,
   FileTextIcon,
   LineChartIcon,
+  MonitorIcon,
   MoonStarIcon,
   QuoteIcon,
   RssIcon,
@@ -496,8 +497,8 @@ export function CommandMenu({
                 onHighlight={handleCommandHighlight}
                 onSelect={createThemeHandler("system")}
               >
-                <Icons.contrast />
-                Auto
+                <MonitorIcon />
+                System
               </CommandMenuItem>
             </CommandGroup>
 

@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { format } from "date-fns"
 
-import { cn } from "@/lib/utils"
 import type { Doc } from "@/features/doc/types/document"
 
 export function PostItem({
@@ -16,11 +15,7 @@ export function PostItem({
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className={cn(
-        "group flex flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted",
-        "max-sm:screen-line-top max-sm:screen-line-bottom",
-        "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom"
-      )}
+      className="flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted"
     >
       {post.metadata.image && (
         <div className="relative select-none [&_img]:aspect-1200/630 [&_img]:rounded-xl">
