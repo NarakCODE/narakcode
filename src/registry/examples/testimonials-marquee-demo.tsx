@@ -108,7 +108,7 @@ const TESTIMONIALS = [
   {
     authorAvatar: "https://unavatar.io/x/initjean",
     authorName: "Jean P.D. Meijer",
-    authorTagline: "Building analog.now",
+    authorTagline: "Design Engineer",
     url: "https://x.com/initjean/status/1948159885960438151",
     quote:
       "congrats you deserve it! react wheel picker is so smooth, its insane",

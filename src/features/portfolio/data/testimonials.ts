@@ -3,6 +3,15 @@ import type { Testimonial } from "../types/testimonials"
 // Long quotes (more than 50 characters), ordered by date ascending
 export const TESTIMONIALS_1: Testimonial[] = [
   {
+    authorAvatar: "https://unavatar.io/x/orcdev",
+    authorName: "OrcDev",
+    authorTagline: "Creator of 8bitcn.com",
+    url: "https://x.com/orcdev/status/2058273274098860335",
+    quote: "same! Đại is very talented! love his work",
+    date: "2026-06-24",
+    isVerified: true,
+  },
+  {
     authorAvatar: "https://unavatar.io/x/hiretimsf",
     authorName: "HireTimSF.com",
     authorTagline: "Building @menu_ceo",
@@ -20,6 +29,7 @@ export const TESTIMONIALS_1: Testimonial[] = [
     quote: "See @iamncdai Wheel Picker. It’s on the registry. Quick install.",
     date: "2026-05-22",
     isVerified: true,
+    order: 7,
   },
   {
     authorAvatar: "https://unavatar.io/x/dimicx",
@@ -150,7 +160,7 @@ export const TESTIMONIALS_1: Testimonial[] = [
   {
     authorAvatar: "https://unavatar.io/x/initjean",
     authorName: "Jean P.D. Meijer",
-    authorTagline: "Building analog.now",
+    authorTagline: "Design Engineer",
     url: "https://x.com/initjean/status/1948159885960438151",
     quote:
       "congrats you deserve it! react wheel picker is so smooth, its insane 🐐",
@@ -190,6 +200,15 @@ export const TESTIMONIALS_1: Testimonial[] = [
 // Short quotes (50 characters or fewer), ordered by date ascending
 export const TESTIMONIALS_2: Testimonial[] = [
   {
+    authorAvatar: "https://unavatar.io/x/evilrabbit_",
+    authorName: "Evil Rabbit",
+    authorTagline: "Founding Designer @Vercel",
+    url: "https://x.com/evilrabbit_/status/2058279035390820692",
+    quote: "sick",
+    date: "2026-05-24",
+    isVerified: true,
+  },
+  {
     authorAvatar: "https://unavatar.io/x/legionsdev",
     authorName: "Gurbinder",
     authorTagline: "Creator of evilcharts.com",
@@ -206,6 +225,7 @@ export const TESTIMONIALS_2: Testimonial[] = [
     quote: "lovely sliders!! awesome work!",
     date: "2026-05-06",
     isVerified: true,
+    order: 8,
   },
   {
     authorAvatar: "https://unavatar.io/x/evilrabbit_",
@@ -266,7 +286,7 @@ export const TESTIMONIALS_2: Testimonial[] = [
   {
     authorAvatar: "https://unavatar.io/x/davidhdev",
     authorName: "David Haz",
-    authorTagline: "Creator of pro.reactbits.dev",
+    authorTagline: "Creator of reactbits.dev",
     url: "https://x.com/davidhdev/status/2034191466281513275",
     quote: "Looks incredible!",
     date: "2026-03-18",
@@ -313,7 +333,7 @@ export const TESTIMONIALS_2: Testimonial[] = [
   {
     authorAvatar: "https://unavatar.io/x/davidhdev",
     authorName: "David Haz",
-    authorTagline: "Creator of pro.reactbits.dev",
+    authorTagline: "Creator of reactbits.dev",
     url: "https://x.com/davidhdev/status/2025902761926132112",
     quote: "That’s so cool 😭",
     date: "2026-02-23",
