@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils"
+
 import { SOCIAL_LINKS } from "../../data/social-links"
 import { Panel } from "../panel"
 import { SocialLinkItem } from "./social-link-item"
@@ -14,11 +16,21 @@ export function SocialLinks() {
           <div className="border-l border-line max-md:hidden" />
         </div>
 
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">
+        <ul className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">
           {SOCIAL_LINKS.map((link, index) => {
-            return <SocialLinkItem key={index} {...link} />
+            return (
+              <li
+                key={index}
+                className={cn(
+                  "max-md:nth-[2n+1]:screen-line-top max-md:nth-[2n+1]:screen-line-bottom",
+                  "md:nth-[3n+1]:screen-line-top md:nth-[3n+1]:screen-line-bottom"
+                )}
+              >
+                <SocialLinkItem {...link} />
+              </li>
+            )
           })}
-        </div>
+        </ul>
       </div>
     </Panel>
   )
