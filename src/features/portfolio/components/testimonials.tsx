@@ -51,19 +51,11 @@ export function Testimonials() {
       <h2 className="sr-only">Testimonials</h2>
 
       <div className="grid gap-2 py-2">
-        <div className="grid gap-2 px-2 sm:grid-cols-2">
+        <div className="grid gap-2 px-2 [--spotlight-size:50%] sm:grid-cols-2">
           {FEATURED_TESTIMONIALS.map((item) => (
-            <a
-              key={item.url}
-              className="flex"
-              href={item.url}
-              target="_blank"
-              rel="noopener"
-            >
-              <TestimonialSpotlight className="flex-1 bg-accent-muted [--spotlight-size:50%]">
-                <TestimonialItem {...item} />
-              </TestimonialSpotlight>
-            </a>
+            <TestimonialSpotlight key={item.url} className="bg-accent-muted">
+              <TestimonialItem {...item} />
+            </TestimonialSpotlight>
           ))}
         </div>
 
@@ -114,17 +106,10 @@ function TestimonialList({
           .map((item) => (
             <MarqueeItem
               key={item.url}
-              className="mx-1 h-full max-w-xs min-w-2xs"
+              className="mx-1 h-full max-w-xs min-w-2xs rounded-xl inset-ring-1 inset-ring-foreground/10 transition-[background-color] ease-out hover:bg-accent-muted"
               style={item.style}
             >
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener"
-                className="block h-full rounded-xl inset-ring-1 inset-ring-foreground/10 transition-[background-color] ease-out hover:bg-accent-muted"
-              >
-                <TestimonialItem {...item} />
-              </a>
+              <TestimonialItem {...item} />
             </MarqueeItem>
           ))}
       </MarqueeContent>
@@ -136,11 +121,12 @@ function TestimonialItem({
   authorAvatar,
   authorName,
   authorTagline,
+  url,
   quote,
   isVerified,
 }: TestimonialType) {
   return (
-    <Testimonial>
+    <Testimonial className="relative">
       <TestimonialQuote className="min-h-14 font-serif">
         <p>
           <Twemoji>{quote}</Twemoji>
@@ -154,7 +140,10 @@ function TestimonialItem({
         </TestimonialAvatar>
 
         <TestimonialAuthorName>
-          {authorName}
+          <a href={url} target="_blank" rel="noopener">
+            <span className="absolute inset-0" aria-hidden />
+            {authorName}
+          </a>
           {isVerified && (
             <TestimonialVerifiedBadge className="text-info">
               <VerifiedIcon />
