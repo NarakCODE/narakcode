@@ -39,7 +39,6 @@ export function TestimonialSpotlight({
       data-slot="testimonial-spotlight"
       className={cn(
         "group/testimonial-spotlight relative overflow-hidden rounded-xl bg-card/50 inset-ring-1 inset-ring-foreground/10",
-        "*:data-[slot=testimonial]:relative *:data-[slot=testimonial]:z-1",
         className
       )}
       onMouseMove={handleMouseMove}
