@@ -69,25 +69,21 @@ export default function TestimonialsPage() {
       </PageHeading>
 
       <div className="relative pt-4">
-        <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
+        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
           <div className="border-r border-line" />
           <div className="border-l border-line" />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {TESTIMONIALS.map((item) => (
-            <a
+            <li
               key={item.url}
               className={cn(
-                "block transition-[background-color] ease-out hover:bg-accent-muted",
                 "max-sm:screen-line-top max-sm:screen-line-bottom",
                 "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom"
               )}
-              href={item.url}
-              target="_blank"
-              rel="noopener"
             >
-              <Testimonial>
+              <Testimonial className="relative transition-[background-color] ease-out hover:bg-accent-muted">
                 <TestimonialQuote className="min-h-14 font-serif">
                   <p>
                     <Twemoji>{item.quote}</Twemoji>
@@ -104,7 +100,10 @@ export default function TestimonialsPage() {
                   </TestimonialAvatar>
 
                   <TestimonialAuthorName>
-                    {item.authorName}
+                    <a href={item.url} target="_blank" rel="noopener">
+                      <span className="absolute inset-0" aria-hidden />
+                      {item.authorName}
+                    </a>
                     {item.isVerified && (
                       <TestimonialVerifiedBadge className="text-info">
                         <VerifiedIcon />
@@ -116,9 +115,9 @@ export default function TestimonialsPage() {
                   </TestimonialAuthorTagline>
                 </TestimonialAuthor>
               </Testimonial>
-            </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div className="h-4" />
