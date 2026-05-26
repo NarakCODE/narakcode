@@ -12,7 +12,7 @@ import { Experiences } from "@/features/portfolio/components/experiences"
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
 import { Insights } from "@/features/portfolio/components/insights"
 import { Overview } from "@/features/portfolio/components/overview"
-import { ProfileCover } from "@/features/portfolio/components/profile-cover"
+import { ProfileActivityMosaicCover } from "@/features/portfolio/components/profile-activity-mosaic-cover"
 import { ProfileHeader } from "@/features/portfolio/components/profile-header"
 import { Projects } from "@/features/portfolio/components/projects"
 import { SocialLinks } from "@/features/portfolio/components/social-links"
@@ -44,7 +44,7 @@ export default function HomePage() {
       />
 
       <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
-        <ProfileCover />
+        <ProfileActivityMosaicCover />
         <ProfileHeader />
         <Separator />
 
