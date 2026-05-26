@@ -64,8 +64,7 @@ export default function TestimonialsPage() {
       <PageHeading>
         <PageHeadingTagline>Testimonials</PageHeadingTagline>
         <PageHeadingTitle>
-          Trusted by top builders on{" "}
-          <span className="font-medium tracking-wide">𝕏.</span>
+          Trusted by top builders on <span aria-label="X">𝕏</span>
         </PageHeadingTitle>
       </PageHeading>
 
