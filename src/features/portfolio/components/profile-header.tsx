@@ -10,9 +10,9 @@ export function ProfileHeader() {
   return (
     <div className="screen-line-bottom flex border-x border-line">
       <div className="shrink-0 border-r border-line">
-        <AvatarLightsToggle className="group/avatar-lights-toggle mx-px my-0.5 flex outline-none">
+        <AvatarLightsToggle className="group/avatar-lights-toggle mx-0.5 my-0.75 flex outline-none">
           <AvatarLights
-            className="ring-[#fbbf24] ring-offset-2 ring-offset-background group-focus-visible/avatar-lights-toggle:ring-2 dark:ring-[#FFC799]"
+            className="ring-border ring-offset-2 ring-offset-background group-focus-visible/avatar-lights-toggle:ring-1"
             variants={USER.avatarVariants}
           />
         </AvatarLightsToggle>
