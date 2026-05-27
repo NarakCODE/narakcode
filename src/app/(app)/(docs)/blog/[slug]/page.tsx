@@ -247,7 +247,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
           <DocLeftCol />
 
           <DocContentCol>
-            <Prose className="px-4 pt-8">
+            <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
               <p className="text-muted-foreground">
                 {doc.metadata.description}
               </p>
