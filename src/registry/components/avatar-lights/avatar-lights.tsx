@@ -53,6 +53,11 @@ export function AvatarLights({
           fetchPriority="high"
         />
       </AvatarLayer>
+
+      <div
+        className="pointer-events-none absolute inset-0 rounded-full inset-ring-1 inset-ring-foreground/10"
+        aria-hidden
+      />
     </div>
   )
 }
