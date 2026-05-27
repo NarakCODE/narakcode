@@ -3,9 +3,9 @@ import Link from "next/link"
 
 import { MAIN_NAV } from "@/config/site"
 import { Separator } from "@/components/ui/separator"
+import { ChanhDaiMark } from "@/components/chanhdai-mark"
 import { NavDesktop } from "@/components/nav-desktop"
 import { NavItemGitHub } from "@/components/nav-item-github"
-import { SiteHeaderMark } from "@/components/site-header-mark"
 import { ThemeToggle } from "@/components/theme-toggle"
 import blocks from "@/registry/__blocks__.json"
 import { getAllDocs } from "@/features/doc/data/documents"
@@ -34,11 +34,11 @@ export function SiteHeader() {
       <div className="screen-line-top screen-line-bottom mx-auto flex h-12 items-center justify-between gap-2 border-x border-line px-2 group-has-data-[slot=layout-wide]/layout:container after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl">
         <BrandContextMenu>
           <Link
-            className="transition-[scale] ease-out active:scale-[0.98] has-data-[visible=false]:pointer-events-none [&_svg]:h-8 [&_svg]:shrink-0"
+            className="transition-[scale] ease-out active:scale-[0.98]"
             href="/"
             aria-label="Home"
           >
-            <SiteHeaderMark />
+            <ChanhDaiMark className="h-8 shrink-0" />
           </Link>
         </BrandContextMenu>
 
