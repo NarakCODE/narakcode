@@ -6,22 +6,23 @@ import { useTiks } from "@rexa-developer/tiks/react"
 import { Download, SquareDashed, Type } from "lucide-react"
 import { toast } from "sonner"
 
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
-import { getWordmarkSVG } from "./chanhdai-wordmark"
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "./ui/context-menu"
+} from "@/components/ui/context-menu"
+
+import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
+import { getWordmarkSVG } from "./chanhdai-wordmark"
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
   const { success } = useTiks()
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger asChild>{children}</ContextMenuTrigger>
+      <ContextMenuTrigger>{children}</ContextMenuTrigger>
 
       <ContextMenuContent className="w-fit">
         <ContextMenuItem
