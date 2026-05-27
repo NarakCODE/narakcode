@@ -122,7 +122,7 @@ export default function ComponentsShowcasePage() {
 
       <div className="screen-line-bottom h-px" />
 
-      <div className="grid grid-cols-1 gap-1 p-1 md:grid-cols-3">
+      <div className="grid auto-rows-[minmax(--spacing(42),auto)] grid-cols-1 gap-1 p-1 md:grid-cols-3">
         <GridItem className="md:row-span-2">
           <AppleHelloEffectAllDemo />
         </GridItem>
@@ -157,7 +157,7 @@ export default function ComponentsShowcasePage() {
           <TestimonialSpotlightDemo />
         </GridItem>
 
-        <GridItem className="p-0 md:col-span-2 md:row-span-2">
+        <GridItem className="px-0 md:col-span-2 md:row-span-2">
           <GitHubContributionsDemo />
         </GridItem>
 
@@ -185,7 +185,7 @@ export default function ComponentsShowcasePage() {
           <TwemojiDemo />
         </GridItem>
 
-        <GridItem className="p-0 py-4 md:col-span-2 md:row-span-2">
+        <GridItem className="md:col-span-2 md:row-span-2">
           <FluidGradientTextDemo />
         </GridItem>
 
@@ -193,20 +193,20 @@ export default function ComponentsShowcasePage() {
           <ShimmeringTextDemo2 />
         </GridItem>
 
-        <GridItem className="overflow-hidden p-0 **:data-[slot=marquee]:border-none md:col-span-3">
+        <GridItem className="overflow-hidden px-0 md:col-span-3">
           <TestimonialsMarqueeDemo />
         </GridItem>
 
-        <GridItem className="p-0 md:col-span-2 md:row-span-2">
+        <GridItem className="md:col-span-2 md:row-span-2">
           <GlowCardGridDemo />
         </GridItem>
 
         <div className="grid grid-cols-2 gap-1">
-          <GridItem className="p-0">
+          <GridItem>
             <GitHubStarsDemo />
           </GridItem>
 
-          <GridItem className="p-0">
+          <GridItem className="pr-0">
             <TOCMinimapDemo />
           </GridItem>
         </div>

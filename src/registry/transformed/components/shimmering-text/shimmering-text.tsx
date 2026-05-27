@@ -60,6 +60,7 @@ export function ShimmeringText({
         "[--color:var(--muted-foreground)] [--shimmering-color:var(--foreground)]",
         className
       )}
+      aria-label={text}
       {...props}
     >
       {text?.split("")?.map((char, i) => (
@@ -69,6 +70,7 @@ export function ShimmeringText({
           initial="stopped"
           animate={isStopped ? "stopped" : "running"}
           variants={createCharVariants(i)}
+          aria-hidden
         >
           {char}
         </motion.span>
