@@ -118,6 +118,15 @@ function Separator({ className }: { className?: string }) {
         "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-line)]/56",
         className
       )}
-    />
+    >
+      {/* <div
+        className="absolute -top-1.25 -left-1.25 z-2 flex size-2.25 border bg-background"
+        aria-hidden
+      />
+      <div
+        className="absolute -top-1.25 -right-1.25 z-2 flex size-2.25 border bg-background"
+        aria-hidden
+      /> */}
+    </div>
   )
 }
