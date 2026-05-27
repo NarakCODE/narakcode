@@ -33,14 +33,14 @@ export function PronounceMyName({
   return (
     <button
       className={cn(
-        "relative after:absolute after:-inset-2",
-        "touch-manipulation text-muted-foreground transition-[color,scale] select-none hover:text-foreground active:scale-[0.9]",
+        "relative flex touch-manipulation items-center justify-center text-muted-foreground transition-[color,scale] select-none hover:text-foreground active:scale-[0.9]",
         className
       )}
       onClick={handlePlayClick}
       aria-label="Pronounce my name"
     >
-      <VolumeIcon ref={volumeIconRef} className="size-4.5" />
+      <span className="absolute size-12 pointer-fine:hidden" aria-hidden />
+      <VolumeIcon ref={volumeIconRef} className="size-4.5" aria-hidden />
     </button>
   )
 }
