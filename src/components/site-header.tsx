@@ -11,13 +11,11 @@ import blocks from "@/registry/__blocks__.json"
 import { getAllDocs } from "@/features/doc/data/documents"
 import type { DocPreview } from "@/features/doc/types/document"
 
-const BrandContextMenu = dynamic(() =>
-  import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
+const BrandContextMenu = dynamic(
+  () => import("@/components/brand-context-menu")
 )
 
-const CommandMenu = dynamic(() =>
-  import("@/components/command-menu").then((mod) => mod.CommandMenu)
-)
+const CommandMenu = dynamic(() => import("@/components/command-menu"))
 
 export function SiteHeader() {
   const docs = getAllDocs()
@@ -33,11 +31,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2 pt-2">
       <div className="screen-line-top screen-line-bottom mx-auto flex h-12 items-center justify-between gap-2 border-x border-line px-2 group-has-data-[slot=layout-wide]/layout:container after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl">
         <BrandContextMenu>
-          <Link
-            className="transition-[scale] ease-out active:scale-[0.98]"
-            href="/"
-            aria-label="Home"
-          >
+          <Link href="/" aria-label="Home">
             <ChanhDaiMark className="h-8 shrink-0" />
           </Link>
         </BrandContextMenu>
