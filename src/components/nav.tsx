@@ -49,7 +49,7 @@ export function NavItem({
     <Link
       data-active={active}
       className={cn(
-        "relative text-sm font-medium text-muted-foreground transition-[color] after:absolute after:-inset-2 hover:text-foreground data-active:text-foreground",
+        "text-sm font-medium text-muted-foreground transition-[color] hover:text-foreground data-active:text-foreground",
         className
       )}
       {...props}

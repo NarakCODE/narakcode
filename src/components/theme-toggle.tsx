@@ -37,14 +37,21 @@ export function ThemeToggle() {
       <TooltipTrigger
         render={
           <Button
-            className="border-none"
+            className="relative touch-manipulation border-none"
             variant="ghost"
             size="icon-sm"
             aria-label="Toggle Mode"
             onClick={() => switchTheme()}
           >
-            <MoonIcon className="relative hidden after:absolute after:-inset-2 [html.dark_&]:block" />
-            <SunMediumIcon className="relative hidden after:absolute after:-inset-2 [html.light_&]:block" />
+            <span
+              className="absolute size-12 pointer-fine:hidden"
+              aria-hidden
+            />
+            <MoonIcon className="hidden [html.dark_&]:block" aria-hidden />
+            <SunMediumIcon
+              className="hidden [html.light_&]:block"
+              aria-hidden
+            />
           </Button>
         }
       />
