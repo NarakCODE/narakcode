@@ -17,7 +17,7 @@ export function AvatarLights({
   return (
     <div
       className={cn(
-        "relative size-30 rounded-full min-[24rem]:size-32 sm:size-40",
+        "pointer-events-none relative size-30 rounded-full min-[24rem]:size-32 sm:size-40",
         className
       )}
       {...props}
@@ -30,7 +30,7 @@ export function AvatarLights({
         />
       </div>
 
-      <AvatarLayer className="in-[.light[data-avatar-lights=on]]:pointer-events-auto in-[.light[data-avatar-lights=on]]:opacity-100">
+      <AvatarLayer className="in-[.light[data-avatar-lights=on]]:opacity-100">
         <AvatarImage
           src={variants.lightOn}
           alt="Avatar with lights on in light mode"
@@ -38,7 +38,7 @@ export function AvatarLights({
         />
       </AvatarLayer>
 
-      <AvatarLayer className="in-[.dark[data-avatar-lights=off]]:pointer-events-auto in-[.dark[data-avatar-lights=off]]:opacity-100">
+      <AvatarLayer className="in-[.dark[data-avatar-lights=off]]:opacity-100">
         <AvatarImage
           src={variants.darkOff}
           alt="Avatar with lights off in dark mode"
@@ -46,13 +46,18 @@ export function AvatarLights({
         />
       </AvatarLayer>
 
-      <AvatarLayer className="in-[.dark[data-avatar-lights=on]]:pointer-events-auto in-[.dark[data-avatar-lights=on]]:opacity-100">
+      <AvatarLayer className="in-[.dark[data-avatar-lights=on]]:opacity-100">
         <AvatarImage
           src={variants.darkOn}
           alt="Avatar with lights on in dark mode"
           fetchPriority="high"
         />
       </AvatarLayer>
+
+      <div
+        className="pointer-events-none absolute inset-0 rounded-full inset-ring-1 inset-ring-foreground/10"
+        aria-hidden
+      />
     </div>
   )
 }
@@ -67,7 +72,7 @@ function AvatarLayer({ className, ...props }: React.ComponentProps<"div">) {
       //
       // Ref: https://paco.me/writing/disable-theme-transitions
       className={cn(
-        "pointer-events-none absolute inset-0 opacity-0 transition-opacity! duration-1200 ease-[cubic-bezier(0.42,0,0.58,1)]",
+        "absolute inset-0 opacity-0 transition-opacity! duration-1200 ease-[cubic-bezier(0.42,0,0.58,1)]",
         className
       )}
       {...props}

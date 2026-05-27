@@ -30,7 +30,7 @@ export function GitHubContributionGraph({
 
   return (
     <ContributionGraph
-      className="mx-auto py-2"
+      className="mx-auto gap-4 py-4"
       data={data}
       blockSize={11}
       blockMargin={3}
