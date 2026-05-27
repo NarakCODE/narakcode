@@ -20,13 +20,13 @@ export type Activity = {
 
 type ActivityColumn = Array<Activity | undefined>
 
-const CELL_LEVEL_CLASSES = cn(
-  'data-[level="0"]:fill-muted-foreground/10',
-  'data-[level="1"]:fill-muted-foreground/20',
-  'data-[level="2"]:fill-muted-foreground/40',
-  'data-[level="3"]:fill-muted-foreground/60',
-  'data-[level="4"]:fill-muted-foreground/80'
-)
+// const CELL_LEVEL_CLASSES = cn(
+//   'data-[level="0"]:fill-muted-foreground/10',
+//   'data-[level="1"]:fill-muted-foreground/20',
+//   'data-[level="2"]:fill-muted-foreground/40',
+//   'data-[level="3"]:fill-muted-foreground/60',
+//   'data-[level="4"]:fill-muted-foreground/80'
+// )
 
 type ActivityMosaicContextType = {
   activities: Activity[]
@@ -261,10 +261,8 @@ export const ActivityMosaicCell = ({
 
   return (
     <rect
-      data-count={activity.count}
-      data-date={activity.date}
       data-level={activity.level}
-      className={cn(CELL_LEVEL_CLASSES, className)}
+      className={cn("activity-mosaic-cell", className)}
       width={cellSize}
       height={cellSize}
       x={(cellSize + cellMargin) * columnIndex}

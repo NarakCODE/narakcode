@@ -7,13 +7,8 @@ import blocks from "@/registry/__blocks__.json"
 import { getAllDocs } from "@/features/doc/data/documents"
 import type { DocPreview } from "@/features/doc/types/document"
 
-const CommandMenu = dynamic(() =>
-  import("@/components/command-menu").then((mod) => mod.CommandMenu)
-)
-
-const NavMobile = dynamic(() =>
-  import("@/components/nav-mobile").then((mod) => mod.NavMobile)
-)
+const CommandMenu = dynamic(() => import("@/components/command-menu"))
+const NavMobile = dynamic(() => import("@/components/nav-mobile"))
 
 export function SiteBottomNav() {
   const docs = getAllDocs()

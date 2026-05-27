@@ -502,29 +502,6 @@
   [id] {
     @apply scroll-mt-18;
   }
-
-  .duck-follower {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 50;
-
-    pointer-events: none;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-
-    will-change: transform;
-    transition: none;
-  }
-
-  .twemoji {
-    display: inline-block;
-    height: 1em;
-    width: 1em;
-    margin: 0 0.05em 0 0.1em;
-    vertical-align: -0.1em;
-  }
 }
 
 @layer components {
@@ -606,5 +583,36 @@
     width: var(--fade-width, 5rem);
     height: var(--fade-height, 2.25rem);
     background: var(--fade-background, var(--fade-linear-gradient));
+  }
+
+  .duck-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+
+    pointer-events: none;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+
+    will-change: transform;
+    transition: none;
+  }
+
+  .twemoji {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    margin: 0 0.05em 0 0.1em;
+    vertical-align: -0.1em;
+  }
+
+  .activity-mosaic-cell {
+    @apply data-[level=0]:fill-muted-foreground/10;
+    @apply data-[level=1]:fill-muted-foreground/20;
+    @apply data-[level=2]:fill-muted-foreground/40;
+    @apply data-[level=3]:fill-muted-foreground/60;
+    @apply data-[level=4]:fill-muted-foreground/80;
   }
 }

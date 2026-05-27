@@ -66,3 +66,5 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
     </ContextMenu>
   )
 }
+
+export default BrandContextMenu

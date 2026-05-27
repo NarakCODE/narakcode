@@ -517,6 +517,8 @@ export function CommandMenu({
   )
 }
 
+export default CommandMenu
+
 function CommandMenuTrigger({ ...props }: React.ComponentProps<typeof Button>) {
   return (
     <Button

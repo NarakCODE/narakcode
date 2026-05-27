@@ -69,6 +69,8 @@ export function NavMobile({ items }: { items: NavItem[] }) {
   )
 }
 
+export default NavMobile
+
 function NavMobileTrigger(
   props: Omit<React.ComponentProps<typeof Button>, "children">
 ) {
