@@ -35,10 +35,12 @@ export function GitHubContributionGraph({
       blockSize={11}
       blockMargin={3}
       blockRadius={2}
+      aria-label="GitHub Contributions Graph"
     >
       <ContributionGraphCalendar
         className="no-scrollbar px-2"
         title="GitHub Contributions"
+        aria-hidden
       >
         {({ activity, dayIndex, weekIndex }) => (
           <Tooltip>
@@ -84,7 +86,7 @@ export function GitHubContributionGraph({
           )}
         </ContributionGraphTotalCount>
 
-        <ContributionGraphLegend />
+        <ContributionGraphLegend aria-hidden />
       </ContributionGraphFooter>
     </ContributionGraph>
   )

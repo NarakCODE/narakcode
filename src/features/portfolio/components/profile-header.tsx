@@ -39,7 +39,7 @@ export function ProfileHeader() {
 
             <VerifiedIcon
               className="size-4.5 text-info select-none"
-              aria-label="Verified"
+              aria-hidden
             />
 
             {USER.namePronunciationUrl && (
