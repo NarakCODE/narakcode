@@ -37,7 +37,10 @@ export function ComponentsShowcase() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="grid grid-cols-1 gap-1 p-1 md:grid-cols-3" aria-hidden>
+      <div
+        className="grid auto-rows-[minmax(--spacing(42),auto)] grid-cols-1 gap-1 p-1 md:grid-cols-3"
+        aria-hidden
+      >
         <GridItem className="md:row-span-2">
           <AppleHelloEffectAllDemo />
         </GridItem>
@@ -72,7 +75,7 @@ export function ComponentsShowcase() {
           <TestimonialSpotlightDemo />
         </GridItem>
 
-        <GridItem className="p-0 md:col-span-2 md:row-span-2">
+        <GridItem className="px-0 md:col-span-2 md:row-span-2">
           <GitHubContributionsDemo1 />
         </GridItem>
 
@@ -100,7 +103,7 @@ export function ComponentsShowcase() {
           <TwemojiDemo />
         </GridItem>
 
-        <GridItem className="p-0 py-4 md:col-span-2 md:row-span-2">
+        <GridItem className="md:col-span-2 md:row-span-2">
           <FluidGradientTextDemo />
         </GridItem>
 
