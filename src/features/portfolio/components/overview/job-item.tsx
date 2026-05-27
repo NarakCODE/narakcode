@@ -28,7 +28,7 @@ export function JobItem({
       <IntroItemIcon>{getJobIcon(title)}</IntroItemIcon>
 
       <IntroItemContent>
-        {title} @
+        {title} <span aria-label="at">@</span>
         <IntroItemLink
           className="ml-0.5 font-medium"
           {...(experienceId

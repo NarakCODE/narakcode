@@ -37,7 +37,7 @@ export function ComponentsShowcase() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="grid grid-cols-1 gap-1 p-1 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-1 p-1 md:grid-cols-3" aria-hidden>
         <GridItem className="md:row-span-2">
           <AppleHelloEffectAllDemo />
         </GridItem>
