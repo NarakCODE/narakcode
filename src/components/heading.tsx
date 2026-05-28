@@ -45,7 +45,7 @@ export function Heading<T extends HeadingTypes = "h1">({
   )
 }
 
-function createHeadingUrl(id: string) {
+export function createHeadingUrl(id: string) {
   if (typeof window === "undefined") {
     return `#${id}`
   }

@@ -11,18 +11,23 @@ import {
   PanelHeader,
   PanelTitle,
 } from "@/features/portfolio/components/panel"
+import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy"
 import { EXPERIENCES } from "@/features/portfolio/data/experiences"
 import type { Experience } from "@/features/portfolio/types/experiences"
 
 import { ExperienceItem } from "./experience-item"
 
+const ID = "experience"
 const MAX = 3
 
 export function Experiences() {
   return (
-    <Panel id="experience">
+    <Panel id={ID}>
       <PanelHeader>
-        <PanelTitle>Experience</PanelTitle>
+        <PanelTitle>
+          <a href={`#${ID}`}>Experience</a>
+          <PanelTitleCopy id={ID} />
+        </PanelTitle>
       </PanelHeader>
 
       <div className="pr-2 pl-4">

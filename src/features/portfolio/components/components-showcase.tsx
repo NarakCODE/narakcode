@@ -24,16 +24,20 @@ import { GridItem } from "@/app/(app)/(blocks)/components/showcase/grid-item"
 import { getDocsByCategory } from "@/features/doc/data/documents"
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
+import { PanelTitleCopy } from "./panel-title-copy"
+
+const ID = "components"
 
 export function ComponentsShowcase() {
   const components = getDocsByCategory("components")
 
   return (
-    <Panel>
+    <Panel id={ID}>
       <PanelHeader>
         <PanelTitle>
-          Components
+          <a href={`#${ID}`}>Components</a>
           <PanelTitleSup>[{components.length}]</PanelTitleSup>
+          <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>
 
@@ -128,3 +132,5 @@ export function ComponentsShowcase() {
     </Panel>
   )
 }
+
+export default ComponentsShowcase

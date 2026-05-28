@@ -11,6 +11,7 @@ import { SPONSORS } from "@/features/sponsor/data"
 import type { SponsorTier } from "@/features/sponsor/types"
 
 import { Panel, PanelDescription, PanelHeader, PanelTitle } from "./panel"
+import { PanelTitleCopy } from "./panel-title-copy"
 
 const FEATURED_TIERS = new Set<SponsorTier>([
   "osp",
@@ -23,11 +24,17 @@ const FEATURED_SPONSORS = SPONSORS.filter((sponsor) =>
   FEATURED_TIERS.has(sponsor.tier)
 )
 
+const ID = "sponsors"
+
 export function Sponsors() {
   return (
-    <Panel id="sponsors">
+    <Panel id={ID}>
       <PanelHeader className="after:content-none">
-        <PanelTitle>Sponsors</PanelTitle>
+        <PanelTitle>
+          <a href={`#${ID}`}>Sponsors</a>
+          <PanelTitleCopy id={ID} />
+        </PanelTitle>
+
         <PanelDescription>
           Grateful to the sponsors who make this open-source work possible.
         </PanelDescription>

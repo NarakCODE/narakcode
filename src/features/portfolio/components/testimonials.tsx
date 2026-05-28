@@ -45,10 +45,9 @@ export function Testimonials() {
   return (
     <Panel
       ref={panelRef}
-      id="testimonials"
       className="before:content-none [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
     >
-      <h2 className="sr-only">Testimonials</h2>
+      <h3 className="sr-only">Testimonials</h3>
 
       <div className="grid gap-2 py-2">
         <div className="grid gap-2 px-2 [--spotlight-size:50%] sm:grid-cols-2">

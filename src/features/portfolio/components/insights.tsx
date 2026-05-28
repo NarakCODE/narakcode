@@ -10,7 +10,10 @@ import {
   PanelTitle,
   PanelTitleSup,
 } from "@/features/portfolio/components/panel"
+import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy"
 import { getInsights } from "@/features/portfolio/data/insights"
+
+const ID = "insights"
 
 export async function Insights() {
   const data = await getInsights()
@@ -20,14 +23,15 @@ export async function Insights() {
   }
 
   return (
-    <Panel id="insights">
+    <Panel id={ID}>
       <PanelHeader>
         <PanelTitle>
-          Insights
+          <a href={`#${ID}`}>Insights</a>
           <PanelTitleSup>
             [{format(new Date(data.startDate), "dd.MM")} –{" "}
             {format(new Date(data.endDate), "dd.MM")}]
           </PanelTitleSup>
+          <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>
 

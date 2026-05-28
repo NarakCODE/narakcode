@@ -5,8 +5,8 @@ import { Panel, PanelContent } from "./panel"
 
 export function TechStack() {
   return (
-    <Panel id="stack" className="before:content-none">
-      <h2 className="sr-only">Stack</h2>
+    <Panel className="before:content-none">
+      <h3 className="sr-only">Tech Stack</h3>
 
       <PanelContent>
         <ul className="flex flex-wrap gap-2">
