@@ -5,18 +5,26 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import { PostItem } from "@/features/blog/components/post-item"
 import { getAllDocs } from "@/features/doc/data/documents"
+import {
+  Panel,
+  PanelHeader,
+  PanelTitle,
+  PanelTitleSup,
+} from "@/features/portfolio/components/panel"
+import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy"
 
-import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
+const ID = "blog"
 
 export function Blog() {
   const allPosts = getAllDocs()
 
   return (
-    <Panel id="blog">
+    <Panel id={ID}>
       <PanelHeader>
         <PanelTitle>
-          Blog
+          <a href={`#${ID}`}>Blog</a>
           <PanelTitleSup>[{allPosts.length}]</PanelTitleSup>
+          <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>
 

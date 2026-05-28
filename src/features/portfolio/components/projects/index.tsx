@@ -1,16 +1,25 @@
 import { CollapsibleList } from "@/components/collapsible-list"
+import {
+  Panel,
+  PanelHeader,
+  PanelTitle,
+  PanelTitleSup,
+} from "@/features/portfolio/components/panel"
+import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy"
+import { PROJECTS } from "@/features/portfolio/data/projects"
 
-import { PROJECTS } from "../../data/projects"
-import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "../panel"
 import { ProjectItem } from "./project-item"
+
+const ID = "projects"
 
 export function Projects() {
   return (
-    <Panel id="projects">
+    <Panel id={ID}>
       <PanelHeader>
         <PanelTitle>
-          Projects
+          <a href={`#${ID}`}>Projects</a>
           <PanelTitleSup>[{PROJECTS.length}]</PanelTitleSup>
+          <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>
 

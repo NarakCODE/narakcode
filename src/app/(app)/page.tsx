@@ -21,10 +21,8 @@ import { TechStack } from "@/features/portfolio/components/tech-stack"
 import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
 
-const ComponentsShowcase = dynamic(() =>
-  import("@/features/portfolio/components/components-showcase").then(
-    (mod) => mod.ComponentsShowcase
-  )
+const ComponentsShowcase = dynamic(
+  () => import("@/features/portfolio/components/components-showcase")
 )
 
 export const metadata: Metadata = {
@@ -58,7 +56,7 @@ export default function HomePage() {
         <TechStack />
       </div>
 
-      <div className="mx-auto xl:container">
+      <div className="mx-auto xl:container *:[[id]]:scroll-mt-22">
         <Separator />
         <ComponentsShowcase />
       </div>
