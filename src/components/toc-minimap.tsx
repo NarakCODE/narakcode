@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
 import type { TOCItemType } from "fumadocs-core/toc"
 
 import { trackEvent } from "@/lib/events"
@@ -13,14 +12,17 @@ import {
   HoverCardTrigger,
 } from "@/components/base/ui/hover-card"
 
-export function TOCMinimap({ items }: { items: TOCItemType[] }) {
-  const itemIds = useMemo(
-    () => items.map((item) => item.url.replace("#", "")),
-    [items]
-  )
+import { AnchorProvider, useActiveAnchor, useItems } from "./toc"
 
-  const activeHeading = useActiveHeading(itemIds)
-
+export function TOCMinimap({
+  items,
+  options,
+  className,
+}: {
+  items: TOCItemType[]
+  options?: IntersectionObserverInit
+  className?: string
+}) {
   const [play] = useSound(uMiniMapOpenSound, { volume: 0.3 })
 
   if (!items.length) {
@@ -28,8 +30,8 @@ export function TOCMinimap({ items }: { items: TOCItemType[] }) {
   }
 
   return (
-    <div className="sticky top-(--doc-cols-top,0px) translate-x-2 translate-y-3 opacity-0 in-data-doc-cols-ready:opacity-100">
-      <div className="ml-auto w-18">
+    <AnchorProvider toc={items} options={options}>
+      <TOCMinimapContainer className={cn("ml-auto w-18", className)}>
         <HoverCard
           onOpenChange={(open) => {
             if (open) {
@@ -43,19 +45,7 @@ export function TOCMinimap({ items }: { items: TOCItemType[] }) {
             closeDelay={0}
             render={
               <div className="flex max-h-[calc(100dvh-var(--doc-cols-top,0)+(--spacing(-24)))] flex-col gap-3 overflow-hidden py-3 pl-6 opacity-100 transition-opacity duration-200 data-popup-open:opacity-0">
-                {items.map((item) => (
-                  <div
-                    key={item.url}
-                    data-depth={item.depth}
-                    data-active={item.url === `#${activeHeading}`}
-                    className={cn(
-                      "h-0.5 w-6 shrink-0 rounded-xs bg-ring/50 transition-[background-color] duration-200",
-                      "data-[depth=3]:ml-2 data-[depth=3]:w-4",
-                      "data-[depth=4]:ml-4 data-[depth=4]:w-2",
-                      "data-active:bg-foreground"
-                    )}
-                  />
-                ))}
+                <Minimap />
               </div>
             }
           />
@@ -69,66 +59,48 @@ export function TOCMinimap({ items }: { items: TOCItemType[] }) {
             positionMethod="fixed"
           >
             <div className="flex max-h-[calc(100dvh-var(--doc-cols-top,0)+(--spacing(-24)))] overflow-y-auto overscroll-contain">
-              <ul className="flex size-full flex-col px-6 py-4 text-sm">
-                {items.map((item) => (
-                  <li key={item.url} className="flex py-1">
-                    <a
-                      href={item.url}
-                      data-depth={item.depth}
-                      data-active={item.url === `#${activeHeading}`}
-                      className={cn(
-                        "line-clamp-2 w-full transition-[color] duration-200",
-                        "text-muted-foreground hover:text-foreground data-active:text-foreground",
-                        "data-[depth=3]:pl-4 data-[depth=4]:pl-8"
-                      )}
-                      onClick={handleItemClick}
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <TOCList />
             </div>
           </HoverCardContent>
         </HoverCard>
-      </div>
-    </div>
+      </TOCMinimapContainer>
+    </AnchorProvider>
   )
 }
 
-export function useActiveHeading(itemIds: string[]) {
-  const [activeId, setActiveId] = useState<string | null>(null)
+function TOCMinimapContainer(props: React.ComponentProps<"div">) {
+  const activeAnchor = useActiveAnchor()
+  return <div data-active-anchor={activeAnchor} {...props} />
+}
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
-          }
-        }
-      },
-      { rootMargin: "0% 0% -80% 0%", threshold: 0.98 }
-    )
+function Minimap() {
+  const items = useItems()
 
-    for (const id of itemIds ?? []) {
-      const element = document.getElementById(id)
-      if (element) {
-        observer.observe(element)
-      }
-    }
+  return (
+    <>
+      {items.map((item) => (
+        <div
+          key={item.id}
+          data-depth={item.original.depth}
+          data-active={item.active}
+          className={cn(
+            "pointer-events-none h-0.5 w-6 shrink-0 rounded-xs bg-ring/50 transition-[background-color] duration-200",
+            "data-[depth=3]:ml-2 data-[depth=3]:w-4",
+            "data-[depth=4]:ml-4 data-[depth=4]:w-2",
+            "data-active:bg-foreground"
+          )}
+          aria-hidden
+        />
+      ))}
+    </>
+  )
+}
 
-    return () => {
-      for (const id of itemIds ?? []) {
-        const element = document.getElementById(id)
-        if (element) {
-          observer.unobserve(element)
-        }
-      }
-    }
-  }, [itemIds])
-
-  return activeId
+function scrollToHeading(url: string) {
+  history.pushState(null, "", url)
+  document.getElementById(url.replace("#", ""))?.scrollIntoView({
+    behavior: "smooth",
+  })
 }
 
 function handleItemClick(e: React.MouseEvent<HTMLAnchorElement>) {
@@ -143,9 +115,28 @@ function handleItemClick(e: React.MouseEvent<HTMLAnchorElement>) {
   scrollToHeading(url)
 }
 
-function scrollToHeading(url: string) {
-  history.pushState(null, "", url)
-  document.getElementById(url.replace("#", ""))?.scrollIntoView({
-    behavior: "smooth",
-  })
+function TOCList() {
+  const items = useItems()
+
+  return (
+    <ul className="flex size-full flex-col px-6 py-4 text-sm">
+      {items.map((item) => (
+        <li key={item.id} className="flex py-1">
+          <a
+            href={item.original.url}
+            data-depth={item.original.depth}
+            data-active={item.active}
+            className={cn(
+              "line-clamp-2 w-full transition-[color] duration-200",
+              "text-muted-foreground hover:text-foreground data-active:text-foreground",
+              "data-[depth=3]:pl-4 data-[depth=4]:pl-8"
+            )}
+            onClick={handleItemClick}
+          >
+            {item.original.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
 }

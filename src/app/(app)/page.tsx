@@ -9,7 +9,6 @@ import { Blog } from "@/features/portfolio/components/blog"
 import { Bookmarks } from "@/features/portfolio/components/bookmarks"
 import { Certifications } from "@/features/portfolio/components/certifications"
 import { Experiences } from "@/features/portfolio/components/experiences"
-import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
 import { Insights } from "@/features/portfolio/components/insights"
 import { Overview } from "@/features/portfolio/components/overview"
 import { ProfileActivityMosaicCover } from "@/features/portfolio/components/profile-activity-mosaic-cover"
@@ -17,13 +16,13 @@ import { ProfileHeader } from "@/features/portfolio/components/profile-header"
 import { Projects } from "@/features/portfolio/components/projects"
 import { SocialLinks } from "@/features/portfolio/components/social-links"
 import { Sponsors } from "@/features/portfolio/components/sponsors"
-import { TechStack } from "@/features/portfolio/components/tech-stack"
-import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
 
 const ComponentsShowcase = dynamic(
   () => import("@/features/portfolio/components/components-showcase")
 )
+
+const TOC = dynamic(() => import("@/features/portfolio/components/toc"))
 
 export const metadata: Metadata = {
   alternates: {
@@ -41,52 +40,53 @@ export default function HomePage() {
         }}
       />
 
-      <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
-        <ProfileActivityMosaicCover />
-        <ProfileHeader />
-        <Separator />
+      <div className="[--cover-height:162px] [--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
+        <div className="mx-auto md:max-w-3xl">
+          <ProfileActivityMosaicCover />
+          <ProfileHeader />
+          <Separator />
 
-        <Overview />
-        <SocialLinks />
-        <Separator />
+          <Overview />
+          <SocialLinks />
+          <Separator />
 
-        <About />
-        <Testimonials />
-        <GitHubContributions />
-        <TechStack />
-      </div>
+          <About />
+        </div>
 
-      <div className="mx-auto xl:container *:[[id]]:scroll-mt-22">
-        <Separator />
-        <ComponentsShowcase />
-      </div>
+        <div className="mx-auto xl:container">
+          <Separator />
+          <ComponentsShowcase />
+        </div>
 
-      <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
-        <Separator />
+        <div className="mx-auto md:max-w-3xl">
+          <Separator />
 
-        <Blog />
-        <Separator />
+          <Blog />
+          <Separator />
 
-        <Sponsors />
-        <Separator />
+          <Sponsors />
+          <Separator />
 
-        <Experiences />
-        <Separator />
+          <Experiences />
+          <Separator />
 
-        <Projects />
-        <Separator />
+          <Projects />
+          <Separator />
 
-        <Awards />
-        <Separator />
+          <Awards />
+          <Separator />
 
-        <Certifications />
-        <Separator />
+          <Certifications />
+          <Separator />
 
-        <Bookmarks />
-        <Separator />
+          <Bookmarks />
+          <Separator />
 
-        <Insights />
-        <Separator />
+          <Insights />
+          <Separator />
+        </div>
+
+        <TOC />
       </div>
     </>
   )
@@ -111,8 +111,8 @@ function Separator({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative flex h-8 w-full border-x border-line",
-        "before:absolute before:left-[-100vw] before:-z-1 before:h-8 before:w-[200vw]",
+        "relative flex h-(--separator-height) w-full border-x border-line",
+        "before:absolute before:left-[-100vw] before:-z-1 before:h-(--separator-height) before:w-[200vw]",
         "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-line)]/56",
         className
       )}

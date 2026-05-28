@@ -1,6 +1,5 @@
 import { Suspense } from "react"
 
-import { Panel } from "@/features/portfolio/components/panel"
 import { getGitHubContributions } from "@/features/portfolio/data/github-contributions"
 
 import { GitHubContributionFallback, GitHubContributionGraph } from "./graph"
@@ -9,7 +8,7 @@ export function GitHubContributions() {
   const contributions = getGitHubContributions()
 
   return (
-    <Panel className="before:content-none">
+    <div className="screen-line-bottom">
       <h3 className="sr-only">GitHub Contributions</h3>
 
       <Suspense fallback={<GitHubContributionFallback />}>
@@ -17,6 +16,6 @@ export function GitHubContributions() {
       </Suspense>
 
       <div className="flex h-px" />
-    </Panel>
+    </div>
   )
 }
