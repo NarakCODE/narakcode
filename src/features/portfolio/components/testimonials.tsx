@@ -24,7 +24,6 @@ import {
 } from "@/registry/transformed/components/testimonial"
 import { TestimonialSpotlight } from "@/registry/transformed/components/testimonial-spotlight"
 import { Twemoji } from "@/registry/transformed/components/twemoji/twemoji"
-import { Panel } from "@/features/portfolio/components/panel"
 import { VerifiedIcon } from "@/features/portfolio/components/verified-icon"
 import {
   TESTIMONIALS_1,
@@ -37,15 +36,15 @@ const FEATURED_TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2]
   .sort((a, b) => Number(a.order ?? 999) - Number(b.order ?? 999))
 
 export function Testimonials() {
-  const panelRef = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const isPageInView = usePageInView()
-  const isInView = useInView(panelRef)
+  const isInView = useInView(ref)
   const play = isPageInView && isInView
 
   return (
-    <Panel
-      ref={panelRef}
-      className="before:content-none [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
+    <div
+      ref={ref}
+      className="screen-line-bottom [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
     >
       <h3 className="sr-only">Testimonials</h3>
 
@@ -81,7 +80,7 @@ export function Testimonials() {
       </div>
 
       <div className="flex h-px" />
-    </Panel>
+    </div>
   )
 }
 

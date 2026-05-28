@@ -149,7 +149,7 @@ export default function RootLayout({
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       )}
 
-      <body>
+      <body className="[--header-height:--spacing(14)]">
         <Providers>
           <NuqsAdapter>{children}</NuqsAdapter>
         </Providers>

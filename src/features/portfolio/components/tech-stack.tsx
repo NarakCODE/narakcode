@@ -1,14 +1,13 @@
 import Image from "next/image"
 
 import { TECH_STACK } from "../data/tech-stack"
-import { Panel, PanelContent } from "./panel"
 
 export function TechStack() {
   return (
-    <Panel className="before:content-none">
+    <div>
       <h3 className="sr-only">Tech Stack</h3>
 
-      <PanelContent>
+      <div className="p-4">
         <ul className="flex flex-wrap gap-2">
           {TECH_STACK.map((tech) => {
             return (
@@ -54,9 +53,9 @@ export function TechStack() {
             )
           })}
         </ul>
-      </PanelContent>
+      </div>
 
       <div className="flex h-px" />
-    </Panel>
+    </div>
   )
 }

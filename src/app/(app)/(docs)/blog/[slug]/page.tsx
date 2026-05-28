@@ -263,7 +263,9 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
           </DocContentCol>
 
           <DocRightCol>
-            <TOCMinimap items={toc} />
+            <div className="sticky top-[calc(var(--doc-cols-top,0)+(--spacing(3)))] translate-x-2 opacity-0 in-data-doc-cols-ready:opacity-100">
+              <TOCMinimap items={toc} />
+            </div>
           </DocRightCol>
         </DocGrid>
       </DocPageRoot>
