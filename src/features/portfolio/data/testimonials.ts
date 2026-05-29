@@ -57,6 +57,7 @@ export const TESTIMONIALS_1: Testimonial[] = [
     url: "https://x.com/meghtrix/status/2017658774530781471",
     quote: "The best looking website I’ve ever seen? @iamncdai portfolio!",
     date: "2026-02-01",
+    isVerified: true,
   },
   {
     authorAvatar: "https://unavatar.io/x/shadcncraft?v=2",
