@@ -133,7 +133,7 @@ function TestimonialItem({
 }: TestimonialType) {
   return (
     <Testimonial className="relative">
-      <TestimonialQuote className="min-h-14 font-serif text-base/snug">
+      <TestimonialQuote className="font-serif text-base/snug">
         <p>
           <Twemoji>{quote}</Twemoji>
         </p>
