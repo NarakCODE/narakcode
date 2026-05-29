@@ -9,11 +9,11 @@ export function Testimonial({
   quote,
 }: TestimonialType & { className?: string }) {
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener"
-      className={cn("not-prose my-[2.5em] flex flex-col gap-6 pl-3", className)}
+    <div
+      className={cn(
+        "not-prose relative my-[2.5em] flex flex-col gap-6 pl-3",
+        className
+      )}
     >
       <div className="relative block w-full font-serif text-xl text-foreground md:w-lg md:text-2xl">
         <span
@@ -36,7 +36,10 @@ export function Testimonial({
 
         <div className="flex flex-col md:ml-auto md:text-right">
           <span className="text-sm leading-none font-medium">
-            {authorName}
+            <a href={url} target="_blank" rel="noopener">
+              <span className="absolute inset-0" aria-hidden />
+              {authorName}
+            </a>
             <span className="mt-1 block text-muted-foreground md:mt-0 md:inline">
               <span className="hidden text-foreground md:inline">, </span>
               {authorTagline}
@@ -44,6 +47,6 @@ export function Testimonial({
           </span>
         </div>
       </div>
-    </a>
+    </div>
   )
 }

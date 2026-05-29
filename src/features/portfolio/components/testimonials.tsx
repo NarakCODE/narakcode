@@ -51,7 +51,10 @@ export function Testimonials() {
       <div className="grid gap-2 py-2">
         <div className="grid gap-2 px-2 [--spotlight-size:50%] sm:grid-cols-2">
           {FEATURED_TESTIMONIALS.map((item) => (
-            <TestimonialSpotlight key={item.url} className="bg-accent-muted">
+            <TestimonialSpotlight
+              key={item.url}
+              className="bg-background **:data-[slot=testimonial-quote]:text-lg/snug"
+            >
               <TestimonialItem {...item} />
             </TestimonialSpotlight>
           ))}
@@ -98,13 +101,18 @@ function TestimonialList({
       <MarqueeFade side="left" />
       <MarqueeFade side="right" />
 
-      <MarqueeContent direction={direction} autoFill={false} play={play}>
+      <MarqueeContent
+        direction={direction}
+        autoFill={false}
+        play={play}
+        speed={40}
+      >
         {data
           .filter((item) => !item.isFeatured)
           .map((item) => (
             <MarqueeItem
               key={item.url}
-              className="mx-1 h-full max-w-xs min-w-2xs rounded-xl inset-ring-1 inset-ring-foreground/10 transition-[background-color] ease-out hover:bg-accent-muted"
+              className="mx-1 h-full max-w-xs min-w-2xs rounded-xl bg-background inset-ring-1 inset-ring-foreground/10 transition-[background-color] ease-out hover:bg-accent-muted"
               style={item.style}
             >
               <TestimonialItem {...item} />
@@ -125,7 +133,7 @@ function TestimonialItem({
 }: TestimonialType) {
   return (
     <Testimonial className="relative">
-      <TestimonialQuote className="min-h-14 font-serif">
+      <TestimonialQuote className="min-h-14 font-serif text-base/snug">
         <p>
           <Twemoji>{quote}</Twemoji>
         </p>
