@@ -51,10 +51,7 @@ export function Testimonials() {
       <div className="grid gap-2 py-2">
         <div className="grid gap-2 px-2 [--spotlight-size:50%] sm:grid-cols-2">
           {FEATURED_TESTIMONIALS.map((item) => (
-            <TestimonialSpotlight
-              key={item.url}
-              className="bg-background **:data-[slot=testimonial-quote]:text-lg/snug"
-            >
+            <TestimonialSpotlight key={item.url} className="bg-background">
               <TestimonialItem {...item} />
             </TestimonialSpotlight>
           ))}
