@@ -82,5 +82,5 @@ const getGitHubContributions = unstable_cache(
     return buildContributionGrid(contributions, cellCount)
   },
   ["github-contributions", "activity-mosaic"],
-  { revalidate: 86400 } // Cache for 1 day (86400 seconds)
+  { revalidate: 7 * 24 * 60 * 60 } // Cache for 7 days
 )
