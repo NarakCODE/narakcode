@@ -2,7 +2,6 @@ import "@/styles/globals.css"
 
 import type { Metadata, Viewport } from "next"
 import Script from "next/script"
-import { GoogleTagManager } from "@next/third-parties/google"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import type { WebSite, WithContext } from "schema-dts"
 
@@ -144,10 +143,6 @@ export default function RootLayout({
           }}
         />
       </head>
-
-      {process.env.NEXT_PUBLIC_GTM_ID && (
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
-      )}
 
       <body className="[--header-height:--spacing(14)]">
         <Providers>
