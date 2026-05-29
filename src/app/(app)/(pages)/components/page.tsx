@@ -178,7 +178,7 @@ export default function Page() {
 
       <div className="screen-line-bottom h-px" />
 
-      <div className="relative">
+      <div className="relative overflow-x-clip">
         <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
           <div className="border-r border-line" />
           <div className="border-r border-line max-md:hidden" />
@@ -219,23 +219,16 @@ export default function Page() {
         </ul>
       </div>
 
-      <div
-        className={cn(
-          "relative before:absolute before:left-[-100vw] before:-z-1 before:h-full before:w-[200vw]",
-          "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-line)]/56"
-        )}
-      >
-        <div className="flex justify-center p-4">
-          <a
-            className="flex h-7 items-center gap-1 rounded-full bg-primary pr-2.5 pl-2 text-sm font-medium whitespace-nowrap text-primary-foreground select-none [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
-            href={trustedRegistryUrl}
-            target="_blank"
-            rel="noopener"
-          >
-            <Icons.trustedRegistry />
-            Trusted Registry
-          </a>
-        </div>
+      <div className="screen-line-top flex justify-center p-4 before:-top-px">
+        <a
+          className="flex h-7 items-center gap-1 rounded-full bg-primary pr-2.5 pl-2 text-sm font-medium whitespace-nowrap text-primary-foreground select-none [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
+          href={trustedRegistryUrl}
+          target="_blank"
+          rel="noopener"
+        >
+          <Icons.trustedRegistry />
+          Trusted Registry
+        </a>
       </div>
 
       <div className="screen-line-bottom h-px" />
