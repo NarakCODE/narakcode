@@ -84,7 +84,7 @@ export default function TestimonialsPage() {
               )}
             >
               <Testimonial className="relative transition-[background-color] ease-out hover:bg-accent-muted">
-                <TestimonialQuote className="min-h-14 font-serif">
+                <TestimonialQuote className="font-serif text-base/snug">
                   <p>
                     <Twemoji>{item.quote}</Twemoji>
                   </p>
