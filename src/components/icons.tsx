@@ -1,7 +1,6 @@
-import { IconCircleSquare, IconGridDots } from "@tabler/icons-react"
+import { IconCircle, IconCircleSquare, IconGridDots } from "@tabler/icons-react"
 import {
   BriefcaseBusinessIcon,
-  CircleDashed,
   CopyIcon,
   Droplet,
   FileIcon,
@@ -870,7 +869,7 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
     }
 
     case "spinning-circular-text": {
-      return <CircleDashed {...props} />
+      return <IconCircle {...props} />
     }
 
     default: {
