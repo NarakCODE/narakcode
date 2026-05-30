@@ -41,10 +41,7 @@ export function ComponentsShowcase() {
         </PanelTitle>
       </PanelHeader>
 
-      <div
-        className="grid auto-rows-[minmax(--spacing(42),auto)] grid-cols-1 gap-1 p-1 md:grid-cols-3"
-        aria-hidden
-      >
+      <div className="grid auto-rows-[minmax(--spacing(42),auto)] grid-cols-1 gap-1 p-1 md:grid-cols-3">
         <GridItem className="md:row-span-2">
           <AppleHelloEffectAllDemo />
         </GridItem>

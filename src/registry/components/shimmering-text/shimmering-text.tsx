@@ -60,7 +60,6 @@ export function ShimmeringText({
         "[--color:var(--muted-foreground)] [--shimmering-color:var(--foreground)]",
         className
       )}
-      aria-label={text}
       {...props}
     >
       {text?.split("")?.map((char, i) => (
@@ -75,6 +74,7 @@ export function ShimmeringText({
           {char}
         </motion.span>
       ))}
+      <span className="sr-only">{text}</span>
     </motion.span>
   )
 }

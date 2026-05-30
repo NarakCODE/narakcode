@@ -5,13 +5,19 @@ import { format } from "date-fns"
 
 import type { Doc } from "@/features/doc/types/document"
 
+type HeadingTypes = "h2" | "h3" | "h4"
+
 export function PostItem({
   post,
+  headingAs,
   imageLoading = "lazy",
 }: {
   post: Doc
+  headingAs?: HeadingTypes
   imageLoading?: ImageProps["loading"]
 }) {
+  const Heading = headingAs ?? "h2"
+
   return (
     <div className="relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted">
       {post.metadata.image && (
@@ -31,19 +37,20 @@ export function PostItem({
       )}
 
       <div className="flex flex-col gap-1 p-2">
-        <h3 className="text-lg leading-snug font-medium text-balance">
+        <Heading className="text-lg leading-snug font-medium text-balance">
           <Link href={`/blog/${post.slug}`}>
             <span className="absolute inset-0" aria-hidden />
             {post.metadata.title}
           </Link>
 
-          {post.metadata.new && (
-            <span
-              className="pointer-events-none ml-2 inline-block size-2 -translate-y-px rounded-full bg-info"
-              aria-label="New"
-            />
+          {(post.metadata.new || post.metadata.updated) && (
+            <span className="pointer-events-none ml-2 inline-block size-2 -translate-y-px rounded-full bg-info">
+              <span className="sr-only">
+                {post.metadata.new ? "New" : "Updated"}
+              </span>
+            </span>
           )}
-        </h3>
+        </Heading>
 
         <dl>
           <dt className="sr-only">Published on</dt>
