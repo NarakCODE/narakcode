@@ -522,4 +522,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "mobius-loop-icon-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("mobius-loop-icon")],
+    files: [
+      {
+        path: "examples/mobius-loop-icon-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
