@@ -149,6 +149,15 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+
+  --animate-spin-ccw: spin-ccw
+    var(--tw-animation-duration, var(--tw-duration, 6s)) linear infinite;
+
+  @keyframes spin-ccw {
+    to {
+      rotate: -360deg;
+    }
+  }
 }
 
 @utility link {
