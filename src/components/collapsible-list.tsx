@@ -52,10 +52,14 @@ export function CollapsibleList<T>({
       </CollapsibleContent>
 
       {items.length > max && (
-        <div className="flex h-12 items-center justify-center pb-px">
+        <div className="-mt-px flex h-12 items-center justify-center bg-red-500/10">
           <CollapsibleTrigger
             render={
-              <Button className="gap-2 border-none pr-2.5 pl-3" size="sm">
+              <Button
+                className="gap-2 pr-2.5 pl-3"
+                variant="secondary"
+                size="sm"
+              >
                 <span className="hidden group-data-closed/collapsible:block">
                   Show More
                 </span>
