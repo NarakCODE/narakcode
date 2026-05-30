@@ -100,6 +100,12 @@ export const BOOKMARKS: Bookmark[] = [
     icon: <Icons.animationsdev />,
     bookmarkedAt: "2026-04-21",
   },
+  {
+    title: "Component Architecture for React Server Components",
+    url: "https://aurorascharff.no/posts/component-architecture-for-react-server-components",
+    author: "Aurora Scharff",
+    bookmarkedAt: "2026-05-30",
+  },
 ]
 
 function Circle() {
