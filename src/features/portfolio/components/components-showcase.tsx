@@ -113,11 +113,10 @@ export function ComponentsShowcase() {
         </GridItem>
       </div>
 
-      <div className="screen-line-bottom h-px" />
-
-      <div className="flex justify-center py-2">
+      <div className="screen-line-top flex justify-center py-2">
         <Button
-          className="gap-2 border-none pr-2.5 pl-3"
+          className="gap-2 pr-2.5 pl-3"
+          variant="secondary"
           size="sm"
           nativeButton={false}
           render={<Link href="/components" />}
