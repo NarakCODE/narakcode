@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts"
@@ -82,7 +83,9 @@ export default function HomePage() {
           <Bookmarks />
           <Separator />
 
-          <Insights />
+          <Suspense fallback={<div />}>
+            <Insights />
+          </Suspense>
           <Separator />
         </div>
 
