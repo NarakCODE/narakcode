@@ -138,3 +138,7 @@ function MetricValue({ className, ...props }: React.ComponentProps<"div">) {
     />
   )
 }
+
+export function InsightsSkeleton() {
+  return <Panel className="h-90.75" />
+}

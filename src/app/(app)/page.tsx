@@ -10,7 +10,10 @@ import { Blog } from "@/features/portfolio/components/blog"
 import { Bookmarks } from "@/features/portfolio/components/bookmarks"
 import { Certifications } from "@/features/portfolio/components/certifications"
 import { Experiences } from "@/features/portfolio/components/experiences"
-import { Insights } from "@/features/portfolio/components/insights"
+import {
+  Insights,
+  InsightsSkeleton,
+} from "@/features/portfolio/components/insights"
 import { Overview } from "@/features/portfolio/components/overview"
 import { ProfileActivityMosaicCover } from "@/features/portfolio/components/profile-activity-mosaic-cover"
 import { ProfileHeader } from "@/features/portfolio/components/profile-header"
@@ -83,7 +86,7 @@ export default function HomePage() {
           <Bookmarks />
           <Separator />
 
-          <Suspense fallback={<div />}>
+          <Suspense fallback={<InsightsSkeleton />}>
             <Insights />
           </Suspense>
           <Separator />
