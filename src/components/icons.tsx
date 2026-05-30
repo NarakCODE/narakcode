@@ -872,6 +872,23 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
       return <IconCircle {...props} />
     }
 
+    case "mobius-loop-icon": {
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden
+          {...props}
+        >
+          <path d="M 6 16 C 11 16 13 8 18 8 C 23.333 8 23.333 16 18 16 C 13 16 11 8 6 8 C 0.667 8 0.667 16 6 16 Z" />
+        </svg>
+      )
+    }
+
     default: {
       return <Icons.react {...props} />
     }

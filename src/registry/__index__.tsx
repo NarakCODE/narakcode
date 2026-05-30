@@ -592,6 +592,23 @@ export const Index: Record<string, any> = {
     categories: ["text-effects"],
     meta: undefined,
   },
+  "mobius-loop-icon": {
+    name: "mobius-loop-icon",
+    description: "Animated Mobius loop icon that morphs between circles and infinity shape.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/mobius-loop-icon/mobius-loop-icon.tsx",
+      type: "registry:component",
+      target: "@components/mobius-loop-icon.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/mobius-loop-icon/mobius-loop-icon.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["effects"],
+    meta: undefined,
+  },
   "login-01": {
     name: "login-01",
     description: "A simple login form.",
@@ -1532,6 +1549,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/examples/spinning-circular-text-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "mobius-loop-icon-demo": {
+    name: "mobius-loop-icon-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/mobius-loop-icon-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/mobius-loop-icon-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

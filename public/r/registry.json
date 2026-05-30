@@ -891,6 +891,27 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "mobius-loop-icon",
+      "title": "Mobius Loop Icon",
+      "description": "Animated Mobius loop icon that morphs between circles and infinity shape.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/mobius-loop-icon/mobius-loop-icon.tsx",
+          "type": "registry:component",
+          "target": "@components/mobius-loop-icon.tsx"
+        }
+      ],
+      "docs": "https://chanhdai.com/components/mobius-loop-icon",
+      "categories": [
+        "effects"
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",

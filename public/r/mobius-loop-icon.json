@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mobius-loop-icon",
+  "title": "Mobius Loop Icon",
+  "author": "ncdai <dai@chanhdai.com>",
+  "description": "Animated Mobius loop icon that morphs between circles and infinity shape.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/mobius-loop-icon/mobius-loop-icon.tsx",
+      "content": "\"use client\"\n\nimport type { SVGMotionProps } from \"motion/react\"\nimport { motion } from \"motion/react\"\n\nconst circle1 =\n  \"M12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4Z\"\n\nconst infinity =\n  \"M 6 16 C 11 16 13 8 18 8 C 23.333 8 23.333 16 18 16 C 13 16 11 8 6 8 C 0.667 8 0.667 16 6 16 Z\"\n\nconst circle2 =\n  \"M12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20Z\"\n\nexport function MobiusLoopIcon(props: SVGMotionProps<SVGSVGElement>) {\n  return (\n    <motion.svg\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth=\"2\"\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      aria-hidden\n      {...props}\n    >\n      <motion.path\n        animate={{\n          d: [circle1, infinity, circle2],\n        }}\n        transition={{\n          d: {\n            duration: 3,\n            ease: \"easeInOut\",\n            repeat: Infinity,\n          },\n        }}\n      />\n    </motion.svg>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "@components/mobius-loop-icon.tsx"
+    }
+  ],
+  "docs": "https://chanhdai.com/components/mobius-loop-icon",
+  "categories": [
+    "effects"
+  ],
+  "type": "registry:component"
+}

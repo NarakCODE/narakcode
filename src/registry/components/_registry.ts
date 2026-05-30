@@ -703,4 +703,21 @@ export const components: Registry["items"] = [
     categories: ["text-effects"],
     docs: "https://chanhdai.com/components/spinning-circular-text",
   },
+  {
+    name: "mobius-loop-icon",
+    type: "registry:component",
+    title: "Mobius Loop Icon",
+    description:
+      "Animated Mobius loop icon that morphs between circles and infinity shape.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "components/mobius-loop-icon/mobius-loop-icon.tsx",
+        type: "registry:component",
+        target: "@components/mobius-loop-icon.tsx",
+      },
+    ],
+    categories: ["effects"],
+    docs: "https://chanhdai.com/components/mobius-loop-icon",
+  },
 ]
