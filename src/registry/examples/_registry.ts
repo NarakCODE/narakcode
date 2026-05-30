@@ -511,4 +511,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "spinning-circular-text-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("spinning-circular-text")],
+    files: [
+      {
+        path: "examples/spinning-circular-text-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

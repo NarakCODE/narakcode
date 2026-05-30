@@ -861,6 +861,36 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "spinning-circular-text",
+      "title": "Spinning Circular Text",
+      "description": "Text arranged in a circle with a continuous spinning animation.",
+      "files": [
+        {
+          "path": "src/registry/components/spinning-circular-text/spinning-circular-text.tsx",
+          "type": "registry:component",
+          "target": "@components/spinning-circular-text.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "--animate-spin-ccw": "spin-ccw var(--tw-animation-duration, var(--tw-duration, 6s)) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes spin-ccw": {
+          "to": {
+            "rotate": "-360deg"
+          }
+        }
+      },
+      "docs": "https://chanhdai.com/components/spinning-circular-text",
+      "categories": [
+        "text-effects"
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",

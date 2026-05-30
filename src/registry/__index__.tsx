@@ -575,6 +575,23 @@ export const Index: Record<string, any> = {
     categories: ["effects"],
     meta: undefined,
   },
+  "spinning-circular-text": {
+    name: "spinning-circular-text",
+    description: "Text arranged in a circle with a continuous spinning animation.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/spinning-circular-text/spinning-circular-text.tsx",
+      type: "registry:component",
+      target: "@components/spinning-circular-text.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/spinning-circular-text/spinning-circular-text.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["text-effects"],
+    meta: undefined,
+  },
   "login-01": {
     name: "login-01",
     description: "A simple login form.",
@@ -1498,6 +1515,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/examples/dot-grid-spotlight-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "spinning-circular-text-demo": {
+    name: "spinning-circular-text-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/spinning-circular-text-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/spinning-circular-text-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

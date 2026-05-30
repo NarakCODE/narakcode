@@ -16,6 +16,7 @@ import type {
   SlideToUnlock,
   SlideToUnlockText,
 } from "@/registry/components/slide-to-unlock"
+import type { SpinningCircularText } from "@/registry/components/spinning-circular-text"
 import type { TestimonialSpotlight } from "@/registry/components/testimonial-spotlight"
 
 export type AppleHelloEffectProps = Omit<
@@ -90,4 +91,9 @@ export type MiddleTruncationProps = Omit<
 
 export type GitHubContributionsProps = ComponentProps<
   typeof GitHubContributions
+>
+
+export type SpinningCircularTextProps = Omit<
+  ComponentProps<typeof SpinningCircularText>,
+  keyof ComponentProps<"div">
 >

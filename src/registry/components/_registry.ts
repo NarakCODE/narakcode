@@ -674,4 +674,33 @@ export const components: Registry["items"] = [
     categories: ["effects"],
     docs: "https://chanhdai.com/components/dot-grid-spotlight",
   },
+  {
+    name: "spinning-circular-text",
+    type: "registry:component",
+    title: "Spinning Circular Text",
+    description:
+      "Text arranged in a circle with a continuous spinning animation.",
+    files: [
+      {
+        path: "components/spinning-circular-text/spinning-circular-text.tsx",
+        type: "registry:component",
+        target: "@components/spinning-circular-text.tsx",
+      },
+    ],
+    cssVars: {
+      theme: {
+        "--animate-spin-ccw":
+          "spin-ccw var(--tw-animation-duration, var(--tw-duration, 6s)) linear infinite",
+      },
+    },
+    css: {
+      "@keyframes spin-ccw": {
+        to: {
+          rotate: "-360deg",
+        },
+      },
+    },
+    categories: ["text-effects"],
+    docs: "https://chanhdai.com/components/spinning-circular-text",
+  },
 ]
