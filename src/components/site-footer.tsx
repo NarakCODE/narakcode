@@ -4,6 +4,7 @@ import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
+import { SpinningCircularText } from "@/registry/components/spinning-circular-text"
 
 export function SiteFooter() {
   return (
@@ -14,8 +15,8 @@ export function SiteFooter() {
           vercel.com<span>/</span>evilcharts.com
         </p>
 
-        <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
-          Built with care by{" "}
+        <p className="px-4 text-center font-mono text-sm text-balance text-muted-foreground">
+          {/* Built with care by{" "}
           <a
             className="font-medium text-foreground link-underline"
             href="https://x.com/iamncdai"
@@ -24,7 +25,8 @@ export function SiteFooter() {
           >
             ncdai
           </a>
-          . The source code is available on{" "}
+          . */}
+          The source code is available on{" "}
           <a
             className="font-medium text-foreground link-underline"
             href={SOURCE_CODE_GITHUB_URL}
@@ -33,8 +35,22 @@ export function SiteFooter() {
           >
             GitHub
           </a>
-          .
         </p>
+
+        <div className="flex justify-center">
+          <a
+            className="relative flex"
+            href="https://x.com/iamncdai"
+            target="_blank"
+            rel="noopener"
+          >
+            <SpinningCircularText text="Built with care by ncdai • " />
+            <div
+              className="absolute inset-9 flex items-center justify-center rounded-full border border-line"
+              aria-hidden
+            />
+          </a>
+        </div>
 
         <div className="screen-line-top screen-line-bottom flex w-full before:z-1 after:z-1">
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-line bg-background px-4">
