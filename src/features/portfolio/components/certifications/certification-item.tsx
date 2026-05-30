@@ -65,6 +65,7 @@ export function CertificationItem({
           <Separator
             className="data-vertical:h-4 data-vertical:self-center"
             orientation="vertical"
+            aria-hidden
           />
 
           <div>

@@ -17,7 +17,7 @@ export function SocialLinkItem({ icon, title, href }: SocialLink) {
         <Image
           className="rounded-(--image-radius) select-none"
           src={icon}
-          alt={title}
+          alt={`${title} logo`}
           width={32}
           height={32}
           quality={100}

@@ -43,8 +43,11 @@ export function ThemeToggleEffectSelector() {
         setEffectName(selectedEffect as EffectName)
       }
     >
-      <SelectTrigger className="w-50 *:data-[slot=select-value]:gap-2">
-        <SelectValue placeholder="effect" />
+      <SelectTrigger
+        className="w-50 *:data-[slot=select-value]:gap-2"
+        aria-label="Select Effect"
+      >
+        <SelectValue placeholder="Effect" />
       </SelectTrigger>
 
       <SelectContent>

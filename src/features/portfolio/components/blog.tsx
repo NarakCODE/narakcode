@@ -43,7 +43,7 @@ export function Blog() {
                 "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom"
               )}
             >
-              <PostItem post={post} imageLoading="lazy" />
+              <PostItem post={post} headingAs="h3" imageLoading="lazy" />
             </li>
           ))}
         </ul>

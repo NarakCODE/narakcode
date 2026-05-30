@@ -70,6 +70,7 @@ export function ExperiencePositionItem({
               <Separator
                 className="data-vertical:h-4 data-vertical:self-center"
                 orientation="vertical"
+                aria-hidden
               />
             </>
           )}
@@ -95,6 +96,7 @@ export function ExperiencePositionItem({
               <Separator
                 className="data-vertical:h-4 data-vertical:self-center"
                 orientation="vertical"
+                aria-hidden
               />
               <div>
                 <dt className="sr-only">Duration</dt>

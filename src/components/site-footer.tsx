@@ -54,7 +54,7 @@ export function SiteFooter() {
               href="https://x.com/iamncdai?utm_source=chanhdai.com"
               target="_blank"
               rel="noopener"
-              aria-label="X"
+              aria-label="X Profile"
             >
               <Icons.x className="size-4" />
             </a>
@@ -66,7 +66,7 @@ export function SiteFooter() {
               href="https://github.com/ncdai?utm_source=chanhdai.com"
               target="_blank"
               rel="noopener"
-              aria-label="GitHub"
+              aria-label="GitHub Profile"
             >
               <Icons.github className="size-4" />
             </a>
@@ -78,7 +78,7 @@ export function SiteFooter() {
               href="https://www.linkedin.com/in/ncdai?utm_source=chanhdai.com"
               target="_blank"
               rel="noopener"
-              aria-label="LinkedIn"
+              aria-label="LinkedIn Profile"
             >
               <Icons.linkedin className="size-4" />
             </a>
