@@ -24,7 +24,7 @@ export function Bookmarks() {
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Bookmarks</a>
-          <PanelTitleSup>[{SORTED_BOOKMARKS.length}]</PanelTitleSup>
+          <PanelTitleSup>({SORTED_BOOKMARKS.length})</PanelTitleSup>
           <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>

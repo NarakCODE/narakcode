@@ -24,7 +24,7 @@ export function Awards() {
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Awards</a>
-          <PanelTitleSup>[{AWARDS.length}]</PanelTitleSup>
+          <PanelTitleSup>({AWARDS.length})</PanelTitleSup>
           <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>

@@ -28,8 +28,8 @@ export async function Insights() {
         <PanelTitle>
           <a href={`#${ID}`}>Insights</a>
           <PanelTitleSup>
-            [{format(new Date(data.startDate), "dd.MM")} –{" "}
-            {format(new Date(data.endDate), "dd.MM")}]
+            ({format(new Date(data.startDate), "dd.MM")} –{" "}
+            {format(new Date(data.endDate), "dd.MM")})
           </PanelTitleSup>
           <PanelTitleCopy id={ID} />
         </PanelTitle>

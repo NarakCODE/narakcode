@@ -18,7 +18,7 @@ export function Certifications() {
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Certifications</a>
-          <PanelTitleSup>[{CERTIFICATIONS.length}]</PanelTitleSup>
+          <PanelTitleSup>({CERTIFICATIONS.length})</PanelTitleSup>
           <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>

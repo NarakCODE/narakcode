@@ -23,7 +23,7 @@ export function Blog() {
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Blog</a>
-          <PanelTitleSup>[{allPosts.length}]</PanelTitleSup>
+          <PanelTitleSup>({allPosts.length})</PanelTitleSup>
           <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>

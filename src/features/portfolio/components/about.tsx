@@ -12,14 +12,14 @@ import { TechStack } from "@/features/portfolio/components/tech-stack"
 import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
 
-const ID = "about"
+const ID = "hello"
 
 export function About() {
   return (
     <Panel id={ID}>
       <PanelHeader>
         <PanelTitle>
-          <a href={`#${ID}`}>About</a>
+          <a href={`#${ID}`}>Hello</a>
           <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>

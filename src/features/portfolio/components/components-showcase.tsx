@@ -36,7 +36,7 @@ export function ComponentsShowcase() {
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Components</a>
-          <PanelTitleSup>[{components.length}]</PanelTitleSup>
+          <PanelTitleSup>({components.length})</PanelTitleSup>
           <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>
