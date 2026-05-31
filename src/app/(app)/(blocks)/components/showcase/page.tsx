@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Grip, LayoutDashboard } from "lucide-react"
 
 import { X_HANDLE } from "@/config/site"
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { Button } from "@/components/base/ui/button"
 import {
   Tooltip,
@@ -75,6 +76,23 @@ export const metadata: Metadata = {
 export default function ComponentsShowcasePage() {
   return (
     <>
+      <JsonLdScript
+        data={jsonLdBreadcrumbList([
+          {
+            name: "Home",
+            href: "/",
+          },
+          {
+            name: "Components",
+            href: "/components",
+          },
+          {
+            name: "Component Showcase",
+            href: "/components/showcase",
+          },
+        ])}
+      />
+
       <PageHeading>
         <PageHeadingTagline>Component Showcase</PageHeadingTagline>
         <PageHeadingTitle>Pixel-perfect, uniquely crafted.</PageHeadingTitle>

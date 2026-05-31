@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import type { Metadata } from "next"
 
 import { X_HANDLE } from "@/config/site"
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import {
   PageHeading,
   PageHeadingTagline,
@@ -45,31 +46,46 @@ export default function Page() {
   const allPosts = getAllDocs()
 
   return (
-    <div className="min-h-svh">
-      <PageHeading>
-        <PageHeadingTagline>Blog</PageHeadingTagline>
-        <PageHeadingTitle>
-          Writing about code, design, and everything in between.
-        </PageHeadingTitle>
-      </PageHeading>
+    <>
+      <JsonLdScript
+        data={jsonLdBreadcrumbList([
+          {
+            name: "Home",
+            href: "/",
+          },
+          {
+            name: "Blog",
+            href: "/blog",
+          },
+        ])}
+      />
 
-      <div className="h-4" />
+      <div className="min-h-svh">
+        <PageHeading>
+          <PageHeadingTagline>Blog</PageHeadingTagline>
+          <PageHeadingTitle>
+            Writing about code, design, and everything in between.
+          </PageHeadingTitle>
+        </PageHeading>
 
-      <div className="screen-line-top screen-line-bottom p-2">
-        <Suspense
-          fallback={
-            <div className="flex h-9 w-full rounded-lg border border-input dark:bg-input/30" />
-          }
-        >
-          <PostSearchInput />
+        <div className="h-4" />
+
+        <div className="screen-line-top screen-line-bottom p-2">
+          <Suspense
+            fallback={
+              <div className="flex h-9 w-full rounded-lg border border-input dark:bg-input/30" />
+            }
+          >
+            <PostSearchInput />
+          </Suspense>
+        </div>
+
+        <Suspense fallback={<PostList posts={allPosts} />}>
+          <PostListWithSearch posts={allPosts} />
         </Suspense>
+
+        <div className="h-4" />
       </div>
-
-      <Suspense fallback={<PostList posts={allPosts} />}>
-        <PostListWithSearch posts={allPosts} />
-      </Suspense>
-
-      <div className="h-4" />
-    </div>
+    </>
   )
 }

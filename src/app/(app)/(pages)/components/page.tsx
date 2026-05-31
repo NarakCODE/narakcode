@@ -5,6 +5,7 @@ import { Grip, LayoutDashboard } from "lucide-react"
 
 import { registryConfig } from "@/config/registry"
 import { UTM_PARAMS, X_HANDLE } from "@/config/site"
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import {
@@ -73,68 +74,82 @@ export default function Page() {
   )
 
   return (
-    <div>
-      <PageHeading>
-        <PageHeadingTagline>Components</PageHeadingTagline>
-        <PageHeadingTitle>Pixel-perfect, uniquely crafted.</PageHeadingTitle>
-      </PageHeading>
+    <>
+      <JsonLdScript
+        data={jsonLdBreadcrumbList([
+          {
+            name: "Home",
+            href: "/",
+          },
+          {
+            name: "Components",
+            href: "/components",
+          },
+        ])}
+      />
 
-      <div className="h-4" />
+      <div>
+        <PageHeading>
+          <PageHeadingTagline>Components</PageHeadingTagline>
+          <PageHeadingTitle>Pixel-perfect, uniquely crafted.</PageHeadingTitle>
+        </PageHeading>
 
-      <div className="screen-line-top screen-line-bottom">
-        <RegistryCommandAnimated />
-      </div>
+        <div className="h-4" />
 
-      <Separator />
-
-      <div className="screen-line-bottom h-px" />
-
-      <div className="flex items-center gap-1.5 p-1.5 pl-4">
-        <div className="flex flex-1">
-          <span className="text-sm font-medium text-muted-foreground">
-            {posts.length} components
-          </span>
+        <div className="screen-line-top screen-line-bottom">
+          <RegistryCommandAnimated />
         </div>
 
-        <Tooltip>
-          <TooltipTrigger
-            render={
-              <Button
-                className="size-7"
-                variant="outline"
-                size="icon-sm"
-                aria-label="List"
-              >
-                <Grip />
-              </Button>
-            }
-          />
-          <TooltipContent>
-            <p>List</p>
-          </TooltipContent>
-        </Tooltip>
+        <Separator />
 
-        <Tooltip>
-          <TooltipTrigger
-            render={
-              <Button
-                className="size-7 border-none text-muted-foreground"
-                variant="ghost"
-                size="icon-sm"
-                nativeButton={false}
-                render={<Link href="/components/showcase" />}
-                aria-label="Showcase"
-              >
-                <LayoutDashboard />
-              </Button>
-            }
-          />
-          <TooltipContent>
-            <p>Showcase</p>
-          </TooltipContent>
-        </Tooltip>
+        <div className="screen-line-bottom h-px" />
 
-        {/* <Dialog>
+        <div className="flex items-center gap-1.5 p-1.5 pl-4">
+          <div className="flex flex-1">
+            <span className="text-sm font-medium text-muted-foreground">
+              {posts.length} components
+            </span>
+          </div>
+
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  className="size-7"
+                  variant="outline"
+                  size="icon-sm"
+                  aria-label="List"
+                >
+                  <Grip />
+                </Button>
+              }
+            />
+            <TooltipContent>
+              <p>List</p>
+            </TooltipContent>
+          </Tooltip>
+
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  className="size-7 border-none text-muted-foreground"
+                  variant="ghost"
+                  size="icon-sm"
+                  nativeButton={false}
+                  render={<Link href="/components/showcase" />}
+                  aria-label="Showcase"
+                >
+                  <LayoutDashboard />
+                </Button>
+              }
+            />
+            <TooltipContent>
+              <p>Showcase</p>
+            </TooltipContent>
+          </Tooltip>
+
+          {/* <Dialog>
           <DialogTrigger
             render={
               <Button
@@ -174,66 +189,67 @@ export default function Page() {
             </DialogFooter>
           </DialogContent>
         </Dialog> */}
-      </div>
-
-      <div className="screen-line-bottom h-px" />
-
-      <div className="relative overflow-x-clip">
-        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
-          <div className="border-r border-line" />
-          <div className="border-r border-line max-md:hidden" />
         </div>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {posts
-            .slice()
-            .sort((a, b) =>
-              a.metadata.title.localeCompare(b.metadata.title, "en", {
-                sensitivity: "base",
-              })
-            )
-            .map((c) => (
-              <li
-                key={c.slug}
-                className={cn(
-                  "max-sm:screen-line-bottom",
-                  "sm:max-md:nth-[2n+1]:screen-line-bottom",
-                  "md:nth-[3n+1]:screen-line-bottom"
-                )}
-              >
-                <ComponentItem href={`/components/${c.slug}`}>
-                  <ComponentItemIcon>
-                    <ComponentIcon variant={c.slug} />
-                    {(c.metadata.new || c.metadata.updated) && (
-                      <ComponentItemDot
-                        aria-label={c.metadata.new ? "New" : "Updated"}
-                      />
-                    )}
-                  </ComponentItemIcon>
-                  <ComponentItemTitle as="h2">
-                    {c.metadata.title}
-                  </ComponentItemTitle>
-                </ComponentItem>
-              </li>
-            ))}
-        </ul>
-      </div>
+        <div className="screen-line-bottom h-px" />
 
-      <div className="screen-line-top flex justify-center p-4 before:-top-px">
-        <a
-          className="flex h-7 items-center gap-1 rounded-full bg-primary pr-2.5 pl-2 text-sm font-medium whitespace-nowrap text-primary-foreground select-none [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
-          href={trustedRegistryUrl}
-          target="_blank"
-          rel="noopener"
-        >
-          <Icons.trustedRegistry />
-          Trusted Registry
-        </a>
-      </div>
+        <div className="relative overflow-x-clip">
+          <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
+            <div className="border-r border-line" />
+            <div className="border-r border-line max-md:hidden" />
+          </div>
 
-      <div className="screen-line-bottom h-px" />
-      <div className="h-4" />
-    </div>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+            {posts
+              .slice()
+              .sort((a, b) =>
+                a.metadata.title.localeCompare(b.metadata.title, "en", {
+                  sensitivity: "base",
+                })
+              )
+              .map((c) => (
+                <li
+                  key={c.slug}
+                  className={cn(
+                    "max-sm:screen-line-bottom",
+                    "sm:max-md:nth-[2n+1]:screen-line-bottom",
+                    "md:nth-[3n+1]:screen-line-bottom"
+                  )}
+                >
+                  <ComponentItem href={`/components/${c.slug}`}>
+                    <ComponentItemIcon>
+                      <ComponentIcon variant={c.slug} />
+                      {(c.metadata.new || c.metadata.updated) && (
+                        <ComponentItemDot
+                          aria-label={c.metadata.new ? "New" : "Updated"}
+                        />
+                      )}
+                    </ComponentItemIcon>
+                    <ComponentItemTitle as="h2">
+                      {c.metadata.title}
+                    </ComponentItemTitle>
+                  </ComponentItem>
+                </li>
+              ))}
+          </ul>
+        </div>
+
+        <div className="screen-line-top flex justify-center p-4 before:-top-px">
+          <a
+            className="flex h-7 items-center gap-1 rounded-full bg-primary pr-2.5 pl-2 text-sm font-medium whitespace-nowrap text-primary-foreground select-none [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
+            href={trustedRegistryUrl}
+            target="_blank"
+            rel="noopener"
+          >
+            <Icons.trustedRegistry />
+            Trusted Registry
+          </a>
+        </div>
+
+        <div className="screen-line-bottom h-px" />
+        <div className="h-4" />
+      </div>
+    </>
   )
 }
 

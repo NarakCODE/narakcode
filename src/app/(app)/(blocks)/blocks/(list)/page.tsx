@@ -2,6 +2,7 @@ import { Fragment } from "react"
 import type { Metadata } from "next"
 
 import { X_HANDLE } from "@/config/site"
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { cn } from "@/lib/utils"
 import blocks from "@/registry/__blocks__.json"
 import { BlockDisplay } from "@/app/(preview)/components/block-display"
@@ -41,6 +42,19 @@ export const metadata: Metadata = {
 export default function BlocksPage() {
   return (
     <>
+      <JsonLdScript
+        data={jsonLdBreadcrumbList([
+          {
+            name: "Home",
+            href: "/",
+          },
+          {
+            name: "Blocks",
+            href: "/blocks",
+          },
+        ])}
+      />
+
       {blocks.map(({ name }) => (
         <Fragment key={name}>
           <BlockDisplay name={name} />

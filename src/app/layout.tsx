@@ -7,6 +7,7 @@ import type { WebSite, WithContext } from "schema-dts"
 
 import { META_THEME_COLORS, SITE_INFO, X_HANDLE } from "@/config/site"
 import { fontVariables } from "@/lib/fonts"
+import { JsonLdScript } from "@/lib/json-ld"
 import { Providers } from "@/components/providers"
 import { USER } from "@/features/portfolio/data/user"
 
@@ -136,12 +137,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
-          }}
-        />
+        <JsonLdScript data={getWebSiteJsonLd()} />
       </head>
 
       <body className="[--header-height:--spacing(14)]">

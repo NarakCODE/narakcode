@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 import { X_HANDLE } from "@/config/site"
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { cn } from "@/lib/utils"
 import {
   PageHeading,
@@ -60,67 +61,82 @@ const TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2].sort(
 
 export default function TestimonialsPage() {
   return (
-    <div className="min-h-svh">
-      <PageHeading>
-        <PageHeadingTagline>Testimonials</PageHeadingTagline>
-        <PageHeadingTitle>
-          Trusted by top builders on <span aria-label="X">𝕏</span>
-        </PageHeadingTitle>
-      </PageHeading>
+    <>
+      <JsonLdScript
+        data={jsonLdBreadcrumbList([
+          {
+            name: "Home",
+            href: "/",
+          },
+          {
+            name: "Testimonials",
+            href: "/testimonials",
+          },
+        ])}
+      />
 
-      <div className="relative pt-4">
-        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
-          <div className="border-r border-line" />
-          <div className="border-l border-line" />
+      <div className="min-h-svh">
+        <PageHeading>
+          <PageHeadingTagline>Testimonials</PageHeadingTagline>
+          <PageHeadingTitle>
+            Trusted by top builders on <span aria-label="X">𝕏</span>
+          </PageHeadingTitle>
+        </PageHeading>
+
+        <div className="relative pt-4">
+          <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
+            <div className="border-r border-line" />
+            <div className="border-l border-line" />
+          </div>
+
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {TESTIMONIALS.map((item) => (
+              <li
+                key={item.url}
+                className={cn(
+                  "max-sm:screen-line-top max-sm:screen-line-bottom",
+                  "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom"
+                )}
+              >
+                <Testimonial className="relative transition-[background-color] ease-out hover:bg-accent-muted">
+                  <TestimonialQuote className="font-serif text-base/snug">
+                    <p>
+                      <Twemoji>{item.quote}</Twemoji>
+                    </p>
+                  </TestimonialQuote>
+
+                  <TestimonialAuthor>
+                    <TestimonialAvatar>
+                      <TestimonialAvatarImg
+                        src={item.authorAvatar}
+                        alt={item.authorName}
+                      />
+                      <TestimonialAvatarRing />
+                    </TestimonialAvatar>
+
+                    <TestimonialAuthorName>
+                      <a href={item.url} target="_blank" rel="noopener">
+                        <span className="absolute inset-0" aria-hidden />
+                        {item.authorName}
+                      </a>
+                      {item.isVerified && (
+                        <TestimonialVerifiedBadge className="text-info">
+                          <VerifiedIcon />
+                        </TestimonialVerifiedBadge>
+                      )}
+                    </TestimonialAuthorName>
+                    <TestimonialAuthorTagline>
+                      {item.authorTagline}
+                    </TestimonialAuthorTagline>
+                  </TestimonialAuthor>
+                </Testimonial>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {TESTIMONIALS.map((item) => (
-            <li
-              key={item.url}
-              className={cn(
-                "max-sm:screen-line-top max-sm:screen-line-bottom",
-                "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom"
-              )}
-            >
-              <Testimonial className="relative transition-[background-color] ease-out hover:bg-accent-muted">
-                <TestimonialQuote className="font-serif text-base/snug">
-                  <p>
-                    <Twemoji>{item.quote}</Twemoji>
-                  </p>
-                </TestimonialQuote>
-
-                <TestimonialAuthor>
-                  <TestimonialAvatar>
-                    <TestimonialAvatarImg
-                      src={item.authorAvatar}
-                      alt={item.authorName}
-                    />
-                    <TestimonialAvatarRing />
-                  </TestimonialAvatar>
-
-                  <TestimonialAuthorName>
-                    <a href={item.url} target="_blank" rel="noopener">
-                      <span className="absolute inset-0" aria-hidden />
-                      {item.authorName}
-                    </a>
-                    {item.isVerified && (
-                      <TestimonialVerifiedBadge className="text-info">
-                        <VerifiedIcon />
-                      </TestimonialVerifiedBadge>
-                    )}
-                  </TestimonialAuthorName>
-                  <TestimonialAuthorTagline>
-                    {item.authorTagline}
-                  </TestimonialAuthorTagline>
-                </TestimonialAuthor>
-              </Testimonial>
-            </li>
-          ))}
-        </ul>
+        <div className="h-4" />
       </div>
-
-      <div className="h-4" />
-    </div>
+    </>
   )
 }

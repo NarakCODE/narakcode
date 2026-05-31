@@ -3,6 +3,7 @@ import { addQueryParams } from "@/utils/url"
 import { ArrowUpRightIcon } from "lucide-react"
 
 import { SPONSORSHIP_URL, UTM_PARAMS, X_HANDLE } from "@/config/site"
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import {
@@ -59,41 +60,56 @@ const SPONSORS_BY_TIER = SPONSORS.reduce(
 
 export default function Page() {
   return (
-    <div>
-      <PageHeading>
-        <PageHeadingTagline>Sponsors</PageHeadingTagline>
-        <PageHeadingTitle>Backed by the community.</PageHeadingTitle>
-        <PageHeadingDescription>
-          Grateful to the sponsors who make this open-source work possible.
-        </PageHeadingDescription>
-      </PageHeading>
+    <>
+      <JsonLdScript
+        data={jsonLdBreadcrumbList([
+          {
+            name: "Home",
+            href: "/",
+          },
+          {
+            name: "Sponsors",
+            href: "/sponsors",
+          },
+        ])}
+      />
 
-      <div className="h-4" />
+      <div>
+        <PageHeading>
+          <PageHeadingTagline>Sponsors</PageHeadingTagline>
+          <PageHeadingTitle>Backed by the community.</PageHeadingTitle>
+          <PageHeadingDescription>
+            Grateful to the sponsors who make this open-source work possible.
+          </PageHeadingDescription>
+        </PageHeading>
 
-      <div className="screen-line-bottom h-px" />
+        <div className="h-4" />
 
-      {SPONSOR_TIERS.map((tier) => (
-        <SponsorsGroup
-          key={tier.name}
-          title={tier.title}
-          sponsors={SPONSORS_BY_TIER[tier.name] ?? []}
-        />
-      ))}
+        <div className="screen-line-bottom h-px" />
 
-      <div className="flex justify-center py-2">
-        <Button
-          className="gap-2 border-none pr-2.5 pl-3"
-          size="sm"
-          nativeButton={false}
-          render={<a href={SPONSORSHIP_URL} target="_blank" rel="noopener" />}
-        >
-          Sponsor My Work
-          <ArrowUpRightIcon />
-        </Button>
+        {SPONSOR_TIERS.map((tier) => (
+          <SponsorsGroup
+            key={tier.name}
+            title={tier.title}
+            sponsors={SPONSORS_BY_TIER[tier.name] ?? []}
+          />
+        ))}
+
+        <div className="flex justify-center py-2">
+          <Button
+            className="gap-2 border-none pr-2.5 pl-3"
+            size="sm"
+            nativeButton={false}
+            render={<a href={SPONSORSHIP_URL} target="_blank" rel="noopener" />}
+          >
+            Sponsor My Work
+            <ArrowUpRightIcon />
+          </Button>
+        </div>
+
+        <div className="screen-line-top h-4" />
       </div>
-
-      <div className="screen-line-top h-4" />
-    </div>
+    </>
   )
 }
 

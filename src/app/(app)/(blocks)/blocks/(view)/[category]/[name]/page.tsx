@@ -6,6 +6,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 import { blockCategories } from "@/config/registry"
 import { X_HANDLE } from "@/config/site"
 import { getAllBlockStaticParams } from "@/lib/blocks"
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -91,6 +92,27 @@ export default async function BlockViewPage({
 
   return (
     <>
+      <JsonLdScript
+        data={jsonLdBreadcrumbList([
+          {
+            name: "Home",
+            href: "/",
+          },
+          {
+            name: "Blocks",
+            href: "/blocks",
+          },
+          {
+            name: categoryItem?.title || category,
+            href: `/blocks/${category}`,
+          },
+          {
+            name,
+            href: `/blocks/${category}/${name}`,
+          },
+        ])}
+      />
+
       <DocKeyboardShortcuts
         previous={previous ? `/blocks/${previous}` : null}
         next={next ? `/blocks/${next}` : null}
