@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { blockCategories } from "@/config/registry"
 import { X_HANDLE } from "@/config/site"
 import { getAllBlockIds } from "@/lib/blocks"
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { cn } from "@/lib/utils"
 import { BlockDisplay } from "@/app/(preview)/components/block-display"
 
@@ -63,10 +64,30 @@ export default async function BlocksPage({
   params,
 }: PageProps<"/blocks/[category]">) {
   const { category } = await params
+
   const blockIds = await getAllBlockIds(["registry:block"], [category])
+
+  const categoryItem = blockCategories.find((item) => item.name === category)
 
   return (
     <>
+      <JsonLdScript
+        data={jsonLdBreadcrumbList([
+          {
+            name: "Home",
+            href: "/",
+          },
+          {
+            name: "Blocks",
+            href: "/blocks",
+          },
+          {
+            name: categoryItem?.title || category,
+            href: `/blocks/${category}`,
+          },
+        ])}
+      />
+
       {blockIds.map((blockId) => (
         <Fragment key={blockId}>
           <BlockDisplay name={blockId} />
