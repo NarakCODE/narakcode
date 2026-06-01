@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
 import { Confetti } from "@/components/confetti";
+import { JsonLd } from "@/components/json-ld";
 // import { FloatingAiSummary } from "@/components/floating-ai-summary";
 import { ScrollTop } from "@/components/scroll-top";
 import { SiteFooter } from "@/components/site-footer";
@@ -29,9 +30,7 @@ export default function Page() {
 
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify(websiteJsonLd)}
-      </script>
+      <JsonLd id="profile-jsonld" data={websiteJsonLd} />
 
       <SiteHeader />
 

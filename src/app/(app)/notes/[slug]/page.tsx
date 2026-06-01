@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
 
+import { JsonLd } from "@/components/json-ld";
 import { MDX } from "@/components/mdx";
 import { NoteNavigation } from "@/components/note-navigation";
 import { NoteShare } from "@/components/note-share";
@@ -129,9 +130,7 @@ export default async function Page({
 
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify(websiteJsonLd)}
-      </script>
+      <JsonLd id="note-jsonld" data={websiteJsonLd} />
 
       {/* Back navigation */}
       <div className="screen-line-after flex pb-4">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
 
+import { JsonLd } from "@/components/json-ld";
 import { MDX } from "@/components/mdx";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/typography";
@@ -101,9 +102,7 @@ export default async function Page({
 
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify(websiteJsonLd)}
-      </script>
+      <JsonLd id="blog-post-jsonld" data={websiteJsonLd} />
 
       <div className="screen-line-after flex pb-4">
         <Button variant="link" className="px-2 text-base" asChild>

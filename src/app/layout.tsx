@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import type { WebSite, WithContext } from "schema-dts";
 
 import { Providers } from "@/components/providers";
@@ -84,6 +85,14 @@ export const viewport: Viewport = {
   themeColor: META_THEME_COLORS.light,
 };
 
+const themeColorInitScript = `
+try {
+  if (localStorage['narakcode.theme'] === 'dark' || ((!('narakcode.theme' in localStorage) || localStorage['narakcode.theme'] === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+  }
+} catch (_) {}
+`;
+
 export default function RootLayout({
   children,
 }: {
@@ -95,25 +104,21 @@ export default function RootLayout({
       className={`${fontSans.variable} ${fontHeading.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        {/* Thanks @shadcn-ui */}
-        <script
+      <body>
+        {/* Thanks @shadcn-ui — beforeInteractive injects into <head> (React 19-safe) */}
+        <Script
+          id="theme-color-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeColorInitScript }}
+        />
+        <Script
+          id="website-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                if (localStorage['narakcode.theme'] === 'dark' || ((!('narakcode.theme' in localStorage) || localStorage['narakcode.theme'] === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
-                }
-              } catch (_) {}
-            `,
+            __html: JSON.stringify(getWebSiteJsonLd()),
           }}
         />
-        <script type="application/ld+json">
-          {JSON.stringify(getWebSiteJsonLd())}
-        </script>
-      </head>
-
-      <body>
         <div className="absolute -z-1 min-h-screen w-full bg-background">
           {/* Pearl Mist Background with Top Glow - Only in dark mode */}
           <div
