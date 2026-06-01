@@ -5,8 +5,13 @@ import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { SpinningCircularText } from "@/registry/components/spinning-circular-text"
+import { getSocialLinkByName } from "@/features/portfolio/data/social-links-v2"
 
 export function SiteFooter() {
+  const xLink = getSocialLinkByName("x")
+  const githubLink = getSocialLinkByName("github")
+  const linkedinLink = getSocialLinkByName("linkedin")
+
   return (
     <footer className="max-w-screen overflow-x-hidden px-2">
       <div className="screen-line-top mx-auto border-x border-line pt-4 group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
@@ -16,16 +21,6 @@ export function SiteFooter() {
         </p>
 
         <p className="px-4 text-center font-mono text-sm text-balance text-muted-foreground">
-          {/* Built with care by{" "}
-          <a
-            className="font-medium text-foreground link-underline"
-            href="https://x.com/iamncdai"
-            target="_blank"
-            rel="noopener"
-          >
-            ncdai
-          </a>
-          . */}
           The source code is available on{" "}
           <a
             className="font-medium text-foreground link-underline"
@@ -40,7 +35,7 @@ export function SiteFooter() {
         <div className="flex justify-center">
           <a
             className="relative flex"
-            href="https://x.com/iamncdai"
+            href={xLink?.href}
             target="_blank"
             rel="noopener"
           >
@@ -67,7 +62,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://x.com/iamncdai?utm_source=chanhdai.com"
+              href={xLink?.href}
               target="_blank"
               rel="noopener"
               aria-label="X Profile"
@@ -79,7 +74,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://github.com/ncdai?utm_source=chanhdai.com"
+              href={githubLink?.href}
               target="_blank"
               rel="noopener"
               aria-label="GitHub Profile"
@@ -91,7 +86,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://www.linkedin.com/in/ncdai?utm_source=chanhdai.com"
+              href={linkedinLink?.href}
               target="_blank"
               rel="noopener"
               aria-label="LinkedIn Profile"

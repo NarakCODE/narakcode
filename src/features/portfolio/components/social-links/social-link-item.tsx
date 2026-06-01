@@ -6,6 +6,7 @@ import { UTM_PARAMS } from "@/config/site"
 import { cn } from "@/lib/utils"
 import type { SocialLink } from "@/features/portfolio/types/social-links"
 
+/** @deprecated */
 export function SocialLinkItem({ icon, title, href }: SocialLink) {
   return (
     <div

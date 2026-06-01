@@ -1,5 +1,6 @@
 import type { SocialLink } from "../types/social-links"
 
+/** @deprecated */
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     icon: "https://assets.chanhdai.com/images/link-icons/x.webp?v=2",

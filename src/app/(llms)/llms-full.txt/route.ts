@@ -7,7 +7,7 @@ import { AWARDS } from "@/features/portfolio/data/awards"
 import { CERTIFICATIONS } from "@/features/portfolio/data/certifications"
 import { EXPERIENCES } from "@/features/portfolio/data/experiences"
 import { PROJECTS } from "@/features/portfolio/data/projects"
-import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
+import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links-v2"
 import { TECH_STACK } from "@/features/portfolio/data/tech-stack"
 import { USER } from "@/features/portfolio/data/user"
 
