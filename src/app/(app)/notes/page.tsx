@@ -41,7 +41,7 @@ export default function NotesPage() {
       </div>
 
       <div className="relative pt-4">
-        <div className="space-y-0">
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
           {notes.map((note) => (
             <NoteItem key={note.slug} note={note} />
           ))}

@@ -1,3 +1,5 @@
+"use client";
+
 import { Accordion as AccordionPrimitive } from "radix-ui";
 import React from "react";
 

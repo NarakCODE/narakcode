@@ -1,3 +1,5 @@
+"use client";
+
 import dayjs from "dayjs";
 import { Accordion as AccordionPrimitive } from "radix-ui";
 

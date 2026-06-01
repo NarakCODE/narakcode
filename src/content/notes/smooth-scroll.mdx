@@ -1,0 +1,337 @@
+---
+title: "Smooth Scroll"
+description: "Build a Smooth Scroll Landing Page using Next.js, GSAP, and Locomotive Scroll v5."
+image: "https://videos.ctfassets.net/jzzgtonmw9s6/2ZPVXH2JysbycAmscmCsVZ/d7c7b0fe9443b32bae4d19d337837ba8/smooth_scroll.mov"
+createdAt: "2023-06-26"
+updatedAt: "2023-06-26"
+tags: ["GSAP", "NextJS", "Locomotive Scroll", "ScrollTrigger"]
+featured: false
+---
+
+<video
+  src="https://videos.ctfassets.net/jzzgtonmw9s6/2ZPVXH2JysbycAmscmCsVZ/d7c7b0fe9443b32bae4d19d337837ba8/smooth_scroll.mov"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full rounded-xl border border-edge"
+/>
+
+## Initializing the project
+
+Let's start the project by creating a Next.js application. We can do that by running `npx create-next-app@latest client` inside of a terminal.
+
+## Adding the HTML and CSS
+
+We can delete everything in the `page.js`, `global.css`, and `page.module.css` and add our own HTML and CSS to start with a nice blank application.
+
+This landing page will be composed of 4 components:
+
+- **Page Component:** The parent, initializes the Locomotive Scroll and imports the other components.
+- **Intro Component:** The first section, features a background image with a `clip-path` animation and a body with an animated title and image.
+- **Description Component:** The second section, features scroll-animated paragraphs.
+- **Projects Component:** The last section, features a pinned image and a state-based project gallery.
+
+The 3 sub-components are created inside a `/src/components/` folder.
+
+## The Page Component
+
+The page component is the parent of the other 3 components. It also manages the smooth scroll, which is easily done with [Locomotive Scroll v5](https://scroll.locomotive.ca/docs/#/).
+
+### `page.js`
+
+```javascript
+"use client";
+import { useEffect } from "react";
+import styles from "./page.module.css";
+import Intro from "../components/Intro";
+import Description from "../components/Description";
+import Projects from "../components/Projects";
+
+export default function Home() {
+  useEffect(() => {
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
+    })();
+  }, []);
+
+  return (
+    <main className={styles.main}>
+      <Intro />
+      <Description />
+      <Projects />
+    </main>
+  );
+}
+```
+
+> **Note:** The Locomotive Scroll is purely a client-side library, so we need to import it asynchronously after the component mounts. If we don't do this, we will receive an error mentioning that `window` does not exist.
+
+With that, we now have a native smooth scroll, amazing!
+
+## The Intro Component
+
+The Intro is composed of 3 main elements:
+
+- **The background image:** Animated with ScrollTrigger, using the `clip-path` property.
+- **The main image:** Animated with ScrollTrigger using the `height` property and Locomotive Scroll with `data-scroll-speed`.
+- **The title:** Animated with Locomotive Scroll with `data-scroll-speed`.
+
+### `Intro/index.jsx`
+
+```javascript
+"use client";
+import React, { useLayoutEffect, useRef } from "react";
+import styles from "./style.module.css";
+import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+export default function Index() {
+  const background = useRef(null);
+  const introImage = useRef(null);
+  const homeHeader = useRef(null);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: true,
+        start: "top",
+        end: "+=500px",
+      },
+    });
+
+    timeline
+      .from(background.current, { clipPath: `inset(15%)` })
+      .to(introImage.current, { height: "200px" }, 0);
+  }, []);
+
+  return (
+    <div ref={homeHeader} className={styles.homeHeader}>
+      <div className={styles.backgroundImage} ref={background}>
+        <Image
+          src={"/images/background.jpeg"}
+          fill={true}
+          alt="background image"
+          priority={true}
+        />
+      </div>
+      <div className={styles.intro}>
+        <div
+          ref={introImage}
+          data-scroll
+          data-scroll-speed="0.3"
+          className={styles.introImage}
+        >
+          <Image
+            src={"/images/intro.png"}
+            alt="intro image"
+            fill={true}
+            priority={true}
+          />
+        </div>
+        <h1 data-scroll data-scroll-speed="0.7">
+          SMOOTH SCROLL
+        </h1>
+      </div>
+    </div>
+  );
+}
+```
+
+### Here's the result:
+
+<video
+  src="https://blog.olivierlarose.com/medias/tutorials/smooth-scroll/video1.mov"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full rounded-xl border border-edge"
+/>
+
+## The Description Component
+
+The Description component features an internal component called `AnimatedText`. An array of phrases is mapped to render each line.
+
+Inside it, a new ScrollTrigger is created from the top of each paragraph and ends at `+=400px`. The `left` offset value and the `opacity` are adjusted during the scroll.
+
+### `Description/index.jsx`
+
+```javascript
+import React, { useLayoutEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import styles from "./style.module.css";
+
+const phrases = [
+  "Los Flamencos National Reserve",
+  "is a nature reserve located",
+  "in the commune of San Pedro de Atacama",
+  "The reserve covers a total area",
+  "of 740 square kilometres (290 sq mi)",
+];
+
+export default function Index() {
+  return (
+    <div className={styles.description}>
+      {phrases.map((phrase, index) => {
+        return <AnimatedText key={index}>{phrase}</AnimatedText>;
+      })}
+    </div>
+  );
+}
+
+function AnimatedText({ children }) {
+  const text = useRef(null);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(text.current, {
+      scrollTrigger: {
+        trigger: text.current,
+        scrub: true,
+        start: "0px bottom",
+        end: "bottom+=400px bottom",
+      },
+      opacity: 0,
+      left: "-200px",
+      ease: "power3.Out",
+    });
+  }, []);
+
+  return <p ref={text}>{children}</p>;
+}
+```
+
+### Here's the result:
+
+<video
+  src="https://blog.olivierlarose.com/medias/tutorials/smooth-scroll/video2.mov"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full rounded-xl border border-edge"
+/>
+
+## The Projects Component
+
+The Projects component features standard layout styling with a pinned sidebar animation.
+
+There is an internal state to track which project is currently highlighted via hover, which dynamically updates the source URL of the showcased image.
+
+### `Projects/index.jsx`
+
+```javascript
+import React, { useState, useLayoutEffect, useRef } from "react";
+import styles from "./style.module.css";
+import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+const projects = [
+  {
+    title: "Salar de Atacama",
+    src: "salar_de_atacama.jpg",
+  },
+  {
+    title: "Valle de la luna",
+    src: "valle_de_la_muerte.jpeg",
+  },
+  {
+    title: "Miscanti Lake",
+    src: "miscani_lake.jpeg",
+  },
+  {
+    title: "Miniques Lagoons",
+    src: "miniques_lagoon.jpg",
+  },
+];
+
+export default function Index() {
+  const [selectedProject, setSelectedProject] = useState(0);
+  const container = useRef(null);
+  const imageContainer = useRef(null);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({
+      trigger: imageContainer.current,
+      pin: true,
+      start: "top-=100px",
+      end: document.body.offsetHeight - window.innerHeight - 50,
+    });
+  }, []);
+
+  return (
+    <div ref={container} className={styles.projects}>
+      <div className={styles.projectDescription}>
+        <div ref={imageContainer} className={styles.imageContainer}>
+          <Image
+            src={`/images/${projects[selectedProject].src}`}
+            fill={true}
+            alt="project image"
+            priority={true}
+          />
+        </div>
+        <div className={styles.column}>
+          <p>
+            The flora is characterized by the presence of high elevation
+            wetland, as well as yellow straw, broom sedge, tola de agua and tola
+            amaia.
+          </p>
+        </div>
+        <div className={styles.column}>
+          <p>
+            Some, like the southern viscacha, vicuña and Darwins rhea, are
+            classified as endangered species. Others, such as Andean goose,
+            horned coot, Andean gull, puna tinamou and the three flamingo
+            species inhabiting in Chile (Andean flamingo, Chilean flamingo, and
+            Jamess flamingo) are considered vulnerable.
+          </p>
+        </div>
+      </div>
+
+      <div className={styles.projectList}>
+        {projects.map((project, index) => {
+          return (
+            <div
+              key={index}
+              onMouseOver={() => {
+                setSelectedProject(index);
+              }}
+              className={styles.projectEl}
+            >
+              <h2>{project.title}</h2>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+```
+
+### Here's the result:
+
+<video
+  src="https://blog.olivierlarose.com/medias/tutorials/smooth-scroll/video.mov"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full rounded-xl border border-edge"
+/>
+
+### Wrapping up
+
+We're officially done with this one-pager!
+
+Hope you liked this tutorial. I've seen similar layouts on many award-winning portfolios, so it's a great technique to learn.
+
+- NarakCODE
