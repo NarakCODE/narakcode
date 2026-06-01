@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import type { WebSite, WithContext } from "schema-dts";
 
 import { Providers } from "@/components/providers";
@@ -85,14 +84,6 @@ export const viewport: Viewport = {
   themeColor: META_THEME_COLORS.light,
 };
 
-const themeColorInitScript = `
-try {
-  if (localStorage['narakcode.theme'] === 'dark' || ((!('narakcode.theme' in localStorage) || localStorage['narakcode.theme'] === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
-  }
-} catch (_) {}
-`;
-
 export default function RootLayout({
   children,
 }: {
@@ -105,24 +96,19 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        {/* Thanks @shadcn-ui — beforeInteractive injects into <head> (React 19-safe) */}
-        <Script
-          id="theme-color-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: themeColorInitScript }}
-        />
-        <Script
-          id="website-jsonld"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getWebSiteJsonLd()),
+            __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
           }}
         />
-        <div className="absolute -z-1 min-h-screen w-full bg-background">
+        <div
+          className="pointer-events-none absolute -z-1 min-h-screen w-full bg-background"
+          aria-hidden="true"
+        >
           {/* Pearl Mist Background with Top Glow - Only in dark mode */}
           <div
-            className="absolute inset-0 z-0 hidden dark:block"
+            className="pointer-events-none absolute inset-0 z-0 hidden dark:block"
             style={{
               background:
                 "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%), var(--d-background)",

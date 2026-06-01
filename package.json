@@ -21,7 +21,7 @@
     "url": "git+https://github.com/NarakCODE/narakcode.dev.git"
   },
   "scripts": {
-    "dev": "NODE_OPTIONS='--max-old-space-size=1536' next dev -p 1408",
+    "dev": "NODE_OPTIONS='--max-old-space-size=1536' next dev -H 0.0.0.0 -p 1408",
     "build": "next build",
     "build:turbo": "next build",
     "start": "next start",
@@ -50,6 +50,8 @@
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@tsparticles/react": "^4.1.1",
+    "@tsparticles/slim": "^4.1.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",

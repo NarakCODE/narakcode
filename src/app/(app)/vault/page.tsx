@@ -9,7 +9,7 @@ import { VaultDashboard } from "./vault-client";
 export const metadata: Metadata = {
   title: "Vault",
   description:
-    "A curated chest of custom developer tools, premium code shaders, layout helpers, and high-fidelity design resources.",
+    "Animation libraries, dev resources, and the products and accessories I use for daily coding.",
   alternates: {
     canonical: "/vault",
   },

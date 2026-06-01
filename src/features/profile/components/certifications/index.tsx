@@ -1,3 +1,5 @@
+"use client";
+
 import { CollapsibleList } from "@/components/collapsible-list";
 
 import { CERTIFICATIONS } from "../../data/certifications";
