@@ -40,7 +40,7 @@ import {
   CommandShortcut,
 } from "@/components/ui/command"
 import type { DocPreview } from "@/features/doc/types/document"
-import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
+import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links-v2"
 
 import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
 import { getWordmarkSVG } from "./chanhdai-wordmark"
@@ -161,7 +161,7 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
   title: item.title,
   href: item.href,
   kind: "link",
-  iconImage: item.icon,
+  icon: item.icon,
   openInNewTab: true,
 }))
 
