@@ -28,6 +28,7 @@ export const PROJECTS: Project[] = [
     description:
       "Just another Apple clone website, built with HTML, CSS, and JavaScript. This project was created as a part of the Above & Beyond Bootcamp.",
     logo: "https://assets.chanhdai.com/images/project-logos/quaricdotcom.svg",
+    image: "https://anb-apple-clone-deploy.vercel.app/index.html",
   },
   {
     id: "kbdfans-clone-website",
@@ -45,6 +46,7 @@ export const PROJECTS: Project[] = [
     ],
     description: "A simple website for keyboard ecommerce",
     logo: "https://assets.chanhdai.com/images/project-logos/quaricdotcom.svg",
+    image: "https://kbdfans-clone-deploy.vercel.app/",
   },
   {
     id: "portfolio-website",
@@ -62,6 +64,7 @@ export const PROJECTS: Project[] = [
     ],
     description: "My first portfolio website built with Next.js and MDX",
     logo: "https://assets.chanhdai.com/images/project-logos/quaricdotcom.svg",
+    image: "https://narakcode-dev.vercel.app/",
   },
   // {
   //   id: "portfolio-website",

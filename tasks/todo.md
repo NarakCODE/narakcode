@@ -80,6 +80,40 @@ The goal is to redesign the "Save vCard" and "Send Email" buttons in `src/featur
   - [x] Add `"use client";` to `src/features/profile/components/awards/index.tsx`. (Result: Converted Awards to client component to proactively resolve Radix Accordion properties hydration mismatch)
   - [x] Add `"use client";` to `src/features/profile/components/certifications/index.tsx`. (Result: Converted Certifications to client component to proactively resolve Radix Collapsible properties hydration mismatch)
   - [x] Verify everything compiles and lints perfectly. (Result: 100% clean build, TypeScript checks, and ESLint runs)
-- [x] Make Markdown component safe for Client Components:
   - [x] Update `src/components/markdown.tsx` to use the synchronous default export `ReactMarkdown` from `react-markdown` instead of `MarkdownAsync`. (Result: Swapped react-markdown's async server-component wrapper for its synchronous default export ReactMarkdown)
   - [x] Verify everything compiles and lints perfectly. (Result: 100% clean TypeScript validation, ESLint checks, and Next.js production builds)
+- [x] Replace vault data with `VAULT_BOOKMARKS`:
+  - [x] Rewrite `src/data/vault-items.ts` to export only `VAULT_BOOKMARKS`. (Result: Replaced the entire data structure with the VAULT_BOOKMARKS array, removing the deprecated data)
+  - [x] Update types in `src/types/vault.ts` to reflect the new bookmark-only vault structure. (Result: Cleaned up types to export only the VaultBookmark type)
+  - [x] Refactor `src/app/(app)/vault/vault-client.tsx` to showcase the bookmarks elegantly with a beautiful grid, a search filter, and interactive tag filter buttons. (Result: Re-engineered the vault client dashboard with search queries, Horizontal Tag Filters, dynamic play button overlays, and custom inline SVG brand badges)
+  - [x] Verify everything compiles and builds perfectly. (Result: Passed Type checks, ESLint, and Next.js builds flawlessly)
+- [x] Remove the vault card hover effect:
+  - [x] Modify `src/app/(app)/vault/vault-client.tsx` to remove image hover zooming, eliminate the play icon overlay, and disable the hover title color change. (Result: Removed group classes, image hover scaling, dynamic play button overlay, and card-hover title color styles)
+  - [x] Verify everything compiles and lints perfectly. (Result: 100% clean TypeScript compiler validation, ESLint checks, and production builds)
+- [x] Remove the categories tabs:
+  - [x] Modify `src/app/(app)/vault/vault-client.tsx` to remove the horizontal tag filter pills, tag filtering states, and Reset Filters tag reset calls. (Result: Removed all horizontal tag pills, simplified search logic, and cleaned up reset state)
+  - [x] Verify everything compiles and lints perfectly. (Result: Passed Type checks, ESLint, and Next.js builds flawlessly)
+- [x] Integrate correct vault data format and content:
+  - [x] Write `vaults` array format directly inside `vault-items.ts`. (Result: Overwrote vault data with the exact new dataset and schema)
+  - [x] Update `Vault` type definition in `vault.ts`. (Result: Cleaned up types to export only the matching Vault type)
+  - [x] Adapt `vault-client.tsx` to render using `title`, `image`, `href`, `channel` properties. (Result: Simplified rendering to directly load properties and images, with an inline YoutubeIcon vector badge for video bookmarks)
+  - [x] Verify everything compiles and lints perfectly. (Result: Passed all type-checks, linter warnings checks, and production builds successfully)
+
+## Refine HoverExpand adaptation on ProjectItem
+- [x] Implement sibling fade-out interaction on hover: when one ProjectItem is hovered, the others fade to `0.38` opacity. (Result: Coordinated via parent index level state)
+- [x] Update `Projects` index to track the hovered project's ID and pass the controlled hover states down. (Result: Updated Projects list renderer component)
+- [x] Integrate premium micro-interactions into `ProjectItem`: (Result: Implemented using spring transitions)
+  - [x] Spring scale-up animation on the project logo/icon on hover (`scale: 1.12` using a spring).
+  - [x] Spring slide translation on the `ArrowUpRightIcon` link indicator (`x: 2`, `y: -2` on hover).
+- [x] Ensure all TypeScript types are fully aligned and clean. (Result: Cleaned up and verified perfectly)
+- [x] Verify compilation and run lint check (`pnpm run lint`). (Result: Cleaned typescript checks and eslint run completed with 0 errors)
+- [x] Verify Next.js build runs cleanly (`pnpm run build`). (Result: Next.js compiled in Turbopack mode, fully optimized production build compiled in 3.2s successfully)
+- [x] Add ChevronDownIcon to the right side of ProjectItem and animate its rotation (`rotate: isHovered ? 180 : 0`) on hover. (Result: Integrated chevron on the right side and animated its rotation dynamically on hover using standard springs)
+
+## Create Smooth Scroll Note
+- [x] Create MDX file at `src/content/notes/smooth-scroll.mdx` with the provided content. (Result: Created MDX file with standard frontmatter metadata)
+- [x] Verify that MDX parsing and website compilation remain pristine. (Result: TypeScript checks passed, production builds compiled successfully with /notes/smooth-scroll statically generated)
+
+## Insert Video Assets into Smooth Scroll Note
+- [ ] Replace the 4 media placeholders in `src/content/notes/smooth-scroll.mdx` with HTML5 video elements pointing to the provided `.mov` URLs.
+- [ ] Verify that MDX parsing and website compilation remain pristine.

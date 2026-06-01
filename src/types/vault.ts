@@ -1,35 +1,6 @@
-export type VaultItemCategory =
-  | "animations"
-  | "resources"
-  | "products"
-  | "accessories";
-
-export type VaultCategory = "all" | VaultItemCategory;
-
-export type VaultItem = {
-  id: string;
+export type Vault = {
   title: string;
-  description: string;
-  category: VaultItemCategory;
-  tags: string[];
-  color: string;
-  readTime: string;
-  link: string;
-  /** Local path under /public for product & accessory cards */
-  image?: string;
+  image: string;
+  href: string;
+  channel: string;
 };
-
-export const VAULT_TAB_CATEGORIES: VaultCategory[] = [
-  "all",
-  "animations",
-  "resources",
-  "products",
-  "accessories",
-];
-
-export const VAULT_ITEM_CATEGORIES: VaultItemCategory[] = [
-  "animations",
-  "resources",
-  "products",
-  "accessories",
-];
