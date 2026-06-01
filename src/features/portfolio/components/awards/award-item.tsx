@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator"
 import { Prose } from "@/components/ui/typography"
 import {
   Collapsible,
-  CollapsibleChevronsIcon,
+  CollapsibleChevronsUpDownIcon,
 } from "@/components/base/collapsible-animated"
 import {
   CollapsibleContent,
@@ -105,7 +105,7 @@ export function AwardItem({
 
             {canExpand && (
               <div className="shrink-0 text-muted-foreground [&_svg]:size-4">
-                <CollapsibleChevronsIcon duration={0.15} />
+                <CollapsibleChevronsUpDownIcon duration={0.15} />
               </div>
             )}
           </CollapsibleTrigger>

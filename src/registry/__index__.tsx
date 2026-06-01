@@ -187,7 +187,7 @@ export const Index: Record<string, any> = {
   },
   "chevrons-up-down-icon": {
     name: "chevrons-up-down-icon",
-    description: "TBD",
+    description: "Animated chevrons icon that morphs between up and down directions.",
     type: "registry:component",
     files: [{
       path: "src/registry/components/chevrons-up-down-icon/chevrons-up-down-icon.tsx",
@@ -1566,6 +1566,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/examples/mobius-loop-icon-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "chevrons-up-down-icon-demo": {
+    name: "chevrons-up-down-icon-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/chevrons-up-down-icon-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/chevrons-up-down-icon-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

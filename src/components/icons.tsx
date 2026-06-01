@@ -1,6 +1,7 @@
 import { IconCircle, IconCircleSquare, IconGridDots } from "@tabler/icons-react"
 import {
   BriefcaseBusinessIcon,
+  ChevronsUpDownIcon,
   CopyIcon,
   Droplet,
   FileIcon,
@@ -911,6 +912,10 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
           <path d="M 6 16 C 11 16 13 8 18 8 C 23.333 8 23.333 16 18 16 C 13 16 11 8 6 8 C 0.667 8 0.667 16 6 16 Z" />
         </svg>
       )
+    }
+
+    case "chevrons-up-down-icon": {
+      return <ChevronsUpDownIcon {...props} />
     }
 
     default: {

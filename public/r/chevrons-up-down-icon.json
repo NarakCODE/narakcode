@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chevrons-up-down-icon",
   "author": "ncdai <dai@chanhdai.com>",
-  "description": "TBD",
+  "description": "Animated chevrons icon that morphs between up and down directions.",
   "dependencies": [
     "motion"
   ],
@@ -14,6 +14,7 @@
       "target": "@components/chevrons-up-down-icon.tsx"
     }
   ],
+  "docs": "https://chanhdai.com/components/chevrons-up-down-icon",
   "categories": [
     "effects"
   ],

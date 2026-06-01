@@ -208,7 +208,7 @@
     },
     {
       "name": "chevrons-up-down-icon",
-      "description": "TBD",
+      "description": "Animated chevrons icon that morphs between up and down directions.",
       "dependencies": [
         "motion"
       ],
@@ -219,6 +219,7 @@
           "target": "@components/chevrons-up-down-icon.tsx"
         }
       ],
+      "docs": "https://chanhdai.com/components/chevrons-up-down-icon",
       "categories": [
         "effects"
       ],
