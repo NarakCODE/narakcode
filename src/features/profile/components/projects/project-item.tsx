@@ -210,9 +210,7 @@ export function ProjectItem({
           className="absolute right-5 bottom-16 left-5 flex flex-wrap gap-1.5"
         >
           {project.tags.map((skill, index) => (
-            <Tag key={index} variant="secondary">
-              {skill}
-            </Tag>
+            <Tag key={index}>{skill}</Tag>
           ))}
         </motion.div>
       )}

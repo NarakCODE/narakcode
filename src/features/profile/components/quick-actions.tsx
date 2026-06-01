@@ -33,7 +33,7 @@ const CONNECTORS = [
   {
     name: "Telegram",
     icon: <TelegramIcon className="size-6" />,
-    href: "https://t.me/+855964104230",
+    href: "https://t.me/LuChannarak",
   },
   {
     name: "GitHub",
