@@ -17,7 +17,7 @@ export function TechStack() {
                   target="_blank"
                   rel="noopener"
                   aria-label={tech.title}
-                  className="flex items-center gap-1.5 rounded-full bg-zinc-50 px-1.5 py-0.5 text-xs tracking-wide text-foreground ring-1 ring-border/80 select-none dark:bg-zinc-900 [&_img]:size-3.5"
+                  className="flex items-center gap-1.5 rounded-full bg-zinc-50 px-1.5 py-0.5 font-mono text-xs text-foreground ring-1 ring-border/80 select-none dark:bg-zinc-900 [&_img]:size-3.5"
                 >
                   {tech.theme ? (
                     <>
