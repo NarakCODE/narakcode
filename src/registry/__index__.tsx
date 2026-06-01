@@ -649,7 +649,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["marketing"],
-    meta: {"createdAt":"2026-03-12","previewClassName":"pt-8"},
+    meta: {"createdAt":"2026-03-12"},
   },
   "blog-01": {
     name: "blog-01",
@@ -733,7 +733,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["marketing"],
-    meta: {"createdAt":"2026-03-29"},
+    meta: {"createdAt":"2026-03-29","previewClassName":"min-h-svh content-center-safe"},
   },
   "experience-01": {
     name: "experience-01",

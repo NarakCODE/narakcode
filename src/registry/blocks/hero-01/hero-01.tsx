@@ -13,7 +13,7 @@ import {
 
 export function Hero01() {
   return (
-    <div className="relative w-screen overflow-hidden pb-8">
+    <div className="relative w-screen overflow-hidden py-8">
       <div className="container mx-auto max-sm:px-2">
         <div className="screen-line-top screen-line-bottom border-x border-line md:hidden">
           <svg

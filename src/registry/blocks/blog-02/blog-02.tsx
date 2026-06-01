@@ -6,8 +6,8 @@ import { ArticleItem } from "@/registry/blocks/blog-02/components/article-item"
 export function Blog02() {
   return (
     <div className="max-w-screen overflow-x-hidden">
-      <div className="container mx-auto px-4 py-8">
-        <div className="border-x border-line">
+      <div className="container mx-auto px-4">
+        <div className="border-x border-line py-8">
           <h2 className="screen-line-top screen-line-bottom ml-4 font-heading text-3xl font-semibold tracking-tight">
             Blog
           </h2>
