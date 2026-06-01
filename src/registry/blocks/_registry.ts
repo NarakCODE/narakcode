@@ -44,7 +44,6 @@ export const blocks: Registry["items"] = [
     categories: ["marketing"],
     meta: {
       createdAt: "2026-03-12",
-      previewClassName: "pt-8",
     },
   },
   {
@@ -146,6 +145,7 @@ export const blocks: Registry["items"] = [
     categories: ["marketing"],
     meta: {
       createdAt: "2026-03-29",
+      previewClassName: "min-h-svh content-center-safe",
     },
   },
   {
