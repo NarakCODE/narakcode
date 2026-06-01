@@ -142,10 +142,10 @@ export type ExperiencePositionItemProps = {
 export function ExperiencePositionItem({
   position,
 }: ExperiencePositionItemProps) {
-  const chevronsIconRef = useRef<ChevronsUpDownIconHandle>(null)
+  const chevronsUpDownIconRef = useRef<ChevronsUpDownIconHandle>(null)
 
   const handleOpenChange = useCallback((open: boolean) => {
-    const controls = chevronsIconRef.current
+    const controls = chevronsUpDownIconRef.current
     if (!controls) return
 
     if (open) {
@@ -191,7 +191,7 @@ export function ExperiencePositionItem({
             </h4>
 
             <div className="shrink-0 text-muted-foreground group-disabled/experience-position:hidden [&_svg]:h-lh [&_svg]:w-4">
-              <ChevronsUpDownIcon ref={chevronsIconRef} duration={0.15} />
+              <ChevronsUpDownIcon ref={chevronsUpDownIconRef} duration={0.15} />
             </div>
           </div>
 

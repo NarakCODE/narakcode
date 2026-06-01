@@ -120,7 +120,8 @@ export const components: Registry["items"] = [
   {
     name: "chevrons-up-down-icon",
     type: "registry:component",
-    description: "TBD",
+    description:
+      "Animated chevrons icon that morphs between up and down directions.",
     dependencies: ["motion"],
     files: [
       {
@@ -130,6 +131,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["effects"],
+    docs: "https://chanhdai.com/components/chevrons-up-down-icon",
   },
   {
     name: "typography",

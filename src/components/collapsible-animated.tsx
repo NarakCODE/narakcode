@@ -74,7 +74,9 @@ function useCollapsibleAnimation<
   }, [open, ref])
 }
 
-function CollapsibleChevronsIcon(props: Omit<ChevronsUpDownIconProps, "ref">) {
+function CollapsibleChevronsUpDownIcon(
+  props: Omit<ChevronsUpDownIconProps, "ref">
+) {
   const ref = useRef<ChevronsUpDownIconHandle>(null)
   useCollapsibleAnimation(ref)
   return <ChevronsUpDownIcon ref={ref} {...props} />
@@ -89,7 +91,7 @@ function CollapsibleChevronDownIcon(props: Omit<ChevronDownIconProps, "ref">) {
 export {
   CollapsibleWithContext as Collapsible,
   CollapsibleChevronDownIcon,
-  CollapsibleChevronsIcon,
+  CollapsibleChevronsUpDownIcon,
   useCollapsible,
   useCollapsibleAnimation,
 }

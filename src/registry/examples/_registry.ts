@@ -533,4 +533,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "chevrons-up-down-icon-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("chevrons-up-down-icon")],
+    files: [
+      {
+        path: "examples/chevrons-up-down-icon-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
