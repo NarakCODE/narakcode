@@ -172,7 +172,7 @@ export const components: Registry["items"] = [
     title: "Work Experience",
     description:
       "Display work experiences with role details, company logos, and durations.",
-    dependencies: ["react-markdown"],
+    dependencies: ["react-markdown", "date-fns"],
     registryDependencies: [
       "collapsible",
       "separator",

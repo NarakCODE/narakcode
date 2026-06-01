@@ -265,7 +265,8 @@
       "title": "Work Experience",
       "description": "Display work experiences with role details, company logos, and durations.",
       "dependencies": [
-        "react-markdown"
+        "react-markdown",
+        "date-fns"
       ],
       "registryDependencies": [
         "collapsible",
