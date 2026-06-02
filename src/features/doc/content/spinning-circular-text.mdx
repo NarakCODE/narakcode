@@ -77,42 +77,11 @@ import { SpinningCircularText } from "@/components/spinning-circular-text"
 <SpinningCircularText text="Built with care by ncdai • " />
 ```
 
-### Custom spin animation
+## Examples
 
-Use `spinClassName` to override the animation, such as the duration or easing:
+### Shimmering Text
 
-```tsx
-<SpinningCircularText
-  text="Built with care by ncdai • "
-  spinClassName="duration-[10s]"
-/>
-```
-
-### Per-character rendering
-
-Use `renderChar` to control how each character is rendered, e.g. to animate each
-one with a `motion.span`. The returned node is placed inside a positioned wrapper,
-so you only need to render the visible content:
-
-```tsx
-<SpinningCircularText
-  text="Built with care by ncdai • "
-  renderChar={(char, index) => (
-    <motion.span
-      animate={{
-        color: [
-          "var(--muted-foreground)",
-          "var(--foreground)",
-          "var(--muted-foreground)",
-        ],
-      }}
-      transition={{ duration: 3, repeat: Infinity, delay: index * 0.1 }}
-    >
-      {char}
-    </motion.span>
-  )}
-/>
-```
+<ComponentPreview name="spinning-circular-text-demo-2" />
 
 ## API Reference
 
