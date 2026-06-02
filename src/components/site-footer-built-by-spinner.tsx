@@ -15,7 +15,8 @@ export function SiteFooterBuiltBySpinner() {
   return (
     <SpinningCircularText
       text={TEXT}
-      className="[--color:var(--muted-foreground)] [--shimmering-color:var(--foreground)]"
+      charSpacing={1.2}
+      className="size-[round(up,var(--sc-container-size),var(--spacing))] [--color:var(--muted-foreground)] [--shimmering-color:var(--foreground)]"
       spinClassName="duration-[12s] motion-reduce:animate-none"
       renderChar={(char, index) =>
         shouldReduceMotion ? (
