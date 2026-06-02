@@ -1555,6 +1555,23 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "spinning-circular-text-demo-2": {
+    name: "spinning-circular-text-demo-2",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/spinning-circular-text-demo-2.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/spinning-circular-text-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "mobius-loop-icon-demo": {
     name: "mobius-loop-icon-demo",
     description: "",

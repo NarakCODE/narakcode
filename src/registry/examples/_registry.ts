@@ -523,6 +523,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "spinning-circular-text-demo-2",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("spinning-circular-text")],
+    files: [
+      {
+        path: "examples/spinning-circular-text-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "mobius-loop-icon-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("mobius-loop-icon")],
