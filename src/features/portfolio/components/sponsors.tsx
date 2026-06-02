@@ -61,7 +61,7 @@ export function Sponsors() {
 
           <ListItem>
             <SponsorItem
-              className="min-h-22.5"
+              className="h-full min-h-22.5"
               href={SPONSORSHIP_URL}
               aria-label="Sponsor My Work"
             >
