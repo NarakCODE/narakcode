@@ -1,4 +1,4 @@
-import { AvatarLights } from "@/registry/components/avatar-lights"
+import { AvatarLights } from "@/features/portfolio/components/avatar-lights"
 import { USER } from "@/features/portfolio/data/user"
 
 import { AvatarLightsToggle } from "./avatar-lights-toggle"
