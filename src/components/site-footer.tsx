@@ -4,7 +4,7 @@ import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
-import { SpinningCircularText } from "@/registry/components/spinning-circular-text"
+import { SiteFooterBuiltBySpinner } from "@/components/site-footer-built-by-spinner"
 import { getSocialLinkByName } from "@/features/portfolio/data/social-links-v2"
 
 export function SiteFooter() {
@@ -39,11 +39,7 @@ export function SiteFooter() {
             target="_blank"
             rel="noopener"
           >
-            <SpinningCircularText text="Built with care by ncdai • " />
-            <div
-              className="absolute inset-9 flex items-center justify-center rounded-full border border-line"
-              aria-hidden
-            />
+            <SiteFooterBuiltBySpinner />
           </a>
         </div>
 

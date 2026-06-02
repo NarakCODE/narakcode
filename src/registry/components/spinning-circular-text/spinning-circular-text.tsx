@@ -15,12 +15,27 @@ export type SpinningCircularTextProps = Omit<
    * @defaultValue 1rem
    * */
   fontSize?: string
+
+  /**
+   * Class names applied to the spinning ring, e.g. to override the
+   * animation duration (`duration-[10s]`) or easing.
+   * */
+  spinClassName?: string
+
+  /**
+   * Customize how each character is rendered, e.g. to wrap it in a
+   * `motion.span` for per-character effects. The returned node is placed
+   * inside a positioned wrapper, so positioning is handled for you.
+   * */
+  renderChar?: (char: string, index: number) => React.ReactNode
 }
 
 export function SpinningCircularText({
   text,
   charSpacing = 1,
   fontSize = "1rem",
+  spinClassName,
+  renderChar,
   className,
   style,
   ...props
@@ -52,7 +67,8 @@ export function SpinningCircularText({
           "relative animate-spin-ccw text-(size:--sc-size) leading-none",
           "*:absolute *:top-1/2 *:left-1/2 *:inline-block",
           "*:[--sc-char-rotate:calc(var(--sc-inner-angle)*var(--sc-char-index))]",
-          "*:transform-[translate(-50%,-50%)_rotate(var(--sc-char-rotate))_translateY(var(--sc-radius))]"
+          "*:transform-[translate(-50%,-50%)_rotate(var(--sc-char-rotate))_translateY(var(--sc-radius))]",
+          spinClassName
         )}
         aria-hidden
       >
@@ -61,7 +77,7 @@ export function SpinningCircularText({
             key={index}
             style={{ "--sc-char-index": index } as React.CSSProperties}
           >
-            {char}
+            {renderChar ? renderChar(char, index) : char}
           </span>
         ))}
       </div>
