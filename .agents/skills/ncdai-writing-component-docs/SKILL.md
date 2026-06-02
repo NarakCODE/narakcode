@@ -187,7 +187,7 @@ Use this quick intent check before placing a link:
 
 - Put a link in `## Credits` when it answers: "Who inspired this component?" or "What original source/product is this derived from?"
 - Put a link in `## References` when it answers: "How does this work?" or "Where can I learn implementation details/API?"
-- If one link can fit both, prefer `## Credits` and add short context. Duplicate only when both contexts are essential.
+- If one link can fit both, prefer `## Credits`. Keep `Credits` minimal and place explanatory context in `## References` only when needed.
 - Skip generic links that do not help readers build, understand, or trace origin.
 
 ## Writing Credits Sections
@@ -208,31 +208,31 @@ Skip `## Credits` when there is no meaningful inspiration or origin worth acknow
 4. Keep the list short (typically 1-5 items). Every link must add value.
 5. Credit the original creator whenever possible.
 6. No emoji.
+7. Each item must display only the author name/handle, but the URL must point to the exact original source.
 
 ### Item Formats
 
-Pick the format that matches the kind of link:
+Use author-centric display text with source URLs:
 
-| Format                                              | Use For                                                 |
-| --------------------------------------------------- | ------------------------------------------------------- |
-| `- [Title](url) by [Author](url-or-handle)`         | Original work credit (designer, engineer, demo author). |
-| `- [Title](url) — short context`                    | Original source/product needs additional context.       |
-| `- [Title](url) by [@handle](https://x.com/handle)` | Crediting via social handle.                            |
+| Format                        | Use For                                          |
+| ----------------------------- | ------------------------------------------------ |
+| `- [@handle](source-url)`     | Display handle, open the exact source link.      |
+| `- [Author Name](source-url)` | Display author name, open the exact source link. |
 
 ### Good Examples
 
 ```markdown
 ## Credits
 
-- [Original glow effect demo by @jh3yy](https://x.com/jh3yy/status/1992003440579662211)
-- [Slider in DialKit](https://joshpuckett.me/dialkit) by [Josh Puckett](https://joshpuckett.me)
+- [@jh3yy](https://x.com/jh3yy)
+- [Josh Puckett](https://joshpuckett.me/dialkit)
 ```
 
 ```markdown
 ## Credits
 
-- [theme-toggle.rdsx.dev](https://theme-toggle.rdsx.dev) by [@rds_agi](https://x.com/rds_agi)
-- [iPhone "Slide to Unlock"](<https://en.wikipedia.org/wiki/IPhone_(1st_generation)>) — original interaction pattern
+- [@rds_agi](https://x.com/rds_agi)
+- [Apple](https://www.figma.com/community/file/1414773009964314315/official-apple-hello-lettering)
 ```
 
 ### Bad Examples
@@ -243,17 +243,17 @@ Pick the format that matches the kind of link:
 - [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)
 ```
 
-Issue: this is technical implementation reading, so it belongs in `## References`, not `## Credits`.
+Issue: this is technical implementation reading, so it belongs in `## References`, not `## Credits`. It is also not an author label.
 
 ```markdown
 ## Credits
 
 Thanks to everyone who inspired this component! ❤️
 
-- [React](https://react.dev)
+- [Original glow effect demo by @jh3yy](https://x.com/jh3yy/status/1992003440579662211)
 ```
 
-Issues: narrative intro is unnecessary, emoji is not allowed, and generic framework links are usually filler.
+Issues: narrative intro is unnecessary, emoji is not allowed, and item should be author-only text with the source URL (for example `[@jh3yy](https://x.com/jh3yy/status/1618297458752368640)`).
 
 ## Writing References Sections
 
@@ -344,7 +344,7 @@ When creating or updating a component doc:
 5. Decide whether `## Composition` is needed (compound/composable components).
 6. If adding Composition, draw the tree matching the Usage JSX structure.
 7. Decide whether `## Credits` is needed (inspiration/original sources worth acknowledging).
-8. If adding Credits, attribute the original authors/sources and use the correct item format.
+8. If adding Credits, use only author name/handle as link text, and always point to the exact source URL.
 9. Decide whether `## References` is needed (technical links that help implementation and deeper learning).
 10. If adding References, keep links technical, specific, and high-value.
 11. Verify section order: Preview -> Features -> Installation -> Usage -> Composition -> API Reference -> Examples -> Credits -> References.
