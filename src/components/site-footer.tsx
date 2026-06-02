@@ -32,15 +32,17 @@ export function SiteFooter() {
           </a>
         </p>
 
-        <div className="flex justify-center">
-          <a
-            className="relative flex"
-            href={xLink?.href}
-            target="_blank"
-            rel="noopener"
-          >
+        <div className="flex items-center justify-center">
+          <div className="relative">
             <SiteFooterBuiltBySpinner />
-          </a>
+            <a
+              className="absolute inset-4"
+              href={xLink?.href}
+              target="_blank"
+              rel="noopener"
+              aria-label="Open X Profile"
+            />
+          </div>
         </div>
 
         <div className="screen-line-top screen-line-bottom flex w-full before:z-1 after:z-1">
