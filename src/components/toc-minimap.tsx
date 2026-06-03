@@ -84,7 +84,7 @@ function Minimap() {
           data-depth={item.original.depth}
           data-active={item.active}
           className={cn(
-            "pointer-events-none h-0.5 w-6 shrink-0 rounded-xs bg-ring/50 transition-[background-color] duration-200",
+            "pointer-events-none h-0.5 w-6 shrink-0 rounded-xs bg-ring/50 transition-[background-color] duration-150 ease-out",
             "data-[depth=3]:ml-2 data-[depth=3]:w-4",
             "data-[depth=4]:ml-4 data-[depth=4]:w-2",
             "data-active:bg-foreground"

@@ -1,4 +1,3 @@
-import { ComponentIcon } from "@/components/icons"
 import { DocGrid, DocLeftCol } from "@/features/doc/components/doc-layout"
 import { DocPageRoot } from "@/features/doc/components/doc-page-root"
 import { getDocsByCategory } from "@/features/doc/data/documents"
@@ -21,15 +20,16 @@ export default function ComponentDocsLayout({
   return (
     <DocPageRoot>
       <DocGrid>
-        <DocLeftCol className="pr-4 pb-3.75">
-          <div className="sticky top-[calc(var(--header-height)+(--spacing(12)))] flex h-[calc(100dvh-var(--header-height)-(--spacing(36)))] w-fit max-w-full flex-col rounded-xl border bg-background max-xl:hidden">
-            <Sidebar
-              items={componentDocs.map((doc) => ({
-                title: doc.metadata.title,
-                href: `/components/${doc.slug}`,
-                icon: <ComponentIcon variant={doc.slug} />,
-              }))}
-            />
+        <DocLeftCol className="-translate-x-1 pb-3.75">
+          <div className="sticky top-[calc(var(--header-height)+(--spacing(12)))] flex h-[calc(100dvh-var(--header-height)-(--spacing(36)))] w-60 flex-col rounded-xl border bg-background max-xl:hidden">
+            <div className="no-scrollbar grow overflow-x-clip overflow-y-auto overscroll-contain scroll-fade-effect-y">
+              <Sidebar
+                items={componentDocs.map((doc) => ({
+                  title: doc.metadata.title,
+                  href: `/components/${doc.slug}`,
+                }))}
+              />
+            </div>
           </div>
         </DocLeftCol>
 
