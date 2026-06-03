@@ -32,9 +32,9 @@ export function DocGrid({ className, ...props }: React.ComponentProps<"div">) {
 export function DocLeftCol({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"aside">) {
   return (
-    <div
+    <aside
       data-slot="doc-left-col"
       className={cn("max-lg:hidden", className)}
       {...props}
@@ -51,9 +51,9 @@ export function DocContentCol(
 export function DocRightCol({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"aside">) {
   return (
-    <div
+    <aside
       data-slot="doc-right-col"
       className={cn("max-lg:hidden", className)}
       {...props}

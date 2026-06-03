@@ -20,14 +20,10 @@ import { TOCInline } from "@/components/toc-inline"
 import { TOCMinimap } from "@/components/toc-minimap"
 import { DocKeyboardShortcuts } from "@/features/doc/components/doc-keyboard-shortcuts"
 import {
-  DocContainer,
   DocContentCol,
-  DocGrid,
-  DocLeftCol,
   DocRightCol,
 } from "@/features/doc/components/doc-layout"
 import { LLMCopyButtonWithViewOptions } from "@/features/doc/components/doc-page-actions"
-import { DocPageRoot } from "@/features/doc/components/doc-page-root"
 import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
 import {
   findNeighbour,
@@ -138,158 +134,156 @@ export default async function Page({
 
   return (
     <>
-      <JsonLdScript data={getPageJsonLd(doc)} />
+      <DocContentCol>
+        <JsonLdScript data={getPageJsonLd(doc)} />
 
-      <JsonLdScript
-        data={jsonLdBreadcrumbList([
-          {
-            name: "Home",
-            href: "/",
-          },
-          {
-            name: "Components",
-            href: "/components",
-          },
-          {
-            name: doc.metadata.title,
-            href: `/components/${slug}`,
-          },
-        ])}
-      />
+        <JsonLdScript
+          data={jsonLdBreadcrumbList([
+            {
+              name: "Home",
+              href: "/",
+            },
+            {
+              name: "Components",
+              href: "/components",
+            },
+            {
+              name: doc.metadata.title,
+              href: `/components/${slug}`,
+            },
+          ])}
+        />
 
-      <DocKeyboardShortcuts
-        previous={previous ? `/components/${previous.slug}` : null}
-        next={next ? `/components/${next.slug}` : null}
-      />
+        <DocKeyboardShortcuts
+          previous={previous ? `/components/${previous.slug}` : null}
+          next={next ? `/components/${next.slug}` : null}
+        />
 
-      <DocPageRoot>
-        <DocContainer>
-          <div className="screen-line-bottom h-px" />
+        <div className="screen-dashed-line-bottom after:opacity-80">
+          <div className="screen-line-bottom h-px overflow-x-clip" />
+        </div>
 
-          <div className="flex items-center justify-between p-2 pl-4">
-            <Button
-              className="h-7 gap-2 border-none px-0 text-muted-foreground hover:text-foreground hover:no-underline"
-              variant="link"
-              size="sm"
-              asChild
-            >
-              <Link href="/components">
-                <ArrowLeftIcon />
-                Components
-              </Link>
-            </Button>
+        <div className="flex items-center justify-between p-2 pl-4">
+          <Button
+            className="h-7 gap-2 border-none px-0 text-muted-foreground hover:text-foreground hover:no-underline"
+            variant="link"
+            size="sm"
+            asChild
+          >
+            <Link href="/components">
+              <ArrowLeftIcon />
+              Components
+            </Link>
+          </Button>
 
-            <div className="flex items-center gap-2">
-              <LLMCopyButtonWithViewOptions
-                markdownUrl={`/components/${doc.slug}.mdx`}
-                isComponent
-              />
+          <div className="flex items-center gap-2">
+            <LLMCopyButtonWithViewOptions
+              markdownUrl={`/components/${doc.slug}.mdx`}
+              isComponent
+            />
 
-              <DocShareMenu
-                title={doc.metadata.title}
-                url={`/components/${doc.slug}`}
-              />
+            <DocShareMenu
+              title={doc.metadata.title}
+              url={`/components/${doc.slug}`}
+            />
 
-              {previous && (
-                <Tooltip>
-                  <TooltipTrigger
-                    render={
-                      <Button
-                        className="size-7 border-none"
-                        variant="secondary"
-                        size="icon-sm"
-                        asChild
+            {previous && (
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      className="size-7 border-none"
+                      variant="secondary"
+                      size="icon-sm"
+                      asChild
+                    >
+                      <Link
+                        href={`/components/${previous.slug}`}
+                        aria-label="Previous Component"
                       >
-                        <Link
-                          href={`/components/${previous.slug}`}
-                          aria-label="Previous Component"
-                        >
-                          <ArrowLeftIcon />
-                        </Link>
-                      </Button>
-                    }
-                  />
-                  <TooltipContent className="pr-2 pl-3">
-                    <div className="flex items-center gap-3">
-                      Previous Component
-                      <Kbd>
                         <ArrowLeftIcon />
-                      </Kbd>
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
-              )}
+                      </Link>
+                    </Button>
+                  }
+                />
+                <TooltipContent className="pr-2 pl-3">
+                  <div className="flex items-center gap-3">
+                    Previous Component
+                    <Kbd>
+                      <ArrowLeftIcon />
+                    </Kbd>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            )}
 
-              {next && (
-                <Tooltip>
-                  <TooltipTrigger
-                    render={
-                      <Button
-                        className="size-7 border-none"
-                        variant="secondary"
-                        size="icon-sm"
-                        asChild
+            {next && (
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      className="size-7 border-none"
+                      variant="secondary"
+                      size="icon-sm"
+                      asChild
+                    >
+                      <Link
+                        href={`/components/${next.slug}`}
+                        aria-label="Next Component"
                       >
-                        <Link
-                          href={`/components/${next.slug}`}
-                          aria-label="Next Component"
-                        >
-                          <ArrowRightIcon />
-                        </Link>
-                      </Button>
-                    }
-                  />
-                  <TooltipContent className="pr-2 pl-3">
-                    <div className="flex items-center gap-3">
-                      Next Component
-                      <Kbd>
                         <ArrowRightIcon />
-                      </Kbd>
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
-              )}
-            </div>
+                      </Link>
+                    </Button>
+                  }
+                />
+                <TooltipContent className="pr-2 pl-3">
+                  <div className="flex items-center gap-3">
+                    Next Component
+                    <Kbd>
+                      <ArrowRightIcon />
+                    </Kbd>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            )}
           </div>
+        </div>
 
-          <div className="screen-line-top screen-line-bottom py-px">
+        <div className="screen-dashed-line-top screen-dashed-line-bottom before:opacity-80 after:opacity-80">
+          <div className="screen-line-top screen-line-bottom overflow-x-clip py-px">
             <div className="h-4" />
           </div>
+        </div>
 
+        <div className="screen-dashed-line-bottom after:opacity-80">
           <h1
             data-slot="doc-title"
-            className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance"
+            className="screen-line-bottom overflow-x-clip px-4 text-3xl font-semibold tracking-tight text-balance"
           >
             {doc.metadata.title}
           </h1>
-        </DocContainer>
+        </div>
 
-        <DocGrid>
-          <DocLeftCol />
+        <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
+          <p className="text-muted-foreground">{doc.metadata.description}</p>
 
-          <DocContentCol>
-            <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
-              <p className="text-muted-foreground">
-                {doc.metadata.description}
-              </p>
+          <TOCInline className="lg:hidden" items={toc} />
 
-              <TOCInline className="lg:hidden" items={toc} />
+          <div>
+            <MDX code={doc.content} />
+          </div>
+        </Prose>
 
-              <div>
-                <MDX code={doc.content} />
-              </div>
-            </Prose>
+        <div className="screen-dashed-line-top before:opacity-80">
+          <div className="screen-line-top h-4 overflow-x-clip" />
+        </div>
+      </DocContentCol>
 
-            <div className="screen-line-top h-4" />
-          </DocContentCol>
-
-          <DocRightCol>
-            <div className="sticky top-[calc(var(--doc-cols-top,0)+(--spacing(3)))] translate-x-2 translate-y-3 opacity-0 in-data-doc-cols-ready:opacity-100">
-              <TOCMinimap items={toc} />
-            </div>
-          </DocRightCol>
-        </DocGrid>
-      </DocPageRoot>
+      <DocRightCol>
+        <div className="sticky top-[calc(var(--doc-cols-top,0)+(--spacing(3)))] translate-x-2 opacity-0 in-data-doc-cols-ready:opacity-100">
+          <TOCMinimap items={toc} />
+        </div>
+      </DocRightCol>
     </>
   )
 }

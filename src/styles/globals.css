@@ -169,26 +169,42 @@
 }
 
 @utility screen-line-top {
-  @apply relative before:absolute before:top-0 before:left-[-100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-line;
+  @apply relative;
+  &:before {
+    @apply absolute top-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
+    content: "";
+  }
 }
 
 @utility screen-dashed-line-top {
-  @apply relative before:absolute before:top-0 before:left-[-100vw] before:-z-1 before:h-px before:w-[200vw] before:border-t before:border-dashed before:border-line;
+  @apply screen-line-top;
+  &:before {
+    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_60%,transparent_40%)] bg-size-[8px_1px] bg-repeat-x;
+    content: "";
+  }
 }
 
 @utility screen-line-bottom {
-  @apply relative after:absolute after:bottom-0 after:left-[-100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-line;
+  @apply relative;
+  &:after {
+    @apply absolute bottom-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
+    content: "";
+  }
 }
 
 @utility screen-dashed-line-bottom {
-  @apply relative after:absolute after:bottom-0 after:left-[-100vw] after:-z-1 after:h-px after:w-[200vw] after:border-b after:border-dashed after:border-line;
+  @apply screen-line-bottom;
+  &:after {
+    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_60%,transparent_40%)] bg-size-[8px_1px] bg-repeat-x;
+    content: "";
+  }
 }
 
 @utility step {
   @apply max-md:pl-10;
   counter-increment: step;
 
-  &::before {
+  &:before {
     @apply absolute inline-flex size-6 items-center justify-center rounded-lg bg-muted text-center indent-0 text-[0.8125rem]/6 font-normal text-foreground max-md:left-0 md:-ml-10;
     content: counter(step);
   }
