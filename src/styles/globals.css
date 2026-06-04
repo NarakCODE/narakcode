@@ -386,6 +386,10 @@
   --chart-marker-foreground: oklch(0.3 0.01 260);
   --chart-ring-background: oklch(0.9 0.005 260 / 0.25);
   --chart-label: oklch(0.45 0.01 260);
+
+  /* Layout */
+  --header-height: --spacing(14);
+  --fade-bottom-height: --spacing(24);
 }
 
 .dark {
