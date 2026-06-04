@@ -4,17 +4,106 @@
 
 "use client"
 
-import { memo, useEffect, useRef } from "react"
+import { memo, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion } from "motion/react"
+import { useHotkeys } from "react-hotkeys-hook"
+
+import { cn } from "@/lib/utils"
+import { Kbd } from "@/components/ui/kbd"
+import { Button } from "@/components/base/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/base/ui/tooltip"
+
+import type { SidebarIconHandle } from "./sidebar-icon"
+import { SidebarIcon } from "./sidebar-icon"
+
+const DEFAULT_SIDEBAR_OPEN = true
+
+export function Sidebar({ children }: { children: React.ReactNode }) {
+  const [isOpen, setIsOpen] = useState(DEFAULT_SIDEBAR_OPEN)
+
+  const sidebarIconref = useRef<SidebarIconHandle>(null)
+
+  useHotkeys("s", () => setIsOpen((prev) => !prev))
+
+  useEffect(() => {
+    if (isOpen) {
+      sidebarIconref.current?.startAnimation()
+    } else {
+      sidebarIconref.current?.stopAnimation()
+    }
+  }, [isOpen])
+
+  return (
+    <div
+      className={cn(
+        "[--sidebar-width:--spacing(60)]",
+        "[--sidebar-radius:var(--radius-xl)]",
+        "[--sidebar-trigger-inset:--spacing(1.5)]",
+        "[--sidebar-trigger-radius:calc(var(--sidebar-radius)-var(--sidebar-trigger-inset)+1px)]",
+        "[--top-offset:calc(var(--header-height)+(--spacing(12))+(--spacing(0.75)))]",
+        "sticky top-(--top-offset) isolate flex flex-col max-xl:hidden"
+      )}
+    >
+      <div
+        className="pointer-events-none absolute top-(--sidebar-trigger-inset) left-(--sidebar-trigger-inset) flex size-7 rounded-(--sidebar-trigger-radius) border"
+        aria-hidden
+      />
+
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              className="absolute top-(--sidebar-trigger-inset) left-(--sidebar-trigger-inset) z-10 size-7 rounded-(--sidebar-trigger-radius) border-none"
+              variant="ghost"
+              size="icon-sm"
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
+              <SidebarIcon
+                ref={sidebarIconref}
+                initial={DEFAULT_SIDEBAR_OPEN ? "animate" : "normal"}
+              />
+            </Button>
+          }
+        />
+        <TooltipContent className="pr-2 pl-3" side="right">
+          <div className="flex items-center gap-3">
+            Toggle Sidebar
+            <Kbd>S</Kbd>
+          </div>
+        </TooltipContent>
+      </Tooltip>
+
+      <div
+        data-open={isOpen}
+        className={cn(
+          "flex flex-col rounded-(--sidebar-radius) border bg-background",
+          "h-[calc(100svh-var(--top-offset)-var(--fade-bottom-height))] w-(--sidebar-width)",
+          "-translate-x-[calc(var(--sidebar-width)-1px)] data-open:translate-x-0",
+          "transition-[translate] duration-350 ease-[cubic-bezier(0.24,0.88,0.28,0.92)]"
+        )}
+        tabIndex={isOpen ? 0 : -1}
+        aria-hidden={!isOpen}
+      >
+        <div className="no-scrollbar grow overflow-x-clip overflow-y-auto overscroll-contain scroll-fade-effect-y pt-10.25">
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 type MenuItem = {
   title: string
   href: string
 }
 
-export function Sidebar({ items }: { items: MenuItem[] }) {
+export function SidebarContent({ items }: { items: MenuItem[] }) {
   const pathname = usePathname()
 
   const itemActiveRef = useRef<HTMLAnchorElement | null>(null)
@@ -55,19 +144,17 @@ const lineVariants = {
   hover: { width: 40 },
 }
 
-type SidebarMenuItemProps = MenuItem & {
-  ref?: React.Ref<HTMLAnchorElement> | undefined
-  isActive?: boolean
-  isLast?: boolean
-}
-
 const SidebarMenuItem = memo(function SidebarMenuItem({
   ref,
   title,
   href,
   isActive = false,
   isLast = false,
-}: SidebarMenuItemProps) {
+}: MenuItem & {
+  ref?: React.Ref<HTMLAnchorElement>
+  isActive?: boolean
+  isLast?: boolean
+}) {
   return (
     <>
       <MotionLink

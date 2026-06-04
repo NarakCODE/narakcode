@@ -140,7 +140,7 @@ export default function RootLayout({
         <JsonLdScript data={getWebSiteJsonLd()} />
       </head>
 
-      <body className="[--header-height:--spacing(14)]">
+      <body>
         <Providers>
           <NuqsAdapter>{children}</NuqsAdapter>
         </Providers>
