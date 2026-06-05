@@ -1,6 +1,6 @@
 "use client"
 
-import { forwardRef, useImperativeHandle } from "react"
+import { useImperativeHandle } from "react"
 import { motion, useAnimation } from "motion/react"
 
 export type ChevronsUpDownIconHandle = {
@@ -8,14 +8,16 @@ export type ChevronsUpDownIconHandle = {
   stopAnimation: () => void
 }
 
-export type ChevronsUpDownIconProps = React.ComponentProps<"svg"> & {
+export type ChevronsUpDownIconProps = React.ComponentPropsWithoutRef<"svg"> & {
+  ref?: React.Ref<ChevronsUpDownIconHandle>
   duration?: number
 }
 
-const ChevronsUpDownIcon = forwardRef<
-  ChevronsUpDownIconHandle,
-  ChevronsUpDownIconProps
->(({ duration = 0.3, ...props }, ref) => {
+export function ChevronsUpDownIcon({
+  ref,
+  duration = 0.3,
+  ...props
+}: ChevronsUpDownIconProps) {
   const controls = useAnimation()
 
   useImperativeHandle(ref, () => {
@@ -73,8 +75,4 @@ const ChevronsUpDownIcon = forwardRef<
       />
     </svg>
   )
-})
-
-ChevronsUpDownIcon.displayName = "ChevronsUpDownIcon"
-
-export { ChevronsUpDownIcon }
+}
