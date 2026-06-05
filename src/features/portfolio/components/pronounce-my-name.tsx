@@ -33,7 +33,7 @@ export function PronounceMyName({
   return (
     <button
       className={cn(
-        "relative flex touch-manipulation items-center justify-center text-muted-foreground transition-[color,scale] select-none hover:text-foreground active:scale-[0.9]",
+        "relative flex touch-manipulation items-center justify-center text-muted-foreground transition-[color,scale] will-change-[scale] select-none hover:text-foreground active:scale-[0.9]",
         className
       )}
       onClick={handlePlayClick}
