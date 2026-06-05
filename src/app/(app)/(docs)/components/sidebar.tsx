@@ -44,22 +44,21 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
       className={cn(
         "[--sidebar-width:--spacing(60)]",
         "[--sidebar-radius:var(--radius-xl)]",
-        "[--sidebar-trigger-inset:--spacing(1.5)]",
-        "[--sidebar-trigger-radius:calc(var(--sidebar-radius)-var(--sidebar-trigger-inset)+1px)]",
-        "[--top-offset:calc(var(--header-height)+(--spacing(12))+(--spacing(0.75)))]",
-        "sticky top-(--top-offset) isolate flex flex-col max-xl:hidden"
+        "[--sidebar-top:calc(var(--header-height)+(--spacing(12))+(--spacing(0.75)))]",
+        "sticky top-(--sidebar-top) isolate flex flex-col max-xl:hidden"
       )}
     >
-      <div
-        className="pointer-events-none absolute top-(--sidebar-trigger-inset) left-(--sidebar-trigger-inset) flex size-7 rounded-(--sidebar-trigger-radius) border"
-        aria-hidden
-      />
-
       <Tooltip>
         <TooltipTrigger
           render={
             <Button
-              className="absolute top-(--sidebar-trigger-inset) left-(--sidebar-trigger-inset) z-10 size-7 rounded-(--sidebar-trigger-radius) border-none"
+              data-sidebar-open={isOpen}
+              className={cn(
+                "[--trigger-inset:--spacing(1.5)]",
+                "[--trigger-radius:calc(var(--sidebar-radius)-var(--trigger-inset)+1px)]",
+                "absolute top-(--trigger-inset) left-(--trigger-inset) z-10 size-7 rounded-(--trigger-radius) border-none",
+                "data-[sidebar-open=false]:inset-ring-1 data-[sidebar-open=false]:inset-ring-border"
+              )}
               variant="ghost"
               size="icon-sm"
               onClick={() => setIsOpen((prev) => !prev)}
@@ -83,7 +82,7 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
         data-open={isOpen}
         className={cn(
           "flex flex-col rounded-(--sidebar-radius) border bg-background",
-          "h-[calc(100svh-var(--top-offset)-var(--fade-bottom-height))] w-(--sidebar-width)",
+          "h-[calc(100svh-var(--sidebar-top)-var(--fade-bottom-height))] w-(--sidebar-width)",
           "-translate-x-[calc(var(--sidebar-width)-1px)] data-open:translate-x-0",
           "transition-[translate] duration-350 ease-[cubic-bezier(0.24,0.88,0.28,0.92)]"
         )}
