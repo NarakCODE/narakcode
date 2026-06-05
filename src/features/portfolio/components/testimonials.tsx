@@ -20,11 +20,9 @@ import {
   TestimonialAvatarImg,
   TestimonialAvatarRing,
   TestimonialQuote,
-  TestimonialVerifiedBadge,
 } from "@/registry/transformed/components/testimonial"
 import { TestimonialSpotlight } from "@/registry/transformed/components/testimonial-spotlight"
 import { Twemoji } from "@/registry/transformed/components/twemoji/twemoji"
-import { VerifiedIcon } from "@/features/portfolio/components/verified-icon"
 import {
   TESTIMONIALS_1,
   TESTIMONIALS_2,
@@ -126,7 +124,7 @@ function TestimonialItem({
   authorTagline,
   url,
   quote,
-  isVerified,
+  // isVerified,
 }: TestimonialType) {
   return (
     <Testimonial className="relative">
@@ -147,11 +145,11 @@ function TestimonialItem({
             <span className="absolute inset-0" aria-hidden />
             {authorName}
           </a>
-          {isVerified && (
+          {/* {isVerified && (
             <TestimonialVerifiedBadge className="text-info">
               <VerifiedIcon />
             </TestimonialVerifiedBadge>
-          )}
+          )} */}
         </TestimonialAuthorName>
         <TestimonialAuthorTagline>{authorTagline}</TestimonialAuthorTagline>
       </TestimonialAuthor>
