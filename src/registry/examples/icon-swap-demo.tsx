@@ -25,7 +25,7 @@ export default function IconSwapDemo() {
   return (
     <div className="flex flex-col items-center gap-4">
       <Button
-        className="relative"
+        className="relative will-change-transform"
         variant="outline"
         size="icon-sm"
         aria-label={icon}

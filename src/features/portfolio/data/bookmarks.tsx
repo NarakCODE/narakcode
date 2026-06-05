@@ -106,6 +106,12 @@ export const BOOKMARKS: Bookmark[] = [
     author: "Aurora Scharff",
     bookmarkedAt: "2026-05-30",
   },
+  {
+    title: "Details that make interfaces feel better",
+    url: "https://interfaces.dev/magazine/issues/details-that-make-interfaces-feel-better",
+    author: "Jakub Krehel",
+    bookmarkedAt: "2026-06-05",
+  },
 ]
 
 function Circle() {

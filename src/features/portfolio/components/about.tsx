@@ -24,7 +24,7 @@ export function About() {
         </PanelTitle>
       </PanelHeader>
 
-      <PanelContent className="screen-line-bottom">
+      <PanelContent className="screen-line-bottom py-6">
         <Prose>
           <Markdown>{USER.about}</Markdown>
         </Prose>

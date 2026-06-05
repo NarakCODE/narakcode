@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react"
 import { motion } from "motion/react"
 
+import { cn } from "@/lib/utils"
 import type { CopyState } from "@/hooks/use-copy-to-clipboard"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { Button } from "@/components/ui/button"
@@ -78,6 +79,7 @@ export type CopyButtonProps = ComponentProps<typeof Button> & {
 } & Omit<CopyStateIconProps, "state">
 
 export function CopyButton({
+  className,
   size = "icon",
   children,
   text,
@@ -96,6 +98,7 @@ export function CopyButton({
 
   return (
     <Button
+      className={cn("will-change-transform", className)}
       size={size}
       onClick={(e) => {
         copy(text)
