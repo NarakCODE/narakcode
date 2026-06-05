@@ -81,6 +81,11 @@ export function Overview() {
           </IntroItemContent>
         </IntroItem>
       </PanelContent>
+
+      <div
+        className="pointer-events-none absolute top-px bottom-0 left-1/2 -z-1 w-px -translate-x-2.25 bg-[linear-gradient(to_bottom,var(--line)_60%,transparent_40%)] bg-size-[1px_8px] bg-repeat-y opacity-80 max-sm:hidden"
+        aria-hidden
+      />
     </Panel>
   )
 }
