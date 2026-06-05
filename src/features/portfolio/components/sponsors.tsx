@@ -4,7 +4,7 @@ import { ArrowRightIcon } from "lucide-react"
 
 import { SPONSORSHIP_URL, UTM_PARAMS } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { PlusIcon } from "@/components/animated-icons/plus"
+import { PlusIcon } from "@/components/animated-icons/plus-icon"
 import { Button } from "@/components/base/ui/button"
 import { SponsorItem } from "@/features/sponsor/components/sponsor-item"
 import { SPONSORS } from "@/features/sponsor/data"
