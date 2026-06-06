@@ -1,6 +1,5 @@
 import fs from "node:fs"
 import path from "node:path"
-
 import type { Browser } from "puppeteer"
 import puppeteer from "puppeteer"
 
@@ -105,7 +104,7 @@ async function main() {
     await captureScreenshot({
       browser,
       name: "screenshot",
-      url: `${url}`,
+      url: `${url}/og`,
       size: "og-image",
       themes: ["light", "dark"],
       type: "png",
