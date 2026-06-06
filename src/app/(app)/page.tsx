@@ -16,7 +16,6 @@ import {
   InsightsSkeleton,
 } from "@/features/portfolio/components/insights"
 import { Overview } from "@/features/portfolio/components/overview"
-import { ProfileActivityMosaicCover } from "@/features/portfolio/components/profile-activity-mosaic-cover"
 import { ProfileHeader } from "@/features/portfolio/components/profile-header"
 import { Projects } from "@/features/portfolio/components/projects"
 import { SocialLinks } from "@/features/portfolio/components/social-links-v2"
@@ -42,7 +41,6 @@ export default function HomePage() {
 
       <div className="[--cover-height:162px] [--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
         <div className="mx-auto md:max-w-3xl">
-          <ProfileActivityMosaicCover />
           <ProfileHeader />
           <Separator />
 
