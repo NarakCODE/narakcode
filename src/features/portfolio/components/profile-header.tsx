@@ -2,37 +2,31 @@ import { AvatarLights } from "@/features/portfolio/components/avatar-lights"
 import { USER } from "@/features/portfolio/data/user"
 
 import { AvatarLightsToggle } from "./avatar-lights-toggle"
+import { ChanhDaiMarkIsometric } from "./chanhdai-mark-isometric"
 import { FlipSentences } from "./flip-sentences"
 import { PronounceMyName } from "./pronounce-my-name"
 import { VerifiedIcon } from "./verified-icon"
 
 export function ProfileHeader() {
   return (
-    <div className="screen-line-bottom flex border-x border-line">
-      <div className="shrink-0 border-r border-line">
-        <AvatarLightsToggle className="group/avatar-lights-toggle mx-0.5 my-0.75 flex outline-none">
-          <AvatarLights
-            className="ring-border ring-offset-background group-focus-visible/avatar-lights-toggle:ring-1 group-focus-visible/avatar-lights-toggle:ring-offset-2"
-            variants={USER.avatarVariants}
-          />
-        </AvatarLightsToggle>
+    <div className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-y-clip border-x border-line">
+      <div className="col-span-2 p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
+        <ChanhDaiMarkIsometric />
       </div>
 
-      <div className="flex flex-1 flex-col">
-        {/* <div className="flex grow items-end pb-1 pl-4">
-          <div
-            className="line-clamp-1 font-mono text-xs text-zinc-300 select-none max-sm:hidden dark:text-zinc-800"
-            aria-hidden
-          >
-            {"text-3xl "}
-            <span className="inline dark:hidden">text-zinc-950</span>
-            <span className="hidden dark:inline">text-zinc-50</span>
-            {" font-medium"}
-          </div>
-        </div> */}
-        <div className="grow" />
+      <div className="flex flex-col sm:row-span-2 sm:row-start-1">
+        <div className="screen-line-top mt-auto shrink-0 border-r border-line">
+          <AvatarLightsToggle className="group/avatar-lights-toggle mx-0.5 my-0.75 flex outline-none">
+            <AvatarLights
+              className="ring-border ring-offset-background group-focus-visible/avatar-lights-toggle:ring-1 group-focus-visible/avatar-lights-toggle:ring-offset-2"
+              variants={USER.avatarVariants}
+            />
+          </AvatarLightsToggle>
+        </div>
+      </div>
 
-        <div className="border-t border-line">
+      <div className="flex flex-col">
+        <div className="mt-auto border-t border-line">
           <div className="flex items-center gap-2 pl-4">
             <h1 className="-translate-y-px text-3xl font-semibold tracking-tight">
               {USER.displayName}
