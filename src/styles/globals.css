@@ -179,7 +179,7 @@
 @utility screen-dashed-line-top {
   @apply screen-line-top;
   &:before {
-    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_60%,transparent_40%)] bg-size-[8px_1px] bg-repeat-x;
+    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
     content: "";
   }
 }
@@ -195,7 +195,7 @@
 @utility screen-dashed-line-bottom {
   @apply screen-line-bottom;
   &:after {
-    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_60%,transparent_40%)] bg-size-[8px_1px] bg-repeat-x;
+    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
     content: "";
   }
 }
