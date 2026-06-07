@@ -1,3 +1,5 @@
+import type { Route } from "next"
+
 import { DocGrid, DocLeftCol } from "@/features/doc/components/doc-layout"
 import { DocPageRoot } from "@/features/doc/components/doc-page-root"
 import { getDocsByCategory } from "@/features/doc/data/documents"
@@ -25,7 +27,7 @@ export default function ComponentDocsLayout({
             <SidebarContent
               items={componentDocs.map((doc) => ({
                 title: doc.metadata.title,
-                href: `/components/${doc.slug}`,
+                href: `/components/${doc.slug}` as Route,
               }))}
             />
           </Sidebar>

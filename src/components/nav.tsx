@@ -1,4 +1,5 @@
 import React from "react"
+import type { Route } from "next"
 import Link from "next/link"
 
 import type { NavItem } from "@/types/nav"
@@ -10,7 +11,7 @@ export function Nav({
   className,
   exactMatch = false,
 }: {
-  items: NavItem[]
+  items: NavItem<Route>[]
   activeId?: string
   className?: string
   exactMatch?: boolean
@@ -21,7 +22,7 @@ export function Nav({
       className={cn("flex items-center gap-4", className)}
     >
       {items.map(({ title, href }) => {
-        const active = exactMatch
+        const isActive = exactMatch
           ? activeId === href
           : activeId === href ||
             (href === "/" // Home page
@@ -29,7 +30,11 @@ export function Nav({
               : activeId?.startsWith(href))
 
         return (
-          <NavItem key={href} href={href} active={active}>
+          <NavItem
+            key={href}
+            href={href}
+            aria-current={isActive ? "page" : undefined}
+          >
             {title}
           </NavItem>
         )
@@ -40,16 +45,12 @@ export function Nav({
 
 export function NavItem({
   className,
-  active,
   ...props
-}: React.ComponentProps<typeof Link> & {
-  active?: boolean
-}) {
+}: React.ComponentProps<typeof Link>) {
   return (
     <Link
-      data-active={active}
       className={cn(
-        "text-sm font-medium text-muted-foreground transition-[color] hover:text-foreground data-active:text-foreground",
+        "text-sm font-medium text-muted-foreground transition-[color] hover:text-foreground aria-[current=page]:text-foreground",
         className
       )}
       {...props}

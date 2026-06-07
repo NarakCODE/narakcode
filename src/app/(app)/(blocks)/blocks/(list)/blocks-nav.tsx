@@ -1,18 +1,19 @@
 "use client"
 
+import type { Route } from "next"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import type { NavItem } from "@/types/nav"
 import { blockCategories } from "@/config/registry"
 
-const NAV_ITEMS: NavItem[] = [
+const NAV_ITEMS: NavItem<Route>[] = [
   {
     href: "/blocks",
     title: "All",
   },
   ...blockCategories.map((category) => ({
-    href: `/blocks/${category.name}`,
+    href: `/blocks/${category.name}` as Route,
     title: category.title,
   })),
 ]
@@ -26,8 +27,8 @@ export function BlocksNav() {
         <Link
           key={href}
           href={href}
-          data-active={href === pathname}
-          className="border-r border-line p-4 font-mono text-[.8125rem]/4 font-medium tracking-wide text-muted-foreground uppercase transition-[color,background-color] ease-out hover:bg-accent-muted data-active:bg-accent-muted data-active:text-foreground"
+          aria-current={href === pathname ? "page" : undefined}
+          className="border-r border-line p-4 font-mono text-[.8125rem]/4 font-medium tracking-wide text-muted-foreground uppercase transition-[color,background-color] ease-out hover:bg-accent-muted aria-[current=page]:bg-accent-muted aria-[current=page]:text-foreground"
         >
           {title}
         </Link>

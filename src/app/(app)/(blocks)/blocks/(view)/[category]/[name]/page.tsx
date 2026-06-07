@@ -1,5 +1,5 @@
 import { cache } from "react"
-import type { Metadata } from "next"
+import type { Metadata, Route } from "next"
 import Link from "next/link"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 
@@ -114,8 +114,8 @@ export default async function BlockViewPage({
       />
 
       <DocKeyboardShortcuts
-        previous={previous ? `/blocks/${previous}` : null}
-        next={next ? `/blocks/${next}` : null}
+        previous={previous ? (`/blocks/${previous}` as Route) : null}
+        next={next ? (`/blocks/${next}` as Route) : null}
       />
 
       <div className="screen-line-bottom flex h-px" />

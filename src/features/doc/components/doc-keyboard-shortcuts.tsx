@@ -1,5 +1,6 @@
 "use client"
 
+import type { Route } from "next"
 import { useRouter } from "next/navigation"
 import { useHotkeys } from "react-hotkeys-hook"
 
@@ -9,13 +10,13 @@ export function DocKeyboardShortcuts({
   previous,
   next,
 }: {
-  previous: string | null
-  next: string | null
+  previous: Route | null
+  next: Route | null
 }) {
   const router = useRouter()
 
   const navigate = (
-    href: string | null,
+    href: Route | null,
     direction: "previous" | "next",
     keys: string
   ) => {

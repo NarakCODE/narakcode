@@ -1,3 +1,5 @@
+import type { Route } from "next"
+
 import type { NavItem } from "@/types/nav"
 import { USER } from "@/features/portfolio/data/user"
 
@@ -14,7 +16,7 @@ export const META_THEME_COLORS = {
   dark: "#09090b",
 }
 
-export const MAIN_NAV: NavItem[] = [
+export const MAIN_NAV: NavItem<Route>[] = [
   {
     title: "Components",
     href: "/components",
@@ -33,7 +35,7 @@ export const MAIN_NAV: NavItem[] = [
   },
 ]
 
-export const MOBILE_NAV: NavItem[] = [
+export const MOBILE_NAV: NavItem<Route>[] = [
   {
     title: "Home",
     href: "/",
