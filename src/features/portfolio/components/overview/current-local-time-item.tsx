@@ -2,6 +2,8 @@
 
 import { useEffect, useId, useState } from "react"
 
+import { InlineScript } from "@/components/inline-script"
+
 import { IntroItem, IntroItemContent, IntroItemIcon } from "./intro-item"
 
 export function CurrentLocalTimeItem({ timeZone }: CurrentLocalTimeItemProps) {
@@ -65,10 +67,7 @@ export function CurrentLocalTimeItem({ timeZone }: CurrentLocalTimeItemProps) {
         </span>
       </IntroItemContent>
 
-      <script
-        dangerouslySetInnerHTML={{ __html: getInlineScript(timeZone, ids) }}
-        suppressHydrationWarning
-      />
+      <InlineScript html={getInlineScript(timeZone, ids)} />
     </IntroItem>
   )
 }
