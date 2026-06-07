@@ -19,6 +19,7 @@ const DOT_COLOR = {
   },
 }
 
+/** @deprecated */
 export function ProfileCover() {
   const containerRef = useRef<HTMLDivElement>(null)
 
