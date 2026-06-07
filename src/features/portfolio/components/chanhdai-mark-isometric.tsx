@@ -27,10 +27,11 @@ export function ChanhDaiMarkIsometric() {
       </defs>
 
       <g stroke="var(--color-line)" strokeWidth="1" strokeDasharray="4 2">
-        <path d="M-782.39 676.57L949.67 -323.41" />
+        {/* <path d="M-782.39 676.57L949.67 -323.41" /> */}
         <path d="M-477.55 756.57L1254.51 -243.41" />
         <path d="M1143.65 692.58L-588.39 -307.42" />
         <path d="M977.37 788.58L-754.67 -211.42" />
+        {/* <path d="M1337.65 612.57L-394.41 -387.41" /> */}
       </g>
 
       <g fill="var(--background)" fillRule="evenodd" clipRule="evenodd">
