@@ -14,9 +14,9 @@ export async function GET() {
 
   card
     .addName(USER.lastName, USER.firstName)
-    .addPhoneNumber(decodePhoneNumber(USER.phoneNumber))
+    .addPhoneNumber(decodePhoneNumber(USER.phoneNumberB64))
     .addAddress(USER.address)
-    .addEmail(decodeEmail(USER.email))
+    .addEmail(decodeEmail(USER.emailB64))
     .addURL(USER.website)
 
   const photo = await getVCardPhoto(USER.avatar)
