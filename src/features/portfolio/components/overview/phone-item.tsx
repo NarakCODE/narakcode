@@ -1,5 +1,6 @@
 "use client"
 
+import { useId } from "react"
 import { copyToClipboardWithEvent } from "@/utils/copy"
 import { decodePhoneNumber, formatPhoneNumber } from "@/utils/string"
 import { useTiks } from "@rexa-developer/tiks/react"
@@ -17,14 +18,16 @@ import {
   IntroItemIcon,
   IntroItemLink,
 } from "./intro-item"
+import { RevealEncodedTextScript } from "./reveal-encoded-text"
 
 type PhoneItemProps = {
-  phoneNumber: string
+  phoneNumberB64: string
 }
 
-export function PhoneItem({ phoneNumber }: PhoneItemProps) {
+export function PhoneItem({ phoneNumberB64 }: PhoneItemProps) {
+  const id = useId()
   const isClient = useIsClient()
-  const phoneNumberDecoded = decodePhoneNumber(phoneNumber)
+  const phoneNumberDecoded = decodePhoneNumber(phoneNumberB64)
   const phoneNumberFormatted = formatPhoneNumber(phoneNumberDecoded)
 
   const { success } = useTiks()
@@ -48,8 +51,12 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
       </IntroItemIcon>
 
       <IntroItemContent className="flex">
-        <IntroItemLink href={isClient ? `tel:${phoneNumberDecoded}` : "#"}>
-          {isClient ? phoneNumberFormatted : "+84 123 456 789"}
+        <IntroItemLink
+          id={id}
+          href={isClient ? `tel:${phoneNumberDecoded}` : ""}
+          suppressHydrationWarning
+        >
+          {isClient ? phoneNumberFormatted : ""}
         </IntroItemLink>
       </IntroItemContent>
 
@@ -69,6 +76,8 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
           }}
         />
       </div>
+
+      <RevealEncodedTextScript id={id} textB64={btoa(phoneNumberFormatted)} />
     </IntroItem>
   )
 }

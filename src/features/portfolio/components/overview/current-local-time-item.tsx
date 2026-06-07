@@ -1,79 +1,29 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { TZDate, tzOffset } from "@date-fns/tz"
-import { format } from "date-fns"
-import {
-  Clock1Icon,
-  Clock2Icon,
-  Clock3Icon,
-  Clock4Icon,
-  Clock5Icon,
-  Clock6Icon,
-  Clock7Icon,
-  Clock8Icon,
-  Clock9Icon,
-  Clock10Icon,
-  Clock11Icon,
-  Clock12Icon,
-  type LucideIcon,
-} from "lucide-react"
+import { useEffect, useId, useState } from "react"
 
 import { IntroItem, IntroItemContent, IntroItemIcon } from "./intro-item"
 
-const CLOCK_ICONS: Record<number, LucideIcon> = {
-  1: Clock1Icon,
-  2: Clock2Icon,
-  3: Clock3Icon,
-  4: Clock4Icon,
-  5: Clock5Icon,
-  6: Clock6Icon,
-  7: Clock7Icon,
-  8: Clock8Icon,
-  9: Clock9Icon,
-  10: Clock10Icon,
-  11: Clock11Icon,
-  12: Clock12Icon,
-}
-
-type CurrentLocalTimeItemProps = {
-  timeZone: string
-}
-
 export function CurrentLocalTimeItem({ timeZone }: CurrentLocalTimeItemProps) {
+  const uid = useId()
+  const ids = {
+    time: `lt-time-${uid}`,
+    diff: `lt-diff-${uid}`,
+    hands: `lt-hands-${uid}`,
+  }
+
   const [timeString, setTimeString] = useState<string>("")
   const [diffText, setDiffText] = useState<string>("")
-  const [ClockIcon, setClockIcon] = useState<LucideIcon>(Clock12Icon)
+  // Deterministic 12:00 for SSR; the inline script corrects it before paint.
+  const [handsPath, setHandsPath] = useState<string>(() =>
+    clockHandsPath(12, 0)
+  )
 
   useEffect(() => {
     const updateTime = () => {
-      const now = new Date()
-
-      // Get time in target timezone using TZDate
-      const targetTime = TZDate.tz(timeZone)
-      const formattedTime = format(targetTime, "HH:mm")
-      setTimeString(formattedTime)
-
-      // Get hour for clock icon (1-12)
-      const hour = targetTime.getHours()
-      const hour12 = hour % 12 || 12
-      setClockIcon(CLOCK_ICONS[hour12])
-
-      // Calculate timezone offset difference using tzOffset
-      const viewerOffset = -now.getTimezoneOffset() // in minutes
-      const targetOffset = tzOffset(timeZone, now) // in minutes
-
-      const minutesDiff = Math.abs(targetOffset - viewerOffset)
-      const hoursDiff = minutesDiff / 60
-
-      let diff = ""
-      if (hoursDiff < 1) {
-        diff = " // same time"
-      } else {
-        const hours = Math.floor(hoursDiff)
-        const isAhead = targetOffset > viewerOffset
-        diff = ` // ${hours}h ${isAhead ? "ahead" : "behind"}`
-      }
+      const { time, hour, minute, diff } = computeClock(timeZone)
+      setTimeString(time)
+      setHandsPath(clockHandsPath(hour, minute))
       setDiffText(diff)
     }
 
@@ -83,30 +33,121 @@ export function CurrentLocalTimeItem({ timeZone }: CurrentLocalTimeItemProps) {
     return () => clearInterval(interval)
   }, [timeZone])
 
-  if (!timeString) {
-    return (
-      <IntroItem>
-        <IntroItemIcon>
-          <Clock12Icon />
-        </IntroItemIcon>
-
-        <IntroItemContent>00:00</IntroItemContent>
-      </IntroItem>
-    )
-  }
-
   return (
     <IntroItem>
       <IntroItemIcon>
-        <ClockIcon />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path id={ids.hands} d={handsPath} suppressHydrationWarning />
+        </svg>
       </IntroItemIcon>
 
-      <IntroItemContent aria-label={`Local time: ${timeString}`}>
-        <span>{timeString}</span>
-        <span className="text-muted-foreground" aria-hidden="true">
+      <IntroItemContent>
+        <span id={ids.time} suppressHydrationWarning>
+          {timeString}
+        </span>
+        <span
+          id={ids.diff}
+          className="text-muted-foreground"
+          aria-hidden
+          suppressHydrationWarning
+        >
           {diffText}
         </span>
       </IntroItemContent>
+
+      <script
+        dangerouslySetInnerHTML={{ __html: getInlineScript(timeZone, ids) }}
+        suppressHydrationWarning
+      />
     </IntroItem>
   )
+}
+
+// Serialized via `.toString()` into the pre-hydration script, so it must stay
+// self-contained: globals and arguments only, no module-scope references.
+function clockHandsPath(hour: number, minute: number) {
+  const h = hour % 12
+  const round = (n: number) => Math.round(n * 1000) / 1000
+
+  const minuteAngle = (minute / 60) * 2 * Math.PI
+  const hourAngle = ((h + minute / 60) / 12) * 2 * Math.PI
+
+  const hx = round(12 + 3.6 * Math.sin(hourAngle))
+  const hy = round(12 - 3.6 * Math.cos(hourAngle))
+  const mx = round(12 + 6 * Math.sin(minuteAngle))
+  const my = round(12 - 6 * Math.cos(minuteAngle))
+
+  return `M12 12 L${hx} ${hy} M12 12 L${mx} ${my}`
+}
+
+// Self-contained (globals only) so it can be serialized via `.toString()` into
+// the pre-hydration script as well as called directly from the effect.
+function computeClock(timeZone: string) {
+  const now = new Date()
+
+  const time = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).format(now)
+  const hour = parseInt(time, 10)
+  const minute = parseInt(time.slice(3), 10)
+
+  // tz offset = (tz wall-clock instant) − (UTC wall-clock instant), each read
+  // back as a local Date. In minutes, positive = east of UTC.
+  const viewerOffset = -now.getTimezoneOffset()
+  const targetOffset =
+    (new Date(now.toLocaleString("en-US", { timeZone })).getTime() -
+      new Date(now.toLocaleString("en-US", { timeZone: "UTC" })).getTime()) /
+    60000
+  const hoursDiff = Math.abs(targetOffset - viewerOffset) / 60
+  const diff =
+    hoursDiff < 1
+      ? " // same time"
+      : ` // ${Math.floor(hoursDiff)}h ${targetOffset > viewerOffset ? "ahead" : "behind"}`
+
+  return { time, hour, minute, diff }
+}
+
+type CurrentLocalTimeItemProps = {
+  timeZone: string
+}
+
+type ClockIds = { time: string; diff: string; hands: string }
+
+// Shared `compute`/`handsPath` are passed as arguments rather than referenced
+// because this body is serialized via `.toString()` (globals + args only).
+function runClockScript(
+  timeZone: string,
+  ids: ClockIds,
+  compute: typeof computeClock,
+  handsPath: typeof clockHandsPath
+) {
+  try {
+    const { time, diff, hour, minute } = compute(timeZone)
+    const t = document.getElementById(ids.time)
+    if (t) t.textContent = time
+    const d = document.getElementById(ids.diff)
+    if (d) d.textContent = diff
+    const p = document.getElementById(ids.hands)
+    if (p) p.setAttribute("d", handsPath(hour, minute))
+  } catch {}
+}
+
+// Blocking inline script that paints the viewer-local clock before hydration
+// (Next.js "prevent flash before hydration"). Sharing `computeClock` with the
+// effect guarantees the pre-hydration value matches what React renders.
+function getInlineScript(timeZone: string, ids: ClockIds) {
+  return `(${runClockScript.toString()})(${JSON.stringify(timeZone)},${JSON.stringify(ids)},${computeClock.toString()},${clockHandsPath.toString()})`
 }

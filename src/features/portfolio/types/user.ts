@@ -16,9 +16,9 @@ export type User = {
   /** General location for display */
   address: string
   /** E.164 format, base64 encoded (https://t.io.vn/base64-string-converter) */
-  phoneNumber: string
+  phoneNumberB64: string
   /** base64 encoded (https://t.io.vn/base64-string-converter) */
-  email: string
+  emailB64: string
   /** Personal/homepage URL */
   website: string
   /** Primary/current role shown on profile */

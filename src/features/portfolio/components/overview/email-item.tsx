@@ -1,5 +1,6 @@
 "use client"
 
+import { useId } from "react"
 import { copyToClipboardWithEvent } from "@/utils/copy"
 import { decodeEmail } from "@/utils/string"
 import { useTiks } from "@rexa-developer/tiks/react"
@@ -17,14 +18,16 @@ import {
   IntroItemIcon,
   IntroItemLink,
 } from "./intro-item"
+import { RevealEncodedTextScript } from "./reveal-encoded-text"
 
 type EmailItemProps = {
-  email: string
+  emailB64: string
 }
 
-export function EmailItem({ email }: EmailItemProps) {
+export function EmailItem({ emailB64 }: EmailItemProps) {
+  const id = useId()
   const isClient = useIsClient()
-  const emailDecoded = decodeEmail(email)
+  const emailDecoded = decodeEmail(emailB64)
 
   const { success } = useTiks()
 
@@ -47,8 +50,12 @@ export function EmailItem({ email }: EmailItemProps) {
       </IntroItemIcon>
 
       <IntroItemContent className="flex">
-        <IntroItemLink href={isClient ? `mailto:${emailDecoded}` : "#"}>
-          {isClient ? emailDecoded : "name@example.com"}
+        <IntroItemLink
+          id={id}
+          href={isClient ? `mailto:${emailDecoded}` : ""}
+          suppressHydrationWarning
+        >
+          {isClient ? emailDecoded : ""}
         </IntroItemLink>
       </IntroItemContent>
 
@@ -68,6 +75,8 @@ export function EmailItem({ email }: EmailItemProps) {
           }}
         />
       </div>
+
+      <RevealEncodedTextScript id={id} textB64={emailB64} />
     </IntroItem>
   )
 }

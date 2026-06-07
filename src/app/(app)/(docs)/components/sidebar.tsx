@@ -5,6 +5,7 @@
 "use client"
 
 import { memo, useEffect, useRef, useState } from "react"
+import type { Route } from "next"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion } from "motion/react"
@@ -97,12 +98,12 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
   )
 }
 
-type MenuItem = {
+type MenuItem<T extends string = string> = {
   title: string
-  href: string
+  href: T
 }
 
-export function SidebarContent({ items }: { items: MenuItem[] }) {
+export function SidebarContent({ items }: { items: MenuItem<Route>[] }) {
   const pathname = usePathname()
 
   const itemActiveRef = useRef<HTMLAnchorElement | null>(null)
@@ -149,7 +150,7 @@ const SidebarMenuItem = memo(function SidebarMenuItem({
   href,
   isActive = false,
   isLast = false,
-}: MenuItem & {
+}: MenuItem<Route> & {
   ref?: React.Ref<HTMLAnchorElement>
   isActive?: boolean
   isLast?: boolean
@@ -158,7 +159,7 @@ const SidebarMenuItem = memo(function SidebarMenuItem({
     <>
       <MotionLink
         ref={ref}
-        data-active={isActive}
+        aria-current={isActive ? "page" : undefined}
         className="group relative flex h-px items-center gap-3 after:absolute after:top-1/2 after:left-0 after:size-full after:-translate-y-1/2 after:p-3.5"
         href={href}
         initial={false}
@@ -166,11 +167,11 @@ const SidebarMenuItem = memo(function SidebarMenuItem({
         whileHover="hover"
       >
         <motion.span
-          className="block h-px shrink-0 bg-foreground/20 transition-[background-color] ease-out group-hover:bg-foreground group-data-active:bg-foreground"
+          className="block h-px shrink-0 bg-foreground/20 transition-[background-color] ease-out group-hover:bg-foreground group-aria-[current=page]:bg-foreground"
           variants={lineVariants}
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
         />
-        <span className="text-sm whitespace-nowrap text-muted-foreground transition-[color] ease-out group-hover:text-foreground group-data-active:text-foreground">
+        <span className="text-sm whitespace-nowrap text-muted-foreground transition-[color] ease-out group-hover:text-foreground group-aria-[current=page]:text-foreground">
           {title}
         </span>
       </MotionLink>

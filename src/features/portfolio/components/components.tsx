@@ -1,3 +1,4 @@
+import type { Route } from "next"
 import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
@@ -44,7 +45,7 @@ export function Components() {
                 "md:nth-[3n+1]:screen-line-bottom"
               )}
             >
-              <ComponentItem href={`/components/${c.slug}`}>
+              <ComponentItem href={`/components/${c.slug}` as Route}>
                 <ComponentItemIcon>
                   <ComponentIcon variant={c.slug} />
                   {(c.metadata.new || c.metadata.updated) && (

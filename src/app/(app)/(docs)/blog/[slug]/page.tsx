@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Route } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getTableOfContents } from "fumadocs-core/content/toc"
@@ -146,8 +146,8 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
       />
 
       <DocKeyboardShortcuts
-        previous={previous ? `/blog/${previous.slug}` : null}
-        next={next ? `/blog/${next.slug}` : null}
+        previous={previous ? (`/blog/${previous.slug}` as Route) : null}
+        next={next ? (`/blog/${next.slug}` as Route) : null}
       />
 
       <DocPageRoot>

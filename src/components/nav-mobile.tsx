@@ -1,6 +1,7 @@
 "use client"
 
 import { useCallback, useState } from "react"
+import type { Route } from "next"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -14,7 +15,7 @@ import {
 } from "@/components/ui/popover"
 import { haptic } from "@/registry/lib/haptic"
 
-export function NavMobile({ items }: { items: NavItem[] }) {
+export function NavMobile({ items }: { items: NavItem<Route>[] }) {
   const [open, setOpen] = useState(false)
 
   const isDesktop = useMediaQuery("(min-width: 40rem)") // sm breakpoint
@@ -45,7 +46,7 @@ export function NavMobile({ items }: { items: NavItem[] }) {
       >
         <div className="flex flex-col">
           {items.map((link) => {
-            const active =
+            const isActive =
               pathname === link.href ||
               (link.href === "/" // Home page
                 ? ["/", "/index"].includes(pathname || "")
@@ -55,8 +56,8 @@ export function NavMobile({ items }: { items: NavItem[] }) {
               <Link
                 key={link.href}
                 href={link.href}
-                data-active={active}
-                className="rounded-lg px-3 py-1.5 text-base data-active:bg-accent"
+                aria-current={isActive ? "page" : undefined}
+                className="rounded-lg px-3 py-1.5 text-base aria-[current=page]:bg-accent"
                 onClick={() => handleOpenChange(false)}
               >
                 {link.title}
