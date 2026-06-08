@@ -112,6 +112,18 @@ export const BOOKMARKS: Bookmark[] = [
     author: "Jakub Krehel",
     bookmarkedAt: "2026-06-05",
   },
+  {
+    title: "A Clock That Doesn’t Snap",
+    url: "https://ethanniser.dev/blog/a-clock-that-doesnt-snap/",
+    author: "Ethan Niser",
+    bookmarkedAt: "2026-06-07",
+  },
+  {
+    title: "Making Software",
+    url: "https://www.makingsoftware.com",
+    author: "Dan Hollick",
+    bookmarkedAt: "2026-06-08",
+  },
 ]
 
 function Circle() {
