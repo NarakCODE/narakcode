@@ -20,7 +20,9 @@ export function SiteFooterBuiltBySpinner() {
       spinClassName="duration-[12s] motion-reduce:animate-none"
       renderChar={(char, index) =>
         shouldReduceMotion ? (
-          <span className="text-(--shimmering-color)">{char}</span>
+          <span className="text-(--shimmering-color)" suppressHydrationWarning>
+            {char}
+          </span>
         ) : (
           <motion.span
             // Re-render the character when the theme changes to restart the animation with the new colors
