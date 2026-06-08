@@ -4,6 +4,9 @@ import { useId } from "react"
 import type { Transition } from "motion/react"
 import { motion } from "motion/react"
 
+import { metalClickSound } from "@/lib/soundcn/metal-click"
+import { useSound } from "@/hooks/soundcn/use-sound"
+
 /**
  * Designed by ncdai on Figma with [Fast Isometric Plugin](https://www.figma.com/community/plugin/1249759048471403961).
  * Inspired by tailwindcss.com.
@@ -22,6 +25,8 @@ export function ChanhDaiMarkIsometric() {
     stiffness: 200,
   }
 
+  const [play] = useSound(metalClickSound)
+
   return (
     <motion.svg
       className="h-auto w-full overflow-visible [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]"
@@ -31,6 +36,7 @@ export function ChanhDaiMarkIsometric() {
       aria-hidden
       initial="normal"
       whileTap="pressed"
+      onTap={() => play()}
     >
       <defs>
         <pattern
