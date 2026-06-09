@@ -13,6 +13,8 @@ export function SiteFooter() {
   return (
     <footer className="max-w-screen overflow-x-clip px-2">
       <div className="screen-line-top mx-auto border-x border-line group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
+        <div className="screen-line-bottom h-1" />
+
         <dl className="flex flex-col gap-4 py-8 font-mono [&_dd]:text-sm [&_dt]:text-right [&_dt]:text-sm [&_dt]:text-muted-foreground">
           <Item>
             <dt>Crafted by</dt>
