@@ -1,7 +1,5 @@
-import { RssIcon } from "lucide-react"
-
 import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
-import { absoluteUrl, cn } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { getSocialLinkByName } from "@/features/portfolio/data/social-links-v2"
@@ -92,17 +90,6 @@ export function SiteFooter() {
         <div className="screen-line-top screen-line-bottom flex w-full before:z-1 after:z-1">
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-line bg-background px-4">
             <a
-              className="flex font-mono text-xs font-medium text-muted-foreground transition-[color] hover:text-foreground max-sm:hidden"
-              href={absoluteUrl("/llms.txt")}
-              target="_blank"
-              rel="noopener"
-            >
-              llms.txt
-            </a>
-
-            <Separator className="max-sm:hidden" />
-
-            <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
               href={xLink?.href}
               target="_blank"
@@ -134,18 +121,6 @@ export function SiteFooter() {
               aria-label="LinkedIn Profile"
             >
               <Icons.linkedin className="size-4" />
-            </a>
-
-            <Separator />
-
-            <a
-              className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={absoluteUrl("/rss")}
-              target="_blank"
-              rel="noopener"
-              aria-label="RSS"
-            >
-              <RssIcon className="size-4" />
             </a>
 
             <Separator />
