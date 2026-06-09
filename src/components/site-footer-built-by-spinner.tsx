@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 
 import { SpinningCircularText } from "@/registry/components/spinning-circular-text"
 
-const TEXT = "Built with care by ncdai • "
+const TEXT = "CRAFTED WITH CARE BY NCDAI • "
 const DURATION = 4
 
 export function SiteFooterBuiltBySpinner() {
@@ -16,7 +16,7 @@ export function SiteFooterBuiltBySpinner() {
     <SpinningCircularText
       text={TEXT}
       charSpacing={1.2}
-      className="size-[round(up,var(--sc-container-size),var(--spacing))] [--color:var(--muted-foreground)] [--shimmering-color:var(--foreground)]"
+      className="[--color:var(--muted-foreground)] [--shimmering-color:var(--foreground)]"
       spinClassName="duration-[12s] motion-reduce:animate-none"
       renderChar={(char, index) =>
         shouldReduceMotion ? (

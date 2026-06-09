@@ -11,6 +11,11 @@ export const SITE_INFO = {
   keywords: USER.keywords,
 }
 
+export const LICENSE = {
+  name: "MIT License",
+  url: "https://github.com/ncdai/chanhdai.com/blob/main/LICENSE",
+}
+
 export const META_THEME_COLORS = {
   light: "#ffffff",
   dark: "#09090b",
