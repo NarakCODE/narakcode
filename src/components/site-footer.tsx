@@ -1,11 +1,12 @@
 import { RssIcon } from "lucide-react"
 
-import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site"
-import { cn } from "@/lib/utils"
+import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
+import { absoluteUrl, cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { SiteFooterBuiltBySpinner } from "@/components/site-footer-built-by-spinner"
 import { getSocialLinkByName } from "@/features/portfolio/data/social-links-v2"
+import { USER } from "@/features/portfolio/data/user"
 
 export function SiteFooter() {
   const xLink = getSocialLinkByName("x")
@@ -13,43 +14,91 @@ export function SiteFooter() {
   const linkedinLink = getSocialLinkByName("linkedin")
 
   return (
-    <footer className="max-w-screen overflow-x-hidden px-2">
-      <div className="screen-line-top mx-auto border-x border-line pt-4 group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
-        <p className="mb-1 px-4 text-center font-mono text-sm text-balance text-muted-foreground [&_span]:mx-0.5 [&_span]:inline-block">
-          Inspired by tailwindcss.com<span>/</span>ui.shadcn.com<span>/</span>
-          vercel.com<span>/</span>evilcharts.com
-        </p>
-
-        <p className="px-4 text-center font-mono text-sm text-balance text-muted-foreground">
-          The source code is available on{" "}
-          <a
-            className="font-medium text-foreground link-underline"
-            href={SOURCE_CODE_GITHUB_URL}
-            target="_blank"
-            rel="noopener"
-          >
-            GitHub
-          </a>
-        </p>
-
-        <div className="flex items-center justify-center">
-          <div className="relative">
-            <SiteFooterBuiltBySpinner />
-            <a
-              className="absolute inset-4"
-              href={xLink?.href}
-              target="_blank"
-              rel="noopener"
-              aria-label="Open X Profile"
-            />
-          </div>
+    <footer className="max-w-screen overflow-x-clip px-2">
+      <div className="screen-line-top mx-auto border-x border-line pt-8 group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
+        <div className="mx-auto flex size-32 items-center justify-center">
+          <SiteFooterBuiltBySpinner />
         </div>
+
+        <dl className="flex flex-col gap-4 py-8 font-sans [&_dd]:text-sm [&_dt]:text-right [&_dt]:text-sm [&_dt]:text-muted-foreground">
+          <Item>
+            <dt>Crafted by</dt>
+            <dd>
+              <a
+                className="link-underline"
+                href={xLink?.href}
+                target="_blank"
+                rel="noopener"
+              >
+                {USER.displayName}
+              </a>
+            </dd>
+          </Item>
+
+          <Item>
+            <dt>Tech stack</dt>
+            <dd>
+              <ul className="flex flex-col gap-2">
+                <li>Next.js</li>
+                <li>Tailwind CSS</li>
+                <li>shadcn/ui</li>
+              </ul>
+            </dd>
+          </Item>
+
+          <Item>
+            <dt>Inspired by</dt>
+            <dd>
+              <ul className="flex flex-col gap-2">
+                <li>tailwindcss.com</li>
+                <li>ui.shadcn.com</li>
+                <li>vercel.com</li>
+                <li>evilcharts.com</li>
+                <li>devouringdetails.com</li>
+                <li>skiper-ui.com</li>
+              </ul>
+            </dd>
+          </Item>
+
+          <Item>
+            <dt>Infrastructure</dt>
+            <dd>Vercel</dd>
+          </Item>
+
+          <Item>
+            <dt>Source code</dt>
+            <dd>
+              <a
+                className="link-underline"
+                href={SOURCE_CODE_GITHUB_URL}
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub
+              </a>
+            </dd>
+          </Item>
+
+          <Item>
+            <dt>License</dt>
+            <dd>
+              <a
+                className="link-underline"
+                href={LICENSE.url}
+                target="_blank"
+                rel="noopener"
+              >
+                {LICENSE.name}
+              </a>
+            </dd>
+          </Item>
+        </dl>
 
         <div className="screen-line-top screen-line-bottom flex w-full before:z-1 after:z-1">
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-line bg-background px-4">
             <a
               className="flex font-mono text-xs font-medium text-muted-foreground transition-[color] hover:text-foreground max-sm:hidden"
-              href={`${SITE_INFO.url}/llms.txt`}
+              href={absoluteUrl("/llms.txt")}
               target="_blank"
               rel="noopener"
             >
@@ -96,7 +145,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={`${SITE_INFO.url}/rss`}
+              href={absoluteUrl("/rss")}
               target="_blank"
               rel="noopener"
               aria-label="RSS"
@@ -138,4 +187,8 @@ export function SiteFooter() {
 
 function Separator({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn("flex h-11 w-px bg-line", className)} {...props} />
+}
+
+function Item({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("grid grid-cols-2 gap-4", className)} {...props} />
 }
