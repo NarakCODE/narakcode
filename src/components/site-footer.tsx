@@ -4,7 +4,6 @@ import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
-import { SiteFooterBuiltBySpinner } from "@/components/site-footer-built-by-spinner"
 import { getSocialLinkByName } from "@/features/portfolio/data/social-links-v2"
 import { USER } from "@/features/portfolio/data/user"
 
@@ -15,12 +14,8 @@ export function SiteFooter() {
 
   return (
     <footer className="max-w-screen overflow-x-clip px-2">
-      <div className="screen-line-top mx-auto border-x border-line pt-8 group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
-        <div className="mx-auto flex size-32 items-center justify-center">
-          <SiteFooterBuiltBySpinner />
-        </div>
-
-        <dl className="flex flex-col gap-4 py-8 font-sans [&_dd]:text-sm [&_dt]:text-right [&_dt]:text-sm [&_dt]:text-muted-foreground">
+      <div className="screen-line-top mx-auto border-x border-line group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
+        <dl className="flex flex-col gap-4 py-8 font-mono [&_dd]:text-sm [&_dt]:text-right [&_dt]:text-sm [&_dt]:text-muted-foreground">
           <Item>
             <dt>Crafted by</dt>
             <dd>
