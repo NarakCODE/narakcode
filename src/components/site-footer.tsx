@@ -30,7 +30,7 @@ export function SiteFooter() {
             </dd>
           </Item>
 
-          <Item>
+          {/* <Item>
             <dt>Tech stack</dt>
             <dd>
               <ul className="flex flex-col gap-2">
@@ -39,7 +39,7 @@ export function SiteFooter() {
                 <li>shadcn/ui</li>
               </ul>
             </dd>
-          </Item>
+          </Item> */}
 
           <Item>
             <dt>Inspired by</dt>
