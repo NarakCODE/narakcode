@@ -34,7 +34,7 @@ export function GitHubContributionGraph({
       data={data}
       blockSize={11}
       blockMargin={3}
-      blockRadius={0}
+      blockRadius={1}
       aria-label="GitHub Contributions Graph"
     >
       <ContributionGraphCalendar
