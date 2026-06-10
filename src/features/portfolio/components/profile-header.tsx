@@ -12,7 +12,7 @@ export function ProfileHeader() {
     <div className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-y-clip border-x border-line">
       <div className="relative col-span-2 p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
         <ChanhDaiMarkIsometric />
-        <span className="absolute right-2 bottom-2 border bg-background px-px font-mono text-xs leading-none text-zinc-400 uppercase select-none sm:right-4 sm:bottom-4 dark:text-zinc-700">
+        <span className="pointer-events-none absolute right-2 bottom-2 border bg-background px-px font-mono text-xs leading-none text-zinc-400 uppercase select-none sm:right-4 sm:bottom-4 dark:text-zinc-700">
           Fig.01
         </span>
       </div>
@@ -29,7 +29,7 @@ export function ProfileHeader() {
       </div>
 
       <div className="flex flex-col">
-        <div className="mt-auto border-t border-line">
+        <div className="z-1 mt-auto border-t border-line">
           <div className="flex items-center gap-2 pl-4">
             <h1 className="-translate-y-px text-3xl font-semibold tracking-tight">
               {USER.displayName}
