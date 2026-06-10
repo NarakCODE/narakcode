@@ -10,8 +10,11 @@ import { VerifiedIcon } from "./verified-icon"
 export function ProfileHeader() {
   return (
     <div className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-y-clip border-x border-line">
-      <div className="col-span-2 p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
+      <div className="relative col-span-2 p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
         <ChanhDaiMarkIsometric />
+        <span className="absolute right-2 bottom-2 border bg-background px-px font-mono text-xs leading-none text-zinc-400 uppercase select-none sm:right-4 sm:bottom-4 dark:text-zinc-700">
+          Fig.01
+        </span>
       </div>
 
       <div className="flex flex-col sm:row-span-2 sm:row-start-1">

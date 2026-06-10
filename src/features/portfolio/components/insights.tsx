@@ -98,6 +98,10 @@ export async function Insights() {
           <p className="text-muted-foreground">No insights available.</p>
         </div>
       )}
+
+      <span className="absolute right-2 bottom-2 border bg-background px-px font-mono text-xs leading-none text-zinc-400 uppercase select-none sm:right-4 sm:bottom-4 dark:text-zinc-700">
+        Fig.02
+      </span>
     </Panel>
   )
 }
