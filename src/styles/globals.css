@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "./style-preview.css";
 @import "./scroll-fade-effect.css";
+@import "./gradient-border-plugin.css";
 
 @plugin "@tailwindcss/typography";
 
