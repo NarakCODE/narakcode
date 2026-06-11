@@ -1,6 +1,5 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
-import dynamic from "next/dynamic"
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts"
 
 import { JsonLdScript } from "@/lib/json-ld"
@@ -10,6 +9,7 @@ import { Awards } from "@/features/portfolio/components/awards"
 import { Blog } from "@/features/portfolio/components/blog"
 import { Bookmarks } from "@/features/portfolio/components/bookmarks"
 import { Certifications } from "@/features/portfolio/components/certifications"
+import { Components } from "@/features/portfolio/components/components"
 import { Experiences } from "@/features/portfolio/components/experiences"
 import {
   Insights,
@@ -22,12 +22,6 @@ import { SocialLinks } from "@/features/portfolio/components/social-links-v2"
 import { Sponsors } from "@/features/portfolio/components/sponsors"
 import { USER } from "@/features/portfolio/data/user"
 
-const ComponentsShowcase = dynamic(
-  () => import("@/features/portfolio/components/components-showcase")
-)
-
-const TOC = dynamic(() => import("@/features/portfolio/components/toc"))
-
 export const metadata: Metadata = {
   alternates: {
     canonical: "/",
@@ -39,7 +33,7 @@ export default function HomePage() {
     <>
       <JsonLdScript data={getPageJsonLd()} />
 
-      <div className="[--cover-height:162px] [--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
+      <div className="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
         <div className="mx-auto md:max-w-3xl">
           <ProfileHeader />
           <Separator />
@@ -49,14 +43,9 @@ export default function HomePage() {
           <Separator />
 
           <About />
-        </div>
-
-        <div className="mx-auto xl:container">
           <Separator />
-          <ComponentsShowcase />
-        </div>
 
-        <div className="mx-auto md:max-w-3xl">
+          <Components />
           <Separator />
 
           <Blog />
@@ -85,8 +74,6 @@ export default function HomePage() {
           </Suspense>
           <Separator />
         </div>
-
-        <TOC />
       </div>
     </>
   )

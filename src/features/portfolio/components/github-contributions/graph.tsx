@@ -1,11 +1,9 @@
 "use client"
 
 import { use } from "react"
-import { addQueryParams } from "@/utils/url"
 import { format } from "date-fns"
 import { LoaderIcon } from "lucide-react"
 
-import { GITHUB_USERNAME, UTM_PARAMS } from "@/config/site"
 import {
   Tooltip,
   TooltipContent,
@@ -32,13 +30,13 @@ export function GitHubContributionGraph({
     <ContributionGraph
       className="mx-auto gap-4 py-4"
       data={data}
-      blockSize={11}
-      blockMargin={3}
-      blockRadius={1}
+      blockSize={12}
+      blockMargin={2}
+      blockRadius={0}
       aria-label="GitHub Contributions Graph"
     >
       <ContributionGraphCalendar
-        className="no-scrollbar px-2"
+        className="no-scrollbar px-4 lg:px-0"
         title="GitHub Contributions"
         aria-hidden
       >
@@ -65,23 +63,12 @@ export function GitHubContributionGraph({
         )}
       </ContributionGraphCalendar>
 
-      <ContributionGraphFooter className="px-2">
+      <ContributionGraphFooter className="gap-4 px-4 leading-none lg:px-0">
         <ContributionGraphTotalCount>
-          {({ totalCount, year }) => (
+          {({ totalCount }) => (
             <div className="text-muted-foreground">
-              {totalCount.toLocaleString("en")} contributions in {year} on{" "}
-              <a
-                className="text-foreground link-underline"
-                href={addQueryParams(
-                  `https://github.com/${GITHUB_USERNAME}`,
-                  UTM_PARAMS
-                )}
-                target="_blank"
-                rel="noopener"
-              >
-                GitHub
-              </a>
-              .
+              {totalCount.toLocaleString("en")} contributions in the past 365
+              days.
             </div>
           )}
         </ContributionGraphTotalCount>
