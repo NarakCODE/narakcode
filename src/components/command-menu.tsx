@@ -114,8 +114,8 @@ const MENU_LINKS: CommandLinkItem[] = [
 
 const PORTFOLIO_LINKS: CommandLinkItem[] = [
   {
-    title: "About",
-    href: "/#about",
+    title: "Hello",
+    href: "/#hello",
     kind: "page",
     icon: <TextInitialIcon />,
   },
