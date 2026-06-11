@@ -15,23 +15,26 @@ export function TechStack() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="relative [--col-left-width:--spacing(42)]">
+      <div className="relative [--badge-height:--spacing(6)] [--col-left-width:--spacing(48)]">
         <div
           className="pointer-events-none absolute inset-y-0 left-(--col-left-width) -z-1 w-px bg-[linear-gradient(to_bottom,var(--line)_4px,transparent_2px)] bg-size-[1px_6px] bg-repeat-y max-sm:hidden"
           aria-hidden
         />
 
         {Object.entries(groupByCategory(TECH_STACK)).map(
-          ([category, items]) => (
+          ([category, items], index) => (
             <div
               key={category}
               className="group grid items-start gap-y-2 border-b border-line py-4 last:border-none sm:grid-cols-[var(--col-left-width)_1fr]"
             >
-              <div className="pl-4 text-sm/6 text-muted-foreground">
+              <div className="pl-4 text-sm/(--badge-height) text-muted-foreground">
+                <span className="mr-1.5 font-mono text-muted-foreground/50 select-none">
+                  {(index + 1).toString().padStart(2, "0")}
+                </span>
                 {category}
               </div>
 
-              <ul className="flex flex-wrap gap-2 pl-4">
+              <ul className="flex flex-wrap gap-1.5 px-4">
                 {items.map((item) => {
                   return (
                     <li key={item.key} className="flex">
@@ -40,7 +43,7 @@ export function TechStack() {
                         target="_blank"
                         rel="noopener"
                         aria-label={item.title}
-                        className="flex items-center gap-1.25 rounded-full bg-zinc-50 px-2 py-1 font-mono text-xs text-foreground inset-ring-1 inset-ring-muted-foreground/15 select-none dark:bg-zinc-900 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground"
+                        className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-zinc-50/80 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border dark:bg-zinc-900/80 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80"
                       >
                         {item.icon}
                         {item.title}
