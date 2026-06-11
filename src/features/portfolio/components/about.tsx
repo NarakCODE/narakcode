@@ -8,7 +8,6 @@ import {
   PanelTitle,
 } from "@/features/portfolio/components/panel"
 import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy"
-import { TechStack } from "@/features/portfolio/components/tech-stack"
 import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
 
@@ -32,7 +31,6 @@ export function About() {
 
       <Testimonials />
       <GitHubContributions />
-      <TechStack />
     </Panel>
   )
 }
