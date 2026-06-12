@@ -15,7 +15,7 @@ export function SiteFooter() {
       <div className="screen-line-top mx-auto border-x border-line group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
         <div className="screen-line-bottom h-1" />
 
-        <dl className="flex flex-col gap-4 py-8 font-mono [&_dd]:text-sm [&_dt]:text-right [&_dt]:text-sm [&_dt]:text-muted-foreground">
+        <dl className="flex flex-col gap-4 py-8 font-mono [&_dd]:text-sm [&_dt]:text-right [&_dt]:text-sm [&_dt]:text-muted-foreground [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2">
           <Item>
             <dt>Crafted by</dt>
             <dd>
@@ -30,21 +30,10 @@ export function SiteFooter() {
             </dd>
           </Item>
 
-          {/* <Item>
-            <dt>Tech stack</dt>
-            <dd>
-              <ul className="flex flex-col gap-2">
-                <li>Next.js</li>
-                <li>Tailwind CSS</li>
-                <li>shadcn/ui</li>
-              </ul>
-            </dd>
-          </Item> */}
-
           <Item>
             <dt>Inspired by</dt>
             <dd>
-              <ul className="flex flex-col gap-2">
+              <ul>
                 <li>tailwindcss.com</li>
                 <li>ui.shadcn.com</li>
                 <li>vercel.com</li>
@@ -56,8 +45,18 @@ export function SiteFooter() {
           </Item>
 
           <Item>
-            <dt>Infrastructure</dt>
+            <dt>Deployed on</dt>
             <dd>Vercel</dd>
+          </Item>
+
+          <Item>
+            <dt>Analytics</dt>
+            <dd>
+              <ul>
+                <li>OpenPanel</li>
+                <li>PostHog</li>
+              </ul>
+            </dd>
           </Item>
 
           <Item>
