@@ -46,6 +46,15 @@ export function SiteFooterInteractiveLogotype() {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
+        <div className="container mx-auto flex justify-end pt-2">
+          <span
+            className="pointer-events-none border bg-background px-px font-mono text-xs leading-none text-zinc-400 uppercase select-none dark:text-zinc-700"
+            aria-hidden
+          >
+            Fig.03
+          </span>
+        </div>
+
         <div className="flex w-full translate-y-[37.5%] items-center justify-center">
           <svg
             className="container size-full"
