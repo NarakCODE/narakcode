@@ -36,7 +36,7 @@ export function GitHubContributionGraph({
       aria-label="GitHub Contributions Graph"
     >
       <ContributionGraphCalendar
-        className="no-scrollbar px-4 lg:px-0"
+        className="no-scrollbar px-4"
         title="GitHub Contributions"
         aria-hidden
       >
@@ -63,7 +63,7 @@ export function GitHubContributionGraph({
         )}
       </ContributionGraphCalendar>
 
-      <ContributionGraphFooter className="gap-4 px-4 leading-none lg:px-0">
+      <ContributionGraphFooter className="gap-4 px-4 leading-none">
         <ContributionGraphTotalCount>
           {({ totalCount }) => (
             <div className="text-muted-foreground">
@@ -81,7 +81,7 @@ export function GitHubContributionGraph({
 
 export function GitHubContributionFallback() {
   return (
-    <div className="flex h-46.5 w-full items-center justify-center">
+    <div className="flex h-45 w-full items-center justify-center">
       <LoaderIcon className="animate-spin text-muted-foreground" />
     </div>
   )
