@@ -100,8 +100,8 @@ export async function Insights() {
           </div>
         )}
 
-        <figcaption className="pointer-events-none absolute right-2 bottom-2 bg-background font-mono text-xs leading-none text-zinc-400 select-none sm:right-4 sm:bottom-4 dark:text-zinc-700">
-          FIG_02
+        <figcaption className="pointer-events-none absolute right-2 bottom-2 bg-background font-mono text-xs leading-none text-zinc-400 select-none sm:right-4 dark:text-zinc-700">
+          FIG_002
         </figcaption>
       </figure>
     </Panel>

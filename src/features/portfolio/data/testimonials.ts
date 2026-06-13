@@ -32,6 +32,16 @@ export const TESTIMONIALS_1: Testimonial[] = [
     order: 7,
   },
   {
+    authorAvatar: "https://unavatar.io/x/joshpuckett",
+    authorName: "joshpuckett",
+    authorTagline: "Teaching at interfacecraft.dev",
+    url: "https://x.com/joshpuckett/status/2045487801618284892",
+    quote: "Good recreation! Focus state is nice touch",
+    date: "2026-04-18",
+    isVerified: true,
+    order: 4,
+  },
+  {
     authorAvatar: "https://unavatar.io/x/dimicx",
     authorName: "dimi",
     authorTagline: "Design Engineer",
@@ -237,16 +247,6 @@ export const TESTIMONIALS_2: Testimonial[] = [
     date: "2026-04-20",
     isVerified: true,
     order: 3,
-  },
-  {
-    authorAvatar: "https://unavatar.io/x/joshpuckett",
-    authorName: "joshpuckett",
-    authorTagline: "Teaching at interfacecraft.dev",
-    url: "https://x.com/joshpuckett/status/2045487801618284892",
-    quote: "Good recreation! Focus state is nice touch",
-    date: "2026-04-18",
-    isVerified: true,
-    order: 4,
   },
   {
     authorAvatar: "https://unavatar.io/x/fortysevenfx",
