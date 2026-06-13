@@ -65,46 +65,45 @@ export async function Insights() {
         </dl>
       </div>
 
-      {data.series.length > 0 ? (
-        <LineChart
-          className={cn(
-            "sm:aspect-3/1!",
-            "[--chart-1:var(--color-zinc-900)] [--chart-2:var(--color-zinc-400)]",
-            "dark:[--chart-1:var(--color-zinc-100)] dark:[--chart-2:var(--color-zinc-600)]"
-          )}
-          data={data.series}
-          margin={{ top: 16, right: 32, bottom: 40, left: 32 }}
-        >
-          <Grid horizontal />
-          <Line
-            dataKey="total_sessions"
-            stroke="var(--chart-2)"
-            strokeWidth={2}
-          />
-          <Line
-            dataKey="unique_visitors"
-            stroke="var(--chart-1)"
-            strokeWidth={2}
-          />
-          <ChartTooltip
-            rowLabels={{
-              total_sessions: "Sessions",
-              unique_visitors: "Unique Visitors",
-            }}
-          />
-        </LineChart>
-      ) : (
-        <div className="grid aspect-2/1 w-full place-content-center sm:aspect-3/1">
-          <p className="text-muted-foreground">No insights available.</p>
-        </div>
-      )}
+      <figure>
+        {data.series.length > 0 ? (
+          <LineChart
+            className={cn(
+              "sm:aspect-3/1!",
+              "[--chart-1:var(--color-zinc-900)] [--chart-2:var(--color-zinc-400)]",
+              "dark:[--chart-1:var(--color-zinc-100)] dark:[--chart-2:var(--color-zinc-600)]"
+            )}
+            data={data.series}
+            margin={{ top: 16, right: 32, bottom: 40, left: 32 }}
+          >
+            <Grid horizontal />
+            <Line
+              dataKey="total_sessions"
+              stroke="var(--chart-2)"
+              strokeWidth={2}
+            />
+            <Line
+              dataKey="unique_visitors"
+              stroke="var(--chart-1)"
+              strokeWidth={2}
+            />
+            <ChartTooltip
+              rowLabels={{
+                total_sessions: "Sessions",
+                unique_visitors: "Unique Visitors",
+              }}
+            />
+          </LineChart>
+        ) : (
+          <div className="grid aspect-2/1 w-full place-content-center sm:aspect-3/1">
+            <p className="text-muted-foreground">No insights available.</p>
+          </div>
+        )}
 
-      <span
-        className="pointer-events-none absolute right-2 bottom-2 border bg-background px-px font-mono text-xs leading-none text-zinc-400 uppercase select-none sm:right-4 sm:bottom-4 dark:text-zinc-700"
-        aria-hidden
-      >
-        Fig.02
-      </span>
+        <figcaption className="absolute right-2 bottom-2 bg-background font-mono text-xs leading-none text-zinc-400 sm:right-4 sm:bottom-4 dark:text-zinc-700">
+          FIG_02
+        </figcaption>
+      </figure>
     </Panel>
   )
 }
