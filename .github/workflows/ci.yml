@@ -1,10 +1,14 @@
 name: CI
 
 on:
-  push:
-    branches: [main, staging]
+  # Gate for merging into main (required by branch protection); runs against the
+  # merge result before merge. Production deploy is gated by this PR check, so a
+  # redundant push-to-main run is intentionally omitted.
   pull_request:
-    branches: [main, staging]
+    branches: [main]
+  # Early feedback while iterating on staging.
+  push:
+    branches: [staging]
 
 concurrency:
   group: ci-${{ github.ref }}

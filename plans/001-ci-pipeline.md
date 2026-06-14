@@ -101,19 +101,26 @@ Repo conventions:
 
 ### Step 1: Create the CI workflow
 
-Create `.github/workflows/ci.yml` with a single job that runs on push and PR to
-`main` and `staging`. It must: check out, install Bun, install pnpm + Node 22
-(from `.nvmrc`), install deps frozen, then run lint, types, format check, build,
-and registry validation. Target shape:
+Create `.github/workflows/ci.yml` with a single job. It triggers on PRs into
+`main` (the gate required by branch protection) and on pushes to `staging` (early
+feedback); a push-to-`main` trigger is intentionally omitted because the PR check
+already validates the merge result and production deploy is gated by that check.
+The job: check out, install Bun, install pnpm + Node 22 (from `.nvmrc`), install
+deps frozen, then run lint, format check, test, build, typecheck, and registry
+validation. Target shape:
 
 ```yaml
 name: CI
 
 on:
-  push:
-    branches: [main, staging]
+  # Gate for merging into main (required by branch protection); runs against the
+  # merge result before merge. Production deploy is gated by this PR check, so a
+  # redundant push-to-main run is intentionally omitted.
   pull_request:
-    branches: [main, staging]
+    branches: [main]
+  # Early feedback while iterating on staging.
+  push:
+    branches: [staging]
 
 concurrency:
   group: ci-${{ github.ref }}
