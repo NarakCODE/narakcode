@@ -24,7 +24,7 @@ export function About() {
       </PanelHeader>
 
       <PanelContent className="screen-line-bottom py-6">
-        <Prose>
+        <Prose className="marker:text-xs/none marker:text-inherit">
           <Markdown>{USER.about}</Markdown>
         </Prose>
       </PanelContent>
