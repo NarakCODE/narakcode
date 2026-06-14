@@ -48,6 +48,20 @@ jobs:
       - name: Test
         run: pnpm test:run
 
+      # Persist Next.js's build cache (.next/cache) between runs to avoid the
+      # "No Cache Detected" warning and speed up rebuilds. The pnpm store is
+      # already cached via `cache: pnpm` on setup-node, so only .next/cache is
+      # cached here. Key busts on lockfile or source changes; restore-keys falls
+      # back to the latest cache for the same lockfile when only source changed.
+      # hashFiles has no brace expansion, so extensions are listed explicitly.
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx', 'src/**/*.mdx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-
+
       # Build MUST run before Typecheck: `tsc --noEmit` depends on the
       # `PageProps` global that Next.js generates into `.next/types/**` during
       # `next build`. On a fresh checkout (no `.next/`), `pnpm check-types` fails
