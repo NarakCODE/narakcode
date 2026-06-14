@@ -317,9 +317,10 @@ Stop and report back (do not improvise) if:
   comment) instead of moving tags, to harden against tag-mutation supply-chain
   attacks. When bumping an action, resolve the new tag to its commit SHA — e.g.
   `git ls-remote https://github.com/actions/checkout 'refs/tags/v4*^{}'` — and
-  update both the SHA and the version comment. Consider adding Dependabot
-  (`.github/dependabot.yml` with `package-ecosystem: "github-actions"`) so these
-  pins are bumped automatically with the comment kept in sync.
+  update both the SHA and the version comment. Dependabot is configured for this
+  (`.github/dependabot.yml`, `package-ecosystem: "github-actions"`, weekly,
+  grouped, PRs targeting `staging`) — it bumps these pins automatically and keeps
+  the version comment in sync, so manual SHA resolution should rarely be needed.
 - Reviewer should scrutinize: step ordering (pnpm before `cache: pnpm`), the
   pinned pnpm version matching `package.json`, that Bun is installed before any
   `pnpm build`/`registry:build` step, and that every `uses:` is a full SHA pin.
