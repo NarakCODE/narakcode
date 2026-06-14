@@ -6,8 +6,8 @@
 > report — do not improvise. When done, update the status row for this plan
 > in `plans/README.md`.
 >
-> **Drift check (run first)**: `git diff --stat 557eaf4f..HEAD -- src/features/portfolio/data/github-contributions.ts src/registry/components/github-contributions/lib/get-cached-contributions.ts`
-> If either changed since this plan was written, compare the "Current state"
+> **Drift check (run first)**: `git diff --stat d23bfc1b..HEAD -- src/features/portfolio/data/github-contributions.ts src/features/portfolio/components/profile-activity-mosaic-cover/index.tsx src/registry/components/github-contributions/lib/get-cached-contributions.ts`
+> If any changed since this plan was written, compare the "Current state"
 > excerpts against the live code before proceeding; on a mismatch, treat it as a
 > STOP condition.
 
@@ -18,7 +18,8 @@
 - **Risk**: LOW
 - **Depends on**: none
 - **Category**: bug
-- **Planned at**: commit `557eaf4f`, 2026-06-14
+- **Planned at**: commit `d23bfc1b`, 2026-06-14 (refreshed; the three target files
+  are unchanged since `557eaf4f`)
 
 ## Why this matters
 
@@ -30,22 +31,35 @@ result is a silently broken contribution graph with no fallback and no signal.
 A sibling fetcher in the same codebase already does this correctly — this plan
 brings the two unguarded ones up to that standard.
 
+Separately, both app-side fetchers interpolate
+`process.env.GITHUB_CONTRIBUTIONS_API_URL` into the request URL with **no
+fallback**. When that env var is unset, the URL becomes `undefined/v4/...` and
+`fetch` throws `ERR_INVALID_URL` before any `res.ok` check can run — this is what
+fails the production build / CI when the var isn't provided (the workflow in plan
+001 currently hardcodes the value as a workaround). The registry copy already
+guards this with `|| "https://github-contributions-api.jogruber.de"`. This plan
+mirrors that fallback into both app-side fetchers so the build no longer depends
+on the env var being set.
+
 Note on de-duplication (originally folded in as part of this finding): the two
 app-side contribution fetchers were examined for merging.
 `src/features/portfolio/data/github-contributions.ts` fetches last-year data for
 the contribution graph; `src/features/portfolio/components/profile-activity-mosaic-cover/index.tsx`
 fetches a multi-year window and builds a 480-cell grid. They have different query
 shapes, return shapes, cache keys, and revalidate windows, so they are NOT
-duplicates and should NOT be merged. The real, narrow fix is error handling.
+duplicates and should NOT be merged. The real, narrow fixes are error handling
+and the missing URL fallback.
 
 ## Current state
 
-Already correct — DO NOT change, use as the pattern to match
+Pattern to match for the `res.ok` handling — its error check is already correct,
+but note it is ALSO missing the URL fallback (Step 3 fixes only that one line;
+do NOT touch its `res.ok` throw)
 (`src/features/portfolio/components/profile-activity-mosaic-cover/index.tsx`, lines 72–82):
 
 ```ts
 const res = await fetch(
-  `${process.env.GITHUB_CONTRIBUTIONS_API_URL}/v4/${username}?${yearQueries}`
+  `${process.env.GITHUB_CONTRIBUTIONS_API_URL}/v4/${username}?${yearQueries}` // <-- no URL fallback
 )
 if (!res.ok) {
   throw new Error(`Failed to fetch GitHub Contributions: ${res.statusText}`)
@@ -54,7 +68,11 @@ const { contributions } = (await res.json()) as GitHubContributionsResponse
 ```
 
 (Also correct already: `src/features/portfolio/data/insights.ts` returns `null`
-on `!res.ok` — leave it.)
+on `!res.ok` and uses a hardcoded URL — leave it entirely.)
+
+The fallback to mirror, from the registry copy
+(`src/registry/components/github-contributions/lib/get-cached-contributions.ts:102`):
+`process.env.GITHUB_CONTRIBUTIONS_API_URL || "https://github-contributions-api.jogruber.de"`.
 
 Target 1 — `src/features/portfolio/data/github-contributions.ts` (full file):
 
@@ -71,7 +89,7 @@ type GitHubContributionsResponse = { contributions: Activity[] }
 export const getGitHubContributions = unstable_cache(
   async () => {
     const res = await fetch(
-      `${process.env.GITHUB_CONTRIBUTIONS_API_URL}/v4/${GITHUB_USERNAME}?y=last`
+      `${process.env.GITHUB_CONTRIBUTIONS_API_URL}/v4/${GITHUB_USERNAME}?y=last` // <-- no URL fallback
     )
     const data = (await res.json()) as GitHubContributionsResponse // <-- no res.ok check
     return data.contributions
@@ -139,29 +157,48 @@ empty-array is the safe, visible-but-not-crashing outcome.
 
 **In scope**:
 
-- `src/features/portfolio/data/github-contributions.ts`
+- `src/features/portfolio/data/github-contributions.ts` (add `res.ok` guard + URL fallback)
+- `src/features/portfolio/components/profile-activity-mosaic-cover/index.tsx`
+  (**URL fallback ONLY** — do NOT change its existing `res.ok` throw or anything else)
 - `src/registry/components/github-contributions/lib/get-cached-contributions.ts`
+  (add `res.ok` guard; it already has the URL fallback)
 - Regenerated outputs from `pnpm registry:build` (commit them, do not hand-edit):
   `src/registry/transformed/components/github-contributions/lib/get-cached-contributions.ts`,
   `public/r/*.json`, `src/registry/registry.autogenerated.json` (only if the build changes them).
 
 **Out of scope** (do NOT touch):
 
-- `profile-activity-mosaic-cover/index.tsx` and `insights.ts` — already correct.
+- `insights.ts` — already correct (guards `res.ok`, hardcoded URL).
+- The `res.ok` throw in `profile-activity-mosaic-cover/index.tsx` — only its fetch
+  URL changes; leave the error handling and grid logic alone.
 - The de-duplication idea — explicitly rejected above; do not merge the fetchers.
 - `src/registry/transformed/...` by hand — only via `registry:build`.
+- `.github/workflows/ci.yml` — the `GITHUB_CONTRIBUTIONS_API_URL` env entry there
+  becomes redundant after this plan, but removing it is a separate follow-up (see
+  Maintenance notes); do not touch CI here.
 
 ## Git workflow
 
 - Branch: `advisor/004-harden-external-data-fetch`
-- Commit message: `fix: handle non-OK responses in GitHub contributions fetchers`
+- Commit message: `fix: harden GitHub contributions fetchers (res.ok guard + URL fallback)`
 - Do NOT push or open a PR unless instructed.
 
 ## Steps
 
-### Step 1: Guard Target 1
+### Step 1: Guard Target 1 + add URL fallback
 
-In `src/features/portfolio/data/github-contributions.ts`, after the `fetch`, add:
+In `src/features/portfolio/data/github-contributions.ts`:
+
+1. Add the URL fallback to the fetch (mirror the registry copy), so an unset env
+   var no longer produces an invalid URL:
+
+```ts
+const res = await fetch(
+  `${process.env.GITHUB_CONTRIBUTIONS_API_URL || "https://github-contributions-api.jogruber.de"}/v4/${GITHUB_USERNAME}?y=last`
+)
+```
+
+2. After the `fetch`, guard the response:
 
 ```ts
 if (!res.ok) {
@@ -190,7 +227,22 @@ return data.contributions ?? []
 
 **Verify**: `pnpm check-types` → exit 0.
 
-### Step 3: Regenerate the registry
+### Step 3: Add URL fallback to the mosaic-cover fetcher
+
+In `src/features/portfolio/components/profile-activity-mosaic-cover/index.tsx`,
+change ONLY the fetch URL to add the same fallback (leave the `if (!res.ok) throw`
+and everything else untouched):
+
+```ts
+const res = await fetch(
+  `${process.env.GITHUB_CONTRIBUTIONS_API_URL || "https://github-contributions-api.jogruber.de"}/v4/${username}?${yearQueries}`
+)
+```
+
+**Verify**: `pnpm check-types` → exit 0; `git diff src/features/portfolio/components/profile-activity-mosaic-cover/index.tsx`
+shows only the one URL line changed.
+
+### Step 4: Regenerate the registry
 
 ```bash
 pnpm registry:build
@@ -203,9 +255,20 @@ edited source.
 **Verify**: `registry:validate` exits 0. `git status` shows the regenerated
 `transformed/.../get-cached-contributions.ts` now contains the same guard.
 
-### Step 4: Full build
+### Step 5: Full build (no env var set — this proves the fallback works)
 
-**Verify**: `pnpm build` → exit 0; `pnpm lint` → exit 0.
+Run the build WITHOUT `GITHUB_CONTRIBUTIONS_API_URL` set (and with no `.env.local`
+defining it) to confirm the fallback removed the build-time env dependency:
+
+```bash
+env -u GITHUB_CONTRIBUTIONS_API_URL pnpm build
+```
+
+**Verify**: `pnpm build` → exit 0 (no `ERR_INVALID_URL`); `pnpm lint` → exit 0.
+Note: the build still performs a live fetch to the public fallback API, so it
+needs network access; if the API itself is unreachable, the `res.ok`/`?? []`
+guards degrade the graph to empty rather than crashing the data-layer fetcher
+(the mosaic-cover fetcher still throws on a non-OK response by design).
 
 ## Test plan
 
@@ -221,10 +284,15 @@ edited source.
 
 ALL must hold:
 
-- [ ] Both target files check `res.ok` and return `[]` on non-OK, with `?? []` guard
+- [ ] `github-contributions.ts` and the registry `get-cached-contributions.ts`
+      both check `res.ok` and return `[]` on non-OK, with `?? []` guard
+- [ ] All three fetchers (data-layer, mosaic-cover, registry copy) interpolate the
+      URL with the `|| "https://github-contributions-api.jogruber.de"` fallback
+- [ ] `mosaic-cover/index.tsx` diff is the single URL line only (its `res.ok` throw unchanged)
 - [ ] `pnpm registry:build && pnpm registry:validate` exit 0
-- [ ] The regenerated `transformed/` copy reflects the guard
-- [ ] `pnpm check-types`, `pnpm lint`, `pnpm build` all exit 0
+- [ ] The regenerated `transformed/` copy reflects the `res.ok` guard
+- [ ] `env -u GITHUB_CONTRIBUTIONS_API_URL pnpm build` exits 0 (no `ERR_INVALID_URL`)
+- [ ] `pnpm check-types`, `pnpm lint` exit 0
 - [ ] No files outside the in-scope list changed by hand (`git status`)
 - [ ] `plans/README.md` status row for 004 updated to DONE
 
@@ -240,11 +308,24 @@ Stop and report back (do not improvise) if:
 - The `transformed/` copy does NOT pick up your change after `registry:build` —
   that means the build pipeline doesn't transform this file the way assumed; stop
   and report rather than hand-editing `transformed/`.
+- `env -u GITHUB_CONTRIBUTIONS_API_URL pnpm build` STILL fails with `ERR_INVALID_URL`
+  after Steps 1 and 3 — a fetcher that interpolates the env URL was missed. Search
+  `grep -rn "GITHUB_CONTRIBUTIONS_API_URL" src` for any site without the `||` fallback,
+  report it, and do not work around it by re-adding the env var.
 
 ## Maintenance notes
 
 - Any future external `fetch` in a data/loader file should follow the
-  `if (!res.ok) ...` pattern from `profile-activity-mosaic-cover/index.tsx`.
+  `if (!res.ok) ...` pattern from `profile-activity-mosaic-cover/index.tsx` and
+  include a URL fallback rather than interpolating a bare env var.
+- **Follow-up after this lands**: the `env: GITHUB_CONTRIBUTIONS_API_URL` block in
+  `.github/workflows/ci.yml` (added by plan 001 to work around the missing
+  fallback) is now redundant — the build defaults to the public API on its own.
+  You may remove that env entry in a small CI cleanup commit. Keeping it is also
+  fine (it lets CI point at a custom API host); it is no longer required.
+- The fallback URL string is now inlined in three files. If it needs to change,
+  update all three (or extract a shared const for the two app-side files — the
+  registry copy must stay self-contained for distribution and keep its inline value).
 - If an error boundary is later added around the contribution graph, revisit
   whether throwing (with a visible error state) is preferable to the silent
   empty-array degrade chosen here.

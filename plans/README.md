@@ -117,7 +117,8 @@ Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJE
 - **De-dupe the two GitHub-contributions fetchers** (originally bundled into the
   #4 finding): rejected — they query different shapes (last-year graph vs.
   multi-year 480-cell grid) with different cache keys; merging would couple two
-  unrelated concerns. Plan 004 keeps them separate and only fixes error handling.
+  unrelated concerns. Plan 004 keeps them separate and fixes error handling plus
+  the missing URL fallback (so the build no longer needs `GITHUB_CONTRIBUTIONS_API_URL`).
 
 ## Open product questions left to the maintainer (no plans written)
 
