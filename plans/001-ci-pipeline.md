@@ -136,18 +136,18 @@ jobs:
       # Value is the public default from .env.example; safe to hardcode.
       GITHUB_CONTRIBUTIONS_API_URL: https://github-contributions-api.jogruber.de
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Install Bun
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         with:
           version: 11.5.3
 
       - name: Install Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: .nvmrc
           cache: pnpm
@@ -169,7 +169,7 @@ jobs:
       # already cached via `cache: pnpm`, so only .next/cache is cached here.
       # hashFiles has no brace expansion, so extensions are listed explicitly.
       - name: Cache Next.js build
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx', 'src/**/*.mdx') }}
@@ -313,6 +313,13 @@ Stop and report back (do not improvise) if:
   test before the slower build.
 - If a contributor adds a new top-level script that should gate merges, add it as
   a step here.
+- **Third-party actions are pinned to full commit SHAs** (with a `# vX.Y.Z`
+  comment) instead of moving tags, to harden against tag-mutation supply-chain
+  attacks. When bumping an action, resolve the new tag to its commit SHA — e.g.
+  `git ls-remote https://github.com/actions/checkout 'refs/tags/v4*^{}'` — and
+  update both the SHA and the version comment. Consider adding Dependabot
+  (`.github/dependabot.yml` with `package-ecosystem: "github-actions"`) so these
+  pins are bumped automatically with the comment kept in sync.
 - Reviewer should scrutinize: step ordering (pnpm before `cache: pnpm`), the
-  pinned pnpm version matching `package.json`, and that Bun is installed before
-  any `pnpm build`/`registry:build` step.
+  pinned pnpm version matching `package.json`, that Bun is installed before any
+  `pnpm build`/`registry:build` step, and that every `uses:` is a full SHA pin.
