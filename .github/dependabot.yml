@@ -8,7 +8,9 @@ updates:
     directory: "/"
     target-branch: "staging"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    assignees:
+      - "ncdai"
     groups:
       # Collapse all action bumps into a single PR to reduce noise.
       github-actions:
