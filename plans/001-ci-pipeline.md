@@ -154,6 +154,9 @@ jobs:
       - name: Format check
         run: pnpm format:check
 
+      - name: Test
+        run: pnpm test:run
+
       # Build MUST run before Typecheck: `tsc --noEmit` depends on the
       # `PageProps` global that Next.js generates into `.next/types/**` during
       # `next build`. On a fresh checkout (no `.next/`), `pnpm check-types` fails
@@ -286,9 +289,9 @@ Stop and report back (do not improvise) if:
 
 ## Maintenance notes
 
-- When plan 002 adds a test runner, add a `pnpm test:run` step to this workflow.
-  It can run right after `Install dependencies` (the pure-logic tests don't need
-  `.next/types`), or after Typecheck — either is fine.
+- The `pnpm test:run` step (added once plan 002 landed) runs after Format check,
+  before Build — grouped with the fast static checks so CI fails fast on a broken
+  test before the slower build.
 - If a contributor adds a new top-level script that should gate merges, add it as
   a step here.
 - Reviewer should scrutinize: step ordering (pnpm before `cache: pnpm`), the

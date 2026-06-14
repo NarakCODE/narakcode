@@ -45,6 +45,9 @@ jobs:
       - name: Format check
         run: pnpm format:check
 
+      - name: Test
+        run: pnpm test:run
+
       # Build MUST run before Typecheck: `tsc --noEmit` depends on the
       # `PageProps` global that Next.js generates into `.next/types/**` during
       # `next build`. On a fresh checkout (no `.next/`), `pnpm check-types` fails
