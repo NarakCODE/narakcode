@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      # Public, non-secret API base used at build/prerender time by
+      # src/features/portfolio/data/github-contributions.ts (which has NO
+      # fallback for this var — see "Why the step order / env matters" below).
+      # Value is the public default from .env.example; safe to hardcode.
+      GITHUB_CONTRIBUTIONS_API_URL: https://github-contributions-api.jogruber.de
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.5.3
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Format check
+        run: pnpm format:check
+
+      # Build MUST run before Typecheck: `tsc --noEmit` depends on the
+      # `PageProps` global that Next.js generates into `.next/types/**` during
+      # `next build`. On a fresh checkout (no `.next/`), `pnpm check-types` fails
+      # with "Cannot find name 'PageProps'" until a build has generated those types.
+      - name: Build (includes registry build via Bun)
+        run: pnpm build
+
+      - name: Typecheck
+        run: pnpm check-types
+
+      - name: Validate registry
+        run: pnpm registry:validate
