@@ -63,6 +63,18 @@ After building, start the application with:
 NODE_ENV=production pnpm start
 ```
 
+## Before pushing
+
+CI runs these on every push and PR. Run them locally first:
+
+```bash
+pnpm lint
+pnpm format:check
+pnpm build
+pnpm check-types
+pnpm registry:validate
+```
+
 ## Registry
 
 This project utilizes **shadcn Registry**, which allows you to manage and distribute custom components, hooks, pages, and other files across multiple React projects. By hosting a registry, you can reuse UI components easily without manually copying code between projects.
