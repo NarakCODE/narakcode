@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # Keep GitHub Actions (the `uses:` in .github/workflows) up to date. Dependabot
+  # bumps the pinned commit SHA and the `# vX.Y.Z` comment together, and opens PRs
+  # against staging (the integration branch) so they flow through the normal
+  # staging -> main review/CI gate.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "staging"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - "ncdai"
+    groups:
+      # Collapse all action bumps into a single PR to reduce noise.
+      github-actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: "ci"
