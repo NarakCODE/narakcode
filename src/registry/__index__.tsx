@@ -790,6 +790,23 @@ export const Index: Record<string, any> = {
     categories: ["marketing"],
     meta: {"createdAt":"2026-05-24","previewClassName":"min-h-svh content-center-safe"},
   },
+  "social-links-01": {
+    name: "social-links-01",
+    description: "A social links section with a lined grid layout.",
+    type: "registry:block",
+    files: [{
+      path: "src/registry/blocks/social-links-01/social-links-01.tsx",
+      type: "registry:component",
+      target: "@components/social-links-01.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/blocks/social-links-01/social-links-01.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["marketing"],
+    meta: {"createdAt":"2026-06-16","previewClassName":"min-h-svh content-center-safe"},
+  },
   "text-flip-demo": {
     name: "text-flip-demo",
     description: "",

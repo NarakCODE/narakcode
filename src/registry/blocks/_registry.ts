@@ -210,4 +210,23 @@ export const blocks: Registry["items"] = [
       previewClassName: "min-h-svh content-center-safe",
     },
   },
+  {
+    name: "social-links-01",
+    title: "Social Links 01",
+    description: "A social links section with a lined grid layout.",
+    type: "registry:block",
+    registryDependencies: [getRegistryItemUrl("style")],
+    files: [
+      {
+        path: "blocks/social-links-01/social-links-01.tsx",
+        type: "registry:component",
+        target: "@components/social-links-01.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    meta: {
+      createdAt: "2026-06-16",
+      previewClassName: "min-h-svh content-center-safe",
+    },
+  },
 ]
