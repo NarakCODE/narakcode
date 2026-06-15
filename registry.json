@@ -1180,6 +1180,30 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "social-links-01",
+      "title": "Social Links 01",
+      "description": "A social links section with a lined grid layout.",
+      "registryDependencies": [
+        "https://chanhdai.com/r/style.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/social-links-01/social-links-01.tsx",
+          "type": "registry:component",
+          "target": "@components/social-links-01.tsx"
+        }
+      ],
+      "meta": {
+        "createdAt": "2026-06-16",
+        "previewClassName": "min-h-svh content-center-safe"
+      },
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:block",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "style",
       "cssVars": {
         "theme": {
