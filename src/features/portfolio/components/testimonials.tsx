@@ -4,6 +4,7 @@ import { useRef } from "react"
 import { ArrowUpRightIcon } from "lucide-react"
 import { useInView, usePageInView } from "motion/react"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Marquee,
@@ -107,7 +108,10 @@ function TestimonialList({
           .map((item) => (
             <MarqueeItem
               key={item.url}
-              className="mx-1 h-full max-w-xs min-w-2xs rounded-xl bg-background inset-ring-1 inset-ring-foreground/10 transition-[background-color] ease-out hover:bg-accent-muted"
+              className={cn(
+                "mx-1 h-full max-w-xs min-w-2xs rounded-xl bg-background transition-[background-color] ease-out hover:bg-accent-muted",
+                "gradient-border gradient-border-from-foreground/0 gradient-border-to-foreground/15 gradient-border-via-foreground/5 gradient-border-to-t"
+              )}
               style={item.style}
             >
               <TestimonialItem {...item} />
