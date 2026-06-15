@@ -172,33 +172,41 @@
 @utility screen-line-top {
   @apply relative;
   &:before {
+    content: "";
     @apply absolute top-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
-    content: "";
-  }
-}
-
-@utility screen-dashed-line-top {
-  @apply screen-line-top;
-  &:before {
-    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
-    content: "";
   }
 }
 
 @utility screen-line-bottom {
   @apply relative;
   &:after {
-    @apply absolute bottom-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
     content: "";
+    @apply absolute bottom-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
+  }
+}
+
+@utility screen-dashed-line-top {
+  @apply screen-line-top;
+  &:before {
+    content: "";
+    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
   }
 }
 
 @utility screen-dashed-line-bottom {
   @apply screen-line-bottom;
   &:after {
-    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
     content: "";
+    @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
   }
+}
+
+@utility screen-line-top-none {
+  @apply before:content-none;
+}
+
+@utility screen-line-bottom-none {
+  @apply after:content-none;
 }
 
 @utility diagonal-stripes {
@@ -209,18 +217,18 @@
 @utility stripe-divider {
   @apply relative h-8;
   &:before {
-    @apply absolute left-[-100vw] -z-1 h-full w-[200vw] diagonal-stripes;
     content: "";
+    @apply absolute left-[-100vw] -z-1 h-full w-[200vw] diagonal-stripes;
   }
 }
 
 @utility step {
-  @apply max-md:pl-10;
   counter-increment: step;
+  @apply max-md:pl-10;
 
   &:before {
-    @apply absolute inline-flex size-6 items-center justify-center rounded-lg bg-muted text-center indent-0 text-[0.8125rem]/6 font-normal text-foreground max-md:left-0 md:-ml-10;
     content: counter(step);
+    @apply absolute inline-flex size-6 items-center justify-center rounded-lg bg-muted text-center indent-0 text-[0.8125rem]/6 font-normal text-foreground max-md:left-0 md:-ml-10;
   }
 }
 

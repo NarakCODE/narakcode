@@ -76,7 +76,6 @@ export default function HomePage() {
           <Suspense fallback={<InsightsSkeleton />}>
             <Insights />
           </Suspense>
-          <Separator />
         </div>
       </div>
     </>

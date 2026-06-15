@@ -23,7 +23,7 @@ export async function Insights() {
   }
 
   return (
-    <Panel id={ID}>
+    <Panel id={ID} className="screen-line-bottom-none">
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Insights</a>

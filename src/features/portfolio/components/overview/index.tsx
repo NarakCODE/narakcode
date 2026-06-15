@@ -24,7 +24,7 @@ import { PhoneItem } from "./phone-item"
 
 export function Overview() {
   return (
-    <Panel className="after:content-none">
+    <Panel className="screen-line-bottom-none">
       <h2 className="sr-only">Overview</h2>
 
       <PanelContent className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2">
