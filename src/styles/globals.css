@@ -201,6 +201,19 @@
   }
 }
 
+@utility diagonal-stripes {
+  @apply [--pattern-foreground:var(--color-line)]/56;
+  @apply bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px];
+}
+
+@utility stripe-divider {
+  @apply relative h-8;
+  &:before {
+    @apply absolute left-[-100vw] -z-1 h-full w-[200vw] diagonal-stripes;
+    content: "";
+  }
+}
+
 @utility step {
   @apply max-md:pl-10;
   counter-increment: step;
