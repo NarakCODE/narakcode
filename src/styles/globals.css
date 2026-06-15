@@ -218,6 +218,7 @@
   @apply prose-strong:font-medium;
   @apply prose-hr:border-line;
   @apply prose-blockquote:border-l prose-blockquote:border-line prose-blockquote:font-normal prose-blockquote:text-muted-foreground prose-blockquote:not-italic prose-blockquote:[&_p:first-of-type]:before:content-none prose-blockquote:[&_p:last-of-type]:after:content-none;
+  @apply prose-ul:marker:text-xs/none;
 }
 
 @utility code-inline {
