@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils"
 import {
   PageHeading,
   PageHeadingTagline,
@@ -28,12 +27,7 @@ export default function BlocksLayout({
       <BlocksNav />
 
       <div className="screen-line-top screen-line-bottom">
-        <div
-          className={cn(
-            "h-8 before:absolute before:left-[-100vw] before:-z-1 before:h-full before:w-[200vw]",
-            "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-line)]/56"
-          )}
-        />
+        <div className="stripe-divider" />
       </div>
 
       {children}

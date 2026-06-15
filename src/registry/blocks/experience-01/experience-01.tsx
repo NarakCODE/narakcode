@@ -5,7 +5,7 @@ import { WorkExperience } from "@/registry/transformed/components/work-experienc
 
 export function Experience01() {
   return (
-    <div className="max-w-screen overflow-x-hidden">
+    <div className="max-w-screen overflow-x-clip">
       <div className="container mx-auto px-4">
         <div className="border-x border-line py-8">
           <h2 className="screen-line-top screen-line-bottom ml-4 font-heading text-3xl font-semibold tracking-tight">
