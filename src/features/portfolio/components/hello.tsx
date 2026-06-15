@@ -13,7 +13,7 @@ import { USER } from "@/features/portfolio/data/user"
 
 const ID = "hello"
 
-export function About() {
+export function Hello() {
   return (
     <Panel id={ID}>
       <PanelHeader>

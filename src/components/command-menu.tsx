@@ -13,6 +13,7 @@ import {
   CrownIcon,
   DownloadIcon,
   FileTextIcon,
+  LayersIcon,
   LineChartIcon,
   MonitorIcon,
   MoonStarIcon,
@@ -118,6 +119,12 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#hello",
     kind: "page",
     icon: <TextInitialIcon />,
+  },
+  {
+    title: "Stack",
+    href: "/#stack",
+    kind: "page",
+    icon: <LayersIcon />,
   },
   {
     title: "Experience",
