@@ -42,6 +42,7 @@ export function SiteFooter() {
                 <li>evilcharts.com</li>
                 <li>devouringdetails.com</li>
                 <li>skiper-ui.com</li>
+                <li>makingsoftware.com</li>
               </ul>
             </dd>
           </Item>
