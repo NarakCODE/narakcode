@@ -36,7 +36,7 @@ export function GitHubContributionGraph({
       aria-label="GitHub Contributions Graph"
     >
       <ContributionGraphCalendar
-        className="no-scrollbar px-4"
+        className="no-scrollbar px-4 **:data-[slot=month-labels]:text-muted-foreground"
         title="GitHub Contributions"
         aria-hidden
       >

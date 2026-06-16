@@ -98,12 +98,6 @@ export function RegistryCommandAnimated() {
             <TextFlip
               className="text-foreground"
               as={motion.span}
-              variants={{
-                initial: { y: -12, opacity: 0 },
-                animate: { y: 0, opacity: 1 },
-                exit: { y: 12, opacity: 0 },
-              }}
-              interval={1.5}
               onIndexChange={(index: number) => {
                 currentItemRef.current = registryItemNames[index]
               }}

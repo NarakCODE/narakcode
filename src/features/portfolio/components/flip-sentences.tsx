@@ -19,12 +19,6 @@ export function FlipSentences({
     <div ref={ref} {...props}>
       <TextFlip
         className="font-mono text-sm text-balance text-muted-foreground"
-        variants={{
-          initial: { y: -10, opacity: 0 },
-          animate: { y: -1, opacity: 1 },
-          exit: { y: 10, opacity: 0 },
-        }}
-        interval={1.5}
         play={isPageInView && isInView}
       >
         {children}

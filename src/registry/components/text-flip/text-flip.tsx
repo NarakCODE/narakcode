@@ -7,9 +7,18 @@ import { AnimatePresence, motion } from "motion/react"
 import { cn } from "@/lib/utils"
 
 const defaultVariants: Variants = {
-  initial: { y: -8, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  exit: { y: 8, opacity: 0 },
+  initial: { y: "-20%", opacity: 0, filter: "blur(1px)" },
+  animate: {
+    y: "0%",
+    opacity: 1,
+    filter: "blur(0px)",
+  },
+  exit: {
+    y: "40%",
+    opacity: 0,
+    filter: "blur(1px)",
+    transition: { ease: "easeOut" },
+  },
 }
 
 type MotionElement = typeof motion.p | typeof motion.span | typeof motion.code
