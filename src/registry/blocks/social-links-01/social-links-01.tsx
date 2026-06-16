@@ -6,19 +6,20 @@ export function SocialLinks01() {
     <div className="max-w-screen overflow-x-clip">
       <div className="container mx-auto px-4">
         <div className="relative border-x border-line">
-          <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-2 gap-2 md:grid-cols-3">
+          <div className="pointer-events-none absolute inset-0 -z-1 hidden gap-2 sm:grid sm:grid-cols-2 md:grid-cols-3">
             <div className="border-r border-line" />
             <div className="border-l border-line md:border-x" />
             <div className="border-l border-line max-md:hidden" />
           </div>
 
-          <ul className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
             {SOCIAL_LINKS.map((link, index) => {
               return (
                 <li
                   key={index}
                   className={cn(
-                    "max-md:nth-[2n+1]:screen-line-top max-md:nth-[2n+1]:screen-line-bottom",
+                    "max-sm:screen-line-top max-sm:screen-line-bottom",
+                    "sm:max-md:nth-[2n+1]:screen-line-top sm:max-md:nth-[2n+1]:screen-line-bottom",
                     "md:nth-[3n+1]:screen-line-top md:nth-[3n+1]:screen-line-bottom"
                   )}
                 >
@@ -64,7 +65,7 @@ function SocialLinkItem({ icon, title, href }: SocialLink) {
         hugeicons="ArrowUpRight03Icon"
         phosphor="ArrowUpRightIcon"
         remixicon="RiArrowRightUpLine"
-        className="size-4 text-muted-foreground"
+        className="size-4 shrink-0 text-muted-foreground"
       />
     </div>
   )
