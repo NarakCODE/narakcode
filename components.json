@@ -23,6 +23,13 @@
   },
   "registries": {
     "@ncdai": "https://chanhdai.com/r/{name}.json",
+    "@shadcncraft": {
+      "url": "https://shadcncraft.com/r/{style}/{name}",
+      "headers": {
+        "X-License-Key": "${SHADCNCRAFT_LICENSE_KEY}",
+        "X-Instance-Name": "${SHADCNCRAFT_INSTANCE_NAME}"
+      }
+    },
     "@kibo-ui": "https://kibo-ui.com/r/{name}.json",
     "@react-bits": "https://reactbits.dev/r/{name}.json",
     "@soundcn": "https://soundcn.xyz/r/{name}.json",
