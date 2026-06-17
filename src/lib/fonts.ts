@@ -9,6 +9,7 @@ const fontMono = GeistMono
 
 const fontSerif = IBM_Plex_Serif({
   weight: ["400"],
+  display: "swap",
   fallback: ["serif"],
   variable: "--font-serif",
 })
