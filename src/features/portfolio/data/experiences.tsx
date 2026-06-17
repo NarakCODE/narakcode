@@ -23,14 +23,20 @@ export const EXPERIENCES: Experience[] = [
         },
         employmentType: "Full-time",
         icon: <CodeXmlIcon />,
-        description:
-          "- Work on the registry and React component library.\n- Design and build Pro application components and blocks, from Figma to production-ready React.",
+        description: `- Design and build Pro components/blocks, from Figma to production-ready React.
+- Build and maintain the @shadcncraft registry.
+- Build and enhance features for the marketing website.
+- Build and maintain Storybook documentation.
+- Design and build the Upgrade Bundle feature.`,
         skills: [
           "TypeScript",
           "Next.js",
           "Tailwind CSS",
           "shadcn/registry",
           "Figma",
+          "Polar",
+          "Storybook",
+          "UI/UX Design",
         ],
         isExpanded: true,
       },
