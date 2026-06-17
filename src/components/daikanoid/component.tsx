@@ -6,6 +6,8 @@ import { useEffect, useRef } from "react"
 import { useReducedMotion } from "motion/react"
 import p5 from "p5"
 
+import { cn } from "@/lib/utils"
+
 import { Ball } from "./ball"
 import { resetGame } from "./brick"
 import { Colors, loadColors } from "./colors"
@@ -19,9 +21,10 @@ import { Paddle } from "./paddle"
 import type { GameState } from "./types"
 import { UI } from "./ui"
 
-export function Daikanoid(
-  props: Omit<React.ComponentPropsWithRef<"canvas">, "children">
-) {
+export function Daikanoid({
+  className,
+  ...props
+}: Omit<React.ComponentPropsWithRef<"canvas">, "children">) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const shouldReduceMotion = useReducedMotion()
 
@@ -147,5 +150,11 @@ export function Daikanoid(
     }
   }, [shouldReduceMotion])
 
-  return <canvas ref={canvasRef} {...props} />
+  return (
+    <canvas
+      ref={canvasRef}
+      className={cn("h-150 w-200 ring-1 ring-border", className)}
+      {...props}
+    />
+  )
 }

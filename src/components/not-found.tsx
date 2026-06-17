@@ -8,7 +8,7 @@ export function NotFound() {
   return (
     <div className="grid min-h-svh place-items-center py-6">
       <section className="max-lg:hidden">
-        <Daikanoid className="ring-1 ring-border" />
+        <Daikanoid />
       </section>
 
       <section className="flex flex-col items-center gap-6 lg:hidden">
