@@ -10,7 +10,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
     <div
       id={`experience-${experience.id}`}
-      className="screen-line-bottom scroll-mt-14 space-y-4 py-4"
+      className="group/experience screen-line-bottom scroll-mt-14 space-y-4 py-4"
     >
       <div className="flex items-center gap-3">
         <div className="flex size-6 shrink-0 items-center justify-center select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground [&_svg:not([class*='size-'])]:size-5">
@@ -21,7 +21,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
               width={24}
               height={24}
               quality={100}
-              className="rounded-full"
+              className="rounded-full grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/experience:grayscale-0"
               unoptimized
               aria-hidden
             />

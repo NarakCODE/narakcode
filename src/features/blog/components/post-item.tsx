@@ -19,11 +19,11 @@ export function PostItem({
   const Heading = headingAs ?? "h2"
 
   return (
-    <div className="relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted">
+    <div className="group/post relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted">
       {post.metadata.image && (
         <div className="relative select-none [--image-radius:var(--radius-xl)]">
           <Image
-            className="aspect-1200/630 rounded-(--image-radius)"
+            className="aspect-1200/630 rounded-(--image-radius) grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/post:grayscale-0"
             src={post.metadata.image}
             alt={post.metadata.title}
             width={1200}

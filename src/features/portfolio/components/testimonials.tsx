@@ -133,7 +133,7 @@ function TestimonialItem({
     <Testimonial className="group/testimonial relative">
       <TestimonialQuote className="font-serif text-base">
         <p>
-          <Twemoji className="grayscale transition-[filter] duration-300 group-hover/testimonial:grayscale-0">
+          <Twemoji className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0">
             {quote}
           </Twemoji>
         </p>
@@ -142,7 +142,7 @@ function TestimonialItem({
       <TestimonialAuthor>
         <TestimonialAvatar>
           <TestimonialAvatarImg
-            className="grayscale transition-[filter] duration-300 group-hover/testimonial:grayscale-0"
+            className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0"
             src={authorAvatar}
             alt={authorName}
           />
