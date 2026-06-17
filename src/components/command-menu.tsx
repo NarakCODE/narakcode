@@ -41,7 +41,7 @@ import {
   CommandShortcut,
 } from "@/components/ui/command"
 import type { DocPreview } from "@/features/doc/types/document"
-import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links-v2"
+import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 
 import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
 import { getWordmarkSVG } from "./chanhdai-wordmark"
