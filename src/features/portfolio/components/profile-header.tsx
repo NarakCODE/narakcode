@@ -35,10 +35,7 @@ export function ProfileHeader() {
               {USER.displayName}
             </h1>
 
-            <VerifiedIcon
-              className="size-4.5 text-info select-none"
-              aria-hidden
-            />
+            <VerifiedIcon className="size-4.5 select-none" aria-hidden />
 
             {USER.namePronunciationUrl && (
               <PronounceMyName
