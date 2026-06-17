@@ -1,11 +1,9 @@
 "use client"
 
 import { useRef } from "react"
-import { ArrowUpRightIcon } from "lucide-react"
 import { useInView, usePageInView } from "motion/react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 import {
   Marquee,
   MarqueeContent,
@@ -60,7 +58,7 @@ export function Testimonials() {
         <TestimonialList data={TESTIMONIALS_2} direction="right" play={play} />
       </div>
 
-      <div className="absolute right-2 bottom-2 z-10 rounded-lg bg-background">
+      {/* <div className="absolute right-2 bottom-2 z-10 rounded-lg bg-background">
         <Button
           className="size-7 border-none shadow-sm ring-1 ring-foreground/10 dark:ring-foreground/15"
           variant="ghost"
@@ -76,7 +74,7 @@ export function Testimonials() {
             <ArrowUpRightIcon />
           </a>
         </Button>
-      </div>
+      </div> */}
 
       <div className="flex h-px" />
     </div>
