@@ -19,4 +19,6 @@ export type Testimonial = {
   order?: number
   /** Optional CSS styles to apply to the testimonial component */
   style?: React.CSSProperties
+
+  icon?: React.ReactNode
 }
