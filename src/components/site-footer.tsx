@@ -152,9 +152,8 @@ export function SiteFooter() {
 
       <SiteFooterInteractiveLogotype />
 
-      <div className="pb-[env(safe-area-inset-bottom,0px)]">
-        <div className="flex h-24" />
-      </div>
+      <div className="h-(--fade-bottom-height)" />
+      <div className="pb-[env(safe-area-inset-bottom,0)]" />
     </footer>
   )
 }
