@@ -36,13 +36,13 @@ export function SiteFooter() {
             <dt>Inspired by</dt>
             <dd>
               <ul>
-                <li>tailwindcss.com</li>
-                <li>ui.shadcn.com</li>
-                <li>vercel.com</li>
-                <li>evilcharts.com</li>
-                <li>devouringdetails.com</li>
-                <li>skiper-ui.com</li>
-                <li>makingsoftware.com</li>
+                <li>Tailwind CSS</li>
+                <li>shadcn/ui</li>
+                <li>Vercel</li>
+                <li>Evil Charts</li>
+                <li>Devouring Details</li>
+                <li>Skiper UI</li>
+                <li>Making Software</li>
               </ul>
             </dd>
           </Item>

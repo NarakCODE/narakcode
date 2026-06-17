@@ -98,7 +98,7 @@ function computeClock(timeZone: string) {
     timeZone,
     hour: "2-digit",
     minute: "2-digit",
-    hourCycle: "h23",
+    hour12: true,
   }).format(now)
   const hour = parseInt(time, 10)
   const minute = parseInt(time.slice(3), 10)
