@@ -95,12 +95,7 @@ function TestimonialList({
       <MarqueeFade side="left" />
       <MarqueeFade side="right" />
 
-      <MarqueeContent
-        direction={direction}
-        autoFill={false}
-        play={play}
-        speed={40}
-      >
+      <MarqueeContent direction={direction} play={play} speed={40}>
         {data
           .filter((item) => !item.isFeatured)
           .map((item) => (
