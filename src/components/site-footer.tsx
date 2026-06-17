@@ -2,7 +2,7 @@ import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
-import { getSocialLinkByName } from "@/features/portfolio/data/social-links-v2"
+import { getSocialLinkByName } from "@/features/portfolio/data/social-links"
 import { USER } from "@/features/portfolio/data/user"
 
 export function SiteFooter() {

@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons"
-import type { SocialLink } from "@/features/portfolio/types/social-links-v2"
+import type { SocialLink } from "@/features/portfolio/types/social-links"
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {

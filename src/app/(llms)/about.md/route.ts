@@ -1,4 +1,4 @@
-import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links-v2"
+import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 import { TECH_STACK } from "@/features/portfolio/data/tech-stack"
 import { USER } from "@/features/portfolio/data/user"
 
