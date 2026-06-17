@@ -1,3 +1,5 @@
+import { Icons } from "@/components/icons"
+
 import type { Testimonial } from "../types/testimonials"
 
 // Long quotes (more than 50 characters), ordered by date ascending
@@ -167,6 +169,7 @@ export const TESTIMONIALS_1: Testimonial[] = [
     isVerified: true,
     isFeatured: true,
     order: 1,
+    icon: <Icons.vercel />,
   },
   {
     authorAvatar: "https://unavatar.io/x/initjean",
@@ -312,6 +315,7 @@ export const TESTIMONIALS_2: Testimonial[] = [
     isVerified: true,
     isFeatured: true,
     order: 2,
+    icon: <Icons.shadcn />,
   },
   {
     authorAvatar: "https://unavatar.io/x/kapish_dima?t=zzx7M",

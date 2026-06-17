@@ -60,7 +60,7 @@ export function Testimonials() {
         <TestimonialList data={TESTIMONIALS_2} direction="right" play={play} />
       </div>
 
-      <div className="absolute right-0 bottom-0 z-10 -translate-x-2 -translate-y-2 rounded-lg bg-background">
+      <div className="absolute right-2 bottom-2 z-10 rounded-lg bg-background">
         <Button
           className="size-7 border-none shadow-sm ring-1 ring-foreground/10 dark:ring-foreground/15"
           variant="ghost"
@@ -128,19 +128,26 @@ function TestimonialItem({
   authorTagline,
   url,
   quote,
+  icon,
   // isVerified,
 }: TestimonialType) {
   return (
-    <Testimonial className="relative">
-      <TestimonialQuote className="font-serif text-base/snug">
+    <Testimonial className="group/testimonial relative">
+      <TestimonialQuote className="font-serif text-base">
         <p>
-          <Twemoji>{quote}</Twemoji>
+          <Twemoji className="grayscale transition-[filter] duration-300 group-hover/testimonial:grayscale-0">
+            {quote}
+          </Twemoji>
         </p>
       </TestimonialQuote>
 
       <TestimonialAuthor>
         <TestimonialAvatar>
-          <TestimonialAvatarImg src={authorAvatar} alt={authorName} />
+          <TestimonialAvatarImg
+            className="grayscale transition-[filter] duration-300 group-hover/testimonial:grayscale-0"
+            src={authorAvatar}
+            alt={authorName}
+          />
           <TestimonialAvatarRing />
         </TestimonialAvatar>
 
@@ -157,6 +164,15 @@ function TestimonialItem({
         </TestimonialAuthorName>
         <TestimonialAuthorTagline>{authorTagline}</TestimonialAuthorTagline>
       </TestimonialAuthor>
+
+      {icon && (
+        <div
+          className="pointer-events-none absolute right-2 bottom-3 flex size-8 items-center justify-center [&_svg]:size-4 [&_svg]:text-muted-foreground/80"
+          aria-hidden
+        >
+          {icon}
+        </div>
+      )}
     </Testimonial>
   )
 }
