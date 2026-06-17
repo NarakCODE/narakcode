@@ -167,7 +167,7 @@ function TestimonialItem({
 
       {icon && (
         <div
-          className="pointer-events-none absolute right-2 bottom-3 flex size-8 items-center justify-center [&_svg]:size-4 [&_svg]:text-muted-foreground/80"
+          className="pointer-events-none absolute right-2 bottom-2 flex size-8 items-center justify-center [&_svg]:size-4 [&_svg]:text-muted-foreground/80"
           aria-hidden
         >
           {icon}
