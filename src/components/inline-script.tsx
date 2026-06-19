@@ -1,3 +1,5 @@
+"use client"
+
 export function InlineScript({ html }: { html: string }) {
   return (
     <script
