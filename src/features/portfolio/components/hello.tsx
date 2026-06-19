@@ -1,13 +1,12 @@
 import { Prose } from "@/components/ui/typography"
 import { Markdown } from "@/components/markdown"
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
+import { HelloTitle } from "@/features/portfolio/components/hello-title"
 import {
   Panel,
   PanelContent,
   PanelHeader,
-  PanelTitle,
 } from "@/features/portfolio/components/panel"
-import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy"
 import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
 
@@ -17,10 +16,7 @@ export function Hello() {
   return (
     <Panel id={ID}>
       <PanelHeader>
-        <PanelTitle>
-          <a href={`#${ID}`}>Hello</a>
-          <PanelTitleCopy id={ID} />
-        </PanelTitle>
+        <HelloTitle />
       </PanelHeader>
 
       <PanelContent className="screen-line-bottom py-6">
