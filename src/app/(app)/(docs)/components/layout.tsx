@@ -2,7 +2,7 @@ import type { Route } from "next"
 
 import { DocGrid, DocLeftCol } from "@/features/doc/components/doc-layout"
 import { DocPageRoot } from "@/features/doc/components/doc-page-root"
-import { getDocsByCategory } from "@/features/doc/data/documents"
+import { getComponentDocs } from "@/features/doc/data/documents"
 
 import { Sidebar, SidebarContent } from "./sidebar"
 
@@ -11,7 +11,7 @@ export default function ComponentDocsLayout({
 }: {
   children: React.ReactNode
 }) {
-  const componentDocs = getDocsByCategory("components")
+  const componentDocs = getComponentDocs()
     .slice()
     .sort((a, b) =>
       a.metadata.title.localeCompare(b.metadata.title, "en", {

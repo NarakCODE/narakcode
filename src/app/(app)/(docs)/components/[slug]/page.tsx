@@ -3,10 +3,12 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getTableOfContents } from "fumadocs-core/content/toc"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
-import type { BlogPosting as PageSchema, WithContext } from "schema-dts"
+import type { SoftwareSourceCode, WithContext } from "schema-dts"
 
-import { SITE_INFO, X_HANDLE } from "@/config/site"
+import { JSON_LD_ID } from "@/config/json-ld"
+import { LICENSE, SOURCE_CODE_GITHUB_URL, X_HANDLE } from "@/config/site"
 import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
+import { absoluteUrl } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Kbd } from "@/components/ui/kbd"
 import { Prose } from "@/components/ui/typography"
@@ -27,18 +29,17 @@ import { LLMCopyButtonWithViewOptions } from "@/features/doc/components/doc-page
 import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
 import {
   findNeighbour,
+  getComponentDocs,
   getDocBySlug,
-  getDocsByCategory,
 } from "@/features/doc/data/documents"
 import type { Doc } from "@/features/doc/types/document"
-import { USER } from "@/features/portfolio/data/user"
 
 export const revalidate = false
 export const dynamic = "force-static"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const docs = getDocsByCategory("components")
+  const docs = getComponentDocs()
   return docs.map((doc) => ({ slug: doc.slug }))
 }
 
@@ -86,23 +87,35 @@ export async function generateMetadata({
   }
 }
 
-function getPageJsonLd(doc: Doc): WithContext<PageSchema> {
+function getSoftwareSourceCodeJsonLd(
+  doc: Doc
+): WithContext<SoftwareSourceCode> {
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: doc.metadata.title,
+    "@type": "SoftwareSourceCode",
+    "@id": absoluteUrl(`/components/${doc.slug}`),
+    name: doc.metadata.title,
     description: doc.metadata.description,
     image:
       doc.metadata.image ||
-      `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`,
-    url: `${SITE_INFO.url}/components/${doc.slug}`,
+      absoluteUrl(
+        `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`
+      ),
+    url: absoluteUrl(`/components/${doc.slug}`),
     datePublished: new Date(doc.metadata.createdAt).toISOString(),
     dateModified: new Date(doc.metadata.updatedAt).toISOString(),
-    author: {
-      "@type": "Person",
-      name: USER.displayName,
-      identifier: USER.username,
-      image: USER.avatar,
+    codeRepository: SOURCE_CODE_GITHUB_URL,
+    programmingLanguage: [{ "@type": "ComputerLanguage", name: "TypeScript" }],
+    runtimePlatform: "React 19",
+    codeSampleType: "full (compile ready) solution",
+    keywords: ["react", "shadcn", "component"],
+    license: LICENSE.url,
+    author: { "@id": JSON_LD_ID.person },
+    isPartOf: {
+      "@type": "CollectionPage",
+      "@id": absoluteUrl("/components"),
+      name: "Components",
+      url: absoluteUrl("/components"),
     },
   }
 }
@@ -123,7 +136,7 @@ export default async function Page({
 
   const toc = getTableOfContents(doc.content)
 
-  const allDocs = getDocsByCategory("components")
+  const allDocs = getComponentDocs()
     .slice()
     .sort((a, b) =>
       a.metadata.title.localeCompare(b.metadata.title, "en", {
@@ -135,7 +148,7 @@ export default async function Page({
   return (
     <>
       <DocContentCol>
-        <JsonLdScript data={getPageJsonLd(doc)} />
+        <JsonLdScript data={getSoftwareSourceCodeJsonLd(doc)} />
 
         <JsonLdScript
           data={jsonLdBreadcrumbList([

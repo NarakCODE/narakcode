@@ -21,7 +21,7 @@ import ThemeToggleEffectDemo from "@/registry/examples/theme-toggle-effect-demo"
 import TwemojiDemo from "@/registry/examples/twemoji-demo"
 import WheelPickerDemo from "@/registry/examples/wheel-picker-demo"
 import { GridItem } from "@/app/(app)/(blocks)/components/showcase/grid-item"
-import { getDocsByCategory } from "@/features/doc/data/documents"
+import { getComponentDocs } from "@/features/doc/data/documents"
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
 import { PanelTitleCopy } from "./panel-title-copy"
@@ -29,7 +29,7 @@ import { PanelTitleCopy } from "./panel-title-copy"
 const ID = "components"
 
 export function ComponentsShowcase() {
-  const components = getDocsByCategory("components")
+  const components = getComponentDocs()
 
   return (
     <Panel id={ID}>

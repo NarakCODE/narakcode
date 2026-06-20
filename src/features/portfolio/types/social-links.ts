@@ -1,7 +1,8 @@
-export type SocialLink = {
-  name: string
+/** A profile's identity is its key in the `SOCIAL` registry, not a field here. */
+export type SocialProfile = {
   title: string
-  icon: React.JSX.Element
   handle: string
   href: string
+  /** Opt-in: include this profile in JSON-LD `sameAs` (public profile page). */
+  sameAs?: boolean
 }

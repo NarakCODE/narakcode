@@ -11,7 +11,7 @@ import {
   ComponentItemIcon,
   ComponentItemTitle,
 } from "@/app/(app)/(pages)/components/component-item"
-import { getDocsByCategory } from "@/features/doc/data/documents"
+import { getComponentDocs } from "@/features/doc/data/documents"
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
 import { PanelTitleCopy } from "./panel-title-copy"
@@ -19,7 +19,7 @@ import { PanelTitleCopy } from "./panel-title-copy"
 const ID = "components"
 
 export function Components() {
-  const components = getDocsByCategory("components")
+  const components = getComponentDocs()
 
   return (
     <Panel id={ID}>

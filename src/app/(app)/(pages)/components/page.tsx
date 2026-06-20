@@ -2,11 +2,13 @@ import type { Metadata, Route } from "next"
 import Link from "next/link"
 import { addQueryParams } from "@/utils/url"
 import { Grip, LayoutDashboard } from "lucide-react"
+import type { CollectionPage, WithContext } from "schema-dts"
 
+import { JSON_LD_ID } from "@/config/json-ld"
 import { registryConfig } from "@/config/registry"
 import { UTM_PARAMS, X_HANDLE } from "@/config/site"
 import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
-import { cn } from "@/lib/utils"
+import { absoluteUrl, cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import {
   Tooltip,
@@ -20,7 +22,7 @@ import {
   PageHeadingTitle,
 } from "@/components/page-heading"
 import { RegistryCommandAnimated } from "@/components/registry-command-animated"
-import { getDocsByCategory } from "@/features/doc/data/documents"
+import { getComponentDocs } from "@/features/doc/data/documents"
 
 import {
   ComponentItem,
@@ -58,12 +60,37 @@ export const metadata: Metadata = {
   },
 }
 
-// const addRegistryCode = `\`\`\`bash
-// npx shadcn@latest registry add ${registryConfig.namespace}
-// \`\`\``
+function getCollectionPageJsonLd(
+  docs: { name: string; slug: string }[]
+): WithContext<CollectionPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": absoluteUrl("/components"),
+    name: title,
+    description,
+    url: absoluteUrl("/components"),
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: docs.length,
+      itemListElement: docs.map((doc, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: absoluteUrl(`/components/${doc.slug}`),
+      })),
+    },
+    isPartOf: { "@id": JSON_LD_ID.website },
+  }
+}
 
 export default function Page() {
-  const posts = getDocsByCategory("components")
+  const posts = getComponentDocs()
+    .slice()
+    .sort((a, b) =>
+      a.metadata.title.localeCompare(b.metadata.title, "en", {
+        sensitivity: "base",
+      })
+    )
 
   const trustedRegistryUrl = addQueryParams(
     "https://ui.shadcn.com/docs/directory",
@@ -75,6 +102,12 @@ export default function Page() {
 
   return (
     <>
+      <JsonLdScript
+        data={getCollectionPageJsonLd(
+          posts.map((doc) => ({ name: doc.metadata.title, slug: doc.slug }))
+        )}
+      />
+
       <JsonLdScript
         data={jsonLdBreadcrumbList([
           {
@@ -148,47 +181,6 @@ export default function Page() {
               <p>Showcase</p>
             </TooltipContent>
           </Tooltip>
-
-          {/* <Dialog>
-          <DialogTrigger
-            render={
-              <Button
-                className="h-7 gap-1.5 border-none pr-2.5 pl-2"
-                variant="secondary"
-                size="sm"
-              >
-                <PlusIcon />
-                Add
-              </Button>
-            }
-          />
-
-          <DialogContent className="sm:max-w-lg">
-            <DialogHeader>
-              <DialogTitle>Add Registry</DialogTitle>
-              <DialogDescription className="text-balance">
-                Run this command to add{" "}
-                <a
-                  className="text-foreground link-underline"
-                  href={trustedRegistryUrl}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {registryConfig.namespace}
-                </a>{" "}
-                to your project.
-              </DialogDescription>
-            </DialogHeader>
-
-            <div className="overflow-auto *:data-rehype-pretty-code-figure:my-0">
-              <MDX code={addRegistryCode} />
-            </div>
-
-            <DialogFooter>
-              <DialogClose render={<Button>Done</Button>} />
-            </DialogFooter>
-          </DialogContent>
-        </Dialog> */}
         </div>
 
         <div className="screen-line-bottom h-px" />
@@ -200,37 +192,30 @@ export default function Page() {
           </div>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-            {posts
-              .slice()
-              .sort((a, b) =>
-                a.metadata.title.localeCompare(b.metadata.title, "en", {
-                  sensitivity: "base",
-                })
-              )
-              .map((c) => (
-                <li
-                  key={c.slug}
-                  className={cn(
-                    "max-sm:screen-line-bottom",
-                    "sm:max-md:nth-[2n+1]:screen-line-bottom",
-                    "md:nth-[3n+1]:screen-line-bottom"
-                  )}
-                >
-                  <ComponentItem href={`/components/${c.slug}` as Route}>
-                    <ComponentItemIcon>
-                      <ComponentIcon variant={c.slug} />
-                      {(c.metadata.new || c.metadata.updated) && (
-                        <ComponentItemDot
-                          aria-label={c.metadata.new ? "New" : "Updated"}
-                        />
-                      )}
-                    </ComponentItemIcon>
-                    <ComponentItemTitle as="h2">
-                      {c.metadata.title}
-                    </ComponentItemTitle>
-                  </ComponentItem>
-                </li>
-              ))}
+            {posts.map((c) => (
+              <li
+                key={c.slug}
+                className={cn(
+                  "max-sm:screen-line-bottom",
+                  "sm:max-md:nth-[2n+1]:screen-line-bottom",
+                  "md:nth-[3n+1]:screen-line-bottom"
+                )}
+              >
+                <ComponentItem href={`/components/${c.slug}` as Route}>
+                  <ComponentItemIcon>
+                    <ComponentIcon variant={c.slug} />
+                    {(c.metadata.new || c.metadata.updated) && (
+                      <ComponentItemDot
+                        aria-label={c.metadata.new ? "New" : "Updated"}
+                      />
+                    )}
+                  </ComponentItemIcon>
+                  <ComponentItemTitle as="h2">
+                    {c.metadata.title}
+                  </ComponentItemTitle>
+                </ComponentItem>
+              </li>
+            ))}
           </ul>
         </div>
 

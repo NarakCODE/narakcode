@@ -1,5 +1,55 @@
 import type { NextConfig } from "next"
 
+/**
+ * Component slugs that used to also render under /blog/<slug> (a shared MDX
+ * pool) and were indexed there. After splitting content into category folders
+ * they live only at /components/<slug>, so the legacy /blog URLs are permanently
+ * redirected below to avoid 404s.
+ *
+ * This is a fixed snapshot of the previously-indexed slugs — components added
+ * after the split were never on /blog and don't need an entry.
+ */
+const LEGACY_BLOG_COMPONENT_SLUGS = [
+  "apple-hello-effect",
+  "brand-assets-menu",
+  "chevrons-up-down-icon",
+  "code-block-command",
+  "consent-manager",
+  "copy-button",
+  "dot-grid-spotlight",
+  "elastic-slider",
+  "fluid-gradient-text",
+  "github-contributions",
+  "github-stars",
+  "glow-card-grid",
+  "haptic",
+  "icon-swap",
+  "middle-truncation",
+  "mobius-loop-icon",
+  "react-wheel-picker",
+  "scroll-fade-effect",
+  "shimmering-text",
+  "slide-to-unlock",
+  "spinning-circular-text",
+  "testimonial-spotlight",
+  "testimonial",
+  "testimonials-marquee",
+  "text-flip",
+  "theme-switcher",
+  "theme-toggle-effect",
+  "toc-minimap",
+  "twemoji",
+  "work-experience-component",
+] as const
+
+const legacyBlogComponentRedirects = LEGACY_BLOG_COMPONENT_SLUGS.map(
+  (slug) => ({
+    source: `/blog/${slug}`,
+    destination: `/components/${slug}`,
+    permanent: true,
+  })
+)
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   typedRoutes: true,
@@ -76,6 +126,7 @@ const nextConfig: NextConfig = {
         destination: "/blocks/marketing/team-01",
         permanent: true,
       },
+      ...legacyBlogComponentRedirects,
     ]
   },
   async rewrites() {

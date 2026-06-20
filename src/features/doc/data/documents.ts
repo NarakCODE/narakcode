@@ -23,19 +23,33 @@ function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent)
 }
 
+/**
+ * Reads MDX docs from `dir`, grouping them by their immediate subfolder.
+ * The subfolder name is the doc's category (e.g. `content/components/*.mdx`
+ * yields docs with `category: "components"`), so category is derived from the
+ * file location rather than declared in frontmatter. Files placed directly in
+ * `dir` (e.g. shared `props.ts`) are ignored — only category folders are read.
+ */
 function getMDXData(dir: string) {
-  const mdxFiles = getMDXFiles(dir)
+  const categoryDirs = fs
+    .readdirSync(dir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
 
-  return mdxFiles.map<Doc>((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file))
+  return categoryDirs.flatMap((categoryDir) => {
+    const category = categoryDir.name
+    const categoryPath = path.join(dir, category)
 
-    const slug = path.basename(file, path.extname(file))
+    return getMDXFiles(categoryPath).map<Doc>((file) => {
+      const { metadata, content } = readMDXFile(path.join(categoryPath, file))
 
-    return {
-      metadata,
-      slug,
-      content,
-    }
+      const slug = path.basename(file, path.extname(file))
+
+      return {
+        metadata: { ...metadata, category },
+        slug,
+        content,
+      }
+    })
   })
 }
 
@@ -59,6 +73,20 @@ export function getDocBySlug(slug: string) {
 
 export function getDocsByCategory(category: string) {
   return getAllDocs().filter((doc) => doc.metadata?.category === category)
+}
+
+/** Categories derived from the doc's content subfolder. */
+export const BLOG_CATEGORY = "blog"
+export const COMPONENTS_CATEGORY = "components"
+
+/** Blog posts — docs under the `blog/` content folder. */
+export function getBlogPosts() {
+  return getDocsByCategory(BLOG_CATEGORY)
+}
+
+/** Component docs — docs under the `components/` content folder. */
+export function getComponentDocs() {
+  return getDocsByCategory(COMPONENTS_CATEGORY)
 }
 
 export function findNeighbour(docs: Doc[], slug: string) {

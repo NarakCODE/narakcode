@@ -8,6 +8,7 @@ import {
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
 import { Panel, PanelContent } from "@/features/portfolio/components/panel"
+import { SOCIAL_ICONS } from "@/features/portfolio/components/social-link-icons"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 
 export function SocialLinks() {
@@ -35,7 +36,7 @@ export function SocialLinks() {
                       target="_blank"
                       rel="noopener"
                     >
-                      {item.icon}
+                      {SOCIAL_ICONS[item.name]}
                       <span className="sr-only">{item.title}</span>
                     </a>
                   }

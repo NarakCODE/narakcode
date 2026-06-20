@@ -4,7 +4,7 @@ import { ArrowRightIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
 import { PostItem } from "@/features/blog/components/post-item"
-import { getAllDocs } from "@/features/doc/data/documents"
+import { getBlogPosts } from "@/features/doc/data/documents"
 import {
   Panel,
   PanelHeader,
@@ -16,7 +16,7 @@ import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy
 const ID = "blog"
 
 export function Blog() {
-  const allPosts = getAllDocs()
+  const allPosts = getBlogPosts()
 
   return (
     <Panel id={ID}>

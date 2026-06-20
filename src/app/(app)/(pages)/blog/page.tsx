@@ -1,8 +1,11 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
+import type { Blog, WithContext } from "schema-dts"
 
+import { JSON_LD_ID } from "@/config/json-ld"
 import { X_HANDLE } from "@/config/site"
 import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
+import { absoluteUrl } from "@/lib/utils"
 import {
   PageHeading,
   PageHeadingTagline,
@@ -11,7 +14,7 @@ import {
 import { PostList } from "@/features/blog/components/post-list"
 import { PostListWithSearch } from "@/features/blog/components/post-list-with-search"
 import { PostSearchInput } from "@/features/blog/components/post-search-input"
-import { getAllDocs } from "@/features/doc/data/documents"
+import { getBlogPosts } from "@/features/doc/data/documents"
 
 const title = "Blog"
 const description = "Writing about code, design, and everything in between."
@@ -42,11 +45,34 @@ export const metadata: Metadata = {
   },
 }
 
+function getBlogJsonLd(
+  posts: { slug: string; metadata: { title: string; createdAt: string } }[]
+): WithContext<Blog> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": absoluteUrl("/blog"),
+    name: title,
+    description,
+    url: absoluteUrl("/blog"),
+    isPartOf: { "@id": JSON_LD_ID.website },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      "@id": absoluteUrl(`/blog/${post.slug}`),
+      headline: post.metadata.title,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      datePublished: new Date(post.metadata.createdAt).toISOString(),
+    })),
+  }
+}
+
 export default function Page() {
-  const allPosts = getAllDocs()
+  const allPosts = getBlogPosts()
 
   return (
     <>
+      <JsonLdScript data={getBlogJsonLd(allPosts)} />
+
       <JsonLdScript
         data={jsonLdBreadcrumbList([
           {
