@@ -1,3 +1,5 @@
+import { BookIcon, LibraryIcon } from "lucide-react"
+
 import { Icons } from "@/components/icons"
 
 import type { Bookmark } from "../types/bookmarks"
@@ -43,6 +45,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://animations.dev",
     author: "Emil Kowalski",
     icon: <Icons.animationsdev />,
+    tags: ["Course", "Animations"],
     bookmarkedAt: "2025-12-01",
   },
   {
@@ -84,6 +87,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://devouringdetails.com",
     author: "Rauno",
     icon: <Circle />,
+    tags: ["Course"],
     bookmarkedAt: "2026-04-14",
   },
   {
@@ -122,7 +126,32 @@ export const BOOKMARKS: Bookmark[] = [
     title: "Making Software",
     url: "https://www.makingsoftware.com",
     author: "Dan Hollick",
+    icon: <BookIcon />,
+    tags: ["Book"],
     bookmarkedAt: "2026-06-08",
+  },
+  {
+    title: "Interface Craft",
+    url: "https://www.interfacecraft.dev",
+    author: "Josh Puckett",
+    icon: <LibraryIcon />,
+    tags: ["Course"],
+    bookmarkedAt: "2026-06-20",
+  },
+  {
+    title: "Interfaces",
+    url: "http://interfaces.dev",
+    author: "Jakub Krehel",
+    icon: <LibraryIcon />,
+    tags: ["Course"],
+    bookmarkedAt: "2026-06-20",
+  },
+  {
+    title: "Design Engineer Principles",
+    url: "https://vercel.com/design/engineer",
+    author: "Vercel",
+    icon: <Icons.vercel />,
+    bookmarkedAt: "2026-06-20",
   },
 ]
 

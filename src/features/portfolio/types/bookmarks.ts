@@ -3,5 +3,6 @@ export type Bookmark = {
   url: string
   author?: string
   icon?: React.ReactElement
+  tags?: string[]
   bookmarkedAt: string
 }
