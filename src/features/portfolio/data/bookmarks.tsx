@@ -1,5 +1,3 @@
-import { BookIcon, LibraryIcon } from "lucide-react"
-
 import { Icons } from "@/components/icons"
 
 import { BookmarkCategory, type Bookmark } from "../types/bookmarks"
@@ -141,7 +139,6 @@ export const BOOKMARKS: Bookmark[] = [
     title: "Making Software",
     url: "https://www.makingsoftware.com",
     author: "Dan Hollick",
-    icon: <BookIcon />,
     category: BookmarkCategory.BOOK,
     bookmarkedAt: "2026-06-08",
   },
@@ -149,7 +146,6 @@ export const BOOKMARKS: Bookmark[] = [
     title: "Interface Craft",
     url: "https://www.interfacecraft.dev",
     author: "Josh Puckett",
-    icon: <LibraryIcon />,
     category: BookmarkCategory.COURSE,
     bookmarkedAt: "2026-06-20",
   },
@@ -157,7 +153,6 @@ export const BOOKMARKS: Bookmark[] = [
     title: "Interfaces",
     url: "http://interfaces.dev",
     author: "Jakub Krehel",
-    icon: <LibraryIcon />,
     category: BookmarkCategory.COURSE,
     bookmarkedAt: "2026-06-20",
   },
