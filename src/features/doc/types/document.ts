@@ -7,7 +7,9 @@ export type DocMetadata = {
    */
   image?: string
   /**
-   * Category identifier/slug used for filtering (see getDocsByCategory).
+   * Category identifier, derived from the doc's content subfolder
+   * (e.g. `content/components/*` → "components"). Not declared in frontmatter;
+   * injected when docs are read. Used for filtering (see getDocsByCategory).
    */
   category?: string
   /**

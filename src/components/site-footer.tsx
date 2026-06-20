@@ -2,13 +2,13 @@ import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
-import { getSocialLinkByName } from "@/features/portfolio/data/social-links"
+import { SOCIAL } from "@/features/portfolio/data/social-links"
 import { USER } from "@/features/portfolio/data/user"
 
 export function SiteFooter() {
-  const xLink = getSocialLinkByName("x")
-  const githubLink = getSocialLinkByName("github")
-  const linkedinLink = getSocialLinkByName("linkedin")
+  const xLink = SOCIAL.x
+  const githubLink = SOCIAL.github
+  const linkedinLink = SOCIAL.linkedin
 
   return (
     <footer className="max-w-screen overflow-x-clip px-2">
@@ -23,7 +23,7 @@ export function SiteFooter() {
             <dd>
               <a
                 className="link-underline"
-                href={xLink?.href}
+                href={xLink.href}
                 target="_blank"
                 rel="noopener"
               >
@@ -95,7 +95,7 @@ export function SiteFooter() {
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-line bg-background px-4">
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={xLink?.href}
+              href={xLink.href}
               target="_blank"
               rel="noopener"
               aria-label="X Profile"
@@ -107,7 +107,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={githubLink?.href}
+              href={githubLink.href}
               target="_blank"
               rel="noopener"
               aria-label="GitHub Profile"
@@ -119,7 +119,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={linkedinLink?.href}
+              href={linkedinLink.href}
               target="_blank"
               rel="noopener"
               aria-label="LinkedIn Profile"

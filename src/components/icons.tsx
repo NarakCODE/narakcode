@@ -22,7 +22,7 @@ import {
   ZapIcon,
 } from "lucide-react"
 
-type IconProps = React.HTMLAttributes<SVGElement>
+type IconProps = React.ComponentProps<"svg">
 
 export const Icons = {
   // Source: https://simpleicons.org

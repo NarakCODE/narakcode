@@ -5,8 +5,10 @@ import { getTableOfContents } from "fumadocs-core/content/toc"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts"
 
-import { SITE_INFO, X_HANDLE } from "@/config/site"
+import { JSON_LD_ID } from "@/config/json-ld"
+import { X_HANDLE } from "@/config/site"
 import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
+import { absoluteUrl } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Kbd } from "@/components/ui/kbd"
 import { Prose } from "@/components/ui/typography"
@@ -31,18 +33,17 @@ import { DocPageRoot } from "@/features/doc/components/doc-page-root"
 import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
 import {
   findNeighbour,
-  getAllDocs,
+  getBlogPosts,
   getDocBySlug,
 } from "@/features/doc/data/documents"
 import type { Doc } from "@/features/doc/types/document"
-import { USER } from "@/features/portfolio/data/user"
 
 export const revalidate = false
 export const dynamic = "force-static"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const docs = getAllDocs()
+  const docs = getBlogPosts()
   return docs.map((doc) => ({ slug: doc.slug }))
 }
 
@@ -58,7 +59,7 @@ export async function generateMetadata({
 
   const { title, description, image, createdAt, updatedAt } = doc.metadata
 
-  const postUrl = getDocUrl(doc)
+  const postUrl = `/blog/${doc.slug}`
   const ogImage =
     image ||
     `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
@@ -91,22 +92,29 @@ export async function generateMetadata({
 }
 
 function getPageJsonLd(doc: Doc): WithContext<PageSchema> {
+  const postUrl = `/blog/${doc.slug}`
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": absoluteUrl(postUrl),
     headline: doc.metadata.title,
     description: doc.metadata.description,
     image:
       doc.metadata.image ||
-      `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`,
-    url: `${SITE_INFO.url}${getDocUrl(doc)}`,
+      absoluteUrl(
+        `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`
+      ),
+    url: absoluteUrl(postUrl),
     datePublished: new Date(doc.metadata.createdAt).toISOString(),
     dateModified: new Date(doc.metadata.updatedAt).toISOString(),
-    author: {
-      "@type": "Person",
-      name: USER.displayName,
-      identifier: USER.username,
-      image: USER.avatar,
+    author: { "@id": JSON_LD_ID.person },
+    mainEntityOfPage: absoluteUrl(postUrl),
+    isPartOf: {
+      "@type": "Blog",
+      "@id": absoluteUrl("/blog"),
+      name: "Blog",
+      url: absoluteUrl("/blog"),
     },
   }
 }
@@ -121,7 +129,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
 
   const toc = getTableOfContents(doc.content)
 
-  const allDocs = getAllDocs()
+  const allDocs = getBlogPosts()
   const { previous, next } = findNeighbour(allDocs, slug)
 
   return (
@@ -169,11 +177,13 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
 
             <div className="flex items-center gap-2">
               <LLMCopyButtonWithViewOptions
-                markdownUrl={`${getDocUrl(doc)}.mdx`}
-                isComponent={doc.metadata.category === "components"}
+                markdownUrl={`/blog/${doc.slug}.mdx`}
               />
 
-              <DocShareMenu title={doc.metadata.title} url={getDocUrl(doc)} />
+              <DocShareMenu
+                title={doc.metadata.title}
+                url={`/blog/${doc.slug}`}
+              />
 
               {previous && (
                 <Tooltip>
@@ -277,9 +287,4 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
       </DocPageRoot>
     </>
   )
-}
-
-function getDocUrl(doc: Doc) {
-  const isComponent = doc.metadata.category === "components"
-  return isComponent ? `/components/${doc.slug}` : `/blog/${doc.slug}`
 }
