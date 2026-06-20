@@ -2,7 +2,7 @@ import { BookIcon, LibraryIcon } from "lucide-react"
 
 import { Icons } from "@/components/icons"
 
-import type { Bookmark } from "../types/bookmarks"
+import { BookmarkCategory, type Bookmark } from "../types/bookmarks"
 
 export const BOOKMARKS: Bookmark[] = [
   {
@@ -10,6 +10,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://vercel.com/blog/design-engineering-at-vercel",
     author: "Vercel",
     icon: <Icons.vercel />,
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2025-12-01",
   },
   {
@@ -17,6 +18,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://emilkowal.ski/ui/developing-taste",
     author: "Emil Kowalski",
     icon: <Icons.animationsdev />,
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2025-12-01",
   },
   {
@@ -24,6 +26,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://vercel.com/design/guidelines",
     author: "Vercel",
     icon: <Icons.vercel />,
+    category: BookmarkCategory.REFERENCE,
     bookmarkedAt: "2025-12-01",
   },
   {
@@ -31,6 +34,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://emilkowal.ski/ui/7-practical-animation-tips",
     author: "Emil Kowalski",
     icon: <Icons.animationsdev />,
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2025-12-01",
   },
   {
@@ -38,6 +42,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://emilkowal.ski/ui/you-dont-need-animations",
     author: "Emil Kowalski",
     icon: <Icons.animationsdev />,
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2025-12-01",
   },
   {
@@ -45,7 +50,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://animations.dev",
     author: "Emil Kowalski",
     icon: <Icons.animationsdev />,
-    tags: ["Course", "Animations"],
+    category: BookmarkCategory.COURSE,
     bookmarkedAt: "2025-12-01",
   },
   {
@@ -53,12 +58,14 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://www.components.build",
     author: "Hayden Bleasel & shadcn",
     icon: <Icons.vercel />,
+    category: BookmarkCategory.REFERENCE,
     bookmarkedAt: "2025-12-11",
   },
   {
     title: "7 Principles of Rich Web Applications",
     url: "https://rauchg.com/2014/7-principles-of-rich-web-applications",
     author: "Guillermo Rauch",
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2025-12-16",
   },
   {
@@ -66,6 +73,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://resend.com/handbook/design/how-we-think-about-design",
     author: "Resend",
     icon: <Icons.resend />,
+    category: BookmarkCategory.REFERENCE,
     bookmarkedAt: "2025-12-20",
   },
   {
@@ -73,6 +81,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://resend.com/philosophy",
     author: "Resend",
     icon: <Icons.resend />,
+    category: BookmarkCategory.REFERENCE,
     bookmarkedAt: "2025-12-20",
   },
   {
@@ -80,6 +89,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://emilkowal.ski/ui/train-your-judgement",
     author: "Emil Kowalski",
     icon: <Icons.animationsdev />,
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2026-04-09",
   },
   {
@@ -87,7 +97,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://devouringdetails.com",
     author: "Rauno",
     icon: <Circle />,
-    tags: ["Course"],
+    category: BookmarkCategory.COURSE,
     bookmarkedAt: "2026-04-14",
   },
   {
@@ -95,6 +105,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://devouringdetails.com/resources/react-handbook",
     author: "Rauno",
     icon: <Circle />,
+    category: BookmarkCategory.REFERENCE,
     bookmarkedAt: "2026-04-14",
   },
   {
@@ -102,24 +113,28 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://emilkowal.ski/ui/agents-with-taste",
     author: "Emil Kowalski",
     icon: <Icons.animationsdev />,
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2026-04-21",
   },
   {
     title: "Component Architecture for React Server Components",
     url: "https://aurorascharff.no/posts/component-architecture-for-react-server-components",
     author: "Aurora Scharff",
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2026-05-30",
   },
   {
     title: "Details that make interfaces feel better",
     url: "https://interfaces.dev/magazine/issues/details-that-make-interfaces-feel-better",
     author: "Jakub Krehel",
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2026-06-05",
   },
   {
     title: "A Clock That Doesn’t Snap",
     url: "https://ethanniser.dev/blog/a-clock-that-doesnt-snap/",
     author: "Ethan Niser",
+    category: BookmarkCategory.ARTICLE,
     bookmarkedAt: "2026-06-07",
   },
   {
@@ -127,7 +142,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://www.makingsoftware.com",
     author: "Dan Hollick",
     icon: <BookIcon />,
-    tags: ["Book"],
+    category: BookmarkCategory.BOOK,
     bookmarkedAt: "2026-06-08",
   },
   {
@@ -135,7 +150,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://www.interfacecraft.dev",
     author: "Josh Puckett",
     icon: <LibraryIcon />,
-    tags: ["Course"],
+    category: BookmarkCategory.COURSE,
     bookmarkedAt: "2026-06-20",
   },
   {
@@ -143,7 +158,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "http://interfaces.dev",
     author: "Jakub Krehel",
     icon: <LibraryIcon />,
-    tags: ["Course"],
+    category: BookmarkCategory.COURSE,
     bookmarkedAt: "2026-06-20",
   },
   {
@@ -151,6 +166,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://vercel.com/design/engineer",
     author: "Vercel",
     icon: <Icons.vercel />,
+    category: BookmarkCategory.REFERENCE,
     bookmarkedAt: "2026-06-20",
   },
 ]
