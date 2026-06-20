@@ -43,6 +43,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://animations.dev",
     author: "Emil Kowalski",
     icon: <Icons.animationsdev />,
+    tags: ["Course", "Animations"],
     bookmarkedAt: "2025-12-01",
   },
   {
@@ -84,6 +85,7 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://devouringdetails.com",
     author: "Rauno",
     icon: <Circle />,
+    tags: ["Course"],
     bookmarkedAt: "2026-04-14",
   },
   {
@@ -122,7 +124,22 @@ export const BOOKMARKS: Bookmark[] = [
     title: "Making Software",
     url: "https://www.makingsoftware.com",
     author: "Dan Hollick",
+    tags: ["Book"],
     bookmarkedAt: "2026-06-08",
+  },
+  {
+    title: "Interface Craft",
+    url: "https://www.interfacecraft.dev",
+    author: "Josh Puckett",
+    tags: ["Course"],
+    bookmarkedAt: "2026-06-20",
+  },
+  {
+    title: "Interfaces",
+    url: "http://interfaces.dev",
+    author: "Jakub Krehel",
+    tags: ["Course"],
+    bookmarkedAt: "2026-06-20",
   },
 ]
 
