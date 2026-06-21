@@ -40,12 +40,20 @@ export function SiteHeader() {
 
         <NavDesktop items={MAIN_NAV} />
 
-        <div className="flex items-center *:first:mr-2 max-sm:*:data-[slot=command-menu-trigger]:hidden">
+        <div className="flex items-center max-sm:*:data-[slot=command-menu-trigger]:hidden">
+          <Separator
+            orientation="vertical"
+            className="mr-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
+          />
           <CommandMenu docs={docPreviews} blocks={blocks} enabledHotkeys />
+          <Separator
+            orientation="vertical"
+            className="mx-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
+          />
           <NavItemGitHub />
           <Separator
             orientation="vertical"
-            className="mx-2 data-vertical:h-4 data-vertical:self-center"
+            className="mx-2 data-vertical:h-5 data-vertical:self-center"
           />
           <ThemeToggle />
         </div>

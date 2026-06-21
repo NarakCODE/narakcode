@@ -19,7 +19,7 @@ export function GitHubStars({ repo, stargazersCount }: GitHubStarsProps) {
       <TooltipTrigger
         render={
           <Button
-            className="gap-1.5 border-none pr-1.5 pl-2"
+            className="gap-1.5 border-none px-1.5"
             variant="ghost"
             size="sm"
             asChild
