@@ -1,7 +1,6 @@
 import type p5 from "p5"
 
 import type { Brick } from "./brick"
-import { Colors } from "./colors"
 import { BALL_SIZE, BALL_SPEED, BRICK_SCORE, uncheckedClamp } from "./constants"
 import type { GameState } from "./types"
 
@@ -25,10 +24,8 @@ export class Ball {
   }
 
   show() {
-    // this.p.imageMode(this.p.CENTER)
-    // this.p.image(this.state.ballImage!, this.x, this.y, BALL_SIZE, BALL_SIZE)
-    this.p.fill(Colors.ball)
-    this.p.circle(this.x, this.y, BALL_SIZE)
+    this.p.imageMode(this.p.CENTER)
+    this.p.image(this.state.ballImage!, this.x, this.y, BALL_SIZE, BALL_SIZE)
   }
 
   move() {
