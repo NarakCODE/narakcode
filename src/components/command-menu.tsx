@@ -540,14 +540,14 @@ function CommandMenuTrigger({ ...props }: React.ComponentProps<typeof Button>) {
 
       <span className="font-sans text-sm/4 font-medium sm:hidden">Search…</span>
 
-      <KbdGroup className="hidden sm:in-[.os-macos_&]:flex">
-        <Kbd className="w-5 min-w-5">⌘</Kbd>
-        <Kbd className="w-5 min-w-5">K</Kbd>
+      <KbdGroup className="hidden gap-0.75 sm:in-[.os-macos_&]:flex">
+        <Kbd className="w-5 min-w-auto">⌘</Kbd>
+        <Kbd className="w-5 min-w-auto">K</Kbd>
       </KbdGroup>
 
-      <KbdGroup className="hidden sm:not-[.os-macos_&]:flex">
+      <KbdGroup className="hidden gap-0.75 sm:not-[.os-macos_&]:flex">
         <Kbd>Ctrl</Kbd>
-        <Kbd className="w-5 min-w-5">K</Kbd>
+        <Kbd className="w-5 min-w-auto">K</Kbd>
       </KbdGroup>
     </Button>
   )

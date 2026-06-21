@@ -64,6 +64,17 @@ export function BookmarkItem({
           )}
 
           <div>
+            <dt className="sr-only">Category</dt>
+            <dd>{bookmark.category}</dd>
+          </div>
+
+          <Separator
+            className="data-vertical:h-4 data-vertical:self-center"
+            orientation="vertical"
+            aria-hidden
+          />
+
+          <div>
             <dt className="sr-only">Bookmarked on</dt>
             <dd>
               <time dateTime={new Date(bookmark.bookmarkedAt).toISOString()}>
