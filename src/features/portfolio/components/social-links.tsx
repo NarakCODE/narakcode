@@ -25,11 +25,11 @@ export function SocialLinks() {
                   render={
                     <a
                       className={cn(
-                        "flex size-8 items-center justify-center rounded-lg",
-                        "gradient-border gradient-border-to-tl",
-                        "gradient-border-from-foreground/15 gradient-border-to-foreground/20 gradient-border-via-foreground/3",
-                        "dark:gradient-border-from-foreground/20 dark:gradient-border-to-foreground/30 dark:gradient-border-via-foreground/6",
-                        "bg-linear-to-t from-zinc-100 to-zinc-50 dark:from-zinc-900 dark:to-zinc-800",
+                        "flex size-8 items-center justify-center rounded-lg border bg-background dark:bg-input/30",
+                        // "gradient-border gradient-border-to-tl",
+                        // "gradient-border-from-foreground/15 gradient-border-to-foreground/20 gradient-border-via-foreground/3",
+                        // "dark:gradient-border-from-foreground/20 dark:gradient-border-to-foreground/30 dark:gradient-border-via-foreground/6",
+                        // "bg-linear-to-t from-zinc-100 to-zinc-50 dark:from-zinc-900 dark:to-zinc-800",
                         "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-foreground/80 [&_svg:not([class*='size-'])]:size-5"
                       )}
                       href={addQueryParams(item.href, UTM_PARAMS)}
