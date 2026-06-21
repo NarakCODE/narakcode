@@ -14,6 +14,6 @@ export interface GameState {
   soundBounce: p5.MediaElement | null
   soundBreak: p5.MediaElement | null
   soundGameOver: p5.MediaElement | null
-  // ballImage: p5.Image | null
-  // paddleImage: p5.Image | null
+  ballImage: p5.Image | null
+  paddleImage: p5.Image | null
 }

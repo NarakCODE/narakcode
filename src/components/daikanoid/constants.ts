@@ -1,4 +1,4 @@
-export const BALL_SIZE = 24
+export const BALL_SIZE = 21
 export const BALL_SPEED = 10
 
 export const PADDLE_WIDTH = 96
@@ -19,6 +19,16 @@ export const SOUND_BREAK_URL =
   "https://assets.chanhdai.com/sounds/daikanoid/break.mp3"
 export const SOUND_GAME_OVER_URL =
   "https://assets.chanhdai.com/sounds/daikanoid/game-over.mp3"
+
+export const BALL_LIGHT_URL =
+  "https://assets.chanhdai.com/images/daikanoid/ball-light.png?v=2"
+export const BALL_DARK_URL =
+  "https://assets.chanhdai.com/images/daikanoid/ball-dark.png?v=2"
+
+export const PADDLE_LIGHT_URL =
+  "https://assets.chanhdai.com/images/daikanoid/paddle-light.png?v=2"
+export const PADDLE_DARK_URL =
+  "https://assets.chanhdai.com/images/daikanoid/paddle-dark.png?v=2"
 
 export function uncheckedClamp(
   min: number,
