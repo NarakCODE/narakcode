@@ -26,7 +26,7 @@ export function ComponentItemIcon({
     <div
       data-slot="component-item-icon"
       className={cn(
-        "relative flex size-6 shrink-0 items-center justify-center rounded-lg",
+        "relative flex size-6 shrink-0 items-center justify-center rounded-md",
         "border border-muted-foreground/15 bg-muted ring-1 ring-line ring-offset-1 ring-offset-background",
         "[&_svg]:pointer-events-none [&_svg]:text-muted-foreground [&_svg:not([class*='size-'])]:size-4",
         className

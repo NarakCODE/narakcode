@@ -95,7 +95,13 @@ function TestimonialList({
       <MarqueeFade side="left" />
       <MarqueeFade side="right" />
 
-      <MarqueeContent direction={direction} play={play} speed={40}>
+      <MarqueeContent
+        play={play}
+        pauseOnHover={false}
+        direction={direction}
+        speed={40}
+        delay={0.5}
+      >
         {data
           .filter((item) => !item.isFeatured)
           .map((item) => (
