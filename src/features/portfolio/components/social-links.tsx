@@ -1,7 +1,7 @@
 import { addQueryParams } from "@/utils/url"
 
 import { UTM_PARAMS } from "@/config/site"
-import { cn } from "@/lib/utils"
+import { Button } from "@/components/base/ui/button"
 import {
   Tooltip,
   TooltipContent,
@@ -23,22 +23,22 @@ export function SocialLinks() {
               <Tooltip>
                 <TooltipTrigger
                   render={
-                    <a
-                      className={cn(
-                        "flex size-8 items-center justify-center rounded-lg border bg-background dark:bg-input/30",
-                        // "gradient-border gradient-border-to-tl",
-                        // "gradient-border-from-foreground/15 gradient-border-to-foreground/20 gradient-border-via-foreground/3",
-                        // "dark:gradient-border-from-foreground/20 dark:gradient-border-to-foreground/30 dark:gradient-border-via-foreground/6",
-                        // "bg-linear-to-t from-zinc-100 to-zinc-50 dark:from-zinc-900 dark:to-zinc-800",
-                        "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-foreground/80 [&_svg:not([class*='size-'])]:size-5"
-                      )}
-                      href={addQueryParams(item.href, UTM_PARAMS)}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      {SOCIAL_ICONS[item.name]}
-                      <span className="sr-only">{item.title}</span>
-                    </a>
+                    <Button
+                      className="text-foreground/80 shadow-none [&_svg:not([class*='size-'])]:size-4.5"
+                      variant="outline"
+                      size="icon-sm"
+                      nativeButton={false}
+                      render={
+                        <a
+                          href={addQueryParams(item.href, UTM_PARAMS)}
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          {SOCIAL_ICONS[item.name]}
+                          <span className="sr-only">{item.title}</span>
+                        </a>
+                      }
+                    />
                   }
                 />
                 <TooltipContent>{item.title}</TooltipContent>
