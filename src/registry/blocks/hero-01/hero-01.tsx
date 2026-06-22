@@ -217,7 +217,7 @@ function MainContent({ className }: { className?: string }) {
         className
       )}
     >
-      <h1 className="mb-4 font-heading text-[2.5rem] leading-none font-semibold tracking-tight text-foreground sm:mb-6 sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl">
+      <h1 className="mb-4 font-heading text-[2.5rem]/none font-medium tracking-tight text-foreground sm:mb-6 sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl">
         Plan. Build. Ship.
       </h1>
 
