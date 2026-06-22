@@ -59,7 +59,7 @@ export async function generateMetadata({
     },
     openGraph: {
       url: blockUrl,
-      type: "article",
+      type: "website",
       images: {
         url: ogImage,
         width: 1200,
