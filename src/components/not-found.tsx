@@ -1,20 +1,14 @@
-"use client"
-
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
 import { ArrowRightIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Daikanoid } from "@/components/daikanoid"
 
 export function NotFound() {
-  const searchParams = useSearchParams()
-  const defaultLogo = searchParams.get("logo") ?? ""
-
   return (
     <div className="grid min-h-svh place-items-center py-6">
       <section className="max-lg:hidden">
-        <Daikanoid defaultLogo={defaultLogo} />
+        <Daikanoid />
       </section>
 
       <section className="flex flex-col items-center gap-6 lg:hidden">
