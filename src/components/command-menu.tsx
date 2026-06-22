@@ -538,7 +538,7 @@ function CommandMenuTrigger({ ...props }: React.ComponentProps<typeof Button>) {
   return (
     <Button
       data-slot="command-menu-trigger"
-      className="gap-1.5 border-none px-1.5 text-muted-foreground select-none"
+      className="gap-1.5 border-none px-1.5 text-muted-foreground will-change-[scale] select-none"
       variant="ghost"
       size="sm"
       {...props}
