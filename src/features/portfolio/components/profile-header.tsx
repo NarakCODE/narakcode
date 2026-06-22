@@ -31,7 +31,7 @@ export function ProfileHeader() {
       <div className="flex flex-col">
         <div className="z-1 mt-auto border-t border-line">
           <div className="flex items-center gap-2 pl-4">
-            <h1 className="-translate-y-px text-3xl/none font-medium tracking-tight">
+            <h1 className="-translate-y-px text-[2rem]/none font-medium tracking-tight">
               {USER.displayName}
             </h1>
 
