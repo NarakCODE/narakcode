@@ -397,7 +397,7 @@ export function ResendIcon(props: IconProps) {
 export function SearchIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden {...props}>
-      <circle
+      {/* <circle
         cx="10.5"
         cy="11.5"
         r="7.5"
@@ -409,8 +409,8 @@ export function SearchIcon(props: IconProps) {
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-      />
-      {/* <circle
+      /> */}
+      <circle
         cx="10.5"
         cy="10.5"
         r="7.5"
@@ -422,7 +422,7 @@ export function SearchIcon(props: IconProps) {
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-      /> */}
+      />
     </svg>
   )
 }

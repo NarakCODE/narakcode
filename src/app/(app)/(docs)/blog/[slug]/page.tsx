@@ -164,7 +164,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
 
           <div className="flex items-center justify-between p-2 pl-4">
             <Button
-              className="h-7 gap-2 border-none px-0 tracking-wide text-muted-foreground hover:text-foreground hover:no-underline"
+              className="h-7 gap-2 border-none px-0 tracking-wider text-muted-foreground hover:text-foreground hover:no-underline"
               variant="link"
               size="sm"
               asChild

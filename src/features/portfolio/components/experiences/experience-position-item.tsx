@@ -49,7 +49,7 @@ export function ExperiencePositionItem({
         <div className="relative z-1 mb-1 flex items-start gap-3 text-base">
           <div
             className={cn(
-              "flex size-6 shrink-0 items-center justify-center rounded-lg",
+              "flex size-6 shrink-0 items-center justify-center rounded-md",
               "bg-muted text-muted-foreground",
               "border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background",
               "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
