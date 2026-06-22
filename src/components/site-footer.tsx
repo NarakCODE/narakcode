@@ -1,6 +1,6 @@
 import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { DmcaIcon, GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { SOCIAL } from "@/features/portfolio/data/social-links"
 import { USER } from "@/features/portfolio/data/user"
@@ -100,7 +100,7 @@ export function SiteFooter() {
               rel="noopener"
               aria-label="X Profile"
             >
-              <Icons.x className="size-4" />
+              <XIcon className="size-4" />
             </a>
 
             <Separator />
@@ -112,7 +112,7 @@ export function SiteFooter() {
               rel="noopener"
               aria-label="GitHub Profile"
             >
-              <Icons.github className="size-4" />
+              <GitHubIcon className="size-4" />
             </a>
 
             <Separator />
@@ -124,7 +124,7 @@ export function SiteFooter() {
               rel="noopener"
               aria-label="LinkedIn Profile"
             >
-              <Icons.linkedin className="size-4" />
+              <LinkedInIcon className="size-4" />
             </a>
 
             <Separator />
@@ -139,7 +139,7 @@ export function SiteFooter() {
               rel="noopener"
               aria-label="DMCA.com Protection Status"
             >
-              <Icons.dmca className="h-4.5 w-auto" />
+              <DmcaIcon className="h-4.5 w-auto" />
             </a>
           </div>
         </div>

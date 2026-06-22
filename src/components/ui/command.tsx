@@ -11,6 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { SearchIcon } from "@/components/icons"
 
 function Command({
   className,
@@ -78,40 +79,7 @@ function CommandInput({
       data-slot="command-input-wrapper"
       className="flex h-10 items-center gap-2 px-3"
     >
-      <svg
-        className="size-4 shrink-0 opacity-50"
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden
-      >
-        <circle
-          cx="10.5"
-          cy="11.5"
-          r="7.5"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-        <path
-          d="M21 22L16 17"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        {/* <circle
-        cx="10.5"
-        cy="10.5"
-        r="7.5"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-      <path
-        d="M21 21L16 16"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      /> */}
-      </svg>
-
+      <SearchIcon className="size-4 shrink-0 opacity-50" />
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(

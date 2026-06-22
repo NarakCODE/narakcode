@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components//ui/button"
-import { Icons } from "@/components/icons"
+import { LinkedInIcon, XIcon } from "@/components/icons"
 
 export function DocShareMenu({ title, url }: { title: string; url: string }) {
   const absoluteUrl = url.startsWith("http")
@@ -57,7 +57,7 @@ export function DocShareMenu({ title, url }: { title: string; url: string }) {
             target="_blank"
             rel="noopener"
           >
-            <Icons.x />
+            <XIcon />
             Share on X
           </a>
         </DropdownMenuItem>
@@ -68,7 +68,7 @@ export function DocShareMenu({ title, url }: { title: string; url: string }) {
             target="_blank"
             rel="noopener"
           >
-            <Icons.linkedin />
+            <LinkedInIcon />
             Share on LinkedIn
           </a>
         </DropdownMenuItem>

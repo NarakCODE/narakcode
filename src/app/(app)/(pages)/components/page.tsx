@@ -15,13 +15,14 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
-import { ComponentIcon, Icons } from "@/components/icons"
+import { TrustedRegistryIcon } from "@/components/icons"
 import {
   PageHeading,
   PageHeadingTagline,
   PageHeadingTitle,
 } from "@/components/page-heading"
 import { RegistryCommandAnimated } from "@/components/registry-command-animated"
+import { ComponentIcon } from "@/features/doc/components/component-icon"
 import { getComponentDocs } from "@/features/doc/data/documents"
 
 import {
@@ -203,7 +204,7 @@ export default function Page() {
               >
                 <ComponentItem href={`/components/${c.slug}` as Route}>
                   <ComponentItemIcon>
-                    <ComponentIcon variant={c.slug} />
+                    <ComponentIcon slug={c.slug} />
                     {(c.metadata.new || c.metadata.updated) && (
                       <ComponentItemDot
                         aria-label={c.metadata.new ? "New" : "Updated"}
@@ -226,7 +227,7 @@ export default function Page() {
             target="_blank"
             rel="noopener"
           >
-            <Icons.trustedRegistry />
+            <TrustedRegistryIcon />
             Trusted Registry
           </a>
         </div>

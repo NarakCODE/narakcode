@@ -11,7 +11,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { Icons } from "@/components/icons"
+import { SearchIcon } from "@/components/icons"
 
 import { useSearchQuery } from "../hooks/use-search-query"
 
@@ -47,7 +47,7 @@ export function PostSearchInput() {
       />
 
       <InputGroupAddon align="inline-start">
-        <Icons.search />
+        <SearchIcon />
       </InputGroupAddon>
 
       <InputGroupAddon
