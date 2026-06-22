@@ -3,7 +3,7 @@ import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-import { Icons } from "./icons"
+import { V0Icon } from "./icons"
 
 export function OpenInV0Button({
   url,
@@ -24,7 +24,7 @@ export function OpenInV0Button({
         rel="noopener"
         aria-label="Open in v0"
       >
-        <Icons.v0 className="size-5" />
+        <V0Icon className="size-5" />
       </a>
     </Button>
   )

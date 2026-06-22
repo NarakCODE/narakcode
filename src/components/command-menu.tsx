@@ -40,13 +40,20 @@ import {
   CommandList,
   CommandShortcut,
 } from "@/components/ui/command"
+import { ComponentIcon } from "@/features/doc/components/component-icon"
 import type { DocPreview } from "@/features/doc/types/document"
 import { SOCIAL_ICONS } from "@/features/portfolio/components/social-link-icons"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 
 import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
 import { getWordmarkSVG } from "./chanhdai-wordmark"
-import { ComponentIcon, Icons } from "./icons"
+import {
+  FavouriteIcon,
+  GridViewIcon,
+  NewsIcon,
+  ReactIcon,
+  SearchIcon,
+} from "./icons"
 import { Button } from "./ui/button"
 import { Kbd, KbdGroup } from "./ui/kbd"
 
@@ -81,28 +88,28 @@ const MENU_LINKS: CommandLinkItem[] = [
     title: "Components",
     href: "/components",
     kind: "page",
-    icon: <Icons.react />,
+    icon: <ReactIcon />,
     shortcut: "GC",
   },
   {
     title: "Blocks",
     href: "/blocks",
     kind: "page",
-    icon: <Icons.gridView />,
+    icon: <GridViewIcon />,
     shortcut: "GB",
   },
   {
     title: "Blog",
     href: "/blog",
     kind: "page",
-    icon: <Icons.news />,
+    icon: <NewsIcon />,
     shortcut: "GL",
   },
   {
     title: "Sponsors",
     href: "/sponsors",
     kind: "page",
-    icon: <Icons.favourite />,
+    icon: <FavouriteIcon />,
     shortcut: "GS",
   },
   {
@@ -326,7 +333,7 @@ export function CommandMenu({
                 handleOpenLink(`/components/${component.slug}`)
               }}
             >
-              <ComponentIcon variant={component.slug} />
+              <ComponentIcon slug={component.slug} />
               <p className="line-clamp-1">{component.title}</p>
             </CommandMenuItem>
           )
@@ -354,7 +361,7 @@ export function CommandMenu({
                 handleOpenLink(`/blocks/${block.categories[0]}/${block.name}`)
               }}
             >
-              <Icons.gridView />
+              <GridViewIcon />
               <p className="line-clamp-1">{block.description}</p>
               <span className="ml-auto font-mono text-xs font-normal text-muted-foreground tabular-nums max-sm:hidden">
                 {block.name}
@@ -429,7 +436,7 @@ export function CommandMenu({
             <CommandLinkGroup
               heading="Blog"
               links={blogLinks}
-              fallbackIcon={<Icons.news />}
+              fallbackIcon={<NewsIcon />}
               onLinkHighlight={handleLinkHighlight}
               onLinkSelect={handleOpenLink}
             />
@@ -536,7 +543,7 @@ function CommandMenuTrigger({ ...props }: React.ComponentProps<typeof Button>) {
       size="sm"
       {...props}
     >
-      <Icons.search />
+      <SearchIcon />
 
       <span className="font-sans text-sm/4 font-medium sm:hidden">Search…</span>
 

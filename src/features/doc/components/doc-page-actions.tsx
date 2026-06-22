@@ -16,7 +16,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Icons } from "@/components/icons"
+import {
+  ClaudeIcon,
+  CursorIcon,
+  GitHubIcon,
+  GrokIcon,
+  MarkdownIcon,
+  OpenAIIcon,
+  SciraIcon,
+  V0Icon,
+} from "@/components/icons"
 import { CopyStateIcon } from "@/registry/components/copy-button"
 
 const cache = new Map<string, string>()
@@ -117,12 +126,12 @@ export function ViewOptions({
       {
         title: "View as Markdown",
         href: fullMarkdownUrl,
-        icon: Icons.markdown,
+        icon: MarkdownIcon,
       },
       {
         title: "Open in GitHub",
         href: `https://github.com/ncdai/chanhdai.com/blob/main/src/features/doc/content/${markdownUrl.replace(/^\//, "")}`,
-        icon: Icons.github,
+        icon: GitHubIcon,
       },
       {
         title: "Open in ChatGPT",
@@ -130,35 +139,35 @@ export function ViewOptions({
           hints: "search",
           q,
         })}`,
-        icon: Icons.openai,
+        icon: OpenAIIcon,
       },
       {
         title: "Open in Claude",
         href: `https://claude.ai/new?${new URLSearchParams({
           q,
         })}`,
-        icon: Icons.claude,
+        icon: ClaudeIcon,
       },
       {
         title: "Open in Cursor",
         href: `https://cursor.com/link/prompt?${new URLSearchParams({
           text: q,
         })}`,
-        icon: Icons.cursor,
+        icon: CursorIcon,
       },
       {
         title: "Open in Grok",
         href: `https://grok.com/?${new URLSearchParams({
           q,
         })}`,
-        icon: Icons.grok,
+        icon: GrokIcon,
       },
       {
         title: "Open in Scira AI",
         href: `https://scira.ai/?${new URLSearchParams({
           q,
         })}`,
-        icon: Icons.scira,
+        icon: SciraIcon,
       },
     ]
 
@@ -168,7 +177,7 @@ export function ViewOptions({
         href: `https://v0.app/?${new URLSearchParams({
           q,
         })}`,
-        icon: Icons.v0,
+        icon: V0Icon,
       })
     }
 

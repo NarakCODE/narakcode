@@ -1,4 +1,4 @@
-import { Icons } from "@/components/icons"
+import { ShadcnIcon, VercelIcon } from "@/components/icons"
 
 import type { Testimonial } from "../types/testimonials"
 
@@ -169,7 +169,7 @@ export const TESTIMONIALS_1: Testimonial[] = [
     isVerified: true,
     isFeatured: true,
     order: 1,
-    icon: <Icons.vercel />,
+    icon: <VercelIcon />,
   },
   {
     authorAvatar: "https://unavatar.io/x/initjean",
@@ -315,7 +315,7 @@ export const TESTIMONIALS_2: Testimonial[] = [
     isVerified: true,
     isFeatured: true,
     order: 2,
-    icon: <Icons.shadcn />,
+    icon: <ShadcnIcon />,
   },
   {
     authorAvatar: "https://unavatar.io/x/kapish_dima?t=zzx7M",

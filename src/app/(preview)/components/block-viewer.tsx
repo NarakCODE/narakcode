@@ -75,7 +75,17 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
-import { getIconForLanguageExtension, Icons } from "@/components/icons"
+import {
+  DesktopIcon,
+  FolderIcon,
+  FolderOpenIcon,
+  FullScreenIcon,
+  getIconForLanguageExtension,
+  RefreshIcon,
+  SmartPhoneIcon,
+  TabletIcon,
+  TerminalIcon,
+} from "@/components/icons"
 import { OpenInV0Button } from "@/components/v0-open-button"
 import { CopyButton, CopyStateIcon } from "@/registry/components/copy-button"
 import { sendToIframe } from "@/app/(preview)/hooks/use-iframe-sync"
@@ -258,15 +268,15 @@ function BlockViewerToolbar() {
             }}
           >
             <ToggleGroupItem aria-label="Mobile" value="30%">
-              <Icons.smartPhone />
+              <SmartPhoneIcon />
             </ToggleGroupItem>
 
             <ToggleGroupItem aria-label="Tablet" value="60%">
-              <Icons.tablet />
+              <TabletIcon />
             </ToggleGroupItem>
 
             <ToggleGroupItem aria-label="Desktop" value="100%">
-              <Icons.desktop />
+              <DesktopIcon />
             </ToggleGroupItem>
           </ToggleGroup>
 
@@ -295,7 +305,7 @@ function BlockViewerToolbar() {
                 })
               }
             >
-              <Icons.fullScreen className="size-4" />
+              <FullScreenIcon className="size-4" />
             </a>
           </Button>
 
@@ -318,7 +328,7 @@ function BlockViewerToolbar() {
               })
             }}
           >
-            <Icons.refresh className="size-4" />
+            <RefreshIcon className="size-4" />
           </Button>
         </div>
 
@@ -342,7 +352,7 @@ function BlockViewerToolbar() {
         >
           <CopyStateIcon
             state={state}
-            idleIcon={<Icons.terminal />}
+            idleIcon={<TerminalIcon />}
             doneIcon={<CheckIcon />}
           />
           <span>
@@ -573,8 +583,8 @@ function Tree({ item, index }: { item: FileTree; index: number }) {
             }
           >
             <ChevronRightIcon className="transition-transform" />
-            <Icons.folder data-slot="folder" className="hidden" />
-            <Icons.folderOpen data-slot="folder-open" className="hidden" />
+            <FolderIcon data-slot="folder" className="hidden" />
+            <FolderOpenIcon data-slot="folder-open" className="hidden" />
             {item.name}
           </SidebarMenuButton>
         </CollapsibleTrigger>
