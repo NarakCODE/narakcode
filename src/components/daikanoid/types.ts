@@ -10,6 +10,7 @@ export interface GameState {
 
   score: number
   bricks: Brick[]
+  logoIndex: number
 
   soundBounce: p5.MediaElement | null
   soundBreak: p5.MediaElement | null

@@ -5,7 +5,7 @@ export const PADDLE_WIDTH = 96
 export const PADDLE_HEIGHT = 24
 export const PADDLE_SPEED = 16
 
-export const BRICK_WIDTH = 80
+// Brick width is now defined per-logo (see logos.ts); height stays fixed.
 export const BRICK_HEIGHT = 24
 export const BRICK_SHADOW_THICKNESS = 3
 export const BRICK_SCORE = 10

@@ -1,7 +1,9 @@
 import type p5 from "p5"
 
 import { Colors } from "./colors"
-import { BRICK_HEIGHT, BRICK_SHADOW_THICKNESS, BRICK_WIDTH } from "./constants"
+import { BRICK_HEIGHT, BRICK_SHADOW_THICKNESS } from "./constants"
+import { LOGOS } from "./logos"
+import type { GameState } from "./types"
 
 export class Brick {
   p: p5
@@ -56,77 +58,42 @@ export class Brick {
   }
 }
 
-export function resetGame(p: p5, state: { score: number; bricks: Brick[] }) {
-  const b = (col: number, row: number, c: string = Colors.brick) =>
-    new Brick(
-      p,
-      col * BRICK_WIDTH,
-      row * BRICK_HEIGHT,
-      BRICK_WIDTH,
-      BRICK_HEIGHT
-    ).color(c)
-
+export function resetGame(p: p5, state: GameState) {
   state.score = 0
 
-  // ChanhDai logo (8×4 grid).
-  // _XX_XXX_
-  // X___X__X
-  // X___X__X
-  // _XX_XXX_
-  const cs = 1
-  const rs = 0
-  state.bricks = [
-    // Logo row 0 → Brick rows 0-2: _XX_XXX_.
-    b(cs + 1, rs + 0),
-    b(cs + 2, rs + 0),
-    b(cs + 4, rs + 0),
-    b(cs + 5, rs + 0),
-    b(cs + 6, rs + 0),
-    b(cs + 1, rs + 1),
-    b(cs + 2, rs + 1),
-    b(cs + 4, rs + 1),
-    b(cs + 5, rs + 1),
-    b(cs + 6, rs + 1),
-    b(cs + 1, rs + 2),
-    b(cs + 2, rs + 2),
-    b(cs + 4, rs + 2),
-    b(cs + 5, rs + 2),
-    b(cs + 6, rs + 2),
-    // Logo row 1 → Brick rows 3-5: X___X__X.
-    b(cs + 0, rs + 3),
-    b(cs + 4, rs + 3),
-    b(cs + 7, rs + 3),
-    b(cs + 0, rs + 4),
-    b(cs + 4, rs + 4),
-    b(cs + 7, rs + 4),
-    b(cs + 0, rs + 5),
-    b(cs + 4, rs + 5),
-    b(cs + 7, rs + 5),
-    // Logo row 2 → Brick rows 6-8: X___X__X.
-    b(cs + 0, rs + 6),
-    b(cs + 4, rs + 6),
-    b(cs + 7, rs + 6),
-    b(cs + 0, rs + 7),
-    b(cs + 4, rs + 7),
-    b(cs + 7, rs + 7),
-    b(cs + 0, rs + 8),
-    b(cs + 4, rs + 8),
-    b(cs + 7, rs + 8),
-    // Logo row 3 → Brick rows 9-11: _XX_XXX_.
-    b(cs + 1, rs + 9),
-    b(cs + 2, rs + 9),
-    b(cs + 4, rs + 9),
-    b(cs + 5, rs + 9),
-    b(cs + 6, rs + 9),
-    b(cs + 1, rs + 10),
-    b(cs + 2, rs + 10),
-    b(cs + 4, rs + 10),
-    b(cs + 5, rs + 10),
-    b(cs + 6, rs + 10),
-    b(cs + 1, rs + 11),
-    b(cs + 2, rs + 11),
-    b(cs + 4, rs + 11),
-    b(cs + 5, rs + 11),
-    b(cs + 6, rs + 11),
-  ]
+  // Advance the index so each reset cycles to a different logo.
+  const logo = LOGOS[state.logoIndex % LOGOS.length]
+  state.logoIndex = (state.logoIndex + 1) % LOGOS.length
+
+  const { brickWidth, pattern } = logo
+  const colScale = logo.colScale ?? 1
+  const rowScale = logo.rowScale ?? 1
+  const cs = logo.colOffset ?? 0
+  const rs = logo.rowOffset ?? 0
+
+  const bricks: Brick[] = []
+  for (let py = 0; py < pattern.length; ++py) {
+    const row = pattern[py]
+    for (let px = 0; px < row.length; ++px) {
+      if (row[px] !== "X") continue
+
+      for (let dx = 0; dx < colScale; ++dx) {
+        for (let dy = 0; dy < rowScale; ++dy) {
+          const col = cs + px * colScale + dx
+          const brickRow = rs + py * rowScale + dy
+          bricks.push(
+            new Brick(
+              p,
+              col * brickWidth,
+              brickRow * BRICK_HEIGHT,
+              brickWidth,
+              BRICK_HEIGHT
+            ).color(Colors.brick)
+          )
+        }
+      }
+    }
+  }
+
+  state.bricks = bricks
 }
