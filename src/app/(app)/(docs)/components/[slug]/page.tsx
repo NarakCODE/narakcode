@@ -178,7 +178,7 @@ export default async function Page({
 
         <div className="flex items-center justify-between p-2 pl-4">
           <Button
-            className="h-7 gap-2 border-none px-0 text-muted-foreground hover:text-foreground hover:no-underline"
+            className="h-7 gap-2 border-none px-0 tracking-wide text-muted-foreground hover:text-foreground hover:no-underline"
             variant="link"
             size="sm"
             asChild
@@ -271,7 +271,7 @@ export default async function Page({
         <div className="screen-dashed-line-bottom after:opacity-80">
           <h1
             data-slot="doc-title"
-            className="screen-line-bottom overflow-x-clip px-4 text-3xl font-semibold tracking-tight text-balance"
+            className="screen-line-bottom overflow-x-clip px-4 text-4xl font-medium tracking-tight text-balance"
           >
             {doc.metadata.title}
           </h1>

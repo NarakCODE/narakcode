@@ -45,7 +45,7 @@ export function PageHeadingTitle({
       data-slot="page-heading-title"
       className={cn(
         "screen-line-top screen-line-bottom px-4",
-        "font-heading text-3xl font-semibold tracking-tight text-balance",
+        "font-heading text-4xl font-medium tracking-tight text-balance",
         className
       )}
       {...props}
