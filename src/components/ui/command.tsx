@@ -80,17 +80,36 @@ function CommandInput({
     >
       <svg
         className="size-4 shrink-0 opacity-50"
-        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
         fill="none"
-        viewBox="0 0 16 16"
         aria-hidden
       >
-        <path
-          d="M10.278 11.514a5.824 5.824 0 1 1 1.235-1.235l3.209 3.208A.875.875 0 0 1 14.111 15a.875.875 0 0 1-.624-.278l-3.209-3.208Zm.623-4.69a4.077 4.077 0 1 1-8.154 0 4.077 4.077 0 0 1 8.154 0Z"
-          fill="currentColor"
-          fillRule="evenodd"
-          clipRule="evenodd"
+        <circle
+          cx="10.5"
+          cy="11.5"
+          r="7.5"
+          stroke="currentColor"
+          strokeWidth="2"
         />
+        <path
+          d="M21 22L16 17"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        {/* <circle
+        cx="10.5"
+        cy="10.5"
+        r="7.5"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <path
+        d="M21 21L16 16"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      /> */}
       </svg>
 
       <CommandPrimitive.Input
