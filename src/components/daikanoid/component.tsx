@@ -22,14 +22,18 @@ import {
   SOUND_BREAK_URL,
   SOUND_GAME_OVER_URL,
 } from "./constants"
+import { getLogoIndex } from "./logos"
 import { Paddle } from "./paddle"
 import type { GameState } from "./types"
 import { UI } from "./ui"
 
 export function Daikanoid({
   className,
+  defaultLogo,
   ...props
-}: Omit<React.ComponentPropsWithRef<"canvas">, "children">) {
+}: Omit<React.ComponentPropsWithRef<"canvas">, "children"> & {
+  defaultLogo?: string
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const shouldReduceMotion = useReducedMotion()
   const { resolvedTheme } = useTheme()
@@ -47,6 +51,7 @@ export function Daikanoid({
 
       score: 0,
       bricks: [],
+      logoIndex: getLogoIndex(defaultLogo),
 
       soundBounce: null,
       soundBreak: null,
@@ -158,7 +163,7 @@ export function Daikanoid({
       window.removeEventListener("keypress", handleKeyPress)
       p5Instance.remove()
     }
-  }, [shouldReduceMotion, resolvedTheme])
+  }, [shouldReduceMotion, resolvedTheme, defaultLogo])
 
   return (
     <canvas
