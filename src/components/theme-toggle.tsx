@@ -40,7 +40,7 @@ export function ThemeToggle() {
             className="relative touch-manipulation border-none"
             variant="ghost"
             size="icon-sm"
-            aria-label="Toggle Mode"
+            aria-label="Toggle mode"
             onClick={() => switchTheme()}
           >
             <span
@@ -57,7 +57,7 @@ export function ThemeToggle() {
       />
       <TooltipContent className="pr-2 pl-3">
         <div className="flex items-center gap-3">
-          Toggle Mode
+          Toggle mode
           <Kbd>D</Kbd>
         </div>
       </TooltipContent>

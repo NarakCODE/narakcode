@@ -91,14 +91,14 @@ export function AwardItem({
                       href={award.referenceLink}
                       target="_blank"
                       rel="noopener"
-                      aria-label="Open Reference Attachment"
+                      aria-label="Open reference attachment"
                     >
                       <Paperclip />
                     </a>
                   }
                 />
                 <TooltipContent>
-                  <p>Open Reference Attachment</p>
+                  <p>Open reference attachment</p>
                 </TooltipContent>
               </Tooltip>
             )}

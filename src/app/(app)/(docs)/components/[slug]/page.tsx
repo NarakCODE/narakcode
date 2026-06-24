@@ -221,7 +221,7 @@ export default async function Page({
                 />
                 <TooltipContent className="pr-2 pl-3">
                   <div className="flex items-center gap-3">
-                    Previous Component
+                    Previous component
                     <Kbd>
                       <ArrowLeftIcon />
                     </Kbd>
@@ -242,7 +242,7 @@ export default async function Page({
                     >
                       <Link
                         href={`/components/${next.slug}`}
-                        aria-label="Next Component"
+                        aria-label="Next component"
                       >
                         <ArrowRightIcon />
                       </Link>
@@ -251,7 +251,7 @@ export default async function Page({
                 />
                 <TooltipContent className="pr-2 pl-3">
                   <div className="flex items-center gap-3">
-                    Next Component
+                    Next component
                     <Kbd>
                       <ArrowRightIcon />
                     </Kbd>
