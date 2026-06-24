@@ -4,7 +4,6 @@ import { useSyncExternalStore } from "react"
 
 import { InlineScript } from "@/components/inline-script"
 import { PanelTitle } from "@/features/portfolio/components/panel"
-import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy"
 
 const ID = "hello"
 const SSR_TEXT = "Hello"
@@ -19,13 +18,13 @@ export function HelloTitle() {
   )
 
   return (
-    <PanelTitle>
-      <a href={`#${ID}`} id={`${ID}-greeting`} suppressHydrationWarning>
+    <>
+      <PanelTitle id={`${ID}-greeting`} suppressHydrationWarning>
         {greeting}
-      </a>
-      <PanelTitleCopy id={ID} />
+      </PanelTitle>
+
       <InlineScript html={getInlineScript(`${ID}-greeting`)} />
-    </PanelTitle>
+    </>
   )
 }
 
