@@ -37,7 +37,7 @@ updatedAt: YYYY-MM-DD
 
 ## Composition         (optional -- only for compound/composable components)
 
-## API Reference       (optional)
+## API reference       (optional)
 
 ## Examples            (optional)
 
@@ -98,7 +98,7 @@ Skip `## Features` when the component is self-explanatory through its title + de
 3. Start each bullet with the capability, not filler words.
 4. End each bullet with a period.
 5. No emoji.
-6. Do not repeat information already in Installation, Usage, or API Reference.
+6. Do not repeat information already in Installation, Usage, or API reference.
 
 ### Good Example
 
@@ -347,4 +347,4 @@ When creating or updating a component doc:
 8. If adding Credits, use only author name/handle as link text, and always point to the exact source URL.
 9. Decide whether `## References` is needed (technical links that help implementation and deeper learning).
 10. If adding References, keep links technical, specific, and high-value.
-11. Verify section order: Preview -> Features -> Installation -> Usage -> Composition -> API Reference -> Examples -> Credits -> References.
+11. Verify section order: Preview -> Features -> Installation -> Usage -> Composition -> API reference -> Examples -> Credits -> References.

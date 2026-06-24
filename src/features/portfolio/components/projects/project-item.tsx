@@ -89,14 +89,14 @@ export function ProjectItem({
                     href={addQueryParams(project.link, UTM_PARAMS)}
                     target="_blank"
                     rel="noopener"
-                    aria-label="Open Project Link"
+                    aria-label="Open project"
                   >
                     <LinkIcon className="pointer-events-none size-4" />
                   </a>
                 }
               />
               <TooltipContent>
-                <p>Open Project Link</p>
+                <p>Open project</p>
               </TooltipContent>
             </Tooltip>
 

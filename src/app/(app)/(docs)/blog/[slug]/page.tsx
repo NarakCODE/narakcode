@@ -197,7 +197,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
                       >
                         <Link
                           href={`/blog/${previous.slug}`}
-                          aria-label="Previous Post"
+                          aria-label="Previous post"
                         >
                           <ArrowLeftIcon />
                         </Link>
@@ -206,7 +206,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
                   />
                   <TooltipContent className="pr-2 pl-3">
                     <div className="flex items-center gap-3">
-                      Previous Post
+                      Previous post
                       <Kbd>
                         <ArrowLeftIcon />
                       </Kbd>
@@ -227,7 +227,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
                       >
                         <Link
                           href={`/blog/${next.slug}`}
-                          aria-label="Next Post"
+                          aria-label="Next post"
                         >
                           <ArrowRightIcon />
                         </Link>
@@ -236,7 +236,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
                   />
                   <TooltipContent className="pr-2 pl-3">
                     <div className="flex items-center gap-3">
-                      Next Post
+                      Next post
                       <Kbd>
                         <ArrowRightIcon />
                       </Kbd>

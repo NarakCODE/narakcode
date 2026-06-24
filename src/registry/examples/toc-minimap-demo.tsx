@@ -8,7 +8,7 @@ export default function TOCMinimapDemo() {
 const ITEMS: TOCItemType[] = [
   { title: "Installation", url: "#installation", depth: 2 },
   { title: "Usage", url: "#usage", depth: 2 },
-  { title: "API Reference", url: "#api-reference", depth: 2 },
+  { title: "API reference", url: "#api-reference", depth: 2 },
   { title: "TOCMinimap", url: "#tocminimap", depth: 3 },
   { title: "TOCItemType", url: "#tocitemtype", depth: 3 },
   { title: "References", url: "#references", depth: 2 },
