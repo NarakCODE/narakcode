@@ -32,7 +32,7 @@ export function PostItem({
             loading={imageLoading}
             unoptimized
           />
-          <div className="pointer-events-none absolute inset-0 rounded-(--image-radius) inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10" />
+          <div className="pointer-events-none absolute inset-0 rounded-(--image-radius) inset-ring-1 inset-ring-black/15 dark:inset-ring-white/15" />
         </div>
       )}
 
