@@ -32,7 +32,7 @@ export function Metrics01() {
 
               <dl className="grid grid-cols-2 md:grid-cols-4">
                 <Metric>
-                  <MetricLabel>Unique Visitors</MetricLabel>
+                  <MetricLabel>Unique visitors</MetricLabel>
                   <MetricValue>
                     {data.summary.unique_visitors.toLocaleString()}
                   </MetricValue>

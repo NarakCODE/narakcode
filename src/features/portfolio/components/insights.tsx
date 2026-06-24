@@ -23,7 +23,7 @@ export async function Insights() {
   }
 
   return (
-    <Panel id={ID} className="screen-line-bottom-none">
+    <Panel id={ID}>
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Insights</a>
@@ -43,7 +43,7 @@ export async function Insights() {
 
         <dl className="grid grid-cols-2 sm:grid-cols-3">
           <Metric>
-            <MetricLabel>Unique Visitors</MetricLabel>
+            <MetricLabel>Unique visitors</MetricLabel>
             <MetricValue>
               {data.summary.unique_visitors.toLocaleString()}
             </MetricValue>

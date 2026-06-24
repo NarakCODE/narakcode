@@ -28,7 +28,7 @@ const ID = "sponsors"
 
 export function Sponsors() {
   return (
-    <Panel id={ID}>
+    <Panel id={ID} className="screen-line-bottom-none">
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Sponsors</a>
@@ -83,7 +83,7 @@ export function Sponsors() {
           nativeButton={false}
           render={<Link href="/sponsors" />}
         >
-          All Sponsors
+          All sponsors
           <ArrowRightIcon />
         </Button>
       </div>

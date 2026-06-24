@@ -49,11 +49,11 @@ export function Experiences() {
                   size="sm"
                 >
                   <span className="hidden group-data-closed/collapsible:block">
-                    Show More
+                    Show more
                   </span>
 
                   <span className="hidden group-data-open/collapsible:block">
-                    Show Less
+                    Show less
                   </span>
 
                   <ChevronDownIcon className="group-data-open/collapsible:rotate-180" />
