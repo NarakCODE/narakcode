@@ -77,7 +77,7 @@ export function Components() {
           nativeButton={false}
           render={<Link href="/components" />}
         >
-          All Components
+          All components
           <ArrowRightIcon />
         </Button>
       </div>

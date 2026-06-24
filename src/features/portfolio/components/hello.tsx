@@ -1,13 +1,11 @@
 import { Prose } from "@/components/ui/typography"
 import { Markdown } from "@/components/markdown"
-import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
 import { HelloTitle } from "@/features/portfolio/components/hello-title"
 import {
   Panel,
   PanelContent,
   PanelHeader,
 } from "@/features/portfolio/components/panel"
-import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
 
 const ID = "hello"
@@ -19,14 +17,11 @@ export function Hello() {
         <HelloTitle />
       </PanelHeader>
 
-      <PanelContent className="screen-line-bottom py-6">
-        <Prose>
+      <PanelContent className="pt-3">
+        <Prose className="prose-p:mt-[0.5em] prose-p:mb-[0.5em] prose-p:first:mt-0 prose-p:last:mb-0">
           <Markdown>{USER.about}</Markdown>
         </Prose>
       </PanelContent>
-
-      <Testimonials />
-      <GitHubContributions />
     </Panel>
   )
 }

@@ -40,7 +40,7 @@ function PanelTitle({
     <Comp
       data-slot="panel-title"
       className={cn(
-        "group/panel-title font-heading text-3xl/none font-medium tracking-tight",
+        "group/panel-title font-heading text-3xl font-medium tracking-tight text-balance",
         className
       )}
       {...props}

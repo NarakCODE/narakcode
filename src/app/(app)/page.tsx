@@ -11,6 +11,7 @@ import { Bookmarks } from "@/features/portfolio/components/bookmarks"
 import { Certifications } from "@/features/portfolio/components/certifications"
 import { Components } from "@/features/portfolio/components/components"
 import { Experiences } from "@/features/portfolio/components/experiences"
+import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
 import { Hello } from "@/features/portfolio/components/hello"
 import {
   Insights,
@@ -22,6 +23,7 @@ import { Projects } from "@/features/portfolio/components/projects"
 import { SocialLinks } from "@/features/portfolio/components/social-links"
 import { Sponsors } from "@/features/portfolio/components/sponsors"
 import { TechStack } from "@/features/portfolio/components/tech-stack"
+import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
 
 export const metadata: Metadata = {
@@ -42,12 +44,13 @@ export default function HomePage() {
 
           <Overview />
           <SocialLinks />
+          <GitHubContributions />
           <Separator />
 
           <Hello />
           <Separator />
 
-          <TechStack />
+          <Testimonials />
           <Separator />
 
           <Components />
@@ -56,7 +59,7 @@ export default function HomePage() {
           <Blog />
           <Separator />
 
-          <Sponsors />
+          <TechStack />
           <Separator />
 
           <Experiences />
@@ -77,6 +80,9 @@ export default function HomePage() {
           <Suspense fallback={<InsightsSkeleton />}>
             <Insights />
           </Suspense>
+          <Separator />
+
+          <Sponsors />
         </div>
       </div>
     </>

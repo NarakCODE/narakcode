@@ -1,9 +1,11 @@
 "use client"
 
 import { useRef } from "react"
+import Link from "next/link"
+import { ArrowRightIcon } from "lucide-react"
 import { useInView, usePageInView } from "motion/react"
 
-import { cn } from "@/lib/utils"
+import { Button } from "@/components/base/ui/button"
 import {
   Marquee,
   MarqueeContent,
@@ -28,6 +30,8 @@ import {
 } from "@/features/portfolio/data/testimonials"
 import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
 
+import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel"
+
 const FEATURED_TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2]
   .filter((item) => item.isFeatured)
   .sort((a, b) => Number(a.order ?? 999) - Number(b.order ?? 999))
@@ -39,24 +43,38 @@ export function Testimonials() {
   const play = isPageInView && isInView
 
   return (
-    <div
-      ref={ref}
-      className="screen-line-bottom [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
-    >
-      <h3 className="sr-only">Testimonials</h3>
+    <Panel ref={ref}>
+      <PanelHeader>
+        <PanelTitle>
+          Trusted by
+          <span className="block sm:hidden" /> top builders on{" "}
+          <span aria-label="X">𝕏</span>
+        </PanelTitle>
+      </PanelHeader>
 
-      <div className="grid gap-2 py-2">
-        <div className="grid gap-2 px-2 [--spotlight-size:50%] sm:grid-cols-2">
-          {FEATURED_TESTIMONIALS.map((item) => (
-            <TestimonialSpotlight key={item.url} className="bg-background">
-              <TestimonialItem {...item} />
-            </TestimonialSpotlight>
-          ))}
-        </div>
+      <PanelContent className="grid gap-1 sm:grid-cols-2">
+        {FEATURED_TESTIMONIALS.map((item) => (
+          <TestimonialSpotlight
+            key={item.url}
+            className="bg-background inset-ring-foreground/20 [--spotlight-size:50%]"
+          >
+            <TestimonialItem {...item} />
+          </TestimonialSpotlight>
+        ))}
 
-        <TestimonialList data={TESTIMONIALS_1} play={play} />
-        <TestimonialList data={TESTIMONIALS_2} direction="right" play={play} />
-      </div>
+        <TestimonialList
+          className="sm:col-span-2"
+          data={TESTIMONIALS_1}
+          play={play}
+        />
+
+        <TestimonialList
+          className="sm:col-span-2"
+          data={TESTIMONIALS_2}
+          direction="right"
+          play={play}
+        />
+      </PanelContent>
 
       {/* <div className="absolute right-2 bottom-2 z-10 rounded-lg bg-background">
         <Button
@@ -76,8 +94,19 @@ export function Testimonials() {
         </Button>
       </div> */}
 
-      <div className="flex h-px" />
-    </div>
+      <div className="screen-line-top flex justify-center py-2">
+        <Button
+          className="gap-2 pr-2.5 pl-3"
+          variant="secondary"
+          size="sm"
+          nativeButton={false}
+          render={<Link href="/testimonials" />}
+        >
+          All builders
+          <ArrowRightIcon />
+        </Button>
+      </div>
+    </Panel>
   )
 }
 
@@ -85,17 +114,20 @@ function TestimonialList({
   data,
   direction,
   play,
+  className,
 }: {
   data: TestimonialType[]
   direction?: "right" | "left"
   play?: boolean
+  className?: string
 }) {
   return (
-    <Marquee>
+    <Marquee className={className}>
       <MarqueeFade side="left" />
       <MarqueeFade side="right" />
 
       <MarqueeContent
+        className="[&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
         play={play}
         pauseOnHover={false}
         direction={direction}
@@ -107,10 +139,7 @@ function TestimonialList({
           .map((item) => (
             <MarqueeItem
               key={item.url}
-              className={cn(
-                "mx-1 h-full max-w-xs min-w-2xs rounded-xl bg-background transition-[background-color] ease-out hover:bg-accent-muted",
-                "gradient-border gradient-border-from-foreground/0 gradient-border-to-foreground/15 gradient-border-via-foreground/5 gradient-border-to-t"
-              )}
+              className="mx-0.5 h-full max-w-xs min-w-2xs rounded-xl bg-background inset-ring-1 inset-ring-border transition-[background-color] ease-out hover:bg-accent-muted"
               style={item.style}
             >
               <TestimonialItem {...item} />
@@ -166,7 +195,7 @@ function TestimonialItem({
 
       {icon && (
         <div
-          className="pointer-events-none absolute right-2 bottom-2 flex size-8 items-center justify-center [&_svg]:size-4 [&_svg]:text-muted-foreground/80"
+          className="pointer-events-none absolute right-3 bottom-3 flex size-8 items-center justify-center [&_svg]:size-4 [&_svg]:text-muted-foreground/80"
           aria-hidden
         >
           {icon}
