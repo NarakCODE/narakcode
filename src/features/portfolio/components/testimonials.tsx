@@ -6,6 +6,7 @@ import { ArrowRightIcon } from "lucide-react"
 import { useInView, usePageInView } from "motion/react"
 
 import { Button } from "@/components/base/ui/button"
+import type { MarqueeContentProps } from "@/components/kibo-ui/marquee"
 import {
   Marquee,
   MarqueeContent,
@@ -32,6 +33,8 @@ import type { Testimonial as TestimonialType } from "@/features/portfolio/types/
 
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel"
 
+const ID = "testimonials"
+
 const FEATURED_TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2]
   .filter((item) => item.isFeatured)
   .sort((a, b) => Number(a.order ?? 999) - Number(b.order ?? 999))
@@ -43,7 +46,7 @@ export function Testimonials() {
   const play = isPageInView && isInView
 
   return (
-    <Panel ref={ref}>
+    <Panel ref={ref} id={ID}>
       <PanelHeader>
         <PanelTitle>
           Trusted by
@@ -117,7 +120,7 @@ function TestimonialList({
   className,
 }: {
   data: TestimonialType[]
-  direction?: "right" | "left"
+  direction?: MarqueeContentProps["direction"]
   play?: boolean
   className?: string
 }) {
