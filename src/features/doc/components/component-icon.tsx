@@ -1,4 +1,9 @@
-import { IconCircle, IconCircleSquare, IconGridDots } from "@tabler/icons-react"
+import {
+  IconCircle,
+  IconCircleSquare,
+  IconGridDots,
+  IconRipple,
+} from "@tabler/icons-react"
 import {
   BriefcaseBusinessIcon,
   ChevronsUpDownIcon,
@@ -132,6 +137,7 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
   "chevrons-up-down-icon": <ChevronsUpDownIcon />,
+  "logos-carousel": <IconRipple />,
 }
 
 export function ComponentIcon({ slug }: { slug: string }) {
