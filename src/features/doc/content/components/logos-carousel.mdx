@@ -1,0 +1,92 @@
+---
+title: Logos Carousel
+description: Cycle through logos column by column in a staggered wave.
+image: https://assets.chanhdai.com/images/blog/logos-carousel.webp
+new: true
+createdAt: 2026-06-25
+updatedAt: 2026-06-25
+---
+
+<ComponentPreview
+  className="**:data-[slot=preview]:px-0"
+  name="logos-carousel-demo"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @ncdai/logos-carousel
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install motion clsx tailwind-merge
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource name="logos-carousel" title="components/logos-carousel.tsx" />
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { LogosCarousel } from "@/components/logos-carousel"
+```
+
+```tsx
+<LogosCarousel>
+  <Logo />
+  <Logo />
+  <Logo />
+</LogosCarousel>
+```
+
+## Accessibility
+
+### Reduced motion
+
+When `prefers-reduced-motion` is on, the staggered wave, slide, and blur transitions are skipped and the carousel stops auto-cycling; logos render statically in place.
+
+## API reference
+
+### LogosCarousel
+
+<AutoTypeTable
+  path="src/registry/components/logos-carousel/logos-carousel.tsx"
+  name="LogosCarouselProps"
+/>
+
+## Credits
+
+- [Devouring Details](https://devouringdetails.com)
+
+<DocSponsors />

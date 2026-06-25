@@ -914,6 +914,27 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "logos-carousel",
+      "title": "Logos Carousel",
+      "description": "Cycle through logos column by column in a staggered wave.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/logos-carousel/logos-carousel.tsx",
+          "type": "registry:component",
+          "target": "@components/logos-carousel.tsx"
+        }
+      ],
+      "docs": "https://chanhdai.com/components/logos-carousel",
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",

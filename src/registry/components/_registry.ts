@@ -722,4 +722,20 @@ export const components: Registry["items"] = [
     categories: ["effects"],
     docs: "https://chanhdai.com/components/mobius-loop-icon",
   },
+  {
+    name: "logos-carousel",
+    type: "registry:component",
+    title: "Logos Carousel",
+    description: "Cycle through logos column by column in a staggered wave.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "components/logos-carousel/logos-carousel.tsx",
+        type: "registry:component",
+        target: "@components/logos-carousel.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    docs: "https://chanhdai.com/components/logos-carousel",
+  },
 ]
