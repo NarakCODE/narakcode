@@ -35,7 +35,7 @@ import {
 } from "@/components/base/ui/tabs"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { ComponentSource } from "@/components/component-source"
-import { AutoTypeTable } from "@/registry/components/auto-type-table"
+import { AutoTypeTable } from "@/features/doc/components/auto-type-table"
 import { DocSponsors } from "@/features/doc/components/doc-sponsors"
 
 import { Callout } from "./callout"
