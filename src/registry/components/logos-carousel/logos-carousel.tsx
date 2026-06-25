@@ -91,9 +91,10 @@ export function LogosCarousel({
   return (
     <div
       ref={containerRef}
-      className={cn("grid py-4", className)}
+      data-slot="logos-carousel"
+      className={cn("grid", className)}
       style={{
-        gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
+        gridTemplateColumns: `repeat(var(--column-count,${columns.length}), minmax(0, 1fr))`,
       }}
     >
       {columns.map((columnLogos, columnIndex) => {
@@ -134,6 +135,7 @@ const LogoColumn = memo(function LogoColumn({
 
   return (
     <motion.div
+      data-slot="logos-carousel-column"
       className="relative"
       initial={
         reduceMotion ? false : { opacity: 0, transform: "translateY(60%)" }
@@ -152,6 +154,7 @@ const LogoColumn = memo(function LogoColumn({
       <AnimatePresence mode="popLayout">
         <motion.div
           key={`${columnIndex}-${activeIndex}`}
+          data-slot="logos-carousel-logo"
           className="flex size-full items-center justify-center"
           initial={
             reduceMotion

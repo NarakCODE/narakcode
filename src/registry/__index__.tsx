@@ -824,6 +824,23 @@ export const Index: Record<string, any> = {
     categories: ["marketing"],
     meta: {"createdAt":"2026-06-16","previewClassName":"min-h-svh content-center-safe"},
   },
+  "social-proof-01": {
+    name: "social-proof-01",
+    description: "A social proof section with a logos carousel.",
+    type: "registry:block",
+    files: [{
+      path: "src/registry/blocks/social-proof-01/social-proof-01.tsx",
+      type: "registry:component",
+      target: "@components/social-proof-01.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/blocks/social-proof-01/social-proof-01.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["marketing"],
+    meta: {"createdAt":"2026-06-26","previewClassName":"min-h-svh content-center-safe"},
+  },
   "text-flip-demo": {
     name: "text-flip-demo",
     description: "",
