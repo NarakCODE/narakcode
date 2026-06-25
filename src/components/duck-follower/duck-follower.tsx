@@ -13,7 +13,7 @@ function isTouchDevice(): boolean {
 
 const DuckFollowerCore = dynamic(
   () =>
-    import("@/registry/transformed/components/duck-follower/duck-follower-core"),
+    import("@/features/portfolio/components/duck-follower/duck-follower-core"),
   {
     ssr: false,
   }
