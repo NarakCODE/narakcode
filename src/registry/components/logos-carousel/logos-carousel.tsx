@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils"
 const DEFAULT_COLUMN_COUNT = 4
 
 /** How long each logo stays visible before cycling to the next one (ms). */
-const CYCLE_INTERVAL = 2000
+const CYCLE_INTERVAL = 1600
 
 /**
  * Delay between adjacent columns within a single wave (ms). Kept smaller than
