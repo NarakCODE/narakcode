@@ -1,5 +1,12 @@
 [
   {
+    "name": "social-proof-01",
+    "description": "A social proof section with a logos carousel.",
+    "categories": [
+      "marketing"
+    ]
+  },
+  {
     "name": "social-links-01",
     "description": "A social links section with a lined grid layout.",
     "categories": [

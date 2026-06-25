@@ -229,4 +229,23 @@ export const blocks: Registry["items"] = [
       previewClassName: "min-h-svh content-center-safe",
     },
   },
+  {
+    name: "social-proof-01",
+    title: "Social Proof 01",
+    description: "A social proof section with a logos carousel.",
+    type: "registry:block",
+    registryDependencies: [getRegistryItemUrl("logos-carousel")],
+    files: [
+      {
+        path: "blocks/social-proof-01/social-proof-01.tsx",
+        type: "registry:component",
+        target: "@components/social-proof-01.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    meta: {
+      createdAt: "2026-06-26",
+      previewClassName: "min-h-svh content-center-safe",
+    },
+  },
 ]
