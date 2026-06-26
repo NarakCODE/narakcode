@@ -61,7 +61,7 @@ export function RegistryCommandAnimated() {
               )
             })}
 
-            <TabsIndicator className="rounded-none border-x border-t border-line bg-background shadow-[inset_0_-1px_0_0] ring-0 inset-ring-0 shadow-background dark:bg-background" />
+            <TabsIndicator className="rounded-none border-x border-t border-line bg-background shadow-[inset_0_-1px_0_0] ring-0 inset-ring-0 shadow-background transition-none dark:bg-background" />
           </TabsList>
         </div>
 
