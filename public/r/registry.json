@@ -974,6 +974,29 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "share-menu",
+      "title": "Share Menu",
+      "description": "Share menu to copy a link or post to X, LinkedIn, and the native share sheet.",
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/share-menu/share-menu.tsx",
+          "type": "registry:component",
+          "target": "@components/share-menu.tsx"
+        }
+      ],
+      "docs": "https://chanhdai.com/components/share-menu",
+      "categories": [
+        "menus"
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",
