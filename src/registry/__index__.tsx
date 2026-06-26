@@ -643,6 +643,23 @@ export const Index: Record<string, any> = {
     categories: ["marketing"],
     meta: undefined,
   },
+  "line-nav": {
+    name: "line-nav",
+    description: "Vertical navigation with a line marker that expands on hover and active state.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/line-nav/line-nav.tsx",
+      type: "registry:component",
+      target: "@components/line-nav.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/line-nav/line-nav.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["navigation"],
+    meta: undefined,
+  },
   "login-01": {
     name: "login-01",
     description: "A simple login form.",
@@ -1707,5 +1724,22 @@ export const Index: Record<string, any> = {
     }),
     categories: undefined,
     meta: undefined,
+  },
+  "line-nav-demo": {
+    name: "line-nav-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/line-nav-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/line-nav-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: {"previewClassName":"min-h-svh place-items-center-safe content-center-safe"},
   },
 }

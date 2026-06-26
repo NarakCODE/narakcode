@@ -953,6 +953,27 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "line-nav",
+      "title": "Line Nav",
+      "description": "Vertical navigation with a line marker that expands on hover and active state.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/line-nav/line-nav.tsx",
+          "type": "registry:component",
+          "target": "@components/line-nav.tsx"
+        }
+      ],
+      "docs": "https://chanhdai.com/components/line-nav",
+      "categories": [
+        "navigation"
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",

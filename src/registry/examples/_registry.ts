@@ -580,4 +580,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "line-nav-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("line-nav")],
+    files: [
+      {
+        path: "examples/line-nav-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "min-h-svh place-items-center-safe content-center-safe",
+    },
+  },
 ]

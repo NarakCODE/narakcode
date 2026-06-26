@@ -1,0 +1,131 @@
+---
+title: Line Nav
+description: Vertical navigation with a line marker that expands on hover and active state.
+image: https://assets.chanhdai.com/images/blog/line-nav.webp
+createdAt: 2026-06-26
+updatedAt: 2026-06-26
+---
+
+<ComponentPreview
+  name="line-nav-demo"
+  openInV0Url="https://chanhdai.com/r/line-nav.json"
+/>
+
+## Features
+
+- The active item's line marker expands and its label brightens to mark the current page.
+- The active item scrolls into view on mount, staying visible in long lists.
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @ncdai/line-nav
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install motion clsx tailwind-merge
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource name="line-nav" title="components/line-nav.tsx" />
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { LineNav } from "@/components/line-nav"
+```
+
+```tsx
+<LineNav
+  activeHref="/components/code-block-command"
+  items={[
+    { title: "Apple Hello Effect", href: "/components/apple-hello-effect" },
+    { title: "Code Block Command", href: "/components/code-block-command" },
+    { title: "Copy Button", href: "/components/copy-button" },
+  ]}
+/>
+```
+
+## API reference
+
+### LineNav
+
+<AutoTypeTable
+  path="src/registry/components/line-nav/line-nav.tsx"
+  name="LineNavProps"
+/>
+
+### LineNavItem
+
+<AutoTypeTable
+  path="src/registry/components/line-nav/line-nav.tsx"
+  name="LineNavItem"
+/>
+
+## Examples
+
+### Client-side navigation
+
+Items render as plain anchors to stay framework-agnostic. For client-side navigation in Next.js (or React Router), edit the source and render the item through a router link instead.
+
+```diff
++ import Link from "next/link"
+  import { motion } from "motion/react"
+
++ const MotionLink = motion.create(Link)
+
+- <motion.a
++ <MotionLink
+    ref={ref}
+    href={href}
+    initial={false}
+    animate={active ? "active" : "normal"}
+    whileHover="hover"
+    onClick={onClick}
+  >
+    {/* ... */}
+- </motion.a>
++ </MotionLink>
+```
+
+## Credits
+
+- [Devouring Details](https://devouringdetails.com)
+- [Skiper UI](https://skiper-ui.com)
+
+## References
+
+- [Motion variants](https://motion.dev/docs/react-animation#variants) — drives the line marker spring between states.
+
+<DocSponsors />
