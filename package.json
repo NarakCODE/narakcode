@@ -69,7 +69,7 @@
     "d3-array": "^3.2.4",
     "date-fns": "^4.1.0",
     "dialkit": "^1.1.0",
-    "fumadocs-core": "^16.8.1",
+    "fumadocs-core": "^16.10.5",
     "fumadocs-typescript": "^5.2.6",
     "geist": "^1.7.0",
     "hast-util-to-jsx-runtime": "^2.3.6",
