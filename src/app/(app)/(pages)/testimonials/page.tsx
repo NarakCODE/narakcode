@@ -17,10 +17,8 @@ import {
   TestimonialAvatarImg,
   TestimonialAvatarRing,
   TestimonialQuote,
-  TestimonialVerifiedBadge,
 } from "@/registry/components/testimonial"
 import { Twemoji } from "@/registry/components/twemoji/twemoji"
-import { VerifiedIcon } from "@/features/portfolio/components/verified-icon"
 import {
   TESTIMONIALS_1,
   TESTIMONIALS_2,
@@ -94,6 +92,7 @@ export default function TestimonialsPage() {
               <li
                 key={item.url}
                 className={cn(
+                  "group/testimonial",
                   "max-sm:screen-line-top max-sm:screen-line-bottom",
                   "sm:nth-[2n+1]:screen-line-top sm:nth-[2n+1]:screen-line-bottom"
                 )}
@@ -101,13 +100,16 @@ export default function TestimonialsPage() {
                 <Testimonial className="relative transition-[background-color] ease-out hover:bg-accent-muted">
                   <TestimonialQuote className="font-serif text-base/snug">
                     <p>
-                      <Twemoji>{item.quote}</Twemoji>
+                      <Twemoji className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0">
+                        {item.quote}
+                      </Twemoji>
                     </p>
                   </TestimonialQuote>
 
                   <TestimonialAuthor>
                     <TestimonialAvatar>
                       <TestimonialAvatarImg
+                        className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0"
                         src={item.authorAvatar}
                         alt={item.authorName}
                       />
@@ -119,11 +121,11 @@ export default function TestimonialsPage() {
                         <span className="absolute inset-0" aria-hidden />
                         {item.authorName}
                       </a>
-                      {item.isVerified && (
+                      {/* {item.isVerified && (
                         <TestimonialVerifiedBadge className="text-info">
                           <VerifiedIcon />
                         </TestimonialVerifiedBadge>
-                      )}
+                      )} */}
                     </TestimonialAuthorName>
                     <TestimonialAuthorTagline>
                       {item.authorTagline}
