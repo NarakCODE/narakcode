@@ -59,9 +59,7 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 
 ## Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=ncdai/chanhdai.com)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
-
-> Made with [contrib.rocks](https://contrib.rocks)
+[![ncdai/chanhdai.com contributors](https://shieldcn.dev/contributors/ncdai/chanhdai.com.svg?title=false&size=48&align=left&mode=dark&watermark=true&border=false)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
 
 ## Sponsors
 
