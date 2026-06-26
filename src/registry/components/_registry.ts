@@ -754,4 +754,21 @@ export const components: Registry["items"] = [
     categories: ["marketing"],
     docs: "https://chanhdai.com/components/testimonial-2",
   },
+  {
+    name: "line-nav",
+    type: "registry:component",
+    title: "Line Nav",
+    description:
+      "Vertical navigation with a line marker that expands on hover and active state.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "components/line-nav/line-nav.tsx",
+        type: "registry:component",
+        target: "@components/line-nav.tsx",
+      },
+    ],
+    categories: ["navigation"],
+    docs: "https://chanhdai.com/components/line-nav",
+  },
 ]
