@@ -738,4 +738,20 @@ export const components: Registry["items"] = [
     categories: ["marketing"],
     docs: "https://chanhdai.com/components/logos-carousel",
   },
+  {
+    name: "testimonial-2",
+    type: "registry:component",
+    title: "Testimonial 2",
+    description:
+      "Display a testimonial quote with author attribution and source link.",
+    files: [
+      {
+        path: "components/testimonial-2/testimonial-2.tsx",
+        type: "registry:component",
+        target: "@components/testimonial-2.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    docs: "https://chanhdai.com/components/testimonial-2",
+  },
 ]

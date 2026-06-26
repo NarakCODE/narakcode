@@ -37,6 +37,7 @@ import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { ComponentSource } from "@/components/component-source"
 import { AutoTypeTable } from "@/features/doc/components/auto-type-table"
 import { DocSponsors } from "@/features/doc/components/doc-sponsors"
+import { DocTestimonial } from "@/features/doc/components/doc-testimonial"
 
 import { Callout } from "./callout"
 import { CodeTabs } from "./code-tabs"
@@ -44,7 +45,6 @@ import { ComponentPreview } from "./component-preview"
 import { FramedImage, IframeEmbed, YouTubeEmbed } from "./embed"
 import { Heading } from "./heading"
 import { mdxCodeBlockComponents } from "./mdx-code-block"
-import { Testimonial } from "./testimonial"
 
 const components: MDXRemoteProps["components"] = {
   h1: (props: React.ComponentProps<"h1">) => <Heading as="h1" {...props} />,
@@ -94,7 +94,7 @@ const components: MDXRemoteProps["components"] = {
   YouTubeEmbed,
   IframeEmbed,
   FramedImage,
-  Testimonial,
+  DocTestimonial,
   DocSponsors,
   AutoTypeTable: (props) => <AutoTypeTable {...props} generator={generator} />,
 }

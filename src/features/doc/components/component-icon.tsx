@@ -1,4 +1,5 @@
 import {
+  IconBlockquote,
   IconCircle,
   IconCircleSquare,
   IconGridDots,
@@ -138,6 +139,7 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
   ),
   "chevrons-up-down-icon": <ChevronsUpDownIcon />,
   "logos-carousel": <IconRipple />,
+  "testimonial-2": <IconBlockquote />,
 }
 
 export function ComponentIcon({ slug }: { slug: string }) {

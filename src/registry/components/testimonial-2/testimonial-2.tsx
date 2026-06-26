@@ -1,21 +1,28 @@
 import { cn } from "@/lib/utils"
-import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
 
-export function Testimonial({
+export type Testimonial2Props = {
+  /** Full display name of the person giving the testimonial. */
+  authorName: string
+  /** Short tagline, title, or description of the person. */
+  authorTagline: string
+  /** Link to the person's profile, website, or social media page. */
+  url: string
+  /** The testimonial text content or recommendation message. */
+  quote: string
+  /** Additional CSS classes to apply to the testimonial container. */
+  className?: string
+}
+
+export function Testimonial2({
   className,
   authorName,
   authorTagline,
   url,
   quote,
-}: TestimonialType & { className?: string }) {
+}: Testimonial2Props) {
   return (
-    <div
-      className={cn(
-        "not-prose relative my-[2.5em] flex flex-col gap-6 pl-3",
-        className
-      )}
-    >
-      <div className="relative block w-full font-serif text-xl text-foreground md:w-lg md:text-2xl">
+    <figure className={cn("relative flex flex-col gap-6 pl-3", className)}>
+      <blockquote className="relative block w-full font-serif text-xl text-foreground md:w-lg md:text-2xl">
         <span
           className="absolute -left-3 text-muted-foreground select-none"
           aria-hidden="true"
@@ -29,9 +36,9 @@ export function Testimonial({
         >
           ”
         </span>
-      </div>
+      </blockquote>
 
-      <div className="ml-auto flex w-full items-center gap-2 md:w-1/2">
+      <figcaption className="ml-auto flex w-full items-center gap-2 md:w-1/2">
         <div className="hidden h-px grow translate-y-px bg-border md:block" />
 
         <div className="flex flex-col md:ml-auto md:text-right">
@@ -46,7 +53,7 @@ export function Testimonial({
             </span>
           </span>
         </div>
-      </div>
-    </div>
+      </figcaption>
+    </figure>
   )
 }

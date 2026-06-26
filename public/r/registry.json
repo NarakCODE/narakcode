@@ -935,6 +935,24 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "testimonial-2",
+      "title": "Testimonial 2",
+      "description": "Display a testimonial quote with author attribution and source link.",
+      "files": [
+        {
+          "path": "src/registry/components/testimonial-2/testimonial-2.tsx",
+          "type": "registry:component",
+          "target": "@components/testimonial-2.tsx"
+        }
+      ],
+      "docs": "https://chanhdai.com/components/testimonial-2",
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",

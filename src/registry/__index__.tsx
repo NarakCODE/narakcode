@@ -626,6 +626,23 @@ export const Index: Record<string, any> = {
     categories: ["marketing"],
     meta: undefined,
   },
+  "testimonial-2": {
+    name: "testimonial-2",
+    description: "Display a testimonial quote with author attribution and source link.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/testimonial-2/testimonial-2.tsx",
+      type: "registry:component",
+      target: "@components/testimonial-2.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/testimonial-2/testimonial-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["marketing"],
+    meta: undefined,
+  },
   "login-01": {
     name: "login-01",
     description: "A simple login form.",
@@ -1673,5 +1690,22 @@ export const Index: Record<string, any> = {
     }),
     categories: undefined,
     meta: {"previewClassName":"min-h-svh place-items-center-safe content-center-safe"},
+  },
+  "testimonial-2-demo": {
+    name: "testimonial-2-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/testimonial-2-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/testimonial-2-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
   },
 }
