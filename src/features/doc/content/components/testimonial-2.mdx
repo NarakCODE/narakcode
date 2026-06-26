@@ -1,0 +1,82 @@
+---
+title: Testimonial 2
+description: Display a testimonial quote with author attribution and source link.
+image: https://assets.chanhdai.com/images/blog/testimonial-2.webp
+createdAt: 2026-06-26
+updatedAt: 2026-06-26
+---
+
+<ComponentPreview
+  name="testimonial-2-demo"
+  openInV0Url="https://chanhdai.com/r/testimonial-2.json"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @ncdai/testimonial-2
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource name="testimonial-2" title="components/testimonial-2.tsx" />
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Testimonial2 } from "@/components/testimonial-2"
+```
+
+```tsx
+<Testimonial2
+  authorName="Guillermo Rauch"
+  authorTagline="CEO @Vercel"
+  url="https://x.com/rauchg/status/1978913158514237669"
+  quote="awesome. Love the components, especially slide-to-unlock. Great job"
+/>
+```
+
+## API reference
+
+### Testimonial2
+
+<AutoTypeTable
+  path="src/registry/components/testimonial-2/testimonial-2.tsx"
+  name="Testimonial2Props"
+/>
+
+<DocSponsors />

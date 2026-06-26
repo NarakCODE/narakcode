@@ -569,4 +569,15 @@ export const examples: Registry["items"] = [
       previewClassName: "min-h-svh place-items-center-safe content-center-safe",
     },
   },
+  {
+    name: "testimonial-2-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("testimonial-2")],
+    files: [
+      {
+        path: "examples/testimonial-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
