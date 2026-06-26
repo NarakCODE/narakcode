@@ -19,6 +19,7 @@ import {
   QuoteIcon,
   ScissorsIcon,
   SeparatorHorizontalIcon,
+  ShareIcon,
   SquareDashed,
   Star,
   SunDimIcon,
@@ -142,6 +143,7 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
   "logos-carousel": <IconRipple />,
   "testimonial-2": <IconBlockquote />,
   "line-nav": <IconBaselineDensitySmall />,
+  "share-menu": <ShareIcon />,
 }
 
 export function ComponentIcon({ slug }: { slug: string }) {

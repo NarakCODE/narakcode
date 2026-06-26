@@ -660,6 +660,23 @@ export const Index: Record<string, any> = {
     categories: ["navigation"],
     meta: undefined,
   },
+  "share-menu": {
+    name: "share-menu",
+    description: "Share menu to copy a link or post to X, LinkedIn, and the native share sheet.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/share-menu/share-menu.tsx",
+      type: "registry:component",
+      target: "@components/share-menu.tsx",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/share-menu/share-menu.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["menus"],
+    meta: undefined,
+  },
   "login-01": {
     name: "login-01",
     description: "A simple login form.",
@@ -1741,5 +1758,22 @@ export const Index: Record<string, any> = {
     }),
     categories: undefined,
     meta: {"previewClassName":"min-h-svh place-items-center-safe content-center-safe"},
+  },
+  "share-menu-demo": {
+    name: "share-menu-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/share-menu-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/share-menu-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
   },
 }

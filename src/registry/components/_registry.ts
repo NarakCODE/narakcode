@@ -771,4 +771,21 @@ export const components: Registry["items"] = [
     categories: ["navigation"],
     docs: "https://chanhdai.com/components/line-nav",
   },
+  {
+    name: "share-menu",
+    type: "registry:component",
+    title: "Share Menu",
+    description:
+      "Share menu to copy a link or post to X, LinkedIn, and the native share sheet.",
+    registryDependencies: ["button", "dropdown-menu", "sonner"],
+    files: [
+      {
+        path: "components/share-menu/share-menu.tsx",
+        type: "registry:component",
+        target: "@components/share-menu.tsx",
+      },
+    ],
+    categories: ["menus"],
+    docs: "https://chanhdai.com/components/share-menu",
+  },
 ]
