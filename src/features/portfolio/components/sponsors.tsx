@@ -63,7 +63,7 @@ export function Sponsors() {
             <SponsorItem
               className="h-full min-h-22.5"
               href={SPONSORSHIP_URL}
-              aria-label="Sponsor My Work"
+              aria-label="Sponsor my work"
             >
               <PlusIcon
                 className="flex size-full items-center justify-center text-muted-foreground"
