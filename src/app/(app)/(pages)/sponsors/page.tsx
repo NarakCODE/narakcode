@@ -102,7 +102,7 @@ export default function Page() {
             nativeButton={false}
             render={<a href={SPONSORSHIP_URL} target="_blank" rel="noopener" />}
           >
-            Sponsor My Work
+            Sponsor my work
             <ArrowUpRightIcon />
           </Button>
         </div>

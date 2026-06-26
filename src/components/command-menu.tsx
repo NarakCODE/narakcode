@@ -668,11 +668,11 @@ function CommandLinkGroup({
 }
 
 const ENTER_ACTION_LABELS: Record<CommandKind, string> = {
-  command: "Run Command",
-  page: "Go to Page",
-  link: "Open Link",
-  component: "Go to Component",
-  block: "Go to Block",
+  command: "Run command",
+  page: "Go to page",
+  link: "Open link",
+  component: "Go to component",
+  block: "Go to block",
 }
 
 function CommandMenuFooter({
