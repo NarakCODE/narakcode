@@ -19,7 +19,7 @@ git clone https://github.com/ncdai/chanhdai.com.git minimal-dev-portfolio
 cd minimal-dev-portfolio
 ```
 
-### 2. Install Portless
+### 2. Install portless
 
 Documentation: [port1355.dev](https://port1355.dev)
 
@@ -79,7 +79,7 @@ pnpm registry:validate
 
 This project utilizes **shadcn Registry**, which allows you to manage and distribute custom components, hooks, pages, and other files across multiple React projects. By hosting a registry, you can reuse UI components easily without manually copying code between projects.
 
-### Using Registry in other React projects
+### Using registry in other React projects
 
 If you're working on a different React project and want to reuse the custom components from this repository, visit [chanhdai.com/components](https://chanhdai.com/components) for installation instructions and component documentation.
 
@@ -87,7 +87,7 @@ If you're working on a different React project and want to reuse the custom comp
 
 ### Registry configuration
 
-Documentation: [shadcn Registry Docs](https://ui.shadcn.com/docs/registry)
+Documentation: [shadcn registry docs](https://ui.shadcn.com/docs/registry)
 
 Source files:
 
