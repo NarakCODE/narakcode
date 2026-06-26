@@ -3,26 +3,26 @@ name: ncdai-writing-component-docs
 description: Write and review component documentation (MDX) and registry descriptions. Covers doc structure, description writing, Features, Composition, Credits, and References sections. Use when creating new component docs, updating descriptions, adding Features sections, adding Composition sections, adding Credits sections, adding References sections, or reviewing component documentation quality.
 ---
 
-# Writing Component Documentation
+# Writing component documentation
 
 Guide for writing concise, consistent component documentation for this project's registry. Covers MDX doc structure, description writing, Features sections, Composition sections, Credits sections, and References sections.
 
-## Key Files
+## Key files
 
-- Component docs: `src/features/doc/content/{component-name}.mdx`
+- Component docs: `src/features/doc/content/components/{component-name}.mdx`
 - Registry items: `src/registry/components/_registry.ts`
 - Description must be kept in sync between both files.
+- The doc's category (`components`) is derived from the `components/` subfolder, not declared in frontmatter.
 
-## MDX Document Structure
+## MDX document structure
 
-Component docs follow this section order. Only include sections that are relevant.
+Component docs follow this section order. Only include sections that are relevant. Headings use sentence-case (capitalize only the first word and proper nouns); the fixed section names below already follow this, and any custom heading must too.
 
 ```
 ---
 title: Component Name
 description: One concise sentence about what the component does.
 image: https://assets.chanhdai.com/images/blog/{component-name}.webp
-category: components
 createdAt: YYYY-MM-DD
 updatedAt: YYYY-MM-DD
 ---
@@ -46,7 +46,7 @@ updatedAt: YYYY-MM-DD
 ## References          (optional -- for technical reading and implementation details)
 ```
 
-## Writing Descriptions
+## Writing descriptions
 
 The `description` field appears in MDX frontmatter AND the registry item. Both must match.
 
@@ -57,7 +57,7 @@ The `description` field appears in MDX frontmatter AND the registry item. Both m
 3. Drop implementation details like "built with Motion" or "using Tailwind CSS".
 4. Keep it under ~80 characters when possible.
 
-### Good Examples
+### Good examples
 
 ```
 Toggle between system, light, and dark themes in Next.js apps.
@@ -68,7 +68,7 @@ Display install commands with package manager switcher and copy button.
 Copy text to clipboard with visual feedback and animation.
 ```
 
-### Bad Examples
+### Bad examples
 
 ```
 A React component for managing user consent for cookies and tracking in Next.js applications.
@@ -81,13 +81,13 @@ A sleek, interactive slider inspired by the classic iPhone OS "slide to unlock" 
   --> Starts with "A sleek", subjective adjective
 ```
 
-## Writing Features Sections
+## Writing Features sections
 
-### When to Include
+### When to include
 
 Add `## Features` when the component has non-obvious capabilities that the title, description, and preview alone cannot convey. Examples: multi-mode support, special interactions, keyboard navigation, persistence, composability.
 
-### When to Skip
+### When to skip
 
 Skip `## Features` when the component is self-explanatory through its title + description + preview + usage. Examples: Theme Switcher, Shimmering Text, Apple Hello Effect.
 
@@ -100,7 +100,7 @@ Skip `## Features` when the component is self-explanatory through its title + de
 5. No emoji.
 6. Do not repeat information already in Installation, Usage, or API reference.
 
-### Good Example
+### Good example
 
 ```markdown
 ## Features
@@ -109,7 +109,7 @@ Skip `## Features` when the component is self-explanatory through its title + de
 - Supports both vertical and horizontal scrolling.
 ```
 
-### Bad Example
+### Bad example
 
 ```markdown
 ## About
@@ -123,13 +123,13 @@ The Scroll Fade Effect component is built on top of CSS animation-timeline.
 
 Issues: wrong heading name, intro paragraph is unnecessary, emoji, "Easy installation" repeats Installation section.
 
-## Writing Composition Sections
+## Writing Composition sections
 
-### When to Include
+### When to include
 
 Add `## Composition` when the component uses a compound/composable pattern -- multiple sub-components that need to be assembled together in a specific tree structure. Examples: SlideToUnlock (track, handle, text), Testimonial (quote, author, avatar), GlowCardGrid (grid + cards).
 
-### When to Skip
+### When to skip
 
 Skip `## Composition` when the component is a single element used with props alone, not composed from sub-components. Examples: CopyButton, ShimmeringText, ThemeSwitcher, TextFlip, MiddleTruncation.
 
@@ -143,7 +143,7 @@ Skip `## Composition` when the component is a single element used with props alo
 6. Show the full component hierarchy as it appears in the Usage JSX.
 7. If the component wraps sub-components from another package, include them in the tree.
 
-### Good Example
+### Good example
 
 <!-- prettier-ignore -->
 ````markdown
@@ -160,7 +160,7 @@ SlideToUnlock
 \```
 ````
 
-### Another Example (deeper nesting)
+### Another example (deeper nesting)
 
 <!-- prettier-ignore -->
 ````markdown
@@ -190,13 +190,13 @@ Use this quick intent check before placing a link:
 - If one link can fit both, prefer `## Credits`. Keep `Credits` minimal and place explanatory context in `## References` only when needed.
 - Skip generic links that do not help readers build, understand, or trace origin.
 
-## Writing Credits Sections
+## Writing Credits sections
 
-### When to Include
+### When to include
 
 Add `## Credits` when the component is inspired by, derived from, or adapted from an original source the reader should be able to trace. Examples: original demo/tweet, source product interaction, canonical inspiration.
 
-### When to Skip
+### When to skip
 
 Skip `## Credits` when there is no meaningful inspiration or origin worth acknowledging.
 
@@ -210,7 +210,7 @@ Skip `## Credits` when there is no meaningful inspiration or origin worth acknow
 6. No emoji.
 7. Each item must display only the author name/handle, but the URL must point to the exact original source.
 
-### Item Formats
+### Item formats
 
 Use author-centric display text with source URLs:
 
@@ -219,7 +219,7 @@ Use author-centric display text with source URLs:
 | `- [@handle](source-url)`     | Display handle, open the exact source link.      |
 | `- [Author Name](source-url)` | Display author name, open the exact source link. |
 
-### Good Examples
+### Good examples
 
 ```markdown
 ## Credits
@@ -235,7 +235,7 @@ Use author-centric display text with source URLs:
 - [Apple](https://www.figma.com/community/file/1414773009964314315/official-apple-hello-lettering)
 ```
 
-### Bad Examples
+### Bad examples
 
 ```markdown
 ## Credits
@@ -255,13 +255,13 @@ Thanks to everyone who inspired this component! ❤️
 
 Issues: narrative intro is unnecessary, emoji is not allowed, and item should be author-only text with the source URL (for example `[@jh3yy](https://x.com/jh3yy/status/1618297458752368640)`).
 
-## Writing References Sections
+## Writing References sections
 
-### When to Include
+### When to include
 
 Add `## References` for technical reading that helps readers implement, understand, or extend the component. Examples: library APIs, web platform docs, implementation articles, related primitives used by the component.
 
-### When to Skip
+### When to skip
 
 Skip `## References` when there are no high-value technical links beyond obvious generic docs.
 
@@ -274,7 +274,7 @@ Skip `## References` when there are no high-value technical links beyond obvious
 5. Focus on technical/implementation value, not attribution.
 6. No emoji.
 
-### Item Formats
+### Item formats
 
 Pick the format that matches the kind of link:
 
@@ -283,7 +283,7 @@ Pick the format that matches the kind of link:
 | `- [Title](url)`                 | Library docs, related component docs, web APIs.        |
 | `- [Title](url) — short context` | Clarify why this reference matters for this component. |
 
-### Good Examples
+### Good examples
 
 ```markdown
 ## References
@@ -299,7 +299,7 @@ Pick the format that matches the kind of link:
 - [shadcn/ui Select](https://ui.shadcn.com/docs/components/select)
 ```
 
-### Bad Examples
+### Bad examples
 
 ```markdown
 ## References
@@ -318,7 +318,7 @@ Issue: this is attribution/inspiration, so it belongs in `## Credits`.
 
 Issue: generic links with low signal; add only references with specific relevance.
 
-## Registry Item Format
+## Registry item format
 
 Each component in `src/registry/components/_registry.ts` must have a `description` field matching the MDX frontmatter:
 
@@ -333,7 +333,7 @@ Each component in `src/registry/components/_registry.ts` must have a `descriptio
 }
 ```
 
-## Sync Checklist
+## Sync checklist
 
 When creating or updating a component doc:
 
