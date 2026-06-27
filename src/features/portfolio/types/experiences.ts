@@ -30,6 +30,8 @@ export type Experience = {
   companyIcon?: React.ReactElement
   /** URL to the company's website. */
   companyWebsite?: string
+  location?: string
+  locationType?: "On-site" | "Hybrid" | "Remote"
   /** Roles held at this company; keep newest first for display. */
   positions: ExperiencePosition[]
   /** Marks the company as the current employer for highlighting. */

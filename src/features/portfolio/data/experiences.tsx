@@ -14,6 +14,8 @@ export const EXPERIENCES: Experience[] = [
     companyName: "shadcncraft",
     companyLogo: "https://assets.chanhdai.com/images/companies/shadcncraft.svg",
     companyWebsite: "https://shadcncraft.com?atp=ncdai",
+    location: "Melbourne, Australia",
+    locationType: "Remote",
     positions: [
       {
         id: "1",
@@ -48,6 +50,8 @@ export const EXPERIENCES: Experience[] = [
     companyName: "Quaric",
     companyLogo: "https://assets.chanhdai.com/images/companies/quaric.svg",
     companyWebsite: "https://quaric.com",
+    location: "Can Tho, Viet Nam",
+    locationType: "Remote",
     positions: [
       {
         id: "2",
@@ -104,6 +108,8 @@ In-house Project: [ZaDark](https://zadark.com)
     id: "simplamo",
     companyName: "Simplamo",
     companyLogo: "https://assets.chanhdai.com/images/companies/simplamo.webp",
+    location: "Ho Chi Minh City, Viet Nam",
+    locationType: "On-site",
     positions: [
       {
         id: "2",
@@ -158,6 +164,8 @@ In-house Project: [ZaDark](https://zadark.com)
     id: "tungtung",
     companyName: "Tung Tung",
     companyLogo: "https://assets.chanhdai.com/images/companies/tungtung.webp",
+    location: "Ho Chi Minh City, Viet Nam",
+    locationType: "Hybrid",
     positions: [
       {
         id: "3",
