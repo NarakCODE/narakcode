@@ -17,8 +17,6 @@ export type Testimonial = {
   isFeatured?: boolean
   /** Optional numeric value to control the display order of testimonials */
   order?: number
-  /** Optional CSS styles to apply to the testimonial component */
-  style?: React.CSSProperties
 
   icon?: React.ReactNode
 }
