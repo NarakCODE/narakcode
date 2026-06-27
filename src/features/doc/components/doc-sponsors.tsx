@@ -20,7 +20,7 @@ export function DocSponsors() {
 
   return (
     <aside
-      className="not-prose my-[1.25em] rounded-xl bg-surface p-1 pt-0 inset-ring-1 inset-ring-border/64"
+      className="not-prose my-[2.5em] rounded-xl bg-surface p-1 pt-0 inset-ring-1 inset-ring-border/64"
       aria-labelledby="doc-sponsors-heading"
     >
       <div className="flex items-center justify-between pt-1 pb-0.75 pl-3">
