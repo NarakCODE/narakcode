@@ -718,7 +718,7 @@ function ThemePicker() {
         >
           <CommandInput placeholder="Search theme…" />
 
-          <CommandList className="min-h-80 supports-timeline-scroll:scroll-fade-effect-y">
+          <CommandList className="min-h-80 scroll-fade">
             <CommandEmpty>No results found.</CommandEmpty>
 
             <CommandGroup heading="Current theme">
