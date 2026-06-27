@@ -1,4 +1,4 @@
-# [chanhdai.com](https://chanhdai.com) &middot; [![GitHub License](https://img.shields.io/github/license/ncdai/chanhdai.com?label=License)](https://github.com/ncdai/chanhdai.com/blob/main/LICENSE) ![GitHub Repo Views](https://gitviews.com/repo/ncdai/chanhdai.com.svg?style=flat&label-color=%23555&color=%23f59e0b)
+# [chanhdai.com](https://chanhdai.com) &middot; ![License](https://shieldcn.dev/github/license/ncdai/chanhdai.com.svg?size=xs&split=true) ![Repo Views](https://shieldcn.dev/views/repo/ncdai/chanhdai.com.svg?base=43218&size=xs&split=true)
 
 A pixel-perfect dev portfolio and shadcn registry showcasing my work as a Design Engineer.
 
