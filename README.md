@@ -1,4 +1,9 @@
-# [chanhdai.com](https://chanhdai.com) &middot; ![License](https://shieldcn.dev/github/license/ncdai/chanhdai.com.svg?size=xs&split=true) ![Repo Views](https://shieldcn.dev/views/repo/ncdai/chanhdai.com.svg?base=43218&size=xs&split=true)
+# [chanhdai.com](https://chanhdai.com)
+
+<p>
+  <a href="https://github.com/ncdai/chanhdai.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/github/ncdai/chanhdai.com/license.svg?variant=outline&amp;font=geist" /><img alt="license" src="https://shieldcn.dev/github/ncdai/chanhdai.com/license.svg?variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
+  <a href="https://github.com/ncdai/chanhdai.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/views/repo/ncdai/chanhdai.com.svg?base=8541&amp;variant=outline&amp;font=geist" /><img alt="repo views" src="https://shieldcn.dev/views/repo/ncdai/chanhdai.com.svg?base=43218&amp;variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
+</p>
 
 A pixel-perfect dev portfolio and shadcn registry showcasing my work as a Design Engineer.
 
@@ -59,7 +64,9 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 
 ## Contributors
 
-[![ncdai/chanhdai.com contributors](https://shieldcn.dev/contributors/ncdai/chanhdai.com.svg?title=false&size=48&align=left&mode=dark&watermark=true&border=false)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
+<p>
+  <a href="https://github.com/ncdai/chanhdai.com/graphs/contributors"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/contributors/ncdai/chanhdai.com.svg?title=false&amp;size=48&amp;align=left&amp;mode=dark&amp;font=geist&amp;watermark=true" /><img alt="contributors" src="https://shieldcn.dev/contributors/ncdai/chanhdai.com.svg?title=false&amp;size=48&amp;align=left&amp;mode=light&amp;font=geist&amp;watermark=true" /></picture></a>
+</p>
 
 ## Sponsors
 
@@ -219,6 +226,8 @@ This project is proudly supported by:
 
 ![Stats](https://repobeats.axiom.co/api/embed/583bf08fbdef57c3921d3cfda902d546df3e6ed1.svg "Repobeats analytics image")
 
-<!-- ## Star History
+## Star History
 
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive&line=%23f59e0b)](https://starchart.cc/ncdai/chanhdai.com) -->
+<p>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/chart/github/stars/ncdai/chanhdai.com.svg?font=geist&amp;theme=zinc" /><img alt="chart" src="https://shieldcn.dev/chart/github/stars/ncdai/chanhdai.com.svg?mode=light&amp;font=geist&amp;theme=zinc" /></picture>
+</p>
