@@ -141,14 +141,12 @@ function TestimonialsMarquee({
         play={play}
         pauseOnHover={false}
         direction={direction}
-        speed={40}
-        delay={0.5}
+        speed={30}
       >
         {data.map((item) => (
           <MarqueeItem
             key={item.url}
-            className="mx-0.5 h-full max-w-xs min-w-2xs rounded-xl bg-background inset-ring-1 inset-ring-border transition-[background-color] ease-out hover:bg-accent-muted"
-            style={item.style}
+            className="mx-0.5 h-full w-xs rounded-xl bg-background inset-ring-1 inset-ring-border transition-[background-color] ease-out hover:bg-accent-muted"
           >
             <TestimonialItem {...item} />
           </MarqueeItem>
