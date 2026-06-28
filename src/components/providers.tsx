@@ -24,10 +24,17 @@ if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
   };
 }
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  nonce,
+}: {
+  children: React.ReactNode;
+  nonce?: string;
+}) {
   useServerInsertedHTML(() => {
     return (
       <script
+        nonce={nonce}
         id="theme-color-init"
         dangerouslySetInnerHTML={{
           __html: `

@@ -47,7 +47,7 @@ export const vaults: Vault[] = [
   {
     title: "IT Podcast S1 E2: ការងារផ្នែកអាយធី - IT Career",
     image: "https://img.youtube.com/vi/XHGvcYprSeg/maxresdefault.jpg",
-    href: " https://youtu.be/XHGvcYprSeg?si=BjQ9UWWx38Ow1hX9",
+    href: "https://youtu.be/XHGvcYprSeg?si=BjQ9UWWx38Ow1hX9",
     channel: "Rothnak",
   },
   {
