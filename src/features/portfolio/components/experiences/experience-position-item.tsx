@@ -89,6 +89,7 @@ export function ExperiencePositionItem({
                 <InfinityIcon
                   className="size-4.5 translate-y-[0.5px]"
                   aria-label="Present"
+                  strokeWidth={1.5}
                 />
               ) : (
                 <span>{end}</span>

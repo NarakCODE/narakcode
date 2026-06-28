@@ -5,7 +5,7 @@ const allPosts = getBlogPosts()
 
 const content = `# chanhdai.com
 
-> A minimal, pixel-perfect dev portfolio, shadcn registry, and blog to showcase my work as a Design Engineer.
+> A pixel-perfect dev portfolio and shadcn registry showcasing my work as a Design Engineer.
 
 - [About](${SITE_INFO.url}/about.md): A quick intro to me, my tech stack, and how to connect.
 - [Experience](${SITE_INFO.url}/experience.md): Highlights from my career and key roles I've taken on.
