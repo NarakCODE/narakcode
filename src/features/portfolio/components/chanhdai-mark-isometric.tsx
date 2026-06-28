@@ -1,8 +1,14 @@
 "use client"
 
-import { useId } from "react"
+import { useEffect, useId } from "react"
 import type { Transition } from "motion/react"
-import { motion } from "motion/react"
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "motion/react"
 
 import { metalClickSound } from "@/lib/soundcn/metal-click"
 import { useSound } from "@/hooks/soundcn/use-sound"
@@ -16,6 +22,8 @@ export function ChanhDaiMarkIsometric() {
   const ids = {
     facePattern: `ncdai-face-pattern-${id}`,
     faceFill: `ncdai-face-fill-${id}`,
+    stroke: `ncdai-stroke-${id}`,
+    radialGradient: `ncdai-radial-gradient-${id}`,
   }
 
   const transition: Transition = {
@@ -26,6 +34,36 @@ export function ChanhDaiMarkIsometric() {
   }
 
   const [play] = useSound(metalClickSound)
+
+  const shouldReduceMotion = useReducedMotion()
+  const mouseX = useMotionValue(0.5)
+  const mouseY = useMotionValue(0.5)
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      return
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX / window.innerWidth)
+      mouseY.set(e.clientY / window.innerHeight)
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [shouldReduceMotion, mouseX, mouseY])
+
+  const cx = useSpring(useTransform(mouseX, [0, 1], [0, 556]), {
+    stiffness: 200,
+    damping: 20,
+  })
+  const cy = useSpring(useTransform(mouseY, [0, 1], [0, 354]), {
+    stiffness: 200,
+    damping: 20,
+  })
 
   return (
     <motion.svg
@@ -72,6 +110,65 @@ export function ChanhDaiMarkIsometric() {
           <path d="M554.76 64.58L499.33 96.58L388.48 32.58L443.90 0.58L554.76 64.58Z" />
           <path d="M166.78 160.58L55.93 224.58L0.50 192.58L111.35 128.58L166.78 160.58Z" />
         </motion.g>
+
+        <motion.path
+          id={ids.stroke}
+          variants={{
+            normal: {
+              d: [
+                // C
+                "M28.21 240.58 L0.50 224.58 V192.58 L111.35 128.58 L166.78 160.58 V192.58 L83.64 240.58",
+                "M166.78 160.58 L0.50 256.58 V288.58 L111.35 352.58 L166.78 320.58 L222.20 352.58 L333.05 288.58 V256.58 L277.63 224.58 L166.78 288.58 L0.50 192.58",
+                "M0.50 256.58 L111.35 320.58 L166.78 288.58 L222.20 320.58 L333.05 256.58",
+                "M111.35 320.58 V352.58",
+                "M166.78 288.58 V320.58",
+                "M222.20 320.58 V352.58",
+                // D
+                "M499.33 96.58 L554.76 128.58 V160.58 L388.48 256.58 L166.78 128.58 V96.58 L333.05 0.58 L499.33 96.58",
+                "M166.78 96.58 L388.48 224.58 L554.76 128.58",
+                "M527.04 112.58 L554.76 96.58 V64.58 L443.90 0.58 L277.63 96.58 L388.48 160.58 L554.76 64.58",
+                "M305.34 112.58 L388.48 64.58 L471.62 112.58",
+                "M388.48 224.58 V256.58",
+                "M388.48 32.58 V64.58",
+              ].join(""),
+            },
+            pressed: {
+              d: [
+                // C
+                "M42.07 248.58 L0.50 224.58 V208.58 L111.35 144.58 L166.78 176.58 V192.58 L69.78 248.58",
+                "M166.78 176.58 L0.5 272.58 V288.58 L111.35 352.58 L166.78 320.58 L222.20 352.58 L333.05 288.58 V272.58 L277.63 240.58 L166.78 304.58 L0.5 208.58",
+                "M0.5 272.58 L111.35 336.58 L166.78 304.58 L222.20 336.58 L333.05 272.58",
+                "M111.35 336.58 V352.58",
+                "M166.78 304.58 V320.58",
+                "M222.20 336.58 V352.58",
+                // D
+                "M499.33 112.58 L554.76 144.58 V160.58 L388.48 256.58 L166.78 128.58 V112.58 L333.05 16.58 L499.33 112.58",
+                "M166.78 112.58 L388.48 240.58 L554.76 144.58",
+                "M513.19 120.58 L554.76 96.58 V80.58 L443.90 16.58 L277.63 112.58 L388.48 176.58 L554.76 80.58",
+                "M291.48 120.58 L388.48 64.58 L485.47 120.58",
+                "M388.48 240.58 V256.58",
+                "M388.48 48.58 V64.58",
+              ].join(""),
+            },
+          }}
+          transition={transition}
+        />
+
+        <motion.radialGradient
+          id={ids.radialGradient}
+          cx={cx}
+          cy={cy}
+          r="200"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop className="dark:[stop-color:#ffffff]" stopColor="#333333" />
+          <stop
+            className="dark:[stop-color:#5F5F5F]"
+            offset="1"
+            stopColor="#AAAAAA"
+            stopOpacity="0"
+          />
+        </motion.radialGradient>
       </defs>
 
       <g className="stroke-line" strokeWidth="1" strokeDasharray="4 2">
@@ -132,7 +229,7 @@ export function ChanhDaiMarkIsometric() {
       <use href={`#${ids.faceFill}`} className="fill-background" />
       <use href={`#${ids.faceFill}`} fill={`url(#${ids.facePattern})`} />
 
-      <motion.path
+      {/* <motion.path
         variants={{
           normal: {
             d: [
@@ -173,7 +270,10 @@ export function ChanhDaiMarkIsometric() {
         }}
         transition={transition}
         stroke="var(--stroke)"
-      />
+      /> */}
+
+      <use href={`#${ids.stroke}`} stroke="var(--stroke)" />
+      <use href={`#${ids.stroke}`} stroke={`url(#${ids.radialGradient})`} />
     </motion.svg>
   )
 }
