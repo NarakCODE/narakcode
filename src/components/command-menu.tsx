@@ -13,6 +13,7 @@ import {
   CrownIcon,
   DownloadIcon,
   FileTextIcon,
+  GraduationCapIcon,
   LayersIcon,
   LineChartIcon,
   MonitorIcon,
@@ -139,6 +140,12 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#experience",
     kind: "page",
     icon: <BriefcaseBusinessIcon />,
+  },
+  {
+    title: "Education",
+    href: "/#education",
+    kind: "page",
+    icon: <GraduationCapIcon />,
   },
   {
     title: "Projects",
