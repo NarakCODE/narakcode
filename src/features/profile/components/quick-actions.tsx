@@ -154,7 +154,7 @@ export function QuickActions() {
             </DrawerDescription>
           </DrawerHeader>
 
-          <div className="relative w-full overflow-hidden rounded-t-4xl border-t border-white/10 bg-zinc-950 px-5 pt-4 pb-[calc(2.5rem+env(safe-area-inset-bottom,0))] text-white shadow-2xl">
+          <div className="relative w-full overflow-hidden rounded-t-4xl border-t border-white/10 bg-zinc-950 px-4 pt-4 pb-[calc(2.5rem+env(safe-area-inset-bottom,0))] text-white shadow-2xl sm:px-5 md:px-6">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-white/4 to-transparent" />
 
             <DrawerClose asChild>
@@ -167,39 +167,38 @@ export function QuickActions() {
               </button>
             </DrawerClose>
 
-            <div className="relative z-10 mx-auto w-full max-w-107.5">
+            <div className="relative z-10 mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl">
               <div className="mx-auto mb-6 h-1.5 w-12 rounded-full bg-white/25" />
 
               <div className="flex flex-col pt-16">
                 <div className="text-left">
-                  <h3 className="text-2xl font-semibold tracking-tight">
+                  <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
                     Connect with me
                   </h3>
-                  <p className="mt-2 mb-6 max-w-85 text-base leading-7 text-white/65">
+                  <p className="mt-2 mb-6 max-w-85 text-sm leading-6 text-white/65 sm:text-base sm:leading-7">
                     Reach out directly via Telegram, email me on Gmail, save my
                     contact vCard, or check out my repositories on GitHub.
                   </p>
                 </div>
 
-                <div className="relative z-10 overflow-hidden rounded-3xl bg-white/8 p-2 backdrop-blur-xl">
+                <div className="relative z-10 overflow-hidden rounded-2xl bg-white/8 p-1.5 backdrop-blur-xl sm:rounded-3xl sm:p-2">
                   {CONNECTORS.map((connector) => (
                     <div
                       key={connector.name}
-                      className="flex items-center justify-between gap-4 rounded-2xl px-3 py-3"
+                      className="flex items-center justify-between gap-3 rounded-xl px-2 py-2.5 sm:gap-4 sm:rounded-2xl sm:px-3 sm:py-3"
                     >
-                      <div className="flex min-w-0 items-center gap-4">
-                        <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-white/10">
+                      <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+                        <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/10 sm:size-12 sm:rounded-2xl">
                           {connector.icon}
                         </div>
 
-                        <span className="truncate text-base font-medium text-white/90">
+                        <span className="truncate text-sm font-medium text-white/90 sm:text-base">
                           {connector.name}
                         </span>
                       </div>
 
                       <Button
-                        size="default"
-                        className="h-10 shrink-0 cursor-pointer rounded-full bg-white/10 px-5 text-sm font-semibold text-white shadow-none hover:bg-white/15"
+                        className="h-9 shrink-0 cursor-pointer rounded-full bg-white/10 px-4 text-xs font-semibold text-white shadow-none hover:bg-white/15 sm:h-10 sm:px-5 sm:text-sm"
                         asChild
                       >
                         <a

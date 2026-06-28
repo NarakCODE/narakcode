@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import type { WebSite, WithContext } from "schema-dts";
 
 import { Providers } from "@/components/providers";
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@NarakCODE", // Twitter username
+    creator: "@NarakCODE",
     images: [SITE_INFO.ogImage],
   },
   icons: {
@@ -84,11 +85,14 @@ export const viewport: Viewport = {
   themeColor: META_THEME_COLORS.light,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = await headers();
+  const nonce = headersList.get("x-nonce") || "";
+
   return (
     <html
       lang="en"
@@ -97,6 +101,7 @@ export default function RootLayout({
     >
       <body>
         <script
+          nonce={nonce}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
@@ -106,7 +111,6 @@ export default function RootLayout({
           className="pointer-events-none absolute -z-1 min-h-screen w-full bg-background"
           aria-hidden="true"
         >
-          {/* Pearl Mist Background with Top Glow - Only in dark mode */}
           <div
             className="pointer-events-none absolute inset-0 z-0 hidden dark:block"
             style={{
@@ -115,10 +119,7 @@ export default function RootLayout({
             }}
           />
         </div>
-        <Providers>
-          {/* Your Content/Components */}
-          {children}
-        </Providers>
+        <Providers nonce={nonce}>{children}</Providers>
       </body>
     </html>
   );
