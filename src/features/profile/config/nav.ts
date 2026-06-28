@@ -8,10 +8,6 @@ export const NAV_LINKS = [
     href: "#experience",
   },
   {
-    title: "Projects",
-    href: "#projects",
-  },
-  {
     title: "Notes",
     href: "/notes",
   },
