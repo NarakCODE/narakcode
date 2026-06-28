@@ -18,7 +18,7 @@ export function FlipSentences({
   return (
     <div ref={ref} {...props}>
       <TextFlip
-        className="font-mono text-sm text-balance text-muted-foreground"
+        className="shimmer font-mono text-sm text-balance text-muted-foreground shimmer-duration-1500 shimmer-once not-dark:shimmer-color-foreground"
         play={isPageInView && isInView}
       >
         {children}
