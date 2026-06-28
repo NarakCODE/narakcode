@@ -17,7 +17,6 @@ import { Header } from "@/features/profile/components/header";
 import { Lens } from "@/features/profile/components/lens";
 // import { Logo } from "@/features/profile/components/logo";
 import { Overview } from "@/features/profile/components/overview";
-import { Projects } from "@/features/profile/components/projects";
 import { QuickActions } from "@/features/profile/components/quick-actions";
 import { SiteHeader } from "@/features/profile/components/site-header";
 import { SocialLinks } from "@/features/profile/components/social-links";
@@ -51,9 +50,6 @@ export default function Page() {
           <Pattern />
 
           <Experiences />
-          <Pattern />
-
-          <Projects />
           <Pattern />
 
           {/* <Awards /> */}
