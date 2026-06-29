@@ -1,3 +1,4 @@
+import { formatDuration } from "@/utils/format"
 import { format } from "date-fns"
 
 import { cn } from "@/lib/utils"
@@ -36,12 +37,13 @@ export async function Insights() {
       </PanelHeader>
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-2 sm:grid-cols-3">
+        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-2 md:grid-cols-4">
           <div className="border-r border-line" />
-          <div className="border-r border-line max-sm:hidden" />
+          <div className="border-r border-line max-md:hidden" />
+          <div className="border-r border-line max-md:hidden" />
         </div>
 
-        <dl className="grid grid-cols-2 sm:grid-cols-3">
+        <dl className="grid grid-cols-2 md:grid-cols-4">
           <Metric>
             <MetricLabel>Unique visitors</MetricLabel>
             <MetricValue>
@@ -60,6 +62,13 @@ export async function Insights() {
             <MetricLabel>Views</MetricLabel>
             <MetricValue>
               {data.summary.total_screen_views.toLocaleString()}
+            </MetricValue>
+          </Metric>
+
+          <Metric>
+            <MetricLabel>Session duration</MetricLabel>
+            <MetricValue>
+              {formatDuration(data.summary.avg_session_duration)}
             </MetricValue>
           </Metric>
         </dl>

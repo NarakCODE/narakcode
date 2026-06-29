@@ -8,6 +8,7 @@ type InsightsSummary = {
   unique_visitors: number
   total_sessions: number
   total_screen_views: number
+  avg_session_duration: number
 }
 
 type InsightsSeriesItem = {
