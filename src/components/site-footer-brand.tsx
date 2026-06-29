@@ -5,38 +5,35 @@ import {
   useMotionValue,
   useReducedMotion,
   useSpring,
+  useTransform,
 } from "motion/react"
 
 const VIEWBOX_WIDTH = 1410
-const DEFAULT_GRADIENT_X = 705
 
 export function SiteFooterInteractiveLogotype() {
   const shouldReduceMotion = useReducedMotion()
 
-  const gradientX1Raw = useMotionValue(DEFAULT_GRADIENT_X)
-  const gradientX1 = useSpring(gradientX1Raw, {
-    stiffness: 200,
-    damping: 30,
-    mass: 0.5,
-  })
+  const gradientX1Raw = useMotionValue(0.5)
+  const gradientX1 = useSpring(
+    useTransform(gradientX1Raw, [0, 1], [0, VIEWBOX_WIDTH]),
+    {
+      stiffness: 150,
+      damping: 25,
+    }
+  )
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (shouldReduceMotion) return
 
-    const container = event.currentTarget
-    const containerRect = container.getBoundingClientRect()
-    const mouseX = event.clientX - containerRect.left
-    const containerWidth = containerRect.width
-
-    const normalizedX = (mouseX / containerWidth) * VIEWBOX_WIDTH
-    const clampedX = Math.max(0, Math.min(VIEWBOX_WIDTH, normalizedX))
-
-    gradientX1Raw.set(clampedX)
+    const containerRect = event.currentTarget.getBoundingClientRect()
+    gradientX1Raw.set(
+      (event.clientX - containerRect.left) / containerRect.width
+    )
   }
 
   const handleMouseLeave = () => {
     if (shouldReduceMotion) return
-    gradientX1Raw.set(DEFAULT_GRADIENT_X)
+    gradientX1Raw.set(0.5)
   }
 
   return (
