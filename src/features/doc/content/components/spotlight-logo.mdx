@@ -1,0 +1,88 @@
+---
+title: Spotlight Logo
+description: SVG logo with a cursor-tracking gradient highlight and tactile press.
+image: https://assets.chanhdai.com/images/blog/spotlight-logo.webp
+new: true
+createdAt: 2026-06-29
+updatedAt: 2026-06-29
+---
+
+<ComponentPreview
+  className="**:data-[slot=preview]:px-0"
+  name="spotlight-logo-demo"
+  openInV0Url="https://chanhdai.com/r/spotlight-logo.json"
+/>
+
+## Features
+
+- A radial-gradient highlight tracks the cursor and traces the SVG outline.
+- Pressing the mark morphs its paths with a spring and plays a tactile click.
+- Respects reduced motion and skips pointer tracking on touch devices.
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @ncdai/spotlight-logo
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Install the required components</Step>
+
+- [@soundcn/metal-click](https://www.soundcn.xyz/?sound=metal-click)
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource name="spotlight-logo" title="components/spotlight-logo.tsx" />
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+The mark renders its own SVG, so bring your own artwork by replacing the paths inside the component. Wrap it in a sized container to control the layout.
+
+```tsx
+import { SpotlightLogo } from "@/components/spotlight-logo"
+```
+
+```tsx
+<SpotlightLogo />
+```
+
+## Credits
+
+- [Tailwind CSS](https://tailwindcss.com/blog/tailwindcss-v4)
+- [X (login)](https://x.com)
+- [Manu Arora](https://www.youtube.com/watch?v=vE5jB6LEnM8)
+
+## References
+
+- [Motion variants](https://motion.dev/docs/react-animation#variants)
+- [Motion useTransform](https://motion.dev/docs/react-use-transform)
+- [Motion useSpring](https://motion.dev/docs/react-use-spring)
+- [SVG radialGradient](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient)
+- [soundcn](https://www.soundcn.xyz)
+
+<DocSponsors />

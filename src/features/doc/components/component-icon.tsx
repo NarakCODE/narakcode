@@ -28,6 +28,7 @@ import {
   ZapIcon,
 } from "lucide-react"
 
+import { ChanhDaiMark } from "@/components/chanhdai-mark"
 import { AppleIcon, ReactIcon, XIcon } from "@/components/icons"
 
 const COMPONENT_ICONS: Record<string, React.ReactNode> = {
@@ -144,6 +145,7 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
   "testimonial-2": <IconBlockquote />,
   "line-nav": <IconBaselineDensitySmall />,
   "share-menu": <ShareIcon />,
+  "spotlight-logo": <ChanhDaiMark />,
 }
 
 export function ComponentIcon({ slug }: { slug: string }) {
