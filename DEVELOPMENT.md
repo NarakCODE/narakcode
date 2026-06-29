@@ -100,3 +100,14 @@ pnpm registry:build
 ```
 
 When running the `npx shadcn add <registry-url>` command, the selected component will be automatically downloaded and integrated into your project.
+
+## Screenshots
+
+The site screenshots are captured locally, then published to Cloudflare R2.
+
+```bash
+pnpm capture       # Capture screenshots into .ncdai/screenshots
+pnpm capture:sync  # Upload the folder to Cloudflare R2
+```
+
+`pnpm capture:sync` requires the `R2_*` variables from `.env.example`. It mirrors the local folder structure into the bucket (skipping dotfiles), overwriting existing files but never deleting remote ones.
