@@ -36,8 +36,19 @@ export function ChanhDaiMarkIsometric() {
   const [play] = useSound(metalClickSound)
 
   const shouldReduceMotion = useReducedMotion()
+
   const mouseX = useMotionValue(0.5)
   const mouseY = useMotionValue(0.5)
+
+  const cx = useSpring(useTransform(mouseX, [0, 1], [0, 556]), {
+    stiffness: 200,
+    damping: 20,
+  })
+
+  const cy = useSpring(useTransform(mouseY, [0, 1], [0, 354]), {
+    stiffness: 200,
+    damping: 20,
+  })
 
   useEffect(() => {
     if (shouldReduceMotion) {
@@ -55,15 +66,6 @@ export function ChanhDaiMarkIsometric() {
       window.removeEventListener("mousemove", handleMouseMove)
     }
   }, [shouldReduceMotion, mouseX, mouseY])
-
-  const cx = useSpring(useTransform(mouseX, [0, 1], [0, 556]), {
-    stiffness: 200,
-    damping: 20,
-  })
-  const cy = useSpring(useTransform(mouseY, [0, 1], [0, 354]), {
-    stiffness: 200,
-    damping: 20,
-  })
 
   return (
     <motion.svg
@@ -161,11 +163,14 @@ export function ChanhDaiMarkIsometric() {
           r="200"
           gradientUnits="userSpaceOnUse"
         >
-          <stop className="dark:[stop-color:#ffffff]" stopColor="#333333" />
           <stop
-            className="dark:[stop-color:#5F5F5F]"
+            className="dark:[stop-color:#fff]"
+            stopColor="var(--color-zinc-700)"
+          />
+          <stop
+            className="dark:[stop-color:var(--color-zinc-600)]"
             offset="1"
-            stopColor="#AAAAAA"
+            stopColor="var(--color-zinc-400)"
             stopOpacity="0"
           />
         </motion.radialGradient>
