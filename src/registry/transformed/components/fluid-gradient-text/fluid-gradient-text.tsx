@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useMotionValue, useSpring } from "motion/react"
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
 
 export type FluidGradientTextProps = {
   /** Text content rendered inside the SVG. */
@@ -22,27 +22,24 @@ export function FluidGradientText({
   svgViewBoxWidth = 1200,
   svgViewBoxHeight = 300,
 }: FluidGradientTextProps) {
-  const gradientX1Raw = useMotionValue(svgViewBoxWidth / 2)
-  const gradientX1 = useSpring(gradientX1Raw, {
-    stiffness: 200,
-    damping: 30,
-    mass: 0.5,
-  })
+  const gradientX1Raw = useMotionValue(0.5)
+  const gradientX1 = useSpring(
+    useTransform(gradientX1Raw, [0, 1], [0, svgViewBoxWidth]),
+    {
+      stiffness: 150,
+      damping: 25,
+    }
+  )
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    const container = event.currentTarget
-    const containerRect = container.getBoundingClientRect()
-    const mouseX = event.clientX - containerRect.left
-    const containerWidth = containerRect.width
-
-    const normalizedX = (mouseX / containerWidth) * svgViewBoxWidth
-    const clampedX = Math.max(0, Math.min(svgViewBoxWidth, normalizedX))
-
-    gradientX1Raw.set(clampedX)
+    const containerRect = event.currentTarget.getBoundingClientRect()
+    gradientX1Raw.set(
+      (event.clientX - containerRect.left) / containerRect.width
+    )
   }
 
   const handleMouseLeave = () => {
-    gradientX1Raw.set(svgViewBoxWidth / 2)
+    gradientX1Raw.set(0.5)
   }
 
   return (
