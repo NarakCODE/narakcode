@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useId } from "react"
+import { useEffect, useId, useRef } from "react"
 import type { Transition } from "motion/react"
 import {
   motion,
+  useInView,
   useMotionValue,
   useReducedMotion,
   useSpring,
@@ -12,6 +13,13 @@ import {
 
 import { metalClickSound } from "@/lib/soundcn/metal-click"
 import { useSound } from "@/hooks/soundcn/use-sound"
+
+const transition: Transition = {
+  type: "spring",
+  mass: 0.5,
+  damping: 18,
+  stiffness: 200,
+}
 
 /**
  * Designed by ncdai on Figma with [Fast Isometric Plugin](https://www.figma.com/community/plugin/1249759048471403961).
@@ -26,32 +34,32 @@ export function ChanhDaiMarkIsometric() {
     radialGradient: `ncdai-radial-gradient-${id}`,
   }
 
-  const transition: Transition = {
-    type: "spring",
-    mass: 0.5,
-    damping: 18,
-    stiffness: 200,
-  }
+  const ref = useRef<SVGSVGElement>(null)
 
   const [play] = useSound(metalClickSound)
 
   const shouldReduceMotion = useReducedMotion()
+  const isInView = useInView(ref, { margin: "80px" })
 
   const mouseX = useMotionValue(0.5)
   const mouseY = useMotionValue(0.5)
 
   const cx = useSpring(useTransform(mouseX, [0, 1], [0, 556]), {
-    stiffness: 200,
-    damping: 20,
+    stiffness: 150,
+    damping: 25,
   })
 
   const cy = useSpring(useTransform(mouseY, [0, 1], [0, 354]), {
-    stiffness: 200,
-    damping: 20,
+    stiffness: 150,
+    damping: 25,
   })
 
   useEffect(() => {
-    if (shouldReduceMotion) {
+    if (shouldReduceMotion || !isInView) {
+      return
+    }
+
+    if (window.matchMedia("(hover: none)").matches) {
       return
     }
 
@@ -65,10 +73,11 @@ export function ChanhDaiMarkIsometric() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
     }
-  }, [shouldReduceMotion, mouseX, mouseY])
+  }, [shouldReduceMotion, isInView, mouseX, mouseY])
 
   return (
     <motion.svg
+      ref={ref}
       className="h-auto w-full touch-manipulation overflow-visible [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]"
       viewBox="0 0 556 354"
       fill="none"
