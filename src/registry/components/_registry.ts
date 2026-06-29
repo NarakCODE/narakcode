@@ -788,4 +788,22 @@ export const components: Registry["items"] = [
     categories: ["menus"],
     docs: "https://chanhdai.com/components/share-menu",
   },
+  {
+    name: "spotlight-logo",
+    type: "registry:component",
+    title: "Spotlight Logo",
+    description:
+      "SVG logo with a cursor-tracking gradient highlight and tactile press.",
+    dependencies: ["motion"],
+    registryDependencies: ["@soundcn/metal-click"],
+    files: [
+      {
+        path: "components/spotlight-logo/spotlight-logo.tsx",
+        type: "registry:component",
+        target: "@components/spotlight-logo.tsx",
+      },
+    ],
+    categories: ["effects"],
+    docs: "https://chanhdai.com/components/spotlight-logo",
+  },
 ]

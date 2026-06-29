@@ -605,4 +605,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "spotlight-logo-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("spotlight-logo")],
+    files: [
+      {
+        path: "examples/spotlight-logo-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
