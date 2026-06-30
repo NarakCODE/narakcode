@@ -27,6 +27,7 @@ import {
 } from "@/registry/transformed/components/testimonial"
 import { TestimonialSpotlight } from "@/registry/transformed/components/testimonial-spotlight"
 import { Twemoji } from "@/registry/transformed/components/twemoji/twemoji"
+import { SOCIAL } from "@/features/portfolio/data/social-links"
 import {
   TESTIMONIALS_1,
   TESTIMONIALS_2,
@@ -66,7 +67,9 @@ export function Testimonials() {
         <PanelTitle>
           Trusted by
           <span className="block sm:hidden" /> top builders on{" "}
-          <span aria-label="X">𝕏</span>
+          <a href={SOCIAL.x.href} target="_blank" rel="noopener" aria-label="X">
+            𝕏
+          </a>
         </PanelTitle>
       </PanelHeader>
 

@@ -41,7 +41,9 @@ export function SocialLinks() {
                     />
                   }
                 />
-                <TooltipContent>{item.title}</TooltipContent>
+                <TooltipContent>
+                  {item.title} ({item.handle})
+                </TooltipContent>
               </Tooltip>
             </li>
           ))}
