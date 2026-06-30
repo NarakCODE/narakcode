@@ -90,7 +90,7 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
         tabIndex={isOpen ? 0 : -1}
         aria-hidden={!isOpen}
       >
-        <div className="no-scrollbar grow overflow-x-clip overflow-y-auto overscroll-contain scroll-fade-effect-y pt-10.25">
+        <div className="no-scrollbar grow scroll-fade overflow-x-clip overflow-y-auto overscroll-contain pt-10.25">
           {children}
         </div>
       </div>
