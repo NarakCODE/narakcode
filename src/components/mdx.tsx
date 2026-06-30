@@ -38,6 +38,7 @@ import { ComponentSource } from "@/components/component-source"
 import { AutoTypeTable } from "@/features/doc/components/auto-type-table"
 import { DocSponsors } from "@/features/doc/components/doc-sponsors"
 import { DocTestimonial } from "@/features/doc/components/doc-testimonial"
+import { DocTestimonial2 } from "@/features/doc/components/doc-testimonial-2"
 
 import { Callout } from "./callout"
 import { CodeTabs } from "./code-tabs"
@@ -95,6 +96,7 @@ const components: MDXRemoteProps["components"] = {
   IframeEmbed,
   FramedImage,
   DocTestimonial,
+  DocTestimonial2,
   DocSponsors,
   AutoTypeTable: (props) => <AutoTypeTable {...props} generator={generator} />,
 }
