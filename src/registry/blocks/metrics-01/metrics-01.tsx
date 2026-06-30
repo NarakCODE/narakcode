@@ -15,7 +15,7 @@ export function Metrics01() {
       <div className="container mx-auto px-4">
         <div className="border-x border-line py-8">
           <div className="screen-line-top screen-line-bottom">
-            <h2 className="screen-line-bottom ml-4 font-heading text-3xl/none font-medium tracking-tight">
+            <h2 className="screen-line-bottom ml-4 font-heading text-3xl font-medium tracking-tight">
               Insights
               <sup className="top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground">
                 ({format(new Date(data.startDate), "dd.MM")} –{" "}
@@ -34,28 +34,28 @@ export function Metrics01() {
                 <Metric>
                   <MetricLabel>Unique visitors</MetricLabel>
                   <MetricValue>
-                    {data.summary.unique_visitors.toLocaleString()}
+                    {data.summary.uniqueVisitors.toLocaleString()}
                   </MetricValue>
                 </Metric>
 
                 <Metric>
                   <MetricLabel>Sessions</MetricLabel>
                   <MetricValue>
-                    {data.summary.total_sessions.toLocaleString()}
+                    {data.summary.totalSessions.toLocaleString()}
                   </MetricValue>
                 </Metric>
 
                 <Metric>
                   <MetricLabel>Views</MetricLabel>
                   <MetricValue>
-                    {data.summary.total_screen_views.toLocaleString()}
+                    {data.summary.totalScreenViews.toLocaleString()}
                   </MetricValue>
                 </Metric>
 
                 <Metric>
-                  <MetricLabel>Pages per session</MetricLabel>
+                  <MetricLabel>Session duration</MetricLabel>
                   <MetricValue>
-                    {data.summary.views_per_session.toLocaleString()}
+                    {formatDuration(data.summary.avgSessionDuration)}
                   </MetricValue>
                 </Metric>
               </dl>
@@ -69,21 +69,16 @@ export function Metrics01() {
               >
                 <Grid horizontal />
                 <Line
-                  dataKey="total_sessions"
+                  dataKey="totalSessions"
                   stroke="var(--chart-line-secondary)"
                   strokeWidth={2}
                 />
                 <Line
-                  dataKey="unique_visitors"
+                  dataKey="uniqueVisitors"
                   stroke="var(--chart-line-primary)"
                   strokeWidth={2}
                 />
-                <ChartTooltip
-                  rowLabels={{
-                    total_sessions: "Sessions",
-                    unique_visitors: "Unique Visitors",
-                  }}
-                />
+                <ChartTooltip />
               </LineChart>
             ) : (
               <div className="grid aspect-2/1 w-full place-content-center md:aspect-3/1">
@@ -100,16 +95,16 @@ export function Metrics01() {
 type ISODateString = string
 
 type InsightsSummary = {
-  unique_visitors: number
-  total_sessions: number
-  total_screen_views: number
-  views_per_session: number
+  uniqueVisitors: number
+  totalSessions: number
+  totalScreenViews: number
+  avgSessionDuration: number
 }
 
 type InsightsSeriesItem = {
   date: ISODateString
-  unique_visitors: number
-  total_sessions: number
+  uniqueVisitors: number
+  totalSessions: number
 }
 
 type InsightsData = {
@@ -121,163 +116,181 @@ type InsightsData = {
 
 const data: InsightsData = {
   summary: {
-    unique_visitors: 13582,
-    total_sessions: 16010,
-    total_screen_views: 102216,
-    views_per_session: 6.38,
+    uniqueVisitors: 14777,
+    totalSessions: 17117,
+    avgSessionDuration: 378.32284000000004,
+    totalScreenViews: 119318,
   },
   series: [
     {
-      date: "2026-04-24T00:00:00.000Z",
-      unique_visitors: 295,
-      total_sessions: 362,
+      date: "2026-05-31T00:00:00.000Z",
+      uniqueVisitors: 437,
+      totalSessions: 520,
     },
     {
-      date: "2026-04-25T00:00:00.000Z",
-      unique_visitors: 320,
-      total_sessions: 375,
+      date: "2026-06-01T00:00:00.000Z",
+      uniqueVisitors: 554,
+      totalSessions: 636,
     },
     {
-      date: "2026-04-26T00:00:00.000Z",
-      unique_visitors: 324,
-      total_sessions: 405,
+      date: "2026-06-02T00:00:00.000Z",
+      uniqueVisitors: 587,
+      totalSessions: 649,
     },
     {
-      date: "2026-04-27T00:00:00.000Z",
-      unique_visitors: 435,
-      total_sessions: 490,
+      date: "2026-06-03T00:00:00.000Z",
+      uniqueVisitors: 456,
+      totalSessions: 530,
     },
     {
-      date: "2026-04-28T00:00:00.000Z",
-      unique_visitors: 548,
-      total_sessions: 624,
+      date: "2026-06-04T00:00:00.000Z",
+      uniqueVisitors: 507,
+      totalSessions: 590,
     },
     {
-      date: "2026-04-29T00:00:00.000Z",
-      unique_visitors: 627,
-      total_sessions: 694,
+      date: "2026-06-05T00:00:00.000Z",
+      uniqueVisitors: 532,
+      totalSessions: 507,
     },
     {
-      date: "2026-04-30T00:00:00.000Z",
-      unique_visitors: 537,
-      total_sessions: 612,
+      date: "2026-06-06T00:00:00.000Z",
+      uniqueVisitors: 446,
+      totalSessions: 437,
     },
     {
-      date: "2026-05-01T00:00:00.000Z",
-      unique_visitors: 391,
-      total_sessions: 455,
+      date: "2026-06-07T00:00:00.000Z",
+      uniqueVisitors: 542,
+      totalSessions: 544,
     },
     {
-      date: "2026-05-02T00:00:00.000Z",
-      unique_visitors: 377,
-      total_sessions: 428,
+      date: "2026-06-08T00:00:00.000Z",
+      uniqueVisitors: 576,
+      totalSessions: 582,
     },
     {
-      date: "2026-05-03T00:00:00.000Z",
-      unique_visitors: 401,
-      total_sessions: 475,
+      date: "2026-06-09T00:00:00.000Z",
+      uniqueVisitors: 563,
+      totalSessions: 544,
     },
     {
-      date: "2026-05-04T00:00:00.000Z",
-      unique_visitors: 407,
-      total_sessions: 487,
+      date: "2026-06-10T00:00:00.000Z",
+      uniqueVisitors: 553,
+      totalSessions: 537,
     },
     {
-      date: "2026-05-05T00:00:00.000Z",
-      unique_visitors: 582,
-      total_sessions: 661,
+      date: "2026-06-11T00:00:00.000Z",
+      uniqueVisitors: 495,
+      totalSessions: 568,
     },
     {
-      date: "2026-05-06T00:00:00.000Z",
-      unique_visitors: 1366,
-      total_sessions: 1517,
+      date: "2026-06-12T00:00:00.000Z",
+      uniqueVisitors: 534,
+      totalSessions: 624,
     },
     {
-      date: "2026-05-07T00:00:00.000Z",
-      unique_visitors: 777,
-      total_sessions: 885,
+      date: "2026-06-13T00:00:00.000Z",
+      uniqueVisitors: 436,
+      totalSessions: 522,
     },
     {
-      date: "2026-05-08T00:00:00.000Z",
-      unique_visitors: 474,
-      total_sessions: 549,
+      date: "2026-06-14T00:00:00.000Z",
+      uniqueVisitors: 440,
+      totalSessions: 520,
     },
     {
-      date: "2026-05-09T00:00:00.000Z",
-      unique_visitors: 397,
-      total_sessions: 466,
+      date: "2026-06-15T00:00:00.000Z",
+      uniqueVisitors: 492,
+      totalSessions: 581,
     },
     {
-      date: "2026-05-10T00:00:00.000Z",
-      unique_visitors: 363,
-      total_sessions: 425,
+      date: "2026-06-16T00:00:00.000Z",
+      uniqueVisitors: 472,
+      totalSessions: 549,
     },
     {
-      date: "2026-05-11T00:00:00.000Z",
-      unique_visitors: 411,
-      total_sessions: 494,
+      date: "2026-06-17T00:00:00.000Z",
+      uniqueVisitors: 454,
+      totalSessions: 548,
     },
     {
-      date: "2026-05-12T00:00:00.000Z",
-      unique_visitors: 520,
-      total_sessions: 598,
+      date: "2026-06-18T00:00:00.000Z",
+      uniqueVisitors: 477,
+      totalSessions: 547,
     },
     {
-      date: "2026-05-13T00:00:00.000Z",
-      unique_visitors: 466,
-      total_sessions: 552,
+      date: "2026-06-19T00:00:00.000Z",
+      uniqueVisitors: 395,
+      totalSessions: 461,
     },
     {
-      date: "2026-05-14T00:00:00.000Z",
-      unique_visitors: 447,
-      total_sessions: 517,
+      date: "2026-06-20T00:00:00.000Z",
+      uniqueVisitors: 397,
+      totalSessions: 480,
     },
     {
-      date: "2026-05-15T00:00:00.000Z",
-      unique_visitors: 369,
-      total_sessions: 411,
+      date: "2026-06-21T00:00:00.000Z",
+      uniqueVisitors: 424,
+      totalSessions: 488,
     },
     {
-      date: "2026-05-16T00:00:00.000Z",
-      unique_visitors: 372,
-      total_sessions: 421,
+      date: "2026-06-22T00:00:00.000Z",
+      uniqueVisitors: 519,
+      totalSessions: 590,
     },
     {
-      date: "2026-05-17T00:00:00.000Z",
-      unique_visitors: 328,
-      total_sessions: 385,
+      date: "2026-06-23T00:00:00.000Z",
+      uniqueVisitors: 463,
+      totalSessions: 532,
     },
     {
-      date: "2026-05-18T00:00:00.000Z",
-      unique_visitors: 415,
-      total_sessions: 492,
+      date: "2026-06-24T00:00:00.000Z",
+      uniqueVisitors: 469,
+      totalSessions: 534,
     },
     {
-      date: "2026-05-19T00:00:00.000Z",
-      unique_visitors: 396,
-      total_sessions: 462,
+      date: "2026-06-25T00:00:00.000Z",
+      uniqueVisitors: 469,
+      totalSessions: 522,
     },
     {
-      date: "2026-05-20T00:00:00.000Z",
-      unique_visitors: 416,
-      total_sessions: 473,
+      date: "2026-06-26T00:00:00.000Z",
+      uniqueVisitors: 481,
+      totalSessions: 551,
     },
     {
-      date: "2026-05-21T00:00:00.000Z",
-      unique_visitors: 431,
-      total_sessions: 491,
+      date: "2026-06-27T00:00:00.000Z",
+      uniqueVisitors: 475,
+      totalSessions: 578,
     },
     {
-      date: "2026-05-22T00:00:00.000Z",
-      unique_visitors: 409,
-      total_sessions: 397,
+      date: "2026-06-28T00:00:00.000Z",
+      uniqueVisitors: 570,
+      totalSessions: 656,
     },
     {
-      date: "2026-05-23T00:00:00.000Z",
-      unique_visitors: 419,
-      total_sessions: 407,
+      date: "2026-06-29T00:00:00.000Z",
+      uniqueVisitors: 1051,
+      totalSessions: 1190,
     },
   ],
-  startDate: "2026-04-24",
-  endDate: "2026-05-24",
+  startDate: "2026-05-31",
+  endDate: "2026-06-30",
+}
+
+/**
+ * Formats a duration given in seconds into a compact `Xh Ym Zs` string.
+ * Zero-valued units are omitted; a zero duration renders as `0s`.
+ */
+export function formatDuration(seconds: number): string {
+  const totalSeconds = Math.round(seconds)
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const secs = totalSeconds % 60
+
+  const parts: string[] = []
+  if (hours > 0) parts.push(`${hours}h`)
+  if (minutes > 0) parts.push(`${minutes}m`)
+  if (secs > 0) parts.push(`${secs}s`)
+
+  return parts.length > 0 ? parts.join(" ") : "0s"
 }

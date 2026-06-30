@@ -28,21 +28,21 @@ export function DocTestimonial2({
   return (
     <Testimonial
       className={cn(
-        "not-prose relative my-[2.5em] items-center gap-4 rounded-xl py-4 inset-ring-1 inset-ring-line",
+        "not-prose relative my-[2.5em] items-center gap-3",
         className
       )}
     >
       <TestimonialQuote className="p-0 font-serif text-lg">
         <p>
           <span
-            className="mr-0.5 inline-block text-muted-foreground select-none"
+            className="mr-0.5 inline-block text-muted-foreground/80 select-none"
             aria-hidden="true"
           >
             “
           </span>
           {quote}
           <span
-            className="ml-0.5 inline-block text-muted-foreground select-none"
+            className="inline-block text-muted-foreground/80 select-none"
             aria-hidden="true"
           >
             ”
@@ -64,6 +64,10 @@ export function DocTestimonial2({
         </TestimonialAuthorName>
         <TestimonialAuthorTagline>{authorTagline}</TestimonialAuthorTagline>
       </TestimonialAuthor>
+
+      <p className="mx-auto text-center font-mono text-sm text-muted-foreground opacity-25">
+        ***
+      </p>
     </Testimonial>
   )
 }
