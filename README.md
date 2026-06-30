@@ -251,7 +251,7 @@ This project is proudly supported by:
           </picture>
         </a>
       </td>
-      <td></td>
+      <td align="center"><a href="https://github.com/raksalim">Raksa Lim</a></td>
       <td></td>
     </tr>
   </tbody>
