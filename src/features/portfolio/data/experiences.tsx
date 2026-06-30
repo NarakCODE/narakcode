@@ -37,7 +37,7 @@ export const EXPERIENCES: Experience[] = [
           "Figma",
           "Polar",
           "Storybook",
-          "UI/UX Design",
+          "Design",
         ],
         isExpanded: true,
       },
@@ -87,7 +87,6 @@ In-house Project: [ZaDark](https://zadark.com)
           "Design System",
           "Brand Design",
           "Figma",
-          "Research",
         ],
       },
       {
@@ -138,9 +137,6 @@ In-house Project: [ZaDark](https://zadark.com)
           "Dify",
           "Zalo Mini App",
           "Agile",
-          "Teamwork",
-          "Research",
-          "Problem-solving",
         ],
       },
       {
@@ -178,15 +174,7 @@ In-house Project: [ZaDark](https://zadark.com)
 - Built a complex rich-text editor based on ProseMirror and Slate for customizable content creation.
 - Integrated APIs with the Backend Team to enhance functionality.`,
         icon: <CodeXmlIcon />,
-        skills: [
-          "React",
-          "Redux",
-          "Storybook",
-          "Lerna",
-          "Agile",
-          "Teamwork",
-          "Research",
-        ],
+        skills: ["React", "Redux", "Storybook", "Lerna", "Agile"],
       },
       {
         id: "2",
@@ -209,8 +197,6 @@ In-house Project: [ZaDark](https://zadark.com)
           "Google Play Store",
           "App Center",
           "Agile",
-          "Teamwork",
-          "Research",
         ],
       },
       {
