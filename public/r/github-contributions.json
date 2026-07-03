@@ -31,7 +31,7 @@
       "@apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current": {}
     }
   },
-  "docs": "https://chanhdai.com/components/github-contributions",
+  "docs": "https://narakcode.dev/components/github-contributions",
   "categories": [
     "data-display"
   ],

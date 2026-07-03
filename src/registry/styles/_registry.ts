@@ -53,7 +53,7 @@ export const styles: Registry["items"] = [
       },
     },
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/theme-toggle-effect",
+    docs: "https://narakcode.dev/components/theme-toggle-effect",
   },
   {
     name: "theme-toggle-effect-triangle-blur",
@@ -87,7 +87,7 @@ export const styles: Registry["items"] = [
       },
     },
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/theme-toggle-effect",
+    docs: "https://narakcode.dev/components/theme-toggle-effect",
   },
   {
     name: "theme-toggle-effect-circle",
@@ -121,7 +121,7 @@ export const styles: Registry["items"] = [
       },
     },
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/theme-toggle-effect",
+    docs: "https://narakcode.dev/components/theme-toggle-effect",
   },
   {
     name: "theme-toggle-effect-circle-blur",
@@ -159,7 +159,7 @@ export const styles: Registry["items"] = [
       },
     },
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/theme-toggle-effect",
+    docs: "https://narakcode.dev/components/theme-toggle-effect",
   },
   {
     name: "theme-toggle-effect-circle-blur-top-left",
@@ -196,7 +196,7 @@ export const styles: Registry["items"] = [
       },
     },
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/theme-toggle-effect",
+    docs: "https://narakcode.dev/components/theme-toggle-effect",
   },
   {
     name: "theme-toggle-effect-polygon",
@@ -245,7 +245,7 @@ export const styles: Registry["items"] = [
       },
     },
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/theme-toggle-effect",
+    docs: "https://narakcode.dev/components/theme-toggle-effect",
   },
   {
     name: "theme-toggle-effect-polygon-gradient",
@@ -281,7 +281,7 @@ export const styles: Registry["items"] = [
       },
     },
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/theme-toggle-effect",
+    docs: "https://narakcode.dev/components/theme-toggle-effect",
   },
   {
     name: "thin-scrollbar",

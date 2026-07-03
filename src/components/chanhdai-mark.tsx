@@ -1,20 +1,22 @@
 export function ChanhDaiMark(props: React.ComponentProps<"svg">) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 827 418"
       fill="none"
-      viewBox="0 0 512 256"
-      aria-hidden
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path
-        fill="currentColor"
-        d="M192 256H64v-64h128v64ZM448 64H320v128h128v64H256V0h192v64ZM64 192H0V64h64v128ZM512 192h-64V64h64v128ZM192 64H64V0h128v64Z"
-      />
+      <rect x="309" width="103" height="412" fill="currentColor" />
+      <rect x="515" y="106" width="103" height="206" fill="currentColor" />
+      <rect x="618" width="206" height="106" fill="currentColor" />
+      <rect x="618" y="312" width="209" height="100" fill="currentColor" />
+      <rect x="103" y="106" width="103" height="103" fill="currentColor" />
+      <rect x="206" y="209" width="103" height="103" fill="currentColor" />
+      <rect width="103" height="412" fill="currentColor" />
     </svg>
   )
 }
 
-export function getMarkSVG() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 128"><path fill="currentColor" d="M96 128H32V96h64v32ZM224 32h-64v64h64v32h-96V0h96v32ZM32 96H0V32h32v64ZM256 96h-32V32h32v64ZM96 32H32V0h64v32Z"/></svg>`
+export function getMarkSVG(color = "currentColor") {
+  return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 827 418"><rect x="309" width="103" height="412" fill="${color}"/><rect x="515" y="106" width="103" height="206" fill="${color}"/><rect x="618" width="206" height="106" fill="${color}"/><rect x="618" y="312" width="209" height="100" fill="${color}"/><rect x="103" y="106" width="103" height="103" fill="${color}"/><rect x="206" y="209" width="103" height="103" fill="${color}"/><rect width="103" height="412" fill="${color}"/></svg>`
 }

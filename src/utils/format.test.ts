@@ -1,4 +1,4 @@
-import { formatDuration } from "@/utils/format"
+import { formatDate, formatDuration } from "@/utils/format"
 import { describe, expect, it } from "vitest"
 
 describe("formatDuration", () => {
@@ -30,5 +30,19 @@ describe("formatDuration", () => {
 
   it("handles zero", () => {
     expect(formatDuration(0)).toBe("0s")
+  })
+})
+
+describe("formatDate", () => {
+  it("formats standard date strings consistently in UTC", () => {
+    expect(formatDate("2025-06-01", "dd.MM.yyyy")).toBe("01.06.2025")
+    expect(formatDate("2025-06-01T00:00:00.000Z", "dd.MM.yyyy")).toBe(
+      "01.06.2025"
+    )
+  })
+
+  it("formats date objects consistently in UTC", () => {
+    const d = new Date("2025-06-01T00:00:00.000Z")
+    expect(formatDate(d, "dd.MM.yyyy")).toBe("01.06.2025")
   })
 })

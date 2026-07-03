@@ -12,9 +12,12 @@ import {
 } from "@/registry/transformed/components/slide-to-unlock"
 
 export default function SlideToUnlockDemo() {
-  const [play] = useSound("https://assets.chanhdai.com/sounds/ios/unlock.mp3", {
-    volume: 0.5,
-  })
+  const [play] = useSound(
+    "https://assets.narakcode.dev/sounds/ios/unlock.mp3",
+    {
+      volume: 0.5,
+    }
+  )
 
   return (
     <SlideToUnlock

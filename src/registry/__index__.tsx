@@ -66,6 +66,57 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "pin-list": {
+    name: "pin-list",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/pin-list/pin-list.tsx",
+      type: "registry:component",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/pin-list/pin-list.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "morphing-pill": {
+    name: "morphing-pill",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/morphing-pill/morphing-pill.tsx",
+      type: "registry:component",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/morphing-pill/morphing-pill.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdrawer": {
+    name: "dropdrawer",
+    description: "A responsive component that automatically switches between a dropdown menu on desktop and a drawer on mobile devices for shadcn/ui.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/dropdrawer/dropdrawer.tsx",
+      type: "registry:component",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/dropdrawer/dropdrawer.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["menus","navigation"],
+    meta: undefined,
+  },
   "theme-switcher": {
     name: "theme-switcher",
     description: "Toggle between system, light, and dark themes in Next.js apps.",
@@ -908,6 +959,57 @@ export const Index: Record<string, any> = {
     }),
     categories: ["marketing"],
     meta: {"createdAt":"2026-06-26","previewClassName":"min-h-svh content-center-safe"},
+  },
+  "pin-list-demo": {
+    name: "pin-list-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/pin-list-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/pin-list-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "morphing-pill-demo": {
+    name: "morphing-pill-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/morphing-pill-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/morphing-pill-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-drawer-demo": {
+    name: "dropdown-drawer-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/dropdown-drawer-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/dropdown-drawer-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
   },
   "text-flip-demo": {
     name: "text-flip-demo",

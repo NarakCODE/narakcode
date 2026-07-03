@@ -113,13 +113,13 @@ const MENU_LINKS: CommandLinkItem[] = [
     icon: <FavouriteIcon />,
     shortcut: "GS",
   },
-  {
-    title: "Testimonials",
-    href: "/testimonials",
-    kind: "page",
-    icon: <QuoteIcon strokeWidth={1.5} />,
-    shortcut: "GT",
-  },
+  // {
+  //   title: "Testimonials",
+  //   href: "/testimonials",
+  //   kind: "page",
+  //   icon: <QuoteIcon strokeWidth={1.5} />,
+  //   shortcut: "GT",
+  // },
 ]
 
 const PORTFOLIO_LINKS: CommandLinkItem[] = [

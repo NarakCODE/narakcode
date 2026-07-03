@@ -1,0 +1,153 @@
+---
+title: Morphing Pill
+description: A dynamic, animated pill-shaped navigation component that morphs to highlight the active and hovered states.
+image: /images/blog/morphing-pill.png
+createdAt: 2025-05-17 # Assuming today's date or a relevant date
+updatedAt: 2025-05-17 # Assuming today's date or a relevant date
+---
+
+<ComponentPreview name="morphing-pill-demo" />
+
+## Installation
+
+<CodeTabs className="gap-0">
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli" className="[&>figure]:mb-0">
+
+To add the Morphing Pill to your project, run the following command:
+
+```bash
+npx shadcn@latest add "https://narakcode.dev/r/morphing-pill.json"
+```
+
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+<Step>Create the component file</Step>
+
+Create the file `src/components/ui/morphing-pill.tsx` (or your preferred location) and paste in the component code:
+
+<ComponentSource name="morphing-pill" title="components/ui/morphing-pill.tsx" />
+
+<Step>Ensure all prerequisites and setup steps are complete.</Step>
+
+Refer to the sections below for details on dependencies (`framer-motion`, `lucide-react`, `tailwind-merge`, `clsx`, `tailwindcss-animate`), Tailwind CSS configuration, the `cn` utility, and global CSS for the `.center` class if needed.
+
+<Step>Update import paths</Step>
+
+Make sure the import path for the `cn` utility (e.g., `"@/lib/cn"`) in `morphing-pill.tsx` matches your project structure.
+
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+## Prerequisites
+
+Before you begin, ensure your project meets the following requirements:
+
+- **TailwindCSS**: Used for all styling. Refer to the [TailwindCSS documentation](https://tailwindcss.com/docs/installation) for setup if you haven't already.
+- **Framer Motion**: The core animation library. All animations and animated components rely on it. See the [Framer Motion documentation](https://www.framer.com/motion/introduction/) for more details.
+- **Lucide React**: Used for icons within the component. See [Lucide React](https://lucide.dev/guide/packages/lucide-react).
+
+## Setup
+
+Follow these steps to integrate the Morphing Pill into your project.
+
+### 1. Install Dependencies
+
+Install the necessary dependencies for the component and its underlying libraries:
+
+```bash
+npm install framer-motion lucide-react tailwind-merge clsx
+```
+
+You'll also need `tailwindcss-animate` if you haven't already installed it for other shadcn/ui components:
+
+```bash
+npm install tailwindcss-animate
+```
+
+### 2. Configure `tailwind.config.js`
+
+Ensure `tailwindcss-animate` is added to your Tailwind CSS configuration:
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  // ... other configurations
+  plugins: [
+    require("tailwindcss-animate"),
+    // ... other plugins
+  ],
+}
+```
+
+### 3. Create `cn` Utility Function
+
+If you don't already have it from installing other shadcn/ui components, create a utility file, typically `utils.ts` (or `utils.js`), inside a `lib` folder (e.g., `@/lib/utils.ts` or `src/lib/utils.ts`). This file will contain a helper function `cn` for conditionally joining class names.
+
+Paste the following code into `lib/utils.ts`:
+
+```typescript
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+Ensure your `tsconfig.json` or `jsconfig.json` is set up for path aliases if you're using them (e.g., ` "@/lib/cn"`). Example for `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"] // Adjust if your lib folder is not in src
+    }
+    // ... other compiler options
+  }
+}
+```
+
+### 4. Global CSS (if needed for `.center`)
+
+The `MorphingPill` component internally uses a class `center`. If not already defined globally in your project (e.g. from other components or a general utility stylesheet), you can add it:
+
+```css
+/* Your global CSS file (e.g., app.css, globals.css, index.css) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .center {
+    @apply flex items-center justify-center;
+  }
+  /* Add other custom utilities here if needed */
+}
+```
+
+Alternatively, you can modify the component's source code to use `flex items-center justify-center` directly where `center` is used.
+
+## Basic Usage
+
+After installation and setup, you can import and use the `MorphingPill` component in your React application:
+
+```tsx
+import MorphingPill from "@/components/ui/morphing-pill" // Adjust path based on your installation location
+
+export default function MyPage() {
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <MorphingPill />
+    </div>
+  )
+}
+```
+
+The `MorphingPill` component is self-contained and manages its own state for the interactive elements. The default items are defined within the component. For customization (e.g., different items, icons, colors), you would need to modify the component's source code directly after installation.

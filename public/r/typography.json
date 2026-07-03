@@ -21,7 +21,7 @@
     "@utility link-underline": {
       "@apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current": {}
     },
-    "@utility prose-ncdai": {
+    "@utility prose-NarakCODE": {
       "@apply prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-pretty md:prose-headings:text-balance": {},
       "@apply prose-a:font-normal prose-a:wrap-break-word prose-a:text-foreground prose-a:link-underline": {},
       "@apply prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-1 prose-code:py-px prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none retina:prose-code:border-[0.5px]": {},

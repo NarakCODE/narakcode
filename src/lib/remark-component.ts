@@ -35,6 +35,12 @@ export function remarkComponent() {
             src = path.join(/*turbopackIgnore: true*/ process.cwd(), srcPath)
           } else {
             const component = Index[name]
+            if (!component) {
+              console.warn(
+                `[remarkComponent] Component "${name}" not found in Index.`
+              )
+              return null
+            }
             src = fileName
               ? component.files.find((file: unknown) => {
                   if (typeof file === "string") {
@@ -93,6 +99,12 @@ export function remarkComponent() {
 
         try {
           const component = Index[name]
+          if (!component) {
+            console.warn(
+              `[remarkComponent] Component "${name}" not found in Index.`
+            )
+            return null
+          }
 
           const src = component.files[0]?.path
 

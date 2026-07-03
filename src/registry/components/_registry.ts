@@ -3,6 +3,51 @@ import type { Registry } from "shadcn/schema"
 
 export const components: Registry["items"] = [
   {
+    name: "pin-list",
+    type: "registry:component",
+    dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["utils"],
+    files: [
+      {
+        path: "components/pin-list/pin-list.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "morphing-pill",
+    type: "registry:component",
+    dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["utils"],
+    files: [
+      {
+        path: "components/morphing-pill/morphing-pill.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "dropdrawer",
+    type: "registry:component",
+    title: "DropDrawer",
+    description:
+      "A responsive component that automatically switches between a dropdown menu on desktop and a drawer on mobile devices for shadcn/ui.",
+    dependencies: [
+      "@radix-ui/react-dropdown-menu",
+      "vaul",
+      "lucide-react",
+      "framer-motion",
+    ],
+    registryDependencies: ["utils", "drawer", "dropdown-menu"],
+    files: [
+      {
+        path: "components/dropdrawer/dropdrawer.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["menus", "navigation"],
+  },
+  {
     name: "theme-switcher",
     type: "registry:component",
     title: "Theme Switcher",
@@ -17,7 +62,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["controls"],
-    docs: "https://chanhdai.com/components/theme-switcher",
+    docs: "https://narakcode.dev/components/theme-switcher",
   },
   {
     name: "text-flip",
@@ -34,7 +79,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["text-effects"],
-    docs: "https://chanhdai.com/components/text-flip",
+    docs: "https://narakcode.dev/components/text-flip",
   },
   {
     name: "apple-hello-effect",
@@ -50,7 +95,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["text-effects"],
-    docs: "https://chanhdai.com/components/apple-hello-effect",
+    docs: "https://narakcode.dev/components/apple-hello-effect",
   },
   {
     name: "apple-hello-effect-hindi",
@@ -66,7 +111,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["text-effects"],
-    docs: "https://chanhdai.com/components/apple-hello-effect",
+    docs: "https://narakcode.dev/components/apple-hello-effect",
   },
   {
     name: "apple-hello-effect-spanish",
@@ -82,7 +127,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["text-effects"],
-    docs: "https://chanhdai.com/components/apple-hello-effect",
+    docs: "https://narakcode.dev/components/apple-hello-effect",
   },
   {
     name: "apple-hello-effect-vietnamese",
@@ -98,7 +143,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["text-effects"],
-    docs: "https://chanhdai.com/components/apple-hello-effect",
+    docs: "https://narakcode.dev/components/apple-hello-effect",
   },
   {
     name: "wheel-picker",
@@ -115,7 +160,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["controls"],
-    docs: "https://chanhdai.com/components/react-wheel-picker",
+    docs: "https://narakcode.dev/components/react-wheel-picker",
   },
   {
     name: "chevrons-up-down-icon",
@@ -131,7 +176,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/chevrons-up-down-icon",
+    docs: "https://narakcode.dev/components/chevrons-up-down-icon",
   },
   {
     name: "typography",
@@ -154,7 +199,7 @@ export const components: Registry["items"] = [
         "@apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current":
           {},
       },
-      "@utility prose-ncdai": {
+      "@utility prose-NarakCODE": {
         "@apply prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-pretty md:prose-headings:text-balance":
           {},
         "@apply prose-a:font-normal prose-a:wrap-break-word prose-a:text-foreground prose-a:link-underline":
@@ -189,7 +234,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["marketing"],
-    docs: "https://chanhdai.com/components/work-experience-component",
+    docs: "https://narakcode.dev/components/work-experience-component",
   },
   {
     name: "shimmering-text",
@@ -205,7 +250,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["text-effects"],
-    docs: "https://chanhdai.com/components/shimmering-text",
+    docs: "https://narakcode.dev/components/shimmering-text",
   },
   {
     name: "slide-to-unlock",
@@ -223,7 +268,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["controls"],
-    docs: "https://chanhdai.com/components/slide-to-unlock",
+    docs: "https://narakcode.dev/components/slide-to-unlock",
   },
   {
     name: "testimonials-marquee",
@@ -235,7 +280,7 @@ export const components: Registry["items"] = [
       getRegistryItemUrl("testimonial"),
     ],
     categories: ["marketing"],
-    docs: "https://chanhdai.com/components/testimonials-marquee",
+    docs: "https://narakcode.dev/components/testimonials-marquee",
   },
   {
     name: "testimonial",
@@ -251,7 +296,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["marketing"],
-    docs: "https://chanhdai.com/components/testimonial",
+    docs: "https://narakcode.dev/components/testimonial",
   },
   {
     name: "github-stars",
@@ -268,7 +313,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["data-display"],
-    docs: "https://chanhdai.com/components/github-stars",
+    docs: "https://narakcode.dev/components/github-stars",
   },
   {
     name: "scroll-fade-effect",
@@ -366,7 +411,7 @@ export const components: Registry["items"] = [
       },
     },
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/scroll-fade-effect",
+    docs: "https://narakcode.dev/components/scroll-fade-effect",
   },
   {
     name: "consent-manager",
@@ -384,7 +429,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["utilities"],
-    docs: "https://chanhdai.com/components/consent-manager",
+    docs: "https://narakcode.dev/components/consent-manager",
   },
   {
     name: "copy-button",
@@ -407,7 +452,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["utilities"],
-    docs: "https://chanhdai.com/components/copy-button",
+    docs: "https://narakcode.dev/components/copy-button",
   },
   {
     name: "code-block-command",
@@ -447,7 +492,7 @@ export const components: Registry["items"] = [
       },
     },
     categories: ["data-display"],
-    docs: "https://chanhdai.com/components/code-block-command",
+    docs: "https://narakcode.dev/components/code-block-command",
   },
   {
     name: "testimonial-spotlight",
@@ -463,7 +508,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["marketing"],
-    docs: "https://chanhdai.com/components/testimonial-spotlight",
+    docs: "https://narakcode.dev/components/testimonial-spotlight",
   },
   {
     name: "glow-card-grid",
@@ -492,7 +537,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["typography"],
-    docs: "https://chanhdai.com/components/middle-truncation",
+    docs: "https://narakcode.dev/components/middle-truncation",
   },
   {
     name: "twemoji",
@@ -523,7 +568,7 @@ export const components: Registry["items"] = [
       },
     },
     categories: ["typography"],
-    docs: "https://chanhdai.com/components/twemoji",
+    docs: "https://narakcode.dev/components/twemoji",
   },
   {
     name: "elastic-slider",
@@ -541,7 +586,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["controls"],
-    docs: "https://chanhdai.com/components/elastic-slider",
+    docs: "https://narakcode.dev/components/elastic-slider",
   },
   {
     name: "contribution-graph",
@@ -591,7 +636,7 @@ export const components: Registry["items"] = [
       },
     },
     categories: ["data-display"],
-    docs: "https://chanhdai.com/components/github-contributions",
+    docs: "https://narakcode.dev/components/github-contributions",
   },
   {
     name: "toc-minimap",
@@ -608,7 +653,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["navigation"],
-    docs: "https://chanhdai.com/components/toc-minimap",
+    docs: "https://narakcode.dev/components/toc-minimap",
   },
   {
     name: "fluid-gradient-text",
@@ -625,7 +670,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["text-effects"],
-    docs: "https://chanhdai.com/components/fluid-gradient-text",
+    docs: "https://narakcode.dev/components/fluid-gradient-text",
   },
   {
     name: "brand-assets-menu",
@@ -642,7 +687,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["menus"],
-    docs: "https://chanhdai.com/components/brand-assets-menu",
+    docs: "https://narakcode.dev/components/brand-assets-menu",
   },
   {
     name: "icon-swap",
@@ -658,7 +703,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/icon-swap",
+    docs: "https://narakcode.dev/components/icon-swap",
   },
   {
     name: "dot-grid-spotlight",
@@ -674,7 +719,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/dot-grid-spotlight",
+    docs: "https://narakcode.dev/components/dot-grid-spotlight",
   },
   {
     name: "spinning-circular-text",
@@ -703,7 +748,7 @@ export const components: Registry["items"] = [
       },
     },
     categories: ["text-effects"],
-    docs: "https://chanhdai.com/components/spinning-circular-text",
+    docs: "https://narakcode.dev/components/spinning-circular-text",
   },
   {
     name: "mobius-loop-icon",
@@ -720,7 +765,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/mobius-loop-icon",
+    docs: "https://narakcode.dev/components/mobius-loop-icon",
   },
   {
     name: "logos-carousel",
@@ -736,7 +781,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["marketing"],
-    docs: "https://chanhdai.com/components/logos-carousel",
+    docs: "https://narakcode.dev/components/logos-carousel",
   },
   {
     name: "testimonial-2",
@@ -752,7 +797,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["marketing"],
-    docs: "https://chanhdai.com/components/testimonial-2",
+    docs: "https://narakcode.dev/components/testimonial-2",
   },
   {
     name: "line-nav",
@@ -769,7 +814,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["navigation"],
-    docs: "https://chanhdai.com/components/line-nav",
+    docs: "https://narakcode.dev/components/line-nav",
   },
   {
     name: "share-menu",
@@ -786,7 +831,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["menus"],
-    docs: "https://chanhdai.com/components/share-menu",
+    docs: "https://narakcode.dev/components/share-menu",
   },
   {
     name: "spotlight-logo",
@@ -804,6 +849,6 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["effects"],
-    docs: "https://chanhdai.com/components/spotlight-logo",
+    docs: "https://narakcode.dev/components/spotlight-logo",
   },
 ]

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { format } from "date-fns"
+import { formatDate } from "@/utils/format"
 import { ArrowUpRightIcon, CircleCheckBigIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -96,8 +96,8 @@ export function CertificationItem({
           <div>
             <dt className="sr-only">Issued on</dt>
             <dd>
-              <time dateTime={new Date(certification.issueDate).toISOString()}>
-                {format(new Date(certification.issueDate), "dd.MM.yyyy")}
+              <time dateTime={certification.issueDate}>
+                {formatDate(certification.issueDate, "dd.MM.yyyy")}
               </time>
             </dd>
           </div>

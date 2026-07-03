@@ -1,0 +1,42 @@
+---
+title: Shadcn is My Favorite UI Component Library
+description: Why shadcn/ui is the best UI component library for real-world applications.
+image: https://assets.chanhdai.com/images/blog/followed-by-shadcn-on-x.webp
+pinned: true
+createdAt: 2025-06-21
+updatedAt: 2026-07-02
+---
+
+Can’t describe how it feels to build real-world applications using [shadcn/ui](https://ui.shadcn.com) — it has completely changed the way we build, share, and own our UI components. In my opinion, it is the best UI component library for modern, professional web projects.
+
+Here is why shadcn/ui is my absolute favorite and the ultimate library for the real world:
+
+## 1. Ownership Over Dependencies
+
+Traditional component libraries distribute everything as a monolithic npm package. If you want to change a tiny detail in a component's markup or behavior, you either have to:
+
+- Write hacky CSS overrides
+- Submit a PR to the library and wait weeks for it to get merged
+- Fork the library and maintain your own version
+
+With shadcn/ui, the paradigm is inverted. You don't install it as a dependency. Instead, you copy the code of the component directly into your codebase using `npx shadcn@latest add`. Once it’s in your `components/ui` folder, **you own it**. You can rewrite it, customize it, and adapt it to your business requirements with zero restrictions.
+
+## 2. Uncompromising Accessibility
+
+Building accessible UI elements (like Dialogs, Selects, and Dropdowns) is incredibly hard. It requires handling ARIA attributes, focus traps, keyboard navigation, and screen readers correctly.
+
+shadcn/ui is built on top of [Radix UI](https://www.radix-ui.com), a headless primitive library that solves all accessibility issues by default. This means you get a gorgeous, fully accessible component library out of the box without having to write complex accessibility logic from scratch.
+
+## 3. Powered by Tailwind CSS
+
+Because the components are copied directly into your workspace as plain code styled with Tailwind CSS utility classes, customization is trivial. There is no custom styling engine to learn, no CSS-in-JS performance overhead, and no complex theme configuration. If you know Tailwind, you already know how to style and theme shadcn/ui.
+
+<FramedImage src="https://ui.shadcn.com/images/full-dark.png" alt="shadcn/ui" />
+
+## 4. The Registry Concept
+
+The shadcn/ui ecosystem is growing rapidly because of the "Registry" concept. It is not just a library; it is a design system distribution framework. Anyone can create their own component registry and let developers add custom components using the CLI. This has opened the door for highly customized, domain-specific UI libraries built on top of the same foundation.
+
+---
+
+Thank you [@shadcn](https://x.com/shadcn) for rethinking how we approach component libraries. It's a joy to use every day!

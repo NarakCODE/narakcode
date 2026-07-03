@@ -33,5 +33,6 @@ export type Bookmark = {
   author?: string
   icon?: React.ReactElement
   category: BookmarkCategory
+  image?: string
   bookmarkedAt: string
 }

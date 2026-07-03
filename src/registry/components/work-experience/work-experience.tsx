@@ -280,7 +280,7 @@ function Prose({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "prose max-w-none prose-ncdai prose-zinc dark:prose-invert",
+        "prose-NarakCODE prose max-w-none prose-zinc dark:prose-invert",
         className
       )}
       {...props}

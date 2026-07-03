@@ -1,0 +1,321 @@
+---
+title: Pin List
+description: A playful list for pinning and unpinning items, with smooth animated transitions as items move between groups.
+image: /images/blog/pin-list-preview.png
+createdAt: 2025-06-21
+updatedAt: 2025-06-21
+---
+
+<ComponentPreview name="pin-list-demo" />
+
+## Installation
+
+<CodeTabs className="gap-0">
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli" className="[&>figure]:mb-0">
+
+```bash
+npx shadcn@latest add "https://narakcode.dev/r/pin-list.json"
+```
+
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install framer-motion
+```
+
+<Step>Install the following registry dependencies:</Step>
+
+```bash
+npx shadcn@latest add "https://narakcode.dev/r/cn.json"
+```
+
+<Step>Copy and paste the following code into your project:</Step>
+
+**components/pin-list.tsx**
+
+```tsx
+"use client"
+
+import * as React from "react"
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from "framer-motion"
+import { Pin } from "lucide-react"
+
+import { cn } from "@/lib/cn"
+
+type PinListItem = {
+  id: number
+  name: string
+  info: string
+  icon: React.ElementType
+  pinned: boolean
+}
+
+type PinListProps = {
+  items: PinListItem[]
+  labels?: {
+    pinned?: string
+    unpinned?: string
+  }
+  transition?: Transition
+  labelMotionProps?: HTMLMotionProps<"p">
+  className?: string
+  labelClassName?: string
+  pinnedSectionClassName?: string
+  unpinnedSectionClassName?: string
+  zIndexResetDelay?: number
+} & HTMLMotionProps<"div">
+
+function PinList({
+  items,
+  labels = { pinned: "Pinned Items", unpinned: "All Items" },
+  transition = { type: "spring", stiffness: 320, damping: 20, mass: 0.8 },
+  labelMotionProps = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: 0.22, ease: "easeInOut" },
+  },
+  className,
+  labelClassName,
+  pinnedSectionClassName,
+  unpinnedSectionClassName,
+  zIndexResetDelay = 500,
+  ...props
+}: PinListProps) {
+  const [listItems, setListItems] = React.useState(items)
+  const [togglingGroup, setTogglingGroup] = React.useState<
+    "pinned" | "unpinned" | null
+  >(null)
+
+  const pinned = listItems.filter((item) => item.pinned)
+  const unpinned = listItems.filter((item) => !item.pinned)
+
+  const toggleStatus = (id: number) => {
+    const item = listItems.find((u) => u.id === id)
+    if (!item) return
+
+    // Set the group that the item is animating FROM to have a higher z-index
+    setTogglingGroup(item.pinned ? "pinned" : "unpinned")
+
+    // Update item's pinned status and re-order
+    setListItems((prev) => {
+      const idx = prev.findIndex((u) => u.id === id)
+      if (idx === -1) return prev
+
+      const updated = [...prev]
+      const [movedItem] = updated.splice(idx, 1)
+      if (!movedItem) return prev
+
+      const toggledItem = { ...movedItem, pinned: !movedItem.pinned }
+
+      // Pinned items are added to the end, unpinned to the start
+      if (toggledItem.pinned) {
+        updated.push(toggledItem)
+      } else {
+        updated.unshift(toggledItem)
+      }
+      return updated
+    })
+
+    // Reset z-index after the animation
+    setTimeout(() => setTogglingGroup(null), zIndexResetDelay)
+  }
+
+  return (
+    <motion.div className={cn("space-y-10", className)} {...props}>
+      <LayoutGroup>
+        {/* Pinned Section */}
+        <div>
+          <AnimatePresence>
+            {pinned.length > 0 && (
+              <motion.p
+                layout
+                key="pinned-label"
+                className={cn(
+                  "mb-2 px-3 text-sm font-medium text-neutral-500 dark:text-neutral-300",
+                  labelClassName
+                )}
+                {...labelMotionProps}
+              >
+                {labels.pinned}
+              </motion.p>
+            )}
+          </AnimatePresence>
+          <div
+            className={cn(
+              "relative space-y-3",
+              togglingGroup === "pinned" ? "z-20" : "z-10",
+              pinnedSectionClassName
+            )}
+          >
+            {pinned.map((item) => (
+              <motion.div
+                key={item.id}
+                layoutId={`item-${item.id}`}
+                onClick={() => toggleStatus(item.id)}
+                transition={transition}
+                className="flex cursor-pointer items-center justify-between gap-5 rounded-2xl bg-neutral-200 p-2 dark:bg-neutral-800"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="rounded-lg bg-background p-2">
+                    <item.icon className="size-5 text-neutral-500 dark:text-neutral-400" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold">{item.name}</div>
+                    <div className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                      {item.info}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex size-8 items-center justify-center rounded-full bg-neutral-400 dark:bg-neutral-600">
+                  <Pin className="size-4 fill-white text-white" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Unpinned Section */}
+        <div>
+          <AnimatePresence>
+            {unpinned.length > 0 && (
+              <motion.p
+                layout
+                key="all-label"
+                className={cn(
+                  "mb-2 px-3 text-sm font-medium text-neutral-500 dark:text-neutral-300",
+                  labelClassName
+                )}
+                {...labelMotionProps}
+              >
+                {labels.unpinned}
+              </motion.p>
+            )}
+          </AnimatePresence>
+          <div
+            className={cn(
+              "relative space-y-3",
+              togglingGroup === "unpinned" ? "z-20" : "z-10",
+              unpinnedSectionClassName
+            )}
+          >
+            {unpinned.map((item) => (
+              <motion.div
+                key={item.id}
+                layoutId={`item-${item.id}`}
+                onClick={() => toggleStatus(item.id)}
+                transition={transition}
+                className="group flex cursor-pointer items-center justify-between gap-5 rounded-2xl bg-neutral-200 p-2 dark:bg-neutral-800"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="rounded-lg bg-background p-2">
+                    <item.icon className="size-5 text-neutral-500 dark:text-neutral-400" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold">{item.name}</div>
+                    <div className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                      {item.info}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex size-8 items-center justify-center rounded-full bg-neutral-400 opacity-0 transition-opacity duration-250 group-hover:opacity-100 dark:bg-neutral-600">
+                  <Pin className="size-4 text-white" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </LayoutGroup>
+    </motion.div>
+  )
+}
+
+export { PinList, type PinListItem, type PinListProps }
+```
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+</TabsContent>
+</CodeTabs>
+
+## Usage
+
+First, define the items you want to display. Each item must conform to the `PinListItem` type, requiring an `id`, `name`, `info`, an `icon`, and a boolean `pinned` state.
+
+```tsx
+import { Bug, Code, Cpu, Rocket, UploadCloud } from "lucide-react"
+
+import { PinList } from "@/components/pin-list"
+
+const ITEMS = [
+  {
+    id: 1,
+    name: "Code Your Dreams",
+    info: "Every keystroke counts · Never stop building",
+    icon: Rocket,
+    pinned: true,
+  },
+  {
+    id: 2,
+    name: "Focus Mode",
+    info: "Deep work zone · Flow state all day",
+    icon: Cpu,
+    pinned: false,
+  },
+]
+
+export default function PinListDemo() {
+  return (
+    <PinList
+      items={ITEMS}
+      labels={{ pinned: "Favorites", unpinned: "Others" }}
+    />
+  )
+}
+```
+
+## Props
+
+| Prop                       | Type                                                               | Default                                              | Description                                                   |
+| :------------------------- | :----------------------------------------------------------------- | :--------------------------------------------------- | :------------------------------------------------------------ |
+| `items`                    | `PinListItem[]`                                                    | _(required)_                                         | The array of items to display in the list.                    |
+| `className`                | `string`                                                           | `""`                                                 | Additional CSS classes for the root component element.        |
+| `labelClassName`           | `string`                                                           | `""`                                                 | Additional CSS classes for the section labels.                |
+| `pinnedSectionClassName`   | `string`                                                           | `""`                                                 | Additional CSS classes for the wrapper of the pinned items.   |
+| `unpinnedSectionClassName` | `string`                                                           | `""`                                                 | Additional CSS classes for the wrapper of the unpinned items. |
+| `labels`                   | <code>&lbrace; pinned?: string; unpinned?: string; &rbrace;</code> | <code>&lbrace; pinned: "Pinned", ... &rbrace;</code> | Custom text for the pinned and unpinned section labels.       |
+| `transition`               | `Transition`                                                       | <code>&lbrace; type: "spring", ... &rbrace;</code>   | Framer Motion transition object for item layout animations.   |
+| `labelMotionProps`         | `HTMLMotionProps<"p">`                                             | <code>&lbrace; initial: ..., ... &rbrace;</code>     | Framer Motion props for the section label animations.         |
+| `zIndexResetDelay`         | `number`                                                           | `500`                                                | Delay in ms to reset z-index after an animation.              |
+
+## Types
+
+```tsx
+type PinListItem = {
+  id: number
+  name: string
+  info: string
+  icon: React.ElementType // e.g. from lucide-react
+  pinned: boolean // Initial pinned state
+}
+```
+
+## How It Works
+
+- **Layout Animations**: The component heavily relies on `motion/react` (specifically `<LayoutGroup>` and the `layout` prop) to smoothly animate items between the pinned and unpinned groups.
+- **Smart Z-Indexing**: When an item transitions between groups, it dynamically updates its `z-index` to ensure it floats above the rest of the list without clipping. The `zIndexResetDelay` ensures the stacking context resets right after the animation completes.
+- **Optimized Re-renders**: The list automatically manages internal state derived from the `items` prop, removing the need for you to pass external state handlers for the pin/unpin interactions.

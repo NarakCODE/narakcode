@@ -7,7 +7,7 @@ export default function TwemojiDemo() {
         <Twemoji>👍 ❤️ 🤣 😲 😭 😡</Twemoji>
       </p>
       <p className="text-lg">
-        <Twemoji>Hello from Viet Nam 🇻🇳</Twemoji>
+        <Twemoji>Hello from Cambodia 🇰🇭</Twemoji>
       </p>
       <p className="text-base">
         <Twemoji>Built with 💛 and ☕️</Twemoji>

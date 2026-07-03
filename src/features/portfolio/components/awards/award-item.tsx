@@ -1,4 +1,4 @@
-import { format } from "date-fns"
+import { formatDate } from "@/utils/format"
 import { Crown, Paperclip } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -63,8 +63,8 @@ export function AwardItem({
                 <div>
                   <dt className="sr-only">Awarded in</dt>
                   <dd>
-                    <time dateTime={new Date(award.date).toISOString()}>
-                      {format(new Date(award.date), "MM.yyyy")}
+                    <time dateTime={award.date}>
+                      {formatDate(award.date, "MM.yyyy")}
                     </time>
                   </dd>
                 </div>

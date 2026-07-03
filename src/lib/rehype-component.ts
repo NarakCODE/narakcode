@@ -74,6 +74,12 @@ export function rehypeComponent() {
               )
             } else {
               const component = Index[item.name]
+              if (!component) {
+                console.warn(
+                  `[rehypeComponent] Component "${item.name}" not found in Index.`
+                )
+                return
+              }
               src = item.fileName
                 ? component.files.find((file: unknown) => {
                     if (typeof file === "string") {
@@ -141,6 +147,12 @@ export function rehypeComponent() {
         if (item.type === "ComponentPreview") {
           try {
             const component = Index[item.name]
+            if (!component) {
+              console.warn(
+                `[rehypeComponent] Component "${item.name}" not found in Index.`
+              )
+              return
+            }
 
             const src = component.files[0]?.path
 

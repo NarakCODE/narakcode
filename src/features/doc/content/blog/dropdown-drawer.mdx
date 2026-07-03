@@ -1,0 +1,131 @@
+---
+title: DropDrawer
+description: A responsive component that automatically switches between a dropdown menu on desktop and a drawer on mobile devices for shadcn/ui.
+image: /images/blog/dropdown-drawers.png
+createdAt: 2025-07-23
+updatedAt: 2025-07-23
+---
+
+<ComponentPreview name="dropdown-drawer-demo" />
+
+## Installation
+
+### Using shadcn registry (Recommended)
+
+The easiest way to install DropDrawer is through the shadcn registry:
+
+```bash
+npx shadcn@latest add "https://narakcode.dev/r/dropdrawer.json"
+```
+
+## Usage
+
+### Migrating from DropdownMenu
+
+DropDrawer is designed as a drop-in replacement for shadcn/ui's DropdownMenu component. Simply replace your imports:
+
+```tsx
+import {
+  DropDrawer,
+  DropDrawerContent,
+  DropDrawerItem,
+  DropDrawerTrigger,
+} from "@/components/ui/dropdrawer"
+```
+
+### Basic Example
+
+```tsx
+import { MoreVertical } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import {
+  DropDrawer,
+  DropDrawerContent,
+  DropDrawerItem,
+  DropDrawerTrigger,
+} from "@/components/ui/dropdrawer"
+
+export default function BasicExample() {
+  return (
+    <DropDrawer>
+      <DropDrawerTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <MoreVertical className="h-4 w-4" />
+        </Button>
+      </DropDrawerTrigger>
+      <DropDrawerContent>
+        <DropDrawerItem>Profile</DropDrawerItem>
+        <DropDrawerItem>Settings</DropDrawerItem>
+        <DropDrawerItem variant="destructive">Sign out</DropDrawerItem>
+      </DropDrawerContent>
+    </DropDrawer>
+  )
+}
+```
+
+### With Icons
+
+```tsx
+import { LogOut, Settings, User } from "lucide-react"
+
+export default function WithIconsExample() {
+  return (
+    <DropDrawer>
+      <DropDrawerTrigger asChild>
+        <Button variant="outline">Menu</Button>
+      </DropDrawerTrigger>
+      <DropDrawerContent>
+        <DropDrawerItem icon={<User className="h-4 w-4" />}>
+          Profile
+        </DropDrawerItem>
+        <DropDrawerItem icon={<Settings className="h-4 w-4" />}>
+          Settings
+        </DropDrawerItem>
+        <DropDrawerItem
+          variant="destructive"
+          icon={<LogOut className="h-4 w-4" />}
+        >
+          Sign out
+        </DropDrawerItem>
+      </DropDrawerContent>
+    </DropDrawer>
+  )
+}
+```
+
+### Nested Submenus
+
+```tsx
+import {
+  DropDrawer,
+  DropDrawerContent,
+  DropDrawerItem,
+  DropDrawerSub,
+  DropDrawerSubContent,
+  DropDrawerSubTrigger,
+  DropDrawerTrigger,
+} from "@/components/ui/dropdrawer"
+
+export default function NestedExample() {
+  return (
+    <DropDrawer>
+      <DropDrawerTrigger asChild>
+        <Button variant="outline">Menu</Button>
+      </DropDrawerTrigger>
+      <DropDrawerContent>
+        <DropDrawerItem>Profile</DropDrawerItem>
+        <DropDrawerSub>
+          <DropDrawerSubTrigger>Settings</DropDrawerSubTrigger>
+          <DropDrawerSubContent>
+            <DropDrawerItem>General</DropDrawerItem>
+            <DropDrawerItem>Privacy</DropDrawerItem>
+            <DropDrawerItem>Security</DropDrawerItem>
+          </DropDrawerSubContent>
+        </DropDrawerSub>
+        <DropDrawerItem variant="destructive">Sign out</DropDrawerItem>
+      </DropDrawerContent>
+    </DropDrawer>
+  )
+}
+```

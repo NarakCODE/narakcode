@@ -1,3 +1,6 @@
+import { tz } from "@date-fns/tz"
+import { format } from "date-fns"
+
 /**
  * Formats a duration given in seconds into a compact `Xh Ym Zs` string.
  * Zero-valued units are omitted; a zero duration renders as `0s`.
@@ -14,4 +17,17 @@ export function formatDuration(seconds: number): string {
   if (secs > 0) parts.push(`${secs}s`)
 
   return parts.length > 0 ? parts.join(" ") : "0s"
+}
+
+/**
+ * Formats a date string, number, or Date object into a string using the UTC timezone.
+ * This ensures consistent formatting between SSR and Client-side hydration.
+ */
+export function formatDate(
+  date: Date | string | number,
+  formatStr: string
+): string {
+  const d =
+    typeof date === "string" || typeof date === "number" ? new Date(date) : date
+  return format(d, formatStr, { in: tz("UTC") })
 }

@@ -14,7 +14,7 @@
           "target": "@lib/haptic.ts"
         }
       ],
-      "docs": "https://chanhdai.com/components/haptic-feedback",
+      "docs": "https://narakcode.dev/components/haptic-feedback",
       "categories": [
         "utilities"
       ],
@@ -59,6 +59,70 @@
       "author": "ncdai <dai@chanhdai.com>"
     },
     {
+      "name": "pin-list",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/pin-list/pin-list.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
+      "name": "morphing-pill",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/morphing-pill/morphing-pill.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
+      "name": "dropdrawer",
+      "title": "DropDrawer",
+      "description": "A responsive component that automatically switches between a dropdown menu on desktop and a drawer on mobile devices for shadcn/ui.",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "vaul",
+        "lucide-react",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "utils",
+        "drawer",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/dropdrawer/dropdrawer.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "menus",
+        "navigation"
+      ],
+      "type": "registry:component",
+      "author": "ncdai <dai@chanhdai.com>"
+    },
+    {
       "name": "theme-switcher",
       "title": "Theme Switcher",
       "description": "Toggle between system, light, and dark themes in Next.js apps.",
@@ -73,7 +137,7 @@
           "target": "@components/theme-switcher.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/theme-switcher",
+      "docs": "https://narakcode.dev/components/theme-switcher",
       "categories": [
         "controls"
       ],
@@ -94,7 +158,7 @@
           "target": "@components/text-flip.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/text-flip",
+      "docs": "https://narakcode.dev/components/text-flip",
       "categories": [
         "text-effects"
       ],
@@ -115,7 +179,7 @@
           "target": "@components/apple-hello-effect-english.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/apple-hello-effect",
+      "docs": "https://narakcode.dev/components/apple-hello-effect",
       "categories": [
         "text-effects"
       ],
@@ -136,7 +200,7 @@
           "target": "@components/apple-hello-effect-hindi.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/apple-hello-effect",
+      "docs": "https://narakcode.dev/components/apple-hello-effect",
       "categories": [
         "text-effects"
       ],
@@ -157,7 +221,7 @@
           "target": "@components/apple-hello-effect-spanish.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/apple-hello-effect",
+      "docs": "https://narakcode.dev/components/apple-hello-effect",
       "categories": [
         "text-effects"
       ],
@@ -178,7 +242,7 @@
           "target": "@components/apple-hello-effect-vietnamese.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/apple-hello-effect",
+      "docs": "https://narakcode.dev/components/apple-hello-effect",
       "categories": [
         "text-effects"
       ],
@@ -199,7 +263,7 @@
           "target": "@components/wheel-picker.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/react-wheel-picker",
+      "docs": "https://narakcode.dev/components/react-wheel-picker",
       "categories": [
         "controls"
       ],
@@ -219,7 +283,7 @@
           "target": "@components/chevrons-up-down-icon.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/chevrons-up-down-icon",
+      "docs": "https://narakcode.dev/components/chevrons-up-down-icon",
       "categories": [
         "effects"
       ],
@@ -246,7 +310,7 @@
         "@utility link-underline": {
           "@apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current": {}
         },
-        "@utility prose-ncdai": {
+        "@utility prose-NarakCODE": {
           "@apply prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-pretty md:prose-headings:text-balance": {},
           "@apply prose-a:font-normal prose-a:wrap-break-word prose-a:text-foreground prose-a:link-underline": {},
           "@apply prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-1 prose-code:py-px prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none retina:prose-code:border-[0.5px]": {},
@@ -282,7 +346,7 @@
           "target": "@components/work-experience.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/work-experience-component",
+      "docs": "https://narakcode.dev/components/work-experience-component",
       "categories": [
         "marketing"
       ],
@@ -303,7 +367,7 @@
           "target": "@components/shimmering-text.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/shimmering-text",
+      "docs": "https://narakcode.dev/components/shimmering-text",
       "categories": [
         "text-effects"
       ],
@@ -327,7 +391,7 @@
           "target": "@components/slide-to-unlock.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/slide-to-unlock",
+      "docs": "https://narakcode.dev/components/slide-to-unlock",
       "categories": [
         "controls"
       ],
@@ -342,7 +406,7 @@
         "@kibo-ui/marquee",
         "https://chanhdai.com/r/testimonial.json"
       ],
-      "docs": "https://chanhdai.com/components/testimonials-marquee",
+      "docs": "https://narakcode.dev/components/testimonials-marquee",
       "categories": [
         "marketing"
       ],
@@ -361,7 +425,7 @@
           "target": "@components/testimonial.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/testimonial",
+      "docs": "https://narakcode.dev/components/testimonial",
       "categories": [
         "marketing"
       ],
@@ -383,7 +447,7 @@
           "target": "@components/github-stars.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/github-stars",
+      "docs": "https://narakcode.dev/components/github-stars",
       "categories": [
         "data-display"
       ],
@@ -475,7 +539,7 @@
           "animation-fill-mode": "both"
         }
       },
-      "docs": "https://chanhdai.com/components/scroll-fade-effect",
+      "docs": "https://narakcode.dev/components/scroll-fade-effect",
       "categories": [
         "effects"
       ],
@@ -499,7 +563,7 @@
           "target": "@components/consent-manager.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/consent-manager",
+      "docs": "https://narakcode.dev/components/consent-manager",
       "categories": [
         "utilities"
       ],
@@ -531,7 +595,7 @@
           "target": "@hooks/use-copy-to-clipboard.ts"
         }
       ],
-      "docs": "https://chanhdai.com/components/copy-button",
+      "docs": "https://narakcode.dev/components/copy-button",
       "categories": [
         "utilities"
       ],
@@ -577,7 +641,7 @@
           "code-foreground": "oklch(0.985 0 0)"
         }
       },
-      "docs": "https://chanhdai.com/components/code-block-command",
+      "docs": "https://narakcode.dev/components/code-block-command",
       "categories": [
         "data-display"
       ],
@@ -598,7 +662,7 @@
           "target": "@components/testimonial-spotlight.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/testimonial-spotlight",
+      "docs": "https://narakcode.dev/components/testimonial-spotlight",
       "categories": [
         "marketing"
       ],
@@ -633,7 +697,7 @@
           "target": "@components/middle-truncation.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/middle-truncation",
+      "docs": "https://narakcode.dev/components/middle-truncation",
       "categories": [
         "typography"
       ],
@@ -667,7 +731,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/twemoji",
+      "docs": "https://narakcode.dev/components/twemoji",
       "categories": [
         "typography"
       ],
@@ -691,7 +755,7 @@
           "target": "@components/elastic-slider.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/elastic-slider",
+      "docs": "https://narakcode.dev/components/elastic-slider",
       "categories": [
         "controls"
       ],
@@ -748,7 +812,7 @@
           "@apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current": {}
         }
       },
-      "docs": "https://chanhdai.com/components/github-contributions",
+      "docs": "https://narakcode.dev/components/github-contributions",
       "categories": [
         "data-display"
       ],
@@ -770,7 +834,7 @@
           "target": "@components/toc-minimap.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/toc-minimap",
+      "docs": "https://narakcode.dev/components/toc-minimap",
       "categories": [
         "navigation"
       ],
@@ -791,7 +855,7 @@
           "target": "@components/fluid-gradient-text.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/fluid-gradient-text",
+      "docs": "https://narakcode.dev/components/fluid-gradient-text",
       "categories": [
         "text-effects"
       ],
@@ -816,7 +880,7 @@
           "target": "@components/brand-assets-menu.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/brand-assets-menu",
+      "docs": "https://narakcode.dev/components/brand-assets-menu",
       "categories": [
         "menus"
       ],
@@ -837,7 +901,7 @@
           "target": "@components/icon-swap.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/icon-swap",
+      "docs": "https://narakcode.dev/components/icon-swap",
       "categories": [
         "effects"
       ],
@@ -855,7 +919,7 @@
           "target": "@components/dot-grid-spotlight.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/dot-grid-spotlight",
+      "docs": "https://narakcode.dev/components/dot-grid-spotlight",
       "categories": [
         "effects"
       ],
@@ -885,7 +949,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/spinning-circular-text",
+      "docs": "https://narakcode.dev/components/spinning-circular-text",
       "categories": [
         "text-effects"
       ],
@@ -906,7 +970,7 @@
           "target": "@components/mobius-loop-icon.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/mobius-loop-icon",
+      "docs": "https://narakcode.dev/components/mobius-loop-icon",
       "categories": [
         "effects"
       ],
@@ -927,7 +991,7 @@
           "target": "@components/logos-carousel.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/logos-carousel",
+      "docs": "https://narakcode.dev/components/logos-carousel",
       "categories": [
         "marketing"
       ],
@@ -945,7 +1009,7 @@
           "target": "@components/testimonial-2.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/testimonial-2",
+      "docs": "https://narakcode.dev/components/testimonial-2",
       "categories": [
         "marketing"
       ],
@@ -966,7 +1030,7 @@
           "target": "@components/line-nav.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/line-nav",
+      "docs": "https://narakcode.dev/components/line-nav",
       "categories": [
         "navigation"
       ],
@@ -989,7 +1053,7 @@
           "target": "@components/share-menu.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/share-menu",
+      "docs": "https://narakcode.dev/components/share-menu",
       "categories": [
         "menus"
       ],
@@ -1013,7 +1077,7 @@
           "target": "@components/spotlight-logo.tsx"
         }
       ],
-      "docs": "https://chanhdai.com/components/spotlight-logo",
+      "docs": "https://narakcode.dev/components/spotlight-logo",
       "categories": [
         "effects"
       ],
@@ -1382,7 +1446,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "docs": "https://narakcode.dev/components/theme-toggle-effect",
       "categories": [
         "effects"
       ],
@@ -1419,7 +1483,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "docs": "https://narakcode.dev/components/theme-toggle-effect",
       "categories": [
         "effects"
       ],
@@ -1456,7 +1520,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "docs": "https://narakcode.dev/components/theme-toggle-effect",
       "categories": [
         "effects"
       ],
@@ -1497,7 +1561,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "docs": "https://narakcode.dev/components/theme-toggle-effect",
       "categories": [
         "effects"
       ],
@@ -1537,7 +1601,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "docs": "https://narakcode.dev/components/theme-toggle-effect",
       "categories": [
         "effects"
       ],
@@ -1589,7 +1653,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "docs": "https://narakcode.dev/components/theme-toggle-effect",
       "categories": [
         "effects"
       ],
@@ -1628,7 +1692,7 @@
           }
         }
       },
-      "docs": "https://chanhdai.com/components/theme-toggle-effect",
+      "docs": "https://narakcode.dev/components/theme-toggle-effect",
       "categories": [
         "effects"
       ],

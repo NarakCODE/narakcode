@@ -62,7 +62,7 @@ const TESTIMONIALS_1: TestimonialType[] = [
     authorName: "OrcDev",
     authorTagline: "Creator of 8bitcn.com",
     url: "https://x.com/orcdev/status/2011373509310878010",
-    quote: "@iamncdai is one of the best design engineers!",
+    quote: "@iamNarakCODE is one of the best design engineers!",
   },
   {
     authorAvatar: "https://unavatar.io/x/shadcncraft?v=2",

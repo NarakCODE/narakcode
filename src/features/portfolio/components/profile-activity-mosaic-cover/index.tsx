@@ -69,9 +69,10 @@ const getGitHubContributions = unstable_cache(
     const years = getYearRange(cellCount)
     const yearQueries = years.map((year) => `y=${year}`).join("&")
 
-    const res = await fetch(
-      `${process.env.GITHUB_CONTRIBUTIONS_API_URL}/v4/${username}?${yearQueries}`
-    )
+    const apiUrl =
+      process.env.GITHUB_CONTRIBUTIONS_API_URL ||
+      "https://github-contributions-api.jogruber.de"
+    const res = await fetch(`${apiUrl}/v4/${username}?${yearQueries}`)
 
     if (!res.ok) {
       throw new Error(`Failed to fetch GitHub Contributions: ${res.statusText}`)

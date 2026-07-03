@@ -8,8 +8,8 @@ import { lib } from "./lib/_registry"
 import { styles } from "./styles/_registry"
 
 export const registry = {
-  name: "ncdai",
-  homepage: "https://chanhdai.com/components",
+  name: "NarakCODE",
+  homepage: "https://narakcode.dev/components",
   items: [
     ...lib,
     ...hook,

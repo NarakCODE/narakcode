@@ -1,7 +1,7 @@
 "use client"
 
 import { use } from "react"
-import { format } from "date-fns"
+import { formatDate } from "@/utils/format"
 import { LoaderIcon } from "lucide-react"
 
 import {
@@ -56,7 +56,7 @@ export function GitHubContributionGraph({
             <TooltipContent className="font-sans">
               <p>
                 {activity.count} contribution{activity.count > 1 ? "s" : null}{" "}
-                on {format(new Date(activity.date), "dd.MM.yyyy")}
+                on {formatDate(activity.date, "dd.MM.yyyy")}
               </p>
             </TooltipContent>
           </Tooltip>

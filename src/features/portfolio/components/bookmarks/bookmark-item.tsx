@@ -1,9 +1,14 @@
+import { formatDate } from "@/utils/format"
 import { addQueryParams } from "@/utils/url"
-import { format } from "date-fns"
 import { ArrowUpRightIcon } from "lucide-react"
 
 import { UTM_PARAMS } from "@/config/site"
 import { cn } from "@/lib/utils"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
 import { Separator } from "@/components/ui/separator"
 import { NewsIcon } from "@/components/icons"
 import {
@@ -18,41 +23,89 @@ export function BookmarkItem({
   className?: string
   bookmark: Bookmark
 }) {
+  let imageUrl = bookmark.image
+  if (!imageUrl && bookmark.url.includes("youtu.be/")) {
+    const videoId = bookmark.url.split("youtu.be/")[1]?.split("?")[0]
+    if (videoId) {
+      imageUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+    }
+  } else if (!imageUrl && bookmark.url.includes("youtube.com/watch")) {
+    try {
+      const urlObj = new URL(bookmark.url)
+      const videoId = urlObj.searchParams.get("v")
+      if (videoId) {
+        imageUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+      }
+    } catch {}
+  }
+
+  const domain = (() => {
+    try {
+      return new URL(bookmark.url).hostname.replace(/^www\./, "")
+    } catch {
+      return ""
+    }
+  })()
+
   return (
-    <div
-      className={cn(
-        "relative flex items-center pr-2 hover:bg-accent-muted",
-        className
-      )}
-    >
-      <div
-        className={cn(
-          "mx-4 flex size-6 shrink-0 items-center justify-center rounded-md select-none",
-          "border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background",
-          "bg-muted text-muted-foreground [&_svg]:size-4"
-        )}
-      >
-        {bookmark.icon ?? CATEGORY_ICONS[bookmark.category]}
-      </div>
-
-      <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
-        <h3 className="leading-snug font-medium text-balance">
-          <a
-            href={addQueryParams(bookmark.url, UTM_PARAMS)}
-            target="_blank"
-            rel="noopener"
+    <HoverCard openDelay={0} closeDelay={0}>
+      <HoverCardTrigger asChild>
+        <div
+          className={cn(
+            "relative flex items-center pr-2 hover:bg-accent-muted",
+            className
+          )}
+        >
+          <div
+            className={cn(
+              "mx-4 flex shrink-0 items-center justify-center overflow-hidden rounded-md select-none",
+              "border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background",
+              "bg-muted text-muted-foreground [&_svg]:size-4",
+              imageUrl ? "h-6 w-10" : "size-6"
+            )}
           >
-            <span className="absolute inset-0" aria-hidden />
-            {bookmark.title}
-          </a>
-        </h3>
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              (bookmark.icon ?? CATEGORY_ICONS[bookmark.category])
+            )}
+          </div>
 
-        <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-          {bookmark.author && (
-            <>
+          <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
+            <h3 className="leading-snug font-medium text-balance">
+              <a
+                href={addQueryParams(bookmark.url, UTM_PARAMS)}
+                target="_blank"
+                rel="noopener"
+              >
+                <span className="absolute inset-0" aria-hidden />
+                {bookmark.title}
+              </a>
+            </h3>
+
+            <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+              {bookmark.author && (
+                <>
+                  <div>
+                    <dt className="sr-only">Author</dt>
+                    <dd>{bookmark.author}</dd>
+                  </div>
+
+                  <Separator
+                    className="data-vertical:h-4 data-vertical:self-center"
+                    orientation="vertical"
+                    aria-hidden
+                  />
+                </>
+              )}
+
               <div>
-                <dt className="sr-only">Author</dt>
-                <dd>{bookmark.author}</dd>
+                <dt className="sr-only">Category</dt>
+                <dd>{bookmark.category}</dd>
               </div>
 
               <Separator
@@ -60,33 +113,63 @@ export function BookmarkItem({
                 orientation="vertical"
                 aria-hidden
               />
-            </>
-          )}
 
-          <div>
-            <dt className="sr-only">Category</dt>
-            <dd>{bookmark.category}</dd>
+              <div>
+                <dt className="sr-only">Bookmarked on</dt>
+                <dd>
+                  <time dateTime={bookmark.bookmarkedAt}>
+                    {formatDate(bookmark.bookmarkedAt, "dd.MM.yyyy")}
+                  </time>
+                </dd>
+              </div>
+            </dl>
           </div>
 
-          <Separator
-            className="data-vertical:h-4 data-vertical:self-center"
-            orientation="vertical"
-            aria-hidden
-          />
+          <ArrowUpRightIcon className="size-4 text-muted-foreground" />
+        </div>
+      </HoverCardTrigger>
 
-          <div>
-            <dt className="sr-only">Bookmarked on</dt>
-            <dd>
-              <time dateTime={new Date(bookmark.bookmarkedAt).toISOString()}>
-                {format(new Date(bookmark.bookmarkedAt), "dd.MM.yyyy")}
-              </time>
-            </dd>
+      <HoverCardContent className="w-72 p-0" align="end" sideOffset={8}>
+        {imageUrl && (
+          <div className="overflow-hidden rounded-t-xl">
+            <img
+              src={imageUrl}
+              alt=""
+              className="aspect-video w-full object-cover"
+            />
           </div>
-        </dl>
-      </div>
+        )}
 
-      <ArrowUpRightIcon className="size-4 text-muted-foreground" />
-    </div>
+        <div className="space-y-2 p-3">
+          <div>
+            <h4 className="line-clamp-2 leading-snug font-medium text-foreground">
+              {bookmark.title}
+            </h4>
+            {domain && (
+              <p className="mt-0.5 text-xs text-muted-foreground">{domain}</p>
+            )}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+            {bookmark.author && <span>{bookmark.author}</span>}
+            {bookmark.author && (
+              <span className="-mx-1 text-muted-foreground/50">&middot;</span>
+            )}
+            <span>{bookmark.category}</span>
+          </div>
+
+          <a
+            href={addQueryParams(bookmark.url, UTM_PARAMS)}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-1 text-xs font-medium text-foreground hover:underline"
+          >
+            Visit site
+            <ArrowUpRightIcon className="size-3" />
+          </a>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
   )
 }
 

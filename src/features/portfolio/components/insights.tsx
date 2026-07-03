@@ -1,5 +1,4 @@
-import { formatDuration } from "@/utils/format"
-import { format } from "date-fns"
+import { formatDate, formatDuration } from "@/utils/format"
 
 import { cn } from "@/lib/utils"
 import Grid from "@/components/charts/grid"
@@ -29,8 +28,8 @@ export async function Insights() {
         <PanelTitle>
           <a href={`#${ID}`}>Insights</a>
           <PanelTitleSup>
-            ({format(new Date(data.startDate), "dd.MM")} –{" "}
-            {format(new Date(data.endDate), "dd.MM")})
+            ({formatDate(data.startDate, "dd.MM")} –{" "}
+            {formatDate(data.endDate, "dd.MM")})
           </PanelTitleSup>
           <PanelTitleCopy id={ID} />
         </PanelTitle>

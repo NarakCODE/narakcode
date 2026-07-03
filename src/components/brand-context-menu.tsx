@@ -2,34 +2,39 @@
 
 import Link from "next/link"
 import { copyText } from "@/utils/copy"
-import { useTiks } from "@rexa-developer/tiks/react"
-import { Download, SquareDashed, Type } from "lucide-react"
+import { MailIcon, PhoneIcon, TriangleDashedIcon, TypeIcon } from "lucide-react"
+import { useTheme } from "next-themes"
 import { toast } from "sonner"
 
+import { USER } from "@/features/portfolio/data/user"
+
+import { ChanhDaiMark } from "./chanhdai-mark"
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/components/ui/context-menu"
+} from "./ui/context-menu"
 
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
-import { getWordmarkSVG } from "./chanhdai-wordmark"
+const getMarkSVG = (color: string) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 128"><path fill="${color}" d="M96 128H32V96h64v32ZM224 32h-64v64h64v32h-96V0h96v32ZM32 96H0V32h32v64ZM256 96h-32V32h32v64ZM96 32H32V0h64v32Z"/></svg>`
+const getWordmarkSVG = (color: string) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1024 128"><path fill="${color}" d="M96 128H32V96h64v32ZM224 32h-64v64h64v32h-96V0h96v32Z"/><path fill="${color}" fill-rule="evenodd" d="M520.442 49.27c6.651-8.9 16.426-13.236 29.326-13.006 10.835-.115 19.55 2.01 26.143 6.374 6.478 4.537 9.775 12.232 9.889 23.085v61.243h-17.371v-7.924h-.344c-1.663 3.1-4.157 5.34-7.482 6.718-3.554 1.493-8.199 2.24-13.932 2.24-9.86-.23-17.313-2.871-22.359-7.925-5.503-5.053-8.255-11.513-8.255-19.381 0-7.465 2.379-13.724 7.137-18.778 4.759-5.053 11.782-7.637 21.07-7.752h24.165V64.69c.057-7.925-5.877-11.772-17.802-11.542-4.127 0-7.567.46-10.319 1.378-2.695 1.206-4.73 3.072-6.106 5.599l-13.76-10.854Zm27.09 39.71c-10.205.287-15.251 3.905-15.136 10.853 0 2.986 1.319 5.57 3.956 7.752 2.523 2.355 6.679 3.532 12.469 3.532 7.339.115 12.499-.775 15.48-2.67 2.752-1.895 4.128-6.202 4.128-12.92V88.98h-20.897ZM917.2 49.27c6.651-8.9 16.425-13.236 29.325-13.006 10.835-.115 19.55 2.01 26.143 6.374 6.478 4.537 9.775 12.232 9.89 23.085v61.243h-17.372v-7.924h-.344c-1.662 3.1-4.156 5.34-7.482 6.718-3.554 1.493-8.198 2.24-13.931 2.24-9.861-.23-17.314-2.871-22.359-7.925-5.504-5.053-8.256-11.513-8.256-19.381 0-7.465 2.379-13.724 7.138-18.778 4.758-5.053 11.781-7.637 21.069-7.752h24.165V64.69c.057-7.925-5.876-11.772-17.801-11.542-4.128 0-7.568.46-10.32 1.378-2.695 1.206-4.73 3.072-6.106 5.599L917.2 49.27Zm27.089 39.71c-10.205.287-15.25 3.905-15.136 10.853 0 2.986 1.319 5.57 3.956 7.752 2.523 2.355 6.679 3.532 12.47 3.532 7.338.115 12.498-.775 15.479-2.67 2.752-1.895 4.128-6.202 4.128-12.92V88.98h-20.897Z" clip-rule="evenodd"/><path fill="${color}" d="M364.718 0c11.868 0 21.671 3.675 29.411 11.025 7.797 7.293 12.67 16.022 14.62 26.186h-20.038c-1.547-4.823-4.443-9.044-8.685-12.662-4.185-3.617-9.288-5.426-15.308-5.426-4.472 0-8.341.918-11.609 2.756-3.268 1.837-5.848 3.962-7.74 6.374-2.465 3.216-4.156 6.748-5.074 10.595-.86 3.848-1.29 12.203-1.29 25.066 0 12.92.43 21.305 1.29 25.152a26.4 26.4 0 0 0 5.074 10.423c1.892 2.526 4.472 4.709 7.74 6.546 3.268 1.78 7.138 2.67 11.609 2.67 10.549 0 18.547-5.713 23.993-17.141h20.038c-2.466 11.715-7.74 20.673-15.824 26.875-8.083 6.144-17.486 9.216-28.207 9.216-9.861 0-18.145-2.354-24.853-7.063-6.65-4.766-11.437-9.905-14.361-15.418-2.064-3.675-3.497-7.696-4.3-12.06-.803-4.364-1.204-14.097-1.204-29.2s.401-24.836 1.204-29.2c.803-4.365 2.236-8.384 4.3-12.06 2.924-5.455 7.711-10.595 14.361-15.419C346.573 2.412 354.857 0 364.718 0ZM441.505 46.773h.345c5.561-7.064 13.3-10.595 23.218-10.595 6.937 0 13.617 2.641 20.038 7.924 6.478 5.283 9.717 12.978 9.717 23.085v59.435H476.85V73.389c0-6.03-1.691-10.739-5.074-14.127-3.325-3.388-7.482-5.082-12.469-5.082-5.16 0-9.431 1.694-12.814 5.082-3.325 3.388-4.988 8.098-4.988 14.127v53.233h-17.973V1.12h17.973v45.653ZM650.29 36.178c6.937 0 13.616 2.641 20.037 7.924 6.479 5.283 9.717 12.978 9.717 23.085v59.435h-17.973V73.389c0-6.03-1.691-10.739-5.073-14.127-3.326-3.388-7.482-5.082-12.47-5.082-5.16 0-9.431 1.694-12.814 5.082-3.325 3.388-4.987 8.098-4.987 14.127v53.233h-17.974v-89.41h17.974v9.56h.344c5.561-7.063 13.3-10.594 23.219-10.594ZM724.325 46.773h.344c5.561-7.064 13.301-10.595 23.219-10.595 6.937 0 13.616 2.641 20.037 7.924 6.479 5.283 9.718 12.978 9.718 23.085v59.435H759.67V73.389c0-6.03-1.692-10.739-5.074-14.127-3.325-3.388-7.482-5.082-12.47-5.082-5.159 0-9.431 1.694-12.813 5.082-3.325 3.388-4.988 8.098-4.988 14.127v53.233h-17.973V1.12h17.973v45.653Z"/><path fill="${color}" fill-rule="evenodd" d="M849.356 1.12c17.142 0 29.87 7.035 38.183 21.104 3.096 5.34 4.988 10.336 5.676 14.987.688 4.652 1.032 13.553 1.032 26.703 0 14.126-.488 23.573-1.462 28.339-.918 4.709-2.781 9.246-5.59 13.61-3.727 5.857-8.858 10.796-15.393 14.815-6.479 3.963-14.362 5.944-23.65 5.944h-42.654V1.12h43.858Zm-24.853 107.585h22.789c10.435 0 18.175-3.646 23.22-10.94 2.064-3.158 3.353-6.546 3.869-10.163.574-3.676.86-11.342.86-22.999 0-11.255-.315-19.036-.946-23.343-.573-4.307-2.121-8.183-4.644-11.629-5.217-7.006-12.67-10.508-22.359-10.508h-22.789v89.582Z" clip-rule="evenodd"/><path fill="${color}" d="M1024 126.622h-17.97v-89.41H1024v89.41ZM32 96H0V32h32v64ZM256 96h-32V32h32v64ZM96 32H32V0h64v32ZM1024 19.123h-17.97V1.12H1024v18.003Z"/></svg>`
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
-  const { success } = useTiks()
+  const { resolvedTheme } = useTheme()
 
   return (
     <ContextMenu>
       <ContextMenuTrigger>{children}</ContextMenuTrigger>
 
-      <ContextMenuContent className="w-fit">
+      <ContextMenuContent className="w-64">
         <ContextMenuItem
           onClick={() => {
-            copyText(getMarkSVG())
-            toast.success("Mark as SVG copied")
-            success()
+            const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff")
+            copyText(svg)
+            toast.success("Copied Mark as SVG")
           }}
         >
           <ChanhDaiMark />
@@ -38,33 +43,46 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
 
         <ContextMenuItem
           onClick={() => {
-            copyText(getWordmarkSVG())
-            toast.success("Logotype as SVG copied")
-            success()
+            const svg = getWordmarkSVG(
+              resolvedTheme === "light" ? "#000" : "#fff"
+            )
+            copyText(svg)
+            toast.success("Copied Logotype as SVG")
           }}
         >
-          <Type />
+          <TypeIcon />
           Copy Logotype as SVG
         </ContextMenuItem>
 
-        <ContextMenuSeparator />
-
         <ContextMenuItem asChild>
           <Link href="/blog/chanhdai-brand">
-            <SquareDashed />
+            <TriangleDashedIcon />
             Brand Guidelines
           </Link>
         </ContextMenuItem>
 
-        <ContextMenuItem asChild>
-          <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download>
-            <Download />
-            Download Brand Assets
-          </a>
+        <ContextMenuSeparator />
+
+        <ContextMenuItem
+          onClick={() => {
+            copyText(atob(USER.emailB64))
+            toast.success("Copied Email")
+          }}
+        >
+          <MailIcon />
+          Copy Email
+        </ContextMenuItem>
+
+        <ContextMenuItem
+          onClick={() => {
+            copyText(atob(USER.phoneNumberB64))
+            toast.success("Copied Phone")
+          }}
+        >
+          <PhoneIcon />
+          Copy Phone
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   )
 }
-
-export default BrandContextMenu

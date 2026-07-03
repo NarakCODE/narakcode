@@ -99,6 +99,7 @@
     "sharp": "^0.34.3",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
+    "vaul": "^1.1.2",
     "vcard-creator": "^0.7.2",
     "web-haptics": "^0.0.6",
     "zod": "^3.25.76"

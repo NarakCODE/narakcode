@@ -73,33 +73,33 @@ function SocialLinkItem({ icon, title, href }: SocialLink) {
 
 const SOCIAL_LINKS: SocialLink[] = [
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/x.webp",
+    icon: "https://assets.narakcode.dev/images/link-icons/x.webp",
     title: "X",
-    href: "https://x.com/iamncdai",
+    href: "https://x.com/iamNarakCODE",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/github.webp",
+    icon: "https://assets.narakcode.dev/images/link-icons/github.webp",
     title: "GitHub",
-    href: "https://github.com/ncdai",
+    href: "https://github.com/NarakCODE",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/linkedin.webp",
+    icon: "https://assets.narakcode.dev/images/link-icons/linkedin.webp",
     title: "LinkedIn",
-    href: "https://linkedin.com/in/ncdai",
+    href: "https://linkedin.com/in/NarakCODE",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/dailydotdev.webp",
+    icon: "https://assets.narakcode.dev/images/link-icons/dailydotdev.webp",
     title: "daily.dev",
-    href: "https://app.daily.dev/ncdai",
+    href: "https://app.daily.dev/NarakCODE",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/discord.webp",
+    icon: "https://assets.narakcode.dev/images/link-icons/discord.webp",
     title: "Discord",
     href: "https://discord.com/users/1186630645443739651",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/youtube.webp",
+    icon: "https://assets.narakcode.dev/images/link-icons/youtube.webp",
     title: "YouTube",
-    href: "https://www.youtube.com/@ncdai",
+    href: "https://www.youtube.com/@NarakCODE",
   },
 ]

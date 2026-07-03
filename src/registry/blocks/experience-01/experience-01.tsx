@@ -26,8 +26,9 @@ const EXPERIENCE: ExperienceItemType[] = [
   {
     id: "shadcncraft",
     companyName: "shadcncraft",
-    companyLogo: "https://assets.chanhdai.com/images/companies/shadcncraft.svg",
-    companyWebsite: "https://shadcncraft.com?atp=ncdai",
+    companyLogo:
+      "https://assets.narakcode.dev/images/companies/shadcncraft.svg",
+    companyWebsite: "https://shadcncraft.com?atp=NarakCODE",
     positions: [
       {
         id: "1",
@@ -54,7 +55,7 @@ const EXPERIENCE: ExperienceItemType[] = [
   {
     id: "quaric",
     companyName: "Quaric",
-    companyLogo: "https://assets.chanhdai.com/images/companies/quaric.svg",
+    companyLogo: "https://assets.narakcode.dev/images/companies/quaric.svg",
     companyWebsite: "https://quaric.com",
     positions: [
       {

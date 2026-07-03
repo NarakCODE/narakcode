@@ -66,10 +66,7 @@ export function Testimonials() {
       <PanelHeader>
         <PanelTitle>
           Trusted by
-          <span className="block sm:hidden" /> top builders on{" "}
-          <a href={SOCIAL.x.href} target="_blank" rel="noopener" aria-label="X">
-            𝕏
-          </a>
+          <span className="block sm:hidden" /> top builders
         </PanelTitle>
       </PanelHeader>
 

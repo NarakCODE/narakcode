@@ -3,6 +3,39 @@ import type { Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "pin-list-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("pin-list")],
+    files: [
+      {
+        path: "examples/pin-list-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "morphing-pill-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("morphing-pill")],
+    files: [
+      {
+        path: "examples/morphing-pill-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dropdown-drawer-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("dropdrawer")],
+    files: [
+      {
+        path: "examples/dropdown-drawer-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "text-flip-demo",
     type: "registry:example",
     registryDependencies: [getRegistryItemUrl("text-flip")],

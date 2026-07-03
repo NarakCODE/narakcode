@@ -20,12 +20,12 @@ export interface LogoDef {
 }
 
 const chanhdai: LogoDef = {
-  name: "ChanhDai",
+  name: "NarakCODE",
   brickWidth: 80,
   rowScale: 3,
   colOffset: 1,
   rowOffset: 0,
-  pattern: [".XX.XXX.", "X...X..X", "X...X..X", ".XX.XXX."],
+  pattern: ["X..X..XX", "XX.XX...", "X.XXX...", "X..X..XX"],
 }
 
 const eve: LogoDef = {

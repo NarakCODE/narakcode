@@ -1,0 +1,191 @@
+---
+title: "Background Image Parallax"
+description: "How to Make a Background Image Parallax using Framer Motion and React"
+image: "https://videos.ctfassets.net/jzzgtonmw9s6/1GgfCTUR7XFrImJj9bR59N/51761481a405e624d78bc64926bcbfe3/background_parallasx__1_.mov"
+createdAt: "2024-05-26"
+updatedAt: "2024-05-26"
+tags: ["Framer Motion", "NextJS", "Lenis", "Parallax"]
+featured: false
+---
+
+<video
+  src="https://videos.ctfassets.net/jzzgtonmw9s6/1GgfCTUR7XFrImJj9bR59N/51761481a405e624d78bc64926bcbfe3/background_parallasx__1_.mov"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="border-edge w-full rounded-xl border"
+/>
+
+A website animation featuring a background image moving on scroll in a parallax motion, made with Framer Motion and React, inside a Next.js app.
+
+Inspired by [inkfishnyc.com](https://inkfishnyc.com/). Pictures by Matthias Leidinger.
+
+## Creating the Project
+
+Let's start the project by creating a Next.js application. We can do that by running `npx create-next-app@latest client` inside of a terminal.
+
+- We will use Framer Motion for the animation, so we can run `npm i framer-motion`.
+- We will use Lenis Scroll for the smooth scrolling, so we can run `npm i lenis`.
+
+## Basic Background Parallax
+
+The basics of creating a background image parallax are as follows:
+
+- Create a container with `overflow: hidden`
+- Add an image inside of that container taking the full width and height of it
+- Translate the image on scroll
+
+### `components/Intro.jsx`
+
+```javascript
+import React, { useRef } from "react"
+import Image from "next/image"
+import { motion, useScroll, useTransform } from "framer-motion"
+
+import Background from "../../public/images/2.jpg"
+
+export default function Intro() {
+  const container = useRef()
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end start"],
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0vh", "150vh"])
+
+  return (
+    <div className="h-screen overflow-hidden">
+      <motion.div style={{ y }} className="relative h-full">
+        <Image
+          src={Background}
+          fill
+          alt="image"
+          style={{ objectFit: "cover" }}
+        />
+      </motion.div>
+    </div>
+  )
+}
+```
+
+> **Couple notes about the code above:**
+>
+> - The progress of the scroll is tracked using the `useScroll` Hook.
+> - Since the component is the first inside the page, we use an offset of `['start start']`.
+> - The progress of the scroll (a value between 0 and 1) is transformed into a value between `0vh` and `150vh` and used as a `translateY` value.
+
+Then, we add that component inside `page.js`:
+
+### `page.js`
+
+```javascript
+"use client"
+
+import { useEffect } from "react"
+import Lenis from "lenis"
+
+import Description from "@/components/Description"
+import Intro from "@/components/Intro"
+
+export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis()
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  }, [])
+
+  return (
+    <main>
+      <Intro />
+      <Description />
+      <div className="h-screen"></div>
+    </main>
+  )
+}
+```
+
+### Here's the result:
+
+<video
+  src="https://blog.olivierlarose.com/medias/tutorials/background-image-parallax/1.mov"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="border-edge w-full rounded-xl border"
+/>
+
+## Advanced Background Parallax
+
+The other way of making a background parallax uses the same principles, but instead, the container will be in a `fixed` position.
+
+### `components/Section.jsx`
+
+```javascript
+import { useRef } from "react"
+import Image from "next/image"
+import { motion, useScroll, useTransform } from "framer-motion"
+
+import Background from "../../public/images/1.jpg"
+import Text from "./components/Text"
+
+export default function Section() {
+  const container = useRef()
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start end", "end start"],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["-10vh", "10vh"])
+
+  return (
+    <div
+      ref={container}
+      className="relative flex h-screen items-center justify-center overflow-hidden"
+      style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+    >
+      <Text />
+      <div className="fixed top-[-10vh] left-0 h-[120vh] w-full">
+        <motion.div style={{ y }} className="relative h-full w-full">
+          <Image
+            src={Background}
+            fill
+            alt="image"
+            style={{ objectFit: "cover" }}
+          />
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+```
+
+> **Couple notes about the above code:**
+>
+> - The image container is in a `fixed` position, so we need to add a `clip-path` on the parent to crop that fixed div.
+> - The same principles apply from the previous implementation: we translate the image based on the position of the scroll.
+> - The amount translated here (`-10vh` and `10vh`) should be accounted for in the height of the fixed container (`120vh`).
+
+### We should have something like this:
+
+<video
+  src="https://blog.olivierlarose.com/medias/tutorials/background-image-parallax/2.mov"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="border-edge w-full rounded-xl border"
+/>
+
+## Wrapping up
+
+That's it for this animation!
+
+A super clean animation that, in my opinion, should be in almost every single website. It really adds a nice dimensionality and brings it to another level of quality. Hope you learned something!
+
+- NarakCODE
