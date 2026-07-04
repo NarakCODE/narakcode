@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "glow-card-grid",
   "title": "Glow Card Grid",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Display cards with glowing border and background effects.",
   "files": [
     {

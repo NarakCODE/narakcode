@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "fluid-gradient-text",
   "title": "Fluid Gradient Text",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Render text with a fluid gradient that shifts with pointer movement.",
   "dependencies": [
     "motion"

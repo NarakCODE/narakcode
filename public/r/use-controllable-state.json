@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-controllable-state",
   "title": "useControllableState",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "files": [
     {
       "path": "src/registry/hooks/use-controllable-state/use-controllable-state.tsx",

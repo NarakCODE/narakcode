@@ -1,6 +1,6 @@
 "use client"
 
-import { useTheme } from "next-themes"
+import { useTheme } from "@/components/theme-provider"
 
 export function RemountOnThemeChange(props: React.ComponentProps<"div">) {
   const { resolvedTheme } = useTheme()

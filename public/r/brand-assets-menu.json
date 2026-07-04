@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "brand-assets-menu",
   "title": "Brand Assets Menu",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Context menu for copying brand SVGs and opening asset links.",
   "dependencies": [
     "@rexa-developer/tiks"

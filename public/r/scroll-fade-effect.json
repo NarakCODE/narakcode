@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-fade-effect",
   "title": "Scroll Fade Effect",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Fade content edges as you scroll, for both vertical and horizontal layouts.",
   "files": [
     {

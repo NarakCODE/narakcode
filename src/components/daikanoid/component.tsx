@@ -4,10 +4,10 @@
 
 import { useEffect, useRef } from "react"
 import { useReducedMotion } from "motion/react"
-import { useTheme } from "next-themes"
 import p5 from "p5"
 
 import { cn } from "@/lib/utils"
+import { useTheme } from "@/components/theme-provider"
 
 import { Ball } from "./ball"
 import { resetGame } from "./brick"

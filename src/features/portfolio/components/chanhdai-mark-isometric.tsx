@@ -12,6 +12,7 @@ import {
 } from "motion/react"
 
 import { metalClickSound } from "@/lib/soundcn/metal-click"
+import { cn } from "@/lib/utils"
 import { useSound } from "@/hooks/soundcn/use-sound"
 
 const transition: Transition = {
@@ -26,7 +27,7 @@ const transition: Transition = {
  * gradient highlight that follows the cursor. Pressing the mark morphs the 3D
  * walls with a spring effect and plays a tactile click sound.
  */
-export function ChanhDaiMarkIsometric() {
+export function ChanhDaiMarkIsometric({ className }: { className?: string }) {
   const id = useId()
   const ids = {
     facePattern: `chanhdai-face-pattern-${id}`,
@@ -78,7 +79,10 @@ export function ChanhDaiMarkIsometric() {
   return (
     <motion.svg
       ref={ref}
-      className="h-auto w-full touch-manipulation [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]"
+      className={cn(
+        "h-auto w-full touch-manipulation [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]",
+        className
+      )}
       viewBox="0 0 950 354"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

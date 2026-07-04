@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "middle-truncation",
   "title": "Middle Truncation",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Truncate text in the middle while preserving start and end.",
   "files": [
     {

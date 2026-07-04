@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-sound",
   "title": "useSound",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Hook for playing sound effects with volume, playback rate, and interrupt controls.",
   "files": [
     {

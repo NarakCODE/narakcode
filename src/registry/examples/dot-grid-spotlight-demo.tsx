@@ -1,7 +1,6 @@
 "use client"
 
-import { useTheme } from "next-themes"
-
+import { useTheme } from "@/components/theme-provider"
 import { DotGridSpotlight } from "@/registry/transformed/components/dot-grid-spotlight"
 
 const DOT_COLOR = {

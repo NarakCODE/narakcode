@@ -1,10 +1,10 @@
 "use client"
 
 import { MoonIcon, SunMediumIcon } from "lucide-react"
-import { useTheme } from "next-themes"
 
 import { useClickSound } from "@/hooks/soundcn/use-click-sound"
 import { Button } from "@/components/ui/button"
+import { useTheme } from "@/components/theme-provider"
 
 /** @internal */
 import { ThemeToggleEffectSelector } from "./theme-toggle-effect-selector"

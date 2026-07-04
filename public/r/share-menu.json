@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "share-menu",
   "title": "Share Menu",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Share menu to copy a link or post to X, LinkedIn, and the native share sheet.",
   "registryDependencies": [
     "button",

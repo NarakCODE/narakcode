@@ -2,11 +2,11 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-01",
   "title": "Hero 01",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "A hero section with a golden spiral background.",
   "registryDependencies": [
     "button",
-    "https://chanhdai.com/r/style.json"
+    "https://narakcode.dev/r/style.json"
   ],
   "files": [
     {

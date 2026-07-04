@@ -3,9 +3,9 @@
 import Link from "next/link"
 import { copyText } from "@/utils/copy"
 import { MailIcon, PhoneIcon, TriangleDashedIcon, TypeIcon } from "lucide-react"
-import { useTheme } from "next-themes"
 import { toast } from "sonner"
 
+import { useTheme } from "@/components/theme-provider"
 import { USER } from "@/features/portfolio/data/user"
 
 import { ChanhDaiMark } from "./chanhdai-mark"

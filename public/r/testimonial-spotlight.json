@@ -2,10 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "testimonial-spotlight",
   "title": "Testimonial Spotlight",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Testimonial card with spotlight effect on hover.",
   "registryDependencies": [
-    "https://chanhdai.com/r/testimonial.json"
+    "https://narakcode.dev/r/testimonial.json"
   ],
   "files": [
     {

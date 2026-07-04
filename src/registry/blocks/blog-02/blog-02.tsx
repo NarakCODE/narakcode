@@ -64,7 +64,7 @@ const articles: Article[] = [
     title:
       "Apple unveils iPhone 17 Pro: Aluminum frame returns, new colors, upgraded camera",
     coverUrl:
-      "https://assets.narakcode.dev/registry/images/blocks/blog-01/1.webp",
+      "https://assets.chanhdai.com/registry/images/blocks/blog-01/1.webp",
     createdAt: "2025-09-13",
   },
   {
@@ -72,7 +72,7 @@ const articles: Article[] = [
     title:
       'While the world is expecting AGI, François Chollet is showing just how "naive" AI can be',
     coverUrl:
-      "https://assets.narakcode.dev/registry/images/blocks/blog-01/2.webp",
+      "https://assets.chanhdai.com/registry/images/blocks/blog-01/2.webp",
     createdAt: "2025-04-21",
   },
   {
@@ -80,7 +80,7 @@ const articles: Article[] = [
     title:
       "Apple introduces iPhone 16e: A powerful new model for the iPhone 16 lineup",
     coverUrl:
-      "https://assets.narakcode.dev/registry/images/blocks/blog-01/3.webp",
+      "https://assets.chanhdai.com/registry/images/blocks/blog-01/3.webp",
     createdAt: "2025-02-20",
   },
   {
@@ -88,7 +88,7 @@ const articles: Article[] = [
     title:
       "Apple unveils MacBook Pro M4: Same design, base model now with 16GB RAM, priced from $1,599",
     coverUrl:
-      "https://assets.narakcode.dev/registry/images/blocks/blog-01/4.webp",
+      "https://assets.chanhdai.com/registry/images/blocks/blog-01/4.webp",
     createdAt: "2024-10-31",
   },
   {
@@ -96,7 +96,7 @@ const articles: Article[] = [
     title:
       "Apple unveils new Mac mini M4: Smaller, 16GB RAM on the base model, priced from $599",
     coverUrl:
-      "https://assets.narakcode.dev/registry/images/blocks/blog-01/5.webp",
+      "https://assets.chanhdai.com/registry/images/blocks/blog-01/5.webp",
     createdAt: "2024-10-31",
   },
   {
@@ -104,7 +104,7 @@ const articles: Article[] = [
     title:
       "Apple unveils iMac M4: Unchanged design, more powerful M4 chip, RAM starts at 16GB, priced from $1,299",
     coverUrl:
-      "https://assets.narakcode.dev/registry/images/blocks/blog-01/6.webp",
+      "https://assets.chanhdai.com/registry/images/blocks/blog-01/6.webp",
     createdAt: "2024-10-29",
   },
 ]

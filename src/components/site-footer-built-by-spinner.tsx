@@ -1,8 +1,8 @@
 "use client"
 
 import { motion, useReducedMotion } from "motion/react"
-import { useTheme } from "next-themes"
 
+import { useTheme } from "@/components/theme-provider"
 import { SpinningCircularText } from "@/registry/components/spinning-circular-text"
 
 const TEXT = "CRAFTED WITH CARE BY NCDAI • "

@@ -2,10 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "team-01",
   "title": "Team 01",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "A team section with glowing cards.",
   "registryDependencies": [
-    "https://chanhdai.com/r/glow-card-grid.json"
+    "https://narakcode.dev/r/glow-card-grid.json"
   ],
   "files": [
     {

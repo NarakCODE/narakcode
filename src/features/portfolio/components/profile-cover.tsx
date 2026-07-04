@@ -1,11 +1,11 @@
 "use client"
 
 import { useRef } from "react"
-import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 import { ChanhDaiMark } from "@/components/chanhdai-mark"
 import { Magnet } from "@/components/react-bits/magnet"
+import { useTheme } from "@/components/theme-provider"
 import { DotGridSpotlight } from "@/registry/transformed/components/dot-grid-spotlight"
 
 const DOT_COLOR = {

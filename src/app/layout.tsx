@@ -26,9 +26,15 @@ function getWebSiteJsonLd(): WithContext<WebSite> {
 // Thanks @shadcn-ui, @tailwindcss
 const darkModeScript = `
   try {
-    if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
-    }
+    var storedTheme = localStorage.getItem('theme') || 'system'
+    var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    var theme = storedTheme === 'system' ? systemTheme : storedTheme
+
+    document.documentElement.classList.remove('light', 'dark')
+    document.documentElement.classList.add(theme)
+    document.documentElement.style.colorScheme = theme
+
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'dark' ? '${META_THEME_COLORS.dark}' : '${META_THEME_COLORS.light}')
   } catch (_) {}
 
   try {

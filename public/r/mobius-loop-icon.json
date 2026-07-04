@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "mobius-loop-icon",
   "title": "Mobius Loop Icon",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Animated Mobius loop icon that morphs between circles and infinity shape.",
   "dependencies": [
     "motion"

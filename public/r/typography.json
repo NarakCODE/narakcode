@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "typography",
   "title": "Typography",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Custom prose styles for headings, links, inline code, and emphasis.",
   "devDependencies": [
     "@tailwindcss/typography"

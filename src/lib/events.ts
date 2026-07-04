@@ -1,8 +1,6 @@
 import posthog from "posthog-js"
 import { z } from "zod"
 
-import { op } from "./openpanel"
-
 const eventSchema = z.object({
   name: z.enum([
     "copy_npm_command",
@@ -15,6 +13,7 @@ const eventSchema = z.object({
     "command_menu_search",
     "command_menu_action",
     "blog_search",
+    "vault_search",
     "toc_inline_toggle",
     "toc_inline_item_click",
     "toc_minimap_hover",
@@ -43,6 +42,5 @@ export function trackEvent(input: Event) {
   if (event) {
     console.log("trackEvent:", event)
     posthog.capture(event.name, event.properties)
-    op.track(event.name, event.properties)
   }
 }

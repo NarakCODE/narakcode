@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { getTwitterProfileUrl } from "@/utils/url"
 
 import { X_HANDLE } from "@/config/site"
 import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
@@ -117,7 +118,11 @@ export default function TestimonialsPage() {
                     </TestimonialAvatar>
 
                     <TestimonialAuthorName>
-                      <a href={item.url} target="_blank" rel="noopener">
+                      <a
+                        href={getTwitterProfileUrl(item.url)}
+                        target="_blank"
+                        rel="noopener"
+                      >
                         <span className="absolute inset-0" aria-hidden />
                         {item.authorName}
                       </a>

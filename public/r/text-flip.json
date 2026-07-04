@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-flip",
   "title": "Text Flip",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Animated text that cycles through items with a smooth flip transition.",
   "dependencies": [
     "motion"

@@ -3,8 +3,8 @@
 import type { JSX } from "react"
 import { useSyncExternalStore } from "react"
 import { motion } from "motion/react"
-import { useTheme } from "next-themes"
 
+import { useTheme } from "@/components/theme-provider"
 import { IconPlaceholder } from "@/registry/icons/icon-placeholder"
 
 function ThemeOption({

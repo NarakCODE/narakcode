@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "github-stars",
   "title": "GitHub Stars",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Display GitHub repo star count with formatted numbers and full-count tooltip.",
   "registryDependencies": [
     "button",

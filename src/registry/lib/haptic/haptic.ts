@@ -1,7 +1,21 @@
-const isTouchDevice =
-  typeof window !== "undefined"
-    ? window.matchMedia("(pointer: coarse)").matches
-    : false
+function canTriggerHaptic() {
+  if (
+    typeof window === "undefined" ||
+    typeof document === "undefined" ||
+    typeof navigator === "undefined"
+  ) {
+    return false
+  }
+
+  const isCoarsePointer = window.matchMedia?.("(pointer: coarse)").matches
+  const isMobileViewport = window.matchMedia?.("(max-width: 639px)").matches
+  const hasVibration = typeof navigator.vibrate === "function"
+  const isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+
+  return Boolean(isCoarsePointer || isMobileViewport || hasVibration || isIOS)
+}
 
 /**
  * Trigger haptic feedback on mobile devices.
@@ -18,9 +32,9 @@ const isTouchDevice =
  */
 export function haptic(pattern: number | number[] = 50) {
   try {
-    if (!isTouchDevice) return
+    if (!canTriggerHaptic()) return
 
-    if ("vibrate" in navigator) {
+    if (typeof navigator.vibrate === "function") {
       navigator.vibrate(pattern)
       return
     }
@@ -28,7 +42,9 @@ export function haptic(pattern: number | number[] = 50) {
     // iOS haptic trick via checkbox switch element
     const label = document.createElement("label")
     label.ariaHidden = "true"
-    label.style.display = "none"
+    label.style.position = "fixed"
+    label.style.opacity = "0"
+    label.style.pointerEvents = "none"
 
     const input = document.createElement("input")
     input.type = "checkbox"
@@ -36,10 +52,10 @@ export function haptic(pattern: number | number[] = 50) {
     label.appendChild(input)
 
     try {
-      document.head.appendChild(label)
-      label.click()
+      document.body.appendChild(label)
+      input.click()
     } finally {
-      document.head.removeChild(label)
+      document.body.removeChild(label)
     }
   } catch {}
 }

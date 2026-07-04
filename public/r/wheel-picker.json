@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "wheel-picker",
   "title": "Wheel Picker",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
   "dependencies": [
     "@ncdai/react-wheel-picker"

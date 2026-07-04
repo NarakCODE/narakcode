@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "icon-swap",
   "title": "Icon Swap",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Animate icon swaps with scale, blur, and fade transitions.",
   "dependencies": [
     "motion"

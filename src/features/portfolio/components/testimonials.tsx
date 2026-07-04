@@ -2,6 +2,7 @@
 
 import { useRef } from "react"
 import Link from "next/link"
+import { getTwitterProfileUrl } from "@/utils/url"
 import { ArrowRightIcon } from "lucide-react"
 import { useInView, usePageInView } from "motion/react"
 
@@ -187,7 +188,7 @@ function TestimonialItem({
         </TestimonialAvatar>
 
         <TestimonialAuthorName>
-          <a href={url} target="_blank" rel="noopener">
+          <a href={getTwitterProfileUrl(url)} target="_blank" rel="noopener">
             <span className="absolute inset-0" aria-hidden />
             {authorName}
           </a>

@@ -71,7 +71,7 @@ const TESTIMONIALS = [
     authorAvatar: "https://unavatar.io/x/rauchg",
     authorName: "Guillermo Rauch",
     authorTagline: "CEO @Vercel",
-    url: "https://x.com/rauchg/status/1978913158514237669",
+    url: "#",
     quote:
       "awesome. Love the components, especially slide-to-unlock. Great job",
   },
@@ -79,7 +79,7 @@ const TESTIMONIALS = [
     authorAvatar: "https://unavatar.io/x/orcdev",
     authorName: "OrcDev",
     authorTagline: "Creator of 8bitcn.com",
-    url: "https://x.com/orcdev/status/1980378575170859446",
+    url: "#",
     quote:
       "Seriously, this is one of the best portfolio templates I’ve ever seen.",
   },
@@ -87,7 +87,7 @@ const TESTIMONIALS = [
     authorAvatar: "https://unavatar.io/x/iamsahaj_xyz",
     authorName: "Sahaj",
     authorTagline: "Creator of tweakcn.com",
-    url: "https://x.com/iamsahaj_xyz/status/1982814244501381239",
+    url: "#",
     quote:
       "remember seeing it on @mannupaaji’s review. it’s one of the best looking ones I’ve seen",
   },
@@ -95,21 +95,21 @@ const TESTIMONIALS = [
     authorAvatar: "https://unavatar.io/x/steventey",
     authorName: "Steven Tey",
     authorTagline: "Founder @Dub.co",
-    url: "https://x.com/steventey/status/1936934909370830924",
+    url: "#",
     quote: "whoa, this is really dope – needs to get added to @shadcn UI",
   },
   {
     authorAvatar: "https://unavatar.io/x/kapehe_ok",
     authorName: "Kap",
     authorTagline: "Head of Developer Community @Vercel",
-    url: "https://x.com/kapehe_ok/status/1948104774358106612",
+    url: "#",
     quote: "one of my favorite projects that submitted! you are crushing it!",
   },
   {
     authorAvatar: "https://unavatar.io/x/initjean",
     authorName: "Jean P.D. Meijer",
     authorTagline: "Design Engineer",
-    url: "https://x.com/initjean/status/1948159885960438151",
+    url: "#",
     quote:
       "congrats you deserve it! react wheel picker is so smooth, its insane",
   },
@@ -117,7 +117,7 @@ const TESTIMONIALS = [
     authorAvatar: "https://unavatar.io/x/GithubProjects",
     authorName: "GitHub Projects Community",
     authorTagline: "UNOFFICIAL, but followed by @github",
-    url: "https://x.com/GithubProjects/status/1931034244337271044",
+    url: "#",
     quote:
       "Everything you’d want in a picker, minus the styling headaches. Awesome job!",
   },

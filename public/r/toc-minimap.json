@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toc-minimap",
   "title": "TOC Minimap",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Navigate page sections with a compact, hoverable TOC minimap.",
   "registryDependencies": [
     "hover-card",

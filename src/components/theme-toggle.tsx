@@ -1,11 +1,11 @@
 "use client"
 
-import { useTheme } from "next-themes"
 import { useHotkeys } from "react-hotkeys-hook"
 
 import { META_THEME_COLORS } from "@/config/site"
 import { useClickSound } from "@/hooks/soundcn/use-click-sound"
 import { useMetaColor } from "@/hooks/use-meta-color"
+import { useTheme } from "@/components/theme-provider"
 
 import { MoonIcon } from "./animated-icons/moon-icon"
 import { SunMediumIcon } from "./animated-icons/sun-medium-icon"

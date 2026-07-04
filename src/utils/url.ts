@@ -18,3 +18,8 @@ export function addQueryParams(
     return urlString
   }
 }
+
+export function getTwitterProfileUrl(url: string): string {
+  const match = url.match(/^(https?:\/\/(?:x|twitter)\.com\/[^/]+)/)
+  return match ? match[1] : url
+}

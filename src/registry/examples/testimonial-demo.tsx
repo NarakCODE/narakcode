@@ -14,7 +14,7 @@ export default function TestimonialDemo() {
   return (
     <a
       className="block w-80 max-w-full rounded-xl inset-ring-1 inset-ring-foreground/10 transition-[background-color] ease-out hover:bg-accent/50"
-      href="https://x.com/rauchg/status/1978913158514237669"
+      href="#"
       target="_blank"
       rel="noopener noreferrer"
     >

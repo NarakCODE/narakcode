@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spotlight-logo",
   "title": "Spotlight Logo",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "SVG logo with a cursor-tracking gradient highlight and tactile press.",
   "dependencies": [
     "motion"

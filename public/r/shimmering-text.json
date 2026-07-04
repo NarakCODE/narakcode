@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shimmering-text",
   "title": "Shimmering Text",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Smooth, light-sweeping shimmer animation for text.",
   "dependencies": [
     "motion"

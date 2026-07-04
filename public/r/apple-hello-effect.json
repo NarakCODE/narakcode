@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "apple-hello-effect",
   "title": "Apple Hello Effect",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "SVG writing animation inspired by Apple’s Hello screen.",
   "dependencies": [
     "motion"

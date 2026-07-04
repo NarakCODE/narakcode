@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "consent-manager",
   "title": "Consent Manager",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Cookie and tracking consent banner for Next.js, built on c15t.",
   "dependencies": [
     "@c15t/nextjs"

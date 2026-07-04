@@ -2,10 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "social-proof-01",
   "title": "Social Proof 01",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "A social proof section with a logos carousel.",
   "registryDependencies": [
-    "https://chanhdai.com/r/logos-carousel.json"
+    "https://narakcode.dev/r/logos-carousel.json"
   ],
   "files": [
     {

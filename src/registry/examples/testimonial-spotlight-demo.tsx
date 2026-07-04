@@ -15,7 +15,7 @@ export default function TestimonialSpotlightDemo() {
   return (
     <a
       className="block w-72 max-w-full"
-      href="https://x.com/shadcn/status/2032193591133495700"
+      href="#"
       target="_blank"
       rel="noopener noreferrer"
     >

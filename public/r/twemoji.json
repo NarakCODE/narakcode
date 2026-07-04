@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "twemoji",
   "title": "Twemoji",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Render Unicode emoji as Twemoji SVG images inline with text.",
   "files": [
     {

@@ -1,7 +1,7 @@
 import * as React from "react"
-import { useTheme } from "next-themes"
 
 import { META_THEME_COLORS } from "@/config/site"
+import { useTheme } from "@/components/theme-provider"
 
 export function useMetaColor() {
   const { resolvedTheme } = useTheme()

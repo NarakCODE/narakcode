@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-block-command",
   "title": "Code Block Command",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Display install commands with package manager switcher and copy button.",
   "dependencies": [
     "@base-ui/react",
@@ -10,8 +10,8 @@
     "jotai"
   ],
   "registryDependencies": [
-    "https://chanhdai.com/r/icon-swap.json",
-    "https://chanhdai.com/r/copy-button.json"
+    "https://narakcode.dev/r/icon-swap.json",
+    "https://narakcode.dev/r/copy-button.json"
   ],
   "files": [
     {

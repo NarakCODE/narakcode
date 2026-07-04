@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "copy-button",
   "title": "Copy Button",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Copy text to clipboard with visual, haptic, and audio feedback.",
   "dependencies": [
     "motion",
@@ -11,7 +11,7 @@
   ],
   "registryDependencies": [
     "button",
-    "https://chanhdai.com/r/icon-swap.json"
+    "https://narakcode.dev/r/icon-swap.json"
   ],
   "files": [
     {

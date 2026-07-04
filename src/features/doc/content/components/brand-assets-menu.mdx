@@ -1,14 +1,14 @@
 ---
 title: Brand Assets Menu
 description: Context menu for copying brand SVGs and opening asset links.
-image: https://assets.chanhdai.com/images/blog/brand-assets-menu.webp
+image: https://assets.narakcode.dev/images/blog/brand-assets-menu.webp
 createdAt: 2026-05-07
 updatedAt: 2026-05-07
 ---
 
 <ComponentPreview
   name="brand-assets-menu-demo"
-  openInV0Url="https://chanhdai.com/r/brand-assets-menu.json"
+  openInV0Url="https://narakcode.dev/r/brand-assets-menu.json"
 />
 
 ## Features
@@ -26,7 +26,7 @@ updatedAt: 2026-05-07
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @ncdai/brand-assets-menu
+npx shadcn@latest add @nrcode/brand-assets-menu
 ```
 
 </TabsContent>
@@ -77,11 +77,11 @@ import { BrandAssetsMenu } from "@/components/brand-assets-menu"
 
 ```tsx
 <BrandAssetsMenu
-  logomark={<ChanhDaiMark />}
+  logomark={<NarakCODEMark />}
   logomarkSVG="<svg>...</svg>"
   logotypeSVG="<svg>...</svg>"
-  brandGuidelinesURL="https://chanhdai.com/blog/chanhdai-brand"
-  brandAssetsURL="https://assets.chanhdai.com/chanhdai-brand.zip"
+  brandGuidelinesURL="https://narakcode.dev/blog/narakcode-brand"
+  brandAssetsURL="https://assets.narakcode.dev/narakcode-brand.zip"
 >
   <Link />
 </BrandAssetsMenu>

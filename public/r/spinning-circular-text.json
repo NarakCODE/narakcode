@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinning-circular-text",
   "title": "Spinning Circular Text",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Text arranged in a circle with a continuous spinning animation.",
   "files": [
     {

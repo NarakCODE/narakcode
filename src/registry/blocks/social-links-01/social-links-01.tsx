@@ -1,3 +1,5 @@
+import type { ComponentProps, ReactNode } from "react"
+
 import { cn } from "@/lib/utils"
 import { IconPlaceholder } from "@/registry/icons/icon-placeholder"
 
@@ -35,7 +37,7 @@ export function SocialLinks01() {
 }
 
 type SocialLink = {
-  icon: string
+  icon: ReactNode
   title: string
   href: string
 }
@@ -44,11 +46,12 @@ function SocialLinkItem({ icon, title, href }: SocialLink) {
   return (
     <div className="relative flex cursor-pointer items-center gap-4 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent/50 dark:hover:bg-accent/20">
       <div className="relative shrink-0 [--image-radius:var(--radius-lg)]">
-        <img
-          className="size-8 rounded-(--image-radius) select-none"
-          src={icon}
-          alt={`${title} logo`}
-        />
+        <div
+          className="flex size-8 items-center justify-center rounded-(--image-radius) bg-accent text-foreground select-none [&_svg]:size-4"
+          aria-hidden
+        >
+          {icon}
+        </div>
         <div className="pointer-events-none absolute inset-0 rounded-(--image-radius) inset-ring-1 inset-ring-black/10 dark:inset-ring-white/15" />
       </div>
 
@@ -73,33 +76,125 @@ function SocialLinkItem({ icon, title, href }: SocialLink) {
 
 const SOCIAL_LINKS: SocialLink[] = [
   {
-    icon: "https://assets.narakcode.dev/images/link-icons/x.webp",
+    icon: <XIcon />,
     title: "X",
-    href: "https://x.com/iamNarakCODE",
+    href: "#",
   },
   {
-    icon: "https://assets.narakcode.dev/images/link-icons/github.webp",
+    icon: <GitHubIcon />,
     title: "GitHub",
     href: "https://github.com/NarakCODE",
   },
   {
-    icon: "https://assets.narakcode.dev/images/link-icons/linkedin.webp",
+    icon: <LinkedInIcon />,
     title: "LinkedIn",
     href: "https://linkedin.com/in/NarakCODE",
   },
   {
-    icon: "https://assets.narakcode.dev/images/link-icons/dailydotdev.webp",
+    icon: <DailyDevIcon />,
     title: "daily.dev",
     href: "https://app.daily.dev/NarakCODE",
   },
   {
-    icon: "https://assets.narakcode.dev/images/link-icons/discord.webp",
+    icon: <DiscordIcon />,
     title: "Discord",
     href: "https://discord.com/users/1186630645443739651",
   },
   {
-    icon: "https://assets.narakcode.dev/images/link-icons/youtube.webp",
+    icon: <YouTubeIcon />,
     title: "YouTube",
     href: "https://www.youtube.com/@NarakCODE",
   },
+  {
+    icon: <FacebookIcon />,
+    title: "Facebook",
+    href: "https://web.facebook.com/Unforget.You",
+  },
 ]
+
+type IconProps = ComponentProps<"svg">
+
+function BrandIcon({ children, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden {...props}>
+      {children}
+    </svg>
+  )
+}
+
+function FacebookIcon(props: IconProps) {
+  return (
+    <BrandIcon {...props}>
+      <path
+        fill="currentColor"
+        d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978c.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036a27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103l-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647"
+      />
+    </BrandIcon>
+  )
+}
+
+function XIcon(props: IconProps) {
+  return (
+    <BrandIcon {...props}>
+      <path
+        fill="currentColor"
+        d="M14.234 10.162L22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299l-.929-1.329L3.076 1.56h3.182l5.965 8.532l.929 1.329l7.754 11.09h-3.182z"
+      />
+    </BrandIcon>
+  )
+}
+
+function GitHubIcon(props: IconProps) {
+  return (
+    <BrandIcon {...props}>
+      <path
+        fill="currentColor"
+        d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+      />
+    </BrandIcon>
+  )
+}
+
+function LinkedInIcon(props: IconProps) {
+  return (
+    <BrandIcon {...props}>
+      <path
+        fill="currentColor"
+        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037c-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85c3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.06 2.06 0 0 1-2.063-2.065a2.064 2.064 0 1 1 2.063 2.065m1.782 13.019H3.555V9h3.564zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"
+      />
+    </BrandIcon>
+  )
+}
+
+function DailyDevIcon(props: IconProps) {
+  return (
+    <BrandIcon {...props}>
+      <path
+        fill="currentColor"
+        d="M18.29 5.706a1.405 1.405 0 0 0-1.987 0L4.716 17.296l1.324-2.65l-2.65-2.649l3.312-3.311l2.65 2.65l1.986-1.988l-3.642-3.642a1.405 1.405 0 0 0-1.987 0L.411 11.004a1.404 1.404 0 0 0 0 1.987l4.305 4.304l.993.993a1.405 1.405 0 0 0 1.987 0L19.285 6.7l-.993-.994Zm-.332 3.647l2.65 2.65l-4.306 4.305a1.404 1.404 0 1 0 1.986 1.986l5.299-5.298a1.404 1.404 0 0 0 0-1.987l-4.305-4.304z"
+      />
+    </BrandIcon>
+  )
+}
+
+function DiscordIcon(props: IconProps) {
+  return (
+    <BrandIcon {...props}>
+      <path
+        fill="currentColor"
+        d="M20.317 4.37a19.8 19.8 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.3 18.3 0 0 0-5.487 0a13 13 0 0 0-.617-1.25a.08.08 0 0 0-.079-.037A19.7 19.7 0 0 0 3.677 4.37a.1.1 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.08.08 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.08.08 0 0 0 .084-.028a14 14 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13 13 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10 10 0 0 0 .372-.292a.07.07 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.07.07 0 0 1 .078.01q.181.149.373.292a.077.077 0 0 1-.006.127a12.3 12.3 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.08.08 0 0 0 .084.028a19.8 19.8 0 0 0 6.002-3.03a.08.08 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 0 0-.031-.03M8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418m7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418"
+      />
+    </BrandIcon>
+  )
+}
+
+function YouTubeIcon(props: IconProps) {
+  return (
+    <BrandIcon {...props}>
+      <path
+        fill="currentColor"
+        d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"
+      />
+    </BrandIcon>
+  )
+}

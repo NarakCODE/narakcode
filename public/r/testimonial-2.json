@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "testimonial-2",
   "title": "Testimonial 2",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Display a testimonial quote with author attribution and source link.",
   "files": [
     {

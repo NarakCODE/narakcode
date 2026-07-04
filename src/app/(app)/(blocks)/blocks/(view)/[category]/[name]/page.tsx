@@ -18,6 +18,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { BlocksNav } from "@/app/(app)/(blocks)/blocks/(list)/blocks-nav"
 import { BlockDisplay } from "@/app/(preview)/components/block-display"
 import { DocKeyboardShortcuts } from "@/features/doc/components/doc-keyboard-shortcuts"
 import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
@@ -163,6 +164,12 @@ export default async function BlockViewPage({
       />
 
       <div className="screen-line-bottom flex h-px" />
+
+      <BlocksNav />
+
+      <div className="screen-line-top screen-line-bottom">
+        <div className="stripe-divider" />
+      </div>
 
       <div className="flex items-center justify-between p-2 pl-4">
         <Button

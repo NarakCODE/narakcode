@@ -25,7 +25,6 @@ import {
   TextInitialIcon,
   TypeIcon,
 } from "lucide-react"
-import { useTheme } from "next-themes"
 import { useHotkeys } from "react-hotkeys-hook"
 import { toast } from "sonner"
 
@@ -41,6 +40,7 @@ import {
   CommandList,
   CommandShortcut,
 } from "@/components/ui/command"
+import { useTheme } from "@/components/theme-provider"
 import { ComponentIcon } from "@/features/doc/components/component-icon"
 import type { DocPreview } from "@/features/doc/types/document"
 import { SOCIAL_ICONS } from "@/features/portfolio/components/social-link-icons"

@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dot-grid-spotlight",
   "title": "Dot Grid Spotlight",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Interactive dot grid with a cursor-tracking spotlight effect.",
   "files": [
     {

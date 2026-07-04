@@ -2,13 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slide-to-unlock",
   "title": "Slide to Unlock",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Interactive slider inspired by the classic iPhone “slide to unlock” gesture.",
   "dependencies": [
     "motion"
   ],
   "registryDependencies": [
-    "https://chanhdai.com/r/shimmering-text.json"
+    "https://narakcode.dev/r/shimmering-text.json"
   ],
   "files": [
     {

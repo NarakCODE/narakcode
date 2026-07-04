@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "logos-carousel",
   "title": "Logos Carousel",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "Cycle through logos column by column in a staggered wave.",
   "dependencies": [
     "motion"

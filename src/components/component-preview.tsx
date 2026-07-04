@@ -2,7 +2,6 @@
 
 import React, { useMemo, useState } from "react"
 import { Repeat, Settings2 } from "lucide-react"
-import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -20,7 +19,7 @@ import {
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import { OpenInV0Button } from "@/components/v0-open-button"
+import { useTheme } from "@/components/theme-provider"
 import { Index } from "@/registry/__index__"
 
 export function ComponentPreview({
@@ -43,6 +42,8 @@ export function ComponentPreview({
   codeCollapsible?: boolean
   remountOnThemeChange?: boolean
 }) {
+  void openInV0Url
+
   const { resolvedTheme } = useTheme()
 
   const [replay, setReplay] = useState(0)
@@ -90,10 +91,10 @@ export function ComponentPreview({
         <TabsContent className="px-1 pb-1" value="preview">
           <div
             data-slot="preview"
-            data-show-buttons={canReplay || !!customizeUrl || !!openInV0Url}
+            data-show-buttons={canReplay || !!customizeUrl}
             className="relative rounded-[9px] border bg-background p-2 data-[show-buttons=true]:py-8.75"
           >
-            {(canReplay || customizeUrl || openInV0Url) && (
+            {(canReplay || customizeUrl) && (
               <div
                 data-slot="buttons"
                 className="absolute top-0.75 right-0.75 flex items-center"
@@ -140,13 +141,6 @@ export function ComponentPreview({
                     />
                     <TooltipContent>Customize</TooltipContent>
                   </Tooltip>
-                )}
-
-                {openInV0Url && (
-                  <OpenInV0Button
-                    className="h-7 rounded-[5px]"
-                    url={openInV0Url}
-                  />
                 )}
               </div>
             )}
