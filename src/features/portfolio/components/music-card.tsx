@@ -35,6 +35,15 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [hasLoadedPlayer, setHasLoadedPlayer] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 150)
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const playerSrc = useMemo(() => {
     const params = new URLSearchParams({
@@ -103,46 +112,6 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
           }}
         />
       ) : null}
-    </MusicContext.Provider>
-  )
-}
-
-type MusicButtonProps = {
-  className?: string
-}
-
-export function MusicButton({ className }: MusicButtonProps) {
-  const { isPlaying, togglePlayback } = useMusic()
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 150)
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  return (
-    <>
-      <button
-        type="button"
-        onClick={togglePlayback}
-        aria-label={isPlaying ? "Pause YouTube audio" : "Play YouTube audio"}
-        aria-pressed={isPlaying}
-        className={cn(
-          "relative flex touch-manipulation items-center justify-center text-muted-foreground transition-[color,scale] will-change-[scale] select-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-red-500/50 focus-visible:outline-none active:scale-[0.9]",
-          isPlaying && "text-red-500 hover:text-red-500",
-          className
-        )}
-      >
-        <span className="absolute size-12 pointer-fine:hidden" aria-hidden />
-        {isPlaying ? (
-          <PauseIcon className="size-4.5" aria-hidden />
-        ) : (
-          <PlayIcon className="size-4.5 fill-current" aria-hidden />
-        )}
-      </button>
 
       <Button
         variant="outline"
@@ -165,6 +134,35 @@ export function MusicButton({ className }: MusicButtonProps) {
           <PlayIcon className="size-5 fill-current" />
         )}
       </Button>
-    </>
+    </MusicContext.Provider>
+  )
+}
+
+type MusicButtonProps = {
+  className?: string
+}
+
+export function MusicButton({ className }: MusicButtonProps) {
+  const { isPlaying, togglePlayback } = useMusic()
+
+  return (
+    <button
+      type="button"
+      onClick={togglePlayback}
+      aria-label={isPlaying ? "Pause YouTube audio" : "Play YouTube audio"}
+      aria-pressed={isPlaying}
+      className={cn(
+        "relative flex touch-manipulation items-center justify-center text-muted-foreground transition-[color,scale] will-change-[scale] select-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-red-500/50 focus-visible:outline-none active:scale-[0.9]",
+        isPlaying && "text-red-500 hover:text-red-500",
+        className
+      )}
+    >
+      <span className="absolute size-12 pointer-fine:hidden" aria-hidden />
+      {isPlaying ? (
+        <PauseIcon className="size-4.5" aria-hidden />
+      ) : (
+        <PlayIcon className="size-4.5 fill-current" aria-hidden />
+      )}
+    </button>
   )
 }
