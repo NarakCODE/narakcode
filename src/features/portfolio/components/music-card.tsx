@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
 const DEFAULT_YOUTUBE_VIDEO_ID = "uVsy7Q7qr8s"
-const DEFAULT_START_SECONDS = 10
+const DEFAULT_START_SECONDS = 190
 
 type MusicButtonProps = {
   className?: string
