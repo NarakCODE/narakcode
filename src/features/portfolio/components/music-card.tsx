@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
 const DEFAULT_YOUTUBE_VIDEO_ID = "uVsy7Q7qr8s"
-const DEFAULT_START_SECONDS = 190
+const DEFAULT_START_SECONDS = 114
 
 type MusicButtonProps = {
   className?: string
@@ -43,7 +43,7 @@ export function MusicButton({
       controls: "0",
       modestbranding: "1",
       start: startSeconds.toString(),
-      autoplay: "1",
+      autoplay: "0",
     })
 
     if (typeof window !== "undefined") {
