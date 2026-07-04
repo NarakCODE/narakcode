@@ -1,39 +1,40 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react"
 import { PauseIcon, PlayIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
+type MusicContextType = {
+  isPlaying: boolean
+  togglePlayback: () => void
+}
+
+const MusicContext = createContext<MusicContextType | undefined>(undefined)
+
+export function useMusic() {
+  const context = useContext(MusicContext)
+  if (!context) {
+    throw new Error("useMusic must be used within a MusicProvider")
+  }
+  return context
+}
+
 const DEFAULT_YOUTUBE_VIDEO_ID = "uVsy7Q7qr8s"
 const DEFAULT_START_SECONDS = 114
 
-type MusicButtonProps = {
-  className?: string
-  title?: string
-  videoId?: string
-  startSeconds?: number
-}
-
-export function MusicButton({
-  className,
-  title = "NarakCODE music",
-  videoId = DEFAULT_YOUTUBE_VIDEO_ID,
-  startSeconds = DEFAULT_START_SECONDS,
-}: MusicButtonProps) {
+export function MusicProvider({ children }: { children: React.ReactNode }) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [hasLoadedPlayer, setHasLoadedPlayer] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 150)
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   const playerSrc = useMemo(() => {
     const params = new URLSearchParams({
@@ -42,7 +43,7 @@ export function MusicButton({
       rel: "0",
       controls: "0",
       modestbranding: "1",
-      start: startSeconds.toString(),
+      start: DEFAULT_START_SECONDS.toString(),
       autoplay: "0",
     })
 
@@ -50,8 +51,8 @@ export function MusicButton({
       params.set("origin", window.location.origin)
     }
 
-    return `https://www.youtube.com/embed/${videoId}?${params.toString()}`
-  }, [startSeconds, videoId])
+    return `https://www.youtube.com/embed/${DEFAULT_YOUTUBE_VIDEO_ID}?${params.toString()}`
+  }, [])
 
   const sendCommand = (func: "playVideo" | "pauseVideo") => {
     iframeRef.current?.contentWindow?.postMessage(
@@ -81,14 +82,15 @@ export function MusicButton({
   }
 
   return (
-    <>
+    <MusicContext.Provider value={{ isPlaying, togglePlayback }}>
+      {children}
       {hasLoadedPlayer ? (
         <iframe
           ref={iframeRef}
           width={200}
           height={200}
           src={playerSrc}
-          title={`${title} on YouTube`}
+          title="NarakCODE music on YouTube"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           className="pointer-events-none fixed top-0 -left-[9999px] size-[200px] opacity-0"
@@ -101,7 +103,28 @@ export function MusicButton({
           }}
         />
       ) : null}
+    </MusicContext.Provider>
+  )
+}
 
+type MusicButtonProps = {
+  className?: string
+}
+
+export function MusicButton({ className }: MusicButtonProps) {
+  const { isPlaying, togglePlayback } = useMusic()
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 150)
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  return (
+    <>
       <button
         type="button"
         onClick={togglePlayback}
