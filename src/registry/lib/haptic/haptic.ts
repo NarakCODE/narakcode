@@ -49,13 +49,26 @@ export function haptic(pattern: number | number[] = 50) {
     const input = document.createElement("input")
     input.type = "checkbox"
     input.setAttribute("switch", "")
+
+    // Link label and input with a unique ID for Safari haptic trigger
+    const id = "haptic-trigger-" + Math.random().toString(36).substring(2, 9)
+    input.id = id
+    label.setAttribute("for", id)
+
     label.appendChild(input)
 
-    try {
-      document.body.appendChild(label)
-      input.click()
-    } finally {
-      document.body.removeChild(label)
-    }
+    document.body.appendChild(label)
+
+    // Trigger haptic feedback by clicking the associated label
+    label.click()
+
+    // Remove the element after a brief delay so WebKit registers the toggle
+    setTimeout(() => {
+      try {
+        if (document.body.contains(label)) {
+          document.body.removeChild(label)
+        }
+      } catch {}
+    }, 100)
   } catch {}
 }
