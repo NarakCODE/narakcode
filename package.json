@@ -1,24 +1,24 @@
 {
-  "name": "chanhdai.com",
+  "name": "narakcode.dev",
   "version": "0.1.0",
   "description": "A pixel-perfect dev portfolio and shadcn registry.",
-  "homepage": "https://chanhdai.com",
+  "homepage": "https://narakcode.dev",
   "license": "MIT",
   "author": {
-    "name": "Nguyen Chanh Dai",
-    "email": "dai@chanhdai.com",
-    "url": "https://github.com/ncdai"
+    "name": "Narak CODE",
+    "email": "channarakluy@gmail.com",
+    "url": "https://github.com/NarakCODE"
   },
   "contributors": [
     {
-      "name": "Nguyen Chanh Dai",
-      "email": "dai@chanhdai.com",
-      "url": "https://github.com/ncdai"
+      "name": "Narak CODE",
+      "email": "channarakluy@gmail.com",
+      "url": "https://github.com/NarakCODE"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ncdai/chanhdai.com.git"
+    "url": "git+https://github.com/NarakCODE/narakcode.git"
   },
   "scripts": {
     "dev": "next dev",
@@ -66,6 +66,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "cnfast": "^0.0.8",
     "d3-array": "^3.2.4",
     "date-fns": "^4.1.0",
     "dialkit": "^1.1.0",

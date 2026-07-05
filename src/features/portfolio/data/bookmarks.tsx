@@ -84,6 +84,8 @@ export const BOOKMARKS: Bookmark[] = [
     url: "https://animations.dev/",
     author: "Animation Dev",
     category: BookmarkCategory.COURSE,
+    image:
+      "https://animations.dev/_next/image?url=%2Fdark-preview-7.jpg&w=3840&q=75",
     bookmarkedAt: "2025-06-01",
   },
 ]
