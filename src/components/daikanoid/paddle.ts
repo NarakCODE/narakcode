@@ -1,5 +1,6 @@
 import type p5 from "p5"
 
+import { Colors } from "./colors"
 import {
   PADDLE_HEIGHT,
   PADDLE_SPEED,
@@ -55,23 +56,9 @@ export class Paddle {
   }
 
   show() {
-    this.p.imageMode(this.p.CORNER)
-    this.p.image(
-      this.state.paddleImage!,
-      this.x,
-      this.y,
-      PADDLE_WIDTH,
-      PADDLE_HEIGHT
-    )
-
-    // this.p.fill(Colors.paddle)
-    // this.p.rect(this.x, this.y, PADDLE_WIDTH, PADDLE_HEIGHT)
-
-    // this.p.fill(Colors.paddleHighlight)
-    // this.p.rect(this.x, this.y + 3, PADDLE_WIDTH, 3)
-
-    // this.p.fill(Colors.paddleShadow)
-    // this.p.rect(this.x, this.y + PADDLE_HEIGHT - 3, PADDLE_WIDTH, 3)
+    this.p.noStroke()
+    this.p.fill(Colors.foreground)
+    this.p.rect(this.x, this.y, PADDLE_WIDTH, PADDLE_HEIGHT, 4)
   }
 
   move() {

@@ -13,11 +13,7 @@ import { Ball } from "./ball"
 import { resetGame } from "./brick"
 import { Colors, loadColors } from "./colors"
 import {
-  BALL_DARK_URL,
-  BALL_LIGHT_URL,
   FONT_URL,
-  PADDLE_DARK_URL,
-  PADDLE_LIGHT_URL,
   SOUND_BOUNCE_URL,
   SOUND_BREAK_URL,
   SOUND_GAME_OVER_URL,
@@ -56,9 +52,6 @@ export function Daikanoid({
       soundBounce: null,
       soundBreak: null,
       soundGameOver: null,
-
-      ballImage: null,
-      paddleImage: null,
     }
 
     let font: p5.Font
@@ -76,13 +69,6 @@ export function Daikanoid({
         state.soundBounce = p.createAudio(SOUND_BOUNCE_URL)
         state.soundBreak = p.createAudio(SOUND_BREAK_URL)
         state.soundGameOver = p.createAudio(SOUND_GAME_OVER_URL)
-
-        state.ballImage = p.loadImage(
-          resolvedTheme === "dark" ? BALL_DARK_URL : BALL_LIGHT_URL
-        )
-        state.paddleImage = p.loadImage(
-          resolvedTheme === "dark" ? PADDLE_DARK_URL : PADDLE_LIGHT_URL
-        )
       }
 
       p.setup = () => {
