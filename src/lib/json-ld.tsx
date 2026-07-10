@@ -25,10 +25,7 @@ export function jsonLdBreadcrumbList(
 export function JsonLdScript({ data }: { data: unknown }) {
   return (
     <script
-      type={
-        typeof window === "undefined" ? "application/ld+json" : "text/plain"
-      }
-      suppressHydrationWarning
+      type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(data).replace(/</g, "\\u003c"),
       }}
