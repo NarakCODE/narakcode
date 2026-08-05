@@ -1,0 +1,77 @@
+---
+title: ការពន្យល់អំពីតម្លៃ GPT-5.6 និង Priority Processing
+description: ការពិនិត្យឡើងវិញដែលមានប្រភពច្បាស់លាស់អំពីតម្លៃម៉ូឌែល GPT-5.6, Priority Processing, ភាពអាចរកបាន និងរបៀបដែល developers អាចជ្រើសរើសរវាងតម្លៃ និង latency។
+image: https://static-academy.siteground.com/wp-content/uploads/sites/2/2026/07/GPT56_2_1200x600.jpg
+createdAt: 2026-07-09
+updatedAt: 2026-07-09
+---
+
+ត្រកូល GPT-5.6 របស់ OpenAI អាចប្រើប្រាស់បាននៅលើ ChatGPT, Codex និង OpenAI API។ ត្រកូលនេះរួមមានម៉ូឌែលចំនួនបី tiers៖ flagship **Sol**, balanced **Terra** និងតម្លៃទាប **Luna**។
+
+ការសម្រេចចិត្តលើតម្លៃចម្បងគឺសាមញ្ញណាស់៖ ប្រើ standard processing សម្រាប់កម្រិតចំណាយធម្មតា ឬជ្រើសរើស Priority Processing នៅពេលដែល latency ដែលអាចទស្សន៍ទាយបានច្បាស់លាស់ជាង សមនឹងការបង់ថ្លៃបន្ថែម (premium)។
+
+![GPT-5.6 pricing and Priority Processing](https://static-academy.siteground.com/wp-content/uploads/sites/2/2026/07/GPT56_2_1200x600.jpg)
+
+## Pricing at a glance
+
+អត្រាតម្លៃខាងក្រោមគឺគិតក្នុង 1 លាន tokens (per 1 million tokens)។ Priority Processing មានតម្លៃពីរដងនៃអត្រា standard input និង output សម្រាប់ម៉ូឌែល GPT-5.6 នីមួយៗ។
+
+| Model             | Standard input | Standard output | Priority input | Priority output |
+| ----------------- | -------------: | --------------: | -------------: | --------------: |
+| **GPT-5.6 Sol**   |          $5.00 |          $30.00 |         $10.00 |          $60.00 |
+| **GPT-5.6 Terra** |          $2.50 |          $15.00 |          $5.00 |          $30.00 |
+| **GPT-5.6 Luna**  |          $1.00 |           $6.00 |          $2.00 |          $12.00 |
+
+អត្រា standard គឺជាមូលដ្ឋានគ្រឹះសម្រាប់ API requests ធម្មតា។ Priority Processing បន្ថែមថ្លៃ premium សម្រាប់ latency ដែលទាបជាង និងមានស្ថេរភាពជាង ដូច្នេះវាស័ក្តិសមបំផុតសម្រាប់បម្រុងទុកប្រើជាមួយ production workloads ដែល latency-sensitive (ប្រែប្រួលតាមល្បឿនឆ្លើយតប)។
+
+## GPT-5.6 model tiers
+
+### Sol
+
+GPT-5.6 Sol គឺជា flagship tier សម្រាប់ការងារស្មុគស្មាញដែលទទួលបានផលប្រយោជន៍ពី reasoning រឹងមាំជាងមុន និង workflows ដែលរត់រយៈពេលយូរ។ វាស័ក្តិសមយ៉ាងល្អសម្រាប់ភារកិច្ចពិបាកៗដូចជា coding, research, knowledge-work, cybersecurity, computer-use និងការងារ design។
+
+ជ្រើសរើស Sol នៅពេលដែលគុណភាពនៃលទ្ធផលមានសារៈសំខាន់ជាងការកាត់បន្ថយចំណាយ per-token។
+
+### Terra
+
+GPT-5.6 Terra គឺជាជម្រើស balanced រវាងសមត្ថភាព ល្បឿន និងតម្លៃ។ វាស័ក្តិសមសម្រាប់ការងារ coding ប្រចាំថ្ងៃ, general knowledge tasks, និង production workflows ដែលត្រូវការលទ្ធផលល្អប្រសើរដោយមិនចាំបាច់ចំណាយថ្លៃដូច flagship tier។
+
+ជ្រើសរើស Terra នៅពេលដែលអ្នកត្រូវការជម្រើសដើម (default) ដែលអាចទុកចិត្តបានសម្រាប់ workloads ជាច្រើនប្រភេទ។
+
+### Luna
+
+GPT-5.6 Luna គឺជាម៉ូឌែលដែលលឿនបំផុត និងមានតម្លៃធូរថ្លៃបំផុតក្នុងត្រកូលនេះ។ អត្រា standard ដ៏ទាបរបស់វាធ្វើឱ្យវាក្លាយជាជម្រើសដ៏ជាក់ស្តែងសម្រាប់ high-volume requests, well-specified automation, និង workflows ដែល throughput មានសារៈសំខាន់ជាងជម្រៅ reasoning អតិបរមា។
+
+ជ្រើសរើស Luna នៅពេលដែលការរក្សាចំណាយលើ request ឱ្យនៅទាបគឺជាលក្ខខណ្ឌចម្បង។
+
+## Priority Processing
+
+Priority Processing គឺជា service tier ដាច់ដោយឡែកមួយសម្រាប់ API requests។ វាផ្តល់នូវប្រសិទ្ធភាព latency ទាប និងអាចទស្សន៍ទាយបានច្បាស់លាស់ជាង standard processing ដោយមានតម្លៃពីរដងនៃអត្រា standard input និង output សម្រាប់ម៉ូឌែល GPT-5.6 ដែលបានរៀបរាប់ខាងលើ។
+
+Requests អាច opt into Priority Processing ជាមួយ parameter `service_tier="priority"` របស់ API។ បច្ចុប្បន្ន Priority Processing ត្រូវបានកត់ត្រាក្នុងឯកសារថាជា Enterprise API feature ដូច្នេះ availability និង eligibility អាចអាស្រ័យលើ account និងតំបន់ (region)។
+
+វាមានប្រយោជន៍បំផុតនៅពេលដែលភាពមានស្ថេរភាពនៃ response-time ប៉ះពាល់ដោយផ្ទាល់ដល់ product experience ឬ operational workflow។ សម្រាប់ batch jobs, background tasks, និង cost-sensitive automation វិញ standard processing ជាទូទៅគឺជាជម្រើសដើម (default) ដែលល្អជាង។
+
+## Availability
+
+OpenAI បានប្រកាស GPT-5.6 សម្រាប់ ChatGPT, Codex និង OpenAI API។ Developers អាចប្រើប្រាស់ Sol, Terra, និង Luna តាមរយៈ API ខណៈជម្រើសម៉ូឌែលដែលបង្ហាញក្នុង ChatGPT និង Codex គឺអាស្រ័យលើផលិតផល និងគម្រោង (plan)។
+
+ភាពអាចរកបាន (availability) នៃ GPT-5.6 ក៏អាចនឹងប្រកាសចេញបន្តិចម្តងៗផងដែរ។ សូមពិនិត្យមើលឯកសារ OpenAI បច្ចុប្បន្ន និង account-level access ជាមុនសិន មុននឹងសន្មត់ថារាល់ម៉ូឌែល ឬ processing tier ទាំងអស់មានសម្រាប់អ្នកប្រើប្រាស់គ្រប់រូប។
+
+## What this means for developers
+
+ម៉ូឌែលទាំងបី tiers នេះធ្វើឱ្យកាន់តែងាយស្រួលក្នុងការតម្រឹមសមត្ថភាពម៉ូឌែលទៅនឹងចំណាយរបស់ workload៖
+
+- ប្រើ **Luna** សម្រាប់ high-volume, well-defined tasks ដែល throughput និងតម្លៃមានសារៈសំខាន់បំផុត។
+- ប្រើ **Terra** ជាជម្រើសដើម general-purpose សម្រាប់ coding និង knowledge work។
+- ប្រើ **Sol** សម្រាប់ភារកិច្ចស្មុគស្មាញដែល reasoning រឹងមាំជាងមុន និងគុណភាពខ្ពស់ស័ក្តិសមនឹងតម្លៃថ្លៃជាង។
+- ប្រើ **Priority Processing** តែនៅពេលដែល latency ដែលអាចទស្សន៍ទាយបានមានសារៈសំខាន់គ្រប់គ្រាន់ក្នុងការទូទាត់ថ្លៃ premium 2x នៃ processing។
+
+វិធីសាស្ត្រអនុវត្តជាក់ស្តែងគឺចាប់ផ្តើមជាមួយ standard processing រួចវាស់វែងគុណភាព និង latency លើ workloads គំរូ បន្ទាប់មកសឹមផ្លាស់ប្តូរតែផ្នែកណាដែល latency-sensitive ទៅកាន់ Priority Processing។
+
+## Sources
+
+- [GPT-5.6: Frontier intelligence that scales with your ambition](https://openai.com/index/gpt-5-6/)
+- [Priority Processing for API Customers](https://openai.com/api-priority-processing/)
+- [Priority Processing FAQ](https://help.openai.com/en/articles/11647665-priority-processing-faq)
+- [GPT-5.6 in ChatGPT](https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt)

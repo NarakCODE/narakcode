@@ -1,3 +1,15 @@
+export const BLOG_LANGUAGES = ["en", "km"] as const
+
+export type BlogLanguage = (typeof BLOG_LANGUAGES)[number]
+
+export const DEFAULT_BLOG_LANGUAGE: BlogLanguage = "en"
+
+export const isBlogLanguage = (
+  value: string | undefined
+): value is BlogLanguage => {
+  return value !== undefined && BLOG_LANGUAGES.includes(value as BlogLanguage)
+}
+
 export type DocMetadata = {
   title: string
   description: string
@@ -36,6 +48,8 @@ export type Doc = {
   metadata: DocMetadata
   /** Slug derived from the MDX filename (without extension). */
   slug: string
+  /** Language directory for localized blog posts. */
+  language?: BlogLanguage
   /** MDX content body without frontmatter. */
   content: string
 }
