@@ -30,6 +30,22 @@ import { CopyStateIcon } from "@/registry/components/copy-button"
 
 const cache = new Map<string, string>()
 
+function getSourcePath(markdownUrl: string) {
+  const cleanPath = markdownUrl.replace(/^\//, "").split("?")[0]
+  const segments = cleanPath.split("/")
+
+  if (
+    segments[0] === "blog" &&
+    segments.length === 3 &&
+    (segments[2] === "en.mdx" || segments[2] === "km.mdx")
+  ) {
+    const language = segments[2].replace(".mdx", "")
+    return `blog/${language}/${segments[1]}.mdx`
+  }
+
+  return cleanPath
+}
+
 export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
   const [state, setState] = useState<CopyState>("idle")
   const [isCopying, setIsCopying] = useState(false)
@@ -130,7 +146,7 @@ export function ViewOptions({
       },
       {
         title: "Open in GitHub",
-        href: `https://github.com/ncdai/chanhdai.com/blob/main/src/features/doc/content/${markdownUrl.replace(/^\//, "")}`,
+        href: `https://github.com/ncdai/chanhdai.com/blob/main/src/features/doc/content/${getSourcePath(markdownUrl)}`,
         icon: GitHubIcon,
       },
       {

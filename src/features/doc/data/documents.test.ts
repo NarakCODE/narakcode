@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest"
 
-import { findNeighbour } from "@/features/doc/data/documents"
+import {
+  findNeighbour,
+  getBlogPostBySlug,
+  getBlogPostLanguages,
+  getBlogPostUrl,
+} from "@/features/doc/data/documents"
 import type { Doc } from "@/features/doc/types/document"
 
 const docs = [{ slug: "a" }, { slug: "b" }, { slug: "c" }] as unknown as Doc[]
@@ -35,5 +40,20 @@ describe("findNeighbour", () => {
     const result = findNeighbour(docs, "missing")
     expect(result.previous).toBeNull()
     expect(result.next).toBeNull()
+  })
+})
+
+describe("localized blog posts", () => {
+  const slug = "openai-cuts-gpt-56-pricing-and-adds-fast-mode-to-the-api"
+
+  it("loads the English and Khmer variants by language", () => {
+    expect(getBlogPostBySlug(slug, "en")?.language).toBe("en")
+    expect(getBlogPostBySlug(slug, "km")?.language).toBe("km")
+    expect(getBlogPostLanguages(slug)).toEqual(["en", "km"])
+  })
+
+  it("keeps the English URL canonical and gives translations a language path", () => {
+    expect(getBlogPostUrl(slug, "en")).toBe(`/blog/${slug}`)
+    expect(getBlogPostUrl(slug, "km")).toBe(`/blog/${slug}/km`)
   })
 })

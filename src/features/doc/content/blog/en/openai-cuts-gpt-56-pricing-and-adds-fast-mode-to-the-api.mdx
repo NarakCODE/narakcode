@@ -1,0 +1,77 @@
+---
+title: GPT-5.6 pricing and Priority Processing explained
+description: A source-backed overview of GPT-5.6 model pricing, Priority Processing, availability, and how developers can choose between cost and latency.
+image: https://static-academy.siteground.com/wp-content/uploads/sites/2/2026/07/GPT56_2_1200x600.jpg
+createdAt: 2026-07-09
+updatedAt: 2026-07-09
+---
+
+OpenAI's GPT-5.6 family is available across ChatGPT, Codex, and the OpenAI API. The family includes three model tiers: flagship **Sol**, balanced **Terra**, and lower-cost **Luna**.
+
+The main pricing decision is straightforward: use standard processing for the normal cost profile, or choose Priority Processing when more predictable latency is worth paying a premium.
+
+![GPT-5.6 pricing and Priority Processing](https://static-academy.siteground.com/wp-content/uploads/sites/2/2026/07/GPT56_2_1200x600.jpg)
+
+## Pricing at a glance
+
+The following rates are priced per 1 million tokens. Priority Processing costs twice the standard input and output rates for each GPT-5.6 model.
+
+| Model             | Standard input | Standard output | Priority input | Priority output |
+| ----------------- | -------------: | --------------: | -------------: | --------------: |
+| **GPT-5.6 Sol**   |          $5.00 |          $30.00 |         $10.00 |          $60.00 |
+| **GPT-5.6 Terra** |          $2.50 |          $15.00 |          $5.00 |          $30.00 |
+| **GPT-5.6 Luna**  |          $1.00 |           $6.00 |          $2.00 |          $12.00 |
+
+The standard rates are the baseline for typical API requests. Priority Processing adds a premium for lower and more consistent latency, so it is best reserved for latency-sensitive production workloads.
+
+## GPT-5.6 model tiers
+
+### Sol
+
+GPT-5.6 Sol is the flagship tier for complex work that benefits from stronger reasoning and longer-running workflows. It is a good fit for demanding coding, research, knowledge-work, cybersecurity, computer-use, and design tasks.
+
+Choose Sol when the quality of the result matters more than minimizing per-token cost.
+
+### Terra
+
+GPT-5.6 Terra is the balanced option between capability, speed, and price. It is suited to everyday coding, general knowledge tasks, and production workflows that need strong results without the cost of the flagship tier.
+
+Choose Terra when you need a dependable default for a broad range of workloads.
+
+### Luna
+
+GPT-5.6 Luna is the fastest and most affordable model in the family. Its lower standard rate makes it a practical choice for high-volume requests, well-specified automation, and workflows where throughput matters more than maximum reasoning depth.
+
+Choose Luna when keeping request costs low is the primary constraint.
+
+## Priority Processing
+
+Priority Processing is a separate service tier for API requests. It provides more predictable, lower-latency performance than standard processing, with pricing that is twice the standard input and output rate for the GPT-5.6 models listed above.
+
+Requests can opt into Priority Processing with the API's `service_tier="priority"` parameter. Priority Processing is currently documented as an Enterprise API feature, so availability and eligibility may depend on the account and region.
+
+It is most useful when response-time consistency directly affects the product experience or an operational workflow. For batch jobs, background tasks, and cost-sensitive automation, standard processing is usually the better default.
+
+## Availability
+
+OpenAI announced GPT-5.6 for ChatGPT, Codex, and the OpenAI API. Developers can access Sol, Terra, and Luna through the API, while the model options shown in ChatGPT and Codex depend on the product and plan.
+
+GPT-5.6 availability can also roll out gradually. Check the current OpenAI documentation and account-level access before assuming that every model or processing tier is available to every user.
+
+## What this means for developers
+
+The three model tiers make it easier to match model capability to workload cost:
+
+- Use **Luna** for high-volume, well-defined tasks where throughput and price matter most.
+- Use **Terra** as a general-purpose default for coding and knowledge work.
+- Use **Sol** for complex tasks where stronger reasoning and quality justify the higher rate.
+- Use **Priority Processing** only when predictable latency is important enough to justify a 2x processing premium.
+
+The practical approach is to start with standard processing, measure quality and latency on representative workloads, and then move only the latency-sensitive paths to Priority Processing.
+
+## Sources
+
+- [GPT-5.6: Frontier intelligence that scales with your ambition](https://openai.com/index/gpt-5-6/)
+- [Priority Processing for API Customers](https://openai.com/api-priority-processing/)
+- [Priority Processing FAQ](https://help.openai.com/en/articles/11647665-priority-processing-faq)
+- [GPT-5.6 in ChatGPT](https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt)

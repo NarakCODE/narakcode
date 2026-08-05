@@ -3,7 +3,16 @@ import path from "path"
 import { cache } from "react"
 import matter from "gray-matter"
 
-import type { Doc, DocMetadata } from "@/features/doc/types/document"
+import {
+  DEFAULT_BLOG_LANGUAGE,
+  isBlogLanguage,
+  type BlogLanguage,
+  type Doc,
+  type DocMetadata,
+} from "@/features/doc/types/document"
+
+export const BLOG_CATEGORY = "blog"
+export const COMPONENTS_CATEGORY = "components"
 
 function parseFrontmatter(fileContent: string) {
   const file = matter(fileContent)
@@ -23,12 +32,22 @@ function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent)
 }
 
+function readDoc(filePath: string, category: string, language?: BlogLanguage) {
+  const { metadata, content } = readMDXFile(filePath)
+  const slug = path.basename(filePath, path.extname(filePath))
+
+  return {
+    metadata: { ...metadata, category },
+    slug,
+    ...(language ? { language } : {}),
+    content,
+  } satisfies Doc
+}
+
 /**
  * Reads MDX docs from `dir`, grouping them by their immediate subfolder.
- * The subfolder name is the doc's category (e.g. `content/components/*.mdx`
- * yields docs with `category: "components"`), so category is derived from the
- * file location rather than declared in frontmatter. Files placed directly in
- * `dir` (e.g. shared `props.ts`) are ignored — only category folders are read.
+ * Blog posts may have one additional language directory, such as
+ * `content/blog/en/*.mdx` or `content/blog/km/*.mdx`.
  */
 function getMDXData(dir: string) {
   const categoryDirs = fs
@@ -38,18 +57,30 @@ function getMDXData(dir: string) {
   return categoryDirs.flatMap((categoryDir) => {
     const category = categoryDir.name
     const categoryPath = path.join(dir, category)
+    const defaultLanguage =
+      category === BLOG_CATEGORY ? DEFAULT_BLOG_LANGUAGE : undefined
 
-    return getMDXFiles(categoryPath).map<Doc>((file) => {
-      const { metadata, content } = readMDXFile(path.join(categoryPath, file))
+    const directDocs = getMDXFiles(categoryPath).map((file) =>
+      readDoc(path.join(categoryPath, file), category, defaultLanguage)
+    )
 
-      const slug = path.basename(file, path.extname(file))
+    if (category !== BLOG_CATEGORY) {
+      return directDocs
+    }
 
-      return {
-        metadata: { ...metadata, category },
-        slug,
-        content,
-      }
-    })
+    const localizedDocs = fs
+      .readdirSync(categoryPath, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory() && isBlogLanguage(entry.name))
+      .flatMap((languageDir) => {
+        const language = languageDir.name as BlogLanguage
+        const languagePath = path.join(categoryPath, language)
+
+        return getMDXFiles(languagePath).map((file) =>
+          readDoc(path.join(languagePath, file), category, language)
+        )
+      })
+
+    return [...directDocs, ...localizedDocs]
   })
 }
 
@@ -67,21 +98,46 @@ export const getAllDocs = cache(() => {
   )
 })
 
-export function getDocBySlug(slug: string) {
-  return getAllDocs().find((doc) => doc.slug === slug)
+export function getDocBySlug(
+  slug: string,
+  language: BlogLanguage = DEFAULT_BLOG_LANGUAGE
+) {
+  return getAllDocs().find(
+    (doc) =>
+      doc.slug === slug &&
+      (doc.metadata.category !== BLOG_CATEGORY ||
+        (doc.language ?? DEFAULT_BLOG_LANGUAGE) === language)
+  )
 }
 
 export function getDocsByCategory(category: string) {
   return getAllDocs().filter((doc) => doc.metadata?.category === category)
 }
 
-/** Categories derived from the doc's content subfolder. */
-export const BLOG_CATEGORY = "blog"
-export const COMPONENTS_CATEGORY = "components"
-
 /** Blog posts — docs under the `blog/` content folder. */
-export function getBlogPosts() {
-  return getDocsByCategory(BLOG_CATEGORY)
+export function getBlogPosts(language: BlogLanguage = DEFAULT_BLOG_LANGUAGE) {
+  return getDocsByCategory(BLOG_CATEGORY).filter(
+    (doc) => (doc.language ?? DEFAULT_BLOG_LANGUAGE) === language
+  )
+}
+
+export function getBlogPostBySlug(
+  slug: string,
+  language: BlogLanguage = DEFAULT_BLOG_LANGUAGE
+) {
+  return getBlogPosts(language).find((doc) => doc.slug === slug)
+}
+
+export function getBlogPostLanguages(slug: string) {
+  return (["en", "km"] as BlogLanguage[]).filter((language) =>
+    getBlogPostBySlug(slug, language)
+  )
+}
+
+export function getBlogPostUrl(slug: string, language: BlogLanguage) {
+  return language === DEFAULT_BLOG_LANGUAGE
+    ? `/blog/${slug}`
+    : `/blog/${slug}/${language}`
 }
 
 /** Component docs — docs under the `components/` content folder. */
