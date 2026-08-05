@@ -6,7 +6,6 @@ import { Separator } from "@/components/ui/separator"
 import { BrandContextMenu } from "@/components/brand-context-menu"
 import { ChanhDaiMark } from "@/components/chanhdai-mark"
 import { NavDesktop } from "@/components/nav-desktop"
-import { NavItemGitHub } from "@/components/nav-item-github"
 import { ThemeToggle } from "@/components/theme-toggle"
 import blocks from "@/registry/__blocks__.json"
 import { getAllDocs } from "@/features/doc/data/documents"
@@ -46,11 +45,6 @@ export function SiteHeader() {
           <Separator
             orientation="vertical"
             className="mx-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
-          />
-          <NavItemGitHub />
-          <Separator
-            orientation="vertical"
-            className="mx-2 data-vertical:h-5 data-vertical:self-center"
           />
           <ThemeToggle />
         </div>
