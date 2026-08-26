@@ -34,6 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
     "",
     "/blog",
+    "/tools",
     "/vault",
     "/components",
     "/components/showcase",

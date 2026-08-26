@@ -24,6 +24,7 @@ import {
   SunMediumIcon,
   TextInitialIcon,
   TypeIcon,
+  WrenchIcon,
 } from "lucide-react"
 import { useHotkeys } from "react-hotkeys-hook"
 import { toast } from "sonner"
@@ -105,6 +106,13 @@ const MENU_LINKS: CommandLinkItem[] = [
     kind: "page",
     icon: <NewsIcon />,
     shortcut: "GL",
+  },
+  {
+    title: "Tools",
+    href: "/tools",
+    kind: "page",
+    icon: <WrenchIcon />,
+    shortcut: "GT",
   },
   {
     title: "Sponsors",
