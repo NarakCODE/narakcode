@@ -107,7 +107,7 @@ export default function Page() {
               <div className="flex h-9 w-full rounded-lg border border-input dark:bg-input/30" />
             }
           >
-            <ToolsSearchInput totalCount={tools.length} />
+            <ToolsSearchInput />
           </Suspense>
         </div>
 

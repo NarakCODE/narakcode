@@ -22,20 +22,10 @@ export function useFilteredTools(tools: Tool[]) {
     defaultValue: "",
   })
 
-  const [category] = useQueryState("category", {
-    defaultValue: "",
-  })
-
-  let filtered = tools
-
-  if (category && category !== "all") {
-    filtered = filtered.filter((tool) => tool.category === category)
+  if (!query) {
+    return tools
   }
 
-  if (query) {
-    const normalizedQuery = normalize(query)
-    filtered = filtered.filter((tool) => matchesQuery(tool, normalizedQuery))
-  }
-
-  return filtered
+  const normalizedQuery = normalize(query)
+  return tools.filter((tool) => matchesQuery(tool, normalizedQuery))
 }
