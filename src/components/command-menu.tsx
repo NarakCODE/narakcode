@@ -20,6 +20,7 @@ import {
   MoonStarIcon,
   QuoteIcon,
   RssIcon,
+  ShapesIcon,
   SquareDashedIcon,
   SunMediumIcon,
   TextInitialIcon,
@@ -99,6 +100,13 @@ const MENU_LINKS: CommandLinkItem[] = [
     kind: "page",
     icon: <GridViewIcon />,
     shortcut: "GB",
+  },
+  {
+    title: "Icons",
+    href: "/icons",
+    kind: "page",
+    icon: <ShapesIcon />,
+    shortcut: "GI",
   },
   {
     title: "Blog",
