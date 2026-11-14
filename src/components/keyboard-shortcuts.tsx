@@ -19,6 +19,7 @@ export function KeyboardShortcuts() {
   useHotkeys("g>h", () => navigate("/", "g>h"))
   useHotkeys("g>c", () => navigate("/components", "g>c"))
   useHotkeys("g>b", () => navigate("/blocks", "g>b"))
+  useHotkeys("g>i", () => navigate("/icons", "g>i"))
   useHotkeys("g>l", () => navigate("/blog", "g>l"))
   useHotkeys("g>s", () => navigate("/sponsors", "g>s"))
   useHotkeys("g>t", () => navigate("/tools", "g>t"))
