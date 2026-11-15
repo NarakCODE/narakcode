@@ -142,6 +142,22 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
 
   const showFlatGrid = viewMode === "grid" || Boolean(normalizedQuery)
 
+  const orderedIcons = useMemo(
+    () =>
+      showFlatGrid
+        ? filteredIcons
+        : groupedIcons.flatMap((group) => group.icons),
+    [showFlatGrid, filteredIcons, groupedIcons]
+  )
+
+  const selectedIconIndex = useMemo(
+    () =>
+      selectedIcon
+        ? orderedIcons.findIndex((item) => item.name === selectedIcon.name)
+        : -1,
+    [orderedIcons, selectedIcon]
+  )
+
   return (
     <div>
       <IconsToolbar
@@ -227,6 +243,23 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
           }
         }}
         iconSize={iconSize}
+        hasPrevious={selectedIconIndex > 0}
+        hasNext={
+          selectedIconIndex >= 0 && selectedIconIndex < orderedIcons.length - 1
+        }
+        onPreviousIcon={() => {
+          if (selectedIconIndex > 0) {
+            setSelectedIcon(orderedIcons[selectedIconIndex - 1])
+          }
+        }}
+        onNextIcon={() => {
+          if (
+            selectedIconIndex >= 0 &&
+            selectedIconIndex < orderedIcons.length - 1
+          ) {
+            setSelectedIcon(orderedIcons[selectedIconIndex + 1])
+          }
+        }}
       />
     </div>
   )
