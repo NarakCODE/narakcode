@@ -1,5 +1,4 @@
 import type { Metadata, Route } from "next"
-import Link from "next/link"
 import { addQueryParams } from "@/utils/url"
 import { Grip, LayoutDashboard } from "lucide-react"
 import type { CollectionPage, WithContext } from "schema-dts"
@@ -15,6 +14,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { FastLink } from "@/components/fast-link"
 import { TrustedRegistryIcon } from "@/components/icons"
 import {
   PageHeading,
@@ -147,7 +147,7 @@ export default function Page() {
         {newComponents.length > 0 && (
           <>
             <div className="flex h-10 items-center pl-4">
-              <h2 className="text-sm font-medium text-muted-foreground">
+              <h2 className="text-body-regular-medium text-text-secondary">
                 New components
               </h2>
             </div>
@@ -163,7 +163,7 @@ export default function Page() {
         )}
 
         <div className="flex items-center gap-1.5 p-1.5 pl-4">
-          <h2 className="flex-1 text-sm font-medium text-muted-foreground">
+          <h2 className="flex-1 text-body-regular-medium text-text-secondary">
             {allComponents.length} components
           </h2>
 
@@ -193,7 +193,7 @@ export default function Page() {
                   variant="ghost"
                   size="icon-sm"
                   nativeButton={false}
-                  render={<Link href="/components/showcase" />}
+                  render={<FastLink href="/components/showcase" />}
                   aria-label="Showcase"
                 >
                   <LayoutDashboard />

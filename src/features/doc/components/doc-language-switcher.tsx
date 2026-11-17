@@ -1,5 +1,4 @@
 import type { Route } from "next"
-import Link from "next/link"
 import { LanguagesIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -8,6 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { FastLink } from "@/components/fast-link"
 
 type DocLanguageSwitcherProps = {
   href: Route
@@ -30,10 +30,10 @@ export function DocLanguageSwitcher({
             size="sm"
             asChild
           >
-            <Link href={href} aria-label={ariaLabel}>
+            <FastLink href={href} aria-label={ariaLabel}>
               <LanguagesIcon aria-hidden="true" />
               <span>{label}</span>
-            </Link>
+            </FastLink>
           </Button>
         }
       />

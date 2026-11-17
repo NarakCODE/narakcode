@@ -99,6 +99,7 @@ export const blocks: Registry["items"] = [
     title: "Testimonials 01",
     description: "A testimonials section with dual marquees.",
     type: "registry:block",
+    dependencies: ["@dicebear/core", "@dicebear/styles"],
     registryDependencies: [
       "https://www.kibo-ui.com/r/marquee.json",
       getRegistryItemUrl("testimonial-spotlight"),
@@ -126,6 +127,7 @@ export const blocks: Registry["items"] = [
     title: "Testimonials 02",
     description: "A testimonials section with a lined layout.",
     type: "registry:block",
+    dependencies: ["@dicebear/core", "@dicebear/styles"],
     registryDependencies: [
       "https://www.kibo-ui.com/r/marquee.json",
       ...getRegistryItemUrls("style", "testimonial"),
@@ -153,6 +155,7 @@ export const blocks: Registry["items"] = [
     title: "Experience 01",
     description: "A work experience section with a lined layout.",
     type: "registry:block",
+    dependencies: ["@dicebear/core", "@dicebear/styles"],
     registryDependencies: [...getRegistryItemUrls("style", "work-experience")],
     files: [
       {
@@ -171,6 +174,7 @@ export const blocks: Registry["items"] = [
     title: "Team 01",
     description: "A team section with glowing cards.",
     type: "registry:block",
+    dependencies: ["@dicebear/core", "@dicebear/styles"],
     registryDependencies: [getRegistryItemUrl("glow-card-grid")],
     files: [
       {

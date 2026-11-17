@@ -37,7 +37,7 @@ export function EducationItem({ item }: { item: Education }) {
             "data-disabled:before:content-none"
           )}
         >
-          <div className="relative z-1 mb-1 flex items-start gap-3 text-base">
+          <div className="relative z-1 mb-1 flex items-start gap-3">
             <div
               className={cn(
                 "flex size-6 shrink-0 items-center justify-center rounded-md",
@@ -49,14 +49,16 @@ export function EducationItem({ item }: { item: Education }) {
               <GraduationCapIcon />
             </div>
 
-            <h3 className="flex-1 font-medium text-balance">{item.school}</h3>
+            <h3 className="flex-1 text-body-regular-medium text-balance text-text-primary">
+              {item.school}
+            </h3>
 
-            <div className="shrink-0 text-muted-foreground group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
+            <div className="shrink-0 text-text-secondary group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
               <CollapsibleChevronsUpDownIcon duration={0.15} />
             </div>
           </div>
 
-          <dl className="flex flex-wrap items-center gap-x-2 pl-9 text-sm text-muted-foreground">
+          <dl className="flex flex-wrap items-center gap-x-2 pl-9 text-body-small-regular text-text-secondary">
             <div>
               <dt className="sr-only">Employment period</dt>
               <dd className="flex items-center gap-0.5 tabular-nums">

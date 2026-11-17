@@ -1,11 +1,11 @@
 "use client"
 
 import type { Route } from "next"
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import type { NavItem } from "@/types/nav"
 import { blockCategories } from "@/config/registry"
+import { FastLink } from "@/components/fast-link"
 
 const NAV_ITEMS: NavItem<Route>[] = [
   {
@@ -31,14 +31,14 @@ export function BlocksNav() {
               : pathname.startsWith(href)
 
           return (
-            <Link
+            <FastLink
               key={href}
               href={href}
               aria-current={isActive ? "page" : undefined}
               className="border-r border-line p-4 font-mono text-[.8125rem]/4 font-medium tracking-wide text-muted-foreground uppercase transition-[color,background-color] ease-out hover:bg-accent-muted aria-[current=page]:bg-accent-muted aria-[current=page]:text-foreground"
             >
               {title}
-            </Link>
+            </FastLink>
           )
         })}
       </nav>

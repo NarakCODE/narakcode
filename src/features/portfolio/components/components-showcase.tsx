@@ -1,7 +1,7 @@
-import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
 import { Button } from "@/components/base/ui/button"
+import { FastLink } from "@/components/fast-link"
 import { RemountOnThemeChange } from "@/components/remount-on-theme-change"
 import AppleHelloEffectAllDemo from "@/registry/examples/apple-hello-effect-languages-demo"
 import BrandAssetsMenuDemo from "@/registry/examples/brand-assets-menu-demo"
@@ -119,7 +119,7 @@ export function ComponentsShowcase() {
           variant="secondary"
           size="sm"
           nativeButton={false}
-          render={<Link href="/components" />}
+          render={<FastLink href="/components" />}
         >
           All Components
           <ArrowRightIcon />

@@ -1,0 +1,144 @@
+/* Title tokens (-0.25px tracking) */
+
+@utility text-title-regular {
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+}
+
+@utility text-title-small-regular {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.25px;
+}
+
+@utility text-title-small-medium {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.25px;
+}
+
+@utility text-title-small-semibold {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+}
+
+@utility text-title-mini-regular {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.25px;
+}
+
+@utility text-title-mini-medium {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.25px;
+}
+
+@utility text-title-mini-semibold {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+}
+
+/* Body tokens (inherit color) */
+
+@utility text-body-regular {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+
+@utility text-body-regular-medium {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+@utility text-body-regular-semibold {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+
+@utility text-body-regular-spaced {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+
+@utility text-body-small-regular {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+
+@utility text-body-small-medium {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 500;
+}
+
+@utility text-body-small-semibold {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 600;
+}
+
+@utility text-body-small-spaced {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+
+@utility text-body-mini-regular {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+}
+
+@utility text-body-mini-medium {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+@utility text-body-micro-regular {
+  font-size: 0.625rem;
+  line-height: 0.875rem;
+  font-weight: 400;
+}
+
+@utility text-body-micro-medium {
+  font-size: 0.625rem;
+  line-height: 0.875rem;
+  font-weight: 500;
+}
+
+/* Paragraph tokens (long-form reading text) */
+
+@utility text-paragraph-regular {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+
+@utility text-paragraph-small {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+
+@utility text-paragraph-small-relaxed {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  font-weight: 400;
+}

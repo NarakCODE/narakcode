@@ -1,9 +1,9 @@
 import type { Route } from "next"
-import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
+import { FastLink } from "@/components/fast-link"
 import {
   ComponentItem,
   ComponentItemDot,
@@ -75,7 +75,7 @@ export function Components() {
           variant="secondary"
           size="sm"
           nativeButton={false}
-          render={<Link href="/components" />}
+          render={<FastLink href="/components" />}
         >
           All components
           <ArrowRightIcon />

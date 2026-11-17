@@ -133,7 +133,7 @@ export function IconsToolbar({
           <div className="flex items-center gap-2 rounded-lg border border-line bg-background px-2.5 py-1.5">
             <label
               htmlFor="icon-size-slider"
-              className="font-mono text-xs text-muted-foreground"
+              className="font-mono text-body-mini-regular text-text-secondary"
             >
               Size
             </label>
@@ -147,7 +147,7 @@ export function IconsToolbar({
               onChange={(e) => onIconSizeChange(Number(e.target.value))}
               className="h-1.5 w-20 cursor-pointer accent-foreground sm:w-24"
             />
-            <span className="w-8 text-right font-mono text-xs text-foreground tabular-nums">
+            <span className="w-8 text-right font-mono text-body-mini-regular text-text-primary tabular-nums">
               {iconSize}px
             </span>
           </div>
@@ -221,17 +221,17 @@ export function IconsToolbar({
           onClick={() => onCategoryChange(null)}
           aria-pressed={!category}
           className={cn(
-            "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors",
+            "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-body-mini-medium transition-colors",
             !category
               ? "border-foreground bg-foreground text-background"
-              : "border-line bg-background text-muted-foreground hover:bg-accent hover:text-foreground"
+              : "border-line bg-background text-text-secondary hover:bg-accent hover:text-text-primary"
           )}
         >
           <span>All</span>
           <span
             className={cn(
-              "font-mono text-[10px]",
-              !category ? "text-background/80" : "text-muted-foreground"
+              "font-mono text-body-micro-regular",
+              !category ? "text-background/80" : "text-text-secondary"
             )}
           >
             {totalCount}
@@ -248,17 +248,17 @@ export function IconsToolbar({
               onClick={() => onCategoryChange(isActive ? null : cat)}
               aria-pressed={isActive}
               className={cn(
-                "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors",
+                "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-body-mini-medium transition-colors",
                 isActive
                   ? "border-foreground bg-foreground text-background"
-                  : "border-line bg-background text-muted-foreground hover:bg-accent hover:text-foreground"
+                  : "border-line bg-background text-text-secondary hover:bg-accent hover:text-text-primary"
               )}
             >
               <span>{cat}</span>
               <span
                 className={cn(
-                  "font-mono text-[10px]",
-                  isActive ? "text-background/80" : "text-muted-foreground"
+                  "font-mono text-body-micro-regular",
+                  isActive ? "text-background/80" : "text-text-secondary"
                 )}
               >
                 {count}

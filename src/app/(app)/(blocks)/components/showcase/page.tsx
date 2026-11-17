@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { Grip, LayoutDashboard } from "lucide-react"
 
 import { X_HANDLE } from "@/config/site"
@@ -10,6 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { FastLink } from "@/components/fast-link"
 import {
   PageHeading,
   PageHeadingTagline,
@@ -107,7 +107,7 @@ export default function ComponentsShowcasePage() {
                 variant="ghost"
                 size="icon-sm"
                 nativeButton={false}
-                render={<Link href="/components" />}
+                render={<FastLink href="/components" />}
                 aria-label="List"
               >
                 <Grip />

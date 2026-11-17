@@ -1,6 +1,5 @@
 import { cache } from "react"
 import type { Metadata, Route } from "next"
-import Link from "next/link"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 import type { SoftwareSourceCode, WithContext } from "schema-dts"
 
@@ -18,6 +17,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { FastLink } from "@/components/fast-link"
 import { BlocksNav } from "@/app/(app)/(blocks)/blocks/(list)/blocks-nav"
 import { BlockDisplay } from "@/app/(preview)/components/block-display"
 import { DocKeyboardShortcuts } from "@/features/doc/components/doc-keyboard-shortcuts"
@@ -178,10 +178,10 @@ export default async function BlockViewPage({
           size="sm"
           asChild
         >
-          <Link href={`/blocks/${category}`}>
+          <FastLink href={`/blocks/${category}`}>
             <ArrowLeftIcon />
             {categoryItem?.title || "Blocks"}
-          </Link>
+          </FastLink>
         </Button>
 
         <div className="flex items-center gap-2">
@@ -197,12 +197,12 @@ export default async function BlockViewPage({
                     size="icon-sm"
                     asChild
                   >
-                    <Link
+                    <FastLink
                       href={`/blocks/${previous}`}
                       aria-label="Previous Block"
                     >
                       <ArrowLeftIcon />
-                    </Link>
+                    </FastLink>
                   </Button>
                 }
               />
@@ -227,9 +227,9 @@ export default async function BlockViewPage({
                     size="icon-sm"
                     asChild
                   >
-                    <Link href={`/blocks/${next}`} aria-label="Next Block">
+                    <FastLink href={`/blocks/${next}`} aria-label="Next Block">
                       <ArrowRightIcon />
-                    </Link>
+                    </FastLink>
                   </Button>
                 }
               />

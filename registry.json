@@ -1212,6 +1212,10 @@
       "name": "testimonials-01",
       "title": "Testimonials 01",
       "description": "A testimonials section with dual marquees.",
+      "dependencies": [
+        "@dicebear/core",
+        "@dicebear/styles"
+      ],
       "registryDependencies": [
         "https://www.kibo-ui.com/r/marquee.json",
         "https://narakcode.dev/r/testimonial-spotlight.json"
@@ -1242,6 +1246,10 @@
       "name": "testimonials-02",
       "title": "Testimonials 02",
       "description": "A testimonials section with a lined layout.",
+      "dependencies": [
+        "@dicebear/core",
+        "@dicebear/styles"
+      ],
       "registryDependencies": [
         "https://www.kibo-ui.com/r/marquee.json",
         "https://narakcode.dev/r/style.json",
@@ -1273,6 +1281,10 @@
       "name": "experience-01",
       "title": "Experience 01",
       "description": "A work experience section with a lined layout.",
+      "dependencies": [
+        "@dicebear/core",
+        "@dicebear/styles"
+      ],
       "registryDependencies": [
         "https://narakcode.dev/r/style.json",
         "https://narakcode.dev/r/work-experience.json"
@@ -1297,6 +1309,10 @@
       "name": "team-01",
       "title": "Team 01",
       "description": "A team section with glowing cards.",
+      "dependencies": [
+        "@dicebear/core",
+        "@dicebear/styles"
+      ],
       "registryDependencies": [
         "https://narakcode.dev/r/glow-card-grid.json"
       ],

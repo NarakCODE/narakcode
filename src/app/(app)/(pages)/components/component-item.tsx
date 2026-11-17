@@ -1,13 +1,12 @@
-import Link from "next/link"
-
 import { cn } from "@/lib/utils"
+import { FastLink } from "@/components/fast-link"
 
 export function ComponentItem({
   className,
   ...props
-}: React.ComponentProps<typeof Link>) {
+}: React.ComponentProps<typeof FastLink>) {
   return (
-    <Link
+    <FastLink
       data-slot="component-item"
       className={cn(
         "flex items-center gap-4 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent-muted",

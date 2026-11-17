@@ -1,4 +1,9 @@
+import { Avatar, Style } from "@dicebear/core"
+import glass from "@dicebear/styles/glass.json"
+
 import { GlowCard, GlowCardGrid } from "@/registry/components/glow-card-grid"
+
+const glassStyle = new Style(glass)
 
 export default function Team01() {
   return (
@@ -9,7 +14,10 @@ export default function Team01() {
             key={card.name}
             name={card.name}
             handle={card.handle}
-            avatar={card.avatar}
+            avatar={new Avatar(glassStyle, {
+              seed: card.name,
+              size: 80,
+            }).toDataUri()}
           />
         ))}
       </GlowCardGrid>
@@ -21,41 +29,33 @@ const CARDS = [
   {
     name: "shadcn",
     handle: "@shadcn",
-    avatar: "https://unavatar.io/x/shadcn",
   },
   {
     name: "Evil Rabbit",
     handle: "@evilrabbit_",
-    avatar: "https://unavatar.io/x/evilrabbit_",
   },
   {
     name: "OrcDev",
     handle: "@orcdev",
-    avatar: "https://unavatar.io/x/orcdev",
   },
   {
     name: "David Haz",
     handle: "@davidhdev",
-    avatar: "https://unavatar.io/x/davidhdev",
   },
   {
     name: "Shu",
     handle: "@shuding",
-    avatar: "https://unavatar.io/x/shuding",
   },
   {
     name: "Emil Kowalski",
     handle: "@emilkowalski",
-    avatar: "https://unavatar.io/x/emilkowalski",
   },
   {
     name: "Aaron",
     handle: "@aaronmahlke",
-    avatar: "https://unavatar.io/x/aaronmahlke",
   },
   {
     name: "NarakCODE",
     handle: "@iamNarakCODE",
-    avatar: "https://unavatar.io/x/iamNarakCODE",
   },
 ]

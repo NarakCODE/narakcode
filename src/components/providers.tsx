@@ -8,7 +8,6 @@ import { TooltipProvider as RadixTooltipProvider } from "@/components/ui/tooltip
 import { TooltipProvider as BaseTooltipProvider } from "@/components/base/ui/tooltip"
 import { KeyboardShortcuts } from "@/components/keyboard-shortcuts"
 import { ThemeProvider } from "@/components/theme-provider"
-import { MusicProvider } from "@/features/portfolio/components/music-card"
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -20,22 +19,20 @@ export function Providers({ children }: { children: React.ReactNode }) {
         storageKey="theme"
         defaultTheme="system"
       >
-        <MusicProvider>
-          <ProgressProvider
-            color="var(--foreground)"
-            height="2px"
-            delay={500}
-            options={{ showSpinner: false }}
-          >
-            <BaseTooltipProvider>
-              <RadixTooltipProvider>{children}</RadixTooltipProvider>
-            </BaseTooltipProvider>
+        <ProgressProvider
+          color="var(--foreground)"
+          height="2px"
+          delay={500}
+          options={{ showSpinner: false }}
+        >
+          <BaseTooltipProvider>
+            <RadixTooltipProvider>{children}</RadixTooltipProvider>
+          </BaseTooltipProvider>
 
-            <KeyboardShortcuts />
-          </ProgressProvider>
+          <KeyboardShortcuts />
+        </ProgressProvider>
 
-          <Toaster position="top-center" />
-        </MusicProvider>
+        <Toaster position="top-center" />
       </ThemeProvider>
     </JotaiProvider>
   )

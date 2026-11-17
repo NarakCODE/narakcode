@@ -20,6 +20,15 @@ importers:
       '@date-fns/tz':
         specifier: ^1.4.1
         version: 1.4.1
+      '@dicebear/core':
+        specifier: ^10.7.0
+        version: 10.7.0
+      '@dicebear/styles':
+        specifier: ^10.6.0
+        version: 10.6.0
+      '@fast-link/next':
+        specifier: ^0.0.2
+        version: 0.0.2(next@16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@hookform/resolvers':
         specifier: ^4.1.0
         version: 4.1.0(react-hook-form@7.54.2(react@19.2.7))
@@ -566,6 +575,13 @@ packages:
   '@date-fns/tz@1.4.1':
     resolution: {integrity: sha512-P5LUNhtbj6YfI3iJjw5EL9eUAG6OitD0W3fWQcpQjDRc/QIsL0tRNuO1PcDvPccWL1fSTXXdE1ds+l95DV/OFA==}
 
+  '@dicebear/core@10.7.0':
+    resolution: {integrity: sha512-JUOzKOd8RUByJJo8ZL+C7YE/pvEsWewfpbWUmR8OIQZWv/PvUQHnohdevySC3icyyxe6EIU/8B/rQgA42us1QA==}
+    engines: {node: '>=22.0.0'}
+
+  '@dicebear/styles@10.6.0':
+    resolution: {integrity: sha512-KhxbEVI+z8TaenX58+ZhIRFBt7adggu/F+8g6ZYLu43H2/lgLuWA3Kg8vHBrCVWdfTTTt1p2wUhQomIkkypTuQ==}
+
   '@dotenvx/dotenvx@1.75.1':
     resolution: {integrity: sha512-/BITOC9dmS/edY2zQwZNicQ059O6RKabtQfyEafV0nGtfYRNHYy1DIPiYVcov40+tob9hfmBnbR963dS+EQ1DQ==}
     hasBin: true
@@ -628,6 +644,23 @@ packages:
   '@eslint/plugin-kit@0.2.7':
     resolution: {integrity: sha512-JubJ5B2pJ4k4yGxaNLdbjrnk9d/iDz6/q8wOilpIowd6PJPgaxCuHBnBszq7Ce2TyMrywm5r4PnKm6V3iiZF+g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fast-link/core@0.0.2':
+    resolution: {integrity: sha512-JfmWftqcGQKhnpLjfs3ZpwawgWXyyGKRVitTzR4nkoe0igyZ1UTbdeZ7bX2KBOrvSO80enJ5Phm2OTq0DjmqlA==}
+    engines: {node: '>=22'}
+
+  '@fast-link/next@0.0.2':
+    resolution: {integrity: sha512-mtKctTWRlcIngIM3GzzpzhyRF4appDjryxtcqKnb/mNb7bLg7bh+9xttwYtJVehSRlQfPI4JfCm/BwDM+CsE+Q==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      next: '>=16 <17'
+      react: '>=19 <20'
+
+  '@fast-link/react@0.0.2':
+    resolution: {integrity: sha512-EQ45t2q2PmFYu2eX6/pcepD0FUx06aFMXLPAwUEXKA6iwf7ooaCzKaZ0924ufP33yWbFFdkbCf1cZmUFGnWPkQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      react: '>=19 <20'
 
   '@floating-ui/core@1.7.5':
     resolution: {integrity: sha512-1Ih4WTWyw0+lKyFMcBHGbb5U5FtuHJuujoyyr5zTaWS5EYMeT6Jb2AuDeftsCsEuchO+mM2ij5+q9crhydzLhQ==}
@@ -7627,6 +7660,10 @@ snapshots:
 
   '@date-fns/tz@1.4.1': {}
 
+  '@dicebear/core@10.7.0': {}
+
+  '@dicebear/styles@10.6.0': {}
+
   '@dotenvx/dotenvx@1.75.1':
     dependencies:
       '@dotenvx/primitives': 0.8.0
@@ -7717,6 +7754,20 @@ snapshots:
     dependencies:
       '@eslint/core': 0.12.0
       levn: 0.4.1
+
+  '@fast-link/core@0.0.2': {}
+
+  '@fast-link/next@0.0.2(next@16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@fast-link/core': 0.0.2
+      '@fast-link/react': 0.0.2(react@19.2.7)
+      next: 16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      react: 19.2.7
+
+  '@fast-link/react@0.0.2(react@19.2.7)':
+    dependencies:
+      '@fast-link/core': 0.0.2
+      react: 19.2.7
 
   '@floating-ui/core@1.7.5':
     dependencies:

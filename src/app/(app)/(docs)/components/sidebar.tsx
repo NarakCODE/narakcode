@@ -6,7 +6,6 @@
 
 import { memo, useEffect, useRef, useState } from "react"
 import type { Route } from "next"
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion } from "motion/react"
 import { useHotkeys } from "react-hotkeys-hook"
@@ -19,6 +18,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { FastLink } from "@/components/fast-link"
 
 import type { SidebarIconHandle } from "./sidebar-icon"
 import { SidebarIcon } from "./sidebar-icon"
@@ -136,7 +136,7 @@ export function SidebarContent({ items }: { items: MenuItem<Route>[] }) {
   )
 }
 
-const MotionLink = motion.create(Link)
+const MotionLink = motion.create(FastLink)
 
 const lineVariants = {
   normal: { width: 24 },

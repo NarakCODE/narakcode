@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { addQueryParams } from "@/utils/url"
 import { ArrowRightIcon } from "lucide-react"
 
@@ -6,6 +5,7 @@ import { SPONSORSHIP_URL, UTM_PARAMS } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { PlusIcon } from "@/components/animated-icons/plus-icon"
 import { Button } from "@/components/base/ui/button"
+import { FastLink } from "@/components/fast-link"
 import { SponsorItem } from "@/features/sponsor/components/sponsor-item"
 import { SPONSORS } from "@/features/sponsor/data"
 import type { SponsorTier } from "@/features/sponsor/types"
@@ -81,7 +81,7 @@ export function Sponsors() {
           variant="secondary"
           size="sm"
           nativeButton={false}
-          render={<Link href="/sponsors" />}
+          render={<FastLink href="/sponsors" />}
         >
           All sponsors
           <ArrowRightIcon />

@@ -1,5 +1,4 @@
 import type { Metadata, Route } from "next"
-import Link from "next/link"
 import { getTableOfContents } from "fumadocs-core/content/toc"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts"
@@ -16,6 +15,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { FastLink } from "@/components/fast-link"
 import { MDX } from "@/components/mdx"
 import { TOCInline } from "@/components/toc-inline"
 import { TOCMinimap } from "@/components/toc-minimap"
@@ -157,10 +157,10 @@ export function BlogPostPage({
               size="sm"
               asChild
             >
-              <Link href="/blog">
+              <FastLink href="/blog">
                 <ArrowLeftIcon />
                 Blog
-              </Link>
+              </FastLink>
             </Button>
 
             <div className="flex items-center gap-2">
@@ -192,14 +192,14 @@ export function BlogPostPage({
                         size="icon-sm"
                         asChild
                       >
-                        <Link
+                        <FastLink
                           href={
                             getBlogPostUrl(previous.slug, language) as Route
                           }
                           aria-label="Previous post"
                         >
                           <ArrowLeftIcon />
-                        </Link>
+                        </FastLink>
                       </Button>
                     }
                   />
@@ -224,12 +224,12 @@ export function BlogPostPage({
                         size="icon-sm"
                         asChild
                       >
-                        <Link
+                        <FastLink
                           href={getBlogPostUrl(next.slug, language) as Route}
                           aria-label="Next post"
                         >
                           <ArrowRightIcon />
-                        </Link>
+                        </FastLink>
                       </Button>
                     }
                   />
@@ -252,7 +252,7 @@ export function BlogPostPage({
 
           <h1
             data-slot="doc-title"
-            className="screen-line-bottom px-4 text-4xl font-medium tracking-tight text-balance"
+            className="screen-line-bottom px-4 text-title-regular text-balance text-text-primary"
           >
             {doc.metadata.title}
           </h1>
@@ -263,7 +263,7 @@ export function BlogPostPage({
 
           <DocContentCol>
             <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
-              <p className="text-muted-foreground">
+              <p className="text-paragraph-regular text-text-secondary">
                 {doc.metadata.description}
               </p>
 

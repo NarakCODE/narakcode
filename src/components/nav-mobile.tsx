@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from "react"
 import type { Route } from "next"
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import type { NavItem } from "@/types/nav"
@@ -13,6 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { FastLink } from "@/components/fast-link"
 import { haptic } from "@/registry/lib/haptic"
 
 export function NavMobile({ items }: { items: NavItem<Route>[] }) {
@@ -53,7 +53,7 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
                 : pathname?.startsWith(link.href))
 
             return (
-              <Link
+              <FastLink
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
@@ -61,7 +61,7 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
                 onClick={() => handleOpenChange(false)}
               >
                 {link.title}
-              </Link>
+              </FastLink>
             )
           })}
         </div>

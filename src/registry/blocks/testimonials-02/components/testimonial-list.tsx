@@ -1,3 +1,6 @@
+import { Avatar, Style } from "@dicebear/core"
+import glass from "@dicebear/styles/glass.json"
+
 import {
   Marquee,
   MarqueeContent,
@@ -15,9 +18,11 @@ import {
   TestimonialQuote,
 } from "@/registry/components/testimonial"
 
+const glassStyle = new Style(glass)
+
 export type TestimonialType = {
-  /** URL to the person's profile picture or avatar image */
-  authorAvatar: string
+  /** URL to the person's profile picture or avatar image (defaults to DiceBear Glass) */
+  authorAvatar?: string
   /** Full display name of the person giving the testimonial */
   authorName: string
   /** Short tagline, title, or description of the person */
@@ -67,6 +72,10 @@ function TestimonialItem({
   authorTagline,
   quote,
 }: TestimonialType) {
+  const avatarSrc =
+    authorAvatar ||
+    new Avatar(glassStyle, { seed: authorName, size: 32 }).toDataUri()
+
   return (
     <Testimonial>
       <TestimonialQuote className="min-h-14">
@@ -75,7 +84,7 @@ function TestimonialItem({
 
       <TestimonialAuthor>
         <TestimonialAvatar>
-          <TestimonialAvatarImg src={authorAvatar} alt={authorName} />
+          <TestimonialAvatarImg src={avatarSrc} alt={authorName} />
           <TestimonialAvatarRing />
         </TestimonialAvatar>
 

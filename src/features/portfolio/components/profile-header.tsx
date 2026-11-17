@@ -4,7 +4,6 @@ import { USER } from "@/features/portfolio/data/user"
 import { AvatarLightsToggle } from "./avatar-lights-toggle"
 import { ChanhDaiMarkIsometric } from "./chanhdai-mark-isometric"
 import { FlipSentences } from "./flip-sentences"
-import { MusicButton } from "./music-card"
 import { PronounceMyName } from "./pronounce-my-name"
 import { VerifiedIcon } from "./verified-icon"
 
@@ -13,7 +12,7 @@ export function ProfileHeader() {
     <div className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-y-clip border-x border-line">
       <figure className="relative col-span-2 flex items-center justify-center p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
         <ChanhDaiMarkIsometric className="h-44 w-auto max-w-full sm:h-64" />
-        <figcaption className="pointer-events-none absolute right-2 bottom-2 font-mono text-xs leading-none text-zinc-400 select-none sm:right-4 dark:text-zinc-700">
+        <figcaption className="pointer-events-none absolute right-2 bottom-2 font-mono text-body-mini-regular text-zinc-400 select-none sm:right-4 dark:text-zinc-700">
           FIG_001
         </figcaption>
       </figure>
@@ -32,13 +31,11 @@ export function ProfileHeader() {
       <div className="flex flex-col">
         <div className="z-1 mt-auto border-t border-line">
           <div className="flex items-center gap-2 pl-4">
-            <h1 className="-translate-y-px text-[2rem]/none font-medium tracking-tight">
+            <h1 className="text-title-regular text-text-primary">
               {USER.displayName}
             </h1>
 
             <VerifiedIcon className="size-4.5 select-none" aria-hidden />
-
-            <MusicButton />
 
             {USER.namePronunciationUrl && (
               <PronounceMyName

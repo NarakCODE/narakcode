@@ -1,7 +1,11 @@
+import { Avatar, Style } from "@dicebear/core"
+import glass from "@dicebear/styles/glass.json"
 import { CodeXmlIcon, LightbulbIcon } from "lucide-react"
 
 import type { ExperienceItemType } from "@/registry/transformed/components/work-experience"
 import { WorkExperience } from "@/registry/transformed/components/work-experience"
+
+const glassStyle = new Style(glass)
 
 export function Experience01() {
   return (
@@ -26,8 +30,10 @@ const EXPERIENCE: ExperienceItemType[] = [
   {
     id: "shadcncraft",
     companyName: "shadcncraft",
-    companyLogo:
-      "https://assets.narakcode.dev/images/companies/shadcncraft.svg",
+    companyLogo: new Avatar(glassStyle, {
+      seed: "shadcncraft",
+      size: 24,
+    }).toDataUri(),
     companyWebsite: "https://shadcncraft.com?atp=NarakCODE",
     positions: [
       {
@@ -55,7 +61,10 @@ const EXPERIENCE: ExperienceItemType[] = [
   {
     id: "quaric",
     companyName: "Quaric",
-    companyLogo: "https://assets.narakcode.dev/images/companies/quaric.svg",
+    companyLogo: new Avatar(glassStyle, {
+      seed: "Quaric",
+      size: 24,
+    }).toDataUri(),
     companyWebsite: "https://quaric.com",
     positions: [
       {

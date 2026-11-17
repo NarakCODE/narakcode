@@ -186,7 +186,7 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
       >
         {filteredIcons.length === 0 ? (
           <div className="screen-line-bottom flex flex-col items-center justify-center gap-3 px-4 py-16 text-center">
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-body-regular text-text-secondary">
               No icons found matching{" "}
               {query ? `"${query}"` : "the selected filter"}.
             </p>
@@ -214,10 +214,10 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
             {groupedIcons.map(({ category: groupName, icons: groupIcons }) => (
               <section key={groupName}>
                 <div className="screen-line-bottom flex items-center justify-between bg-accent/25 px-4 py-2.5">
-                  <h2 className="font-heading text-xs font-semibold tracking-wider text-foreground uppercase">
+                  <h2 className="text-body-mini-medium tracking-wider text-text-primary uppercase">
                     {groupName}
                   </h2>
-                  <span className="rounded-full bg-accent px-2 py-0.5 font-mono text-[11px] font-medium text-muted-foreground">
+                  <span className="rounded-full bg-accent px-2 py-0.5 font-mono text-body-micro-medium text-text-secondary">
                     {groupIcons.length}
                   </span>
                 </div>
@@ -297,7 +297,7 @@ function IconGrid({
                   <IconSvgPreview src={icon.src} name={icon.title} />
                 </span>
 
-                <span className="w-full truncate font-mono text-[11px] text-muted-foreground transition-colors group-hover/icon-cell:text-foreground">
+                <span className="w-full truncate font-mono text-body-mini-regular text-text-secondary transition-colors group-hover/icon-cell:text-text-primary">
                   {icon.name}
                 </span>
               </button>

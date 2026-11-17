@@ -4,6 +4,7 @@
 
 @import "./scroll-fade-effect.css";
 @import "./style-preview.css";
+@import "./typography.css";
 
 @plugin "@tailwindcss/typography";
 
@@ -53,6 +54,15 @@
   --color-code-highlight: var(--code-highlight);
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-muted: var(--muted-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-link: var(--link);
+  --color-text-info: var(--info);
+  --color-text-success: var(--success);
+  --color-text-destructive: var(--destructive);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);

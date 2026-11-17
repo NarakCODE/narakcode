@@ -30,7 +30,10 @@ function ProseMono({
 }: React.ComponentProps<typeof Prose>) {
   return (
     <Prose
-      className={cn("prose-sm font-mono text-foreground", className)}
+      className={cn(
+        "prose-sm font-mono text-paragraph-small text-text-primary",
+        className
+      )}
       {...props}
     />
   )

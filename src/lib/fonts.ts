@@ -1,10 +1,18 @@
 import { IBM_Plex_Serif } from "next/font/google"
+import localFont from "next/font/local"
 import { GeistMono } from "geist/font/mono"
-import { GeistSans } from "geist/font/sans"
 
 import { cn } from "@/lib/utils"
 
-const fontSans = GeistSans
+const fontSans = localFont({
+  src: "../assets/fonts/GeistRounded.woff2",
+  weight: "100 900",
+  style: "normal",
+  display: "swap",
+  fallback: ["ui-sans-serif", "system-ui", "sans-serif"],
+  variable: "--font-sans",
+})
+
 const fontMono = GeistMono
 
 const fontSerif = IBM_Plex_Serif({
@@ -40,6 +48,5 @@ export const fontVariables = cn(
   fontSans.variable,
   fontMono.variable,
   fontSerif.variable,
-  "[--font-sans:var(--font-geist-sans)]",
   "[--font-mono:var(--font-geist-mono)]"
 )

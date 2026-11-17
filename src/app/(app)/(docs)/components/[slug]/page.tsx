@@ -1,5 +1,4 @@
 import type { Metadata, Route } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getTableOfContents } from "fumadocs-core/content/toc"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
@@ -17,6 +16,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { FastLink } from "@/components/fast-link"
 import { MDX } from "@/components/mdx"
 import { TOCInline } from "@/components/toc-inline"
 import { TOCMinimap } from "@/components/toc-minimap"
@@ -184,10 +184,10 @@ export default async function Page({
             size="sm"
             asChild
           >
-            <Link href="/components">
+            <FastLink href="/components">
               <ArrowLeftIcon />
               Components
-            </Link>
+            </FastLink>
           </Button>
 
           <div className="flex items-center gap-2">
@@ -211,12 +211,12 @@ export default async function Page({
                       size="icon-sm"
                       asChild
                     >
-                      <Link
+                      <FastLink
                         href={`/components/${previous.slug}`}
                         aria-label="Previous Component"
                       >
                         <ArrowLeftIcon />
-                      </Link>
+                      </FastLink>
                     </Button>
                   }
                 />
@@ -241,12 +241,12 @@ export default async function Page({
                       size="icon-sm"
                       asChild
                     >
-                      <Link
+                      <FastLink
                         href={`/components/${next.slug}`}
                         aria-label="Next component"
                       >
                         <ArrowRightIcon />
-                      </Link>
+                      </FastLink>
                     </Button>
                   }
                 />
@@ -272,14 +272,16 @@ export default async function Page({
         <div className="screen-dashed-line-bottom after:opacity-80">
           <h1
             data-slot="doc-title"
-            className="screen-line-bottom overflow-x-clip px-4 text-4xl font-medium tracking-tight text-balance"
+            className="screen-line-bottom overflow-x-clip px-4 text-title-regular text-balance text-text-primary"
           >
             {doc.metadata.title}
           </h1>
         </div>
 
         <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
-          <p className="text-muted-foreground">{doc.metadata.description}</p>
+          <p className="text-paragraph-regular text-text-secondary">
+            {doc.metadata.description}
+          </p>
 
           <TOCInline className="lg:hidden" items={toc} />
 

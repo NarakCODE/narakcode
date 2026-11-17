@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic"
 
+import { FastLinkRegion } from "@/components/fast-link"
 import { SiteBottomNav } from "@/components/site-bottom-nav"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
@@ -15,7 +16,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     // - https://base-ui.com/react/overview/quick-start#ios-26-safari
     <div className="group/layout relative isolate">
       <SiteHeader />
-      <main className="max-w-screen overflow-x-clip px-2">{children}</main>
+      <main className="max-w-screen overflow-x-clip px-2">
+        <FastLinkRegion>{children}</FastLinkRegion>
+      </main>
       <SiteFooter />
       <div
         className="pointer-events-none fixed inset-x-0 bottom-0 z-50"

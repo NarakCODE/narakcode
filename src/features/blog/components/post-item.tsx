@@ -1,8 +1,8 @@
 import type { ImageProps } from "next/image"
 import Image from "next/image"
-import Link from "next/link"
 import { formatDate } from "@/utils/format"
 
+import { FastLink } from "@/components/fast-link"
 import { PostExample as DropDrawerPreview } from "@/registry/examples/dropdown-drawer-demo"
 import MorphingPillDemo from "@/registry/examples/morphing-pill-demo"
 import PinListDemo from "@/registry/examples/pin-list-demo"
@@ -76,11 +76,11 @@ export function PostItem({
       )}
 
       <div className="flex flex-col gap-1 p-2">
-        <Heading className="text-lg leading-snug font-medium text-balance">
-          <Link href={`/blog/${post.slug}`}>
+        <Heading className="text-title-mini-medium text-balance text-text-primary">
+          <FastLink href={`/blog/${post.slug}`}>
             <span className="absolute inset-0" aria-hidden />
             {post.metadata.title}
-          </Link>
+          </FastLink>
 
           {(post.metadata.new || post.metadata.updated) && (
             <span className="pointer-events-none ml-2 inline-block size-2 -translate-y-px rounded-full bg-info">
@@ -93,7 +93,7 @@ export function PostItem({
 
         <dl>
           <dt className="sr-only">Published on</dt>
-          <dd className="text-sm text-muted-foreground">
+          <dd className="text-body-small-regular text-text-secondary">
             <time dateTime={post.metadata.createdAt}>
               {formatDate(post.metadata.createdAt, "dd.MM.yyyy")}
             </time>

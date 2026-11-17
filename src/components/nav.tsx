@@ -1,9 +1,9 @@
 import React from "react"
 import type { Route } from "next"
-import Link from "next/link"
 
 import type { NavItem } from "@/types/nav"
 import { cn } from "@/lib/utils"
+import { FastLink } from "@/components/fast-link"
 
 export function Nav({
   items,
@@ -46,11 +46,11 @@ export function Nav({
 export function NavItem({
   className,
   ...props
-}: React.ComponentProps<typeof Link>) {
+}: React.ComponentProps<typeof FastLink>) {
   return (
-    <Link
+    <FastLink
       className={cn(
-        "text-sm font-medium tracking-wide text-muted-foreground transition-[color] hover:text-foreground aria-[current=page]:text-foreground",
+        "text-body-regular-medium tracking-wide text-text-secondary transition-[color] hover:text-text-primary aria-[current=page]:text-text-primary",
         className
       )}
       {...props}

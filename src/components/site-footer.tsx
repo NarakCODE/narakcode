@@ -16,7 +16,7 @@ export function SiteFooter() {
           <div className="stripe-divider h-12" />
         </div>
 
-        <dl className="flex flex-col gap-4 py-8 font-mono [&_dd]:text-sm [&_dt]:text-right [&_dt]:text-sm [&_dt]:text-muted-foreground [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2">
+        <dl className="flex flex-col gap-4 py-8 font-mono [&_dd]:text-body-regular [&_dd]:text-text-primary [&_dt]:text-right [&_dt]:text-body-regular [&_dt]:text-text-secondary [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2">
           <Item>
             <dt>Crafted by</dt>
             <dd>

@@ -677,7 +677,7 @@ function IconCodeTabs({
       </TabsContent>
 
       <TabsContent value="usage" className="min-w-0 space-y-2.5">
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <p className="text-paragraph-small-relaxed text-text-secondary">
           Each Nucleo Glass icon exposes an{" "}
           <code className="code-inline">--icon-accent</code> CSS custom property
           for tinting its layered glass core, while standalone files in{" "}

@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef } from "react"
-import Link from "next/link"
 import { getTwitterProfileUrl } from "@/utils/url"
 import { ArrowRightIcon } from "lucide-react"
 import { useInView, usePageInView } from "motion/react"
@@ -9,6 +8,7 @@ import { useInView, usePageInView } from "motion/react"
 import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/components/base/ui/button"
+import { FastLink } from "@/components/fast-link"
 import type { MarqueeContentProps } from "@/components/kibo-ui/marquee"
 import {
   Marquee,
@@ -111,7 +111,7 @@ export function Testimonials() {
           variant="secondary"
           size="sm"
           nativeButton={false}
-          render={<Link href="/testimonials" />}
+          render={<FastLink href="/testimonials" />}
         >
           All builders
           <ArrowRightIcon />

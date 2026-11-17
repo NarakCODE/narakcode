@@ -1,8 +1,8 @@
-import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/base/ui/button"
+import { FastLink } from "@/components/fast-link"
 import { PostItem } from "@/features/blog/components/post-item"
 import { getBlogPosts } from "@/features/doc/data/documents"
 import {
@@ -55,7 +55,7 @@ export function Blog() {
           variant="secondary"
           size="sm"
           nativeButton={false}
-          render={<Link href="/blog" />}
+          render={<FastLink href="/blog" />}
         >
           All posts
           <ArrowRightIcon />
