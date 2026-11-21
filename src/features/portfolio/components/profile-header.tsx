@@ -33,7 +33,7 @@ export function ProfileHeader() {
           <div className="-mx-px my-0 flex outline-none">
             <div className="relative z-10 size-30 rounded-full min-[24rem]:size-32 sm:size-40">
               <img
-                className="block size-full rounded-[inherit] object-cover grayscale select-none"
+                className="block size-full rounded-[inherit] object-cover select-none"
                 src={USER.avatar}
                 alt={`${USER.displayName}'s avatar`}
                 fetchPriority="high"
