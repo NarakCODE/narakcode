@@ -1,7 +1,4 @@
-import {
-  GlowCard,
-  GlowCardGrid,
-} from "@/registry/transformed/components/glow-card-grid"
+import { GlowCard, GlowCardGrid } from "@/registry/components/glow-card-grid"
 
 export default function GlowCardGridDemo() {
   return (
@@ -33,8 +30,8 @@ const CARDS = [
   },
   {
     name: "David Haz",
-    handle: "@davidhdev",
-    avatar: "https://unavatar.io/x/davidhdev",
+    handle: "@davidhaz",
+    avatar: "https://unavatar.io/x/davidhaz",
   },
   {
     name: "Shu",

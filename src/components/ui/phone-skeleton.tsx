@@ -123,7 +123,7 @@ export function PhoneSkeleton({
       ref={containerRef}
       className={cn(
         "relative overflow-hidden select-none",
-        fillContainer ? "h-full w-full" : "shrink-0",
+        fillContainer ? "size-full" : "shrink-0",
         isBottomCrop &&
           "mask-[linear-gradient(to_bottom,transparent_0%,black_22%)]",
         className
@@ -141,7 +141,7 @@ export function PhoneSkeleton({
         <svg
           role="img"
           aria-label="iPhone 18 Pro Max skeleton frame"
-          className="absolute inset-0 h-full w-full"
+          className="absolute inset-0 size-full"
           viewBox={`${-pad} ${-pad} ${W + pad * 2} ${H + pad * 2}`}
         >
           <defs>

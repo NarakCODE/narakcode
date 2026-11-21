@@ -12,6 +12,8 @@ updatedAt: 2026-04-27
   openInV0Url="https://narakcode.dev/r/toc-minimap.json"
 />
 
+<DocDependencies name="toc-minimap" />
+
 ## Features
 
 - Active heading state updates as readers scroll through the page.
@@ -33,6 +35,12 @@ npx shadcn@latest add @nrcode/toc-minimap
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="toc-minimap" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -40,7 +48,7 @@ npx shadcn@latest add @nrcode/toc-minimap
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install clsx tailwind-merge
+npm install cn
 ```
 
 <Step>Add a cn helper</Step>
@@ -53,8 +61,9 @@ npm install clsx tailwind-merge
 
 <Step>Install the required components</Step>
 
-- [Hover Card](https://ui.shadcn.com/docs/components/hover-card)
+- [Hover Card](https://ui.shadcn.com/docs/components/base/hover-card)
 - [@soundcn/u-mini-map-open](https://www.soundcn.xyz/?sound=u-mini-map-open)
+- [@soundcn/use-sound](https://www.soundcn.xyz)
 
 <Step>Copy and paste the following code into your project</Step>
 

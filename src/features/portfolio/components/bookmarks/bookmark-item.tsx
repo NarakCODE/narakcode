@@ -4,12 +4,12 @@ import { ArrowUpRightIcon } from "lucide-react"
 
 import { UTM_PARAMS } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Separator } from "@/components/ui/separator"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/base/ui/hover-card"
+} from "@/components/ui/hover-card"
+import { Separator } from "@/components/ui/separator"
 import { NewsIcon } from "@/components/icons"
 import {
   BookmarkCategory,
@@ -68,18 +68,14 @@ export function BookmarkItem({
               )}
             >
               {imageUrl ? (
-                <img
-                  src={imageUrl}
-                  alt=""
-                  className="h-full w-full object-cover"
-                />
+                <img src={imageUrl} alt="" className="size-full object-cover" />
               ) : (
                 (bookmark.icon ?? CATEGORY_ICONS[bookmark.category])
               )}
             </div>
 
             <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
-              <h3 className="leading-snug font-medium text-balance">
+              <h3 className="text-body-regular-medium text-balance text-text-primary">
                 <a
                   href={addQueryParams(bookmark.url, UTM_PARAMS)}
                   target="_blank"
@@ -90,7 +86,7 @@ export function BookmarkItem({
                 </a>
               </h3>
 
-              <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+              <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-body-small-regular text-text-secondary">
                 {bookmark.author && (
                   <>
                     <div>
@@ -146,15 +142,17 @@ export function BookmarkItem({
 
         <div className="space-y-2 p-3">
           <div>
-            <h4 className="line-clamp-2 leading-snug font-medium text-foreground">
+            <h4 className="line-clamp-2 text-body-small-medium text-text-primary">
               {bookmark.title}
             </h4>
             {domain && (
-              <p className="mt-0.5 text-xs text-muted-foreground">{domain}</p>
+              <p className="mt-0.5 text-body-mini-regular text-text-secondary">
+                {domain}
+              </p>
             )}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-body-mini-regular text-text-secondary">
             {bookmark.author && <span>{bookmark.author}</span>}
             {bookmark.author && (
               <span className="-mx-1 text-muted-foreground/50">&middot;</span>
@@ -166,7 +164,7 @@ export function BookmarkItem({
             href={addQueryParams(bookmark.url, UTM_PARAMS)}
             target="_blank"
             rel="noopener"
-            className="inline-flex items-center gap-1 text-xs font-medium text-foreground hover:underline"
+            className="inline-flex items-center gap-1 text-body-mini-medium text-text-primary hover:underline"
           >
             Visit site
             <ArrowUpRightIcon className="size-3" />

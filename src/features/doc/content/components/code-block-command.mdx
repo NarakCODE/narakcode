@@ -12,6 +12,8 @@ updatedAt: 2026-04-06
   openInV0Url="https://narakcode.dev/r/code-block-command.json"
 />
 
+<DocDependencies name="code-block-command" />
+
 ## Features
 
 - Switch between pnpm, yarn, npm, and bun with a single click.
@@ -34,6 +36,12 @@ npx shadcn@latest add @nrcode/code-block-command
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="code-block-command" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -41,7 +49,7 @@ npx shadcn@latest add @nrcode/code-block-command
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install clsx tailwind-merge class-variance-authority lucide-react motion jotai radix-ui @base-ui/react
+npm install cn class-variance-authority lucide-react motion jotai @base-ui/react
 ```
 
 <Step>Add a cn helper</Step>
@@ -58,10 +66,7 @@ npm install clsx tailwind-merge class-variance-authority lucide-react motion jot
 
 <Step>Copy and paste the following code into your project</Step>
 
-<ComponentSource
-  src="src/components/base/ui/tabs.tsx"
-  title="components/tabs.tsx"
-/>
+<ComponentSource src="src/components/ui/tabs.tsx" title="components/tabs.tsx" />
 
 <ComponentSource
   name="code-block-command"
@@ -147,7 +152,7 @@ Use `convertNpmCommand` to avoid manually writing commands for each package mana
   name="code-block-command-convert"
 />
 
-### Analytics Tracking
+### Analytics tracking
 
 Track user interactions with analytics services like [PostHog](https://posthog.com), [OpenPanel](https://openpanel.dev), or [Google Analytics](https://analytics.google.com).
 

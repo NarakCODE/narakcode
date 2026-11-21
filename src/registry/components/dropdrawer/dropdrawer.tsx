@@ -18,6 +18,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -41,24 +42,69 @@ const useDropDrawerContext = () => {
   return context
 }
 
+function getMobileHtmlProps(
+  props: Record<string, unknown>
+): React.HTMLAttributes<HTMLDivElement> {
+  const htmlProps: Record<string, unknown> = {}
+
+  for (const [key, value] of Object.entries(props)) {
+    if (
+      key === "id" ||
+      key === "title" ||
+      key === "style" ||
+      key === "role" ||
+      key === "tabIndex" ||
+      key.startsWith("data-") ||
+      key.startsWith("aria-")
+    ) {
+      htmlProps[key] = value
+    }
+  }
+
+  return htmlProps as React.HTMLAttributes<HTMLDivElement>
+}
+
+type DropDrawerProps = Omit<
+  React.ComponentProps<typeof DropdownMenu>,
+  "onOpenChange" | "children"
+> & {
+  children?: React.ReactNode
+  onOpenChange?: (open: boolean) => void
+}
+
 function DropDrawer({
   children,
+  open,
+  defaultOpen,
+  onOpenChange,
+  modal,
   ...props
-}:
-  | React.ComponentProps<typeof Drawer>
-  | React.ComponentProps<typeof DropdownMenu>) {
+}: DropDrawerProps) {
   const isMobile = useIsMobile()
-  const DropdownComponent = isMobile ? Drawer : DropdownMenu
 
   return (
     <DropDrawerContext.Provider value={{ isMobile }}>
-      <DropdownComponent
-        data-slot="drop-drawer"
-        {...(isMobile && { autoFocus: true })}
-        {...props}
-      >
-        {children}
-      </DropdownComponent>
+      {isMobile ? (
+        <Drawer
+          autoFocus
+          open={open}
+          defaultOpen={defaultOpen}
+          onOpenChange={onOpenChange}
+          modal={modal}
+        >
+          {children}
+        </Drawer>
+      ) : (
+        <DropdownMenu
+          open={open}
+          defaultOpen={defaultOpen}
+          onOpenChange={onOpenChange}
+          modal={modal}
+          {...props}
+        >
+          {children}
+        </DropdownMenu>
+      )}
     </DropDrawerContext.Provider>
   )
 }
@@ -66,31 +112,66 @@ function DropDrawer({
 function DropDrawerTrigger({
   className,
   children,
+  render,
   ...props
-}:
-  | React.ComponentProps<typeof DrawerTrigger>
-  | React.ComponentProps<typeof DropdownMenuTrigger>) {
+}: Omit<React.ComponentProps<typeof DropdownMenuTrigger>, "className"> & {
+  className?: string
+}) {
   const { isMobile } = useDropDrawerContext()
-  const TriggerComponent = isMobile ? DrawerTrigger : DropdownMenuTrigger
+
+  if (isMobile) {
+    if (
+      React.isValidElement<{
+        className?: string
+        children?: React.ReactNode
+      }>(render)
+    ) {
+      const triggerElement = React.cloneElement(
+        render,
+        {
+          className: cn(render.props.className, className),
+        },
+        children !== undefined ? children : render.props.children
+      )
+
+      return (
+        <DrawerTrigger data-slot="drop-drawer-trigger" asChild>
+          {triggerElement}
+        </DrawerTrigger>
+      )
+    }
+
+    return (
+      <DrawerTrigger data-slot="drop-drawer-trigger" className={className}>
+        {children}
+      </DrawerTrigger>
+    )
+  }
 
   return (
-    <TriggerComponent
+    <DropdownMenuTrigger
       data-slot="drop-drawer-trigger"
       className={className}
+      render={render}
       {...props}
     >
       {children}
-    </TriggerComponent>
+    </DropdownMenuTrigger>
   )
 }
 
 function DropDrawerContent({
   className,
   children,
+  align = "end",
+  alignOffset,
+  side,
+  sideOffset = 4,
+  collisionPadding,
   ...props
-}:
-  | React.ComponentProps<typeof DrawerContent>
-  | React.ComponentProps<typeof DropdownMenuContent>) {
+}: Omit<React.ComponentProps<typeof DropdownMenuContent>, "className"> & {
+  className?: string
+}) {
   const { isMobile } = useDropDrawerContext()
   const [activeSubmenu, setActiveSubmenu] = React.useState<string | null>(null)
   const [submenuTitle, setSubmenuTitle] = React.useState<string | null>(null)
@@ -292,7 +373,6 @@ function DropDrawerContent({
         <DrawerContent
           data-slot="drop-drawer-content"
           className={cn("max-h-[90vh]", className)}
-          {...props}
         >
           {activeSubmenu ? (
             <>
@@ -302,7 +382,7 @@ function DropDrawerContent({
                     onClick={goBack}
                     className="rounded-full p-1 hover:bg-muted/50"
                   >
-                    <ChevronLeftIcon className="h-5 w-5" />
+                    <ChevronLeftIcon className="size-5" />
                   </button>
                   <DrawerTitle>{submenuTitle || "Submenu"}</DrawerTitle>
                 </div>
@@ -322,7 +402,7 @@ function DropDrawerContent({
                     animate="center"
                     exit="exit"
                     transition={transition}
-                    className="h-full w-full space-y-1.5 pb-6"
+                    className="size-full space-y-1.5 pb-6"
                   >
                     {activeSubmenu
                       ? // eslint-disable-next-line react-hooks/refs
@@ -376,10 +456,13 @@ function DropDrawerContent({
     >
       <DropdownMenuContent
         data-slot="drop-drawer-content"
-        align="end"
-        sideOffset={4}
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset}
+        collisionPadding={collisionPadding}
         className={cn(
-          "max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[220px] overflow-y-auto",
+          "max-h-(--available-height) min-w-55 overflow-y-auto",
           className
         )}
         {...props}
@@ -393,14 +476,14 @@ function DropDrawerContent({
 function DropDrawerItem({
   className,
   children,
-  onSelect,
   onClick,
   icon,
   variant = "default",
   inset,
   disabled,
   ...props
-}: React.ComponentProps<typeof DropdownMenuItem> & {
+}: Omit<React.ComponentProps<typeof DropdownMenuItem>, "className"> & {
+  className?: string
   icon?: React.ReactNode
 }) {
   const { isMobile } = useDropDrawerContext()
@@ -445,8 +528,7 @@ function DropDrawerItem({
   if (isMobile) {
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
       if (disabled) return
-      if (onClick) onClick(e)
-      if (onSelect) onSelect(e as unknown as Event)
+      onClick?.(e as Parameters<NonNullable<typeof onClick>>[0])
     }
 
     // Only wrap in DrawerClose if it's not a submenu item
@@ -458,7 +540,7 @@ function DropDrawerItem({
         data-inset={inset}
         data-disabled={disabled}
         className={cn(
-          "flex cursor-pointer items-center justify-between px-4 py-4",
+          "flex cursor-pointer items-center justify-between p-4",
           // Only apply margin, background and corners if not in a group
           !isInsideGroup && "mx-2 my-1.5 rounded-md bg-accent dark:bg-accent",
           // For items in a group, don't add background but add more padding
@@ -470,10 +552,10 @@ function DropDrawerItem({
         )}
         onClick={handleClick}
         aria-disabled={disabled}
-        {...props}
+        {...getMobileHtmlProps(props)}
       >
         <div className="flex items-center gap-2">{children}</div>
-        {icon && <div className="flex-shrink-0">{icon}</div>}
+        {icon && <div className="shrink-0">{icon}</div>}
       </div>
     )
 
@@ -495,8 +577,7 @@ function DropDrawerItem({
       data-variant={variant}
       data-inset={inset}
       className={className}
-      onSelect={onSelect}
-      onClick={onClick as React.MouseEventHandler<HTMLDivElement>}
+      onClick={onClick}
       variant={variant}
       inset={inset}
       disabled={disabled}
@@ -535,9 +616,9 @@ function DropDrawerLabel({
   className,
   children,
   ...props
-}:
-  | React.ComponentProps<typeof DropdownMenuLabel>
-  | React.ComponentProps<typeof DrawerTitle>) {
+}: Omit<React.ComponentProps<typeof DropdownMenuLabel>, "className"> & {
+  className?: string
+}) {
   const { isMobile } = useDropDrawerContext()
 
   if (isMobile) {
@@ -549,7 +630,6 @@ function DropDrawerLabel({
             "px-4 py-2 text-sm font-medium text-muted-foreground",
             className
           )}
-          {...props}
         >
           {children}
         </DrawerTitle>
@@ -572,7 +652,7 @@ function DropDrawerFooter({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof DrawerFooter> | React.ComponentProps<"div">) {
+}: React.ComponentProps<"div">) {
   const { isMobile } = useDropDrawerContext()
 
   if (isMobile) {
@@ -603,7 +683,8 @@ function DropDrawerGroup({
   className,
   children,
   ...props
-}: React.ComponentProps<"div"> & {
+}: Omit<React.ComponentProps<typeof DropdownMenuGroup>, "className"> & {
+  className?: string
   children: React.ReactNode
 }) {
   const { isMobile } = useDropDrawerContext()
@@ -644,24 +725,22 @@ function DropDrawerGroup({
           "mx-2 my-3 overflow-hidden rounded-xl bg-accent dark:bg-accent",
           className
         )}
-        {...props}
+        {...getMobileHtmlProps(props)}
       >
         {childrenWithSeparators}
       </div>
     )
   }
 
-  // On desktop, use a div with proper role and attributes
   return (
-    <div
+    <DropdownMenuGroup
       data-drop-drawer-group
       data-slot="drop-drawer-group"
-      role="group"
       className={className}
       {...props}
     >
       {children}
-    </div>
+    </DropdownMenuGroup>
   )
 }
 
@@ -772,25 +851,18 @@ function DropDrawerSub({
     )
   }
 
-  // For desktop, pass the generated ID to the DropdownMenuSub
-  return (
-    <DropdownMenuSub
-      data-slot="drop-drawer-sub"
-      data-submenu-id={submenuId}
-      // Don't pass id to DropdownMenuSub as it doesn't accept this prop
-      {...props}
-    >
-      {children}
-    </DropdownMenuSub>
-  )
+  return <DropdownMenuSub {...props}>{children}</DropdownMenuSub>
 }
 
 function DropDrawerSubTrigger({
   className,
   inset,
+  icon,
+  onClick,
   children,
   ...props
-}: React.ComponentProps<typeof DropdownMenuSubTrigger> & {
+}: Omit<React.ComponentProps<typeof DropdownMenuSubTrigger>, "className"> & {
+  className?: string
   icon?: React.ReactNode
 }) {
   const { isMobile } = useDropDrawerContext()
@@ -835,7 +907,7 @@ function DropDrawerSubTrigger({
 
   if (isMobile) {
     // Find the parent submenu ID
-    const handleClick = (e: React.MouseEvent) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
       e.preventDefault()
       e.stopPropagation()
 
@@ -875,21 +947,10 @@ function DropDrawerSubTrigger({
     }
 
     // Combine onClick handlers
-    const combinedOnClick = (e: React.MouseEvent) => {
-      // Call the original onClick if provided
-      const typedProps = props as Record<string, unknown>
-      if (typedProps.onClick) {
-        const originalOnClick =
-          typedProps.onClick as React.MouseEventHandler<HTMLDivElement>
-        originalOnClick(e as React.MouseEvent<HTMLDivElement>)
-      }
-
-      // Call our navigation handler
+    const combinedOnClick = (e: React.MouseEvent<HTMLDivElement>) => {
+      onClick?.(e as Parameters<NonNullable<typeof onClick>>[0])
       handleClick(e)
     }
-
-    // Remove onClick from props to avoid duplicate handlers
-    const { ...restProps } = props as Record<string, unknown>
 
     // Don't wrap in DrawerClose for submenu triggers
     return (
@@ -898,7 +959,7 @@ function DropDrawerSubTrigger({
         data-slot="drop-drawer-sub-trigger"
         data-inset={inset}
         className={cn(
-          "flex cursor-pointer items-center justify-between px-4 py-4",
+          "flex cursor-pointer items-center justify-between p-4",
           // Only apply margin, background and corners if not in a group
           !isInsideGroup && "mx-2 my-1.5 rounded-md bg-accent dark:bg-accent",
           // For items in a group, don't add background but add more padding
@@ -907,10 +968,13 @@ function DropDrawerSubTrigger({
           className
         )}
         onClick={combinedOnClick}
-        {...restProps}
+        {...getMobileHtmlProps(props)}
       >
-        <div className="flex items-center gap-2">{children}</div>
-        <ChevronRightIcon className="h-5 w-5" />
+        <div className="flex items-center gap-2">
+          {icon && <div className="shrink-0">{icon}</div>}
+          {children}
+        </div>
+        <ChevronRightIcon className="size-5" />
       </div>
     )
   }
@@ -921,8 +985,10 @@ function DropDrawerSubTrigger({
       data-inset={inset}
       className={className}
       inset={inset}
+      onClick={onClick}
       {...props}
     >
+      {icon}
       {children}
     </DropdownMenuSubTrigger>
   )
@@ -933,7 +999,9 @@ function DropDrawerSubContent({
   sideOffset = 4,
   children,
   ...props
-}: React.ComponentProps<typeof DropdownMenuSubContent>) {
+}: Omit<React.ComponentProps<typeof DropdownMenuSubContent>, "className"> & {
+  className?: string
+}) {
   const { isMobile } = useDropDrawerContext()
 
   if (isMobile) {
@@ -946,10 +1014,7 @@ function DropDrawerSubContent({
     <DropdownMenuSubContent
       data-slot="drop-drawer-sub-content"
       sideOffset={sideOffset}
-      className={cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-lg",
-        className
-      )}
+      className={cn("min-w-32", className)}
       {...props}
     >
       {children}

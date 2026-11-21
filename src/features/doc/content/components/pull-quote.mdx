@@ -1,0 +1,94 @@
+---
+title: Pull Quote
+description: Display a testimonial quote with author attribution and source link.
+image: https://assets.narakcode.dev/images/blog/testimonial-2.webp
+createdAt: 2026-06-26
+updatedAt: 2026-06-26
+---
+
+<ComponentPreview
+  name="pull-quote-demo"
+  openInV0Url="https://narakcode.dev/r/pull-quote.json"
+/>
+
+<DocDependencies name="pull-quote" />
+
+## Use cases
+
+- One standout quote inside a docs page or article.
+- Customer feedback between sections of a landing page.
+- Endorsement next to a product demo.
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @nrcode/pull-quote
+```
+
+</TabsContent>
+
+<TabsContent value="prompt">
+
+<InstallPrompt name="pull-quote" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install cn
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/registry/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource name="pull-quote" title="components/pull-quote.tsx" />
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { PullQuote } from "@/components/pull-quote"
+```
+
+```tsx
+<PullQuote
+  authorName="Guillermo Rauch"
+  authorTagline="CEO at Vercel"
+  url="https://x.com/rauchg/status/1978913158514237669"
+  quote="awesome. Love the components, especially slide-to-unlock. Great job"
+/>
+```
+
+## API reference
+
+### PullQuote
+
+<AutoTypeTable
+  path="src/registry/components/pull-quote/pull-quote.tsx"
+  name="PullQuoteProps"
+/>

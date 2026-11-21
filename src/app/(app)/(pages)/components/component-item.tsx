@@ -1,16 +1,17 @@
-import Link from "next/link"
-
 import { cn } from "@/lib/utils"
+import { IconTile } from "@/components/ui/icon-tile"
+import { FastLink } from "@/components/fast-link"
 
 export function ComponentItem({
   className,
   ...props
-}: React.ComponentProps<typeof Link>) {
+}: React.ComponentProps<typeof FastLink>) {
   return (
-    <Link
+    <FastLink
       data-slot="component-item"
       className={cn(
-        "flex items-center gap-4 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent-muted",
+        "flex items-center gap-2 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent-muted",
+        "outline-none focus-visible:inset-ring-2 focus-visible:inset-ring-ring/50",
         className
       )}
       {...props}
@@ -21,35 +22,32 @@ export function ComponentItem({
 export function ComponentItemIcon({
   className,
   ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="component-item-icon"
-      className={cn(
-        "relative flex size-6 shrink-0 items-center justify-center rounded-md",
-        "border border-muted-foreground/15 bg-muted ring-1 ring-line ring-offset-1 ring-offset-background",
-        "[&_svg]:pointer-events-none [&_svg]:text-muted-foreground [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
-      {...props}
-    />
-  )
+}: React.ComponentProps<typeof IconTile>) {
+  // Positioned so ComponentItemDot can anchor to the tile corner.
+  return <IconTile className={cn("relative", className)} {...props} />
 }
 
+const DOT_LABELS = {
+  new: "New",
+  updated: "Updated",
+} as const
+
 export function ComponentItemDot({
+  type,
   className,
   ...props
-}: Omit<React.ComponentProps<"span">, "children">) {
+}: Omit<React.ComponentProps<"span">, "children"> & {
+  type: keyof typeof DOT_LABELS
+}) {
   return (
     <span
       data-slot="component-item-dot"
-      className={cn(
-        "absolute -top-1 -right-1 flex items-center justify-center",
-        className
-      )}
+      data-type={type}
+      className={cn("flex shrink-0 items-center justify-center", className)}
       {...props}
     >
-      <span className="flex size-2 rounded-sm bg-info ring-1 ring-background" />
+      <span className="flex size-1.5 rounded-sm bg-info" />
+      <span className="sr-only">({DOT_LABELS[type]})</span>
     </span>
   )
 }

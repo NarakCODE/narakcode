@@ -1,17 +1,17 @@
 import { GraduationCapIcon, InfinityIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Separator } from "@/components/ui/separator"
-import { Tag } from "@/components/ui/tag"
-import { Prose } from "@/components/ui/typography"
-import {
-  Collapsible,
-  CollapsibleChevronsUpDownIcon,
-} from "@/components/base/collapsible-animated"
 import {
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/base/ui/collapsible"
+} from "@/components/ui/collapsible"
+import { IconTile } from "@/components/ui/icon-tile"
+import { Separator } from "@/components/ui/separator"
+import { Tag } from "@/components/ui/tag"
+import {
+  Collapsible,
+  CollapsibleChevronsUpDownIcon,
+} from "@/components/collapsible-animated"
 import { Markdown } from "@/components/markdown"
 import type { Education } from "@/features/portfolio/types/education"
 
@@ -25,7 +25,7 @@ export function EducationItem({ item }: { item: Education }) {
         className="pointer-events-none absolute bottom-0 left-3 hidden size-4 bg-background group-last/education-item:flex"
         aria-hidden
       >
-        <span className="size-full -translate-y-2.25 rounded-bl-sm border-b border-l" />
+        <span className="size-full -translate-y-2.25 border-b border-l" />
       </div>
 
       <Collapsible defaultOpen={item.isExpanded} disabled={!item.description}>
@@ -37,28 +37,23 @@ export function EducationItem({ item }: { item: Education }) {
             "data-disabled:before:content-none"
           )}
         >
-          <div className="relative z-1 mb-1 flex items-start gap-3 text-base">
-            <div
-              className={cn(
-                "flex size-6 shrink-0 items-center justify-center rounded-md",
-                "bg-muted text-muted-foreground",
-                "border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background",
-                "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
-              )}
-            >
+          <div className="relative z-1 mb-1 flex items-start gap-3">
+            <IconTile>
               <GraduationCapIcon />
-            </div>
+            </IconTile>
 
-            <h3 className="flex-1 font-medium text-balance">{item.school}</h3>
+            <h3 className="flex-1 text-body-regular-medium text-balance text-text-primary">
+              {item.school}
+            </h3>
 
-            <div className="shrink-0 text-muted-foreground group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
+            <div className="shrink-0 text-text-secondary group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
               <CollapsibleChevronsUpDownIcon duration={0.15} />
             </div>
           </div>
 
-          <dl className="flex flex-wrap items-center gap-x-2 pl-9 text-sm text-muted-foreground">
+          <dl className="flex flex-wrap items-center gap-x-2 pl-9 text-body-small-regular text-text-secondary">
             <div>
-              <dt className="sr-only">Employment period</dt>
+              <dt className="sr-only">Study period</dt>
               <dd className="flex items-center gap-0.5 tabular-nums">
                 <span>{start}</span>
                 <span className="font-mono">—</span>
@@ -108,9 +103,9 @@ export function EducationItem({ item }: { item: Education }) {
 
         <CollapsibleContent className="overflow-hidden">
           {item.description && (
-            <Prose className="pt-2 pl-9">
+            <div className="typeset typeset-description pt-3 pb-1 pl-9">
               <Markdown>{item.description}</Markdown>
-            </Prose>
+            </div>
           )}
         </CollapsibleContent>
 

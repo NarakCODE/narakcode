@@ -1,4 +1,4 @@
-# AI agent guidelines for chanhdai.com
+# AI agent guidelines for narakcode.dev
 
 Next.js 16 (App Router) portfolio, blog, and shadcn registry website.
 
@@ -6,15 +6,15 @@ Next.js 16 (App Router) portfolio, blog, and shadcn registry website.
 
 ## Project structure
 
-| Directory                              | Purpose                                                    |
-| -------------------------------------- | ---------------------------------------------------------- |
-| `src/app/`                             | App Router pages, layouts, API routes                      |
-| `src/components/`                      | Shared UI components                                       |
-| `src/registry/`                        | Registry source (components, hooks, blocks, examples, lib) |
-| `src/features/`                        | Feature modules: `doc`, `blog`, `portfolio`, `sponsor`     |
-| `src/config/`                          | Site (`site.ts`), registry (`registry.ts`), JSON-LD config |
-| `src/scripts/`                         | Build scripts (registry, icons, capture) run with Bun      |
-| `src/hooks/`, `src/lib/`, `src/utils/` | Hooks, libraries, utilities                                |
+| Directory                              | Purpose                                                                                     |
+| -------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `src/app/`                             | App Router pages, layouts, API routes                                                       |
+| `src/components/`                      | Shared UI components                                                                        |
+| `src/registry/`                        | Registry source (components, hooks, blocks, examples, lib)                                  |
+| `src/features/`                        | Feature modules: `doc`, `blog`, `portfolio`, `sponsor`, `blocks`, `icons`, `tools`, `vault` |
+| `src/config/`                          | Site (`site.ts`), registry (`registry.ts`), JSON-LD config                                  |
+| `src/scripts/`                         | Build scripts (registry, capture) run with Bun                                              |
+| `src/hooks/`, `src/lib/`, `src/utils/` | Hooks, libraries, utilities                                                                 |
 
 **Key files**: `components.json` (shadcn config), `src/features/portfolio/data/` (portfolio data), `.env.example` (env vars)
 
@@ -31,7 +31,7 @@ Built on shadcn/ui. Registry types and their definition files:
 | `registry:lib`       | `src/registry/lib/_registry.ts`        |
 | `registry:style`     | `src/registry/styles/_registry.ts`     |
 
-**NEVER EDIT** auto-generated outputs of `pnpm registry:build`: `registry.json`, `src/registry/__index__.tsx`, `src/registry/transformed/`, `public/r/*.json`
+**NEVER EDIT** auto-generated outputs of `pnpm registry:build`: `registry.json`, `registry-stats.json`, `src/registry/__index__.tsx`, `public/r/*.json`
 
 ### Adding a new component
 
@@ -71,5 +71,18 @@ pnpm format:write       # Prettier
 pnpm check-types        # Type checking (tsc --noEmit)
 pnpm registry:build     # Build shadcn registry (Bun script + shadcn build)
 pnpm registry:validate  # Validate generated registry.json
-pnpm icons:build        # Build registry icons
 ```
+
+### Local dev URL
+
+A dev server is usually already running behind `https://nrcode.localhost` (see `allowedDevOrigins` in `next.config.ts` and `NEXT_PUBLIC_APP_URL` in `.env.local`). Use that origin to test pages and routes, never `http://localhost:3000` or a raw port. It also makes generated absolute URLs match what the code produces.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

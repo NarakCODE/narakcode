@@ -7,6 +7,7 @@ import { useTiks } from "@rexa-developer/tiks/react"
 import { IconCheck, IconCopy, IconX } from "@tabler/icons-react"
 import { ChevronDownIcon } from "lucide-react"
 
+import { SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import type { CopyState } from "@/hooks/use-copy-to-clipboard"
 import { Button } from "@/components/ui/button"
 import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
@@ -35,15 +36,24 @@ function getSourcePath(markdownUrl: string) {
   const segments = cleanPath.split("/")
 
   if (
+    segments[0] === "doc.md" &&
+    segments.length === 3 &&
+    (segments[2] === "en" || segments[2] === "km")
+  ) {
+    return `blog/${segments[2]}/${segments[1]}.mdx`
+  }
+
+  if (
     segments[0] === "blog" &&
     segments.length === 3 &&
-    (segments[2] === "en.mdx" || segments[2] === "km.mdx")
+    /^(en|km)\.mdx?$/.test(segments[2])
   ) {
-    const language = segments[2].replace(".mdx", "")
+    const language = segments[2].replace(/\.mdx?$/, "")
     return `blog/${language}/${segments[1]}.mdx`
   }
 
-  return cleanPath
+  // Source files remain .mdx even though the public URL uses .md
+  return cleanPath.replace(/\.md$/, ".mdx")
 }
 
 export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
@@ -146,7 +156,7 @@ export function ViewOptions({
       },
       {
         title: "Open in GitHub",
-        href: `https://github.com/ncdai/chanhdai.com/blob/main/src/features/doc/content/${getSourcePath(markdownUrl)}`,
+        href: `${SOURCE_CODE_GITHUB_URL}/blob/main/src/features/doc/content/${getSourcePath(markdownUrl)}`,
         icon: GitHubIcon,
       },
       {
@@ -202,15 +212,17 @@ export function ViewOptions({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          className="size-7 border-none active:scale-none"
-          variant="secondary"
-          size="icon-sm"
-          aria-label="View Options"
-        >
-          <ChevronDownIcon className="mt-0.5 size-4" />
-        </Button>
+      <DropdownMenuTrigger
+        render={
+          <Button
+            className="size-7 border-none active:scale-none"
+            variant="secondary"
+            size="icon-sm"
+            aria-label="View Options"
+          />
+        }
+      >
+        <ChevronDownIcon className="mt-0.5 size-4" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
@@ -218,14 +230,15 @@ export function ViewOptions({
         align="start"
         alignOffset={-6}
         collisionPadding={16}
-        onCloseAutoFocus={(e) => e.preventDefault()}
+        finalFocus={false}
       >
         {items.map(({ title, href, icon: Icon }) => (
-          <DropdownMenuItem key={href} asChild>
-            <a href={href} rel="noopener" target="_blank">
-              <Icon />
-              {title}
-            </a>
+          <DropdownMenuItem
+            key={href}
+            render={<a href={href} rel="noopener" target="_blank" />}
+          >
+            <Icon />
+            {title}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

@@ -33,7 +33,7 @@ export function ToolIcon({
           className
         )}
       >
-        <span className="font-mono text-[10px] font-semibold uppercase">
+        <span className="font-mono text-body-micro-medium uppercase">
           {name.charAt(0)}
         </span>
       </div>

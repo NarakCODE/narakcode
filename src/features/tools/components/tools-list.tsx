@@ -23,7 +23,7 @@ export function ToolsList({
   if (toolsByCategory.length === 0) {
     return (
       <div className="screen-line-top screen-line-bottom my-8 p-8 text-center">
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-body-regular text-text-secondary">
           No tools found matching your search.
         </p>
       </div>
@@ -41,10 +41,10 @@ export function ToolsList({
         return (
           <div key={category} className="flex flex-col bg-background">
             <div className="flex items-center justify-between border-b border-line bg-accent/25 px-3.5 py-2.5">
-              <h2 className="font-heading text-xs font-semibold tracking-wider text-foreground uppercase">
+              <h2 className="text-body-mini-medium tracking-wider text-text-primary uppercase">
                 {category}
               </h2>
-              <span className="rounded-full bg-accent px-1.5 py-0.5 font-mono text-[10px] font-medium text-muted-foreground">
+              <span className="rounded-full bg-accent px-1.5 py-0.5 font-mono text-body-micro-medium text-text-secondary">
                 {categoryTools.length}
               </span>
             </div>

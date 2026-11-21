@@ -1,6 +1,5 @@
 import { cache } from "react"
 import type { Metadata, Route } from "next"
-import Link from "next/link"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 import type { SoftwareSourceCode, WithContext } from "schema-dts"
 
@@ -17,7 +16,8 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip"
+} from "@/components/ui/tooltip"
+import { FastLink } from "@/components/fast-link"
 import { BlocksNav } from "@/app/(app)/(blocks)/blocks/(list)/blocks-nav"
 import { BlockDisplay } from "@/app/(preview)/components/block-display"
 import { DocKeyboardShortcuts } from "@/features/doc/components/doc-keyboard-shortcuts"
@@ -171,22 +171,21 @@ export default async function BlockViewPage({
         <div className="stripe-divider" />
       </div>
 
-      <div className="flex items-center justify-between p-2 pl-4">
+      <div className="flex items-center justify-between gap-4 p-2 pl-4">
         <Button
           className="h-7 gap-2 border-none px-0 text-muted-foreground hover:text-foreground"
           variant="link"
           size="sm"
-          asChild
-        >
-          <Link href={`/blocks/${category}`}>
-            <ArrowLeftIcon />
-            {categoryItem?.title || "Blocks"}
-          </Link>
-        </Button>
+          nativeButton={false}
+          render={
+            <FastLink href={`/blocks/${category}`}>
+              <ArrowLeftIcon />
+              {categoryItem?.title || "Blocks"}
+            </FastLink>
+          }
+        />
 
         <div className="flex items-center gap-2">
-          <DocShareMenu title={name} url={`/blocks/${category}/${name}`} />
-
           {previous && (
             <Tooltip>
               <TooltipTrigger
@@ -195,15 +194,16 @@ export default async function BlockViewPage({
                     className="size-7 border-none"
                     variant="secondary"
                     size="icon-sm"
-                    asChild
-                  >
-                    <Link
-                      href={`/blocks/${previous}`}
-                      aria-label="Previous Block"
-                    >
-                      <ArrowLeftIcon />
-                    </Link>
-                  </Button>
+                    nativeButton={false}
+                    render={
+                      <FastLink
+                        href={`/blocks/${previous}`}
+                        aria-label="Previous Block"
+                      >
+                        <ArrowLeftIcon />
+                      </FastLink>
+                    }
+                  />
                 }
               />
               <TooltipContent className="pr-2 pl-3">
@@ -225,12 +225,16 @@ export default async function BlockViewPage({
                     className="size-7 border-none"
                     variant="secondary"
                     size="icon-sm"
-                    asChild
-                  >
-                    <Link href={`/blocks/${next}`} aria-label="Next Block">
-                      <ArrowRightIcon />
-                    </Link>
-                  </Button>
+                    nativeButton={false}
+                    render={
+                      <FastLink
+                        href={`/blocks/${next}`}
+                        aria-label="Next Block"
+                      >
+                        <ArrowRightIcon />
+                      </FastLink>
+                    }
+                  />
                 }
               />
               <TooltipContent className="pr-2 pl-3">
@@ -243,16 +247,14 @@ export default async function BlockViewPage({
               </TooltipContent>
             </Tooltip>
           )}
+
+          <DocShareMenu title={name} url={`/blocks/${category}/${name}`} />
         </div>
       </div>
 
       <div className="screen-line-top h-px" />
 
       <BlockDisplay name={name} />
-
-      <div className="screen-line-top h-px" />
-
-      <div className="stripe-divider" />
     </>
   )
 }

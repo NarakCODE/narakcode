@@ -1,22 +1,19 @@
+const MARK_PATH =
+  "M5.1032 49.8167C2.3220 47.8193 0.0674 43.4242 0.0674 40.0000L0.0674 22.9067C0.0674 19.4826 2.3220 15.0875 5.1032 13.0900L19.9642 2.4167C22.7454 0.4193 26.5211 1.1220 28.3975 3.9863L46.3988 31.4654C46.5199 31.6502 46.6180 31.6209 46.6180 31.4000L46.6180 8.3282C46.6180 8.1072 46.7635 8.0326 46.9429 8.1615L60.8968 18.1833C63.6780 20.1807 65.9326 24.5758 65.9326 28.0000L65.9326 45.0933C65.9326 48.5174 63.6780 52.9125 60.8968 54.9100L46.0358 65.5833C43.2546 67.5807 39.4789 66.8780 37.6025 64.0137L19.6012 36.5346C19.4801 36.3498 19.3820 36.3791 19.3820 36.6000L19.3820 59.6718C19.3820 59.8928 19.2365 59.9674 19.0571 59.8385Z"
+
 export function ChanhDaiMark(props: React.ComponentProps<"svg">) {
   return (
     <svg
-      viewBox="0 0 827 418"
+      viewBox="0 0 66 68"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <rect x="309" width="103" height="412" fill="currentColor" />
-      <rect x="515" y="106" width="103" height="206" fill="currentColor" />
-      <rect x="618" width="206" height="106" fill="currentColor" />
-      <rect x="618" y="312" width="209" height="100" fill="currentColor" />
-      <rect x="103" y="106" width="103" height="103" fill="currentColor" />
-      <rect x="206" y="209" width="103" height="103" fill="currentColor" />
-      <rect width="103" height="412" fill="currentColor" />
+      <path d={MARK_PATH} fill="currentColor" />
     </svg>
   )
 }
 
 export function getMarkSVG(color = "currentColor") {
-  return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 827 418"><rect x="309" width="103" height="412" fill="${color}"/><rect x="515" y="106" width="103" height="206" fill="${color}"/><rect x="618" width="206" height="106" fill="${color}"/><rect x="618" y="312" width="209" height="100" fill="${color}"/><rect x="103" y="106" width="103" height="103" fill="${color}"/><rect x="206" y="209" width="103" height="103" fill="${color}"/><rect width="103" height="412" fill="${color}"/></svg>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 66 68"><path d="${MARK_PATH}" fill="${color}"/></svg>`
 }

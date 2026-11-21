@@ -12,6 +12,8 @@ updatedAt: 2026-03-28
   openInV0Url="https://narakcode.dev/r/github-stars.json"
 />
 
+<DocDependencies name="github-stars" />
+
 ## Features
 
 - Displays the star count of a specified GitHub repository.
@@ -33,14 +35,20 @@ npx shadcn@latest add @nrcode/github-stars
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="github-stars" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
 
 <Step>Install the required shadcn/ui components</Step>
 
-- https://ui.shadcn.com/docs/components/button
-- https://ui.shadcn.com/docs/components/tooltip
+- [Button](https://ui.shadcn.com/docs/components/base/button)
+- [Tooltip](https://ui.shadcn.com/docs/components/base/tooltip)
 
 <Step>Copy and paste the following code into your project</Step>
 
@@ -61,7 +69,7 @@ import { GithubStars } from "@/components/github-stars"
 ```
 
 ```tsx
-<GithubStars repo="narakcode/chanhdai.com" stargazersCount={2050} />
+<GithubStars repo="NarakCODE/narakcode.dev" stargazersCount={2050} />
 ```
 
 ## API reference

@@ -52,42 +52,44 @@ export default function PostExample() {
             </div>
           </div>
           <DropDrawer open={open} onOpenChange={setOpen}>
-            <DropDrawerTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 rounded-full"
-              >
-                <MoreVertical className="h-5 w-5" />
-              </Button>
+            <DropDrawerTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="size-8 rounded-full"
+                />
+              }
+            >
+              <MoreVertical className="size-5" />
             </DropDrawerTrigger>
             <DropDrawerContent>
               {/* First group: Add to feed, Save, Not interested */}
               <DropDrawerGroup>
                 <DropDrawerSub>
                   <DropDrawerSubTrigger
-                    icon={<LayoutDashboard className="h-5 w-5" />}
+                    icon={<LayoutDashboard className="size-5" />}
                   >
                     Add to feed
                   </DropDrawerSubTrigger>
                   <DropDrawerSubContent>
-                    <DropDrawerItem icon={<Home className="h-5 w-5" />}>
+                    <DropDrawerItem icon={<Home className="size-5" />}>
                       Home
                     </DropDrawerItem>
                     <DropDrawerItem
-                      icon={<LayoutDashboard className="h-5 w-5" />}
+                      icon={<LayoutDashboard className="size-5" />}
                     >
                       Work
                     </DropDrawerItem>
-                    <DropDrawerItem icon={<BookmarkIcon className="h-5 w-5" />}>
+                    <DropDrawerItem icon={<BookmarkIcon className="size-5" />}>
                       Personal
                     </DropDrawerItem>
                   </DropDrawerSubContent>
                 </DropDrawerSub>
-                <DropDrawerItem icon={<BookmarkIcon className="h-5 w-5" />}>
+                <DropDrawerItem icon={<BookmarkIcon className="size-5" />}>
                   Save
                 </DropDrawerItem>
-                <DropDrawerItem icon={<EyeOffIcon className="h-5 w-5" />}>
+                <DropDrawerItem icon={<EyeOffIcon className="size-5" />}>
                   Not interested
                 </DropDrawerItem>
               </DropDrawerGroup>
@@ -96,23 +98,23 @@ export default function PostExample() {
 
               {/* Second group: Mute, Advanced options, Unfollow */}
               <DropDrawerGroup>
-                <DropDrawerItem icon={<UserMinusIcon className="h-5 w-5" />}>
+                <DropDrawerItem icon={<UserMinusIcon className="size-5" />}>
                   Mute
                 </DropDrawerItem>
-                <DropDrawerItem icon={<UserXIcon className="h-5 w-5" />}>
+                <DropDrawerItem icon={<UserXIcon className="size-5" />}>
                   Unfollow
                 </DropDrawerItem>
                 <DropDrawerSub>
-                  <DropDrawerSubTrigger icon={<Settings className="h-5 w-5" />}>
+                  <DropDrawerSubTrigger icon={<Settings className="size-5" />}>
                     Advanced options
                   </DropDrawerSubTrigger>
                   <DropDrawerSubContent>
                     <DropDrawerGroup>
-                      <DropDrawerItem icon={<EyeOffIcon className="h-5 w-5" />}>
+                      <DropDrawerItem icon={<EyeOffIcon className="size-5" />}>
                         Hide this post
                       </DropDrawerItem>
                       <DropDrawerItem
-                        icon={<AlertTriangle className="h-5 w-5" />}
+                        icon={<AlertTriangle className="size-5" />}
                       >
                         Block content
                       </DropDrawerItem>
@@ -120,16 +122,16 @@ export default function PostExample() {
                     <DropDrawerSeparator />
                     <DropDrawerSub>
                       <DropDrawerSubTrigger
-                        icon={<ShieldIcon className="h-5 w-5" />}
+                        icon={<ShieldIcon className="size-5" />}
                       >
                         Privacy options
                       </DropDrawerSubTrigger>
                       <DropDrawerSubContent>
-                        <DropDrawerItem icon={<LockIcon className="h-5 w-5" />}>
+                        <DropDrawerItem icon={<LockIcon className="size-5" />}>
                           Restrict sharing
                         </DropDrawerItem>
                         <DropDrawerItem
-                          icon={<EyeOffIcon className="h-5 w-5" />}
+                          icon={<EyeOffIcon className="size-5" />}
                         >
                           Manage visibility
                         </DropDrawerItem>
@@ -145,7 +147,7 @@ export default function PostExample() {
               <DropDrawerGroup>
                 <DropDrawerItem
                   variant="destructive"
-                  icon={<AlertTriangle className="h-5 w-5" />}
+                  icon={<AlertTriangle className="size-5" />}
                 >
                   Report
                 </DropDrawerItem>
@@ -155,7 +157,7 @@ export default function PostExample() {
 
               {/* Fourth group: Copy link */}
               <DropDrawerGroup>
-                <DropDrawerItem icon={<Copy className="h-5 w-5" />}>
+                <DropDrawerItem icon={<Copy className="size-5" />}>
                   Copy link
                 </DropDrawerItem>
               </DropDrawerGroup>

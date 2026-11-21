@@ -4,13 +4,17 @@
   "title": "Team 01",
   "author": "NarakCODE <channarakluy@gmail.com>",
   "description": "A team section with glowing cards.",
+  "dependencies": [
+    "@dicebear/core",
+    "@dicebear/styles"
+  ],
   "registryDependencies": [
     "https://narakcode.dev/r/glow-card-grid.json"
   ],
   "files": [
     {
       "path": "src/registry/blocks/team-01/team-01.tsx",
-      "content": "import { GlowCard, GlowCardGrid } from \"@/registry/components/glow-card-grid\"\n\nexport default function Team01() {\n  return (\n    <div className=\"container px-4 py-8\">\n      <GlowCardGrid className=\"lg:grid-cols-4\">\n        {CARDS.map((card) => (\n          <GlowCard\n            key={card.name}\n            name={card.name}\n            handle={card.handle}\n            avatar={card.avatar}\n          />\n        ))}\n      </GlowCardGrid>\n    </div>\n  )\n}\n\nconst CARDS = [\n  {\n    name: \"shadcn\",\n    handle: \"@shadcn\",\n    avatar: \"https://unavatar.io/x/shadcn\",\n  },\n  {\n    name: \"Evil Rabbit\",\n    handle: \"@evilrabbit_\",\n    avatar: \"https://unavatar.io/x/evilrabbit_\",\n  },\n  {\n    name: \"OrcDev\",\n    handle: \"@orcdev\",\n    avatar: \"https://unavatar.io/x/orcdev\",\n  },\n  {\n    name: \"David Haz\",\n    handle: \"@davidhdev\",\n    avatar: \"https://unavatar.io/x/davidhdev\",\n  },\n  {\n    name: \"Shu\",\n    handle: \"@shuding\",\n    avatar: \"https://unavatar.io/x/shuding\",\n  },\n  {\n    name: \"Emil Kowalski\",\n    handle: \"@emilkowalski\",\n    avatar: \"https://unavatar.io/x/emilkowalski\",\n  },\n  {\n    name: \"Aaron\",\n    handle: \"@aaronmahlke\",\n    avatar: \"https://unavatar.io/x/aaronmahlke\",\n  },\n  {\n    name: \"NarakCODE\",\n    handle: \"@iamNarakCODE\",\n    avatar: \"https://unavatar.io/x/iamNarakCODE\",\n  },\n]\n",
+      "content": "import { Avatar, Style } from \"@dicebear/core\"\nimport glass from \"@dicebear/styles/glass.json\"\n\nimport { GlowCard, GlowCardGrid } from \"@/registry/components/glow-card-grid\"\n\nconst glassStyle = new Style(glass)\n\nexport default function Team01() {\n  return (\n    <div className=\"container px-4 py-8\">\n      <GlowCardGrid className=\"lg:grid-cols-4\">\n        {CARDS.map((card) => (\n          <GlowCard\n            key={card.name}\n            name={card.name}\n            handle={card.handle}\n            avatar={new Avatar(glassStyle, {\n              seed: card.name,\n              size: 80,\n            }).toDataUri()}\n          />\n        ))}\n      </GlowCardGrid>\n    </div>\n  )\n}\n\nconst CARDS = [\n  {\n    name: \"shadcn\",\n    handle: \"@shadcn\",\n  },\n  {\n    name: \"Evil Rabbit\",\n    handle: \"@evilrabbit_\",\n  },\n  {\n    name: \"OrcDev\",\n    handle: \"@orcdev\",\n  },\n  {\n    name: \"David Haz\",\n    handle: \"@davidhaz\",\n  },\n  {\n    name: \"Shu\",\n    handle: \"@shuding\",\n  },\n  {\n    name: \"Emil Kowalski\",\n    handle: \"@emilkowalski\",\n  },\n  {\n    name: \"Aaron\",\n    handle: \"@aaronmahlke\",\n  },\n  {\n    name: \"NarakCODE\",\n    handle: \"@iamNarakCODE\",\n  },\n]\n",
       "type": "registry:component",
       "target": "@components/team-01.tsx"
     }

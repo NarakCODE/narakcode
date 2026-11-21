@@ -11,6 +11,14 @@ updatedAt: 2026-03-28
   openInV0Url="https://narakcode.dev/r/testimonial.json"
 />
 
+<DocDependencies name="testimonial" />
+
+## Use cases
+
+- Wall of love page with user feedback.
+- Social proof section on a landing page.
+- Building block for marquees and card grids.
+
 ## Installation
 
 <CodeTabs>
@@ -25,6 +33,12 @@ npx shadcn@latest add @nrcode/testimonial
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="testimonial" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -32,7 +46,7 @@ npx shadcn@latest add @nrcode/testimonial
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install clsx tailwind-merge
+npm install cn
 ```
 
 <Step>Add a cn helper</Step>
@@ -73,7 +87,7 @@ import {
 ```
 
 ```tsx
-<DocTestimonial>
+<Testimonial>
   <TestimonialQuote />
 
   <TestimonialAuthor>

@@ -1,21 +1,16 @@
 "use client"
 
-import { useRef } from "react"
-import Link from "next/link"
+import { memo, useRef } from "react"
 import { getTwitterProfileUrl } from "@/utils/url"
 import { ArrowRightIcon } from "lucide-react"
 import { useInView, usePageInView } from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/components/base/ui/button"
-import type { MarqueeContentProps } from "@/components/kibo-ui/marquee"
-import {
-  Marquee,
-  MarqueeContent,
-  MarqueeFade,
-  MarqueeItem,
-} from "@/components/kibo-ui/marquee"
+import { Button } from "@/components/ui/button"
+import { FastLink } from "@/components/fast-link"
+import type { MarqueeProps } from "@/components/marquee"
+import { Marquee, MarqueeContent, MarqueeItem } from "@/components/marquee"
 import {
   Testimonial,
   TestimonialAuthor,
@@ -25,17 +20,16 @@ import {
   TestimonialAvatarImg,
   TestimonialAvatarRing,
   TestimonialQuote,
-} from "@/registry/transformed/components/testimonial"
-import { TestimonialSpotlight } from "@/registry/transformed/components/testimonial-spotlight"
-import { Twemoji } from "@/registry/transformed/components/twemoji/twemoji"
-import { SOCIAL } from "@/features/portfolio/data/social-links"
+} from "@/registry/components/testimonial"
+import { TestimonialSpotlight } from "@/registry/components/testimonial-spotlight"
+import { Twemoji } from "@/registry/components/twemoji/twemoji"
 import {
   TESTIMONIALS_1,
   TESTIMONIALS_2,
 } from "@/features/portfolio/data/testimonials"
 import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
 
-import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel"
+import { Panel, PanelContent } from "./panel"
 
 const ID = "testimonials"
 
@@ -43,7 +37,7 @@ const TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2].sort(
   (a, b) => Number(a.order ?? 999) - Number(b.order ?? 999)
 )
 
-const TESTIMONIALS_MOBILE = TESTIMONIALS.slice(0, 8)
+const TESTIMONIALS_MOBILE = TESTIMONIALS.slice(0, 9)
 
 const TESTIMONIALS_FEATURED = TESTIMONIALS.filter((item) => item.isFeatured)
 
@@ -64,12 +58,17 @@ export function Testimonials() {
 
   return (
     <Panel ref={ref} id={ID}>
-      <PanelHeader>
-        <PanelTitle>
-          Trusted by
-          <span className="block sm:hidden" /> top builders
-        </PanelTitle>
-      </PanelHeader>
+      <div className="h-px" />
+      <div className="stripe-divider" />
+      <div className="screen-line-bottom h-px" />
+
+      <div className="flex items-center justify-center py-4">
+        <h2 className="text-center text-sm/none font-medium tracking-wide text-muted-foreground uppercase">
+          Trusted by top builders
+        </h2>
+      </div>
+
+      <div className="screen-line-bottom h-px" />
 
       <div className="grid gap-4 py-4 sm:hidden">
         {TESTIMONIALS_MOBILE.map((item) => (
@@ -81,37 +80,38 @@ export function Testimonials() {
         ))}
       </div>
 
-      <PanelContent className="hidden gap-1 sm:grid sm:grid-cols-2">
+      <PanelContent className="hidden gap-2 p-2 sm:grid sm:grid-cols-2">
         {TESTIMONIALS_FEATURED.map((item) => (
           <TestimonialSpotlight
             key={item.url}
-            className="bg-background inset-ring-foreground/20 [--spotlight-size:50%]"
+            className="rounded-none bg-background inset-ring-foreground/20 [--spotlight-size:50%]"
           >
             <TestimonialItem {...item} showIcon />
           </TestimonialSpotlight>
         ))}
 
-        <TestimonialsMarquee
-          className="sm:col-span-2"
-          data={TESTIMONIALS_1_FILTERED}
-          play={play}
-        />
+        <div className="col-span-2 border border-foreground/20">
+          <TestimonialsMarquee data={TESTIMONIALS_1_FILTERED} play={play} />
 
-        <TestimonialsMarquee
-          className="sm:col-span-2"
-          data={TESTIMONIALS_2_FILTERED}
-          direction="right"
-          play={play}
-        />
+          <div className="h-px bg-foreground/20" />
+
+          <TestimonialsMarquee
+            data={TESTIMONIALS_2_FILTERED}
+            side="right"
+            play={play}
+          />
+        </div>
       </PanelContent>
 
-      <div className="screen-line-top flex justify-center py-2">
+      <div className="h-px" />
+
+      <div className="screen-line-top flex justify-center py-4">
         <Button
-          className="gap-2 pr-2.5 pl-3"
+          className="gap-2 pr-2.5 pl-3 shadow-[inset_0_0_1px] shadow-foreground/20"
           variant="secondary"
           size="sm"
           nativeButton={false}
-          render={<Link href="/testimonials" />}
+          render={<FastLink href="/testimonials" />}
         >
           All builders
           <ArrowRightIcon />
@@ -123,33 +123,28 @@ export function Testimonials() {
 
 function TestimonialsMarquee({
   data,
-  direction,
+  side,
   play,
-  className,
 }: {
   data: TestimonialType[]
-  direction?: MarqueeContentProps["direction"]
+  side?: MarqueeProps["side"]
   play?: boolean
-  className?: string
 }) {
   return (
-    <Marquee className={className}>
-      <MarqueeFade side="left" />
-      <MarqueeFade side="right" />
-
-      <MarqueeContent
-        className="[&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
-        play={play}
-        pauseOnHover={false}
-        direction={direction}
-        speed={30}
-      >
+    <Marquee
+      className={cn("scroll-px-2", !play && "**:paused")}
+      side={side}
+      speed={30}
+      gap="0px"
+      autoFill
+    >
+      <MarqueeContent>
         {data.map((item) => (
-          <MarqueeItem
-            key={item.url}
-            className="mx-0.5 h-full w-xs rounded-xl bg-background inset-ring-1 inset-ring-border transition-[background-color] ease-out hover:bg-accent-muted"
-          >
-            <TestimonialItem {...item} />
+          <MarqueeItem key={item.url} className="w-xs">
+            <TestimonialItem
+              className="border-r border-foreground/20 bg-background transition-[background-color] ease-out hover:bg-accent-muted"
+              {...item}
+            />
           </MarqueeItem>
         ))}
       </MarqueeContent>
@@ -157,7 +152,8 @@ function TestimonialsMarquee({
   )
 }
 
-function TestimonialItem({
+// Toggling `play` re-renders every row, items only depend on static data
+const TestimonialItem = memo(function TestimonialItem({
   className,
   authorAvatar,
   authorName,
@@ -171,7 +167,7 @@ function TestimonialItem({
     <Testimonial className={cn("group/testimonial relative", className)}>
       <TestimonialQuote className="font-serif text-base">
         <p>
-          <Twemoji className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0">
+          <Twemoji className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0 group-has-focus-visible/testimonial:grayscale-0">
             {quote}
           </Twemoji>
         </p>
@@ -180,30 +176,27 @@ function TestimonialItem({
       <TestimonialAuthor>
         <TestimonialAvatar>
           <TestimonialAvatarImg
-            className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0"
+            className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0 group-has-focus-visible/testimonial:grayscale-0"
             src={authorAvatar}
             alt={authorName}
+            loading="lazy"
+            decoding="async"
           />
           <TestimonialAvatarRing />
         </TestimonialAvatar>
 
-        <TestimonialAuthorName>
+        <TestimonialAuthorName className="font-medium">
           <a href={getTwitterProfileUrl(url)} target="_blank" rel="noopener">
             <span className="absolute inset-0" aria-hidden />
             {authorName}
           </a>
-          {/* {isVerified && (
-            <TestimonialVerifiedBadge className="text-info">
-              <VerifiedIcon />
-            </TestimonialVerifiedBadge>
-          )} */}
         </TestimonialAuthorName>
         <TestimonialAuthorTagline>{authorTagline}</TestimonialAuthorTagline>
       </TestimonialAuthor>
 
       {showIcon && icon && (
         <div
-          className="pointer-events-none absolute right-3 bottom-3 flex size-8 items-center justify-center [&_svg]:size-4 [&_svg]:text-muted-foreground/80"
+          className="pointer-events-none absolute right-3 bottom-3 flex size-8 items-center justify-center [&_svg]:size-4 [&_svg]:text-foreground/90"
           aria-hidden
         >
           {icon}
@@ -211,4 +204,4 @@ function TestimonialItem({
       )}
     </Testimonial>
   )
-}
+})

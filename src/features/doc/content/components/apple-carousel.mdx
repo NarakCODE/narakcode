@@ -1,0 +1,192 @@
+---
+title: Apple Carousel
+description: Infinite autoplay carousel with progress dots, inspired by Apple’s website.
+image: https://assets.narakcode.dev/images/blog/apple-carousel.webp
+createdAt: 2026-09-16
+updatedAt: 2026-11-10
+---
+
+<ComponentPreview
+  className="**:data-[slot=preview]:px-0"
+  name="apple-carousel-demo"
+  openInV0Url="https://narakcode.dev/r/apple-carousel.json"
+/>
+
+<DocDependencies name="apple-carousel" />
+
+## Features
+
+- Loops endlessly by default, with neighboring cards peeking in.
+- Autoplays with a progress dot, and pauses on interaction or when off screen.
+- Swipe, scroll, or click a dot, even mid-slide.
+
+## Use cases
+
+- Gallery of work or product shots.
+- Featured stories on a landing page.
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @nrcode/apple-carousel
+```
+
+</TabsContent>
+
+<TabsContent value="prompt">
+
+<InstallPrompt name="apple-carousel" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install motion cn
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/registry/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource name="apple-carousel" title="components/apple-carousel.tsx" />
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  AppleCarouselContent,
+  AppleCarouselControls,
+  AppleCarouselItem,
+  AppleCarouselPlayButton,
+  AppleCarouselRoot,
+  AppleCarouselTab,
+  AppleCarouselTabList,
+} from "@/components/apple-carousel"
+```
+
+```tsx
+<AppleCarouselRoot>
+  <AppleCarouselContent>
+    <AppleCarouselItem />
+  </AppleCarouselContent>
+
+  <AppleCarouselControls>
+    <AppleCarouselTabList aria-label="Featured">
+      <AppleCarouselTab />
+    </AppleCarouselTabList>
+    <AppleCarouselPlayButton />
+  </AppleCarouselControls>
+</AppleCarouselRoot>
+```
+
+Items are empty cards for any content. Render one `AppleCarouselTab` per item, in the same order, with a label for screen readers.
+
+## Composition
+
+Use the following composition to build an `AppleCarousel`
+
+```text
+AppleCarouselRoot
+├── AppleCarouselContent
+│   └── AppleCarouselItem
+└── AppleCarouselControls
+    ├── AppleCarouselTabList
+    │   └── AppleCarouselTab
+    └── AppleCarouselPlayButton
+```
+
+## API reference
+
+### AppleCarouselRoot
+
+<AutoTypeTable
+  path="src/features/doc/content/props.ts"
+  name="AppleCarouselRootProps"
+/>
+
+### AppleCarouselControls
+
+<AutoTypeTable
+  path="src/features/doc/content/props.ts"
+  name="AppleCarouselControlsProps"
+/>
+
+### useAppleCarouselItem
+
+Reads the state of the enclosing `AppleCarouselItem`.
+
+<AutoTypeTable
+  path="src/registry/components/apple-carousel/apple-carousel.tsx"
+  name="AppleCarouselItemState"
+/>
+
+<Callout>
+  With `loop` on, item content also renders in clones, so ids repeat and effects
+  run per copy. Check `isClone` before playing media, fetching data, or tracking
+  impressions.
+</Callout>
+
+### Data attributes
+
+Style content by state, for example with `in-data-current:opacity-100`.
+
+| Attribute      | Element                                 | Present when              |
+| -------------- | --------------------------------------- | ------------------------- |
+| `data-current` | `AppleCarouselItem`, `AppleCarouselTab` | The item or tab is shown. |
+| `data-clone`   | `AppleCarouselItem`                     | The item is a clone.      |
+| `data-index`   | `AppleCarouselItem`                     | Always.                   |
+| `data-playing` | `AppleCarouselRoot`                     | Autoplay is running.      |
+
+## Examples
+
+### Caption
+
+A caption and `Button` over each photo. `data-current` fades captions on peeking cards, and `dark` keeps text light in both themes.
+
+<ComponentPreview
+  className="**:data-[slot=preview]:px-0"
+  name="apple-carousel-caption-demo"
+  openInV0Url="https://narakcode.dev/r/apple-carousel.json"
+/>
+
+## Accessibility
+
+- Arrow keys, `Home`, and `End` move between the dots.
+- With `prefers-reduced-motion`, autoplay waits until Play is pressed, and cards jump instead of sliding.
+
+## Credits
+
+- [Apple](https://developer.apple.com/)
+- Photos by [Marina Lobato](https://unsplash.com/photos/boats-on-turquoise-ha-long-bay-kG7pOXbBfNs), [diGital Sennin](https://unsplash.com/photos/green-trees-on-body-of-water-during-daytime-QttaHHgHz_w), [Thai Tong](https://unsplash.com/photos/people-riding-boat-on-river-near-mountain-during-daytime-hUPK0QCg-y0), [Tam Dang Ngoc](https://unsplash.com/photos/a-large-building-with-a-lot-of-windows-on-top-of-it-DHwKQ9sajcc), [Jonathan Ouimet](https://unsplash.com/photos/aerial-view-photography-of-brown-pagoda-temple-during-daytime-JF4o7WErDn8), [Tron Le](https://unsplash.com/photos/city-skyline-during-night-time-wUk2U5Wirxg), and [Ngô Thanh Tùng](https://unsplash.com/photos/lighted-bridge-B76nvP51iew) on [Unsplash](https://unsplash.com)
+
+## References
+
+- [WAI-ARIA Carousel Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
+- [CSS scroll snap](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll_snap)
+- [Motion animate](https://motion.dev/docs/animate)
+- [inert](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inert)

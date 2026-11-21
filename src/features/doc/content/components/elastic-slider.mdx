@@ -11,12 +11,13 @@ updatedAt: 2026-04-18
   openInV0Url="https://narakcode.dev/r/elastic-slider.json"
 />
 
+<DocDependencies name="elastic-slider" />
+
 ## Features
 
 - Track stretches with rubber-band tension when dragged past bounds.
 - Snaps magnetically to exact steps or continuous deciles.
 - Inline label and value text dynamically fade to avoid handle overlap.
-- Supports keyboard navigation and respects `prefers-reduced-motion`
 
 <Callout>
   Want to craft components with meticulous attention to detail—like an Elastic
@@ -39,6 +40,12 @@ npx shadcn@latest add @nrcode/elastic-slider
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="elastic-slider" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -46,7 +53,7 @@ npx shadcn@latest add @nrcode/elastic-slider
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install motion clsx tailwind-merge
+npm install motion cn
 ```
 
 <Step>Add a cn helper</Step>
@@ -125,7 +132,7 @@ When `prefers-reduced-motion` is on, rubber-band stretch and spring-based fill m
 
 ## Styling
 
-### CSS Variables
+### CSS variables
 
 <div data-table-nowrap="">
 
@@ -143,7 +150,7 @@ When `prefers-reduced-motion` is on, rubber-band stretch and spring-based fill m
 
 </div>
 
-### Data Slots
+### Data slots
 
 <div data-table-nowrap="">
 

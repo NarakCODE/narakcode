@@ -1,8 +1,8 @@
-import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/base/ui/button"
+import { Button } from "@/components/ui/button"
+import { FastLink } from "@/components/fast-link"
 import { PostItem } from "@/features/blog/components/post-item"
 import { getBlogPosts } from "@/features/doc/data/documents"
 import {
@@ -28,14 +28,14 @@ export function Blog() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="relative py-4">
+      <div className="relative -mx-px py-4">
         <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
           <div className="border-r border-line"></div>
           <div className="border-l border-line"></div>
         </div>
 
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {allPosts.slice(0, 6).map((post) => (
+          {allPosts.slice(0, 4).map((post) => (
             <li
               key={post.slug}
               className={cn(
@@ -49,13 +49,13 @@ export function Blog() {
         </ul>
       </div>
 
-      <div className="screen-line-top flex justify-center py-2">
+      <div className="screen-line-top flex justify-center py-4">
         <Button
-          className="gap-2 pr-2.5 pl-3"
+          className="gap-2 pr-2.5 pl-3 shadow-[inset_0_0_1px] shadow-foreground/20"
           variant="secondary"
           size="sm"
           nativeButton={false}
-          render={<Link href="/blog" />}
+          render={<FastLink href="/blog" />}
         >
           All posts
           <ArrowRightIcon />

@@ -8,6 +8,7 @@ export const EDUCATION: Education[] = [
     fieldOfStudy: "Computer Science",
     period: {
       start: "2021",
+      end: "2025",
     },
     description: `- Currently pursuing a Bachelor's degree in Computer Science (3rd year).
 - Strong foundation in programming, software development, and systems design.

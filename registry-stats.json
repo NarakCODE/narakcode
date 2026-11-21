@@ -1,0 +1,10 @@
+{
+  "total": 78,
+  "countByType": {
+    "registry:lib": 1,
+    "registry:hook": 2,
+    "registry:component": 54,
+    "registry:block": 12,
+    "registry:style": 9
+  }
+}

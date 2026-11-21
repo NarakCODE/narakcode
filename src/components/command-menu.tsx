@@ -15,10 +15,8 @@ import {
   FileTextIcon,
   GraduationCapIcon,
   LayersIcon,
-  LineChartIcon,
   MonitorIcon,
   MoonStarIcon,
-  QuoteIcon,
   RssIcon,
   ShapesIcon,
   SquareDashedIcon,
@@ -28,7 +26,6 @@ import {
   WrenchIcon,
 } from "lucide-react"
 import { useHotkeys } from "react-hotkeys-hook"
-import { toast } from "sonner"
 
 import { trackEvent } from "@/lib/events"
 import { useClickSound } from "@/hooks/soundcn/use-click-sound"
@@ -42,6 +39,7 @@ import {
   CommandList,
   CommandShortcut,
 } from "@/components/ui/command"
+import { toast } from "@/components/ui/toast"
 import { useTheme } from "@/components/theme-provider"
 import { ComponentIcon } from "@/features/doc/components/component-icon"
 import type { DocPreview } from "@/features/doc/types/document"
@@ -187,12 +185,6 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     kind: "page",
     icon: <BookmarkIcon />,
   },
-  {
-    title: "Insights",
-    href: "/#insights",
-    kind: "page",
-    icon: <LineChartIcon />,
-  },
 ]
 
 const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
@@ -301,7 +293,7 @@ export function CommandMenu({
           text: text,
         },
       })
-      toast.success(message)
+      toast.add({ type: "success", title: message })
       tiksSuccess()
     },
     [tiksSuccess]
@@ -399,7 +391,7 @@ export function CommandMenu({
   const blogLinks = useMemo(
     () =>
       docs
-        .filter((doc) => doc.category !== "components")
+        .filter((doc) => doc.category === "blog")
         .map<CommandLinkItem>((doc) => ({
           title: doc.title,
           href: `/blog/${doc.slug}`,
@@ -496,20 +488,10 @@ export function CommandMenu({
                 onHighlight={() => {
                   setSelectedCommandKind("link")
                 }}
-                onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
+                onSelect={() => handleOpenLink("/blog/narakcode-brand")}
               >
                 <SquareDashedIcon />
                 Brand Guidelines
-              </CommandMenuItem>
-
-              <CommandMenuItem onHighlight={handleCommandHighlight} asChild>
-                <a
-                  href="https://assets.chanhdai.com/chanhdai-brand.zip"
-                  download
-                >
-                  <DownloadIcon />
-                  Download Brand Assets
-                </a>
               </CommandMenuItem>
             </CommandGroup>
 
@@ -568,14 +550,18 @@ function CommandMenuTrigger({ ...props }: React.ComponentProps<typeof Button>) {
     >
       <SearchIcon />
 
-      <span className="font-sans text-sm/4 font-medium sm:hidden">Search…</span>
+      <span className="font-sans text-sm/4 font-medium sm:sr-only">
+        Search…
+      </span>
 
-      <KbdGroup className="hidden gap-0.75 sm:in-[.os-macos_&]:flex">
+      {/* Tablets rarely have a keyboard, and the header has no room for the
+      hint until md. */}
+      <KbdGroup className="hidden gap-0.75 md:in-[.os-macos_&]:flex">
         <Kbd className="w-5 min-w-auto">⌘</Kbd>
         <Kbd className="w-5 min-w-auto">K</Kbd>
       </KbdGroup>
 
-      <KbdGroup className="hidden gap-0.75 sm:not-[.os-macos_&]:flex">
+      <KbdGroup className="hidden gap-0.75 md:not-[.os-macos_&]:flex">
         <Kbd>Ctrl</Kbd>
         <Kbd className="w-5 min-w-auto">K</Kbd>
       </KbdGroup>

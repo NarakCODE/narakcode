@@ -1,5 +1,4 @@
 import type { Metadata, Route } from "next"
-import Link from "next/link"
 import { getTableOfContents } from "fumadocs-core/content/toc"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts"
@@ -10,12 +9,13 @@ import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { absoluteUrl } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Kbd } from "@/components/ui/kbd"
-import { Prose } from "@/components/ui/typography"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip"
+} from "@/components/ui/tooltip"
+import { Prose } from "@/components/ui/typography"
+import { FastLink } from "@/components/fast-link"
 import { MDX } from "@/components/mdx"
 import { TOCInline } from "@/components/toc-inline"
 import { TOCMinimap } from "@/components/toc-minimap"
@@ -37,7 +37,11 @@ import {
   getBlogPosts,
   getBlogPostUrl,
 } from "@/features/doc/data/documents"
-import type { BlogLanguage, Doc } from "@/features/doc/types/document"
+import {
+  DEFAULT_BLOG_LANGUAGE,
+  type BlogLanguage,
+  type Doc,
+} from "@/features/doc/types/document"
 
 export function getBlogPostMetadata(doc: Doc, postUrl: string): Metadata {
   const { title, description, image, createdAt, updatedAt } = doc.metadata
@@ -99,7 +103,9 @@ function getPageJsonLd(doc: Doc, postUrl: string): WithContext<PageSchema> {
 }
 
 function getMarkdownUrl(slug: string, language: BlogLanguage) {
-  return `/blog/${slug}/${language}.mdx`
+  return language === DEFAULT_BLOG_LANGUAGE
+    ? `/blog/${slug}.md`
+    : `/doc.md/${slug}/${language}`
 }
 
 export function BlogPostPage({
@@ -155,12 +161,11 @@ export function BlogPostPage({
               className="h-7 gap-2 border-none px-0 tracking-wider text-muted-foreground hover:text-foreground hover:no-underline"
               variant="link"
               size="sm"
-              asChild
+              nativeButton={false}
+              render={<FastLink href="/blog" />}
             >
-              <Link href="/blog">
-                <ArrowLeftIcon />
-                Blog
-              </Link>
+              <ArrowLeftIcon />
+              Blog
             </Button>
 
             <div className="flex items-center gap-2">
@@ -190,16 +195,17 @@ export function BlogPostPage({
                         className="size-7 border-none"
                         variant="secondary"
                         size="icon-sm"
-                        asChild
+                        nativeButton={false}
+                        render={
+                          <FastLink
+                            href={
+                              getBlogPostUrl(previous.slug, language) as Route
+                            }
+                            aria-label="Previous post"
+                          />
+                        }
                       >
-                        <Link
-                          href={
-                            getBlogPostUrl(previous.slug, language) as Route
-                          }
-                          aria-label="Previous post"
-                        >
-                          <ArrowLeftIcon />
-                        </Link>
+                        <ArrowLeftIcon />
                       </Button>
                     }
                   />
@@ -222,14 +228,15 @@ export function BlogPostPage({
                         className="size-7 border-none"
                         variant="secondary"
                         size="icon-sm"
-                        asChild
+                        nativeButton={false}
+                        render={
+                          <FastLink
+                            href={getBlogPostUrl(next.slug, language) as Route}
+                            aria-label="Next post"
+                          />
+                        }
                       >
-                        <Link
-                          href={getBlogPostUrl(next.slug, language) as Route}
-                          aria-label="Next post"
-                        >
-                          <ArrowRightIcon />
-                        </Link>
+                        <ArrowRightIcon />
                       </Button>
                     }
                   />
@@ -252,7 +259,7 @@ export function BlogPostPage({
 
           <h1
             data-slot="doc-title"
-            className="screen-line-bottom px-4 text-4xl font-medium tracking-tight text-balance"
+            className="screen-line-bottom px-4 text-title-regular text-balance text-text-primary"
           >
             {doc.metadata.title}
           </h1>
@@ -263,7 +270,7 @@ export function BlogPostPage({
 
           <DocContentCol>
             <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
-              <p className="text-muted-foreground">
+              <p className="text-paragraph-regular text-text-secondary">
                 {doc.metadata.description}
               </p>
 
@@ -278,7 +285,7 @@ export function BlogPostPage({
           </DocContentCol>
 
           <DocRightCol>
-            <div className="sticky top-[calc(var(--doc-cols-top,0)+(--spacing(3))] translate-x-2 opacity-0 in-data-doc-cols-ready:opacity-100">
+            <div className="top-[calc(var(--doc-cols-top,0)+(--spacing(3))] sticky translate-x-2 opacity-0 in-data-doc-cols-ready:opacity-100">
               <TOCMinimap items={toc} />
             </div>
           </DocRightCol>

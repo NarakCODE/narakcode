@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "radix-nova",
+  "style": "base-nova",
   "rsc": true,
   "tsx": true,
   "tailwind": {
@@ -22,7 +22,7 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@ncdai": "https://narakcode.dev/r/{name}.json",
+    "@nrcode": "https://narakcode.dev/r/{name}.json",
     "@shadcncraft": {
       "url": "https://shadcncraft.com/r/{style}/{name}",
       "headers": {

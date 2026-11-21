@@ -90,11 +90,11 @@ const MorphingPill = () => {
   const Icon = items[active].icon
 
   return (
-    <div className="flex h-full w-full items-center justify-center rounded-xl">
-      <div className="flex h-full w-full flex-col items-center justify-center gap-y-10 overflow-hidden">
+    <div className="flex size-full items-center justify-center rounded-xl">
+      <div className="flex size-full flex-col items-center justify-center gap-y-10 overflow-hidden">
         <motion.div
           layout
-          className="flex h-10 cursor-pointer items-center justify-between gap-x-2 overflow-hidden rounded-full border-[1px] px-2 pl-2.5"
+          className="flex h-10 cursor-pointer items-center justify-between gap-x-2 overflow-hidden rounded-full border px-2 pl-2.5"
           transition={{
             duration: 0.2,
             type: "spring",
@@ -119,7 +119,7 @@ const MorphingPill = () => {
                   }}
                 />
               </div>
-              <motion.span className="font-openrunde w-auto translate-x-0 translate-y-0 text-base font-medium select-none">
+              <motion.span className="font-openrunde w-auto translate-0 text-base font-medium select-none">
                 {items[active].name}
               </motion.span>
             </div>
@@ -136,7 +136,7 @@ const MorphingPill = () => {
                   <span className="font-openrunde text-sm font-medium text-muted-foreground select-none">
                     ·
                   </span>
-                  <span className="font-openrunde translate-x-0 translate-y-0 text-sm font-medium text-nowrap text-muted-foreground select-none">
+                  <span className="font-openrunde translate-0 text-sm font-medium text-nowrap text-muted-foreground select-none">
                     {items[active].description}
                   </span>
                 </motion.div>

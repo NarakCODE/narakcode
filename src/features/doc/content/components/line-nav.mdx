@@ -2,7 +2,6 @@
 title: Line Nav
 description: Vertical navigation with a line marker that expands on hover and active state.
 image: https://assets.narakcode.dev/images/blog/line-nav.webp
-new: true
 createdAt: 2026-06-26
 updatedAt: 2026-06-26
 ---
@@ -11,6 +10,8 @@ updatedAt: 2026-06-26
   name="line-nav-demo"
   openInV0Url="https://narakcode.dev/r/line-nav.json"
 />
+
+<DocDependencies name="line-nav" />
 
 ## Features
 
@@ -37,6 +38,12 @@ npx shadcn@latest add @nrcode/line-nav
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="line-nav" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -44,7 +51,7 @@ npx shadcn@latest add @nrcode/line-nav
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install motion clsx tailwind-merge
+npm install motion cn
 ```
 
 <Step>Add a cn helper</Step>

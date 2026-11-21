@@ -11,6 +11,13 @@ updatedAt: 2026-05-22
   openInV0Url="https://narakcode.dev/r/dot-grid-spotlight.json"
 />
 
+<DocDependencies name="dot-grid-spotlight" />
+
+## Use cases
+
+- Cover area at the top of a profile page.
+- Background behind a hero section.
+
 ## Installation
 
 <CodeTabs>
@@ -25,9 +32,29 @@ npx shadcn@latest add @nrcode/dot-grid-spotlight
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="dot-grid-spotlight" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install cn
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/registry/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
 
 <Step>Copy and paste the following code into your project</Step>
 

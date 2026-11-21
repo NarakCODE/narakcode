@@ -17,7 +17,7 @@ export function TechStack() {
 
       <div className="relative [--badge-height:--spacing(6)] [--col-left-width:--spacing(48)]">
         <div
-          className="pointer-events-none absolute inset-y-0 left-(--col-left-width) -z-1 w-px bg-[linear-gradient(to_bottom,var(--line)_4px,transparent_2px)] bg-size-[1px_6px] bg-repeat-y max-sm:hidden"
+          className="pointer-events-none absolute inset-y-0 left-(--col-left-width) -z-1 w-px border-r border-dashed border-line max-sm:hidden"
           aria-hidden
         />
 
@@ -35,7 +35,7 @@ export function TechStack() {
               >
                 <div
                   id={categoryId}
-                  className="pl-4 text-sm/(--badge-height) text-muted-foreground"
+                  className="flex min-h-(--badge-height) items-center pl-4 text-body-small-regular text-text-secondary"
                 >
                   <span
                     className="mr-1.5 font-mono text-muted-foreground/50 select-none"
@@ -57,7 +57,7 @@ export function TechStack() {
                           href={item.href}
                           target="_blank"
                           rel="noopener"
-                          className="flex h-(--badge-height) items-center justify-center gap-1.25 rounded-full bg-zinc-50/80 px-2 font-mono text-xs text-foreground inset-ring-1 inset-ring-border dark:bg-zinc-900/80 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80"
+                          className="flex h-(--badge-height) items-center justify-center gap-1.25 rounded-full bg-zinc-50/80 px-2 font-mono text-body-mini-regular text-text-primary inset-ring-1 inset-ring-border dark:bg-zinc-900/80 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80"
                         >
                           {item.icon}
                           {item.title}

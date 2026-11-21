@@ -14,6 +14,6 @@ export const lib: Registry["items"] = [
       },
     ],
     categories: ["utilities"],
-    docs: "https://narakcode.dev/components/haptic-feedback",
+    docs: "https://narakcode.dev/components/haptic",
   },
 ]

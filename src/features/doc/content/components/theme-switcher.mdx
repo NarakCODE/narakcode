@@ -11,6 +11,8 @@ updatedAt: 2026-02-12
   openInV0Url="https://narakcode.dev/r/theme-switcher.json"
 />
 
+<DocDependencies name="theme-switcher" />
+
 ## Installation
 
 <CodeTabs>
@@ -25,6 +27,12 @@ npx shadcn@latest add @nrcode/theme-switcher
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="theme-switcher" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -32,16 +40,8 @@ npx shadcn@latest add @nrcode/theme-switcher
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install next-themes lucide-react motion clsx tailwind-merge
+npm install next-themes lucide-react motion
 ```
-
-<Step>Add a cn helper</Step>
-
-<ComponentSource
-  src="src/registry/lib/utils.ts"
-  title="lib/utils.ts"
-  collapsible="false"
-/>
 
 <Step>Copy and paste the following code into your project</Step>
 

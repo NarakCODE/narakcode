@@ -1,22 +1,13 @@
 import React from "react"
-import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
-function Prose({
-  className,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"div"> & {
-  asChild?: boolean
-}) {
-  const Comp = asChild ? Slot.Root : "div"
-
+function Prose({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <Comp
+    <div
       data-slot="prose"
       className={cn(
-        "prose max-w-none prose-ncdai prose-zinc dark:prose-invert",
+        "prose max-w-none prose-narakcode prose-zinc dark:prose-invert",
         className
       )}
       {...props}
@@ -30,7 +21,10 @@ function ProseMono({
 }: React.ComponentProps<typeof Prose>) {
   return (
     <Prose
-      className={cn("prose-sm font-mono text-foreground", className)}
+      className={cn(
+        "prose-sm font-mono text-paragraph-small text-text-primary",
+        className
+      )}
       {...props}
     />
   )

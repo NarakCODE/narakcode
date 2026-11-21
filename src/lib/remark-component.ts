@@ -4,6 +4,8 @@ import { visit } from "unist-util-visit"
 
 import type { UnistNode, UnistTree } from "@/types/unist"
 import { Index } from "@/registry/__index__"
+import { getDocDependencyLines } from "@/features/doc/lib/doc-dependencies"
+import { getInstallPrompt } from "@/features/doc/lib/install-prompt"
 
 import { fixImport } from "./registry"
 
@@ -87,6 +89,32 @@ export function remarkComponent() {
           }
         } catch (error) {
           console.error(error)
+        }
+      }
+
+      if (node.name === "DocDependencies") {
+        const name = getNodeAttributeByName(node, "name")?.value as string
+
+        if (parent && typeof index === "number") {
+          const paragraphs = getDocDependencyLines(name).map((line) => ({
+            type: "paragraph",
+            children: [{ type: "text", value: line }],
+          }))
+
+          parent.children.splice(index, 1, ...paragraphs)
+
+          // The node count can change, so resume right after the replacement.
+          return index + paragraphs.length
+        }
+      }
+
+      if (node.name === "InstallPrompt") {
+        const name = getNodeAttributeByName(node, "name")?.value as string
+        const prompt = getInstallPrompt(name)
+
+        if (prompt && parent && typeof index === "number") {
+          const codeBlock = { type: "code", lang: "text", value: prompt }
+          parent.children.splice(index, 1, codeBlock)
         }
       }
 

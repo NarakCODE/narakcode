@@ -2,17 +2,17 @@ import { differenceInMonths, parse } from "date-fns"
 import { BriefcaseBusinessIcon, InfinityIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Separator } from "@/components/ui/separator"
-import { Tag } from "@/components/ui/tag"
-import { Prose } from "@/components/ui/typography"
-import {
-  Collapsible,
-  CollapsibleChevronsUpDownIcon,
-} from "@/components/base/collapsible-animated"
 import {
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/base/ui/collapsible"
+} from "@/components/ui/collapsible"
+import { IconTile } from "@/components/ui/icon-tile"
+import { Separator } from "@/components/ui/separator"
+import { Tag } from "@/components/ui/tag"
+import {
+  Collapsible,
+  CollapsibleChevronsUpDownIcon,
+} from "@/components/collapsible-animated"
 import { Markdown } from "@/components/markdown"
 import type { ExperiencePosition } from "@/features/portfolio/types/experiences"
 
@@ -32,7 +32,7 @@ export function ExperiencePositionItem({
       disabled={!position.description}
     >
       <div className="pointer-events-none absolute bottom-0 left-3 hidden size-4 bg-background group-last/experience-position:flex">
-        <span className="size-full -translate-y-2.25 rounded-bl-sm border-b border-l" />
+        <span className="size-full -translate-y-2.25 border-b border-l" />
       </div>
 
       <CollapsibleTrigger
@@ -43,26 +43,20 @@ export function ExperiencePositionItem({
           "data-disabled:before:content-none"
         )}
       >
-        <div className="relative z-1 mb-1 flex items-start gap-3 text-base">
-          <div
-            className={cn(
-              "flex size-6 shrink-0 items-center justify-center rounded-md",
-              "bg-muted text-muted-foreground",
-              "border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background",
-              "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
-            )}
-          >
-            {position.icon ?? <BriefcaseBusinessIcon />}
-          </div>
+        <div className="relative z-1 mb-1 flex items-start gap-3">
+          <IconTile>{position.icon ?? <BriefcaseBusinessIcon />}</IconTile>
 
-          <h4 className="flex-1 font-medium text-balance">{position.title}</h4>
+          <h4 className="flex-1 text-body-regular-medium text-balance text-text-primary">
+            {position.title}
+          </h4>
 
-          <div className="shrink-0 text-muted-foreground group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
+          <div className="shrink-0 text-text-secondary group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
             <CollapsibleChevronsUpDownIcon duration={0.15} />
           </div>
         </div>
 
-        <dl className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
+        {/* Separators are aria-hidden: a dl may only expose dt/dd groups, and these dividers are decorative. */}
+        <dl className="flex items-center gap-2 pl-9 text-body-small-regular text-text-secondary">
           {position.employmentType && (
             <>
               <div>
@@ -72,6 +66,7 @@ export function ExperiencePositionItem({
               <Separator
                 className="data-vertical:h-4 data-vertical:self-center"
                 orientation="vertical"
+                aria-hidden
               />
             </>
           )}
@@ -98,6 +93,7 @@ export function ExperiencePositionItem({
               <Separator
                 className="data-vertical:h-4 data-vertical:self-center"
                 orientation="vertical"
+                aria-hidden
               />
               <div>
                 <dt className="sr-only">Duration</dt>
@@ -110,9 +106,9 @@ export function ExperiencePositionItem({
 
       <CollapsibleContent className="overflow-hidden">
         {position.description && (
-          <Prose className="pt-2 pl-9">
+          <div className="typeset typeset-description pt-3 pb-1 pl-9">
             <Markdown>{position.description}</Markdown>
-          </Prose>
+          </div>
         )}
       </CollapsibleContent>
 

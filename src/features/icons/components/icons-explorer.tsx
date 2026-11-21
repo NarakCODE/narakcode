@@ -4,10 +4,10 @@ import { useMemo, useState } from "react"
 import { copyToClipboardWithEvent } from "@/utils/copy"
 import { CheckIcon, CopyIcon } from "lucide-react"
 import { useQueryState } from "nuqs"
-import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { toast } from "@/components/ui/toast"
 
 import { DEFAULT_ICON_SIZE, ICON_CATEGORIES, ICON_LIBRARIES } from "../data"
 import { fetchIconSvg, formatSvgForCopy } from "../lib/svg-transform"
@@ -126,17 +126,17 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
 
       if (copied) {
         setCopiedIconName(icon.name)
-        toast.success(`Copied ${icon.name}.svg`)
+        toast.add({ type: "success", title: `Copied ${icon.name}.svg` })
         setTimeout(() => {
           setCopiedIconName((current) =>
             current === icon.name ? null : current
           )
         }, 1500)
       } else {
-        toast.error("Failed to copy SVG")
+        toast.add({ type: "error", title: "Failed to copy SVG" })
       }
     } catch {
-      toast.error(`Failed to load ${icon.name}.svg`)
+      toast.add({ type: "error", title: `Failed to load ${icon.name}.svg` })
     }
   }
 
@@ -186,7 +186,7 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
       >
         {filteredIcons.length === 0 ? (
           <div className="screen-line-bottom flex flex-col items-center justify-center gap-3 px-4 py-16 text-center">
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-body-regular text-text-secondary">
               No icons found matching{" "}
               {query ? `"${query}"` : "the selected filter"}.
             </p>
@@ -214,10 +214,10 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
             {groupedIcons.map(({ category: groupName, icons: groupIcons }) => (
               <section key={groupName}>
                 <div className="screen-line-bottom flex items-center justify-between bg-accent/25 px-4 py-2.5">
-                  <h2 className="font-heading text-xs font-semibold tracking-wider text-foreground uppercase">
+                  <h2 className="text-body-mini-medium tracking-wider text-text-primary uppercase">
                     {groupName}
                   </h2>
-                  <span className="rounded-full bg-accent px-2 py-0.5 font-mono text-[11px] font-medium text-muted-foreground">
+                  <span className="rounded-full bg-accent px-2 py-0.5 font-mono text-body-micro-medium text-text-secondary">
                     {groupIcons.length}
                   </span>
                 </div>
@@ -291,13 +291,13 @@ function IconGrid({
               <button
                 type="button"
                 onClick={() => onSelectIcon(icon)}
-                className="flex h-full w-full flex-col items-center justify-between gap-3 px-2.5 pt-7 pb-3.5 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+                className="flex size-full flex-col items-center justify-between gap-3 px-2.5 pt-7 pb-3.5 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
               >
                 <span className="flex min-h-16 items-center justify-center transition-transform duration-150 group-hover/icon-cell:scale-105">
                   <IconSvgPreview src={icon.src} name={icon.title} />
                 </span>
 
-                <span className="w-full truncate font-mono text-[11px] text-muted-foreground transition-colors group-hover/icon-cell:text-foreground">
+                <span className="w-full truncate font-mono text-body-mini-regular text-text-secondary transition-colors group-hover/icon-cell:text-text-primary">
                   {icon.name}
                 </span>
               </button>

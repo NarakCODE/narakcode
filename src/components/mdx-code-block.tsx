@@ -1,10 +1,90 @@
 import type { NpmCommands } from "@/types/unist"
+import type { Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { MiddleTruncation } from "@/registry/components/middle-truncation"
 
 import { CodeBlockCommand } from "./code-block-command"
 import { CopyButton } from "./copy-button"
 import { getIconForLanguageExtension } from "./icons"
+
+export function CodeBlockCaption({
+  children,
+  ...props
+}: React.ComponentProps<"figcaption">) {
+  const iconExtension =
+    "data-language" in props && typeof props["data-language"] === "string"
+      ? getIconForLanguageExtension(props["data-language"])
+      : null
+
+  const hasCodeTitle =
+    "data-rehype-pretty-code-title" in props && typeof children === "string"
+
+  return (
+    <figcaption {...props}>
+      {iconExtension}
+      {hasCodeTitle ? (
+        <MiddleTruncation className="min-w-0 flex-1" ellipsis="…">
+          {children}
+        </MiddleTruncation>
+      ) : (
+        children
+      )}
+    </figcaption>
+  )
+}
+
+export function CodeBlockFrame({
+  code,
+  hasTitle = false,
+  copyEvent = "copy_code_block",
+  children,
+}: {
+  code?: string
+  hasTitle?: boolean
+  copyEvent?: Event["name"]
+  children: React.ReactNode
+}) {
+  return (
+    <div
+      className={cn(
+        "group/pre rounded-[9px] border bg-code",
+        code && !hasTitle && "[--code-padding-right:6rem]"
+      )}
+    >
+      {children}
+
+      {code && (
+        <>
+          <CopyButton
+            data-slot="copy-button"
+            className={cn(
+              "absolute top-2 right-2 z-10 size-7 rounded-[5px] border-none text-muted-foreground [&_svg:not([class*='size-'])]:size-4",
+              hasTitle && "top-1.5 right-1.5 rounded-md",
+              !hasTitle && "opacity-0 group-hover/pre:opacity-100"
+            )}
+            variant="ghost"
+            size="icon-xs"
+            text={code}
+            event={copyEvent}
+          />
+
+          {!hasTitle && (
+            <div
+              aria-hidden
+              data-fade-overlay
+              className="top-1.25 right-1.25 opacity-0 transition-opacity group-hover/pre:opacity-100"
+              style={
+                {
+                  "--fade-color": "var(--code)",
+                } as React.CSSProperties
+              }
+            />
+          )}
+        </>
+      )}
+    </div>
+  )
+}
 
 export const mdxCodeBlockComponents = {
   figure({ className, ...props }: React.ComponentProps<"figure">) {
@@ -17,28 +97,7 @@ export const mdxCodeBlockComponents = {
       />
     )
   },
-  figcaption: ({ children, ...props }: React.ComponentProps<"figcaption">) => {
-    const iconExtension =
-      "data-language" in props && typeof props["data-language"] === "string"
-        ? getIconForLanguageExtension(props["data-language"])
-        : null
-
-    const hasCodeTitle =
-      "data-rehype-pretty-code-title" in props && typeof children === "string"
-
-    return (
-      <figcaption {...props}>
-        {iconExtension}
-        {hasCodeTitle ? (
-          <MiddleTruncation className="min-w-0 flex-1" ellipsis="…">
-            {children}
-          </MiddleTruncation>
-        ) : (
-          children
-        )}
-      </figcaption>
-    )
-  },
+  figcaption: CodeBlockCaption,
   pre({
     __withMeta__,
     __rawString__,
@@ -48,7 +107,6 @@ export const mdxCodeBlockComponents = {
     __npm__,
     __bun__,
 
-    className,
     ...props
   }: React.ComponentProps<"pre"> & {
     __withMeta__?: boolean
@@ -68,47 +126,9 @@ export const mdxCodeBlockComponents = {
     }
 
     return (
-      <>
-        <div className="group/pre rounded-[9px] border bg-code">
-          <pre
-            className={cn(
-              __rawString__ && !__withMeta__ && "[--code-padding-right:6rem]",
-              className
-            )}
-            {...props}
-          />
-
-          {__rawString__ && (
-            <>
-              <CopyButton
-                data-slot="copy-button"
-                className={cn(
-                  "absolute top-2 right-2 z-10 size-7 rounded-[5px] border-none text-muted-foreground [&_svg:not([class*='size-'])]:size-4",
-                  __withMeta__ && "top-1.5 right-1.5 rounded-md",
-                  !__withMeta__ && "opacity-0 group-hover/pre:opacity-100"
-                )}
-                variant="ghost"
-                size="icon-xs"
-                text={__rawString__}
-                event="copy_code_block"
-              />
-
-              {!__withMeta__ && (
-                <div
-                  aria-hidden
-                  data-fade-overlay
-                  className="top-1.25 right-1.25 opacity-0 transition-opacity group-hover/pre:opacity-100"
-                  style={
-                    {
-                      "--fade-color": "var(--code)",
-                    } as React.CSSProperties
-                  }
-                />
-              )}
-            </>
-          )}
-        </div>
-      </>
+      <CodeBlockFrame code={__rawString__} hasTitle={__withMeta__}>
+        <pre {...props} />
+      </CodeBlockFrame>
     )
   },
 }

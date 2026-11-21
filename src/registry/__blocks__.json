@@ -1,5 +1,12 @@
 [
   {
+    "name": "social-proof-02",
+    "description": "A social proof section with a logos swap.",
+    "categories": [
+      "marketing"
+    ]
+  },
+  {
     "name": "social-proof-01",
     "description": "A social proof section with a logos carousel.",
     "categories": [

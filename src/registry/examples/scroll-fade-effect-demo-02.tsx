@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import { ScrollFadeEffect } from "@/registry/transformed/components/scroll-fade-effect"
+import { ScrollFadeEffect } from "@/registry/components/scroll-fade-effect"
 
 export default function ScrollFadeEffectHorizontalDemo() {
   return (
@@ -12,7 +12,7 @@ export default function ScrollFadeEffectHorizontalDemo() {
               <Image
                 src={artwork.art}
                 alt={`Photo by ${artwork.artist}`}
-                className="aspect-3/4 h-fit w-fit rounded-sm object-cover"
+                className="aspect-3/4 size-fit rounded-sm object-cover"
                 width={300}
                 height={400}
               />

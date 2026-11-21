@@ -36,12 +36,12 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "text-flip-demo",
+    name: "text-swap-demo",
     type: "registry:example",
-    registryDependencies: [getRegistryItemUrl("text-flip")],
+    registryDependencies: [getRegistryItemUrl("text-swap")],
     files: [
       {
-        path: "examples/text-flip-demo.tsx",
+        path: "examples/text-swap-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -113,6 +113,43 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/theme-switcher-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "swipe-actions-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("swipe-actions")],
+    files: [
+      {
+        path: "examples/swipe-actions-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName:
+        "mx-auto min-h-svh w-full max-w-3xl place-items-center-safe content-center-safe px-4",
+    },
+  },
+  {
+    name: "swipe-actions-full-swipe-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("swipe-actions")],
+    files: [
+      {
+        path: "examples/swipe-actions-full-swipe-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "swipe-actions-minimal-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("swipe-actions")],
+    files: [
+      {
+        path: "examples/swipe-actions-minimal-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -603,12 +640,42 @@ export const examples: Registry["items"] = [
     },
   },
   {
-    name: "testimonial-2-demo",
+    name: "logos-flip-demo",
     type: "registry:example",
-    registryDependencies: [getRegistryItemUrl("testimonial-2")],
+    registryDependencies: [getRegistryItemUrl("logos-flip")],
     files: [
       {
-        path: "examples/testimonial-2-demo.tsx",
+        path: "examples/logos-flip-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName:
+        "container mx-auto min-h-svh place-items-center-safe content-center-safe",
+    },
+  },
+  {
+    name: "logos-swap-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("logos-swap")],
+    files: [
+      {
+        path: "examples/logos-swap-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName:
+        "container mx-auto min-h-svh place-items-center-safe content-center-safe",
+    },
+  },
+  {
+    name: "pull-quote-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("pull-quote")],
+    files: [
+      {
+        path: "examples/pull-quote-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -648,5 +715,253 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
     ],
+  },
+  {
+    name: "timescale-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("timescale")],
+    files: [
+      {
+        path: "examples/timescale-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "status-button-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("status-button")],
+    files: [
+      {
+        path: "examples/status-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "status-button-form-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "field",
+      "input",
+      getRegistryItemUrl("status-button"),
+    ],
+    files: [
+      {
+        path: "examples/status-button-form-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "apple-carousel-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("apple-carousel")],
+    files: [
+      {
+        path: "examples/apple-carousel-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "min-h-svh content-center-safe py-8",
+    },
+  },
+  {
+    name: "apple-carousel-caption-demo",
+    type: "registry:example",
+    registryDependencies: ["button", getRegistryItemUrl("apple-carousel")],
+    files: [
+      {
+        path: "examples/apple-carousel-caption-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "min-h-svh content-center-safe py-8",
+    },
+  },
+  {
+    name: "apple-accordion-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("apple-accordion")],
+    files: [
+      {
+        path: "examples/apple-accordion-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "min-h-svh content-center-safe px-4 py-8 sm:px-8",
+    },
+  },
+  {
+    name: "jpg-card-holder-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("jpg-card-holder")],
+    files: [
+      {
+        path: "examples/jpg-card-holder-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center",
+    },
+  },
+  {
+    name: "foldable-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("foldable")],
+    files: [
+      {
+        path: "examples/foldable-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center",
+    },
+  },
+  {
+    name: "foldable-spread-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("foldable")],
+    files: [
+      {
+        path: "examples/foldable-spread-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center",
+    },
+  },
+  {
+    name: "ipod-classic-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("ipod-classic")],
+    files: [
+      {
+        path: "examples/ipod-classic-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center",
+    },
+  },
+  {
+    name: "wallet-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("wallet")],
+    files: [
+      {
+        path: "examples/wallet-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center",
+    },
+  },
+  {
+    name: "wallet-passes-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("wallet")],
+    files: [
+      {
+        path: "examples/wallet-passes-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center",
+    },
+  },
+  {
+    name: "bookshelf-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("bookshelf")],
+    files: [
+      {
+        path: "examples/bookshelf-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName:
+        "flex min-h-svh items-center justify-center overflow-x-clip",
+    },
+  },
+  {
+    name: "lightbox-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("lightbox")],
+    files: [
+      {
+        path: "examples/lightbox-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center px-4",
+    },
+  },
+  {
+    name: "lightbox-thumbnails-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("lightbox")],
+    files: [
+      {
+        path: "examples/lightbox-thumbnails-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center px-4",
+    },
+  },
+  {
+    name: "lightbox-single-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("lightbox")],
+    files: [
+      {
+        path: "examples/lightbox-single-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center px-4",
+    },
+  },
+  {
+    name: "lightbox-handle-demo",
+    type: "registry:example",
+    registryDependencies: ["button", getRegistryItemUrl("lightbox")],
+    files: [
+      {
+        path: "examples/lightbox-handle-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center px-4",
+    },
+  },
+  {
+    name: "lightbox-next-image-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("lightbox")],
+    files: [
+      {
+        path: "examples/lightbox-next-image-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: {
+      previewClassName: "flex min-h-svh items-center justify-center px-4",
+    },
   },
 ]

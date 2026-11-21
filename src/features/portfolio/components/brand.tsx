@@ -14,7 +14,7 @@ export function Brand() {
       <BrandContextMenu>
         <div className="grid grid-cols-[2rem_1fr]">
           <div className="flex h-28 items-center justify-center border-r border-dashed border-line bg-background">
-            <span className="rotate-270 text-sm text-muted-foreground select-none">
+            <span className="rotate-270 text-body-small-regular text-text-secondary select-none">
               Mark
             </span>
           </div>
@@ -24,7 +24,7 @@ export function Brand() {
           </div>
 
           <div className="flex h-28 items-center justify-center border-r border-dashed border-line bg-background">
-            <span className="rotate-270 text-sm text-muted-foreground select-none">
+            <span className="rotate-270 text-body-small-regular text-text-secondary select-none">
               Logotype
             </span>
           </div>

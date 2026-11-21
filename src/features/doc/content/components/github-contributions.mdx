@@ -3,7 +3,7 @@ title: GitHub Contributions
 description: Visualize year-long GitHub contribution activity with daily counts, tooltips, and a profile link.
 image: https://assets.narakcode.dev/images/blog/github-contributions.webp
 createdAt: 2026-04-18
-updatedAt: 2026-05-08
+updatedAt: 2026-08-22
 ---
 
 <ComponentPreview
@@ -12,11 +12,14 @@ updatedAt: 2026-05-08
   openInV0Url="https://narakcode.dev/r/github-contributions.json"
 />
 
+<DocDependencies name="github-contributions" />
+
 ## Features
 
-- Built on Kibo UI [Contribution Graph](https://www.kibo-ui.com/components/contribution-graph) for the calendar grid, legend, and yearly total.
-- Loads contribution data from Jonathan Gruber's [GitHub Contributions API](https://github.com/grubersjoe/github-contributions-api).
-- Uses Next.js `unstable_cache` with a one-day revalidation window, then passes a `Promise` into the client and resolves it with React `use()`
+- Shows a full year of daily activity with a color legend and total count.
+- Caches fetched contributions for a day, so repeat visits do not hit the API.
+- Streams in behind a Suspense boundary with a spinner fallback while data loads.
+- Works with any API compatible with the GitHub Contributions API.
 
 ## Installation
 
@@ -32,13 +35,34 @@ npx shadcn@latest add @nrcode/github-contributions
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="github-contributions" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
 
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install date-fns cn
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/registry/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
+
 <Step>Install the required shadcn/ui components</Step>
 
-- https://ui.shadcn.com/docs/components/tooltip
+- [Spinner](https://ui.shadcn.com/docs/components/base/spinner)
+- [Tooltip](https://ui.shadcn.com/docs/components/base/tooltip)
 
 <Step>Copy and paste the following code into your project</Step>
 
@@ -54,7 +78,7 @@ npx shadcn@latest add @nrcode/github-contributions
 
 <ComponentSource
   src="src/registry/components/github-contributions/lib/get-cached-contributions.ts"
-  title="lib/get-cached-contributions.tsx"
+  title="lib/get-cached-contributions.ts"
 />
 
 <Step>Update the import paths to match your project setup</Step>
@@ -64,6 +88,16 @@ npx shadcn@latest add @nrcode/github-contributions
 </TabsContent>
 
 </CodeTabs>
+
+## Setup
+
+Set the API base URL. It is required, and the fetcher throws without it:
+
+```bash title=".env.local"
+NEXT_PUBLIC_GITHUB_CONTRIBUTIONS_API_URL=https://github-contributions-api.jogruber.de/v4
+```
+
+Data is requested from `{base URL}/{username}?y=last`
 
 ## Usage
 

@@ -6,7 +6,7 @@ import { XIcon } from "lucide-react"
 
 import { UTM_PARAMS } from "@/config/site"
 import { trackEvent } from "@/lib/events"
-import { Button } from "@/components/base/ui/button"
+import { Button } from "@/components/ui/button"
 import { SPONSORS } from "@/features/sponsor/data"
 
 export function DocSponsors() {
@@ -30,7 +30,7 @@ export function DocSponsors() {
           <div className="flex items-center justify-between pt-1 pb-0.75 pl-3">
             <h2
               id="doc-sponsors-heading"
-              className="font-heading text-sm/none font-medium text-muted-foreground"
+              className="text-body-regular-medium text-text-secondary"
             >
               Sponsors
             </h2>

@@ -1,16 +1,14 @@
 import type { Route } from "next"
-import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/base/ui/button"
+import { Button } from "@/components/ui/button"
+import { FastLink } from "@/components/fast-link"
 import {
   ComponentItem,
   ComponentItemDot,
-  ComponentItemIcon,
   ComponentItemTitle,
 } from "@/app/(app)/(pages)/components/component-item"
-import { ComponentIcon } from "@/features/doc/components/component-icon"
 import { getComponentDocs } from "@/features/doc/data/documents"
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
@@ -31,16 +29,14 @@ export function Components() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="relative pt-4">
+      <div className="relative">
         <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
           <div className="border-r border-line" />
           <div className="border-r border-line max-md:hidden" />
         </div>
 
-        <div className="screen-line-bottom h-px" />
-
         <ul className="grid grid-cols-1 overflow-x-clip sm:grid-cols-2 md:grid-cols-3">
-          {components.slice(0, 12).map((c) => (
+          {components.slice(0, 9).map((c) => (
             <li
               key={c.slug}
               className={cn(
@@ -50,32 +46,25 @@ export function Components() {
               )}
             >
               <ComponentItem href={`/components/${c.slug}` as Route}>
-                <ComponentItemIcon>
-                  <ComponentIcon slug={c.slug} />
-                  {(c.metadata.new || c.metadata.updated) && (
-                    <ComponentItemDot
-                      aria-label={c.metadata.new ? "New" : "Updated"}
-                    />
-                  )}
-                </ComponentItemIcon>
                 <ComponentItemTitle as="h3">
                   {c.metadata.title}
                 </ComponentItemTitle>
+                {(c.metadata.new || c.metadata.updated) && (
+                  <ComponentItemDot type={c.metadata.new ? "new" : "updated"} />
+                )}
               </ComponentItem>
             </li>
           ))}
         </ul>
-
-        <div className="screen-line-top h-4 before:-top-px" />
       </div>
 
-      <div className="screen-line-top flex justify-center py-2">
+      <div className="screen-line-top -mt-px flex justify-center py-4">
         <Button
-          className="gap-2 pr-2.5 pl-3"
+          className="gap-2 pr-2.5 pl-3 shadow-[inset_0_0_1px] shadow-foreground/20"
           variant="secondary"
           size="sm"
           nativeButton={false}
-          render={<Link href="/components" />}
+          render={<FastLink href="/components" />}
         >
           All components
           <ArrowRightIcon />

@@ -1,8 +1,8 @@
-import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
-import { Button } from "@/components/base/ui/button"
+import { Button } from "@/components/ui/button"
 import { Daikanoid } from "@/components/daikanoid"
+import { FastLink } from "@/components/fast-link"
 
 export function NotFound() {
   return (
@@ -17,10 +17,10 @@ export function NotFound() {
           variant="outline"
           nativeButton={false}
           render={
-            <Link href="/">
+            <FastLink href="/">
               Go to Home
               <ArrowRightIcon />
-            </Link>
+            </FastLink>
           }
         />
       </section>

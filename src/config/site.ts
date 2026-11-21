@@ -1,4 +1,4 @@
-import type { Route } from "next"
+import type { Metadata, Route } from "next"
 
 import type { NavItem } from "@/types/nav"
 import { SOCIAL } from "@/features/portfolio/data/social-links"
@@ -11,6 +11,26 @@ export const SITE_INFO = {
   description: USER.bio,
   keywords: USER.keywords,
 }
+
+// Metadata merges shallowly, so a page's openGraph must spread this to keep it.
+export const SITE_OPEN_GRAPH = {
+  siteName: SITE_INFO.name,
+  url: "/",
+  type: "profile",
+  locale: "en_US",
+  firstName: USER.firstName,
+  lastName: USER.lastName,
+  username: USER.username,
+  gender: USER.gender,
+  images: [
+    {
+      url: SITE_INFO.ogImage,
+      width: 1200,
+      height: 630,
+      alt: SITE_INFO.name,
+    },
+  ],
+} satisfies Metadata["openGraph"]
 
 export const LICENSE = {
   name: "MIT License",

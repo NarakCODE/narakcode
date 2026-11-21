@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from "react"
 import type { Route } from "next"
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import type { NavItem } from "@/types/nav"
@@ -13,6 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { FastLink } from "@/components/fast-link"
 import { haptic } from "@/registry/lib/haptic"
 
 export function NavMobile({ items }: { items: NavItem<Route>[] }) {
@@ -33,16 +33,14 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
 
   return (
     <Popover open={open} onOpenChange={handleOpenChange} modal>
-      <PopoverTrigger asChild>
-        <NavMobileTrigger />
-      </PopoverTrigger>
+      <PopoverTrigger render={<NavMobileTrigger />} />
 
       <PopoverContent
         className="w-48 rounded-xl p-1"
         side="top"
         align="center"
         sideOffset={8}
-        onCloseAutoFocus={(e) => e.preventDefault()}
+        finalFocus={false}
       >
         <div className="flex flex-col">
           {items.map((link) => {
@@ -53,7 +51,7 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
                 : pathname?.startsWith(link.href))
 
             return (
-              <Link
+              <FastLink
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
@@ -61,7 +59,7 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
                 onClick={() => handleOpenChange(false)}
               >
                 {link.title}
-              </Link>
+              </FastLink>
             )
           })}
         </div>
@@ -83,8 +81,8 @@ function NavMobileTrigger(
       aria-label="Toggle Menu"
       {...props}
     >
-      <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]:translate-y-0.75 group-data-[state=open]:rotate-45" />
-      <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]:-translate-y-0.75 group-data-[state=open]:-rotate-45" />
+      <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-popup-open:translate-y-0.75 group-data-popup-open:rotate-45" />
+      <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-popup-open:-translate-y-0.75 group-data-popup-open:-rotate-45" />
     </Button>
   )
 }

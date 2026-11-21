@@ -1,5 +1,4 @@
 import type { Metadata, Route } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getTableOfContents } from "fumadocs-core/content/toc"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
@@ -11,12 +10,13 @@ import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { absoluteUrl } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Kbd } from "@/components/ui/kbd"
-import { Prose } from "@/components/ui/typography"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip"
+} from "@/components/ui/tooltip"
+import { Prose } from "@/components/ui/typography"
+import { FastLink } from "@/components/fast-link"
 import { MDX } from "@/components/mdx"
 import { TOCInline } from "@/components/toc-inline"
 import { TOCMinimap } from "@/components/toc-minimap"
@@ -25,6 +25,7 @@ import {
   DocContentCol,
   DocRightCol,
 } from "@/features/doc/components/doc-layout"
+import { DocNeighbourNav } from "@/features/doc/components/doc-neighbour-nav"
 import { LLMCopyButtonWithViewOptions } from "@/features/doc/components/doc-page-actions"
 import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
 import { DocSponsors } from "@/features/doc/components/doc-sponsors"
@@ -33,6 +34,7 @@ import {
   getComponentDocs,
   getDocBySlug,
 } from "@/features/doc/data/documents"
+import { withLicenseSection } from "@/features/doc/lib/component-license"
 import type { Doc } from "@/features/doc/types/document"
 
 export const revalidate = false
@@ -135,7 +137,8 @@ export default async function Page({
     notFound()
   }
 
-  const toc = getTableOfContents(doc.content)
+  const content = withLicenseSection(doc.content)
+  const toc = getTableOfContents(content)
 
   const allDocs = getComponentDocs()
     .slice()
@@ -182,17 +185,18 @@ export default async function Page({
             className="h-7 gap-2 border-none px-0 tracking-wider text-muted-foreground hover:text-foreground hover:no-underline"
             variant="link"
             size="sm"
-            asChild
-          >
-            <Link href="/components">
-              <ArrowLeftIcon />
-              Components
-            </Link>
-          </Button>
+            nativeButton={false}
+            render={
+              <FastLink href="/components">
+                <ArrowLeftIcon />
+                Components
+              </FastLink>
+            }
+          />
 
           <div className="flex items-center gap-2">
             <LLMCopyButtonWithViewOptions
-              markdownUrl={`/components/${doc.slug}.mdx`}
+              markdownUrl={`/components/${doc.slug}.md`}
               isComponent
             />
 
@@ -209,15 +213,16 @@ export default async function Page({
                       className="size-7 border-none"
                       variant="secondary"
                       size="icon-sm"
-                      asChild
-                    >
-                      <Link
-                        href={`/components/${previous.slug}`}
-                        aria-label="Previous Component"
-                      >
-                        <ArrowLeftIcon />
-                      </Link>
-                    </Button>
+                      nativeButton={false}
+                      render={
+                        <FastLink
+                          href={`/components/${previous.slug}`}
+                          aria-label="Previous Component"
+                        >
+                          <ArrowLeftIcon />
+                        </FastLink>
+                      }
+                    />
                   }
                 />
                 <TooltipContent className="pr-2 pl-3">
@@ -239,15 +244,16 @@ export default async function Page({
                       className="size-7 border-none"
                       variant="secondary"
                       size="icon-sm"
-                      asChild
-                    >
-                      <Link
-                        href={`/components/${next.slug}`}
-                        aria-label="Next component"
-                      >
-                        <ArrowRightIcon />
-                      </Link>
-                    </Button>
+                      nativeButton={false}
+                      render={
+                        <FastLink
+                          href={`/components/${next.slug}`}
+                          aria-label="Next component"
+                        >
+                          <ArrowRightIcon />
+                        </FastLink>
+                      }
+                    />
                   }
                 />
                 <TooltipContent className="pr-2 pl-3">
@@ -272,23 +278,27 @@ export default async function Page({
         <div className="screen-dashed-line-bottom after:opacity-80">
           <h1
             data-slot="doc-title"
-            className="screen-line-bottom overflow-x-clip px-4 text-4xl font-medium tracking-tight text-balance"
+            className="screen-line-bottom overflow-x-clip px-4 text-title-regular text-balance text-text-primary"
           >
             {doc.metadata.title}
           </h1>
         </div>
 
         <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
-          <p className="text-muted-foreground">{doc.metadata.description}</p>
+          <p className="text-paragraph-regular text-text-secondary">
+            {doc.metadata.description}
+          </p>
 
           <TOCInline className="lg:hidden" items={toc} />
 
           <div>
-            <MDX code={doc.content} />
+            <MDX code={content} />
           </div>
         </Prose>
 
         <DocSponsors />
+
+        <DocNeighbourNav previous={previous} next={next} />
 
         <div className="screen-dashed-line-top before:opacity-80">
           <div className="screen-line-top h-4 overflow-x-clip" />
