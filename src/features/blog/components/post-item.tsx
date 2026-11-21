@@ -48,7 +48,7 @@ export function PostItem({
         /\.(mp4|webm|mov)$/i.test(post.metadata.image) ? (
         <div className="relative select-none [--image-radius:var(--radius-xl)]">
           <video
-            className="aspect-1200/630 w-full rounded-(--image-radius) object-cover transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] sm:grayscale sm:group-hover/post:grayscale-0"
+            className="aspect-1200/630 w-full rounded-(--image-radius) object-cover grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/post:grayscale-0"
             src={post.metadata.image}
             autoPlay
             loop
@@ -61,7 +61,7 @@ export function PostItem({
         post.metadata.image && (
           <div className="relative select-none [--image-radius:var(--radius-xl)]">
             <Image
-              className="aspect-1200/630 rounded-(--image-radius) transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] sm:grayscale sm:group-hover/post:grayscale-0"
+              className="aspect-1200/630 rounded-(--image-radius) grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/post:grayscale-0"
               src={post.metadata.image}
               alt={post.metadata.title}
               width={1200}
@@ -76,7 +76,7 @@ export function PostItem({
       )}
 
       <div className="flex flex-col gap-1 p-2">
-        <Heading className="text-title-mini-medium text-balance text-text-primary">
+        <Heading className="text-lg/snug font-medium text-balance">
           <FastLink href={`/blog/${post.slug}`}>
             <span className="absolute inset-0" aria-hidden />
             {post.metadata.title}
@@ -93,7 +93,7 @@ export function PostItem({
 
         <dl>
           <dt className="sr-only">Published on</dt>
-          <dd className="text-body-small-regular text-text-secondary">
+          <dd className="text-sm text-muted-foreground">
             <time dateTime={post.metadata.createdAt}>
               {formatDate(post.metadata.createdAt, "d MMM yyyy")}
             </time>

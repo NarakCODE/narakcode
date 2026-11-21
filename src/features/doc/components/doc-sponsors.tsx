@@ -30,7 +30,7 @@ export function DocSponsors() {
           <div className="flex items-center justify-between pt-1 pb-0.75 pl-3">
             <h2
               id="doc-sponsors-heading"
-              className="text-body-regular-medium text-text-secondary"
+              className="font-heading text-sm/none font-medium text-muted-foreground"
             >
               Sponsors
             </h2>

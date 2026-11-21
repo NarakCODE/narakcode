@@ -149,7 +149,7 @@ export default function Page() {
         <div className="screen-line-bottom h-px" />
 
         <div className="flex items-center gap-1.5 p-1.5 pl-4">
-          <h2 className="flex-1 text-body-regular-medium text-text-secondary">
+          <h2 className="flex-1 text-sm/none font-medium tracking-wider text-muted-foreground">
             {allComponents.length} components
           </h2>
 

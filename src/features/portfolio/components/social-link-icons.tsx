@@ -48,7 +48,7 @@ export const SOCIAL_ICONS: Record<SocialName, React.JSX.Element> = {
     <img
       src="/svgs/khmer-coder.svg"
       alt="KhmerCoders"
-      className="size-4.5 object-contain"
+      className="size-4.5 object-contain contrast-125 grayscale transition-[filter] duration-200 group-hover/social-link:contrast-100 group-hover/social-link:grayscale-0 dark:brightness-125 dark:group-hover/social-link:brightness-100"
     />
   ),
 }

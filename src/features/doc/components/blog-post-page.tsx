@@ -259,7 +259,7 @@ export function BlogPostPage({
 
           <h1
             data-slot="doc-title"
-            className="screen-line-bottom px-4 text-title-regular text-balance text-text-primary"
+            className="screen-line-bottom px-4 text-4xl font-medium tracking-tight text-balance"
           >
             {doc.metadata.title}
           </h1>
@@ -270,7 +270,7 @@ export function BlogPostPage({
 
           <DocContentCol>
             <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
-              <p className="text-paragraph-regular text-text-secondary">
+              <p className="text-muted-foreground">
                 {doc.metadata.description}
               </p>
 

@@ -22,6 +22,22 @@ const transition: Transition = {
   stiffness: 200,
 }
 
+// The N's top corner: the vertex whose 30° wedge to the horizontal is clear.
+const ISOMETRIC_ANGLE = Math.PI / 6
+const ANGLE_RADIUS = 116
+const ANGLE_VERTEX = { x: 333.05, y: 0.58 }
+const ANGLE_START = { x: ANGLE_VERTEX.x + ANGLE_RADIUS, y: ANGLE_VERTEX.y }
+const ANGLE_END = {
+  x: ANGLE_VERTEX.x + ANGLE_RADIUS * Math.cos(ISOMETRIC_ANGLE),
+  y: ANGLE_VERTEX.y + ANGLE_RADIUS * Math.sin(ISOMETRIC_ANGLE),
+}
+const ANGLE_LABEL = {
+  x: ANGLE_VERTEX.x + (ANGLE_RADIUS + 24) * Math.cos(ISOMETRIC_ANGLE / 2),
+  y: ANGLE_VERTEX.y + (ANGLE_RADIUS + 24) * Math.sin(ISOMETRIC_ANGLE / 2),
+}
+// Tip at the origin, pointing left, so each use only translates and rotates.
+const ANGLE_ARROW = "M0 0 10.5-3.8v7.6Z"
+
 /**
  * An isometric SVG mark combining letters N and C, whose outline is traced by a
  * gradient highlight that follows the cursor. Pressing the mark morphs the 3D
@@ -45,7 +61,7 @@ export function ChanhDaiMarkIsometric({ className }: { className?: string }) {
   const mouseX = useMotionValue(0.5)
   const mouseY = useMotionValue(0.5)
 
-  const cx = useSpring(useTransform(mouseX, [0, 1], [0, 950]), {
+  const cx = useSpring(useTransform(mouseX, [0, 1], [166, 944]), {
     stiffness: 300,
     damping: 30,
     mass: 0.1,
@@ -82,10 +98,10 @@ export function ChanhDaiMarkIsometric({ className }: { className?: string }) {
     <motion.svg
       ref={ref}
       className={cn(
-        "h-auto w-full touch-manipulation [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]",
+        "h-auto w-full touch-manipulation overflow-visible [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]",
         className
       )}
-      viewBox="0 0 950 354"
+      viewBox="166 0 778 354"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden
@@ -129,7 +145,7 @@ export function ChanhDaiMarkIsometric({ className }: { className?: string }) {
           id={ids.radialGradient}
           cx={cx}
           cy={cy}
-          r="300"
+          r="280"
           gradientUnits="userSpaceOnUse"
         >
           <stop
@@ -145,10 +161,10 @@ export function ChanhDaiMarkIsometric({ className }: { className?: string }) {
         </motion.radialGradient>
       </defs>
 
-      <g className="stroke-line" strokeWidth="1" strokeDasharray="4 2">
-        <path d="M-477.55 756.57L1254.51 -243.41" />
-        <path d="M977.37 788.58L-754.67 -211.42" />
-        <path d="M1143.65 692.58L-588.39 -307.42" />
+      <g className="stroke-line" strokeWidth="1.25" strokeDasharray="5 2.5">
+        <path d="M-1500 1346.90L2500 -962.51" />
+        <path d="M-1500 -833.74L2500 1475.67" />
+        <path d="M-1500 -1057.73L2500 1251.67" />
       </g>
 
       <g className="fill-background" fillRule="evenodd" clipRule="evenodd">
@@ -290,6 +306,45 @@ export function ChanhDaiMarkIsometric({ className }: { className?: string }) {
           transition={transition}
           stroke={`url(#${ids.radialGradient})`}
         />
+      </g>
+
+      {/* Unreadable below sm. Measures the 30° isometric angle at N's top vertex. */}
+      <g
+        className="pointer-events-none text-dimension max-sm:hidden"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinejoin="round"
+      >
+        {/* A reference line, not an extension line, so no gap at the vertex. */}
+        <path
+          d={`M${ANGLE_VERTEX.x} ${ANGLE_VERTEX.y}H${ANGLE_START.x + 16}`}
+        />
+        <path
+          d={`M${ANGLE_START.x} ${ANGLE_START.y}A${ANGLE_RADIUS} ${ANGLE_RADIUS} 0 0 1 ${ANGLE_END.x} ${ANGLE_END.y}`}
+        />
+        {/* Filled so the arc stops at each arrow's base. */}
+        <path
+          className="fill-background"
+          d={ANGLE_ARROW}
+          transform={`translate(${ANGLE_START.x} ${ANGLE_START.y}) rotate(90)`}
+        />
+        <path
+          className="fill-background"
+          d={ANGLE_ARROW}
+          transform={`translate(${ANGLE_END.x} ${ANGLE_END.y}) rotate(-60)`}
+        />
+        <text
+          className="fill-dimension-foreground font-mono select-none"
+          x={ANGLE_LABEL.x}
+          y={ANGLE_LABEL.y}
+          stroke="none"
+          fontSize="16"
+          textAnchor="middle"
+          dominantBaseline="central"
+        >
+          30°
+        </text>
       </g>
     </motion.svg>
   )

@@ -2,7 +2,7 @@ import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import type { BuildInfo } from "@/lib/build-info"
 import { getBuildInfo, getStack } from "@/lib/build-info"
 import { cn } from "@/lib/utils"
-import { ChanhDaiMark } from "@/components/chanhdai-mark"
+import { NarakCodeSignature } from "@/components/narakcode-signature"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { SOCIAL } from "@/features/portfolio/data/social-links"
 import { USER } from "@/features/portfolio/data/user"
@@ -199,8 +199,8 @@ export function SiteFooterCad() {
             </Field>
 
             <Field label="Approved by">
-              <div className="flex h-full flex-col justify-end gap-3">
-                <ChanhDaiMark className="h-7 w-auto self-start text-foreground" />
+              <div className="flex h-full flex-col justify-end gap-2">
+                <NarakCodeSignature className="w-36 max-w-full self-start text-blue-900 dark:text-foreground" />
                 <span className="border-t border-line pt-2 font-sans text-sm/none font-medium tracking-wide uppercase">
                   {USER.displayName}
                 </span>

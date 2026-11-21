@@ -1,21 +1,25 @@
 import localFont from "next/font/local"
-import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans"
 import { GeistSerif } from "geist/font/serif"
 
 import { cn } from "@/lib/utils"
 
-const fontSans = localFont({
-  src: "../assets/fonts/GeistRounded.woff2",
-  weight: "100 900",
-  style: "normal",
-  display: "swap",
-  fallback: ["ui-sans-serif", "system-ui", "sans-serif"],
-  variable: "--font-sans",
-})
-
-const fontMono = GeistMono
+const fontSans = GeistSans
 
 const fontSerif = GeistSerif
+
+const fontHandwritten = localFont({
+  src: "../assets/fonts/ChanhDaiNotes-Regular.woff2",
+  weight: "400",
+  display: "swap",
+  variable: "--font-handwritten",
+})
+
+const fontMono = localFont({
+  src: "../assets/fonts/PaperMono[wght].woff2",
+  display: "swap",
+  variable: "--font-mono",
+})
 
 // Only the iPod uses it, so it loads on demand instead of on every page.
 const fontChicagoKare = localFont({
@@ -30,7 +34,8 @@ export const fontVariables = cn(
   fontSans.variable,
   fontMono.variable,
   fontSerif.variable,
+  fontHandwritten.variable,
   fontChicagoKare.variable,
-  "[--font-mono:var(--font-geist-mono)]",
+  "[--font-sans:var(--font-geist-sans)]",
   "[--font-serif:var(--font-geist-serif)]"
 )

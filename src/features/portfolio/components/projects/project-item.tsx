@@ -38,31 +38,33 @@ export function ProjectItem({
       {/* Only the title is the trigger (accordion pattern); its overlay keeps
           the whole row clickable, while the project link sits above it. */}
       <div className="group/project relative flex items-center hover:bg-accent-muted">
-        {project.logo ? (
-          <Image
-            src={project.logo}
-            alt={project.title}
-            width={32}
-            height={32}
-            quality={100}
-            className="mx-4 flex size-6 shrink-0 grayscale select-none group-hover/project:grayscale-0"
-            unoptimized
-            aria-hidden
-          />
-        ) : (
-          <IconTile className="mx-4">{project.icon ?? <BoxIcon />}</IconTile>
-        )}
+        <IconTile className="mx-4">
+          {project.logo ? (
+            <Image
+              src={project.logo}
+              alt={project.title}
+              width={16}
+              height={16}
+              quality={100}
+              className="size-4 shrink-0 grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] select-none group-hover/project:grayscale-0"
+              unoptimized
+              aria-hidden
+            />
+          ) : (
+            (project.icon ?? <BoxIcon />)
+          )}
+        </IconTile>
 
         <div className="flex flex-1 items-center gap-2 border-l border-dashed border-line p-4">
           <div className="flex-1">
-            <h3 className="mb-1 text-body-regular-medium text-balance text-text-primary">
+            <h3 className="mb-1 leading-snug font-medium text-balance">
               <CollapsibleTrigger className="text-left">
                 <span className="absolute inset-0" aria-hidden />
                 {project.title}
               </CollapsibleTrigger>
             </h3>
 
-            <dl className="text-body-small-regular text-text-secondary">
+            <dl className="text-sm text-muted-foreground">
               <dt className="sr-only">Period</dt>
               <dd className="flex items-center gap-0.5">
                 <span>{start}</span>
