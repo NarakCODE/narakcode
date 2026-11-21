@@ -227,7 +227,10 @@ export default async function BlockViewPage({
                     size="icon-sm"
                     nativeButton={false}
                     render={
-                      <FastLink href={`/blocks/${next}`} aria-label="Next Block">
+                      <FastLink
+                        href={`/blocks/${next}`}
+                        aria-label="Next Block"
+                      >
                         <ArrowRightIcon />
                       </FastLink>
                     }

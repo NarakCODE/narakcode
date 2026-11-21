@@ -67,7 +67,8 @@ const MILESTONES: Milestone[] = [
   { year: 2005 },
   {
     year: 2006,
-    content: "First time exploring desktop computers and tinkering with software.",
+    content:
+      "First time exploring desktop computers and tinkering with software.",
   },
   { year: 2007 },
   { year: 2008 },
@@ -78,32 +79,38 @@ const MILESTONES: Milestone[] = [
   { year: 2013 },
   {
     year: 2014,
-    content: "Wrote my first lines of HTML and CSS, and built a simple static webpage.",
+    content:
+      "Wrote my first lines of HTML and CSS, and built a simple static webpage.",
   },
   { year: 2015 },
   { year: 2016 },
   {
     year: 2017,
-    content: "Dove into JavaScript, algorithms, and full-stack web fundamentals.",
+    content:
+      "Dove into JavaScript, algorithms, and full-stack web fundamentals.",
   },
   { year: 2018 },
   {
     year: 2019,
-    content: "Started building interactive web applications with React and TypeScript.",
+    content:
+      "Started building interactive web applications with React and TypeScript.",
   },
   { year: 2020 },
   {
     year: 2021,
-    content: "Focused on UI engineering, design systems, and fluid interface motion.",
+    content:
+      "Focused on UI engineering, design systems, and fluid interface motion.",
   },
   { year: 2022 },
   {
     year: 2023,
-    content: "Launched [narakcode.dev](https://narakcode.dev) to share articles, experiments, and developer tools.",
+    content:
+      "Launched [narakcode.dev](https://narakcode.dev) to share articles, experiments, and developer tools.",
   },
   {
     year: 2024,
-    content: "Started publishing reusable React, Tailwind CSS, and motion components.",
+    content:
+      "Started publishing reusable React, Tailwind CSS, and motion components.",
   },
   {
     year: 2025,

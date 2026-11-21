@@ -285,7 +285,7 @@ export function BlogPostPage({
           </DocContentCol>
 
           <DocRightCol>
-            <div className="sticky top-[calc(var(--doc-cols-top,0)+(--spacing(3))] translate-x-2 opacity-0 in-data-doc-cols-ready:opacity-100">
+            <div className="top-[calc(var(--doc-cols-top,0)+(--spacing(3))] sticky translate-x-2 opacity-0 in-data-doc-cols-ready:opacity-100">
               <TOCMinimap items={toc} />
             </div>
           </DocRightCol>
