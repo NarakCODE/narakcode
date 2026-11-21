@@ -66,8 +66,9 @@ function getMobileHtmlProps(
 
 type DropDrawerProps = Omit<
   React.ComponentProps<typeof DropdownMenu>,
-  "onOpenChange"
+  "onOpenChange" | "children"
 > & {
+  children?: React.ReactNode
   onOpenChange?: (open: boolean) => void
 }
 
@@ -401,7 +402,7 @@ function DropDrawerContent({
                     animate="center"
                     exit="exit"
                     transition={transition}
-                    className="h-full w-full space-y-1.5 pb-6"
+                    className="size-full space-y-1.5 pb-6"
                   >
                     {activeSubmenu
                       ? // eslint-disable-next-line react-hooks/refs
@@ -539,7 +540,7 @@ function DropDrawerItem({
         data-inset={inset}
         data-disabled={disabled}
         className={cn(
-          "flex cursor-pointer items-center justify-between px-4 py-4",
+          "flex cursor-pointer items-center justify-between p-4",
           // Only apply margin, background and corners if not in a group
           !isInsideGroup && "mx-2 my-1.5 rounded-md bg-accent dark:bg-accent",
           // For items in a group, don't add background but add more padding
@@ -958,7 +959,7 @@ function DropDrawerSubTrigger({
         data-slot="drop-drawer-sub-trigger"
         data-inset={inset}
         className={cn(
-          "flex cursor-pointer items-center justify-between px-4 py-4",
+          "flex cursor-pointer items-center justify-between p-4",
           // Only apply margin, background and corners if not in a group
           !isInsideGroup && "mx-2 my-1.5 rounded-md bg-accent dark:bg-accent",
           // For items in a group, don't add background but add more padding

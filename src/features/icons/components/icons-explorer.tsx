@@ -291,7 +291,7 @@ function IconGrid({
               <button
                 type="button"
                 onClick={() => onSelectIcon(icon)}
-                className="flex h-full w-full flex-col items-center justify-between gap-3 px-2.5 pt-7 pb-3.5 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+                className="flex size-full flex-col items-center justify-between gap-3 px-2.5 pt-7 pb-3.5 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
               >
                 <span className="flex min-h-16 items-center justify-center transition-transform duration-150 group-hover/icon-cell:scale-105">
                   <IconSvgPreview src={icon.src} name={icon.title} />

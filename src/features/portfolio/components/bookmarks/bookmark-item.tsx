@@ -68,11 +68,7 @@ export function BookmarkItem({
               )}
             >
               {imageUrl ? (
-                <img
-                  src={imageUrl}
-                  alt=""
-                  className="h-full w-full object-cover"
-                />
+                <img src={imageUrl} alt="" className="size-full object-cover" />
               ) : (
                 (bookmark.icon ?? CATEGORY_ICONS[bookmark.category])
               )}

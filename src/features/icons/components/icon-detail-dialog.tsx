@@ -129,7 +129,7 @@ function AppSlotGlyph({ variant }: { variant: AppFrameSlotVariant }) {
   switch (variant) {
     case "card":
       return (
-        <div className="flex h-full w-full flex-col gap-2 p-3">
+        <div className="flex size-full flex-col gap-2 p-3">
           <div className="h-2.5 w-full rounded-full bg-[color-mix(in_oklab,var(--accent-foreground)_14%,transparent)]" />
           <div className="h-1.5 w-3/4 rounded-full bg-foreground/10" />
           <div className="h-1.5 w-1/2 rounded-full bg-foreground/7" />
@@ -137,14 +137,14 @@ function AppSlotGlyph({ variant }: { variant: AppFrameSlotVariant }) {
       )
     case "circles":
       return (
-        <div className="relative flex h-full w-full items-center justify-center">
+        <div className="relative flex size-full items-center justify-center">
           <span className="size-7 rounded-full bg-[color-mix(in_oklab,var(--accent-foreground)_14%,transparent)]" />
           <span className="mt-3 -ml-3 size-6 rounded-full bg-foreground/8 backdrop-blur-xs" />
         </div>
       )
     case "grid":
       return (
-        <div className="grid h-full w-full grid-cols-2 gap-1.5 p-3">
+        <div className="grid size-full grid-cols-2 gap-1.5 p-3">
           <span className="rounded-[6px] bg-foreground/8" />
           <span className="rounded-[6px] bg-foreground/5" />
           <span className="rounded-[6px] bg-foreground/5" />
@@ -153,7 +153,7 @@ function AppSlotGlyph({ variant }: { variant: AppFrameSlotVariant }) {
       )
     case "dial":
       return (
-        <div className="flex h-full w-full items-center justify-center p-3">
+        <div className="flex size-full items-center justify-center p-3">
           <span className="flex size-full items-center justify-center rounded-full border border-foreground/10 bg-foreground/4">
             <span className="size-2 rounded-full bg-foreground/15" />
           </span>
@@ -364,12 +364,12 @@ function IconPreviewStage({
       ink={surface === "dark" ? "#475564" : "#94A3B0"}
       guide={surface === "dark" ? "#222B35" : "#C8D3DC"}
     >
-      <div className="relative flex h-full w-full flex-col items-center justify-end px-4 pb-4">
+      <div className="relative flex size-full flex-col items-center justify-end px-4 pb-4">
         <img
           src="/images/iphone-wallpaper.jpg"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover select-none"
+          className="pointer-events-none absolute inset-0 size-full object-cover select-none"
         />
         <div
           aria-hidden="true"
@@ -514,7 +514,7 @@ function IconPreviewStage({
                 opacity: dragOpacity,
                 touchAction: "pan-y",
               }}
-              className="h-full w-full cursor-grab active:cursor-grabbing"
+              className="size-full cursor-grab active:cursor-grabbing"
             >
               {previewPhone}
             </motion.div>
@@ -611,7 +611,10 @@ function IconCodeTabs({
                       size: iconSize,
                     },
                   })
-                  toast.add({ type: "success", title: "Copied React component" })
+                  toast.add({
+                    type: "success",
+                    title: "Copied React component",
+                  })
                 }}
               />
             </CodeBlockActions>
@@ -668,7 +671,10 @@ function IconCodeTabs({
                       size: iconSize,
                     },
                   })
-                  toast.add({ type: "success", title: "Copied SVG to clipboard" })
+                  toast.add({
+                    type: "success",
+                    title: "Copied SVG to clipboard",
+                  })
                 }}
               />
             </CodeBlockActions>
@@ -1107,8 +1113,8 @@ export function Example() {
             aria-describedby={undefined}
             className={cn(
               "fixed inset-x-0 bottom-0 z-50 flex max-h-[92dvh] flex-col overflow-hidden rounded-t-[26px] border-t border-white/25 bg-background/92 shadow-[0_-16px_48px_-12px_rgb(0_0_0/0.35)] backdrop-blur-2xl backdrop-saturate-180 outline-none dark:border-white/12",
-              "[@media(prefers-contrast:more)]:border-foreground/40 [@media(prefers-contrast:more)]:bg-background",
-              "[@media(prefers-reduced-motion:reduce)]:transition-opacity [@media(prefers-reduced-motion:reduce)]:duration-200",
+              "contrast-more:border-foreground/40 contrast-more:bg-background",
+              "motion-reduce:transition-opacity motion-reduce:duration-200",
               "[@media(prefers-reduced-transparency:reduce)]:bg-background [@media(prefers-reduced-transparency:reduce)]:backdrop-blur-none"
             )}
           >

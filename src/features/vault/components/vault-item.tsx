@@ -60,7 +60,7 @@ export function VaultItem({
       ) : (
         <div className="relative flex aspect-1200/630 flex-col justify-end overflow-hidden rounded-(--image-radius) bg-accent p-4 select-none [--image-radius:var(--radius-xl)]">
           <p className="font-mono text-xs text-muted-foreground">{domain}</p>
-          <p className="line-clamp-3 text-lg leading-snug font-medium text-balance">
+          <p className="line-clamp-3 text-lg/snug font-medium text-balance">
             {bookmark.title}
           </p>
           <div className="pointer-events-none absolute inset-0 rounded-(--image-radius) inset-ring-1 inset-ring-black/15 dark:inset-ring-white/15" />
@@ -68,7 +68,7 @@ export function VaultItem({
       )}
 
       <div className="flex flex-col gap-1 p-2">
-        <h2 className="text-lg leading-snug font-medium text-balance">
+        <h2 className="text-lg/snug font-medium text-balance">
           <a
             href={addQueryParams(bookmark.url, UTM_PARAMS)}
             target="_blank"

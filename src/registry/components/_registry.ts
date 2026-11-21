@@ -32,11 +32,7 @@ export const components: Registry["items"] = [
     title: "DropDrawer",
     description:
       "A responsive component that automatically switches between a dropdown menu on desktop and a drawer on mobile devices for shadcn/ui.",
-    dependencies: [
-      "vaul",
-      "lucide-react",
-      "motion",
-    ],
+    dependencies: ["vaul", "lucide-react", "motion"],
     registryDependencies: ["utils", "drawer", "dropdown-menu"],
     files: [
       {
@@ -215,7 +211,7 @@ export const components: Registry["items"] = [
         "@apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current":
           {},
       },
-      "@utility prose-NarakCODE": {
+      "@utility prose-narakcode": {
         "@apply prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-pretty md:prose-headings:text-balance":
           {},
         "@apply prose-a:font-normal prose-a:wrap-break-word prose-a:text-foreground prose-a:link-underline":
