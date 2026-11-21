@@ -5,7 +5,12 @@ import { NuqsAdapter } from "nuqs/adapters/next/app"
 import type { WebSite, WithContext } from "schema-dts"
 
 import { JSON_LD_ID, personJsonLd } from "@/config/json-ld"
-import { META_THEME_COLORS, SITE_INFO, X_HANDLE } from "@/config/site"
+import {
+  META_THEME_COLORS,
+  SITE_INFO,
+  SITE_OPEN_GRAPH,
+  X_HANDLE,
+} from "@/config/site"
 import { fontVariables } from "@/lib/fonts"
 import { JsonLdScript } from "@/lib/json-ld"
 import { InlineScript } from "@/components/inline-script"
@@ -51,6 +56,13 @@ const avatarLightsScript = `
   } catch(_) {}
 `
 
+const sidebarOpenScript = `
+  try {
+    var value = localStorage.getItem('sidebarOpen');
+    document.documentElement.dataset.sidebarOpen = JSON.parse(value || 'true');
+  } catch(_) {}
+`
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
   title: {
@@ -66,24 +78,7 @@ export const metadata: Metadata = {
     },
   ],
   creator: USER.displayName,
-  openGraph: {
-    siteName: SITE_INFO.name,
-    url: "/",
-    type: "profile",
-    locale: "en_US",
-    firstName: USER.firstName,
-    lastName: USER.lastName,
-    username: USER.username,
-    gender: USER.gender,
-    images: [
-      {
-        url: SITE_INFO.ogImage,
-        width: 1200,
-        height: 630,
-        alt: SITE_INFO.name,
-      },
-    ],
-  },
+  openGraph: SITE_OPEN_GRAPH,
   twitter: {
     card: "summary_large_image",
     site: X_HANDLE,
@@ -112,6 +107,7 @@ export default function RootLayout({
       <head>
         <InlineScript html={darkModeScript} />
         <InlineScript html={avatarLightsScript} />
+        <InlineScript html={sidebarOpenScript} />
         <JsonLdScript data={getWebSiteJsonLd()} />
       </head>
 

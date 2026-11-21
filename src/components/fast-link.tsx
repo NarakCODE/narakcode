@@ -20,7 +20,7 @@ const NON_APP_ROUTER_PATHS = new Set([
   "/vcard",
 ])
 
-const NON_APP_ROUTER_PREFIXES = ["/og/", "/doc.mdx/"]
+const NON_APP_ROUTER_PREFIXES = ["/og/", "/doc.md/", "/doc.mdx/"]
 const NON_APP_ROUTER_SUFFIXES = [".md", ".mdx", "/rss"]
 
 /**

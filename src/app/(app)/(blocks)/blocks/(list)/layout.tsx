@@ -26,11 +26,13 @@ export default function BlocksLayout({
 
       <BlocksNav />
 
-      <div className="screen-line-top screen-line-bottom">
+      <div className="screen-line-top screen-line-bottom before:z-1">
         <div className="stripe-divider" />
       </div>
 
       {children}
+
+      <div className="screen-line-bottom h-px" />
 
       <div className="p-2">
         <div className="relative border border-line p-4">

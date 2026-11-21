@@ -1,22 +1,28 @@
 "use client"
 
 import { copyText } from "@/utils/copy"
-import { MailIcon, PhoneIcon, TriangleDashedIcon, TypeIcon } from "lucide-react"
-import { toast } from "sonner"
+import {
+  ArrowUpRightIcon,
+  MailIcon,
+  PhoneIcon,
+  TriangleDashedIcon,
+  TypeIcon,
+} from "lucide-react"
 
-import { FastLink } from "@/components/fast-link"
-import { useTheme } from "@/components/theme-provider"
-import { USER } from "@/features/portfolio/data/user"
-
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
-import { getWordmarkSVG } from "./chanhdai-wordmark"
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "./ui/context-menu"
+} from "@/components/ui/context-menu"
+import { toast } from "@/components/ui/toast"
+import { FastLink } from "@/components/fast-link"
+import { useTheme } from "@/components/theme-provider"
+import { USER } from "@/features/portfolio/data/user"
+
+import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
+import { getWordmarkSVG } from "./chanhdai-wordmark"
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
   const { resolvedTheme } = useTheme()
@@ -26,11 +32,18 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
       <ContextMenuTrigger>{children}</ContextMenuTrigger>
 
       <ContextMenuContent className="w-64">
+        <ContextMenuItem render={<a href="/" target="_blank" />}>
+          <ArrowUpRightIcon />
+          Open Link in New Tab
+        </ContextMenuItem>
+
+        <ContextMenuSeparator />
+
         <ContextMenuItem
           onClick={() => {
             const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff")
             copyText(svg)
-            toast.success("Copied Mark as SVG")
+            toast.add({ type: "success", title: "Copied Mark as SVG" })
           }}
         >
           <ChanhDaiMark />
@@ -43,18 +56,16 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
               resolvedTheme === "light" ? "#000" : "#fff"
             )
             copyText(svg)
-            toast.success("Copied Logotype as SVG")
+            toast.add({ type: "success", title: "Copied Logotype as SVG" })
           }}
         >
           <TypeIcon />
           Copy Logotype as SVG
         </ContextMenuItem>
 
-        <ContextMenuItem asChild>
-          <FastLink href="/blog/chanhdai-brand">
-            <TriangleDashedIcon />
-            Brand Guidelines
-          </FastLink>
+        <ContextMenuItem render={<FastLink href="/blog/chanhdai-brand" />}>
+          <TriangleDashedIcon />
+          Brand Guidelines
         </ContextMenuItem>
 
         <ContextMenuSeparator />
@@ -62,7 +73,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
         <ContextMenuItem
           onClick={() => {
             copyText(atob(USER.emailB64))
-            toast.success("Copied Email")
+            toast.add({ type: "success", title: "Copied Email" })
           }}
         >
           <MailIcon />
@@ -72,7 +83,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
         <ContextMenuItem
           onClick={() => {
             copyText(atob(USER.phoneNumberB64))
-            toast.success("Copied Phone")
+            toast.add({ type: "success", title: "Copied Phone" })
           }}
         >
           <PhoneIcon />

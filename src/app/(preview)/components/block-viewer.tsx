@@ -68,13 +68,13 @@ import {
   TabsIndicator,
   TabsList,
   TabsTrigger,
-} from "@/components/base/ui/tabs"
-import { ToggleGroup, ToggleGroupItem } from "@/components/base/ui/toggle-group"
+} from "@/components/ui/tabs"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip"
+} from "@/components/ui/tooltip"
 import {
   DesktopIcon,
   FolderIcon,
@@ -289,25 +289,26 @@ function BlockViewerToolbar() {
             className="rounded-sm border-none dark:hover:bg-muted"
             variant="ghost"
             size="icon-xs"
-            asChild
-          >
-            <a
-              href={serializePreviewSearchParams(`/preview/${item.name}`, {
-                theme,
-              })}
-              target="_blank"
-              rel="noopener"
-              aria-label="Open in New Tab"
-              onClick={() =>
-                trackEvent({
-                  name: "block_viewer_open_preview",
-                  properties: { block: item.name },
-                })
-              }
-            >
-              <FullScreenIcon className="size-4" />
-            </a>
-          </Button>
+            nativeButton={false}
+            render={
+              <a
+                href={serializePreviewSearchParams(`/preview/${item.name}`, {
+                  theme,
+                })}
+                target="_blank"
+                rel="noopener"
+                aria-label="Open in New Tab"
+                onClick={() =>
+                  trackEvent({
+                    name: "block_viewer_open_preview",
+                    properties: { block: item.name },
+                  })
+                }
+              >
+                <FullScreenIcon className="size-4" />
+              </a>
+            }
+          />
 
           <Separator
             orientation="vertical"
@@ -499,7 +500,7 @@ function BlockViewerCode() {
 
         <div
           key={file?.path}
-          className="h-full overflow-hidden rounded-[9px] border bg-code [&_pre]:no-scrollbar [&_pre]:h-full [&_pre]:overflow-y-auto"
+          className="h-full overflow-hidden rounded-[9px] border bg-code [&_pre]:no-scrollbar [&_pre]:h-full [&_pre]:scroll-fade [&_pre]:overflow-y-auto"
           dangerouslySetInnerHTML={{ __html: file?.highlightedContent ?? "" }}
         />
       </figure>
@@ -567,26 +568,28 @@ function Tree({ item, index }: { item: FileTree; index: number }) {
   return (
     <SidebarMenuItem>
       <Collapsible
-        className="group/collapsible flex flex-col gap-px [&[data-state=open]>button>svg:first-child]:rotate-90"
+        className="group/collapsible flex flex-col gap-px data-open:[&>button>svg:first-child]:rotate-90"
         defaultOpen
       >
-        <CollapsibleTrigger asChild>
-          <SidebarMenuButton
-            className={cn(
-              "rounded-none pl-(--index) whitespace-nowrap [&_svg]:text-muted-foreground",
-              "data-[state=closed]:*:data-[slot=folder]:block data-[state=open]:*:data-[slot=folder-open]:block"
-            )}
-            style={
-              {
-                "--index": `${index * (index === 1 ? 1 : 1.2)}rem`,
-              } as React.CSSProperties
-            }
-          >
-            <ChevronRightIcon className="transition-transform" />
-            <FolderIcon data-slot="folder" className="hidden" />
-            <FolderOpenIcon data-slot="folder-open" className="hidden" />
-            {item.name}
-          </SidebarMenuButton>
+        <CollapsibleTrigger
+          render={
+            <SidebarMenuButton
+              className={cn(
+                "rounded-none pl-(--index) whitespace-nowrap [&_svg]:text-muted-foreground",
+                "not-data-panel-open:*:data-[slot=folder]:block data-panel-open:*:data-[slot=folder-open]:block"
+              )}
+              style={
+                {
+                  "--index": `${index * (index === 1 ? 1 : 1.2)}rem`,
+                } as React.CSSProperties
+              }
+            />
+          }
+        >
+          <ChevronRightIcon className="transition-transform" />
+          <FolderIcon data-slot="folder" className="hidden" />
+          <FolderOpenIcon data-slot="folder-open" className="hidden" />
+          {item.name}
         </CollapsibleTrigger>
 
         <CollapsibleContent>
@@ -686,16 +689,18 @@ function ThemePicker() {
       <Tooltip>
         <TooltipTrigger
           render={
-            <PopoverTrigger asChild>
-              <Button
-                className="bg-transparent px-1.75 shadow-none dark:border-border dark:bg-transparent dark:aria-expanded:bg-input/50"
-                variant="outline"
-                size="sm"
-                aria-label="Theme"
-              >
-                <ThemePalette cssVars={themeItem?.cssVars} />
-              </Button>
-            </PopoverTrigger>
+            <PopoverTrigger
+              render={
+                <Button
+                  className="bg-transparent px-1.75 shadow-none active:scale-100 dark:border-border dark:bg-transparent dark:aria-expanded:bg-input/50"
+                  variant="outline"
+                  size="sm"
+                  aria-label="Theme"
+                >
+                  <ThemePalette cssVars={themeItem?.cssVars} />
+                </Button>
+              }
+            />
           }
         />
         <TooltipContent>
@@ -704,45 +709,48 @@ function ThemePicker() {
       </Tooltip>
 
       <PopoverContent
-        className="rounded-2xl p-0"
+        className="rounded-2xl bg-surface p-0"
         align="start"
         alignOffset={-8}
       >
         <Command
           className={cn(
+            "px-1 pb-1",
             "**:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-input-wrapper]_svg]:size-5 **:[[cmdk-input]]:h-10",
-            "**:[[cmdk-group]]:px-2",
+            "**:[[cmdk-group]]:px-1",
             "**:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-muted-foreground",
-            "[&_[cmdk-item]_svg]:size-5 **:[[cmdk-item]]:px-2 **:[[cmdk-item]]:py-2"
+            "[&_[cmdk-item]_svg]:size-5 **:[[cmdk-item]]:p-2"
           )}
         >
           <CommandInput placeholder="Search theme…" />
 
-          <CommandList className="min-h-80 scroll-fade">
-            <CommandEmpty>No results found.</CommandEmpty>
+          <div className="rounded-xl bg-background ring-1 ring-border">
+            <CommandList className="min-h-80 scroll-fade">
+              <CommandEmpty>No results found.</CommandEmpty>
 
-            <CommandGroup heading="Current theme">
-              <CommandItem onSelect={() => handleThemeSelect(null)}>
-                <ThemePalette />
-                Default
-                {!theme && <CheckIcon className="ml-auto" strokeWidth={3} />}
-              </CommandItem>
-            </CommandGroup>
+              <CommandGroup heading="Current theme">
+                <CommandItem onSelect={() => handleThemeSelect(null)}>
+                  <ThemePalette />
+                  Default
+                  {!theme && <CheckIcon className="ml-auto" strokeWidth={3} />}
+                </CommandItem>
+              </CommandGroup>
 
-            <ThemePickerGroup
-              title="shadcn/ui"
-              themes={shadcnThemes}
-              activeTheme={theme}
-              onThemeSelect={handleThemeSelect}
-            />
+              <ThemePickerGroup
+                title="shadcn/ui"
+                themes={shadcnThemes}
+                activeTheme={theme}
+                onThemeSelect={handleThemeSelect}
+              />
 
-            <ThemePickerGroup
-              title="tweakcn"
-              themes={tweakcnThemes}
-              activeTheme={theme}
-              onThemeSelect={handleThemeSelect}
-            />
-          </CommandList>
+              <ThemePickerGroup
+                title="tweakcn"
+                themes={tweakcnThemes}
+                activeTheme={theme}
+                onThemeSelect={handleThemeSelect}
+              />
+            </CommandList>
+          </div>
         </Command>
       </PopoverContent>
     </Popover>

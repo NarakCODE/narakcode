@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from "lucide-react"
 
-import { Button } from "@/components/base/ui/button"
+import { Button } from "@/components/ui/button"
 import { Daikanoid } from "@/components/daikanoid"
 import { FastLink } from "@/components/fast-link"
 

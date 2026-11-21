@@ -33,16 +33,14 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
 
   return (
     <Popover open={open} onOpenChange={handleOpenChange} modal>
-      <PopoverTrigger asChild>
-        <NavMobileTrigger />
-      </PopoverTrigger>
+      <PopoverTrigger render={<NavMobileTrigger />} />
 
       <PopoverContent
         className="w-48 rounded-xl p-1"
         side="top"
         align="center"
         sideOffset={8}
-        onCloseAutoFocus={(e) => e.preventDefault()}
+        finalFocus={false}
       >
         <div className="flex flex-col">
           {items.map((link) => {
@@ -83,8 +81,8 @@ function NavMobileTrigger(
       aria-label="Toggle Menu"
       {...props}
     >
-      <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]:translate-y-0.75 group-data-[state=open]:rotate-45" />
-      <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]:-translate-y-0.75 group-data-[state=open]:-rotate-45" />
+      <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-popup-open:translate-y-0.75 group-data-popup-open:rotate-45" />
+      <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-popup-open:-translate-y-0.75 group-data-popup-open:-rotate-45" />
     </Button>
   )
 }

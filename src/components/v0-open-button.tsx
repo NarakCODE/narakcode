@@ -15,17 +15,18 @@ export function OpenInV0Button({
       className={cn("not-prose border-none px-2", className)}
       variant="ghost"
       size="sm"
-      asChild
+      nativeButton={false}
+      render={
+        <a
+          href={`https://v0.app/chat/api/open?url=${url}`}
+          target="_blank"
+          rel="noopener"
+          aria-label="Open in v0"
+        >
+          <V0Icon className="size-5" />
+        </a>
+      }
       {...props}
-    >
-      <a
-        href={`https://v0.app/chat/api/open?url=${url}`}
-        target="_blank"
-        rel="noopener"
-        aria-label="Open in v0"
-      >
-        <V0Icon className="size-5" />
-      </a>
-    </Button>
+    />
   )
 }
