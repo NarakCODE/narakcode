@@ -9,12 +9,12 @@ import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
 import { absoluteUrl } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Kbd } from "@/components/ui/kbd"
-import { Prose } from "@/components/ui/typography"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip"
+} from "@/components/ui/tooltip"
+import { Prose } from "@/components/ui/typography"
 import { FastLink } from "@/components/fast-link"
 import { MDX } from "@/components/mdx"
 import { TOCInline } from "@/components/toc-inline"
@@ -37,7 +37,11 @@ import {
   getBlogPosts,
   getBlogPostUrl,
 } from "@/features/doc/data/documents"
-import type { BlogLanguage, Doc } from "@/features/doc/types/document"
+import {
+  DEFAULT_BLOG_LANGUAGE,
+  type BlogLanguage,
+  type Doc,
+} from "@/features/doc/types/document"
 
 export function getBlogPostMetadata(doc: Doc, postUrl: string): Metadata {
   const { title, description, image, createdAt, updatedAt } = doc.metadata
@@ -99,7 +103,9 @@ function getPageJsonLd(doc: Doc, postUrl: string): WithContext<PageSchema> {
 }
 
 function getMarkdownUrl(slug: string, language: BlogLanguage) {
-  return `/blog/${slug}/${language}.mdx`
+  return language === DEFAULT_BLOG_LANGUAGE
+    ? `/blog/${slug}.md`
+    : `/doc.md/${slug}/${language}`
 }
 
 export function BlogPostPage({
@@ -155,12 +161,11 @@ export function BlogPostPage({
               className="h-7 gap-2 border-none px-0 tracking-wider text-muted-foreground hover:text-foreground hover:no-underline"
               variant="link"
               size="sm"
-              asChild
+              nativeButton={false}
+              render={<FastLink href="/blog" />}
             >
-              <FastLink href="/blog">
-                <ArrowLeftIcon />
-                Blog
-              </FastLink>
+              <ArrowLeftIcon />
+              Blog
             </Button>
 
             <div className="flex items-center gap-2">
@@ -190,16 +195,17 @@ export function BlogPostPage({
                         className="size-7 border-none"
                         variant="secondary"
                         size="icon-sm"
-                        asChild
+                        nativeButton={false}
+                        render={
+                          <FastLink
+                            href={
+                              getBlogPostUrl(previous.slug, language) as Route
+                            }
+                            aria-label="Previous post"
+                          />
+                        }
                       >
-                        <FastLink
-                          href={
-                            getBlogPostUrl(previous.slug, language) as Route
-                          }
-                          aria-label="Previous post"
-                        >
-                          <ArrowLeftIcon />
-                        </FastLink>
+                        <ArrowLeftIcon />
                       </Button>
                     }
                   />
@@ -222,14 +228,15 @@ export function BlogPostPage({
                         className="size-7 border-none"
                         variant="secondary"
                         size="icon-sm"
-                        asChild
+                        nativeButton={false}
+                        render={
+                          <FastLink
+                            href={getBlogPostUrl(next.slug, language) as Route}
+                            aria-label="Next post"
+                          />
+                        }
                       >
-                        <FastLink
-                          href={getBlogPostUrl(next.slug, language) as Route}
-                          aria-label="Next post"
-                        >
-                          <ArrowRightIcon />
-                        </FastLink>
+                        <ArrowRightIcon />
                       </Button>
                     }
                   />

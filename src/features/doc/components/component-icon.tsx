@@ -7,10 +7,14 @@ import {
   IconRipple,
 } from "@tabler/icons-react"
 import {
+  ArrowUpDownIcon,
+  BookOpenIcon,
   BriefcaseBusinessIcon,
   ChevronsUpDownIcon,
   CopyIcon,
   Droplet,
+  FileImageIcon,
+  GalleryHorizontal,
   GalleryHorizontalEndIcon,
   LayoutGridIcon,
   MoonStarIcon,
@@ -20,32 +24,31 @@ import {
   ScissorsIcon,
   SeparatorHorizontalIcon,
   ShareIcon,
+  SquareCenterlineDashedVertical,
   SquareDashed,
   Star,
   SunDimIcon,
   TerminalIcon,
   VibrateIcon,
+  WalletCardsIcon,
   ZapIcon,
 } from "lucide-react"
 
 import { ChanhDaiMark } from "@/components/chanhdai-mark"
-import { AppleIcon, ReactIcon, XIcon } from "@/components/icons"
+import {
+  AppleIcon,
+  ReactIcon,
+  ReactWheelPickerIcon,
+  XIcon,
+} from "@/components/icons"
 
 const COMPONENT_ICONS: Record<string, React.ReactNode> = {
   "work-experience-component": <BriefcaseBusinessIcon />,
-  "react-wheel-picker": (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden>
-      <path
-        d="M144,16H112A64.07,64.07,0,0,0,48,80v96a64.07,64.07,0,0,0,64,64h32a64.07,64.07,0,0,0,64-64V80A64.07,64.07,0,0,0,144,16Zm2.34,146.34a8,8,0,0,1,11.32,11.32l-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,172.69V83.31L109.66,93.66A8,8,0,0,1,98.34,82.34l24-24a8,8,0,0,1,11.32,0l24,24a8,8,0,0,1-11.32,11.32L136,83.31v89.38Z"
-        fill="currentColor"
-      />
-    </svg>
-  ),
+  "react-wheel-picker": <ReactWheelPickerIcon />,
   "theme-switcher": <MoonStarIcon />,
   "apple-hello-effect": <AppleIcon />,
   "shimmering-text": <ZapIcon />,
   "slide-to-unlock": (
-    // Icon designed by @ncdai
     <svg
       viewBox="0 0 24 24"
       fill="none"
@@ -65,7 +68,6 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
   "testimonials-marquee": <GalleryHorizontalEndIcon />,
   "github-stars": <Star />,
   "github-contributions": (
-    // Icon designed by @ncdai
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden>
       <path
         fill="currentColor"
@@ -86,7 +88,7 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
   ),
   "copy-button": <CopyIcon />,
   "code-block-command": <TerminalIcon />,
-  "text-flip": <SeparatorHorizontalIcon />,
+  "text-swap": <SeparatorHorizontalIcon />,
   haptic: <VibrateIcon />,
   "testimonial-spotlight": <SunDimIcon />,
   "glow-card-grid": <LayoutGridIcon />,
@@ -94,7 +96,6 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
   twemoji: <XIcon />,
   "theme-toggle-effect": <PaintbrushIcon />,
   "elastic-slider": (
-    // Icon designed by @ncdai
     <svg
       viewBox="0 0 24 24"
       fill="none"
@@ -107,7 +108,6 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
   "toc-minimap": (
-    // Icon designed by @ncdai
     <svg
       viewBox="0 0 24 24"
       fill="none"
@@ -142,10 +142,137 @@ const COMPONENT_ICONS: Record<string, React.ReactNode> = {
   ),
   "chevrons-up-down-icon": <ChevronsUpDownIcon />,
   "logos-carousel": <IconRipple />,
-  "testimonial-2": <IconBlockquote />,
+  "pull-quote": <IconBlockquote />,
   "line-nav": <IconBaselineDensitySmall />,
   "share-menu": <ShareIcon />,
   "spotlight-logo": <ChanhDaiMark />,
+  timescale: (
+    <svg
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <line x1="3" y1="7" x2="3" y2="17" />
+      <line x1="21" y1="7" x2="21" y2="17" />
+      <path d="M6 12H8" />
+      <path d="M16 12H18" />
+      <path d="M11 12H13" />
+    </svg>
+  ),
+  "status-button": (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(288 12 12)"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(324 12 12)"
+        opacity="0.9"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        opacity="0.8"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(36 12 12)"
+        opacity="0.7"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(72 12 12)"
+        opacity="0.6"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(108 12 12)"
+        opacity="0.5"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(144 12 12)"
+        opacity="0.4"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(180 12 12)"
+        opacity="0.3"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(216 12 12)"
+        opacity="0.2"
+      />
+      <rect
+        x="17.76"
+        y="10.875"
+        width="6"
+        height="2.25"
+        rx="1.125"
+        transform="rotate(252 12 12)"
+        opacity="0.15"
+      />
+    </svg>
+  ),
+  "logos-flip": <SquareCenterlineDashedVertical />,
+  "logos-swap": <ArrowUpDownIcon />,
+  "swipe-actions": (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M10.8654 9.68476L11.7434 4.76072C11.8889 3.94488 11.338 3.16689 10.513 3.02304C9.68807 2.87918 8.90138 3.42394 8.75591 4.23978L7 14.0879L6.85439 14.8511L4.88875 12.8372C4.17559 12.124 3.00086 12.1891 2.37081 12.9766C1.88873 13.5792 1.87541 14.4317 2.33844 15.049L5.35188 19.067C6.03575 19.9788 6.3777 20.4347 6.7892 20.7891C7.41699 21.3297 8.16928 21.7058 8.97845 21.8837C9.50883 22.0003 10.0787 22.0003 11.2185 22.0003H13.6206C15.9993 22.0003 18.0487 20.3245 18.521 17.9932L19.3889 13.7096L19.4767 13.2172C19.6222 12.4014 19.0713 11.6234 18.2463 11.4795C17.4214 11.3357 16.6347 11.8804 16.4892 12.6963L16.4014 13.1887M10.8654 9.68476L10.6021 11.162M10.8654 9.68476C11.0109 8.86892 11.7976 8.32417 12.6226 8.46802C13.4475 8.61188 13.9984 9.38986 13.8529 10.2057L13.6773 11.1905M13.6773 11.1905L13.5895 11.6829M13.6773 11.1905C13.8228 10.3747 14.6095 9.82992 15.4345 9.97377C16.2594 10.1176 16.8103 10.8956 16.6648 11.7115L16.577 12.2039" />
+      <path d="M15.5 4.5H22M15.5 4.5C15.5 3.79977 17.4943 2.49153 18 2M15.5 4.5C15.5 5.20023 17.4943 6.50847 18 7" />
+    </svg>
+  ),
+  "apple-carousel": <GalleryHorizontal />,
+  "jpg-card-holder": <FileImageIcon />,
+  foldable: <BookOpenIcon />,
+  wallet: <WalletCardsIcon />,
 }
 
 export function ComponentIcon({ slug }: { slug: string }) {

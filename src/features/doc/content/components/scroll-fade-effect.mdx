@@ -16,10 +16,18 @@ updatedAt: 2026-06-27
   openInV0Url="https://narakcode.dev/r/scroll-fade-effect.json"
 />
 
+<DocDependencies name="scroll-fade-effect" />
+
 ## Features
 
 - Content fades in and out smoothly as you scroll.
 - Supports both vertical and horizontal scrolling.
+
+## Use cases
+
+- Sidebars and menus that scroll inside a fixed height.
+- Tab bars that overflow horizontally on small screens.
+- Long lists inside a popover or dialog.
 
 ## Browser compatibility
 
@@ -39,6 +47,12 @@ npx shadcn@latest add @nrcode/scroll-fade-effect
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="scroll-fade-effect" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -46,7 +60,7 @@ npx shadcn@latest add @nrcode/scroll-fade-effect
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install clsx tailwind-merge
+npm install cn
 ```
 
 <Step>Add a cn helper</Step>
@@ -127,4 +141,4 @@ import { ScrollFadeEffect } from "@/components/scroll-fade-effect"
 ## References
 
 - [animation-timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline#browser_compatibility)
-- [Scroll Area](https://ui.shadcn.com/docs/components/scroll-area)
+- [Scroll Area](https://ui.shadcn.com/docs/components/base/scroll-area)

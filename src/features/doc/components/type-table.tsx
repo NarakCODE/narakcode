@@ -3,15 +3,15 @@
 import type { ComponentProps, ReactNode } from "react"
 
 import { cn } from "@/lib/utils"
+import {
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 import { Prose } from "@/components/ui/typography"
 import {
   Collapsible,
   CollapsibleChevronDownIcon,
-} from "@/components/base/collapsible-animated"
-import {
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/base/ui/collapsible"
+} from "@/components/collapsible-animated"
 
 export interface ParameterNode {
   name: string

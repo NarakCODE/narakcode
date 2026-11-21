@@ -1,20 +1,20 @@
 import { addQueryParams } from "@/utils/url"
 
 import { UTM_PARAMS } from "@/config/site"
-import { Button } from "@/components/base/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip"
+} from "@/components/ui/tooltip"
 import { Panel, PanelContent } from "@/features/portfolio/components/panel"
 import { SOCIAL_ICONS } from "@/features/portfolio/components/social-link-icons"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 
 export function SocialLinks() {
   return (
-    <Panel>
-      <h2 className="sr-only">Social Links</h2>
+    <Panel className="screen-line-bottom-none screen-line-top-none">
+      <h2 className="sr-only">Social links</h2>
 
       <PanelContent>
         <ul className="flex flex-wrap gap-2">

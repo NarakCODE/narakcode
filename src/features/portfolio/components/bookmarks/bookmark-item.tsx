@@ -4,12 +4,12 @@ import { ArrowUpRightIcon } from "lucide-react"
 
 import { UTM_PARAMS } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Separator } from "@/components/ui/separator"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/base/ui/hover-card"
+} from "@/components/ui/hover-card"
+import { Separator } from "@/components/ui/separator"
 import { NewsIcon } from "@/components/icons"
 import {
   BookmarkCategory,

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { ChanhDaiMark } from "@/components/chanhdai-mark"
 import { Magnet } from "@/components/react-bits/magnet"
 import { useTheme } from "@/components/theme-provider"
-import { DotGridSpotlight } from "@/registry/transformed/components/dot-grid-spotlight"
+import { DotGridSpotlight } from "@/registry/components/dot-grid-spotlight"
 
 const DOT_COLOR = {
   light: {

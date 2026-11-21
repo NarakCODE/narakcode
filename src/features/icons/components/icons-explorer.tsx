@@ -4,10 +4,10 @@ import { useMemo, useState } from "react"
 import { copyToClipboardWithEvent } from "@/utils/copy"
 import { CheckIcon, CopyIcon } from "lucide-react"
 import { useQueryState } from "nuqs"
-import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { toast } from "@/components/ui/toast"
 
 import { DEFAULT_ICON_SIZE, ICON_CATEGORIES, ICON_LIBRARIES } from "../data"
 import { fetchIconSvg, formatSvgForCopy } from "../lib/svg-transform"
@@ -126,17 +126,17 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
 
       if (copied) {
         setCopiedIconName(icon.name)
-        toast.success(`Copied ${icon.name}.svg`)
+        toast.add({ type: "success", title: `Copied ${icon.name}.svg` })
         setTimeout(() => {
           setCopiedIconName((current) =>
             current === icon.name ? null : current
           )
         }, 1500)
       } else {
-        toast.error("Failed to copy SVG")
+        toast.add({ type: "error", title: "Failed to copy SVG" })
       }
     } catch {
-      toast.error(`Failed to load ${icon.name}.svg`)
+      toast.add({ type: "error", title: `Failed to load ${icon.name}.svg` })
     }
   }
 

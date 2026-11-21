@@ -2,7 +2,6 @@
 title: Share Menu
 description: Share menu to copy a link or post to X, LinkedIn, and the native share sheet.
 image: https://assets.narakcode.dev/images/blog/share-menu.webp
-new: true
 createdAt: 2026-06-26
 updatedAt: 2026-06-26
 ---
@@ -11,6 +10,8 @@ updatedAt: 2026-06-26
   name="share-menu-demo"
   openInV0Url="https://narakcode.dev/r/share-menu.json"
 />
+
+<DocDependencies name="share-menu" />
 
 ## Features
 
@@ -33,6 +34,12 @@ npx shadcn@latest add @nrcode/share-menu
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="share-menu" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -40,7 +47,7 @@ npx shadcn@latest add @nrcode/share-menu
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install clsx tailwind-merge lucide-react
+npm install cn lucide-react
 ```
 
 <Step>Add a cn helper</Step>
@@ -53,9 +60,9 @@ npm install clsx tailwind-merge lucide-react
 
 <Step>Install the required components</Step>
 
-- [Button](https://ui.shadcn.com/docs/components/button)
-- [Dropdown Menu](https://ui.shadcn.com/docs/components/dropdown-menu)
-- [Sonner](https://ui.shadcn.com/docs/components/sonner)
+- [Button](https://ui.shadcn.com/docs/components/base/button)
+- [Dropdown Menu](https://ui.shadcn.com/docs/components/base/dropdown-menu)
+- [Toast](https://ui.shadcn.com/docs/components/base/toast)
 
 <Step>Copy and paste the following code into your project</Step>
 

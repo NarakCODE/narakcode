@@ -12,11 +12,19 @@ updatedAt: 2025-03-27
   openInV0Url="https://narakcode.dev/r/testimonials-marquee.json"
 />
 
+<DocDependencies name="testimonials-marquee" />
+
 ## Features
 
 - Continuous scrolling marquee with fade edges.
 - Single and multiple row layouts.
 - Composable with the Testimonial component.
+
+## Use cases
+
+- Social proof band on a landing page.
+- Scrolling reviews above a pricing or sign-up section.
+- Wall of love with more quotes than fit on screen.
 
 ## Installation
 
@@ -32,6 +40,12 @@ npx shadcn@latest add @nrcode/testimonials-marquee
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="testimonials-marquee" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -39,7 +53,7 @@ npx shadcn@latest add @nrcode/testimonials-marquee
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install clsx tailwind-merge react-fast-marquee
+npm install cn react-fast-marquee
 ```
 
 <Step>Add a cn helper</Step>
@@ -96,7 +110,7 @@ import {
 
   <MarqueeContent>
     <MarqueeItem>
-      <DocTestimonial>
+      <Testimonial>
         <TestimonialQuote />
 
         <TestimonialAuthor>

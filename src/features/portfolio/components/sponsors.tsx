@@ -3,8 +3,8 @@ import { ArrowRightIcon } from "lucide-react"
 
 import { SPONSORSHIP_URL, UTM_PARAMS } from "@/config/site"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import { PlusIcon } from "@/components/animated-icons/plus-icon"
-import { Button } from "@/components/base/ui/button"
 import { FastLink } from "@/components/fast-link"
 import { SponsorItem } from "@/features/sponsor/components/sponsor-item"
 import { SPONSORS } from "@/features/sponsor/data"
@@ -75,9 +75,9 @@ export function Sponsors() {
         </ul>
       </div>
 
-      <div className="screen-line-top flex justify-center py-2">
+      <div className="screen-line-top -mb-px flex justify-center py-4">
         <Button
-          className="gap-2 pr-2.5 pl-3"
+          className="gap-2 pr-2.5 pl-3 shadow-[inset_0_0_1px] shadow-foreground/20"
           variant="secondary"
           size="sm"
           nativeButton={false}

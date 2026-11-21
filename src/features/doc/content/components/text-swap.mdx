@@ -1,0 +1,98 @@
+---
+title: Text Swap
+description: Animated text that swaps through items with a fade transition.
+image: https://assets.narakcode.dev/images/blog/text-flip.webp
+createdAt: 2026-02-19
+updatedAt: 2026-11-01
+---
+
+<ComponentPreview
+  name="text-swap-demo"
+  openInV0Url="https://narakcode.dev/r/text-swap.json"
+/>
+
+<DocDependencies name="text-swap" />
+
+## Use cases
+
+- Rotating roles or taglines in a hero section.
+- Changing word inside a headline.
+- Cycling commands or keywords in a product demo.
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @nrcode/text-swap
+```
+
+</TabsContent>
+
+<TabsContent value="prompt">
+
+<InstallPrompt name="text-swap" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install motion cn
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/registry/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource name="text-swap" title="components/text-swap.tsx" />
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { TextSwap } from "@/components/text-swap"
+```
+
+```tsx
+<TextSwap>
+  <span>Developer</span>
+  <span>Designer</span>
+  <span>Creator</span>
+</TextSwap>
+```
+
+## API reference
+
+### TextSwap
+
+<AutoTypeTable
+  path="src/registry/components/text-swap/text-swap.tsx"
+  name="TextSwapProps"
+/>
+
+## Accessibility
+
+- With `prefers-reduced-motion`, items still cycle but fade in place, without moving or blurring.
+- Passing `variants` replaces this fallback, so custom variants need their own.

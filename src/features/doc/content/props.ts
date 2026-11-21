@@ -2,13 +2,25 @@ import type { ComponentProps } from "react"
 import type { motion } from "motion/react"
 
 import type { Button } from "@/components/ui/button"
+import type {
+  AppleAccordionItem,
+  AppleAccordionRoot,
+} from "@/registry/components/apple-accordion"
+import type {
+  AppleCarouselControls,
+  AppleCarouselRoot,
+} from "@/registry/components/apple-carousel"
 import type { AppleHelloEffectEnglish } from "@/registry/components/apple-hello-effect/apple-hello-effect-english"
+import type { Bookshelf, BookshelfItem } from "@/registry/components/bookshelf"
 import type { CopyButton } from "@/registry/components/copy-button"
 import type { GitHubContributions } from "@/registry/components/github-contributions"
 import type {
   GlowCard,
   GlowCardGrid,
 } from "@/registry/components/glow-card-grid/glow-card-grid"
+import type { IpodClassic } from "@/registry/components/ipod-classic"
+import type { LogosFlip } from "@/registry/components/logos-flip"
+import type { LogosSwap } from "@/registry/components/logos-swap"
 import type { MiddleTruncation } from "@/registry/components/middle-truncation/middle-truncation"
 import type { ScrollFadeEffect } from "@/registry/components/scroll-fade-effect"
 import type { ShimmeringText } from "@/registry/components/shimmering-text"
@@ -17,7 +29,43 @@ import type {
   SlideToUnlockText,
 } from "@/registry/components/slide-to-unlock"
 import type { SpinningCircularText } from "@/registry/components/spinning-circular-text"
+import type { StatusButton } from "@/registry/components/status-button"
 import type { TestimonialSpotlight } from "@/registry/components/testimonial-spotlight"
+import type { TimescaleRoot } from "@/registry/components/timescale"
+
+// `defaultValue` and `value` are also native attributes of the div and li,
+// so they stay out of the exclusion to keep the component's own props.
+export type AppleAccordionRootProps = Omit<
+  ComponentProps<typeof AppleAccordionRoot>,
+  Exclude<keyof ComponentProps<"div">, "defaultValue"> | "render"
+>
+
+export type AppleAccordionItemProps = Omit<
+  ComponentProps<typeof AppleAccordionItem>,
+  Exclude<keyof ComponentProps<"li">, "value"> | "render"
+>
+
+// `defaultValue` is also a native attribute of the div, so it stays out of the
+// exclusion to keep the component's own prop.
+export type BookshelfProps = Omit<
+  ComponentProps<typeof Bookshelf>,
+  Exclude<keyof ComponentProps<"div">, "defaultValue"> | "render"
+>
+
+export type BookshelfItemProps = Omit<
+  ComponentProps<typeof BookshelfItem>,
+  keyof ComponentProps<"div"> | "render"
+>
+
+export type AppleCarouselRootProps = Omit<
+  ComponentProps<typeof AppleCarouselRoot>,
+  keyof ComponentProps<"div">
+>
+
+export type AppleCarouselControlsProps = Omit<
+  ComponentProps<typeof AppleCarouselControls>,
+  keyof ComponentProps<"div">
+>
 
 export type AppleHelloEffectProps = Omit<
   ComponentProps<typeof AppleHelloEffectEnglish>,
@@ -84,6 +132,16 @@ export type GlowCardGridProps = Omit<
 
 export type GlowCardProps = ComponentProps<typeof GlowCard>
 
+export type LogosFlipProps = Omit<
+  ComponentProps<typeof LogosFlip>,
+  keyof Omit<ComponentProps<"div">, "children">
+>
+
+export type LogosSwapProps = Omit<
+  ComponentProps<typeof LogosSwap>,
+  keyof Omit<ComponentProps<"div">, "children">
+>
+
 export type MiddleTruncationProps = Omit<
   ComponentProps<typeof MiddleTruncation>,
   keyof Omit<ComponentProps<"span">, "children" | "className">
@@ -95,5 +153,20 @@ export type GitHubContributionsProps = ComponentProps<
 
 export type SpinningCircularTextProps = Omit<
   ComponentProps<typeof SpinningCircularText>,
+  keyof ComponentProps<"div">
+>
+
+export type TimescaleRootProps = Omit<
+  ComponentProps<typeof TimescaleRoot>,
+  keyof ComponentProps<"div">
+>
+
+export type StatusButtonProps = Omit<
+  ComponentProps<typeof StatusButton>,
+  Exclude<keyof ComponentProps<typeof Button>, "onClick">
+>
+
+export type IpodClassicProps = Omit<
+  ComponentProps<typeof IpodClassic>,
   keyof ComponentProps<"div">
 >

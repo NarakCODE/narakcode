@@ -3,21 +3,21 @@ import { addQueryParams } from "@/utils/url"
 import { BoxIcon, InfinityIcon, LinkIcon } from "lucide-react"
 
 import { UTM_PARAMS } from "@/config/site"
-import { Tag } from "@/components/ui/tag"
-import { Prose } from "@/components/ui/typography"
-import {
-  Collapsible,
-  CollapsibleChevronsUpDownIcon,
-} from "@/components/base/collapsible-animated"
 import {
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/base/ui/collapsible"
+} from "@/components/ui/collapsible"
+import { IconTile } from "@/components/ui/icon-tile"
+import { Tag } from "@/components/ui/tag"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip"
+} from "@/components/ui/tooltip"
+import {
+  Collapsible,
+  CollapsibleChevronsUpDownIcon,
+} from "@/components/collapsible-animated"
 import { Markdown } from "@/components/markdown"
 
 import type { Project } from "../../types/projects"
@@ -35,7 +35,9 @@ export function ProjectItem({
 
   return (
     <Collapsible className={className} defaultOpen={project.isExpanded}>
-      <div className="group/project flex items-center hover:bg-accent-muted">
+      {/* Only the title is the trigger (accordion pattern); its overlay keeps
+          the whole row clickable, while the project link sits above it. */}
+      <div className="group/project relative flex items-center hover:bg-accent-muted">
         {project.logo ? (
           <Image
             src={project.logo}
@@ -48,71 +50,70 @@ export function ProjectItem({
             aria-hidden
           />
         ) : (
-          <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-line ring-offset-1 ring-offset-background select-none">
-            <BoxIcon className="size-4" />
-          </div>
+          <IconTile className="mx-4">{project.icon ?? <BoxIcon />}</IconTile>
         )}
 
-        <div className="flex-1 border-l border-dashed border-line">
-          <CollapsibleTrigger className="flex w-full items-center gap-2 p-4 pr-2 text-left">
-            <div className="flex-1">
-              <h3 className="mb-1 text-body-regular-medium text-balance text-text-primary">
+        <div className="flex flex-1 items-center gap-2 border-l border-dashed border-line p-4">
+          <div className="flex-1">
+            <h3 className="mb-1 text-body-regular-medium text-balance text-text-primary">
+              <CollapsibleTrigger className="text-left">
+                <span className="absolute inset-0" aria-hidden />
                 {project.title}
-              </h3>
+              </CollapsibleTrigger>
+            </h3>
 
-              <dl className="text-body-small-regular text-text-secondary">
-                <dt className="sr-only">Period</dt>
-                <dd className="flex items-center gap-0.5">
-                  <span>{start}</span>
-                  {!isSinglePeriod && (
-                    <>
-                      <span className="font-mono">—</span>
-                      {isOngoing ? (
-                        <InfinityIcon
-                          className="size-4.5 translate-y-[0.5px]"
-                          aria-label="Present"
-                        />
-                      ) : (
-                        <span>{end}</span>
-                      )}
-                    </>
-                  )}
-                </dd>
-              </dl>
-            </div>
+            <dl className="text-body-small-regular text-text-secondary">
+              <dt className="sr-only">Period</dt>
+              <dd className="flex items-center gap-0.5">
+                <span>{start}</span>
+                {!isSinglePeriod && (
+                  <>
+                    <span className="font-mono">—</span>
+                    {isOngoing ? (
+                      <InfinityIcon
+                        className="size-4.5 translate-y-[0.5px]"
+                        aria-label="Present"
+                      />
+                    ) : (
+                      <span>{end}</span>
+                    )}
+                  </>
+                )}
+              </dd>
+            </dl>
+          </div>
 
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <a
-                    className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
-                    href={addQueryParams(project.link, UTM_PARAMS)}
-                    target="_blank"
-                    rel="noopener"
-                    aria-label="Open project"
-                  >
-                    <LinkIcon className="pointer-events-none size-4" />
-                  </a>
-                }
-              />
-              <TooltipContent>
-                <p>Open project</p>
-              </TooltipContent>
-            </Tooltip>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <a
+                  className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
+                  href={addQueryParams(project.link, UTM_PARAMS)}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Open project"
+                >
+                  <LinkIcon className="pointer-events-none size-4" />
+                </a>
+              }
+            />
+            <TooltipContent>
+              <p>Open project</p>
+            </TooltipContent>
+          </Tooltip>
 
-            <div className="shrink-0 text-muted-foreground [&_svg]:size-4">
-              <CollapsibleChevronsUpDownIcon duration={0.15} />
-            </div>
-          </CollapsibleTrigger>
+          <div className="shrink-0 text-muted-foreground [&_svg]:size-4">
+            <CollapsibleChevronsUpDownIcon duration={0.15} />
+          </div>
         </div>
       </div>
 
       <CollapsibleContent className="overflow-hidden">
         <div className="space-y-4 border-t border-line p-4">
           {project.description && (
-            <Prose>
+            <div className="typeset typeset-description">
               <Markdown>{project.description}</Markdown>
-            </Prose>
+            </div>
           )}
 
           {project.skills.length > 0 && (

@@ -9,8 +9,8 @@ const ID = "hello"
 const SSR_TEXT = "Hello"
 
 export function HelloTitle() {
-  // Server renders "Hello" for SEO; the client snapshot resolves the viewer's
-  // local greeting, which also covers client-side navigation (no inline script).
+  // Server renders "Hello"; the client snapshot resolves the viewer's local
+  // greeting, which also covers client-side navigation (no inline script).
   const greeting = useSyncExternalStore(
     () => () => {},
     getGreeting,
@@ -19,7 +19,12 @@ export function HelloTitle() {
 
   return (
     <>
-      <PanelTitle id={`${ID}-greeting`} suppressHydrationWarning>
+      <PanelTitle
+        as="div"
+        id={`${ID}-greeting`}
+        aria-hidden
+        suppressHydrationWarning
+      >
         {greeting}
       </PanelTitle>
 

@@ -3,9 +3,9 @@
 import { useRef } from "react"
 import { useInView, usePageInView } from "motion/react"
 
-import { TextFlip } from "@/registry/components/text-flip"
+import { TextSwap } from "@/registry/components/text-swap"
 
-export function FlipSentences({
+export function ProfileTaglines({
   children,
   ...props
 }: Omit<React.ComponentProps<"div">, "children" | "ref"> & {
@@ -17,13 +17,13 @@ export function FlipSentences({
 
   return (
     <div ref={ref} {...props}>
-      <TextFlip
-        className="shimmer font-mono text-body-small-regular text-balance text-text-secondary shimmer-duration-1500 shimmer-once not-dark:shimmer-color-foreground"
+      <TextSwap
+        className="font-mono text-body-small-regular text-balance text-text-secondary"
         interval={3}
         play={isPageInView && isInView}
       >
         {children}
-      </TextFlip>
+      </TextSwap>
     </div>
   )
 }

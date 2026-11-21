@@ -83,9 +83,9 @@ export function PostItem({
           </FastLink>
 
           {(post.metadata.new || post.metadata.updated) && (
-            <span className="pointer-events-none ml-2 inline-block size-2 -translate-y-px rounded-full bg-info">
+            <span className="pointer-events-none ml-2 inline-block size-1.5 -translate-y-px rounded-full bg-info">
               <span className="sr-only">
-                {post.metadata.new ? "New" : "Updated"}
+                {post.metadata.new ? " (New)" : " (Updated)"}
               </span>
             </span>
           )}
@@ -95,7 +95,7 @@ export function PostItem({
           <dt className="sr-only">Published on</dt>
           <dd className="text-body-small-regular text-text-secondary">
             <time dateTime={post.metadata.createdAt}>
-              {formatDate(post.metadata.createdAt, "dd.MM.yyyy")}
+              {formatDate(post.metadata.createdAt, "d MMM yyyy")}
             </time>
           </dd>
         </dl>

@@ -12,6 +12,8 @@ updatedAt: 2026-02-20
   remountOnThemeChange
 />
 
+<DocDependencies name="slide-to-unlock" />
+
 ## Features
 
 - Smooth drag interaction with spring physics via Motion.
@@ -39,6 +41,12 @@ npx shadcn@latest add @nrcode/slide-to-unlock
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="slide-to-unlock" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
@@ -46,7 +54,7 @@ npx shadcn@latest add @nrcode/slide-to-unlock
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install motion clsx tailwind-merge
+npm install motion cn
 ```
 
 <Step>Add a cn helper</Step>

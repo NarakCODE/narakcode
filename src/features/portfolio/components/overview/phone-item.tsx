@@ -6,10 +6,10 @@ import { decodePhoneNumber, formatPhoneNumber } from "@/utils/string"
 import { useTiks } from "@rexa-developer/tiks/react"
 import { PhoneIcon } from "lucide-react"
 import { useHotkeys } from "react-hotkeys-hook"
-import { toast } from "sonner"
 
 import { trackEvent } from "@/lib/events"
 import { useIsClient } from "@/hooks/use-is-client"
+import { toast } from "@/components/ui/toast"
 import { CopyButton } from "@/components/copy-button"
 
 import {
@@ -41,7 +41,7 @@ export function PhoneItem({ phoneNumberB64 }: PhoneItemProps) {
       },
     })
     success()
-    toast.success("Phone number copied")
+    toast.add({ type: "success", title: "Phone number copied" })
   })
 
   return (
@@ -60,9 +60,9 @@ export function PhoneItem({ phoneNumberB64 }: PhoneItemProps) {
         </IntroItemLink>
       </IntroItemContent>
 
-      <div className="-translate-x-3 translate-y-px opacity-0 transition-opacity ease-out group-hover:opacity-100">
+      <div className="-translate-x-2.5 opacity-0 transition-opacity ease-out group-hover:opacity-100 group-has-focus-visible:opacity-100 pointer-coarse:opacity-100">
         <CopyButton
-          className="rounded-md border-none text-muted-foreground [&_svg:not([class*='size-'])]:size-4"
+          className="rounded-md border-none text-muted-foreground [&_svg:not([class*='size-'])]:size-3.5"
           variant="ghost"
           size="icon-xs"
           text={() => phoneNumberDecoded}

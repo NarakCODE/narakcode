@@ -1,16 +1,23 @@
 ---
-title: Testimonial 2
+title: Pull Quote
 description: Display a testimonial quote with author attribution and source link.
 image: https://assets.narakcode.dev/images/blog/testimonial-2.webp
-new: true
 createdAt: 2026-06-26
 updatedAt: 2026-06-26
 ---
 
 <ComponentPreview
-  name="testimonial-2-demo"
-  openInV0Url="https://narakcode.dev/r/testimonial-2.json"
+  name="pull-quote-demo"
+  openInV0Url="https://narakcode.dev/r/pull-quote.json"
 />
+
+<DocDependencies name="pull-quote" />
+
+## Use cases
+
+- One standout quote inside a docs page or article.
+- Customer feedback between sections of a landing page.
+- Endorsement next to a product demo.
 
 ## Installation
 
@@ -21,8 +28,14 @@ updatedAt: 2026-06-26
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @nrcode/testimonial-2
+npx shadcn@latest add @nrcode/pull-quote
 ```
+
+</TabsContent>
+
+<TabsContent value="prompt">
+
+<InstallPrompt name="pull-quote" />
 
 </TabsContent>
 
@@ -33,7 +46,7 @@ npx shadcn@latest add @nrcode/testimonial-2
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install clsx tailwind-merge
+npm install cn
 ```
 
 <Step>Add a cn helper</Step>
@@ -46,7 +59,7 @@ npm install clsx tailwind-merge
 
 <Step>Copy and paste the following code into your project</Step>
 
-<ComponentSource name="testimonial-2" title="components/testimonial-2.tsx" />
+<ComponentSource name="pull-quote" title="components/pull-quote.tsx" />
 
 <Step>Update the import paths to match your project setup</Step>
 
@@ -59,13 +72,13 @@ npm install clsx tailwind-merge
 ## Usage
 
 ```tsx
-import { Testimonial2 } from "@/components/testimonial-2"
+import { PullQuote } from "@/components/pull-quote"
 ```
 
 ```tsx
-<Testimonial2
+<PullQuote
   authorName="Guillermo Rauch"
-  authorTagline="CEO @Vercel"
+  authorTagline="CEO at Vercel"
   url="https://x.com/rauchg/status/1978913158514237669"
   quote="awesome. Love the components, especially slide-to-unlock. Great job"
 />
@@ -73,9 +86,9 @@ import { Testimonial2 } from "@/components/testimonial-2"
 
 ## API reference
 
-### Testimonial2
+### PullQuote
 
 <AutoTypeTable
-  path="src/registry/components/testimonial-2/testimonial-2.tsx"
-  name="Testimonial2Props"
+  path="src/registry/components/pull-quote/pull-quote.tsx"
+  name="PullQuoteProps"
 />

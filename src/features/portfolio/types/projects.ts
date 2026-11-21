@@ -20,6 +20,8 @@ export type Project = {
   description?: string
   /** Logo image URL (absolute or path under /public). */
   logo?: string
+  /** Optional inline icon element rendered inside an IconTile. */
+  icon?: React.ReactElement
   /** Whether the project card is expanded by default in the UI. */
   isExpanded?: boolean
 }

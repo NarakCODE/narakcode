@@ -11,11 +11,17 @@ updatedAt: 2026-05-30
   openInV0Url="https://narakcode.dev/r/spinning-circular-text.json"
 />
 
+<DocDependencies name="spinning-circular-text" />
+
 ## Features
 
 - Adjustable character spacing and font size.
 - Container size scales automatically to fit the text ring.
-- Announces the full text to screen readers via hidden content.
+
+## Use cases
+
+- Badge in a site footer.
+- Decorative stamp around a logo or call to action.
 
 ## Installation
 
@@ -31,9 +37,29 @@ npx shadcn@latest add @nrcode/spinning-circular-text
 
 </TabsContent>
 
+<TabsContent value="prompt">
+
+<InstallPrompt name="spinning-circular-text" />
+
+</TabsContent>
+
 <TabsContent value="manual">
 
 <Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install cn
+```
+
+<Step>Add a cn helper</Step>
+
+<ComponentSource
+  src="src/registry/lib/utils.ts"
+  title="lib/utils.ts"
+  collapsible="false"
+/>
 
 <Step>Add the animation to your global CSS</Step>
 
@@ -89,6 +115,10 @@ import { SpinningCircularText } from "@/components/spinning-circular-text"
   path="src/features/doc/content/props.ts"
   name="SpinningCircularTextProps"
 />
+
+## Accessibility
+
+- Screen readers announce the full text, and the spinning ring stays hidden.
 
 ## Credits
 

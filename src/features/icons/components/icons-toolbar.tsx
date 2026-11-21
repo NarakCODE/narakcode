@@ -156,17 +156,19 @@ export function IconsToolbar({
           <div className="flex items-center gap-1">
             <div className="flex items-center rounded-lg border border-line bg-background p-0.5">
               <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    type="button"
-                    size="icon-xs"
-                    variant={viewMode === "grouped" ? "secondary" : "ghost"}
-                    onClick={() => onViewModeChange("grouped")}
-                    aria-label="Grouped by category"
-                    aria-pressed={viewMode === "grouped"}
-                  >
-                    <LayersIcon />
-                  </Button>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      type="button"
+                      size="icon-xs"
+                      variant={viewMode === "grouped" ? "secondary" : "ghost"}
+                      onClick={() => onViewModeChange("grouped")}
+                      aria-label="Grouped by category"
+                      aria-pressed={viewMode === "grouped"}
+                    />
+                  }
+                >
+                  <LayersIcon />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Grouped by category</p>
@@ -174,17 +176,19 @@ export function IconsToolbar({
               </Tooltip>
 
               <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    type="button"
-                    size="icon-xs"
-                    variant={viewMode === "grid" ? "secondary" : "ghost"}
-                    onClick={() => onViewModeChange("grid")}
-                    aria-label="Flat grid view"
-                    aria-pressed={viewMode === "grid"}
-                  >
-                    <LayoutGridIcon />
-                  </Button>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      type="button"
+                      size="icon-xs"
+                      variant={viewMode === "grid" ? "secondary" : "ghost"}
+                      onClick={() => onViewModeChange("grid")}
+                      aria-label="Flat grid view"
+                      aria-pressed={viewMode === "grid"}
+                    />
+                  }
+                >
+                  <LayoutGridIcon />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Flat grid view</p>
@@ -194,16 +198,18 @@ export function IconsToolbar({
 
             {isCustomized && (
               <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    type="button"
-                    size="icon-sm"
-                    variant="outline"
-                    onClick={onResetCustomizer}
-                    aria-label="Reset size"
-                  >
-                    <RotateCcwIcon className="size-3.5" />
-                  </Button>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      type="button"
+                      size="icon-sm"
+                      variant="outline"
+                      onClick={onResetCustomizer}
+                      aria-label="Reset size"
+                    />
+                  }
+                >
+                  <RotateCcwIcon className="size-3.5" />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Reset size</p>

@@ -23,7 +23,6 @@ import {
   useTransform,
   type PanInfo,
 } from "motion/react"
-import { toast } from "sonner"
 import { Drawer as DrawerPrimitive } from "vaul"
 
 import { trackEvent } from "@/lib/events"
@@ -48,7 +47,14 @@ import {
 } from "@/components/ui/dialog"
 import { Dock, type DockItem } from "@/components/ui/dock"
 import { PhoneSkeleton } from "@/components/ui/phone-skeleton"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  Tabs,
+  TabsContent,
+  TabsIndicator,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+import { toast } from "@/components/ui/toast"
 import { haptic } from "@/registry/lib/haptic"
 
 import {
@@ -569,6 +575,7 @@ function IconCodeTabs({
         <TabsTrigger value="usage" className={cn(isMobile && "min-h-10")}>
           <span>Usage</span>
         </TabsTrigger>
+        <TabsIndicator />
       </TabsList>
 
       <TabsContent value="jsx" className="min-w-0">
@@ -604,7 +611,7 @@ function IconCodeTabs({
                       size: iconSize,
                     },
                   })
-                  toast.success("Copied React component")
+                  toast.add({ type: "success", title: "Copied React component" })
                 }}
               />
             </CodeBlockActions>
@@ -661,7 +668,7 @@ function IconCodeTabs({
                       size: iconSize,
                     },
                   })
-                  toast.success("Copied SVG to clipboard")
+                  toast.add({ type: "success", title: "Copied SVG to clipboard" })
                 }}
               />
             </CodeBlockActions>
@@ -923,10 +930,10 @@ export function Example() {
     if (copied) {
       haptic(25)
       setCopiedAction("svg")
-      toast.success("Copied SVG to clipboard")
+      toast.add({ type: "success", title: "Copied SVG to clipboard" })
       setTimeout(() => setCopiedAction(null), 1500)
     } else {
-      toast.error("Failed to copy SVG")
+      toast.add({ type: "error", title: "Failed to copy SVG" })
     }
   }
 
@@ -948,10 +955,10 @@ export function Example() {
     if (copied) {
       haptic(25)
       setCopiedAction("jsx")
-      toast.success("Copied React component")
+      toast.add({ type: "success", title: "Copied React component" })
       setTimeout(() => setCopiedAction(null), 1500)
     } else {
-      toast.error("Failed to copy React component")
+      toast.add({ type: "error", title: "Failed to copy React component" })
     }
   }
 
@@ -981,7 +988,7 @@ export function Example() {
     link.click()
     link.remove()
     URL.revokeObjectURL(url)
-    toast.success(`Downloaded ${icon.name}.svg`)
+    toast.add({ type: "success", title: `Downloaded ${icon.name}.svg` })
   }
 
   const dockIconSize = Math.min(54, Math.max(44, iconSize))
