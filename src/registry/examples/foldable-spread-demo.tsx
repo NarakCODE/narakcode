@@ -34,7 +34,7 @@ const POSTS: Post[] = [
 
 export default function FoldableSpreadDemo() {
   return (
-    <Foldable className="[--foldable-radius:--spacing(6)]">
+    <Foldable className="[--foldable-radius:--spacing(10)]">
       {/* A container one page wide: sizes follow the page, not the screen. */}
       <FoldableStage className="@container/foldable">
         <FoldableInsideRight>
@@ -81,12 +81,12 @@ function OuterView() {
   return (
     <div className="flex size-full flex-col">
       <Cover />
-      <Profile className="px-[6.25cqw]">
+      <Profile className="px-[7.5cqw]">
         <Bio className="@max-xs/foldable:hidden" />
       </Profile>
       <PostList
         posts={POSTS.slice(0, 3)}
-        className="mt-auto px-[6.25cqw] pb-[6.25cqw] @max-xs/foldable:pt-3 @max-xs/foldable:[&_li:nth-child(n+2)]:hidden @max-xs/foldable:[&>p]:hidden"
+        className="mt-auto px-[7.5cqw] pb-[8cqw] @max-xs/foldable:pt-3 @max-xs/foldable:[&_li:nth-child(n+2)]:hidden @max-xs/foldable:[&>p]:hidden"
       />
     </div>
   )
@@ -98,7 +98,7 @@ function InnerView() {
       {/* Spans both pages, like a wallpaper across the crease. */}
       <Cover />
       <div className="grid flex-1 grid-cols-2">
-        <Profile className="px-[6.25cqw]">
+        <Profile className="px-[7.5cqw] pb-[8cqw]">
           <Bio />
           <p className="text-sm text-muted-foreground @max-xs/foldable:hidden">
             {PROFILE.address}
@@ -106,7 +106,7 @@ function InnerView() {
         </Profile>
         <PostList
           posts={POSTS}
-          className="px-[6.25cqw] pt-[6.25cqw] @max-xs/foldable:[&_li:nth-child(n+3)]:hidden"
+          className="px-[7.5cqw] pt-[6.25cqw] pb-[8cqw] @max-xs/foldable:[&_li:nth-child(n+3)]:hidden"
         />
       </div>
     </div>

@@ -123,11 +123,11 @@ Foldable
 
 Set them on `Foldable`, for example `[--foldable-w:16rem]`.
 
-| Variable             | Default                         | Description                                   |
-| -------------------- | ------------------------------- | --------------------------------------------- |
-| `--foldable-w`       | `min(20rem, calc(50vw - 2rem))` | Width of one page. The height is 7/5 of it.   |
-| `--foldable-radius`  | `--spacing(4)`                  | Corner radius of the paper.                   |
-| `--foldable-surface` | `var(--background)`             | Paper color behind the content of every page. |
+| Variable             | Default                           | Description                                   |
+| -------------------- | --------------------------------- | --------------------------------------------- |
+| `--foldable-w`       | `min(20rem, calc(50vw - 2rem))`   | Width of one page. The height is 7/5 of it.   |
+| `--foldable-radius`  | `calc(var(--foldable-w) * 0.125)` | Corner radius of the paper.                   |
+| `--foldable-surface` | `var(--background)`               | Paper color behind the content of every page. |
 
 ## Examples
 
