@@ -14,7 +14,7 @@
           "target": "@lib/haptic.ts"
         }
       ],
-      "docs": "https://narakcode.dev/components/haptic-feedback",
+      "docs": "https://narakcode.dev/components/haptic",
       "categories": [
         "utilities"
       ],
@@ -99,10 +99,9 @@
       "title": "DropDrawer",
       "description": "A responsive component that automatically switches between a dropdown menu on desktop and a drawer on mobile devices for shadcn/ui.",
       "dependencies": [
-        "@radix-ui/react-dropdown-menu",
         "vaul",
         "lucide-react",
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [
         "utils",
@@ -128,7 +127,8 @@
       "description": "Toggle between system, light, and dark themes in Next.js apps.",
       "dependencies": [
         "next-themes",
-        "motion"
+        "motion",
+        "lucide-react"
       ],
       "files": [
         {
@@ -145,20 +145,20 @@
       "author": "NarakCODE <channarakluy@gmail.com>"
     },
     {
-      "name": "text-flip",
-      "title": "Text Flip",
-      "description": "Animated text that cycles through items with a smooth flip transition.",
+      "name": "text-swap",
+      "title": "Text Swap",
+      "description": "Animated text that swaps through items with a fade transition.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "src/registry/components/text-flip/text-flip.tsx",
+          "path": "src/registry/components/text-swap/text-swap.tsx",
           "type": "registry:component",
-          "target": "@components/text-flip.tsx"
+          "target": "@components/text-swap.tsx"
         }
       ],
-      "docs": "https://narakcode.dev/components/text-flip",
+      "docs": "https://narakcode.dev/components/text-swap",
       "categories": [
         "text-effects"
       ],
@@ -250,6 +250,28 @@
       "author": "NarakCODE <channarakluy@gmail.com>"
     },
     {
+      "name": "swipe-actions",
+      "title": "Swipe Actions",
+      "description": "Swipe a row in a list to reveal actions on the left or right.",
+      "dependencies": [
+        "@ncdai/react-swipe-actions",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/swipe-actions/swipe-actions.tsx",
+          "type": "registry:component",
+          "target": "@components/swipe-actions.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/swipe-actions",
+      "categories": [
+        "controls"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
       "name": "wheel-picker",
       "title": "Wheel Picker",
       "description": "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
@@ -310,7 +332,7 @@
         "@utility link-underline": {
           "@apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current": {}
         },
-        "@utility prose-NarakCODE": {
+        "@utility prose-narakcode": {
           "@apply prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-pretty md:prose-headings:text-balance": {},
           "@apply prose-a:font-normal prose-a:wrap-break-word prose-a:text-foreground prose-a:link-underline": {},
           "@apply prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-1 prose-code:py-px prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none retina:prose-code:border-[0.5px]": {},
@@ -331,7 +353,8 @@
       "description": "Display work experiences with role details, company logos, and durations.",
       "dependencies": [
         "react-markdown",
-        "date-fns"
+        "date-fns",
+        "lucide-react"
       ],
       "registryDependencies": [
         "collapsible",
@@ -551,7 +574,7 @@
       "title": "Consent Manager",
       "description": "Cookie and tracking consent banner for Next.js, built on c15t.",
       "dependencies": [
-        "@c15t/nextjs"
+        "@c15t/nextjs@^1.8.3"
       ],
       "registryDependencies": [
         "button"
@@ -577,7 +600,8 @@
       "dependencies": [
         "motion",
         "@rexa-developer/tiks",
-        "web-haptics"
+        "web-haptics",
+        "lucide-react"
       ],
       "registryDependencies": [
         "button",
@@ -609,7 +633,8 @@
       "dependencies": [
         "@base-ui/react",
         "motion",
-        "jotai"
+        "jotai",
+        "lucide-react"
       ],
       "registryDependencies": [
         "https://narakcode.dev/r/icon-swap.json",
@@ -622,7 +647,7 @@
           "target": "@components/code-block-command.tsx"
         },
         {
-          "path": "src/components/base/ui/tabs.tsx",
+          "path": "src/components/ui/tabs.tsx",
           "type": "registry:component",
           "target": "@components/tabs.tsx"
         }
@@ -680,6 +705,7 @@
           "target": "@components/glow-card-grid.tsx"
         }
       ],
+      "docs": "https://narakcode.dev/components/glow-card-grid",
       "categories": [
         "effects"
       ],
@@ -823,15 +849,37 @@
       "name": "toc-minimap",
       "title": "TOC Minimap",
       "description": "Navigate page sections with a compact, hoverable TOC minimap.",
+      "dependencies": [
+        "motion"
+      ],
       "registryDependencies": [
-        "hover-card",
-        "@soundcn/u-mini-map-open"
+        "hover-card"
       ],
       "files": [
         {
           "path": "src/registry/components/toc-minimap/toc-minimap.tsx",
           "type": "registry:component",
           "target": "@components/toc-minimap.tsx"
+        },
+        {
+          "path": "src/lib/soundcn/u-mini-map-open.ts",
+          "type": "registry:lib",
+          "target": "@lib/soundcn/u-mini-map-open.ts"
+        },
+        {
+          "path": "src/lib/soundcn/sound-engine.ts",
+          "type": "registry:lib",
+          "target": "@lib/soundcn/sound-engine.ts"
+        },
+        {
+          "path": "src/lib/soundcn/sound-types.ts",
+          "type": "registry:lib",
+          "target": "@lib/soundcn/sound-types.ts"
+        },
+        {
+          "path": "src/hooks/soundcn/use-sound.ts",
+          "type": "registry:hook",
+          "target": "@hooks/soundcn/use-sound.ts"
         }
       ],
       "docs": "https://narakcode.dev/components/toc-minimap",
@@ -867,11 +915,12 @@
       "title": "Brand Assets Menu",
       "description": "Context menu for copying brand SVGs and opening asset links.",
       "dependencies": [
-        "@rexa-developer/tiks"
+        "@rexa-developer/tiks",
+        "lucide-react"
       ],
       "registryDependencies": [
         "context-menu",
-        "sonner"
+        "toast"
       ],
       "files": [
         {
@@ -999,17 +1048,59 @@
       "author": "NarakCODE <channarakluy@gmail.com>"
     },
     {
-      "name": "testimonial-2",
-      "title": "Testimonial 2",
+      "name": "logos-flip",
+      "title": "Logos Flip",
+      "description": "Flip cards in a staggered wave to reveal the next batch of logos.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/logos-flip/logos-flip.tsx",
+          "type": "registry:component",
+          "target": "@components/logos-flip.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/logos-flip",
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "logos-swap",
+      "title": "Logos Swap",
+      "description": "Swap logos one at a time in a scattered order.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/logos-swap/logos-swap.tsx",
+          "type": "registry:component",
+          "target": "@components/logos-swap.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/logos-swap",
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "pull-quote",
+      "title": "Pull Quote",
       "description": "Display a testimonial quote with author attribution and source link.",
       "files": [
         {
-          "path": "src/registry/components/testimonial-2/testimonial-2.tsx",
+          "path": "src/registry/components/pull-quote/pull-quote.tsx",
           "type": "registry:component",
-          "target": "@components/testimonial-2.tsx"
+          "target": "@components/pull-quote.tsx"
         }
       ],
-      "docs": "https://narakcode.dev/components/testimonial-2",
+      "docs": "https://narakcode.dev/components/pull-quote",
       "categories": [
         "marketing"
       ],
@@ -1041,10 +1132,13 @@
       "name": "share-menu",
       "title": "Share Menu",
       "description": "Share menu to copy a link or post to X, LinkedIn, and the native share sheet.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "dropdown-menu",
-        "sonner"
+        "toast"
       ],
       "files": [
         {
@@ -1067,19 +1161,419 @@
       "dependencies": [
         "motion"
       ],
-      "registryDependencies": [
-        "@soundcn/metal-click"
-      ],
       "files": [
         {
           "path": "src/registry/components/spotlight-logo/spotlight-logo.tsx",
           "type": "registry:component",
           "target": "@components/spotlight-logo.tsx"
+        },
+        {
+          "path": "src/lib/soundcn/metal-click.ts",
+          "type": "registry:lib",
+          "target": "@lib/soundcn/metal-click.ts"
+        },
+        {
+          "path": "src/lib/soundcn/sound-engine.ts",
+          "type": "registry:lib",
+          "target": "@lib/soundcn/sound-engine.ts"
+        },
+        {
+          "path": "src/lib/soundcn/sound-types.ts",
+          "type": "registry:lib",
+          "target": "@lib/soundcn/sound-types.ts"
+        },
+        {
+          "path": "src/hooks/soundcn/use-sound.ts",
+          "type": "registry:hook",
+          "target": "@hooks/soundcn/use-sound.ts"
         }
       ],
       "docs": "https://narakcode.dev/components/spotlight-logo",
       "categories": [
         "effects"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "timescale",
+      "title": "Timescale",
+      "description": "Ruler-style timeline for plotting milestones along a horizontal or vertical axis.",
+      "files": [
+        {
+          "path": "src/registry/components/timescale/timescale.tsx",
+          "type": "registry:component",
+          "target": "@components/timescale.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/timescale",
+      "categories": [
+        "data-display"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "status-button",
+      "title": "Status Button",
+      "description": "Button that shows loading and success feedback for async actions.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://narakcode.dev/r/use-controllable-state.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/status-button/status-button.tsx",
+          "type": "registry:component",
+          "target": "@components/status-button.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "--animate-spinner-opacity": "spinner-opacity var(--tw-animation-duration, var(--tw-duration, 1s)) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes spinner-opacity": {
+          "from": {
+            "opacity": "1"
+          },
+          "to": {
+            "opacity": "0.15"
+          }
+        }
+      },
+      "docs": "https://narakcode.dev/components/status-button",
+      "categories": [
+        "controls"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "apple-carousel",
+      "title": "Apple Carousel",
+      "description": "Infinite autoplay carousel with progress dots, inspired by Apple’s website.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/apple-carousel/apple-carousel.tsx",
+          "type": "registry:component",
+          "target": "@components/apple-carousel.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/apple-carousel",
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "apple-accordion",
+      "title": "Apple Accordion",
+      "description": "Accordion whose items morph from pills into cards, inspired by Apple’s product pages.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/apple-accordion/apple-accordion.tsx",
+          "type": "registry:component",
+          "target": "@components/apple-accordion.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/apple-accordion",
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "jpg-card-holder",
+      "title": "JPG Card Holder",
+      "description": "Leather card holder shaped like a JPG file, with cards you can pull out.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/jpg-card-holder/jpg-card-holder.tsx",
+          "type": "registry:component",
+          "target": "@components/jpg-card-holder.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/jpg-card-holder",
+      "categories": [
+        "illustrations"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "foldable",
+      "title": "Foldable",
+      "description": "Folded card that opens like the iPhone Duo, blurring as the cover turns.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/foldable/foldable.tsx",
+          "type": "registry:component",
+          "target": "@components/foldable.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/foldable",
+      "categories": [
+        "illustrations"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "ipod-classic",
+      "title": "iPod Classic",
+      "description": "iPod classic with a working click wheel, menus, and music playback.",
+      "dependencies": [
+        "jotai",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/ipod-classic/index.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/index.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/brick-game.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/brick-game.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/click-wheel.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/click-wheel.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/icons.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/icons.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/marquee.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/marquee.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/menu-list.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/menu-list.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/now-playing.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/now-playing.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/progress-bar.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/progress-bar.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/screen.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/screen.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/title-bar.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/title-bar.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/components/use-screen-keyboard.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/components/use-screen-keyboard.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/ipod-classic.module.css",
+          "type": "registry:file",
+          "target": "@components/ipod-classic/ipod-classic.module.css"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/ipod-classic.tsx",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/ipod-classic.tsx"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/acceleration.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/acceleration.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/assets.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/assets.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/atoms.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/atoms.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/brick-engine.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/brick-engine.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/catalog.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/catalog.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/click-sound.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/click-sound.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/constants.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/constants.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/engine.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/engine.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/menu-controller.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/menu-controller.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/menu.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/menu.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/now-playing-modes.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/now-playing-modes.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/playback.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/playback.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/player.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/player.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/timers.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/timers.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/types.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/types.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/wheel-gesture.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/wheel-gesture.ts"
+        },
+        {
+          "path": "src/registry/components/ipod-classic/lib/wheel-scroll.ts",
+          "type": "registry:component",
+          "target": "@components/ipod-classic/lib/wheel-scroll.ts"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/ipod-classic",
+      "categories": [
+        "illustrations"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "wallet",
+      "title": "Wallet",
+      "description": "Leather wallet with cards you can peek at and pull out.",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/wallet/wallet.tsx",
+          "type": "registry:component",
+          "target": "@components/wallet.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/wallet",
+      "categories": [
+        "illustrations"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "bookshelf",
+      "title": "Bookshelf",
+      "description": "Shelf of book spines that turn to show their covers.",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/bookshelf/bookshelf.tsx",
+          "type": "registry:component",
+          "target": "@components/bookshelf.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/bookshelf",
+      "categories": [
+        "illustrations"
+      ],
+      "type": "registry:component",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "lightbox",
+      "title": "Lightbox",
+      "description": "Image viewer that morphs from the thumbnail, with swipe, zoom, and pull to close.",
+      "dependencies": [
+        "@ramka/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/lightbox/lightbox.tsx",
+          "type": "registry:component",
+          "target": "@components/lightbox.tsx"
+        }
+      ],
+      "docs": "https://narakcode.dev/components/lightbox",
+      "categories": [
+        "data-display"
       ],
       "type": "registry:component",
       "author": "NarakCODE <channarakluy@gmail.com>"
@@ -1120,6 +1614,9 @@
       "name": "hero-01",
       "title": "Hero 01",
       "description": "A hero section with a golden spiral background.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "https://narakcode.dev/r/style.json"
@@ -1150,7 +1647,8 @@
       "title": "Blog 01",
       "description": "A blog section with a grid layout.",
       "dependencies": [
-        "date-fns"
+        "date-fns",
+        "lucide-react"
       ],
       "registryDependencies": [
         "button"
@@ -1181,7 +1679,8 @@
       "title": "Blog 02",
       "description": "A blog section with a lined grid layout.",
       "dependencies": [
-        "date-fns"
+        "date-fns",
+        "lucide-react"
       ],
       "registryDependencies": [
         "button",
@@ -1283,7 +1782,8 @@
       "description": "A work experience section with a lined layout.",
       "dependencies": [
         "@dicebear/core",
-        "@dicebear/styles"
+        "@dicebear/styles",
+        "lucide-react"
       ],
       "registryDependencies": [
         "https://narakcode.dev/r/style.json",
@@ -1338,7 +1838,8 @@
       "title": "Metrics 01",
       "description": "A metrics section with a line chart.",
       "dependencies": [
-        "date-fns"
+        "date-fns",
+        "lucide-react"
       ],
       "registryDependencies": [
         "@bklit/line-chart",
@@ -1370,6 +1871,9 @@
       "name": "social-links-01",
       "title": "Social Links 01",
       "description": "A social links section with a lined grid layout.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://narakcode.dev/r/style.json"
       ],
@@ -1395,6 +1899,7 @@
       "title": "Social Proof 01",
       "description": "A social proof section with a logos carousel.",
       "registryDependencies": [
+        "https://narakcode.dev/r/style.json",
         "https://narakcode.dev/r/logos-carousel.json"
       ],
       "files": [
@@ -1406,6 +1911,31 @@
       ],
       "meta": {
         "createdAt": "2026-06-26",
+        "previewClassName": "min-h-svh content-center-safe"
+      },
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:block",
+      "author": "NarakCODE <channarakluy@gmail.com>"
+    },
+    {
+      "name": "social-proof-02",
+      "title": "Social Proof 02",
+      "description": "A social proof section with a logos swap.",
+      "registryDependencies": [
+        "https://narakcode.dev/r/style.json",
+        "https://narakcode.dev/r/logos-swap.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/social-proof-02/social-proof-02.tsx",
+          "type": "registry:component",
+          "target": "@components/social-proof-02.tsx"
+        }
+      ],
+      "meta": {
+        "createdAt": "2026-11-05",
         "previewClassName": "min-h-svh content-center-safe"
       },
       "categories": [
