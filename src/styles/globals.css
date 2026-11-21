@@ -2,8 +2,10 @@
 @import "shadcn/tailwind.css";
 @import "tw-animate-css";
 
+@import "./typeset.css";
 @import "./scroll-fade-effect.css";
 @import "./style-preview.css";
+@import "./marquee.css";
 @import "./typography.css";
 
 @plugin "@tailwindcss/typography";
@@ -46,6 +48,8 @@
   --color-success: var(--success);
   --color-destructive: var(--destructive);
   --color-link: var(--link);
+  --color-dimension: var(--dimension);
+  --color-dimension-foreground: var(--dimension-foreground);
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
   --color-code: var(--code);
@@ -90,8 +94,8 @@
   --color-chart-tooltip-background: var(--chart-tooltip-background);
   --color-chart-grid: var(--chart-grid);
   --color-chart-crosshair: var(--chart-crosshair);
-  --chart-line-secondary: var(--chart-line-secondary);
-  --chart-line-primary: var(--chart-line-primary);
+  --color-chart-line-secondary: var(--chart-line-secondary);
+  --color-chart-line-primary: var(--chart-line-primary);
   --color-chart-foreground-muted: var(--chart-foreground-muted);
   --color-chart-foreground: var(--chart-foreground);
   --color-chart-background: var(--chart-background);
@@ -107,6 +111,26 @@
   @keyframes spin-ccw {
     to {
       rotate: -360deg;
+    }
+  }
+
+  --animate-spinner-opacity: spinner-opacity
+    var(--tw-animation-duration, var(--tw-duration, 1s)) linear infinite;
+
+  @keyframes spinner-opacity {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.15;
+    }
+  }
+
+  --animate-blink: blink 2s step-end infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
     }
   }
 }
@@ -127,11 +151,23 @@
   }
 }
 
+@utility screen-line-top-* {
+  &:before {
+    background-color: --value(--color-*, [color]);
+  }
+}
+
 @utility screen-line-bottom {
   @apply relative;
   &:after {
     content: "";
     @apply absolute bottom-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
+  }
+}
+
+@utility screen-line-bottom-* {
+  &:after {
+    background-color: --value(--color-*, [color]);
   }
 }
 
@@ -162,6 +198,11 @@
 @utility diagonal-stripes {
   @apply [--pattern-foreground:var(--color-line)]/56;
   @apply bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px];
+}
+
+@utility dot-grid {
+  @apply [--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5;
+  @apply bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[8px_8px];
 }
 
 @utility stripe-divider {
@@ -274,7 +315,7 @@
   /* zinc-400 */
   --ring: oklch(0.705 0.015 286.067);
 
-  --info: oklch(0.67 0.17 244.98);
+  --info: oklch(0.623 0.214 259.815);
 
   /* green-500 */
   --success: oklch(0.723 0.219 149.579);
@@ -284,6 +325,13 @@
 
   /* blue-700 */
   --link: oklch(0.488 0.243 264.376);
+
+  --dimension: color-mix(
+    in oklab,
+    oklch(70.5% 0.015 286.067) 60%,
+    var(--background)
+  );
+  --dimension-foreground: oklch(70.5% 0.015 286.067);
 
   /* zinc-50 */
   --surface: oklch(0.985 0 0);
@@ -351,8 +399,24 @@
   --chart-ring-background: oklch(0.9 0.005 260 / 0.25);
   --chart-label: oklch(0.45 0.01 260);
 
+  --chart-brush-border: var(--chart-grid);
+  --chart-indicator-color: oklch(0.21 0.006 285);
+  --chart-indicator-secondary-color: oklch(0.913 0 0);
+  --chart-marker-badge-background: oklch(0 0 0);
+  --chart-marker-badge-foreground: oklch(0.84 0 0);
+  --chart-segment-background: oklch(0.756 0 0 / 0.06);
+  --chart-segment-line: oklch(0.5 0 0 / 0.25);
+
+  /* Daikanoid — hex because p5 1.x cannot parse oklch() */
+  --dk-background: #ffffff;
+  --dk-foreground: #09090b;
+  --dk-muted-foreground: #a1a1aa;
+  --dk-brick: #a1a1aa;
+  --dk-brick-highlight: rgba(255, 255, 255, 0.5);
+  --dk-brick-shadow: #71717a;
+
   /* Layout */
-  --header-height: --spacing(14);
+  --header-height: --spacing(15);
   --fade-bottom-height: --spacing(24);
 }
 
@@ -411,6 +475,8 @@
   /* zinc-500 */
   --ring: oklch(0.552 0.016 285.938);
 
+  --info: oklch(0.623 0.214 259.815);
+
   /* green-500 */
   --success: oklch(0.723 0.219 149.579);
 
@@ -419,6 +485,13 @@
 
   /* blue-500 */
   --link: oklch(0.623 0.214 259.815);
+
+  --dimension: color-mix(
+    in oklab,
+    oklch(37% 0.013 285.805) 80%,
+    var(--background)
+  );
+  --dimension-foreground: oklch(37% 0.013 285.805);
 
   /* zinc-900 */
   --surface: oklch(0.21 0.006 285.885);
@@ -463,6 +536,22 @@
   --chart-marker-foreground: oklch(0.9 0 0);
   --chart-ring-background: oklch(0.35 0.01 260 / 0.25);
   --chart-label: oklch(0.75 0.01 260);
+
+  --chart-brush-border: var(--chart-grid);
+  --chart-indicator-color: oklch(1 0 0);
+  --chart-indicator-secondary-color: oklch(0.145 0 0);
+  --chart-marker-badge-background: oklch(1 0 0);
+  --chart-marker-badge-foreground: oklch(0.15 0 0);
+  --chart-segment-background: oklch(0.41 0.0127 248.14 / 0.25);
+  --chart-segment-line: oklch(1 0 0 / 0.25);
+
+  /* Daikanoid — hex because p5 1.x cannot parse oklch() */
+  --dk-background: #09090b;
+  --dk-foreground: #fafafa;
+  --dk-muted-foreground: #71717a;
+  --dk-brick: #71717a;
+  --dk-brick-highlight: rgba(255, 255, 255, 0.3);
+  --dk-brick-shadow: #3f3f46;
 }
 
 @layer base {
@@ -586,21 +675,6 @@
     background: var(--fade-background, var(--fade-linear-gradient));
   }
 
-  /* .duck-follower {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 50;
-
-    pointer-events: none;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-
-    will-change: transform;
-    transition: none;
-  } */
-
   .twemoji {
     display: inline-block;
     height: 1em;
@@ -616,4 +690,20 @@
     @apply data-[level=3]:fill-muted-foreground/60;
     @apply data-[level=4]:fill-muted-foreground/80;
   }
+}
+
+.typeset-description {
+  --typeset-size: 15px;
+  --typeset-leading: 1.6;
+  --typeset-flow: 1em;
+
+  font-size: var(--typeset-size);
+}
+
+.typeset-timescale {
+  --typeset-size: 0.875rem;
+  --typeset-leading: 1.5;
+  --typeset-flow: 1em;
+
+  font-size: var(--typeset-size);
 }
