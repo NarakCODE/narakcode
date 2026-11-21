@@ -8,7 +8,7 @@ import {
   TestimonialAvatarRing,
   TestimonialQuote,
   TestimonialVerifiedBadge,
-} from "@/registry/transformed/components/testimonial"
+} from "@/registry/components/testimonial"
 
 export default function TestimonialDemo() {
   return (
@@ -45,7 +45,7 @@ export default function TestimonialDemo() {
               </svg>
             </TestimonialVerifiedBadge>
           </TestimonialAuthorName>
-          <TestimonialAuthorTagline>CEO @Vercel</TestimonialAuthorTagline>
+          <TestimonialAuthorTagline>CEO at Vercel</TestimonialAuthorTagline>
         </TestimonialAuthor>
       </Testimonial>
     </a>

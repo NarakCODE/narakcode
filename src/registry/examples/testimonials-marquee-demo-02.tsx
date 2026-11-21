@@ -13,7 +13,7 @@ import {
   TestimonialAvatarImg,
   TestimonialAvatarRing,
   TestimonialQuote,
-} from "@/registry/transformed/components/testimonial"
+} from "@/registry/components/testimonial"
 
 export default function TestimonialsMarqueeDemo2() {
   return (
@@ -26,7 +26,7 @@ export default function TestimonialsMarqueeDemo2() {
           <MarqueeContent direction={index % 2 === 1 ? "right" : "left"}>
             {list.map((item) => (
               <MarqueeItem
-                key={item.url}
+                key={item.authorName}
                 className="mx-0 h-full w-xs border-r border-line"
               >
                 <a
@@ -69,7 +69,7 @@ const TESTIMONIALS_1 = [
   {
     authorAvatar: "https://unavatar.io/x/rauchg",
     authorName: "Guillermo Rauch",
-    authorTagline: "CEO @Vercel",
+    authorTagline: "CEO at Vercel",
     url: "#",
     quote:
       "awesome. Love the components, especially slide-to-unlock. Great job",
@@ -93,14 +93,14 @@ const TESTIMONIALS_1 = [
   {
     authorAvatar: "https://unavatar.io/x/steventey",
     authorName: "Steven Tey",
-    authorTagline: "Founder @Dub.co",
+    authorTagline: "Founder of Dub",
     url: "#",
     quote: "whoa, this is really dope – needs to get added to @shadcn UI",
   },
   {
     authorAvatar: "https://unavatar.io/x/kapehe_ok",
     authorName: "Kap",
-    authorTagline: "Head of Developer Community @Vercel",
+    authorTagline: "Head of Developer Community at Vercel",
     url: "#",
     quote: "one of my favorite projects that submitted! you are crushing it!",
   },
@@ -133,14 +133,14 @@ const TESTIMONIALS_2 = [
   {
     authorAvatar: "https://unavatar.io/x/MaxPrilutskiy",
     authorName: "Max Prilutskiy",
-    authorTagline: "CEO @Lingo.dev",
+    authorTagline: "CEO at Lingo.dev",
     url: "#",
     quote: "i like your style! :)",
   },
   {
     authorAvatar: "https://unavatar.io/x/aaronmahlke",
     authorName: "Aaron",
-    authorTagline: "Founding Design Engineer @Mail0",
+    authorTagline: "Founding Design Engineer at Mail0",
     url: "#",
     quote: "super cool portfolio!",
   },

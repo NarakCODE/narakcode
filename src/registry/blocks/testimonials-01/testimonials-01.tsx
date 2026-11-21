@@ -13,13 +13,13 @@ export default function Testimonials01() {
 const TESTIMONIALS_1: TestimonialType[] = [
   {
     authorName: "Kap",
-    authorTagline: "Head of Developer Community @Vercel",
+    authorTagline: "Head of Developer Community at Vercel",
     url: "#",
     quote: "one of my favorite projects that submitted! you are crushing it!",
   },
   {
     authorName: "Guillermo Rauch",
-    authorTagline: "CEO @Vercel",
+    authorTagline: "CEO at Vercel",
     url: "#",
     quote:
       "awesome. Love the components, especially slide-to-unlock. Great job",
@@ -33,7 +33,7 @@ const TESTIMONIALS_1: TestimonialType[] = [
   },
   {
     authorName: "Francesco Ciulla",
-    authorTagline: "Developer Advocate @daily.dev",
+    authorTagline: "Developer Advocate at daily.dev",
     url: "#",
     quote:
       "your portfolio is stunning. i created mine some weeks ago but this is another planet.",
@@ -48,7 +48,7 @@ const TESTIMONIALS_1: TestimonialType[] = [
     authorName: "shadcncraft",
     authorTagline: "shadcncraft.com",
     url: "#",
-    quote: "Love your work Dai! You’re a great talent :-)",
+    quote: "Love your work! You’re a great talent :-)",
   },
   {
     authorName: "khushi.vy",
@@ -68,7 +68,7 @@ const TESTIMONIALS_1: TestimonialType[] = [
 const TESTIMONIALS_2: TestimonialType[] = [
   {
     authorName: "Max Prilutskiy",
-    authorTagline: "CEO @Lingo.dev",
+    authorTagline: "CEO at Lingo.dev",
     url: "#",
     quote: "i like your style! :)",
   },
@@ -104,7 +104,7 @@ const TESTIMONIALS_2: TestimonialType[] = [
   },
   {
     authorName: "Brandon McConnell",
-    authorTagline: "Frontend Engineer @mintlify",
+    authorTagline: "Frontend Engineer at Mintlify",
     url: "#",
     quote: "amazing, such cool libraries",
   },

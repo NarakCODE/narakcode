@@ -48,7 +48,7 @@ export function TestimonialList({
 
       <MarqueeContent direction={direction}>
         {data.map((item) => (
-          <MarqueeItem key={item.url} className="mx-1 h-full w-xs">
+          <MarqueeItem key={item.authorName} className="mx-1 h-full w-xs">
             <a
               className="block h-full"
               href={item.url}

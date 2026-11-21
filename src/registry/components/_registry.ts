@@ -33,10 +33,9 @@ export const components: Registry["items"] = [
     description:
       "A responsive component that automatically switches between a dropdown menu on desktop and a drawer on mobile devices for shadcn/ui.",
     dependencies: [
-      "@radix-ui/react-dropdown-menu",
       "vaul",
       "lucide-react",
-      "framer-motion",
+      "motion",
     ],
     registryDependencies: ["utils", "drawer", "dropdown-menu"],
     files: [
@@ -53,7 +52,7 @@ export const components: Registry["items"] = [
     title: "Theme Switcher",
     description:
       "Toggle between system, light, and dark themes in Next.js apps.",
-    dependencies: ["next-themes", "motion"],
+    dependencies: ["next-themes", "motion", "lucide-react"],
     files: [
       {
         path: "components/theme-switcher/theme-switcher.tsx",
@@ -65,21 +64,21 @@ export const components: Registry["items"] = [
     docs: "https://narakcode.dev/components/theme-switcher",
   },
   {
-    name: "text-flip",
+    name: "text-swap",
     type: "registry:component",
-    title: "Text Flip",
+    title: "Text Swap",
     description:
-      "Animated text that cycles through items with a smooth flip transition.",
+      "Animated text that swaps through items with a fade transition.",
     dependencies: ["motion"],
     files: [
       {
-        path: "components/text-flip/text-flip.tsx",
+        path: "components/text-swap/text-swap.tsx",
         type: "registry:component",
-        target: "@components/text-flip.tsx",
+        target: "@components/text-swap.tsx",
       },
     ],
     categories: ["text-effects"],
-    docs: "https://narakcode.dev/components/text-flip",
+    docs: "https://narakcode.dev/components/text-swap",
   },
   {
     name: "apple-hello-effect",
@@ -144,6 +143,23 @@ export const components: Registry["items"] = [
     ],
     categories: ["text-effects"],
     docs: "https://narakcode.dev/components/apple-hello-effect",
+  },
+  {
+    name: "swipe-actions",
+    type: "registry:component",
+    title: "Swipe Actions",
+    description:
+      "Swipe a row in a list to reveal actions on the left or right.",
+    dependencies: ["@ncdai/react-swipe-actions", "motion"],
+    files: [
+      {
+        path: "components/swipe-actions/swipe-actions.tsx",
+        type: "registry:component",
+        target: "@components/swipe-actions.tsx",
+      },
+    ],
+    categories: ["controls"],
+    docs: "https://narakcode.dev/components/swipe-actions",
   },
   {
     name: "wheel-picker",
@@ -219,7 +235,7 @@ export const components: Registry["items"] = [
     title: "Work Experience",
     description:
       "Display work experiences with role details, company logos, and durations.",
-    dependencies: ["react-markdown", "date-fns"],
+    dependencies: ["react-markdown", "date-fns", "lucide-react"],
     registryDependencies: [
       "collapsible",
       "separator",
@@ -419,7 +435,8 @@ export const components: Registry["items"] = [
     title: "Consent Manager",
     description:
       "Cookie and tracking consent banner for Next.js, built on c15t.",
-    dependencies: ["@c15t/nextjs"],
+    // Built against v1, later majors rename the exports used here.
+    dependencies: ["@c15t/nextjs@^1.8.3"],
     registryDependencies: ["button"],
     files: [
       {
@@ -437,7 +454,12 @@ export const components: Registry["items"] = [
     title: "Copy Button",
     description:
       "Copy text to clipboard with visual, haptic, and audio feedback.",
-    dependencies: ["motion", "@rexa-developer/tiks", "web-haptics"],
+    dependencies: [
+      "motion",
+      "@rexa-developer/tiks",
+      "web-haptics",
+      "lucide-react",
+    ],
     registryDependencies: ["button", getRegistryItemUrl("icon-swap")],
     files: [
       {
@@ -460,7 +482,7 @@ export const components: Registry["items"] = [
     title: "Code Block Command",
     description:
       "Display install commands with package manager switcher and copy button.",
-    dependencies: ["@base-ui/react", "motion", "jotai"],
+    dependencies: ["@base-ui/react", "motion", "jotai", "lucide-react"],
     registryDependencies: [
       getRegistryItemUrl("icon-swap"),
       getRegistryItemUrl("copy-button"),
@@ -472,7 +494,7 @@ export const components: Registry["items"] = [
         target: "@components/code-block-command.tsx",
       },
       {
-        path: "src/components/base/ui/tabs.tsx",
+        path: "src/components/ui/tabs.tsx",
         type: "registry:component",
         target: "@components/tabs.tsx",
       },
@@ -523,6 +545,7 @@ export const components: Registry["items"] = [
       },
     ],
     categories: ["effects"],
+    docs: "https://narakcode.dev/components/glow-card-grid",
   },
   {
     name: "middle-truncation",
@@ -644,13 +667,15 @@ export const components: Registry["items"] = [
     title: "TOC Minimap",
     description:
       "Navigate page sections with a compact, hoverable TOC minimap.",
-    registryDependencies: ["hover-card", "@soundcn/u-mini-map-open"],
+    dependencies: ["motion"],
+    registryDependencies: ["hover-card"],
     files: [
       {
         path: "components/toc-minimap/toc-minimap.tsx",
         type: "registry:component",
         target: "@components/toc-minimap.tsx",
       },
+      ...getSoundcnFiles("u-mini-map-open"),
     ],
     categories: ["navigation"],
     docs: "https://narakcode.dev/components/toc-minimap",
@@ -677,8 +702,8 @@ export const components: Registry["items"] = [
     type: "registry:component",
     title: "Brand Assets Menu",
     description: "Context menu for copying brand SVGs and opening asset links.",
-    registryDependencies: ["context-menu", "sonner"],
-    dependencies: ["@rexa-developer/tiks"],
+    registryDependencies: ["context-menu", "toast"],
+    dependencies: ["@rexa-developer/tiks", "lucide-react"],
     files: [
       {
         path: "components/brand-assets-menu/brand-assets-menu.tsx",
@@ -784,20 +809,53 @@ export const components: Registry["items"] = [
     docs: "https://narakcode.dev/components/logos-carousel",
   },
   {
-    name: "testimonial-2",
+    name: "logos-flip",
     type: "registry:component",
-    title: "Testimonial 2",
+    title: "Logos Flip",
+    description:
+      "Flip cards in a staggered wave to reveal the next batch of logos.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "components/logos-flip/logos-flip.tsx",
+        type: "registry:component",
+        target: "@components/logos-flip.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    docs: "https://narakcode.dev/components/logos-flip",
+  },
+  {
+    name: "logos-swap",
+    type: "registry:component",
+    title: "Logos Swap",
+    description: "Swap logos one at a time in a scattered order.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "components/logos-swap/logos-swap.tsx",
+        type: "registry:component",
+        target: "@components/logos-swap.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    docs: "https://narakcode.dev/components/logos-swap",
+  },
+  {
+    name: "pull-quote",
+    type: "registry:component",
+    title: "Pull Quote",
     description:
       "Display a testimonial quote with author attribution and source link.",
     files: [
       {
-        path: "components/testimonial-2/testimonial-2.tsx",
+        path: "components/pull-quote/pull-quote.tsx",
         type: "registry:component",
-        target: "@components/testimonial-2.tsx",
+        target: "@components/pull-quote.tsx",
       },
     ],
     categories: ["marketing"],
-    docs: "https://narakcode.dev/components/testimonial-2",
+    docs: "https://narakcode.dev/components/pull-quote",
   },
   {
     name: "line-nav",
@@ -822,7 +880,8 @@ export const components: Registry["items"] = [
     title: "Share Menu",
     description:
       "Share menu to copy a link or post to X, LinkedIn, and the native share sheet.",
-    registryDependencies: ["button", "dropdown-menu", "sonner"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "dropdown-menu", "toast"],
     files: [
       {
         path: "components/share-menu/share-menu.tsx",
@@ -840,15 +899,263 @@ export const components: Registry["items"] = [
     description:
       "SVG logo with a cursor-tracking gradient highlight and tactile press.",
     dependencies: ["motion"],
-    registryDependencies: ["@soundcn/metal-click"],
     files: [
       {
         path: "components/spotlight-logo/spotlight-logo.tsx",
         type: "registry:component",
         target: "@components/spotlight-logo.tsx",
       },
+      ...getSoundcnFiles("metal-click"),
     ],
     categories: ["effects"],
     docs: "https://narakcode.dev/components/spotlight-logo",
   },
+  {
+    name: "timescale",
+    type: "registry:component",
+    title: "Timescale",
+    description:
+      "Ruler-style timeline for plotting milestones along a horizontal or vertical axis.",
+    files: [
+      {
+        path: "components/timescale/timescale.tsx",
+        type: "registry:component",
+        target: "@components/timescale.tsx",
+      },
+    ],
+    categories: ["data-display"],
+    docs: "https://narakcode.dev/components/timescale",
+  },
+  {
+    name: "status-button",
+    type: "registry:component",
+    title: "Status Button",
+    description:
+      "Button that shows loading and success feedback for async actions.",
+    dependencies: ["motion", "lucide-react"],
+    registryDependencies: [
+      "button",
+      getRegistryItemUrl("use-controllable-state"),
+    ],
+    files: [
+      {
+        path: "components/status-button/status-button.tsx",
+        type: "registry:component",
+        target: "@components/status-button.tsx",
+      },
+    ],
+    cssVars: {
+      theme: {
+        "--animate-spinner-opacity":
+          "spinner-opacity var(--tw-animation-duration, var(--tw-duration, 1s)) linear infinite",
+      },
+    },
+    css: {
+      "@keyframes spinner-opacity": {
+        from: {
+          opacity: "1",
+        },
+        to: {
+          opacity: "0.15",
+        },
+      },
+    },
+    categories: ["controls"],
+    docs: "https://narakcode.dev/components/status-button",
+  },
+  {
+    name: "apple-carousel",
+    type: "registry:component",
+    title: "Apple Carousel",
+    description:
+      "Infinite autoplay carousel with progress dots, inspired by Apple’s website.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "components/apple-carousel/apple-carousel.tsx",
+        type: "registry:component",
+        target: "@components/apple-carousel.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    docs: "https://narakcode.dev/components/apple-carousel",
+  },
+  {
+    name: "apple-accordion",
+    type: "registry:component",
+    title: "Apple Accordion",
+    description:
+      "Accordion whose items morph from pills into cards, inspired by Apple’s product pages.",
+    dependencies: ["@base-ui/react", "lucide-react"],
+    files: [
+      {
+        path: "components/apple-accordion/apple-accordion.tsx",
+        type: "registry:component",
+        target: "@components/apple-accordion.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    docs: "https://narakcode.dev/components/apple-accordion",
+  },
+  {
+    name: "jpg-card-holder",
+    type: "registry:component",
+    title: "JPG Card Holder",
+    description:
+      "Leather card holder shaped like a JPG file, with cards you can pull out.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "components/jpg-card-holder/jpg-card-holder.tsx",
+        type: "registry:component",
+        target: "@components/jpg-card-holder.tsx",
+      },
+    ],
+    categories: ["illustrations"],
+    docs: "https://narakcode.dev/components/jpg-card-holder",
+  },
+  {
+    name: "foldable",
+    type: "registry:component",
+    title: "Foldable",
+    description:
+      "Folded card that opens like the iPhone Duo, blurring as the cover turns.",
+    dependencies: ["motion"],
+    registryDependencies: ["slider"],
+    files: [
+      {
+        path: "components/foldable/foldable.tsx",
+        type: "registry:component",
+        target: "@components/foldable.tsx",
+      },
+    ],
+    categories: ["illustrations"],
+    docs: "https://narakcode.dev/components/foldable",
+  },
+  {
+    name: "ipod-classic",
+    type: "registry:component",
+    title: "iPod Classic",
+    description:
+      "iPod classic with a working click wheel, menus, and music playback.",
+    dependencies: ["jotai", "motion"],
+    // Too many files to list one by one; each keeps its path under the folder.
+    files: [
+      "index.ts",
+      "components/brick-game.tsx",
+      "components/click-wheel.tsx",
+      "components/icons.tsx",
+      "components/marquee.tsx",
+      "components/menu-list.tsx",
+      "components/now-playing.tsx",
+      "components/progress-bar.tsx",
+      "components/screen.tsx",
+      "components/title-bar.tsx",
+      "components/use-screen-keyboard.ts",
+      "ipod-classic.module.css",
+      "ipod-classic.tsx",
+      "lib/acceleration.ts",
+      "lib/assets.ts",
+      "lib/atoms.ts",
+      "lib/brick-engine.ts",
+      "lib/catalog.ts",
+      "lib/click-sound.ts",
+      "lib/constants.ts",
+      "lib/engine.ts",
+      "lib/menu-controller.ts",
+      "lib/menu.ts",
+      "lib/now-playing-modes.ts",
+      "lib/playback.ts",
+      "lib/player.ts",
+      "lib/timers.ts",
+      "lib/types.ts",
+      "lib/wheel-gesture.ts",
+      "lib/wheel-scroll.ts",
+    ].map((file) => ({
+      path: `components/ipod-classic/${file}`,
+      type: file.endsWith(".css") ? "registry:file" : "registry:component",
+      target: `@components/ipod-classic/${file}`,
+    })),
+    categories: ["illustrations"],
+    docs: "https://narakcode.dev/components/ipod-classic",
+  },
+  {
+    name: "wallet",
+    type: "registry:component",
+    title: "Wallet",
+    description: "Leather wallet with cards you can peek at and pull out.",
+    dependencies: ["@base-ui/react", "motion"],
+    files: [
+      {
+        path: "components/wallet/wallet.tsx",
+        type: "registry:component",
+        target: "@components/wallet.tsx",
+      },
+    ],
+    categories: ["illustrations"],
+    docs: "https://narakcode.dev/components/wallet",
+  },
+  {
+    name: "bookshelf",
+    type: "registry:component",
+    title: "Bookshelf",
+    description: "Shelf of book spines that turn to show their covers.",
+    dependencies: ["@base-ui/react", "motion"],
+    files: [
+      {
+        path: "components/bookshelf/bookshelf.tsx",
+        type: "registry:component",
+        target: "@components/bookshelf.tsx",
+      },
+    ],
+    categories: ["illustrations"],
+    docs: "https://narakcode.dev/components/bookshelf",
+  },
+  {
+    name: "lightbox",
+    type: "registry:component",
+    title: "Lightbox",
+    description:
+      "Image viewer that morphs from the thumbnail, with swipe, zoom, and pull to close.",
+    dependencies: ["@ramka/react", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "components/lightbox/lightbox.tsx",
+        type: "registry:component",
+        target: "@components/lightbox.tsx",
+      },
+    ],
+    categories: ["data-display"],
+    docs: "https://narakcode.dev/components/lightbox",
+  },
 ]
+
+// Not @soundcn dependencies: those install into lib/ without useSound, while
+// the components import lib/soundcn/ and hooks/soundcn/use-sound.
+function getSoundcnFiles(
+  sound: string
+): NonNullable<Registry["items"][number]["files"]> {
+  return [
+    {
+      path: `src/lib/soundcn/${sound}.ts`,
+      type: "registry:lib",
+      target: `@lib/soundcn/${sound}.ts`,
+    },
+    {
+      path: "src/lib/soundcn/sound-engine.ts",
+      type: "registry:lib",
+      target: "@lib/soundcn/sound-engine.ts",
+    },
+    {
+      path: "src/lib/soundcn/sound-types.ts",
+      type: "registry:lib",
+      target: "@lib/soundcn/sound-types.ts",
+    },
+    {
+      path: "src/hooks/soundcn/use-sound.ts",
+      type: "registry:hook",
+      target: "@hooks/soundcn/use-sound.ts",
+    },
+  ]
+}

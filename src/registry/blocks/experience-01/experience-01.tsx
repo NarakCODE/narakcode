@@ -2,8 +2,8 @@ import { Avatar, Style } from "@dicebear/core"
 import glass from "@dicebear/styles/glass.json"
 import { CodeXmlIcon, LightbulbIcon } from "lucide-react"
 
-import type { ExperienceItemType } from "@/registry/transformed/components/work-experience"
-import { WorkExperience } from "@/registry/transformed/components/work-experience"
+import type { ExperienceItemType } from "@/registry/components/work-experience"
+import { WorkExperience } from "@/registry/components/work-experience"
 
 const glassStyle = new Style(glass)
 
@@ -34,7 +34,7 @@ const EXPERIENCE: ExperienceItemType[] = [
       seed: "shadcncraft",
       size: 24,
     }).toDataUri(),
-    companyWebsite: "https://shadcncraft.com?atp=NarakCODE",
+    companyWebsite: "https://shadcncraft.com",
     positions: [
       {
         id: "1",

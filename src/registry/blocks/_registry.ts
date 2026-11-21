@@ -28,6 +28,7 @@ export const blocks: Registry["items"] = [
     title: "Hero 01",
     description: "A hero section with a golden spiral background.",
     type: "registry:block",
+    dependencies: ["lucide-react"],
     registryDependencies: ["button", getRegistryItemUrl("style")],
     files: [
       {
@@ -51,7 +52,7 @@ export const blocks: Registry["items"] = [
     title: "Blog 01",
     description: "A blog section with a grid layout.",
     type: "registry:block",
-    dependencies: ["date-fns"],
+    dependencies: ["date-fns", "lucide-react"],
     registryDependencies: ["button"],
     files: [
       {
@@ -75,7 +76,7 @@ export const blocks: Registry["items"] = [
     title: "Blog 02",
     description: "A blog section with a lined grid layout.",
     type: "registry:block",
-    dependencies: ["date-fns"],
+    dependencies: ["date-fns", "lucide-react"],
     registryDependencies: ["button", getRegistryItemUrl("style")],
     files: [
       {
@@ -155,7 +156,7 @@ export const blocks: Registry["items"] = [
     title: "Experience 01",
     description: "A work experience section with a lined layout.",
     type: "registry:block",
-    dependencies: ["@dicebear/core", "@dicebear/styles"],
+    dependencies: ["@dicebear/core", "@dicebear/styles", "lucide-react"],
     registryDependencies: [...getRegistryItemUrls("style", "work-experience")],
     files: [
       {
@@ -194,7 +195,7 @@ export const blocks: Registry["items"] = [
     title: "Metrics 01",
     description: "A metrics section with a line chart.",
     type: "registry:block",
-    dependencies: ["date-fns"],
+    dependencies: ["date-fns", "lucide-react"],
     registryDependencies: ["@bklit/line-chart", getRegistryItemUrl("style")],
     files: [
       {
@@ -219,6 +220,7 @@ export const blocks: Registry["items"] = [
     title: "Social Links 01",
     description: "A social links section with a lined grid layout.",
     type: "registry:block",
+    dependencies: ["lucide-react"],
     registryDependencies: [getRegistryItemUrl("style")],
     files: [
       {
@@ -238,7 +240,7 @@ export const blocks: Registry["items"] = [
     title: "Social Proof 01",
     description: "A social proof section with a logos carousel.",
     type: "registry:block",
-    registryDependencies: [getRegistryItemUrl("logos-carousel")],
+    registryDependencies: [...getRegistryItemUrls("style", "logos-carousel")],
     files: [
       {
         path: "blocks/social-proof-01/social-proof-01.tsx",
@@ -249,6 +251,25 @@ export const blocks: Registry["items"] = [
     categories: ["marketing"],
     meta: {
       createdAt: "2026-06-26",
+      previewClassName: "min-h-svh content-center-safe",
+    },
+  },
+  {
+    name: "social-proof-02",
+    title: "Social Proof 02",
+    description: "A social proof section with a logos swap.",
+    type: "registry:block",
+    registryDependencies: [...getRegistryItemUrls("style", "logos-swap")],
+    files: [
+      {
+        path: "blocks/social-proof-02/social-proof-02.tsx",
+        type: "registry:component",
+        target: "@components/social-proof-02.tsx",
+      },
+    ],
+    categories: ["marketing"],
+    meta: {
+      createdAt: "2026-11-05",
       previewClassName: "min-h-svh content-center-safe",
     },
   },

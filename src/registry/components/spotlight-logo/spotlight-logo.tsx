@@ -54,13 +54,15 @@ export function SpotlightLogo() {
   const mouseY = useMotionValue(0.5)
 
   const cx = useSpring(useTransform(mouseX, [0, 1], [0, 827]), {
-    stiffness: 150,
-    damping: 25,
+    stiffness: 300,
+    damping: 30,
+    mass: 0.1,
   })
 
   const cy = useSpring(useTransform(mouseY, [0, 1], [0, 412]), {
-    stiffness: 150,
-    damping: 25,
+    stiffness: 300,
+    damping: 30,
+    mass: 0.1,
   })
 
   useEffect(() => {
@@ -112,6 +114,8 @@ export function SpotlightLogo() {
           />
         </pattern>
 
+        {/* y, not a transform string: Motion runs those on WAAPI, which the
+            <use> copies don't follow, so the hatch drifts off the outline. */}
         <motion.g
           id={ids.faceFill}
           variants={{

@@ -40,7 +40,7 @@ const CARDS = [
   },
   {
     name: "David Haz",
-    handle: "@davidhdev",
+    handle: "@davidhaz",
   },
   {
     name: "Shu",
