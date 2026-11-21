@@ -488,7 +488,7 @@ export function CommandMenu({
                 onHighlight={() => {
                   setSelectedCommandKind("link")
                 }}
-                onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
+                onSelect={() => handleOpenLink("/blog/narakcode-brand")}
               >
                 <SquareDashedIcon />
                 Brand Guidelines

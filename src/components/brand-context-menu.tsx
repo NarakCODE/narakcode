@@ -63,7 +63,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
           Copy Logotype as SVG
         </ContextMenuItem>
 
-        <ContextMenuItem render={<FastLink href="/blog/chanhdai-brand" />}>
+        <ContextMenuItem render={<FastLink href="/blog/narakcode-brand" />}>
           <TriangleDashedIcon />
           Brand Guidelines
         </ContextMenuItem>
