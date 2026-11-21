@@ -202,18 +202,18 @@ export const Index: Record<string, any> = {
     categories: ["text-effects"],
     meta: undefined,
   },
-  "apple-hello-effect-vietnamese": {
-    name: "apple-hello-effect-vietnamese",
+  "apple-hello-effect-khmer": {
+    name: "apple-hello-effect-khmer",
     description: "SVG writing animation inspired by Apple’s Hello screen.",
     type: "registry:component",
     files: [{
-      path: "src/registry/components/apple-hello-effect/apple-hello-effect-vietnamese.tsx",
+      path: "src/registry/components/apple-hello-effect/apple-hello-effect-khmer.tsx",
       type: "registry:component",
-      target: "@components/apple-hello-effect-vietnamese.tsx",
+      target: "@components/apple-hello-effect-khmer.tsx",
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/components/apple-hello-effect/apple-hello-effect-vietnamese.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "apple-hello-effect-vietnamese"
+      const mod = await import("@/registry/components/apple-hello-effect/apple-hello-effect-khmer.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "apple-hello-effect-khmer"
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["text-effects"],
@@ -1465,18 +1465,18 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "apple-hello-effect-vietnamese-demo": {
-    name: "apple-hello-effect-vietnamese-demo",
+  "apple-hello-effect-khmer-demo": {
+    name: "apple-hello-effect-khmer-demo",
     description: "",
     type: "registry:example",
     files: [{
-      path: "src/registry/examples/apple-hello-effect-vietnamese-demo.tsx",
+      path: "src/registry/examples/apple-hello-effect-khmer-demo.tsx",
       type: "registry:example",
       target: "",
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/examples/apple-hello-effect-vietnamese-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "apple-hello-effect-vietnamese-demo"
+      const mod = await import("@/registry/examples/apple-hello-effect-khmer-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "apple-hello-effect-khmer-demo"
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,

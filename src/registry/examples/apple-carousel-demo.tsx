@@ -39,7 +39,7 @@ export default function AppleCarouselDemo() {
       </AppleCarouselContent>
 
       <AppleCarouselControls>
-        <AppleCarouselTabList aria-label="Places in Viet Nam">
+        <AppleCarouselTabList aria-label="Places in Cambodia">
           {ITEMS.map((item) => (
             <AppleCarouselTab key={item.image}>{item.title}</AppleCarouselTab>
           ))}
@@ -52,45 +52,38 @@ export default function AppleCarouselDemo() {
 
 const ITEMS = [
   {
-    title: "Quang Ninh",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/1.webp",
-    href: "https://en.wikipedia.org/wiki/Quảng_Ninh_province",
+    title: "Siem Reap",
+    image: "/images/registry/cambodia/1.webp",
+    href: "https://en.wikipedia.org/wiki/Angkor_Wat",
   },
   {
-    title: "An Giang",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/2.webp?v=2",
-    href: "https://en.wikipedia.org/wiki/An_Giang_province",
+    title: "Preah Sihanouk",
+    image: "/images/registry/cambodia/2.webp",
+    href: "https://en.wikipedia.org/wiki/Koh_Rong",
   },
   {
-    title: "Ninh Binh",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/3.webp",
-    href: "https://en.wikipedia.org/wiki/Ninh_Bình_province",
+    title: "Kampot",
+    image: "/images/registry/cambodia/3.webp",
+    href: "https://en.wikipedia.org/wiki/Kampot_province",
   },
   {
-    title: "Hue",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/4.webp",
-    href: "https://en.wikipedia.org/wiki/Huế",
+    title: "Phnom Penh",
+    image: "/images/registry/cambodia/4.webp",
+    href: "https://en.wikipedia.org/wiki/Royal_Palace_of_Cambodia",
   },
   {
-    title: "Ninh Binh",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/5.webp",
-    href: "https://en.wikipedia.org/wiki/Ninh_Bình_province",
+    title: "Angkor Thom",
+    image: "/images/registry/cambodia/5.webp",
+    href: "https://en.wikipedia.org/wiki/Bayon",
   },
   {
-    title: "Ho Chi Minh City",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/6.webp",
-    href: "https://en.wikipedia.org/wiki/Ho_Chi_Minh_City",
+    title: "Chaktomuk Riverfront",
+    image: "/images/registry/cambodia/6.webp",
+    href: "https://en.wikipedia.org/wiki/Phnom_Penh",
   },
   {
-    title: "Da Nang",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/7.webp",
-    href: "https://en.wikipedia.org/wiki/Da_Nang",
+    title: "Independence Monument",
+    image: "/images/registry/cambodia/7.webp",
+    href: "https://en.wikipedia.org/wiki/Independence_Monument_(Cambodia)",
   },
 ]

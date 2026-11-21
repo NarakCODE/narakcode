@@ -7,20 +7,19 @@ export default function ScrollFadeEffectHorizontalDemo() {
     <div className="rounded-lg border">
       <ScrollFadeEffect className="w-72 sm:w-96" orientation="horizontal">
         <div className="flex w-max gap-4 p-4">
-          {works.map((artwork) => (
-            <figure key={artwork.artist} className="shrink-0">
+          {places.map((place) => (
+            <figure key={place.title} className="shrink-0">
               <Image
-                src={artwork.art}
-                alt={`Photo by ${artwork.artist}`}
-                className="aspect-3/4 size-fit rounded-sm object-cover"
+                src={place.image}
+                alt={place.title}
+                className="aspect-3/4 h-48 w-36 rounded-sm object-cover"
                 width={300}
                 height={400}
               />
 
               <figcaption className="pt-2 text-xs text-muted-foreground">
-                Photo by{" "}
                 <span className="font-semibold text-foreground">
-                  {artwork.artist}
+                  {place.title}
                 </span>
               </figcaption>
             </figure>
@@ -31,22 +30,22 @@ export default function ScrollFadeEffectHorizontalDemo() {
   )
 }
 
-interface Artwork {
-  artist: string
-  art: string
+interface Place {
+  title: string
+  image: string
 }
 
-const works: Artwork[] = [
+const places: Place[] = [
   {
-    artist: "Ornella Binni",
-    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
+    title: "Angkor Wat, Siem Reap",
+    image: "/images/registry/cambodia/1.webp",
   },
   {
-    artist: "Tom Byrom",
-    art: "https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80",
+    title: "Koh Rong, Preah Sihanouk",
+    image: "/images/registry/cambodia/2.webp",
   },
   {
-    artist: "Vladimir Malyavko",
-    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+    title: "Royal Palace, Phnom Penh",
+    image: "/images/registry/cambodia/4.webp",
   },
 ]

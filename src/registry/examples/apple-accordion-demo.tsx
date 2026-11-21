@@ -41,7 +41,7 @@ export default function AppleAccordionDemo() {
           <AppleAccordionNext aria-label="Next place" />
         </div>
 
-        <AppleAccordionList aria-label="Places in Viet Nam">
+        <AppleAccordionList aria-label="Places in Cambodia">
           {ITEMS.map((item) => (
             <AppleAccordionItem key={item.value} value={item.value}>
               <AppleAccordionTrigger>
@@ -64,56 +64,49 @@ export default function AppleAccordionDemo() {
   )
 }
 
-const COVER =
-  "https://assets.chanhdai.com/registry/images/components/apple-carousel/5.webp"
+const COVER = "/images/registry/cambodia/5.webp"
 
 const ITEMS = [
   {
-    value: "quang-ninh",
-    title: "Quang Ninh",
+    value: "siem-reap",
+    title: "Siem Reap",
     description:
-      "Home to Ha Long Bay, where nearly two thousand limestone islands rise from emerald water.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/1.webp",
+      "Sunrise over Angkor Wat, the world’s largest religious monument and timeless emblem of Khmer architecture.",
+    image: "/images/registry/cambodia/1.webp",
   },
   {
-    value: "an-giang",
-    title: "An Giang",
+    value: "preah-sihanouk",
+    title: "Preah Sihanouk",
     description:
-      "Rice fields, floating markets, and the Tra Su cajuput forest in the heart of the Mekong Delta.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/2.webp?v=2",
+      "Crystal-clear turquoise waters, powdery white beaches, and tranquil tropical bays across Koh Rong island.",
+    image: "/images/registry/cambodia/2.webp",
   },
   {
-    value: "ninh-binh",
-    title: "Ninh Binh",
+    value: "kampot",
+    title: "Kampot",
     description:
-      "Boats drift through limestone caves at Trang An, a UNESCO World Heritage site.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/3.webp",
+      "Serene riverside landscapes, fragrant pepper plantations, and the misty highlands of Bokor Mountain.",
+    image: "/images/registry/cambodia/3.webp",
   },
   {
-    value: "hue",
-    title: "Hue",
+    value: "phnom-penh",
+    title: "Phnom Penh",
     description:
-      "The former imperial capital, with its Citadel and royal tombs along the Perfume River.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/4.webp",
+      "Gilded Khmer spires and classical palace architecture set beside lush tropical gardens in the capital.",
+    image: "/images/registry/cambodia/4.webp",
   },
   {
-    value: "ho-chi-minh-city",
-    title: "Ho Chi Minh City",
+    value: "chaktomuk-riverfront",
+    title: "Chaktomuk Riverfront",
     description:
-      "The country’s largest city, busy day and night, with street food on every corner.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/6.webp",
+      "Contemporary capital skyline glowing at twilight where the Tonle Sap and Mekong rivers meet.",
+    image: "/images/registry/cambodia/6.webp",
   },
   {
-    value: "da-nang",
-    title: "Da Nang",
+    value: "independence-monument",
+    title: "Independence Monument",
     description:
-      "Long sandy beaches, the Dragon Bridge, and the Marble Mountains just south of the city.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/7.webp",
+      "The iconic lotus-shaped monument honoring Cambodia’s independence, illuminated in warm gold at dusk.",
+    image: "/images/registry/cambodia/7.webp",
   },
 ]

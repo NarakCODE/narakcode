@@ -59,13 +59,13 @@ const EXPERIENCE: ExperienceItemType[] = [
     isCurrentEmployer: true,
   },
   {
-    id: "quaric",
-    companyName: "Quaric",
+    id: "kbach-studio",
+    companyName: "Kbach Studio",
     companyLogo: new Avatar(glassStyle, {
-      seed: "Quaric",
+      seed: "Kbach Studio",
       size: 24,
     }).toDataUri(),
-    companyWebsite: "https://quaric.com",
+    companyWebsite: "https://narakcode.dev",
     positions: [
       {
         id: "2",
@@ -75,23 +75,20 @@ const EXPERIENCE: ExperienceItemType[] = [
         },
         employmentType: "Part-time",
         icon: <CodeXmlIcon />,
-        description: `- Integrated VNPAY-QR for secure transactions.
-- Registered the e-commerce site with [online.gov.vn](https://online.gov.vn) for compliance.
-- Developed online ordering to streamline purchases.
-- Build and maintain ZaDark.com with Docusaurus, integrating AdSense.
-- Develop and maintain the ZaDark extension for Zalo Web on Chrome, Safari, Edge, and Firefox — with 15,000+ active users via Chrome Web Store.`,
+        description: `- Integrated Bakong KHQR and Stripe for fast, secure payments across Cambodia.
+- Built Khmer-localized web applications and reusable React design systems.
+- Shipped developer tools and interactive dashboards with Next.js and TypeScript.
+- Maintained automated CI/CD pipelines, containerized deployments, and edge caching.`,
         skills: [
           "Next.js",
-          "Strapi",
-          "Auth0",
-          "VNPAY-QR",
+          "React",
+          "TypeScript",
+          "KHQR",
+          "Bakong",
+          "Stripe",
           "Docker",
-          "NGINX",
-          "Google Cloud",
-          "Docusaurus",
-          "Extension",
-          "Research",
-          "Project Management",
+          "Tailwind CSS",
+          "Localization",
         ],
       },
       {
@@ -102,7 +99,7 @@ const EXPERIENCE: ExperienceItemType[] = [
         },
         employmentType: "Part-time",
         icon: <LightbulbIcon />,
-        skills: ["Business Ownership", "Business Law", "Business Tax"],
+        skills: ["Product Strategy", "Engineering Leadership", "Operations"],
       },
     ],
     isCurrentEmployer: true,

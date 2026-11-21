@@ -229,17 +229,17 @@
       "author": "NarakCODE <channarakluy@gmail.com>"
     },
     {
-      "name": "apple-hello-effect-vietnamese",
-      "title": "Apple Hello Effect - Vietnamese",
+      "name": "apple-hello-effect-khmer",
+      "title": "Apple Hello Effect - Khmer",
       "description": "SVG writing animation inspired by Apple’s Hello screen.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "src/registry/components/apple-hello-effect/apple-hello-effect-vietnamese.tsx",
+          "path": "src/registry/components/apple-hello-effect/apple-hello-effect-khmer.tsx",
           "type": "registry:component",
-          "target": "@components/apple-hello-effect-vietnamese.tsx"
+          "target": "@components/apple-hello-effect-khmer.tsx"
         }
       ],
       "docs": "https://narakcode.dev/components/apple-hello-effect",

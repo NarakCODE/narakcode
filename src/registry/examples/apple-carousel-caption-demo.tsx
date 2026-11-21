@@ -60,7 +60,7 @@ export default function AppleCarouselCaptionDemo() {
       </AppleCarouselContent>
 
       <AppleCarouselControls>
-        <AppleCarouselTabList aria-label="Places in Viet Nam">
+        <AppleCarouselTabList aria-label="Places in Cambodia">
           {ITEMS.map((item) => (
             <AppleCarouselTab key={item.image}>{item.title}</AppleCarouselTab>
           ))}
@@ -73,52 +73,52 @@ export default function AppleCarouselCaptionDemo() {
 
 const ITEMS = [
   {
-    title: "Quang Ninh",
-    description: "Limestone islands rise from emerald water.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/1.webp",
-    href: "https://en.wikipedia.org/wiki/Quảng_Ninh_province",
+    title: "Siem Reap",
+    description:
+      "Sunrise over Angkor Wat, the world’s largest religious monument and timeless emblem of Khmer architecture.",
+    image: "/images/registry/cambodia/1.webp",
+    href: "https://en.wikipedia.org/wiki/Angkor_Wat",
   },
   {
-    title: "An Giang",
-    description: "Cajuput trees arch over a quiet green waterway.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/2.webp?v=2",
-    href: "https://en.wikipedia.org/wiki/An_Giang_province",
+    title: "Preah Sihanouk",
+    description:
+      "Crystal-clear turquoise waters, powdery white beaches, and tranquil tropical bays across Koh Rong island.",
+    image: "/images/registry/cambodia/2.webp",
+    href: "https://en.wikipedia.org/wiki/Koh_Rong",
   },
   {
-    title: "Ninh Binh",
-    description: "A pavilion rests on still water beneath karst cliffs.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/3.webp",
-    href: "https://en.wikipedia.org/wiki/Ninh_Bình_province",
+    title: "Kampot",
+    description:
+      "Serene riverside landscapes, fragrant pepper plantations, and the misty highlands of Bokor Mountain.",
+    image: "/images/registry/cambodia/3.webp",
+    href: "https://en.wikipedia.org/wiki/Kampot_province",
   },
   {
-    title: "Hue",
-    description: "Tiered palace roofs against a pale sky.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/4.webp",
-    href: "https://en.wikipedia.org/wiki/Huế",
+    title: "Phnom Penh",
+    description:
+      "Gilded Khmer spires and classical palace architecture set beside lush tropical gardens in the capital.",
+    image: "/images/registry/cambodia/4.webp",
+    href: "https://en.wikipedia.org/wiki/Royal_Palace_of_Cambodia",
   },
   {
-    title: "Ninh Binh",
-    description: "Temple corridors wind toward a lake among the mountains.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/5.webp",
-    href: "https://en.wikipedia.org/wiki/Ninh_Bình_province",
+    title: "Angkor Thom",
+    description:
+      "Ancient stone towers carved with serene smiling faces rising above the emerald jungle of Angkor Thom.",
+    image: "/images/registry/cambodia/5.webp",
+    href: "https://en.wikipedia.org/wiki/Bayon",
   },
   {
-    title: "Ho Chi Minh City",
-    description: "The skyline glows over the river at dusk.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/6.webp",
-    href: "https://en.wikipedia.org/wiki/Ho_Chi_Minh_City",
+    title: "Chaktomuk Riverfront",
+    description:
+      "Contemporary capital skyline glowing at twilight where the Tonle Sap and Mekong rivers meet.",
+    image: "/images/registry/cambodia/6.webp",
+    href: "https://en.wikipedia.org/wiki/Phnom_Penh",
   },
   {
-    title: "Da Nang",
-    description: "A dragon-shaped bridge lights up the evening river.",
-    image:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/7.webp",
-    href: "https://en.wikipedia.org/wiki/Da_Nang",
+    title: "Independence Monument",
+    description:
+      "The iconic lotus-shaped monument honoring Cambodia’s independence, illuminated in warm gold at dusk.",
+    image: "/images/registry/cambodia/7.webp",
+    href: "https://en.wikipedia.org/wiki/Independence_Monument_(Cambodia)",
   },
 ]
