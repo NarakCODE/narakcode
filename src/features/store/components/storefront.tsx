@@ -4,7 +4,6 @@ import { useMemo, useState } from "react"
 import {
   BookOpenIcon,
   ClapperboardIcon,
-  CornerDownRightIcon,
   CpuIcon,
   HardDriveIcon,
   MailIcon,
@@ -16,6 +15,14 @@ import {
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import {
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+import {
+  Collapsible,
+  CollapsibleChevronsUpDownIcon,
+} from "@/components/collapsible-animated"
 import {
   PageHeading,
   PageHeadingDescription,
@@ -291,43 +298,71 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
                 >
                   Coming soon
                 </Button>
-
-                {/* Included Account Features with Dashed Horizontal Dividers */}
-                <div className="mt-6 flex-1">
-                  <div className="mb-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-                    <span>Everything in Free and</span>
-                    <CornerDownRightIcon
-                      className="size-3 shrink-0"
-                      aria-hidden
-                    />
-                  </div>
-
-                  <ul className="divide-y divide-dashed divide-line text-xs">
-                    {GEMINI_PLAN_FEATURES.map((feature) => (
-                      <li
-                        key={feature.id}
-                        className="flex items-start gap-2.5 py-2.5"
-                      >
-                        <FeatureIcon
-                          icon={feature.icon}
-                          className="mt-0.5 size-3.5 shrink-0 text-muted-foreground"
-                        />
-                        <div className="min-w-0">
-                          <div className="font-medium text-foreground">
-                            {feature.title}
-                          </div>
-                          <p className="mt-0.5 text-muted-foreground">
-                            {feature.summary}
-                          </p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             )
           })}
         </div>
+      </section>
+
+      {/* Shared Collapsible Included Features (collapsed by default) */}
+      <section aria-label="Included features" className="screen-line-bottom">
+        <Collapsible defaultOpen={false} className="group/features">
+          <CollapsibleTrigger className="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left transition-colors duration-150 hover:bg-accent-muted/50 sm:px-5">
+            <div className="min-w-0">
+              <div className="text-sm font-medium text-foreground">
+                What&apos;s included in every account
+              </div>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Everything in Free, plus {GEMINI_PLAN_FEATURES.length} Google AI
+                Pro features
+              </p>
+            </div>
+
+            <span className="inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-muted-foreground">
+              <span className="group-data-open/features:hidden">
+                Show features
+              </span>
+              <span className="hidden group-data-open/features:inline">
+                Hide features
+              </span>
+              <CollapsibleChevronsUpDownIcon
+                duration={0.15}
+                className="size-4 text-muted-foreground"
+              />
+            </span>
+          </CollapsibleTrigger>
+
+          <CollapsibleContent className="h-(--collapsible-panel-height) overflow-hidden transition-[height,opacity] duration-200 ease-out data-ending-style:h-0 data-ending-style:opacity-0 data-starting-style:h-0 data-starting-style:opacity-0">
+            <ul className="grid grid-cols-1 divide-y divide-line border-t border-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
+              {GEMINI_PLAN_FEATURES.map((feature, index) => (
+                <li
+                  key={feature.id}
+                  className={cn(
+                    "flex items-start gap-2.5 p-4 text-xs sm:px-5",
+                    "sm:odd:border-r sm:odd:border-line",
+                    index < GEMINI_PLAN_FEATURES.length - 2 &&
+                      "sm:border-b sm:border-line",
+                    "lg:not-nth-[4n]:border-r lg:not-nth-[4n]:border-line lg:odd:border-r-0",
+                    index < 4 ? "lg:border-b lg:border-line" : "lg:border-b-0"
+                  )}
+                >
+                  <FeatureIcon
+                    icon={feature.icon}
+                    className="mt-0.5 size-3.5 shrink-0 text-muted-foreground"
+                  />
+                  <div className="min-w-0">
+                    <div className="font-medium text-foreground">
+                      {feature.title}
+                    </div>
+                    <p className="mt-0.5 text-muted-foreground">
+                      {feature.summary}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </CollapsibleContent>
+        </Collapsible>
       </section>
 
       {/* Smooth Motion checkout & Google account handover popup */}
