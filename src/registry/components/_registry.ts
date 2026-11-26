@@ -125,16 +125,16 @@ export const components: Registry["items"] = [
     docs: "https://narakcode.dev/components/apple-hello-effect",
   },
   {
-    name: "apple-hello-effect-vietnamese",
+    name: "apple-hello-effect-khmer",
     type: "registry:component",
-    title: "Apple Hello Effect - Vietnamese",
+    title: "Apple Hello Effect - Khmer",
     description: "SVG writing animation inspired by Apple’s Hello screen.",
     dependencies: ["motion"],
     files: [
       {
-        path: "components/apple-hello-effect/apple-hello-effect-vietnamese.tsx",
+        path: "components/apple-hello-effect/apple-hello-effect-khmer.tsx",
         type: "registry:component",
-        target: "@components/apple-hello-effect-vietnamese.tsx",
+        target: "@components/apple-hello-effect-khmer.tsx",
       },
     ],
     categories: ["text-effects"],

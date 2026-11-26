@@ -44,7 +44,7 @@ export default function LightboxNextImageDemo() {
         ))}
       </div>
 
-      <LightboxContent aria-label="Photos of Vietnam">
+      <LightboxContent aria-label="Photos of Cambodia">
         <LightboxSlides aria-label="Photos" aria-roledescription="carousel">
           {PHOTOS.map((photo, index) => (
             <LightboxSlide key={photo.src}>
@@ -88,16 +88,16 @@ export default function LightboxNextImageDemo() {
 
 const PHOTOS = [
   {
-    src: "https://assets.chanhdai.com/registry/images/components/apple-carousel/6-2048w.webp",
-    alt: "Skyscrapers along the Saigon River at sunset, with the Bitexco Financial Tower in the middle.",
-    caption: "Saigon River, Ho Chi Minh City",
+    src: "/images/registry/cambodia/6.webp",
+    alt: "Contemporary capital skyline glowing at twilight where the Tonle Sap and Mekong rivers meet.",
+    caption: "Phnom Penh Riverfront",
     width: 2048,
     height: 1152,
   },
   {
-    src: "https://assets.chanhdai.com/registry/images/components/apple-carousel/7-2048w.webp",
-    alt: "The Dragon Bridge lit up at night under a purple sky, reflected in the river.",
-    caption: "Dragon Bridge, Da Nang",
+    src: "/images/registry/cambodia/7.webp",
+    alt: "The iconic lotus-shaped monument honoring Cambodia’s independence, illuminated in warm gold at dusk.",
+    caption: "Independence Monument, Phnom Penh",
     width: 2048,
     height: 1152,
   },

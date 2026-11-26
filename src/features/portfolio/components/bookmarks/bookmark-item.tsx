@@ -75,7 +75,7 @@ export function BookmarkItem({
             </div>
 
             <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
-              <h3 className="text-body-regular-medium text-balance text-text-primary">
+              <h3 className="leading-snug font-medium text-balance">
                 <a
                   href={addQueryParams(bookmark.url, UTM_PARAMS)}
                   target="_blank"
@@ -86,7 +86,7 @@ export function BookmarkItem({
                 </a>
               </h3>
 
-              <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-body-small-regular text-text-secondary">
+              <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
                 {bookmark.author && (
                   <>
                     <div>
@@ -142,17 +142,15 @@ export function BookmarkItem({
 
         <div className="space-y-2 p-3">
           <div>
-            <h4 className="line-clamp-2 text-body-small-medium text-text-primary">
+            <h4 className="line-clamp-2 text-sm font-medium text-foreground">
               {bookmark.title}
             </h4>
             {domain && (
-              <p className="mt-0.5 text-body-mini-regular text-text-secondary">
-                {domain}
-              </p>
+              <p className="mt-0.5 text-xs text-muted-foreground">{domain}</p>
             )}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-body-mini-regular text-text-secondary">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
             {bookmark.author && <span>{bookmark.author}</span>}
             {bookmark.author && (
               <span className="-mx-1 text-muted-foreground/50">&middot;</span>
@@ -164,7 +162,7 @@ export function BookmarkItem({
             href={addQueryParams(bookmark.url, UTM_PARAMS)}
             target="_blank"
             rel="noopener"
-            className="inline-flex items-center gap-1 text-body-mini-medium text-text-primary hover:underline"
+            className="inline-flex items-center gap-1 text-xs font-medium text-foreground hover:underline"
           >
             Visit site
             <ArrowUpRightIcon className="size-3" />

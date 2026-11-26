@@ -43,20 +43,18 @@ export function ExperiencePositionItem({
           "data-disabled:before:content-none"
         )}
       >
-        <div className="relative z-1 mb-1 flex items-start gap-3">
+        <div className="relative z-1 mb-1 flex items-start gap-3 text-base">
           <IconTile>{position.icon ?? <BriefcaseBusinessIcon />}</IconTile>
 
-          <h4 className="flex-1 text-body-regular-medium text-balance text-text-primary">
-            {position.title}
-          </h4>
+          <h4 className="flex-1 font-medium text-balance">{position.title}</h4>
 
-          <div className="shrink-0 text-text-secondary group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
+          <div className="shrink-0 text-muted-foreground group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
             <CollapsibleChevronsUpDownIcon duration={0.15} />
           </div>
         </div>
 
         {/* Separators are aria-hidden: a dl may only expose dt/dd groups, and these dividers are decorative. */}
-        <dl className="flex items-center gap-2 pl-9 text-body-small-regular text-text-secondary">
+        <dl className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
           {position.employmentType && (
             <>
               <div>

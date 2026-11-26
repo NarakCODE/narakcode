@@ -29,7 +29,7 @@ export function BlockItem({
       )}
 
       <div className="flex flex-col gap-1 p-2">
-        <Heading className="text-title-mini-medium text-balance text-text-primary">
+        <Heading className="text-lg/snug font-medium text-balance">
           <FastLink href={`/blocks/${category}/${block.name}`}>
             <span className="absolute inset-0" aria-hidden />
             {block.title}
@@ -37,9 +37,7 @@ export function BlockItem({
         </Heading>
 
         {block.description && (
-          <p className="text-body-small-regular text-text-secondary">
-            {block.description}
-          </p>
+          <p className="text-sm text-muted-foreground">{block.description}</p>
         )}
       </div>
     </div>

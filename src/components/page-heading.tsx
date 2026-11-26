@@ -28,7 +28,7 @@ export function PageHeadingTagline({
     <div
       data-slot="page-heading-tagline"
       className={cn(
-        "px-4 pb-2 text-body-regular-medium tracking-wider text-text-secondary",
+        "px-4 pb-2 font-heading text-sm/none font-medium tracking-wider text-muted-foreground",
         className
       )}
       {...props}
@@ -45,7 +45,7 @@ export function PageHeadingTitle({
       data-slot="page-heading-title"
       className={cn(
         "screen-line-top screen-line-bottom -translate-x-px px-4",
-        "text-title-regular text-balance text-text-primary",
+        "font-heading text-4xl font-medium tracking-tight text-balance",
         className
       )}
       {...props}
@@ -61,7 +61,7 @@ export function PageHeadingDescription({
     <p
       data-slot="page-heading-description"
       className={cn(
-        "p-4 text-paragraph-regular text-balance text-text-secondary",
+        "p-4 text-base text-balance text-muted-foreground",
         className
       )}
       {...props}

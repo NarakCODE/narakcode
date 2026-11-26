@@ -29,7 +29,7 @@ const CONTACTS = [
 
 export default function FoldableDemo() {
   return (
-    <Foldable className="[--foldable-radius:--spacing(3)] [--foldable-surface:var(--card)] [--foldable-w:min(16rem,calc(50vw-2rem))]">
+    <Foldable className="[--foldable-radius:--spacing(8)] [--foldable-surface:var(--card)] [--foldable-w:min(16rem,calc(50vw-2rem))]">
       <FoldableStage>
         <FoldableInsideRight>
           <CardFrame>
@@ -55,7 +55,7 @@ export default function FoldableDemo() {
  */
 function CardFrame({ children }: { children?: ReactNode }) {
   return (
-    <div className="flex size-full flex-col p-5">
+    <div className="flex size-full flex-col p-6">
       <div className="flex items-start justify-between">
         <ChanhDaiMark className="size-5" />
         <span className="font-mono text-xs text-muted-foreground">
@@ -90,7 +90,7 @@ function ContactList() {
 
 function CardInside() {
   return (
-    <div className="flex size-full flex-col justify-between p-5">
+    <div className="flex size-full flex-col justify-between p-6">
       <img
         className="size-16 rounded-full border object-cover"
         src={PROFILE.avatar}

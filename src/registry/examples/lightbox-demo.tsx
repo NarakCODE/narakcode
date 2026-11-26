@@ -44,7 +44,7 @@ export default function LightboxDemo() {
         ))}
       </div>
 
-      <LightboxContent aria-label="Photos of Vietnam">
+      <LightboxContent aria-label="Photos of Cambodia">
         <LightboxSlides aria-label="Photos" aria-roledescription="carousel">
           {PHOTOS.map((photo, index) => (
             <LightboxSlide key={photo.src}>
@@ -94,38 +94,34 @@ export default function LightboxDemo() {
 
 const PHOTOS = [
   {
-    src: "https://assets.chanhdai.com/registry/images/components/apple-carousel/1-2048w.webp",
-    thumbnail:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/1-640w.webp",
-    alt: "Limestone islands rising from turquoise water in Ha Long Bay, with tour boats near a sandy beach.",
-    caption: "Ha Long Bay, Quang Ninh",
+    src: "/images/registry/cambodia/1.webp",
+    thumbnail: "/images/registry/cambodia/1-640w.webp",
+    alt: "Sunrise over Angkor Wat, the world’s largest religious monument and timeless emblem of Khmer architecture.",
+    caption: "Angkor Wat, Siem Reap",
     width: 2048,
     height: 1152,
   },
   {
-    src: "https://assets.chanhdai.com/registry/images/components/apple-carousel/3-2048w.webp",
-    thumbnail:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/3-640w.webp",
-    alt: "A traditional pavilion on the water at the foot of steep limestone mountains.",
-    caption: "Trang An, Ninh Binh",
+    src: "/images/registry/cambodia/3.webp",
+    thumbnail: "/images/registry/cambodia/3-640w.webp",
+    alt: "Serene riverside landscapes, fragrant pepper plantations, and the misty highlands of Bokor Mountain.",
+    caption: "Kampot River, Kampot",
     width: 2048,
     height: 1152,
   },
   {
-    src: "https://assets.chanhdai.com/registry/images/components/apple-carousel/6-2048w.webp",
-    thumbnail:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/6-640w.webp",
-    alt: "Skyscrapers along the Saigon River at sunset, with the Bitexco Financial Tower in the middle.",
-    caption: "Saigon River, Ho Chi Minh City",
+    src: "/images/registry/cambodia/6.webp",
+    thumbnail: "/images/registry/cambodia/6-640w.webp",
+    alt: "Contemporary capital skyline glowing at twilight where the Tonle Sap and Mekong rivers meet.",
+    caption: "Phnom Penh Riverfront",
     width: 2048,
     height: 1152,
   },
   {
-    src: "https://assets.chanhdai.com/registry/images/components/apple-carousel/7-2048w.webp",
-    thumbnail:
-      "https://assets.chanhdai.com/registry/images/components/apple-carousel/7-640w.webp",
-    alt: "The Dragon Bridge lit up at night under a purple sky, reflected in the river.",
-    caption: "Dragon Bridge, Da Nang",
+    src: "/images/registry/cambodia/7.webp",
+    thumbnail: "/images/registry/cambodia/7-640w.webp",
+    alt: "The iconic lotus-shaped monument honoring Cambodia’s independence, illuminated in warm gold at dusk.",
+    caption: "Independence Monument, Phnom Penh",
     width: 2048,
     height: 1152,
   },

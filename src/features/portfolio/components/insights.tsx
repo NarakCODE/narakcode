@@ -104,13 +104,13 @@ export async function Insights() {
           </LineChart>
         ) : (
           <div className="grid aspect-2/1 w-full place-content-center sm:aspect-3/1">
-            <p className="text-body-regular text-text-secondary">
+            <p className="text-sm text-muted-foreground">
               No insights available.
             </p>
           </div>
         )}
 
-        <figcaption className="pointer-events-none absolute right-2 bottom-2 bg-background font-mono text-body-mini-regular text-zinc-400 select-none sm:right-4 dark:text-zinc-700">
+        <figcaption className="pointer-events-none absolute right-2 bottom-2 bg-background font-mono text-xs text-zinc-400 select-none sm:right-4 dark:text-zinc-700">
           FIG_002
         </figcaption>
       </figure>
@@ -136,7 +136,7 @@ function MetricLabel({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <dt
       data-slot="metric-label"
-      className={cn("text-body-small-regular text-text-secondary", className)}
+      className={cn("text-sm text-muted-foreground", className)}
       {...props}
     />
   )
@@ -146,10 +146,7 @@ function MetricValue({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <dd
       data-slot="metric-value"
-      className={cn(
-        "text-title-mini-semibold text-text-primary tabular-nums",
-        className
-      )}
+      className={cn("text-xl font-medium tabular-nums", className)}
       {...props}
     />
   )

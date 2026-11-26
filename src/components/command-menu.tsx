@@ -19,6 +19,7 @@ import {
   MoonStarIcon,
   RssIcon,
   ShapesIcon,
+  ShoppingBagIcon,
   SquareDashedIcon,
   SunMediumIcon,
   TextInitialIcon,
@@ -119,6 +120,12 @@ const MENU_LINKS: CommandLinkItem[] = [
     kind: "page",
     icon: <WrenchIcon />,
     shortcut: "GT",
+  },
+  {
+    title: "Stores",
+    href: "/stores",
+    kind: "page",
+    icon: <ShoppingBagIcon />,
   },
   {
     title: "Sponsors",

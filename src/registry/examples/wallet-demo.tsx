@@ -50,7 +50,7 @@ export default function WalletDemo() {
           <WalletCardHeader>
             <WalletCardTitle>Savings</WalletCardTitle>
             <WalletCardDescription>
-              •••• 0209
+              •••• 0911
               <WalletMinimalIcon strokeWidth={1.5} />
             </WalletCardDescription>
           </WalletCardHeader>
@@ -63,7 +63,7 @@ export default function WalletDemo() {
           <WalletCardHeader>
             <WalletCardTitle>Travel</WalletCardTitle>
             <WalletCardDescription>
-              •••• 1945
+              •••• 1953
               <PlaneIcon strokeWidth={1.5} />
             </WalletCardDescription>
           </WalletCardHeader>

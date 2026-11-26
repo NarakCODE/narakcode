@@ -50,7 +50,7 @@ export function NavItem({
   return (
     <FastLink
       className={cn(
-        "text-body-regular-medium tracking-wide text-text-secondary transition-[color] hover:text-text-primary aria-[current=page]:text-text-primary",
+        "text-sm font-medium tracking-wide text-muted-foreground transition-[color] hover:text-foreground aria-[current=page]:text-foreground",
         className
       )}
       {...props}

@@ -7,6 +7,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import {
+  HandwrittenArrow,
+  HandwrittenNote,
+} from "@/features/portfolio/components/handwritten-note"
 import { Panel, PanelContent } from "@/features/portfolio/components/panel"
 import { SOCIAL_ICONS } from "@/features/portfolio/components/social-link-icons"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
@@ -24,7 +28,7 @@ export function SocialLinks() {
                 <TooltipTrigger
                   render={
                     <Button
-                      className="text-foreground/80 shadow-none [&_svg:not([class*='size-'])]:size-4.5"
+                      className="group/social-link text-foreground/80 shadow-none [&_svg:not([class*='size-'])]:size-4.5"
                       variant="outline"
                       size="icon-sm"
                       nativeButton={false}
@@ -49,6 +53,14 @@ export function SocialLinks() {
           ))}
         </ul>
       </PanelContent>
+
+      <HandwrittenNote
+        className="-top-7 right-full mr-4 hidden w-20 flex-col items-end lg:flex"
+        aria-hidden
+      >
+        <span className="-rotate-6">follow me</span>
+        <HandwrittenArrow className="size-7 translate-x-3 -scale-x-100 -rotate-6" />
+      </HandwrittenNote>
     </Panel>
   )
 }

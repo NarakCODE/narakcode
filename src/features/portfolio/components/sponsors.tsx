@@ -31,7 +31,10 @@ export function Sponsors() {
     <Panel id={ID} className="screen-line-bottom-none">
       <PanelHeader>
         <PanelTitle>
-          <a href={`#${ID}`}>Sponsors</a>
+          <a href={`#${ID}`}>
+            Backed by
+            <span className="block sm:hidden" /> the community
+          </a>
           <PanelTitleCopy id={ID} />
         </PanelTitle>
 

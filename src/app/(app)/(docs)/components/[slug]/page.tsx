@@ -278,16 +278,14 @@ export default async function Page({
         <div className="screen-dashed-line-bottom after:opacity-80">
           <h1
             data-slot="doc-title"
-            className="screen-line-bottom overflow-x-clip px-4 text-title-regular text-balance text-text-primary"
+            className="screen-line-bottom overflow-x-clip px-4 text-4xl font-medium tracking-tight text-balance"
           >
             {doc.metadata.title}
           </h1>
         </div>
 
         <Prose className="px-(--page-padding) pt-8 [--page-padding:--spacing(4)]">
-          <p className="text-paragraph-regular text-text-secondary">
-            {doc.metadata.description}
-          </p>
+          <p className="text-muted-foreground">{doc.metadata.description}</p>
 
           <TOCInline className="lg:hidden" items={toc} />
 

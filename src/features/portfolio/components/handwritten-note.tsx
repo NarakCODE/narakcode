@@ -1,0 +1,42 @@
+import { cn } from "@/lib/utils"
+
+function HandwrittenNote({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="handwritten-note"
+      className={cn(
+        "pointer-events-none absolute font-handwritten text-base/none tracking-tighter text-blue-900 select-none dark:text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+/** Points down-left. Rotate or mirror it to aim at the subject. */
+function HandwrittenArrow({
+  className,
+  ...props
+}: React.ComponentProps<"svg">) {
+  return (
+    <svg
+      className={cn(
+        "size-8 shrink-0 text-blue-900 dark:text-muted-foreground",
+        className
+      )}
+      viewBox="0 0 40 40"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      {...props}
+    >
+      <path d="M34 4c1 15-5 26-21 30" />
+      <path d="m22 37-9-3 7.5-8" />
+    </svg>
+  )
+}
+
+export { HandwrittenArrow, HandwrittenNote }

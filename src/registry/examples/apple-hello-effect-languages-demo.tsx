@@ -5,8 +5,8 @@ import { AnimatePresence } from "motion/react"
 
 import { AppleHelloEffectEnglish } from "@/registry/components/apple-hello-effect/apple-hello-effect-english"
 import { AppleHelloEffectHindi } from "@/registry/components/apple-hello-effect/apple-hello-effect-hindi"
+import { AppleHelloEffectKhmer } from "@/registry/components/apple-hello-effect/apple-hello-effect-khmer"
 import { AppleHelloEffectSpanish } from "@/registry/components/apple-hello-effect/apple-hello-effect-spanish"
-import { AppleHelloEffectVietnamese } from "@/registry/components/apple-hello-effect/apple-hello-effect-vietnamese"
 
 export default function AppleHelloEffectLanguagesDemo() {
   const [index, setIndex] = useState(0)
@@ -29,7 +29,7 @@ export default function AppleHelloEffectLanguagesDemo() {
       durationScale={0.8}
       onAnimationComplete={handleAnimationEnd}
     />,
-    <AppleHelloEffectVietnamese key="vietnamese" durationScale={0.8} />,
+    <AppleHelloEffectKhmer key="khmer" durationScale={0.8} />,
   ]
 
   return <AnimatePresence mode="wait">{demos[index]}</AnimatePresence>

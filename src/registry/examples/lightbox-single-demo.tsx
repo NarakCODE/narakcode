@@ -75,9 +75,9 @@ export default function LightboxSingleDemo() {
 }
 
 const IMAGE = {
-  src: "https://assets.chanhdai.com/images/craft/2098000111234343170-2-1000w.webp",
-  alt: "The whole cabinet from the front: iPhones and their boxes on two shelves, and an iPad with its box on the bottom shelf.",
-  caption: "Apple Museum cabinet",
+  src: "/images/registry/lightbox-single.webp",
+  alt: "Sunlit sandstone colonnade and carved stone doorway gallery at Angkor in Siem Reap, Cambodia",
+  caption: "Angkor sandstone gallery, Siem Reap",
   width: 1000,
-  height: 1488,
+  height: 1500,
 }

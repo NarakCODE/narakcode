@@ -37,7 +37,7 @@ function PanelTitle({
     <Comp
       data-slot="panel-title"
       className={cn(
-        "group/panel-title text-title-small-semibold text-balance text-text-primary",
+        "group/panel-title font-heading text-3xl font-medium tracking-tight text-balance",
         className
       )}
       {...props}
@@ -49,7 +49,7 @@ function PanelTitleSup({ className, ...props }: React.ComponentProps<"sup">) {
   return (
     <sup
       className={cn(
-        "top-[-0.75em] ml-1 text-body-regular-medium tracking-normal text-text-secondary",
+        "top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground",
         className
       )}
       {...props}
@@ -65,7 +65,7 @@ function PanelDescription({
     <div
       data-slot="panel-description"
       className={cn(
-        "py-4 text-paragraph-regular text-balance text-text-secondary",
+        "py-4 text-base text-balance text-muted-foreground",
         className
       )}
       {...props}

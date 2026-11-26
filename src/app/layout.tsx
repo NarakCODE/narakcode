@@ -49,13 +49,6 @@ const darkModeScript = `
   } catch (_) {}
 `
 
-const avatarLightsScript = `
-  try {
-    var value = localStorage.getItem('avatarLights');
-    document.documentElement.dataset.avatarLights = JSON.parse(value || '"on"');
-  } catch(_) {}
-`
-
 const sidebarOpenScript = `
   try {
     var value = localStorage.getItem('sidebarOpen');
@@ -106,7 +99,6 @@ export default function RootLayout({
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
         <InlineScript html={darkModeScript} />
-        <InlineScript html={avatarLightsScript} />
         <InlineScript html={sidebarOpenScript} />
         <JsonLdScript data={getWebSiteJsonLd()} />
       </head>

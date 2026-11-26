@@ -40,7 +40,7 @@ const PERSPECTIVE = 4.7
 const MAX_RISE = (PERSPECTIVE / (PERSPECTIVE - 1) - 1) / 2
 
 /** Radius the cover grows to standing up, in page widths (Apple's ratio). */
-const COVER_RADIUS = 0.12
+const COVER_RADIUS = 0.15
 
 /**
  * How dark the inside starts, and the last stretch of the opening over which it
@@ -340,7 +340,7 @@ export function Foldable({ className, ...props }: ComponentProps<"div">) {
         // to the pixel grid and the 3D body does not, so on a fraction their
         // lines part at the hinge.
         className={cn(
-          "flex flex-col items-center gap-6 [--foldable-h:calc(var(--foldable-w)*7/5)] [--foldable-radius:--spacing(4)] [--foldable-surface:var(--background)] [--foldable-w:min(20rem,calc(50vw-2rem))] supports-[height:round(1px,1px)]:[--foldable-h:round(var(--foldable-w)*7/5,1px)]",
+          "flex flex-col items-center gap-6 [--foldable-h:calc(var(--foldable-w)*7/5)] [--foldable-radius:calc(var(--foldable-w)*0.125)] [--foldable-surface:var(--background)] [--foldable-w:min(20rem,calc(50vw-2rem))] supports-[height:round(1px,1px)]:[--foldable-h:round(var(--foldable-w)*7/5,1px)]",
           className
         )}
         {...props}

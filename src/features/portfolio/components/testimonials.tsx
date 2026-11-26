@@ -29,6 +29,7 @@ import {
 } from "@/features/portfolio/data/testimonials"
 import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
 
+import { HandwrittenArrow, HandwrittenNote } from "./handwritten-note"
 import { Panel, PanelContent } from "./panel"
 
 const ID = "testimonials"
@@ -117,6 +118,18 @@ export function Testimonials() {
           <ArrowRightIcon />
         </Button>
       </div>
+
+      <HandwrittenNote
+        className="top-14 left-full ml-3 hidden w-36 flex-col items-start xl:flex"
+        aria-hidden
+      >
+        <span className="-rotate-3">
+          made my day,
+          <span className="block" />
+          keeps me going
+        </span>
+        <HandwrittenArrow className="mt-2 -rotate-3" />
+      </HandwrittenNote>
     </Panel>
   )
 }

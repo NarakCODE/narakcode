@@ -45,7 +45,7 @@ export default function WalletPassesDemo() {
           </WalletCardHeader>
           <WalletCardContent className="flex justify-between gap-4">
             <PassDetail label="Branch" value="Phnom Penh" />
-            <PassDetail label="Due back" value="Sep 2" />
+            <PassDetail label="Due back" value="Nov 9" />
           </WalletCardContent>
         </WalletCard>
 
@@ -58,8 +58,8 @@ export default function WalletPassesDemo() {
             </WalletCardDescription>
           </WalletCardHeader>
           <WalletCardContent className="flex justify-between gap-4">
-            <PassDetail label="Locker" value="A-50" />
-            <PassDetail label="Renews" value="Apr 30" />
+            <PassDetail label="Locker" value="K-09" />
+            <PassDetail label="Renews" value="Apr 14" />
           </WalletCardContent>
         </WalletCard>
 
@@ -72,8 +72,8 @@ export default function WalletPassesDemo() {
             </WalletCardDescription>
           </WalletCardHeader>
           <WalletCardContent className="flex justify-between gap-4">
-            <PassDetail label="Doors" value="19:45" />
-            <PassDetail label="Seat" value="A-80" />
+            <PassDetail label="Doors" value="19:53" />
+            <PassDetail label="Seat" value="A-53" />
           </WalletCardContent>
         </WalletCard>
 
@@ -86,7 +86,7 @@ export default function WalletPassesDemo() {
             </WalletCardDescription>
           </WalletCardHeader>
           <WalletCardContent className="flex justify-between gap-4">
-            <PassDetail label="Route" value="PNH to SFO" />
+            <PassDetail label="Route" value="PNH to REP" />
             <PassDetail label="Gate" value="12" />
           </WalletCardContent>
         </WalletCard>

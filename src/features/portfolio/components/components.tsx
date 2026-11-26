@@ -11,6 +11,7 @@ import {
 } from "@/app/(app)/(pages)/components/component-item"
 import { getComponentDocs } from "@/features/doc/data/documents"
 
+import { HandwrittenArrow, HandwrittenNote } from "./handwritten-note"
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
 import { PanelTitleCopy } from "./panel-title-copy"
 
@@ -28,6 +29,18 @@ export function Components() {
           <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>
+
+      <HandwrittenNote
+        className="top-4 left-full ml-3 hidden w-36 flex-col items-start xl:flex"
+        aria-hidden
+      >
+        <span className="-rotate-3">
+          free to copy
+          <span className="block" />
+          yours to keep
+        </span>
+        <HandwrittenArrow className="mt-2 -rotate-3" />
+      </HandwrittenNote>
 
       <div className="relative">
         <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
