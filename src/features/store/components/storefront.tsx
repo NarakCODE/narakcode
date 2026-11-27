@@ -399,11 +399,13 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
       >
         <LightboxContent
           aria-label="Google AI Pro account overview"
+          pullToClose={false}
           className="[--lightbox-vt-duration:180ms]"
         >
           <LightboxSlides
             aria-label="Available accounts"
             aria-roledescription="carousel"
+            className="touch-pan-y overflow-x-hidden!"
           >
             {accounts.map((account, index) => {
               const q = account.quote
@@ -435,7 +437,7 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
                         ref={(el) => {
                           slideContentRefs.current[index] = el
                         }}
-                        className="relative z-1 flex size-full flex-col overflow-y-auto pt-(--lb-inset-top) text-left text-white"
+                        className="relative z-1 flex size-full flex-col overflow-hidden pt-(--lb-inset-top) text-left text-white"
                       >
                         {lightboxStep === "delivered" &&
                         receipt &&
@@ -452,105 +454,109 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
                           />
                         ) : (
                           <>
-                            <div className="shrink-0 px-4 py-6 sm:px-8 sm:py-10 md:px-20">
-                              <div className="mx-auto max-w-5xl">
-                                <div className="flex items-center gap-3">
-                                  <img
-                                    src={GEMINI_LOGO_URL}
-                                    alt=""
-                                    aria-hidden
-                                    width={36}
-                                    height={36}
-                                    className="size-8 shrink-0 object-contain select-none sm:size-9"
-                                  />
-                                  <h2 className="text-xl/tight font-medium tracking-tight text-white sm:text-4xl/tight sm:tracking-[-0.02em]">
-                                    {account.label}
-                                  </h2>
+                            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+                              <div className="px-4 py-6 sm:px-8 sm:py-10 md:px-20">
+                                <div className="mx-auto max-w-5xl">
+                                  <div className="flex items-center gap-3">
+                                    <img
+                                      src={GEMINI_LOGO_URL}
+                                      alt=""
+                                      aria-hidden
+                                      width={36}
+                                      height={36}
+                                      className="size-8 shrink-0 object-contain select-none sm:size-9"
+                                    />
+                                    <h2 className="text-xl/tight font-medium tracking-tight text-white sm:text-4xl/tight sm:tracking-[-0.02em]">
+                                      {account.label}
+                                    </h2>
+                                  </div>
+                                  <p className="mt-1.5 text-sm text-white/80">
+                                    {account.tier}
+                                  </p>
                                 </div>
-                                <p className="mt-1.5 text-sm text-white/80">
-                                  {account.tier}
-                                </p>
                               </div>
-                            </div>
 
-                            <div className="border-y border-white/15 bg-black/30 px-4 sm:px-8 md:px-20">
-                              <dl className="mx-auto grid max-w-5xl grid-cols-2 text-xs sm:grid-cols-4">
-                                <div className="border-r border-b border-white/15 py-3.5 pr-4 sm:border-b-0">
-                                  <dt className="text-white/65">Remaining</dt>
-                                  <dd className="mt-0.5 font-medium text-white tabular-nums">
-                                    {q.billable_weeks}{" "}
-                                    {q.billable_weeks === 1 ? "week" : "weeks"}{" "}
-                                    ({q.billable_days}d)
-                                  </dd>
-                                </div>
-                                <div className="border-b border-white/15 py-3.5 pl-4 sm:border-r sm:border-b-0 sm:px-4">
-                                  <dt className="text-white/65">Region</dt>
-                                  <dd className="mt-0.5 font-medium text-white">
-                                    {account.region}
-                                  </dd>
-                                </div>
-                                <div className="border-r border-white/15 py-3.5 pr-4 sm:px-4">
-                                  <dt className="text-white/65">SKU</dt>
-                                  <dd className="mt-0.5 font-medium text-white tabular-nums">
-                                    {account.sku}
-                                  </dd>
-                                </div>
-                                <div className="py-3.5 pl-4">
-                                  <dt className="text-white/65">Stock</dt>
-                                  <dd className="mt-0.5 font-medium text-white tabular-nums">
-                                    {account.stock} available
-                                  </dd>
-                                </div>
-                              </dl>
-                            </div>
+                              <div className="border-y border-white/15 bg-black/30 px-4 sm:px-8 md:px-20">
+                                <dl className="mx-auto grid max-w-5xl grid-cols-2 text-xs sm:grid-cols-4">
+                                  <div className="border-r border-b border-white/15 py-3.5 pr-4 sm:border-b-0">
+                                    <dt className="text-white/65">Remaining</dt>
+                                    <dd className="mt-0.5 font-medium text-white tabular-nums">
+                                      {q.billable_weeks}{" "}
+                                      {q.billable_weeks === 1
+                                        ? "week"
+                                        : "weeks"}{" "}
+                                      ({q.billable_days}d)
+                                    </dd>
+                                  </div>
+                                  <div className="border-b border-white/15 py-3.5 pl-4 sm:border-r sm:border-b-0 sm:px-4">
+                                    <dt className="text-white/65">Region</dt>
+                                    <dd className="mt-0.5 font-medium text-white">
+                                      {account.region}
+                                    </dd>
+                                  </div>
+                                  <div className="border-r border-white/15 py-3.5 pr-4 sm:px-4">
+                                    <dt className="text-white/65">SKU</dt>
+                                    <dd className="mt-0.5 font-medium text-white tabular-nums">
+                                      {account.sku}
+                                    </dd>
+                                  </div>
+                                  <div className="py-3.5 pl-4">
+                                    <dt className="text-white/65">Stock</dt>
+                                    <dd className="mt-0.5 font-medium text-white tabular-nums">
+                                      {account.stock} available
+                                    </dd>
+                                  </div>
+                                </dl>
+                              </div>
 
-                            <div className="flex-1 px-4 py-6 sm:px-8 md:px-20">
-                              <div className="mx-auto max-w-5xl">
-                                <h3 className="text-xs font-medium text-white/70">
-                                  Included in this account
-                                </h3>
-                                <ul className="mt-4 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
-                                  {GEMINI_PLAN_FEATURES.map((feature) => (
-                                    <li
-                                      key={feature.id}
-                                      className="flex items-start gap-2.5 text-xs"
-                                    >
-                                      <FeatureIcon
-                                        icon={feature.icon}
-                                        className="mt-0.5 size-3.5 shrink-0 text-white/75"
-                                      />
-                                      <div className="min-w-0">
-                                        <div className="font-medium text-white">
-                                          {feature.title}
+                              <div className="px-4 py-6 sm:px-8 md:px-20">
+                                <div className="mx-auto max-w-5xl">
+                                  <h3 className="text-xs font-medium text-white/70">
+                                    Included in this account
+                                  </h3>
+                                  <ul className="mt-4 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+                                    {GEMINI_PLAN_FEATURES.map((feature) => (
+                                      <li
+                                        key={feature.id}
+                                        className="flex items-start gap-2.5 text-xs"
+                                      >
+                                        <FeatureIcon
+                                          icon={feature.icon}
+                                          className="mt-0.5 size-3.5 shrink-0 text-white/75"
+                                        />
+                                        <div className="min-w-0">
+                                          <div className="font-medium text-white">
+                                            {feature.title}
+                                          </div>
+                                          <p className="mt-0.5 text-white/75">
+                                            {feature.summary}
+                                          </p>
+                                          {feature.subFeatures &&
+                                            feature.subFeatures.length > 0 && (
+                                              <ul className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1.5 border-l border-white/20 pl-2.5 text-white/80">
+                                                {feature.subFeatures.map(
+                                                  (item) => (
+                                                    <li
+                                                      key={item.label}
+                                                      className="flex min-w-0 items-center gap-1.5"
+                                                    >
+                                                      <ModelLogo
+                                                        logo={item.logo}
+                                                        className="size-3.5 shrink-0 text-white"
+                                                      />
+                                                      <span className="truncate">
+                                                        {item.label}
+                                                      </span>
+                                                    </li>
+                                                  )
+                                                )}
+                                              </ul>
+                                            )}
                                         </div>
-                                        <p className="mt-0.5 text-white/75">
-                                          {feature.summary}
-                                        </p>
-                                        {feature.subFeatures &&
-                                          feature.subFeatures.length > 0 && (
-                                            <ul className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1.5 border-l border-white/20 pl-2.5 text-white/80">
-                                              {feature.subFeatures.map(
-                                                (item) => (
-                                                  <li
-                                                    key={item.label}
-                                                    className="flex min-w-0 items-center gap-1.5"
-                                                  >
-                                                    <ModelLogo
-                                                      logo={item.logo}
-                                                      className="size-3.5 shrink-0 text-white"
-                                                    />
-                                                    <span className="truncate">
-                                                      {item.label}
-                                                    </span>
-                                                  </li>
-                                                )
-                                              )}
-                                            </ul>
-                                          )}
-                                      </div>
-                                    </li>
-                                  ))}
-                                </ul>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
                               </div>
                             </div>
 

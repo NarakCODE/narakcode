@@ -54,98 +54,103 @@ export function LightboxPaymentView({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-1 flex-col">
-      <div className="shrink-0 px-4 py-6 sm:px-8 sm:py-10 md:px-20">
-        <div className="mx-auto max-w-5xl">
-          <button
-            type="button"
-            onClick={onBack}
-            className="mb-3 -ml-2 inline-flex min-h-11 touch-manipulation items-center gap-1.5 px-2 text-xs font-medium text-white/75 transition-colors duration-150 hover:text-white sm:min-h-0 sm:py-1"
-          >
-            <ArrowLeftIcon className="size-3.5" aria-hidden />
-            <span>Back to overview</span>
-          </button>
+    <form
+      onSubmit={handleSubmit}
+      className="flex min-h-0 flex-1 flex-col overflow-hidden"
+    >
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+        <div className="px-4 py-6 sm:px-8 sm:py-10 md:px-20">
+          <div className="mx-auto max-w-5xl">
+            <button
+              type="button"
+              onClick={onBack}
+              className="mb-3 -ml-2 inline-flex min-h-11 touch-manipulation items-center gap-1.5 px-2 text-xs font-medium text-white/75 transition-colors duration-150 hover:text-white sm:min-h-0 sm:py-1"
+            >
+              <ArrowLeftIcon className="size-3.5" aria-hidden />
+              <span>Back to overview</span>
+            </button>
 
-          <div className="flex items-center gap-3">
-            <img
-              src={GEMINI_LOGO_URL}
-              alt=""
-              aria-hidden
-              width={36}
-              height={36}
-              className="size-8 shrink-0 object-contain select-none sm:size-9"
-            />
-            <h2 className="text-xl/tight font-medium tracking-tight text-white sm:text-4xl/tight sm:tracking-[-0.02em]">
-              KHQR payment
-            </h2>
-          </div>
-          <p className="mt-1.5 text-sm text-white/80">
-            {seat.label} · ABA Bank · Bakong
-          </p>
-        </div>
-      </div>
-
-      <div className="flex-1 border-t border-white/15 px-4 py-6 sm:px-8 md:px-20">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
-          <div className="flex flex-col items-center gap-4 border border-white/15 bg-black/30 p-6 text-center sm:flex-row sm:items-center sm:gap-6 sm:text-left">
-            <StaticKhqrCode seed={seat.sku} />
-
-            <div className="min-w-0 flex-1">
-              <div className="text-xs text-white/65">Merchant</div>
-              <div className="mt-0.5 text-base font-medium text-white">
-                NarakCODE
-              </div>
-
-              <div className="mt-3 flex items-baseline justify-center gap-2 sm:justify-start">
-                <span className="text-2xl font-medium tracking-tight text-white tabular-nums">
-                  {formatUsd(seat.quote.final_usd)}
-                </span>
-                <span className="text-xs text-white/75 tabular-nums">
-                  {formatKhr(seat.quote.final_khr)}
-                </span>
-              </div>
-
-              <p className="mt-2.5 text-xs text-white/75">
-                Scan with ABA Mobile or any Bakong KHQR app, then click Mark as
-                paid below.
-              </p>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <label className="flex flex-col gap-1.5 text-xs">
-              <span className="font-medium text-white/80">
-                Receipt email (optional)
-              </span>
-              <Input
-                type="email"
-                value={buyerEmail}
-                onChange={(e) => setBuyerEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="h-11 border-white/20 bg-black/40 text-base text-white placeholder:text-white/45 sm:h-10 sm:text-sm"
+            <div className="flex items-center gap-3">
+              <img
+                src={GEMINI_LOGO_URL}
+                alt=""
+                aria-hidden
+                width={36}
+                height={36}
+                className="size-8 shrink-0 object-contain select-none sm:size-9"
               />
-            </label>
+              <h2 className="text-xl/tight font-medium tracking-tight text-white sm:text-4xl/tight sm:tracking-[-0.02em]">
+                KHQR payment
+              </h2>
+            </div>
+            <p className="mt-1.5 text-sm text-white/80">
+              {seat.label} · ABA Bank · Bakong
+            </p>
+          </div>
+        </div>
 
-            <dl className="divide-y divide-white/15 border-y border-white/15 text-xs">
-              <div className="flex items-center justify-between gap-3 py-3">
-                <dt className="text-white/65">SKU</dt>
-                <dd className="font-medium text-white tabular-nums">
-                  {seat.sku}
-                </dd>
+        <div className="border-t border-white/15 px-4 py-6 sm:px-8 md:px-20">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
+            <div className="flex flex-col items-center gap-4 border border-white/15 bg-black/30 p-6 text-center sm:flex-row sm:items-center sm:gap-6 sm:text-left">
+              <StaticKhqrCode seed={seat.sku} />
+
+              <div className="min-w-0 flex-1">
+                <div className="text-xs text-white/65">Merchant</div>
+                <div className="mt-0.5 text-base font-medium text-white">
+                  NarakCODE
+                </div>
+
+                <div className="mt-3 flex items-baseline justify-center gap-2 sm:justify-start">
+                  <span className="text-2xl font-medium tracking-tight text-white tabular-nums">
+                    {formatUsd(seat.quote.final_usd)}
+                  </span>
+                  <span className="text-xs text-white/75 tabular-nums">
+                    {formatKhr(seat.quote.final_khr)}
+                  </span>
+                </div>
+
+                <p className="mt-2.5 text-xs text-white/75">
+                  Scan with ABA Mobile or any Bakong KHQR app, then click Mark
+                  as paid below.
+                </p>
               </div>
-              <div className="flex items-center justify-between gap-3 py-3">
-                <dt className="text-white/65">Remaining term</dt>
-                <dd className="font-medium text-white tabular-nums">
-                  {seat.quote.billable_weeks}{" "}
-                  {seat.quote.billable_weeks === 1 ? "week" : "weeks"} (
-                  {seat.quote.billable_days}d)
-                </dd>
-              </div>
-              <div className="flex items-center justify-between gap-3 py-3">
-                <dt className="text-white/65">Payment method</dt>
-                <dd className="font-medium text-white">ABA KHQR</dd>
-              </div>
-            </dl>
+            </div>
+
+            <div className="space-y-4">
+              <label className="flex flex-col gap-1.5 text-xs">
+                <span className="font-medium text-white/80">
+                  Receipt email (optional)
+                </span>
+                <Input
+                  type="email"
+                  value={buyerEmail}
+                  onChange={(e) => setBuyerEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  className="h-11 border-white/20 bg-black/40 text-base text-white placeholder:text-white/45 sm:h-10 sm:text-sm"
+                />
+              </label>
+
+              <dl className="divide-y divide-white/15 border-y border-white/15 text-xs">
+                <div className="flex items-center justify-between gap-3 py-3">
+                  <dt className="text-white/65">SKU</dt>
+                  <dd className="font-medium text-white tabular-nums">
+                    {seat.sku}
+                  </dd>
+                </div>
+                <div className="flex items-center justify-between gap-3 py-3">
+                  <dt className="text-white/65">Remaining term</dt>
+                  <dd className="font-medium text-white tabular-nums">
+                    {seat.quote.billable_weeks}{" "}
+                    {seat.quote.billable_weeks === 1 ? "week" : "weeks"} (
+                    {seat.quote.billable_days}d)
+                  </dd>
+                </div>
+                <div className="flex items-center justify-between gap-3 py-3">
+                  <dt className="text-white/65">Payment method</dt>
+                  <dd className="font-medium text-white">ABA KHQR</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
       </div>
@@ -203,130 +208,134 @@ export function LightboxDeliveredView({
   ].join("\n")
 
   return (
-    <div className="flex flex-1 flex-col">
-      <div className="shrink-0 px-4 py-8 sm:px-8 sm:py-10 md:px-20">
-        <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className="min-w-0">
-            <h2 className="text-2xl/tight font-medium tracking-tight text-white sm:text-4xl/tight">
-              Google account delivered
-            </h2>
-            <p className="mt-1.5 text-xs text-white/75 tabular-nums">
-              {receipt.order_id} · {formatUsd(receipt.total_usd)} /{" "}
-              {formatKhr(receipt.total_khr)} via ABA KHQR
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+        <div className="px-4 py-8 sm:px-8 sm:py-10 md:px-20">
+          <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="min-w-0">
+              <h2 className="text-2xl/tight font-medium tracking-tight text-white sm:text-4xl/tight">
+                Google account delivered
+              </h2>
+              <p className="mt-1.5 text-xs text-white/75 tabular-nums">
+                {receipt.order_id} · {formatUsd(receipt.total_usd)} /{" "}
+                {formatKhr(receipt.total_khr)} via ABA KHQR
+              </p>
+            </div>
+
+            <CopyButton
+              text={allCredentialsText}
+              variant="outline"
+              size="sm"
+              className="w-fit shrink-0 gap-1.5 border-white/25 bg-black/30 text-xs text-white hover:bg-white/10 active:scale-[0.97]"
+            >
+              <span>Copy all</span>
+            </CopyButton>
+          </div>
+        </div>
+
+        <div className="border-t border-white/15 px-4 py-6 sm:px-8 md:px-20">
+          <div className="mx-auto max-w-5xl">
+            <dl className="divide-y divide-white/15 border-b border-white/15 text-xs">
+              <div className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                <dt className="shrink-0 text-white/65">Google email</dt>
+                <dd className="flex min-w-0 items-center justify-between gap-2 sm:justify-end">
+                  <span className="font-medium break-all text-white">
+                    {account.email}
+                  </span>
+                  <CopyButton
+                    text={account.email}
+                    variant="ghost"
+                    size="icon-xs"
+                    className="text-white/80 hover:bg-white/10 hover:text-white"
+                    aria-label="Copy Google email"
+                  />
+                </dd>
+              </div>
+
+              <div className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                <dt className="shrink-0 text-white/65">Password</dt>
+                <dd className="flex min-w-0 items-center justify-between gap-2 sm:justify-end">
+                  <span className="font-medium break-all text-white">
+                    {showPassword ? account.password : "••••••••••••••••"}
+                  </span>
+                  <div className="flex shrink-0 items-center gap-1">
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon-xs"
+                      className="text-white/80 hover:bg-white/10 hover:text-white"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      <IconSwap>
+                        <IconSwapItem
+                          key={showPassword ? "hide" : "show"}
+                          as={motion.span}
+                        >
+                          {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                        </IconSwapItem>
+                      </IconSwap>
+                    </Button>
+                    <CopyButton
+                      text={account.password}
+                      variant="ghost"
+                      size="icon-xs"
+                      className="text-white/80 hover:bg-white/10 hover:text-white"
+                      aria-label="Copy password"
+                    />
+                  </div>
+                </dd>
+              </div>
+
+              <div className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                <dt className="shrink-0 text-white/65">Recovery email</dt>
+                <dd className="flex min-w-0 items-center justify-between gap-2 sm:justify-end">
+                  <span className="font-medium break-all text-white">
+                    {account.recovery_email}
+                  </span>
+                  <CopyButton
+                    text={account.recovery_email}
+                    variant="ghost"
+                    size="icon-xs"
+                    className="text-white/80 hover:bg-white/10 hover:text-white"
+                    aria-label="Copy recovery email"
+                  />
+                </dd>
+              </div>
+
+              <div className="py-3.5">
+                <div className="flex items-center justify-between gap-2">
+                  <dt className="text-white/65">Backup codes</dt>
+                  <CopyButton
+                    text={account.backup_codes.join("\n")}
+                    variant="ghost"
+                    size="xs"
+                    className="gap-1 text-xs text-white/75 hover:bg-white/10 hover:text-white"
+                  >
+                    <span>Copy codes</span>
+                  </CopyButton>
+                </div>
+                <dd className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1.5 font-medium text-white tabular-nums sm:grid-cols-4">
+                  {account.backup_codes.map((code) => (
+                    <span key={code}>{code}</span>
+                  ))}
+                </dd>
+              </div>
+
+              <div className="flex items-center justify-between gap-3 py-3.5">
+                <dt className="shrink-0 text-white/65">Valid until</dt>
+                <dd className="font-medium text-white tabular-nums">
+                  {formatUtcDate(account.expires_at)}
+                </dd>
+              </div>
+            </dl>
+
+            <p className="mt-4 text-xs text-white/75">
+              {account.security_note}
             </p>
           </div>
-
-          <CopyButton
-            text={allCredentialsText}
-            variant="outline"
-            size="sm"
-            className="w-fit shrink-0 gap-1.5 border-white/25 bg-black/30 text-xs text-white hover:bg-white/10 active:scale-[0.97]"
-          >
-            <span>Copy all</span>
-          </CopyButton>
-        </div>
-      </div>
-
-      <div className="flex-1 border-t border-white/15 px-4 py-6 sm:px-8 md:px-20">
-        <div className="mx-auto max-w-5xl">
-          <dl className="divide-y divide-white/15 border-b border-white/15 text-xs">
-            <div className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-              <dt className="shrink-0 text-white/65">Google email</dt>
-              <dd className="flex min-w-0 items-center justify-between gap-2 sm:justify-end">
-                <span className="font-medium break-all text-white">
-                  {account.email}
-                </span>
-                <CopyButton
-                  text={account.email}
-                  variant="ghost"
-                  size="icon-xs"
-                  className="text-white/80 hover:bg-white/10 hover:text-white"
-                  aria-label="Copy Google email"
-                />
-              </dd>
-            </div>
-
-            <div className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-              <dt className="shrink-0 text-white/65">Password</dt>
-              <dd className="flex min-w-0 items-center justify-between gap-2 sm:justify-end">
-                <span className="font-medium break-all text-white">
-                  {showPassword ? account.password : "••••••••••••••••"}
-                </span>
-                <div className="flex shrink-0 items-center gap-1">
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon-xs"
-                    className="text-white/80 hover:bg-white/10 hover:text-white"
-                    onClick={() => setShowPassword((prev) => !prev)}
-                    aria-label={
-                      showPassword ? "Hide password" : "Show password"
-                    }
-                  >
-                    <IconSwap>
-                      <IconSwapItem
-                        key={showPassword ? "hide" : "show"}
-                        as={motion.span}
-                      >
-                        {showPassword ? <EyeOffIcon /> : <EyeIcon />}
-                      </IconSwapItem>
-                    </IconSwap>
-                  </Button>
-                  <CopyButton
-                    text={account.password}
-                    variant="ghost"
-                    size="icon-xs"
-                    className="text-white/80 hover:bg-white/10 hover:text-white"
-                    aria-label="Copy password"
-                  />
-                </div>
-              </dd>
-            </div>
-
-            <div className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-              <dt className="shrink-0 text-white/65">Recovery email</dt>
-              <dd className="flex min-w-0 items-center justify-between gap-2 sm:justify-end">
-                <span className="font-medium break-all text-white">
-                  {account.recovery_email}
-                </span>
-                <CopyButton
-                  text={account.recovery_email}
-                  variant="ghost"
-                  size="icon-xs"
-                  className="text-white/80 hover:bg-white/10 hover:text-white"
-                  aria-label="Copy recovery email"
-                />
-              </dd>
-            </div>
-
-            <div className="py-3.5">
-              <div className="flex items-center justify-between gap-2">
-                <dt className="text-white/65">Backup codes</dt>
-                <CopyButton
-                  text={account.backup_codes.join("\n")}
-                  variant="ghost"
-                  size="xs"
-                  className="gap-1 text-xs text-white/75 hover:bg-white/10 hover:text-white"
-                >
-                  <span>Copy codes</span>
-                </CopyButton>
-              </div>
-              <dd className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1.5 font-medium text-white tabular-nums sm:grid-cols-4">
-                {account.backup_codes.map((code) => (
-                  <span key={code}>{code}</span>
-                ))}
-              </dd>
-            </div>
-
-            <div className="flex items-center justify-between gap-3 py-3.5">
-              <dt className="shrink-0 text-white/65">Valid until</dt>
-              <dd className="font-medium text-white tabular-nums">
-                {formatUtcDate(account.expires_at)}
-              </dd>
-            </div>
-          </dl>
-
-          <p className="mt-4 text-xs text-white/75">{account.security_note}</p>
         </div>
       </div>
 
