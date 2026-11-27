@@ -25,14 +25,14 @@ export function PostItem({
     <div className="group/post relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted">
       {post.slug === "dropdown-drawer" ? (
         <div className="relative flex aspect-1200/630 items-center justify-center overflow-hidden rounded-(--image-radius) bg-background select-none [--image-radius:var(--radius-xl)]">
-          <div className="pointer-events-none w-full max-w-md origin-center translate-y-8 scale-[0.6] transform-gpu rounded-xl bg-background shadow-xl sm:translate-y-10 sm:scale-[0.7]">
+          <div className="pointer-events-none w-full max-w-md origin-center translate-y-8 scale-[0.6] transform-gpu rounded-xl border border-line bg-background sm:translate-y-10 sm:scale-[0.7]">
             <DropDrawerPreview />
           </div>
           <div className="pointer-events-none absolute inset-0 rounded-(--image-radius) inset-ring-1 inset-ring-black/15 dark:inset-ring-white/15" />
         </div>
       ) : post.slug === "pin-list" ? (
         <div className="relative flex aspect-1200/630 items-center justify-center overflow-hidden rounded-(--image-radius) bg-background select-none [--image-radius:var(--radius-xl)]">
-          <div className="pointer-events-none w-full max-w-sm origin-center translate-y-16 scale-[0.55] transform-gpu rounded-3xl border border-border/50 bg-accent/30 p-6 shadow-sm sm:translate-y-20 sm:scale-[0.65]">
+          <div className="pointer-events-none w-full max-w-sm origin-center translate-y-16 scale-[0.55] transform-gpu rounded-3xl border border-line bg-accent/30 p-6 sm:translate-y-20 sm:scale-[0.65]">
             <PinListDemo />
           </div>
           <div className="pointer-events-none absolute inset-0 rounded-(--image-radius) inset-ring-1 inset-ring-black/15 dark:inset-ring-white/15" />

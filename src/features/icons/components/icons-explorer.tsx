@@ -186,7 +186,7 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
       >
         {filteredIcons.length === 0 ? (
           <div className="screen-line-bottom flex flex-col items-center justify-center gap-3 px-4 py-16 text-center">
-            <p className="font-mono text-body-regular text-text-secondary">
+            <p className="text-body-regular text-text-secondary">
               No icons found matching{" "}
               {query ? `"${query}"` : "the selected filter"}.
             </p>
@@ -214,7 +214,7 @@ export function IconsExplorer({ icons }: IconsExplorerProps) {
             {groupedIcons.map(({ category: groupName, icons: groupIcons }) => (
               <section key={groupName}>
                 <div className="screen-line-bottom flex items-center justify-between bg-accent/25 px-4 py-2.5">
-                  <h2 className="text-body-mini-medium tracking-wider text-text-primary uppercase">
+                  <h2 className="text-body-mini-medium text-text-primary">
                     {groupName}
                   </h2>
                   <span className="rounded-full bg-accent px-2 py-0.5 font-mono text-body-micro-medium text-text-secondary">
@@ -313,7 +313,7 @@ function IconGrid({
                 )}
               >
                 {isCopied ? (
-                  <CheckIcon className="size-3 text-emerald-500" />
+                  <CheckIcon className="size-3 text-success" />
                 ) : (
                   <CopyIcon className="size-3" />
                 )}

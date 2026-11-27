@@ -1,7 +1,6 @@
 ---
 title: Morphing Pill
 description: A dynamic, animated pill-shaped navigation component that morphs to highlight the active and hovered states.
-image: /images/blog/morphing-pill.png
 createdAt: 2025-05-17 # Assuming today's date or a relevant date
 updatedAt: 2025-05-17 # Assuming today's date or a relevant date
 ---
@@ -56,7 +55,7 @@ Before you begin, ensure your project meets the following requirements:
 
 Follow these steps to integrate the Morphing Pill into your project.
 
-### 1. Install Dependencies
+### 1. Install dependencies
 
 Install the necessary dependencies for the component and its underlying libraries:
 
@@ -85,7 +84,7 @@ module.exports = {
 }
 ```
 
-### 3. Create `cn` Utility Function
+### 3. Create `cn` utility function
 
 If you don't already have it from installing other shadcn/ui components, create a utility file, typically `utils.ts` (or `utils.js`), inside a `lib` folder (e.g., `@/lib/utils.ts` or `src/lib/utils.ts`). This file will contain a helper function `cn` for conditionally joining class names.
 
@@ -134,7 +133,7 @@ The `MorphingPill` component internally uses a class `center`. If not already de
 
 Alternatively, you can modify the component's source code to use `flex items-center justify-center` directly where `center` is used.
 
-## Basic Usage
+## Basic usage
 
 After installation and setup, you can import and use the `MorphingPill` component in your React application:
 

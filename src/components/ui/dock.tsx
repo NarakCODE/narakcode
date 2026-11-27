@@ -39,7 +39,10 @@ export function PlusIcon({ className, ...props }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className={cn("transition-all", className)}
+      className={cn(
+        "transition-[color,transform] duration-150 ease-out",
+        className
+      )}
       {...props}
     >
       <path
@@ -62,7 +65,10 @@ export function SearchIcon({ className, ...props }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className={cn("transition-all", className)}
+      className={cn(
+        "transition-[color,transform] duration-150 ease-out",
+        className
+      )}
       {...props}
     >
       <path
@@ -92,7 +98,10 @@ export function BellIcon({ className, ...props }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className={cn("transition-all", className)}
+      className={cn(
+        "transition-[color,transform] duration-150 ease-out",
+        className
+      )}
       {...props}
     >
       <path
@@ -129,7 +138,10 @@ export function UserEditIcon({ className, ...props }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className={cn("transition-all", className)}
+      className={cn(
+        "transition-[color,transform] duration-150 ease-out",
+        className
+      )}
       {...props}
     >
       <path
@@ -166,7 +178,10 @@ export function SunIcon({ className, ...props }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className={cn("transition-all", className)}
+      className={cn(
+        "transition-[color,transform] duration-150 ease-out",
+        className
+      )}
       {...props}
     >
       <path
@@ -259,7 +274,6 @@ export function Dock({
         !isGlassReady && [
           "backdrop-blur-2xl backdrop-saturate-180",
           "bg-[color-mix(in_oklab,var(--foreground)_3%,color-mix(in_oklab,var(--background)_38%,transparent))]",
-          "shadow-[inset_0_1px_0_0_rgb(255_255_255/0.28),inset_1px_0_1px_0_rgb(255_255_255/0.1),inset_-1px_0_1px_0_rgb(255_255_255/0.08),inset_0_-1px_0_0_rgb(255_255_255/0.14),inset_0_3px_10px_0_rgb(255_255_255/0.08),inset_0_12px_24px_-14px_rgb(0_0_0/0.16),inset_0_-10px_20px_-8px_rgb(0_0_0/0.18)]",
         ],
         className
       )}
@@ -268,14 +282,6 @@ export function Dock({
         radius={glassRadius}
         tone={glassTone}
         backdrop={glassBackdrop}
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(180deg,rgb(255_255_255/0.13)_0%,rgb(255_255_255/0.03)_30%,transparent_54%,rgb(255_255_255/0.04)_100%)]"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-3 top-px h-px rounded-full bg-[linear-gradient(90deg,transparent,rgb(255_255_255/0.28)_30%,rgb(255_255_255/0.42)_50%,rgb(255_255_255/0.28)_70%,transparent)]"
       />
       {items.map((item) => {
         const isActive = currentActiveId === item.id

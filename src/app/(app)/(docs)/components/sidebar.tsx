@@ -73,7 +73,7 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
           "relative flex flex-col rounded-(--sidebar-radius) border bg-background",
           "h-[calc(100svh-var(--sidebar-top)-(--spacing(4)))] w-(--sidebar-width)",
           "translate-x-0 in-data-[sidebar-open=false]:-translate-x-[calc(var(--sidebar-width)-1px)]",
-          "transition-[translate] duration-350 ease-[cubic-bezier(0.24,0.88,0.28,0.92)]"
+          "transition-[translate] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
         )}
         tabIndex={isOpen ? 0 : -1}
         aria-hidden={!isOpen}
@@ -191,7 +191,7 @@ const SidebarMenuItem = memo(function SidebarMenuItem({
         <motion.span
           className="block h-px shrink-0 bg-foreground/20 transition-[background-color] ease-out group-hover:bg-foreground group-aria-[current=page]:bg-foreground"
           variants={lineVariants}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+          transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
         />
         <span className="text-sm whitespace-nowrap text-muted-foreground transition-[color] ease-out group-hover:text-foreground group-aria-[current=page]:text-foreground">
           {title}

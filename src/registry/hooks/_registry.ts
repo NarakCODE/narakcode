@@ -29,6 +29,8 @@ export const hook: Registry["items"] = [
     name: "use-controllable-state",
     type: "registry:hook",
     title: "useControllableState",
+    description:
+      "Hook for managing controlled and uncontrolled component state.",
     files: [
       {
         path: "hooks/use-controllable-state/use-controllable-state.tsx",

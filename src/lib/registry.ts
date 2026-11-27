@@ -72,14 +72,25 @@ export async function getRegistryItem(name: string) {
   return parsed.data
 }
 
+export function rewriteDefaultExports(code: string, fileType?: string) {
+  if (fileType === "registry:page") {
+    return code
+  }
+
+  // Only convert default function/class declarations to named exports;
+  // bare `export default <Identifier>` would become invalid `export <Identifier>`.
+  return code.replace(
+    /\bexport default (?=(?:async\s+)?function\b|class\b)/g,
+    "export "
+  )
+}
+
 async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
   let code = await fs.readFile(file.path, "utf-8")
 
-  // Some registry items uses default export.
+  // Some registry items use default export.
   // We want to use named export instead.
-  if (file.type !== "registry:page") {
-    code = code.replaceAll("export default", "export")
-  }
+  code = rewriteDefaultExports(code, file.type)
 
   // Fix imports.
   code = fixImport(code)
@@ -115,7 +126,7 @@ export function fixImport(content: string) {
 export function fixFilePaths(
   files: z.infer<typeof registryItemSchema>["files"]
 ) {
-  if (!files) {
+  if (!files || files.length === 0) {
     return []
   }
 

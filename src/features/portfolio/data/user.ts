@@ -22,7 +22,7 @@ export const USER: User = {
       experienceId: "acleda",
     },
   ],
-  about: `Hello, World! I am Narak. I focused on delivering high-quality products. I enjoy working where design and engineering intersect, building software that's visually appealing and technically solid.
+  about: `Hello, World! I am Narak. I focus on delivering high-quality products. I enjoy working where design and engineering intersect, building software that's visually appealing and technically solid.
   `,
   avatar: "/images/avatar-profile.jpg",
   avatarVariants: {

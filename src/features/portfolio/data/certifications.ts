@@ -92,7 +92,7 @@ export const CERTIFICATIONS: Certification[] = [
     issueDate: "2024-12-17",
     credentialID: "QH58202305187",
     credentialURL:
-      "https://vbcc.hcmussh.edu.vn/?type=11&certificateType=7&no=QH58202305187&fullName=Nguy%E1%BB%85n+Ch%C3%A1nh+%C4%90%E1%BA%A1i&dob=2000-08-14",
+      "https://vbcc.hcmussh.edu.vn/?type=11&certificateType=7&no=QH58202305187",
   },
   {
     title: "Certificate of Copyright Registration No. 7994/2024/QTG",

@@ -12,7 +12,7 @@ export function NotFound() {
       </section>
 
       <section className="flex flex-col items-center gap-6 lg:hidden">
-        <h1 className="font-mono text-8xl font-medium">404</h1>
+        <h1 className="text-5xl font-medium tabular-nums">404</h1>
         <Button
           variant="outline"
           nativeButton={false}

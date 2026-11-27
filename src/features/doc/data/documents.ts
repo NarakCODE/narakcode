@@ -14,11 +14,24 @@ import {
 export const BLOG_CATEGORY = "blog"
 export const COMPONENTS_CATEGORY = "components"
 
+function normalizeFrontmatterDate(value: unknown): string {
+  if (value instanceof Date) {
+    return value.toISOString().slice(0, 10)
+  }
+
+  return typeof value === "string" ? value : String(value ?? "")
+}
+
 function parseFrontmatter(fileContent: string) {
   const file = matter(fileContent)
+  const data = file.data as Record<string, unknown>
 
   return {
-    metadata: file.data as DocMetadata,
+    metadata: {
+      ...data,
+      createdAt: normalizeFrontmatterDate(data.createdAt),
+      updatedAt: normalizeFrontmatterDate(data.updatedAt),
+    } as DocMetadata,
     content: file.content,
   }
 }
@@ -100,11 +113,13 @@ export const getAllDocs = cache(() => {
 
 export function getDocBySlug(
   slug: string,
-  language: BlogLanguage = DEFAULT_BLOG_LANGUAGE
+  language: BlogLanguage = DEFAULT_BLOG_LANGUAGE,
+  category?: string
 ) {
   return getAllDocs().find(
     (doc) =>
       doc.slug === slug &&
+      (category === undefined || doc.metadata.category === category) &&
       (doc.metadata.category !== BLOG_CATEGORY ||
         (doc.language ?? DEFAULT_BLOG_LANGUAGE) === language)
   )

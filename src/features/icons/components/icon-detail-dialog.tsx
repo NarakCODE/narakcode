@@ -165,10 +165,9 @@ function AppSlotGlyph({ variant }: { variant: AppFrameSlotVariant }) {
 // Concentric corner geometry in logical iPhone points (PT_W = 440):
 // R_screen ≈ 56px -> inset 16px => R_dock = 40px -> inset 16px => R_app = 24px.
 const APPLE_APP_FRAME_CLASS =
-  "overflow-hidden rounded-[24px] border border-foreground/6 bg-background/45 shadow-[0_4px_14px_-6px_rgb(0_0_0/0.07),inset_0_1px_0_0_rgb(255_255_255/0.24)] backdrop-blur-md"
+  "overflow-hidden rounded-[24px] border border-foreground/6 bg-background/45 backdrop-blur-md"
 
-const APPLE_APP_ACTIVE_FRAME_CLASS =
-  "border-accent/45 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--accent)_72%,transparent)_0%,color-mix(in_oklab,var(--background)_62%,transparent)_100%)] shadow-[0_6px_16px_-6px_rgb(0_0_0/0.12),inset_0_1px_0_0_rgb(255_255_255/0.24),inset_0_-1px_0_0_rgb(255_255_255/0.06)]"
+const APPLE_APP_ACTIVE_FRAME_CLASS = "border-accent/45 bg-accent/55"
 
 /**
  * Minimalist 4-column iOS home screen app frame rendered behind the floating
@@ -184,7 +183,7 @@ function AppleAppFrameBackdrop() {
       <div className="grid grid-cols-4 gap-4 opacity-45">
         {APP_FRAME_SLOTS.map((slot) => (
           <div key={`upper-${slot.id}`} className="flex flex-col items-center">
-            <div className="aspect-square w-full rounded-[24px] border border-foreground/5 bg-background/30 shadow-[inset_0_1px_0_0_rgb(255_255_255/0.16)] backdrop-blur-sm" />
+            <div className="aspect-square w-full rounded-[24px] border border-foreground/5 bg-background/30 backdrop-blur-sm" />
             <span
               className={cn(
                 "mt-2 block h-1.5 rounded-full bg-foreground/7",
@@ -256,7 +255,6 @@ function IconPreviewStage({
   const prefersReducedMotion = useReducedMotion()
   const dragX = useMotionValue(0)
   const pendingEnterOffsetRef = useRef(0)
-  const pendingFromDragRef = useRef(false)
 
   const rotate = useTransform(dragX, [-160, 0, 160], [-2.5, 0, 2.5])
   const dragScale = useTransform(dragX, [-180, 0, 180], [0.97, 1, 0.97])
@@ -266,9 +264,7 @@ function IconPreviewStage({
 
   useEffect(() => {
     const enterOffset = pendingEnterOffsetRef.current
-    const fromDrag = pendingFromDragRef.current
     pendingEnterOffsetRef.current = 0
-    pendingFromDragRef.current = false
 
     if (enterOffset === 0) {
       dragX.set(0)
@@ -282,10 +278,8 @@ function IconPreviewStage({
       prefersReducedMotion
         ? { duration: 0.14, ease: "easeOut" }
         : {
-            type: "spring",
-            duration: 0.34,
-            // Bounce applies only when a gesture carried physical momentum.
-            bounce: fromDrag ? 0.16 : 0,
+            duration: 0.22,
+            ease: [0.23, 1, 0.32, 1],
           }
     )
 
@@ -293,13 +287,12 @@ function IconPreviewStage({
   }, [icon.name, dragX, prefersReducedMotion])
 
   const triggerStep = useCallback(
-    (direction: "previous" | "next", fromDrag: boolean) => {
+    (direction: "previous" | "next") => {
       if (direction === "previous") {
         if (!hasPrevious || !onPreviousIcon) {
           return false
         }
         pendingEnterOffsetRef.current = prefersReducedMotion ? 0 : -40
-        pendingFromDragRef.current = fromDrag
         haptic(18)
         onPreviousIcon()
         return true
@@ -309,7 +302,6 @@ function IconPreviewStage({
         return false
       }
       pendingEnterOffsetRef.current = prefersReducedMotion ? 0 : 40
-      pendingFromDragRef.current = fromDrag
       haptic(18)
       onNextIcon()
       return true
@@ -332,7 +324,7 @@ function IconPreviewStage({
           ? "previous"
           : "next"
 
-      if (triggerStep(direction, true)) {
+      if (triggerStep(direction)) {
         return
       }
     }
@@ -343,10 +335,8 @@ function IconPreviewStage({
       prefersReducedMotion
         ? { duration: 0.14, ease: "easeOut" }
         : {
-            type: "spring",
-            duration: 0.42,
-            bounce: 0.2,
-            velocity: info.velocity.x,
+            duration: 0.22,
+            ease: [0.23, 1, 0.32, 1],
           }
     )
   }
@@ -360,9 +350,19 @@ function IconPreviewStage({
       scale={4.2}
       island="mini"
       crop="bottom"
-      paper={surface === "dark" ? "#0C0F14" : "#F3F5F7"}
-      ink={surface === "dark" ? "#475564" : "#94A3B0"}
-      guide={surface === "dark" ? "#222B35" : "#C8D3DC"}
+      paper={
+        surface === "dark"
+          ? "var(--phone-paper-dark)"
+          : "var(--phone-paper-light)"
+      }
+      ink={
+        surface === "dark" ? "var(--phone-ink-dark)" : "var(--phone-ink-light)"
+      }
+      guide={
+        surface === "dark"
+          ? "var(--phone-guide-dark)"
+          : "var(--phone-guide-light)"
+      }
     >
       <div className="relative flex size-full flex-col items-center justify-end px-4 pb-4">
         <img
@@ -443,8 +443,8 @@ function IconPreviewStage({
               variant="ghost"
               aria-label="Previous icon"
               disabled={!hasPrevious}
-              className="relative transition-transform duration-100 ease-out before:absolute before:-inset-2 before:content-[''] active:scale-[0.95]"
-              onClick={() => triggerStep("previous", false)}
+              className="relative transition-transform duration-150 ease-out before:absolute before:-inset-2 before:content-[''] active:scale-[0.97]"
+              onClick={() => triggerStep("previous")}
             >
               <ChevronLeftIcon />
             </Button>
@@ -454,8 +454,8 @@ function IconPreviewStage({
               variant="ghost"
               aria-label="Next icon"
               disabled={!hasNext}
-              className="relative transition-transform duration-100 ease-out before:absolute before:-inset-2 before:content-[''] active:scale-[0.95]"
-              onClick={() => triggerStep("next", false)}
+              className="relative transition-transform duration-150 ease-out before:absolute before:-inset-2 before:content-[''] active:scale-[0.97]"
+              onClick={() => triggerStep("next")}
             >
               <ChevronRightIcon />
             </Button>
@@ -468,9 +468,9 @@ function IconPreviewStage({
         className={cn(
           "relative flex min-h-60 flex-1 items-stretch justify-center overflow-hidden bg-size-[14px_14px] bg-center px-1 pt-2 pb-0.5 transition-colors sm:min-h-68",
           surface === "light" &&
-            "bg-zinc-50 bg-[radial-gradient(rgb(0_0_0/0.14)_1px,transparent_1px)] text-zinc-950 [--accent-foreground:oklch(0.21_0.006_285.885)] [--accent:oklch(0.967_0.001_286.375)] [--background:oklch(1_0_0)] [--border:oklch(0.92_0.004_286.32)] [--foreground:oklch(0.141_0.005_285.823)] [--muted-foreground:oklch(0.552_0.016_285.938)] [--muted:oklch(0.967_0.001_286.375)]",
+            "bg-surface text-foreground [--accent-foreground:oklch(0.21_0.006_285.885)] [--accent:oklch(0.967_0.001_286.375)] [--background:oklch(1_0_0)] [--border:oklch(0.92_0.004_286.32)] [--foreground:oklch(0.141_0.005_285.823)] [--muted-foreground:oklch(0.552_0.016_285.938)] [--muted:oklch(0.967_0.001_286.375)]",
           surface === "dark" &&
-            "bg-zinc-950 bg-[radial-gradient(rgb(255_255_255/0.16)_1px,transparent_1px)] text-zinc-50 [--accent-foreground:oklch(0.985_0_0)] [--accent:oklch(0.274_0.006_286.033)] [--background:oklch(0.141_0.005_285.823)] [--border:oklch(0.274_0.006_286.033)] [--foreground:oklch(0.985_0_0)] [--muted-foreground:oklch(0.705_0.015_286.067)] [--muted:oklch(0.274_0.006_286.033)]"
+            "bg-background text-foreground [--accent-foreground:oklch(0.985_0_0)] [--accent:oklch(0.274_0.006_286.033)] [--background:oklch(0.141_0.005_285.823)] [--border:oklch(0.274_0.006_286.033)] [--foreground:oklch(0.985_0_0)] [--muted-foreground:oklch(0.705_0.015_286.067)] [--muted:oklch(0.274_0.006_286.033)]"
         )}
       >
         {canSwipeHorizontally ? (
@@ -479,7 +479,7 @@ function IconPreviewStage({
               <motion.div
                 aria-hidden="true"
                 style={{ opacity: prevHintOpacity }}
-                className="pointer-events-none absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full border border-border/60 bg-background/80 p-2 text-foreground shadow-sm backdrop-blur-md"
+                className="pointer-events-none absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full border border-border/60 bg-background/80 p-2 text-foreground backdrop-blur-md"
               >
                 <ChevronLeftIcon className="size-4" />
               </motion.div>
@@ -488,7 +488,7 @@ function IconPreviewStage({
               <motion.div
                 aria-hidden="true"
                 style={{ opacity: nextHintOpacity }}
-                className="pointer-events-none absolute top-1/2 right-3 z-20 -translate-y-1/2 rounded-full border border-border/60 bg-background/80 p-2 text-foreground shadow-sm backdrop-blur-md"
+                className="pointer-events-none absolute top-1/2 right-3 z-20 -translate-y-1/2 rounded-full border border-border/60 bg-background/80 p-2 text-foreground backdrop-blur-md"
               >
                 <ChevronRightIcon className="size-4" />
               </motion.div>

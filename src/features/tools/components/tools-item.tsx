@@ -35,7 +35,7 @@ export function ToolsItem({
       </div>
 
       <ArrowUpRightIcon
-        className="size-3.5 shrink-0 text-muted-foreground/30 transition-all duration-200 group-hover/tool-item:translate-x-0.5 group-hover/tool-item:-translate-y-0.5 group-hover/tool-item:text-foreground"
+        className="size-3.5 shrink-0 text-muted-foreground/30 transition-[color,transform] duration-200 ease-out group-hover/tool-item:translate-x-0.5 group-hover/tool-item:-translate-y-0.5 group-hover/tool-item:text-foreground"
         aria-hidden
       />
     </a>

@@ -64,7 +64,7 @@ export function Testimonials() {
       <div className="screen-line-bottom h-px" />
 
       <div className="flex items-center justify-center py-4">
-        <h2 className="text-center text-sm/none font-medium tracking-wide text-muted-foreground uppercase">
+        <h2 className="text-center text-sm/none font-medium text-muted-foreground">
           Trusted by top builders
         </h2>
       </div>
@@ -108,7 +108,7 @@ export function Testimonials() {
 
       <div className="screen-line-top flex justify-center py-4">
         <Button
-          className="gap-2 pr-2.5 pl-3 shadow-[inset_0_0_1px] shadow-foreground/20"
+          className="gap-2 border border-line pr-2.5 pl-3"
           variant="secondary"
           size="sm"
           nativeButton={false}
@@ -178,9 +178,9 @@ const TestimonialItem = memo(function TestimonialItem({
 }: TestimonialType & { className?: string; showIcon?: boolean }) {
   return (
     <Testimonial className={cn("group/testimonial relative", className)}>
-      <TestimonialQuote className="font-serif text-base">
+      <TestimonialQuote className="font-sans text-base">
         <p>
-          <Twemoji className="grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] group-hover/testimonial:grayscale-0 group-has-focus-visible/testimonial:grayscale-0">
+          <Twemoji className="grayscale transition-[filter] duration-200 ease-out group-hover/testimonial:grayscale-0 group-has-focus-visible/testimonial:grayscale-0">
             {quote}
           </Twemoji>
         </p>

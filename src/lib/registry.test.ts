@@ -8,6 +8,7 @@ import {
   fixImport,
   getFileTarget,
   normalizeAliasTarget,
+  rewriteDefaultExports,
 } from "@/lib/registry"
 
 type RegistryFile = z.infer<typeof registryItemFileSchema>
@@ -164,6 +165,42 @@ describe("fixFilePaths", () => {
 
   it("returns [] for undefined files", () => {
     expect(fixFilePaths(undefined as unknown as RegistryFiles)).toEqual([])
+  })
+
+  it("returns [] for empty files array", () => {
+    expect(fixFilePaths([])).toEqual([])
+  })
+})
+
+describe("rewriteDefaultExports", () => {
+  it("rewrites default function, async function, and class exports to named exports", () => {
+    expect(rewriteDefaultExports("export default function Demo() {}")).toBe(
+      "export function Demo() {}"
+    )
+    expect(
+      rewriteDefaultExports("export default async function Page() {}")
+    ).toBe("export async function Page() {}")
+    expect(rewriteDefaultExports("export default class Widget {}")).toBe(
+      "export class Widget {}"
+    )
+  })
+
+  it("preserves bare identifier default exports", () => {
+    expect(rewriteDefaultExports("export default MorphingPill")).toBe(
+      "export default MorphingPill"
+    )
+    expect(rewriteDefaultExports("export default regex")).toBe(
+      "export default regex"
+    )
+  })
+
+  it("leaves registry:page files unchanged", () => {
+    expect(
+      rewriteDefaultExports(
+        "export default function Page() {}",
+        "registry:page"
+      )
+    ).toBe("export default function Page() {}")
   })
 })
 

@@ -47,7 +47,7 @@ export function SiteFooterCad() {
 
         <div className="relative">
           <div className="screen-line-bottom flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 px-4 py-3">
-            <span className="text-3xl/none font-medium text-background [-webkit-text-stroke:1px_var(--foreground)] [paint-order:stroke_fill]">
+            <span className="text-2xl/none font-medium text-background [-webkit-text-stroke:1px_var(--foreground)] [paint-order:stroke_fill]">
               {SITE_TITLE}
             </span>
             <span className="text-sm text-muted-foreground">
@@ -200,8 +200,8 @@ export function SiteFooterCad() {
 
             <Field label="Approved by">
               <div className="flex h-full flex-col justify-end gap-2">
-                <NarakCodeSignature className="w-36 max-w-full self-start text-blue-900 dark:text-foreground" />
-                <span className="border-t border-line pt-2 font-sans text-sm/none font-medium tracking-wide uppercase">
+                <NarakCodeSignature className="w-36 max-w-full self-start text-foreground" />
+                <span className="border-t border-line pt-2 font-sans text-sm/none font-medium">
                   {USER.displayName}
                 </span>
               </div>
@@ -264,9 +264,7 @@ function Field({
         className
       )}
     >
-      <dt className="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">
-        {label}
-      </dt>
+      <dt className="text-xs/4 font-medium text-muted-foreground">{label}</dt>
       <dd className="flex-1 text-sm">{children}</dd>
     </div>
   )

@@ -26,8 +26,8 @@ const svgVariants: Variants = {
 }
 
 const svgTransition: Transition = {
-  duration: 1.2,
-  ease: "easeInOut",
+  duration: 0.25,
+  ease: [0.23, 1, 0.32, 1],
 }
 
 export function MoonIcon({

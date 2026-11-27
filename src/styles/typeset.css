@@ -56,7 +56,7 @@
     &:where(h1, h2, h3, h4, h5, h6) {
       color: var(--color-foreground, currentColor);
       font-family: var(--typeset-font-heading);
-      font-weight: 600;
+      font-weight: 500;
       margin-block-end: 0;
     }
     &:where(h1) {
@@ -87,13 +87,11 @@
       margin-block-start: calc(var(--typeset-flow) / 0.875);
     }
     &:where(h6) {
-      font-size: 0.8125em;
+      font-size: 0.875em;
       line-height: 1.5;
       font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
       color: var(--typeset-muted);
-      margin-block-start: calc(var(--typeset-flow) / 0.8125);
+      margin-block-start: calc(var(--typeset-flow) / 0.875);
     }
     /* Anchors. */
     &:where([id]) {
@@ -137,10 +135,10 @@
 
     /* Inline semantics. */
     &:where(strong, b) {
-      font-weight: 600;
+      font-weight: 500;
     }
     &:where(:is(h1, h2, h3, h4) :is(strong, b)) {
-      font-weight: 600;
+      font-weight: 500;
     }
     &:where(mark) {
       background-color: color-mix(

@@ -72,7 +72,7 @@ function AvatarLayer({ className, ...props }: React.ComponentProps<"div">) {
       //
       // Ref: https://paco.me/writing/disable-theme-transitions
       className={cn(
-        "absolute inset-0 opacity-0 transition-opacity! duration-1200 ease-[cubic-bezier(0.42,0,0.58,1)]",
+        "absolute inset-0 opacity-0 transition-opacity! duration-200 ease-out",
         className
       )}
       {...props}

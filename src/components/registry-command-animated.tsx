@@ -49,7 +49,7 @@ export function RegistryCommandAnimated() {
           setPackageManager(value as PackageManager)
         }}
       >
-        <div className="px-4 shadow-[inset_0_-1px_0_0] shadow-line">
+        <div className="border-b border-line px-4">
           <TabsList className="h-10 rounded-none bg-transparent p-0 inset-ring-0 dark:bg-transparent [&_svg]:size-4 [&_svg]:text-muted-foreground">
             <IconSwap>
               <IconSwapItem className="mr-2" key={packageManager}>

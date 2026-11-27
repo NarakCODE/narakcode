@@ -18,15 +18,12 @@ import {
 } from "@/components/ui/context-menu"
 import { toast } from "@/components/ui/toast"
 import { FastLink } from "@/components/fast-link"
-import { useTheme } from "@/components/theme-provider"
 import { USER } from "@/features/portfolio/data/user"
 
 import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
 import { getWordmarkSVG } from "./chanhdai-wordmark"
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
-  const { resolvedTheme } = useTheme()
-
   return (
     <ContextMenu>
       <ContextMenuTrigger>{children}</ContextMenuTrigger>
@@ -41,7 +38,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
 
         <ContextMenuItem
           onClick={() => {
-            const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff")
+            const svg = getMarkSVG()
             copyText(svg)
             toast.add({ type: "success", title: "Copied Mark as SVG" })
           }}
@@ -52,9 +49,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
 
         <ContextMenuItem
           onClick={() => {
-            const svg = getWordmarkSVG(
-              resolvedTheme === "light" ? "#000" : "#fff"
-            )
+            const svg = getWordmarkSVG()
             copyText(svg)
             toast.add({ type: "success", title: "Copied Logotype as SVG" })
           }}

@@ -18,7 +18,7 @@ export function ProfileTaglines({
   return (
     <div ref={ref} {...props}>
       <TextSwap
-        className="font-mono text-sm text-balance text-muted-foreground"
+        className="font-sans text-sm text-balance text-muted-foreground"
         interval={3}
         play={isPageInView && isInView}
       >

@@ -111,8 +111,7 @@ function Item({
       <CollapsibleTrigger className="not-prose relative flex w-full flex-row items-center rounded-lg px-3 py-2 text-start text-sm inset-ring-border outline-none group-data-open/type-item:rounded-b-none group-data-open/type-item:inset-ring-1 hover:bg-accent focus-visible:inset-ring-1 focus-visible:inset-ring-ring/50 dark:hover:bg-[color-mix(in_oklab,var(--accent)_60%,var(--surface))] [&_svg]:size-4">
         <code
           className={cn(
-            "[--shiki-dark:#FFF] [--shiki-light:#6F42C1]",
-            "w-1/4 min-w-fit shrink-0 pr-2 font-mono text-(--shiki-light) dark:text-(--shiki-dark)",
+            "w-1/4 min-w-fit shrink-0 pr-2 font-mono text-foreground",
             deprecated && "line-through opacity-50"
           )}
         >
@@ -162,12 +161,7 @@ function Item({
               <div className="grid gap-3">
                 {parameters.map((param) => (
                   <div key={param.name} className="flex flex-col gap-1.5">
-                    <code
-                      className={cn(
-                        "[--shiki-dark:#FFF] [--shiki-light:#E36209]",
-                        "not-prose text-(--shiki-light) dark:text-(--shiki-dark)"
-                      )}
-                    >
+                    <code className="not-prose text-foreground">
                       {param.name}
                     </code>
                     <CustomProse>{param.description}</CustomProse>
@@ -200,7 +194,7 @@ function CustomProse({ className, ...props }: ComponentProps<typeof Prose>) {
   return (
     <Prose
       className={cn(
-        "prose-sm prose-no-margin prose-code:py-[1.5px] prose-code:text-[.8125rem]",
+        "prose-sm prose-no-margin prose-code:py-[1.5px] prose-code:text-xs",
         className
       )}
       {...props}

@@ -38,7 +38,7 @@ export function GitHubStars({ repo, stargazersCount }: GitHubStarsProps) {
                 </svg>
 
                 <span
-                  className="text-[0.8125rem]/none text-muted-foreground tabular-nums"
+                  className="text-xs/none text-muted-foreground tabular-nums"
                   style={{ textBox: "trim-end cap alphabetic" }}
                 >
                   {formatCompactNumber(stargazersCount)}

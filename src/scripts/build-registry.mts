@@ -46,6 +46,12 @@ export const Index: Record<string, any> = {`
       ? componentFilePath.replace("src/", "@/")
       : `@/registry/${componentFilePath}`
 
+    const pascalName = item.name
+      .split("-")
+      .filter(Boolean)
+      .map((part) => part[0].toUpperCase() + part.slice(1))
+      .join("")
+
     index += `
   "${item.name}": {
     name: "${item.name}",
@@ -63,7 +69,22 @@ export const Index: Record<string, any> = {`
     })}],
     component: React.lazy(async () => {
       const mod = await import("${componentPath}")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${item.name}"
+      const exportName =
+        (typeof mod["${pascalName}"] === "function" || typeof mod["${pascalName}"] === "object"
+          ? "${pascalName}"
+          : undefined) ||
+        (typeof mod["${pascalName}Root"] === "function" || typeof mod["${pascalName}Root"] === "object"
+          ? "${pascalName}Root"
+          : undefined) ||
+        Object.keys(mod).find(
+          (key) =>
+            /^[A-Z]/.test(key) &&
+            (typeof mod[key] === "function" || typeof mod[key] === "object")
+        ) ||
+        Object.keys(mod).find(
+          (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) ||
+        "${item.name}"
       return { default: mod.default || mod[exportName] }
     }),
     categories: ${JSON.stringify(item.categories)},

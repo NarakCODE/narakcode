@@ -11,6 +11,7 @@ export const components: Registry["items"] = [
       {
         path: "components/pin-list/pin-list.tsx",
         type: "registry:component",
+        target: "@components/pin-list/pin-list.tsx",
       },
     ],
   },
@@ -23,6 +24,7 @@ export const components: Registry["items"] = [
       {
         path: "components/morphing-pill/morphing-pill.tsx",
         type: "registry:component",
+        target: "@components/morphing-pill/morphing-pill.tsx",
       },
     ],
   },
@@ -38,6 +40,7 @@ export const components: Registry["items"] = [
       {
         path: "components/dropdrawer/dropdrawer.tsx",
         type: "registry:component",
+        target: "@components/dropdrawer/dropdrawer.tsx",
       },
     ],
     categories: ["menus", "navigation"],
@@ -491,8 +494,8 @@ export const components: Registry["items"] = [
       },
       {
         path: "src/components/ui/tabs.tsx",
-        type: "registry:component",
-        target: "@components/tabs.tsx",
+        type: "registry:ui",
+        target: "@ui/tabs.tsx",
       },
     ],
     cssVars: {

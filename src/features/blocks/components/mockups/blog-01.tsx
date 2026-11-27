@@ -9,7 +9,7 @@ export function Blog01Mockup() {
         {Array.from({ length: 6 }).map((_, i) => (
           <div
             key={i}
-            className="flex flex-col gap-1 rounded-sm bg-card p-1 shadow-xs ring-1 ring-foreground/10 dark:ring-border"
+            className="flex flex-col gap-1 rounded-sm bg-card p-1 ring-1 ring-foreground/10 dark:ring-border"
           >
             <Box className="aspect-2/1 w-full" />
             <Bar className="h-0.75 w-1/2" />
