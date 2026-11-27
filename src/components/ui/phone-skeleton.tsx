@@ -3,9 +3,9 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 // iPhone 18 Pro Max geometry in mm: body 78.0 x 163.4 mm, 6.9" display 2868 x 1320 px @ 460 ppi
-const DEFAULT_PAPER = "#EEF1F3"
-const DEFAULT_INK = "#14303F"
-const DEFAULT_GUIDE = "#8DA3B1"
+const DEFAULT_PAPER = "var(--surface)"
+const DEFAULT_INK = "var(--foreground)"
+const DEFAULT_GUIDE = "var(--border)"
 
 const W = 78
 const H = 163.4

@@ -48,6 +48,7 @@
     {
       "name": "use-controllable-state",
       "title": "useControllableState",
+      "description": "Hook for managing controlled and uncontrolled component state.",
       "files": [
         {
           "path": "src/registry/hooks/use-controllable-state/use-controllable-state.tsx",
@@ -70,7 +71,8 @@
       "files": [
         {
           "path": "src/registry/components/pin-list/pin-list.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "@components/pin-list/pin-list.tsx"
         }
       ],
       "type": "registry:component",
@@ -88,7 +90,8 @@
       "files": [
         {
           "path": "src/registry/components/morphing-pill/morphing-pill.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "@components/morphing-pill/morphing-pill.tsx"
         }
       ],
       "type": "registry:component",
@@ -111,7 +114,8 @@
       "files": [
         {
           "path": "src/registry/components/dropdrawer/dropdrawer.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "@components/dropdrawer/dropdrawer.tsx"
         }
       ],
       "categories": [
@@ -648,8 +652,8 @@
         },
         {
           "path": "src/components/ui/tabs.tsx",
-          "type": "registry:component",
-          "target": "@components/tabs.tsx"
+          "type": "registry:ui",
+          "target": "@ui/tabs.tsx"
         }
       ],
       "cssVars": {

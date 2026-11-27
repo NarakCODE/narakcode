@@ -46,7 +46,7 @@ export function AvatarElectricEffect({ children }: { children: JSX.Element }) {
     <ElectricBorder
       chaos={0.03}
       borderRadius={999}
-      color="#fbbf24"
+      color="var(--electric-avatar)"
       active={isHovered}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

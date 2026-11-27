@@ -3,22 +3,6 @@
 import type { CSSProperties, ReactNode } from "react"
 import React, { useCallback, useEffect, useRef } from "react"
 
-function hexToRgba(hex: string, alpha: number = 1): string {
-  if (!hex) return `rgba(0,0,0,${alpha})`
-  let h = hex.replace("#", "")
-  if (h.length === 3) {
-    h = h
-      .split("")
-      .map((c) => c + c)
-      .join("")
-  }
-  const int = parseInt(h, 16)
-  const r = (int >> 16) & 255
-  const g = (int >> 8) & 255
-  const b = int & 255
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`
-}
-
 interface ElectricBorderProps {
   children?: ReactNode
   color?: string
@@ -35,7 +19,7 @@ interface ElectricBorderProps {
 
 export const ElectricBorder: React.FC<ElectricBorderProps> = ({
   children,
-  color = "#5227FF",
+  color = "var(--info)",
   speed = 1,
   chaos = 0.12,
   borderRadius = 24,
@@ -283,7 +267,8 @@ export const ElectricBorder: React.FC<ElectricBorderProps> = ({
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.scale(dpr, dpr)
 
-      ctx.strokeStyle = color
+      const resolvedColor = getComputedStyle(canvas).color || color
+      ctx.strokeStyle = resolvedColor
       ctx.lineWidth = 1
       ctx.lineCap = "round"
       ctx.lineJoin = "round"
@@ -393,31 +378,19 @@ export const ElectricBorder: React.FC<ElectricBorderProps> = ({
       onMouseLeave={onMouseLeave}
     >
       <div
-        className="pointer-events-none absolute top-1/2 left-1/2 z-2 -translate-1/2 transition-opacity duration-300"
+        className="pointer-events-none absolute top-1/2 left-1/2 z-2 -translate-1/2 transition-opacity duration-200 ease-out"
         style={{ opacity: active ? 1 : 0 }}
       >
-        <canvas ref={canvasRef} className="block" />
+        <canvas ref={canvasRef} className="block" style={{ color }} />
       </div>
       <div
-        className="pointer-events-none absolute inset-0 z-1 rounded-[inherit] transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 z-1 rounded-[inherit] transition-opacity duration-200 ease-out"
         style={{ opacity: active ? 1 : 0 }}
       >
         <div
           className="pointer-events-none absolute inset-0 rounded-[inherit]"
           style={{
-            border: `2px solid ${hexToRgba(color, 0.6)}`,
-            filter: "blur(1px)",
-          }}
-        />
-        <div
-          className="pointer-events-none absolute inset-0 rounded-[inherit]"
-          style={{ border: `2px solid ${color}`, filter: "blur(4px)" }}
-        />
-        <div
-          className="pointer-events-none absolute inset-0 -z-1 scale-110 rounded-[inherit] opacity-30"
-          style={{
-            filter: "blur(32px)",
-            background: `linear-gradient(-30deg, ${color}, transparent, ${color})`,
+            border: `2px solid color-mix(in oklab, ${color} 60%, transparent)`,
           }}
         />
       </div>

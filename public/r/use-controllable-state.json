@@ -3,6 +3,7 @@
   "name": "use-controllable-state",
   "title": "useControllableState",
   "author": "NarakCODE <channarakluy@gmail.com>",
+  "description": "Hook for managing controlled and uncontrolled component state.",
   "files": [
     {
       "path": "src/registry/hooks/use-controllable-state/use-controllable-state.tsx",

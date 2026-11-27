@@ -454,6 +454,10 @@ export const examples: Registry["items"] = [
         path: "examples/theme-toggle-effect-demo.tsx",
         type: "registry:example",
       },
+      {
+        path: "examples/theme-toggle-effect-selector.tsx",
+        type: "registry:example",
+      },
     ],
   },
   {

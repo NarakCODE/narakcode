@@ -7,7 +7,7 @@ const content = `# About
 
 ${USER.about.trim()}
 
-## Personal Information
+## Personal information
 
 - First Name: ${USER.firstName}
 - Last Name: ${USER.lastName}
@@ -15,11 +15,11 @@ ${USER.about.trim()}
 - Location: ${USER.address}
 - Website: ${USER.website}
 
-## Social Links
+## Social links
 
 ${SOCIAL_LINKS.map((item) => `- [${item.title}](${item.href})`).join("\n")}
 
-## Tech Stack
+## Tech stack
 
 ${TECH_STACK.map((item) => `- [${item.title}](${item.href})`).join("\n")}\n`
 

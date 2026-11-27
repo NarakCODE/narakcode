@@ -16,12 +16,20 @@ export type PlanFeatureIconKey =
   | "youtube"
   | "storage"
 
+export type ModelLogoKey = "gemini" | "claude" | "openai"
+
+export interface PlanSubFeatureItem {
+  label: string
+  logo: ModelLogoKey
+}
+
 export interface PlanFeatureItem {
   id: string
   icon: PlanFeatureIconKey
   title: string
   summary: string
   description: string
+  subFeatures?: PlanSubFeatureItem[]
 }
 
 export const GEMINI_PLAN_FEATURES: PlanFeatureItem[] = [
@@ -52,14 +60,6 @@ export const GEMINI_PLAN_FEATURES: PlanFeatureItem[] = [
       "Higher access to Nano Banana, agentic capabilities, and more.",
   },
   {
-    id: "google-antigravity",
-    icon: "antigravity",
-    title: "Google Antigravity",
-    summary: "Entry rate limits to agent models in Google Antigravity.",
-    description:
-      "Entry rate limits to agent models in Google Antigravity, the agentic development platform.",
-  },
-  {
     id: "gemini-notebook",
     icon: "notebook",
     title: "Gemini Notebook",
@@ -88,6 +88,25 @@ export const GEMINI_PLAN_FEATURES: PlanFeatureItem[] = [
     title: "5 TB storage",
     summary: "5 TB of cloud storage across Gmail, Drive, and Photos.",
     description: "5 TB of cloud storage across Gmail, Drive, and Photos.",
+  },
+  {
+    id: "google-antigravity",
+    icon: "antigravity",
+    title: "Google Antigravity",
+    summary: "Entry rate limits to agent models in Google Antigravity.",
+    description:
+      "Entry rate limits to agent models in Google Antigravity, the agentic development platform.",
+    subFeatures: [
+      { label: "Gemini 4 Neon", logo: "gemini" },
+      { label: "Gemini 4 Carbon", logo: "gemini" },
+      { label: "Gemini 4 Argon", logo: "gemini" },
+      { label: "Gemini 4 Hydrogen", logo: "gemini" },
+      { label: "Orchestrator Gemini", logo: "gemini" },
+      { label: "Gemini 3.8 Flash", logo: "gemini" },
+      { label: "Claude Opus 5.5", logo: "claude" },
+      { label: "Claude Sonnet 5.5", logo: "claude" },
+      { label: "GPT-OSS 120B", logo: "openai" },
+    ],
   },
 ]
 

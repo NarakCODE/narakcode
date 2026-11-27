@@ -28,7 +28,7 @@ export function PageHeadingTagline({
     <div
       data-slot="page-heading-tagline"
       className={cn(
-        "px-4 pb-2 font-heading text-sm/none font-medium tracking-wider text-muted-foreground",
+        "px-4 pb-2 font-heading text-sm/none font-medium text-muted-foreground",
         className
       )}
       {...props}

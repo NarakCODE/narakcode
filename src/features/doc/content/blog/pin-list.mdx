@@ -1,7 +1,6 @@
 ---
 title: Pin List
 description: A playful list for pinning and unpinning items, with smooth animated transitions as items move between groups.
-image: /images/blog/pin-list-preview.png
 createdAt: 2025-06-21
 updatedAt: 2025-06-21
 ---
@@ -314,7 +313,7 @@ type PinListItem = {
 }
 ```
 
-## How It Works
+## How it works
 
 - **Layout Animations**: The component heavily relies on `motion/react` (specifically `<LayoutGroup>` and the `layout` prop) to smoothly animate items between the pinned and unpinned groups.
 - **Smart Z-Indexing**: When an item transitions between groups, it dynamically updates its `z-index` to ensure it floats above the rest of the list without clipping. The `zIndexResetDelay` ensures the stacking context resets right after the animation completes.

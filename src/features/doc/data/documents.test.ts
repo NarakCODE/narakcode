@@ -2,9 +2,11 @@ import { describe, expect, it } from "vitest"
 
 import {
   findNeighbour,
+  getAllDocs,
   getBlogPostBySlug,
   getBlogPostLanguages,
   getBlogPostUrl,
+  getDocBySlug,
 } from "@/features/doc/data/documents"
 import type { Doc } from "@/features/doc/types/document"
 
@@ -55,5 +57,26 @@ describe("localized blog posts", () => {
   it("keeps the English URL canonical and gives translations a language path", () => {
     expect(getBlogPostUrl(slug, "en")).toBe(`/blog/${slug}`)
     expect(getBlogPostUrl(slug, "km")).toBe(`/blog/${slug}/km`)
+  })
+})
+
+describe("doc metadata and slug lookup", () => {
+  it("normalizes createdAt and updatedAt to strings across all docs", () => {
+    const allDocs = getAllDocs()
+    expect(allDocs.length).toBeGreaterThan(0)
+
+    for (const doc of allDocs) {
+      expect(typeof doc.metadata.createdAt).toBe("string")
+      expect(typeof doc.metadata.updatedAt).toBe("string")
+      expect(doc.metadata.createdAt.length).toBeGreaterThan(0)
+      expect(doc.metadata.updatedAt.length).toBeGreaterThan(0)
+    }
+  })
+
+  it("scopes getDocBySlug when category is provided", () => {
+    expect(getDocBySlug("testimonials-marquee", "en", "components")?.slug).toBe(
+      "testimonials-marquee"
+    )
+    expect(getDocBySlug("testimonials-marquee", "en", "blog")).toBeUndefined()
   })
 })

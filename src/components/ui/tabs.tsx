@@ -20,7 +20,7 @@ function TabsList({ className, ...props }: TabsPrimitive.List.Props) {
       data-slot="tabs-list"
       className={cn(
         "relative z-0 flex h-8 w-fit items-center justify-center rounded-lg p-0.5",
-        "bg-zinc-50 text-muted-foreground dark:bg-zinc-900",
+        "bg-surface text-muted-foreground",
         "inset-ring-1 inset-ring-border/64",
         className
       )}
@@ -34,7 +34,7 @@ function TabsIndicator({ className, ...props }: TabsPrimitive.Indicator.Props) {
     <TabsPrimitive.Indicator
       data-slot="tabs-indicator"
       className={cn(
-        "absolute bottom-0 left-0 -z-1 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-(--active-tab-bottom) rounded-md bg-white transition-[width,translate] duration-200 ease-in-out dark:bg-muted",
+        "absolute bottom-0 left-0 -z-1 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-(--active-tab-bottom) rounded-md bg-background transition-[width,translate] duration-200 ease-in-out dark:bg-muted",
         "inset-ring-1 inset-ring-foreground/10 dark:inset-ring-foreground/6",
         className
       )}

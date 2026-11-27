@@ -92,7 +92,7 @@ export function CurrentLocalTimeItem({ timeZone }: CurrentLocalTimeItemProps) {
 }
 
 function MorphText({ id, value }: { id: string; value: string }) {
-  const { ref, update } = useTextMorph({ duration: 600 })
+  const { ref, update } = useTextMorph({ duration: 200 })
 
   // The first value adopts the text painted by the inline script, unanimated.
   useEffect(() => {

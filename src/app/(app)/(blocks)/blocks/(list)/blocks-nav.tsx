@@ -35,7 +35,7 @@ export function BlocksNav() {
               key={href}
               href={href}
               aria-current={isActive ? "page" : undefined}
-              className="border-r border-line p-4 font-mono text-[.8125rem]/4 font-medium tracking-wide text-muted-foreground uppercase transition-[color,background-color] ease-out hover:bg-accent-muted aria-[current=page]:bg-accent-muted aria-[current=page]:text-foreground"
+              className="border-r border-line p-4 font-sans text-sm/4 font-medium text-muted-foreground transition-[color,background-color] ease-out hover:bg-accent-muted aria-[current=page]:bg-accent-muted aria-[current=page]:text-foreground"
             >
               {title}
             </FastLink>

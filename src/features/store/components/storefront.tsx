@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useRef, useState } from "react"
 import {
   BookOpenIcon,
   ClapperboardIcon,
@@ -11,29 +11,34 @@ import {
   SearchIcon,
   SparklesIcon,
 } from "lucide-react"
+import { SiGooglegemini } from "react-icons/si"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import {
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import {
-  Collapsible,
-  CollapsibleChevronsUpDownIcon,
-} from "@/components/collapsible-animated"
+import { ClaudeIcon, OpenAIIcon } from "@/components/icons"
 import {
   PageHeading,
   PageHeadingDescription,
   PageHeadingTitle,
 } from "@/components/page-heading"
+import {
+  createLightboxHandle,
+  Lightbox,
+  LightboxClose,
+  LightboxContent,
+  LightboxHeader,
+  LightboxItem,
+  LightboxSlide,
+  LightboxSlides,
+} from "@/registry/components/lightbox"
 
 import {
   buildDeliveredGoogleAccount,
   GEMINI_LOGO_URL,
   GEMINI_PLAN_FEATURES,
   GEMINI_SEAT_LISTINGS,
+  type ModelLogoKey,
   type PlanFeatureIconKey,
 } from "../data"
 import {
@@ -46,7 +51,8 @@ import {
   type PricedSeatListing,
   type PurchaseReceipt,
 } from "../types"
-import { CheckoutPopup } from "./checkout-popup"
+import { LightboxDeliveredView, LightboxPaymentView } from "./checkout-popup"
+import { StoreCardAsciiBackground } from "./store-card-ascii-background"
 import { StoreSkyBackground } from "./store-sky-background"
 
 interface StorefrontProps {
@@ -80,16 +86,123 @@ function FeatureIcon({
   }
 }
 
+function ModelLogo({
+  logo,
+  className,
+}: {
+  logo: ModelLogoKey
+  className?: string
+}) {
+  switch (logo) {
+    case "gemini":
+      return <SiGooglegemini className={className} aria-hidden />
+    case "claude":
+      return <ClaudeIcon className={className} aria-hidden />
+    case "openai":
+      return <OpenAIIcon className={className} aria-hidden />
+  }
+}
+
 export function Storefront({ initialNowIso }: StorefrontProps) {
   const evaluatedAtMs = useMemo(
     () => new Date(initialNowIso).getTime(),
     [initialNowIso]
   )
-  const [activeSeatId, setActiveSeatId] = useState<string | null>(null)
+  const [lightboxStep, setLightboxStep] = useState<
+    "overview" | "payment" | "delivered"
+  >("overview")
   const [purchaseCountBySeat, setPurchaseCountBySeat] = useState<
     Record<string, number>
   >({})
   const [receipt, setReceipt] = useState<PurchaseReceipt | null>(null)
+  const lightboxHandle = useMemo(() => createLightboxHandle(), [])
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const slideSurfaceRefs = useRef<(HTMLDivElement | null)[]>([])
+  const slideContentRefs = useRef<(HTMLDivElement | null)[]>([])
+  const activeAnimationsRef = useRef<Animation[]>([])
+
+  function openOverviewFromCard(index: number) {
+    setLightboxStep("overview")
+    setReceipt(null)
+    const rect = cardRefs.current[index]?.getBoundingClientRect()
+    lightboxHandle.open(index)
+
+    requestAnimationFrame(() => {
+      const surfaceEl = slideSurfaceRefs.current[index]
+      const contentEl = slideContentRefs.current[index]
+      if (!surfaceEl) return
+
+      for (const anim of activeAnimationsRef.current) {
+        anim.cancel()
+      }
+      activeAnimationsRef.current = []
+
+      const reduced =
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false
+      const easeOut = "cubic-bezier(0.23, 1, 0.32, 1)"
+
+      if (reduced || !rect) {
+        activeAnimationsRef.current.push(
+          surfaceEl.animate([{ opacity: 0 }, { opacity: 1 }], {
+            duration: 160,
+            easing: easeOut,
+            fill: "none",
+          })
+        )
+        return
+      }
+
+      const vw = window.innerWidth
+      const vh = window.innerHeight
+      const top = Math.max(0, Math.round(rect.top))
+      const right = Math.max(0, Math.round(vw - rect.right))
+      const bottom = Math.max(0, Math.round(vh - rect.bottom))
+      const left = Math.max(0, Math.round(rect.left))
+
+      activeAnimationsRef.current.push(
+        surfaceEl.animate(
+          [
+            {
+              clipPath: `inset(${top}px ${right}px ${bottom}px ${left}px round 12px)`,
+              opacity: 0.92,
+            },
+            {
+              clipPath: "inset(0px 0px 0px 0px round 0px)",
+              opacity: 1,
+            },
+          ],
+          {
+            duration: 260,
+            easing: easeOut,
+            fill: "none",
+          }
+        )
+      )
+
+      if (contentEl) {
+        activeAnimationsRef.current.push(
+          contentEl.animate(
+            [
+              {
+                opacity: 0,
+                transform: "translateY(10px) scale(0.98)",
+              },
+              {
+                opacity: 1,
+                transform: "translateY(0px) scale(1)",
+              },
+            ],
+            {
+              duration: 220,
+              delay: 40,
+              easing: easeOut,
+              fill: "backwards",
+            }
+          )
+        )
+      }
+    })
+  }
 
   // Order ascending by remaining weeks ($0.50 -> $5.00) for clear weekly value progression.
   const accounts = useMemo<PricedSeatListing[]>(() => {
@@ -109,18 +222,9 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
       )
   }, [evaluatedAtMs])
 
-  const activeAccount = useMemo(
-    () => accounts.find((account) => account.id === activeSeatId) ?? null,
-    [accounts, activeSeatId]
-  )
-
-  function handleOpenAccount(account: PricedSeatListing) {
-    setReceipt(null)
-    setActiveSeatId(account.id)
-  }
-
-  function handleClosePopup() {
-    setActiveSeatId(null)
+  function handleCloseLightbox() {
+    lightboxHandle.close()
+    setLightboxStep("overview")
     setReceipt(null)
   }
 
@@ -165,6 +269,7 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
       delivered_account: deliveredAccount,
       created_at_utc: purchaseTime.toISOString(),
     })
+    setLightboxStep("delivered")
   }
 
   return (
@@ -190,12 +295,8 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
         className="screen-line-bottom"
       >
         <div className="grid grid-cols-1 divide-y divide-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
-          {accounts.map((account) => {
+          {accounts.map((account, index) => {
             const q = account.quote
-            const remainingPercent = Math.max(
-              4,
-              Math.round((q.billable_weeks / q.total_weeks) * 100)
-            )
 
             return (
               <div
@@ -206,18 +307,27 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
                 )}
               >
                 {/* Google AI Pro Banner Card with ASCII Artwork Background */}
-                <Card className="relative h-56 gap-0 bg-foreground p-5 text-white shadow-none ring-black/10 dark:ring-white/15">
+                <Card
+                  ref={(el) => {
+                    cardRefs.current[index] = el
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View ${account.label} details`}
+                  onClick={() => openOverviewFromCard(index)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault()
+                      openOverviewFromCard(index)
+                    }
+                  }}
+                  className="relative h-56 cursor-pointer touch-manipulation gap-0 bg-foreground p-5 text-white shadow-none ring-black/10 transition-transform duration-150 ease-out [-webkit-tap-highlight-color:transparent] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-[0.97] dark:ring-white/15 [@media(hover:hover)_and_(pointer:fine)]:hover:ring-white/30"
+                >
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0"
+                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
                   >
-                    <img
-                      src={account.backgroundImage}
-                      alt=""
-                      loading="eager"
-                      decoding="async"
-                      className="size-full object-cover select-none"
-                    />
+                    <StoreCardAsciiBackground />
                     <div className="absolute inset-0 bg-black/35" />
                   </div>
 
@@ -237,31 +347,15 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
                     </div>
 
                     <div>
-                      <div className="flex items-baseline justify-between gap-2">
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-2xl font-medium tracking-tight text-white tabular-nums">
-                            {formatUsd(q.final_usd)}
-                          </span>
-                          {q.discount_percent_off_default > 0 && (
-                            <span className="text-sm text-white/65 tabular-nums line-through">
-                              {formatUsd(
-                                DEFAULT_PRICING_CONFIG.default_retail_price_usd
-                              )}
-                            </span>
-                          )}
-                        </div>
-
-                        {q.floor_applied ? (
-                          <span className="inline-flex rounded-full bg-black/55 px-2.5 py-0.5 text-xs font-medium text-white backdrop-blur-xs">
-                            Floor price
-                          </span>
-                        ) : q.discount_percent_off_default > 0 ? (
-                          <span className="inline-flex rounded-full bg-black/55 px-2.5 py-0.5 text-xs font-medium text-white tabular-nums backdrop-blur-xs">
-                            Save {Math.round(q.discount_percent_off_default)}%
-                          </span>
-                        ) : (
-                          <span className="text-xs text-white/80">
-                            Full term
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-2xl font-medium tracking-tight text-white tabular-nums">
+                          {formatUsd(q.final_usd)}
+                        </span>
+                        {q.discount_percent_off_default > 0 && (
+                          <span className="text-sm text-white/65 tabular-nums line-through">
+                            {formatUsd(
+                              DEFAULT_PRICING_CONFIG.default_retail_price_usd
+                            )}
                           </span>
                         )}
                       </div>
@@ -273,30 +367,19 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
                         </span>
                         <span>{formatKhr(q.final_khr)}</span>
                       </div>
-
-                      <div
-                        aria-hidden
-                        className="mt-2 h-1 w-full overflow-hidden rounded-full bg-white/25"
-                      >
-                        <div
-                          className="h-full rounded-full bg-white"
-                          style={{ width: `${remainingPercent}%` }}
-                        />
-                      </div>
                     </div>
                   </div>
                 </Card>
 
-                {/* Full-Width System Disabled Button */}
+                {/* Full-Width Buy Now Button */}
                 <Button
                   type="button"
                   size="lg"
-                  disabled
-                  onClick={() => handleOpenAccount(account)}
-                  aria-label={`${account.shortLabel} (${q.billable_weeks} weeks left) — coming soon`}
+                  onClick={() => openOverviewFromCard(index)}
+                  aria-label={`Buy ${account.shortLabel} (${q.billable_weeks} weeks left)`}
                   className="mt-3.5 w-full"
                 >
-                  Coming soon
+                  Buy now
                 </Button>
               </div>
             )
@@ -304,74 +387,217 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
         </div>
       </section>
 
-      {/* Shared Collapsible Included Features (collapsed by default) */}
-      <section aria-label="Included features" className="screen-line-bottom">
-        <Collapsible defaultOpen={false} className="group/features">
-          <CollapsibleTrigger className="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left transition-colors duration-150 hover:bg-accent-muted/50 sm:px-5">
-            <div className="min-w-0">
-              <div className="text-sm font-medium text-foreground">
-                What&apos;s included in every account
-              </div>
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                Everything in Free, plus {GEMINI_PLAN_FEATURES.length} Google AI
-                Pro features
-              </p>
-            </div>
+      {/* Unified product overview, KHQR payment & handover Lightbox */}
+      <Lightbox
+        handle={lightboxHandle}
+        onOpenChange={(open) => {
+          if (!open) {
+            setLightboxStep("overview")
+            setReceipt(null)
+          }
+        }}
+      >
+        <LightboxContent
+          aria-label="Google AI Pro account overview"
+          className="[--lightbox-vt-duration:180ms]"
+        >
+          <LightboxSlides
+            aria-label="Available accounts"
+            aria-roledescription="carousel"
+          >
+            {accounts.map((account, index) => {
+              const q = account.quote
 
-            <span className="inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <span className="group-data-open/features:hidden">
-                Show features
-              </span>
-              <span className="hidden group-data-open/features:inline">
-                Hide features
-              </span>
-              <CollapsibleChevronsUpDownIcon
-                duration={0.15}
-                className="size-4 text-muted-foreground"
-              />
-            </span>
-          </CollapsibleTrigger>
+              return (
+                <LightboxSlide key={account.id} className="p-0">
+                  <LightboxItem
+                    index={index}
+                    caption={account.label}
+                    aria-roledescription="slide"
+                    aria-label={`${index + 1} of ${accounts.length}`}
+                    className="size-full"
+                  >
+                    <div
+                      ref={(el) => {
+                        slideSurfaceRefs.current[index] = el
+                      }}
+                      className="relative size-full overflow-hidden bg-foreground"
+                    >
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0"
+                      >
+                        <StoreCardAsciiBackground />
+                        <div className="absolute inset-0 bg-black/80" />
+                      </div>
 
-          <CollapsibleContent className="h-(--collapsible-panel-height) overflow-hidden transition-[height,opacity] duration-200 ease-out data-ending-style:h-0 data-ending-style:opacity-0 data-starting-style:h-0 data-starting-style:opacity-0">
-            <ul className="grid grid-cols-1 divide-y divide-line border-t border-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
-              {GEMINI_PLAN_FEATURES.map((feature, index) => (
-                <li
-                  key={feature.id}
-                  className={cn(
-                    "flex items-start gap-2.5 p-4 text-xs sm:px-5",
-                    "sm:odd:border-r sm:odd:border-line",
-                    index < GEMINI_PLAN_FEATURES.length - 2 &&
-                      "sm:border-b sm:border-line",
-                    "lg:not-nth-[4n]:border-r lg:not-nth-[4n]:border-line lg:odd:border-r-0",
-                    index < 4 ? "lg:border-b lg:border-line" : "lg:border-b-0"
-                  )}
-                >
-                  <FeatureIcon
-                    icon={feature.icon}
-                    className="mt-0.5 size-3.5 shrink-0 text-muted-foreground"
-                  />
-                  <div className="min-w-0">
-                    <div className="font-medium text-foreground">
-                      {feature.title}
+                      <div
+                        ref={(el) => {
+                          slideContentRefs.current[index] = el
+                        }}
+                        className="relative z-1 flex size-full flex-col overflow-y-auto pt-(--lb-inset-top) text-left text-white"
+                      >
+                        {lightboxStep === "delivered" &&
+                        receipt &&
+                        receipt.seat.id === account.id ? (
+                          <LightboxDeliveredView
+                            receipt={receipt}
+                            onDone={handleCloseLightbox}
+                          />
+                        ) : lightboxStep === "payment" ? (
+                          <LightboxPaymentView
+                            seat={account}
+                            onBack={() => setLightboxStep("overview")}
+                            onCompletePurchase={handleCompletePurchase}
+                          />
+                        ) : (
+                          <>
+                            <div className="shrink-0 px-4 py-6 sm:px-8 sm:py-10 md:px-20">
+                              <div className="mx-auto max-w-5xl">
+                                <div className="flex items-center gap-3">
+                                  <img
+                                    src={GEMINI_LOGO_URL}
+                                    alt=""
+                                    aria-hidden
+                                    width={36}
+                                    height={36}
+                                    className="size-8 shrink-0 object-contain select-none sm:size-9"
+                                  />
+                                  <h2 className="text-xl/tight font-medium tracking-tight text-white sm:text-4xl/tight sm:tracking-[-0.02em]">
+                                    {account.label}
+                                  </h2>
+                                </div>
+                                <p className="mt-1.5 text-sm text-white/80">
+                                  {account.tier}
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="border-y border-white/15 bg-black/30 px-4 sm:px-8 md:px-20">
+                              <dl className="mx-auto grid max-w-5xl grid-cols-2 text-xs sm:grid-cols-4">
+                                <div className="border-r border-b border-white/15 py-3.5 pr-4 sm:border-b-0">
+                                  <dt className="text-white/65">Remaining</dt>
+                                  <dd className="mt-0.5 font-medium text-white tabular-nums">
+                                    {q.billable_weeks}{" "}
+                                    {q.billable_weeks === 1 ? "week" : "weeks"}{" "}
+                                    ({q.billable_days}d)
+                                  </dd>
+                                </div>
+                                <div className="border-b border-white/15 py-3.5 pl-4 sm:border-r sm:border-b-0 sm:px-4">
+                                  <dt className="text-white/65">Region</dt>
+                                  <dd className="mt-0.5 font-medium text-white">
+                                    {account.region}
+                                  </dd>
+                                </div>
+                                <div className="border-r border-white/15 py-3.5 pr-4 sm:px-4">
+                                  <dt className="text-white/65">SKU</dt>
+                                  <dd className="mt-0.5 font-medium text-white tabular-nums">
+                                    {account.sku}
+                                  </dd>
+                                </div>
+                                <div className="py-3.5 pl-4">
+                                  <dt className="text-white/65">Stock</dt>
+                                  <dd className="mt-0.5 font-medium text-white tabular-nums">
+                                    {account.stock} available
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+
+                            <div className="flex-1 px-4 py-6 sm:px-8 md:px-20">
+                              <div className="mx-auto max-w-5xl">
+                                <h3 className="text-xs font-medium text-white/70">
+                                  Included in this account
+                                </h3>
+                                <ul className="mt-4 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+                                  {GEMINI_PLAN_FEATURES.map((feature) => (
+                                    <li
+                                      key={feature.id}
+                                      className="flex items-start gap-2.5 text-xs"
+                                    >
+                                      <FeatureIcon
+                                        icon={feature.icon}
+                                        className="mt-0.5 size-3.5 shrink-0 text-white/75"
+                                      />
+                                      <div className="min-w-0">
+                                        <div className="font-medium text-white">
+                                          {feature.title}
+                                        </div>
+                                        <p className="mt-0.5 text-white/75">
+                                          {feature.summary}
+                                        </p>
+                                        {feature.subFeatures &&
+                                          feature.subFeatures.length > 0 && (
+                                            <ul className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1.5 border-l border-white/20 pl-2.5 text-white/80">
+                                              {feature.subFeatures.map(
+                                                (item) => (
+                                                  <li
+                                                    key={item.label}
+                                                    className="flex min-w-0 items-center gap-1.5"
+                                                  >
+                                                    <ModelLogo
+                                                      logo={item.logo}
+                                                      className="size-3.5 shrink-0 text-white"
+                                                    />
+                                                    <span className="truncate">
+                                                      {item.label}
+                                                    </span>
+                                                  </li>
+                                                )
+                                              )}
+                                            </ul>
+                                          )}
+                                      </div>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div className="shrink-0 border-t border-white/15 bg-black/40 px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] backdrop-blur-xs sm:px-8 md:px-20 [@media(prefers-reduced-transparency:reduce)]:bg-black [@media(prefers-reduced-transparency:reduce)]:backdrop-blur-none">
+                              <div className="mx-auto flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                <div>
+                                  <div className="flex items-baseline gap-2">
+                                    <span className="text-2xl font-medium tracking-tight text-white tabular-nums">
+                                      {formatUsd(q.final_usd)}
+                                    </span>
+                                    {q.discount_percent_off_default > 0 && (
+                                      <span className="text-sm text-white/65 tabular-nums line-through">
+                                        {formatUsd(
+                                          DEFAULT_PRICING_CONFIG.default_retail_price_usd
+                                        )}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="mt-0.5 text-xs text-white/75 tabular-nums">
+                                    {formatKhr(q.final_khr)}
+                                  </p>
+                                </div>
+                                <Button
+                                  type="button"
+                                  size="lg"
+                                  className="h-11 w-full bg-white text-black hover:bg-white/90 sm:h-10 sm:w-auto"
+                                  onClick={() => setLightboxStep("payment")}
+                                >
+                                  Buy now
+                                </Button>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
                     </div>
-                    <p className="mt-0.5 text-muted-foreground">
-                      {feature.summary}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </CollapsibleContent>
-        </Collapsible>
-      </section>
+                  </LightboxItem>
+                </LightboxSlide>
+              )
+            })}
+          </LightboxSlides>
 
-      {/* Smooth Motion checkout & Google account handover popup */}
-      <CheckoutPopup
-        seat={activeAccount}
-        receipt={receipt}
-        onClose={handleClosePopup}
-        onCompletePurchase={handleCompletePurchase}
-      />
+          <LightboxHeader>
+            <LightboxClose />
+          </LightboxHeader>
+        </LightboxContent>
+      </Lightbox>
     </div>
   )
 }

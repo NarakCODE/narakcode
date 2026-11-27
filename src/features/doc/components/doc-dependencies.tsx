@@ -46,11 +46,11 @@ function DependencyField({
 
   return (
     <div className="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
-      <dt className="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">
+      <dt className="text-xs font-medium text-muted-foreground">
         {label} ({dependencies.length})
       </dt>
       <dd>
-        <ul className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[0.8125rem]/5">
+        <ul className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-sm">
           {dependencies.map((dependency) => (
             <li key={dependency.name}>
               <DependencyName {...dependency} follow={follow} />

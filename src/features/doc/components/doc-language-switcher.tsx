@@ -25,7 +25,7 @@ export function DocLanguageSwitcher({
       <TooltipTrigger
         render={
           <Button
-            className="h-7 gap-1.5 border-none px-2 text-[0.8125rem] active:scale-none"
+            className="h-7 gap-1.5 border-none px-2 text-sm"
             variant="secondary"
             size="sm"
             nativeButton={false}
