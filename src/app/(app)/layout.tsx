@@ -15,6 +15,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     // - https://base-ui.com/react/overview/quick-start#portals
     // - https://base-ui.com/react/overview/quick-start#ios-26-safari
     <div className="group/layout relative isolate">
+      <div
+        className="pointer-events-none fixed inset-x-0 top-0 z-40"
+        aria-hidden
+      >
+        <div className="h-(--fade-bottom-height) bg-linear-to-t from-transparent to-background/85 mask-linear-[to_bottom,var(--background)_25%,transparent] backdrop-blur-[1px]" />
+      </div>
       <SiteHeader />
       <main className="max-w-screen overflow-x-clip px-2">
         <FastLinkRegion>{children}</FastLinkRegion>

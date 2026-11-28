@@ -50,7 +50,7 @@ export function NavItem({
   return (
     <FastLink
       className={cn(
-        "text-sm font-medium tracking-wide text-muted-foreground transition-[color] hover:text-foreground aria-[current=page]:text-foreground",
+        "text-sm font-medium tracking-wide text-muted-foreground transition-[color] group-has-data-[slot=vault-sky]/layout:text-foreground/90 hover:text-foreground aria-[current=page]:text-foreground dark:group-has-data-[slot=vault-sky]/layout:text-muted-foreground",
         className
       )}
       {...props}

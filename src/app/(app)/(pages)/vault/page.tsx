@@ -14,6 +14,7 @@ import {
 import { VaultList } from "@/features/vault/components/vault-list"
 import { VaultListWithSearch } from "@/features/vault/components/vault-list-with-search"
 import { VaultSearchInput } from "@/features/vault/components/vault-search-input"
+import { VaultSkyBackground } from "@/features/vault/components/vault-sky-background"
 import { getVaultBookmarks } from "@/features/vault/lib/bookmarks"
 
 const title = "Vault"
@@ -89,8 +90,10 @@ export default function Page() {
         ])}
       />
 
-      <div className="min-h-svh">
-        <PageHeading>
+      <div data-slot="vault-sky" className="min-h-svh">
+        <VaultSkyBackground />
+
+        <PageHeading className="pt-28 sm:pt-36">
           <PageHeadingTagline>Vault</PageHeadingTagline>
           <PageHeadingTitle>
             A curated collection of resources, references, and links.

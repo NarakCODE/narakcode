@@ -193,6 +193,10 @@ const nextConfig: NextConfig = {
       // silently breaks Accept-based markdown negotiation in production
       beforeFiles: [
         {
+          source: "/api/storefront/:path*",
+          destination: `${process.env.STOREFRONT_API_URL ?? "http://127.0.0.1:8080"}/api/v1/:path*`,
+        },
+        {
           source: "/:section(blog|components)/:slug.md",
           destination: "/doc.md/:slug",
         },

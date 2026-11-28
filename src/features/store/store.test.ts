@@ -1,28 +1,26 @@
 import { describe, expect, it } from "vitest"
 
-import { buildDeliveredGoogleAccount, GEMINI_SEAT_LISTINGS } from "./data"
 import {
   calculateDepreciationQuote,
   DEFAULT_PRICING_CONFIG,
   MS_PER_DAY,
   MS_PER_WEEK,
-  PLAN_DAYS,
   PLAN_WEEKS,
 } from "./pricing-engine"
 
-describe("store weekly pricing & Google account delivery", () => {
+describe("store weekly pricing engine", () => {
   it("keeps full $5.00 price during week 0 and drops only by full elapsed weeks", () => {
-    const account = GEMINI_SEAT_LISTINGS[0]
-    const activatedMs = new Date(account.activated_at).getTime()
+    const activatedAt = "2026-11-26T08:00:00.000Z"
+    const activatedMs = new Date(activatedAt).getTime()
 
     // Within the same week (day 0 vs day 6), price must stay constant at $5.00
     const day0 = calculateDepreciationQuote(
-      account.activated_at,
+      activatedAt,
       DEFAULT_PRICING_CONFIG,
       activatedMs
     )
     const day6 = calculateDepreciationQuote(
-      account.activated_at,
+      activatedAt,
       DEFAULT_PRICING_CONFIG,
       activatedMs + 6 * MS_PER_DAY
     )
@@ -36,7 +34,7 @@ describe("store weekly pricing & Google account delivery", () => {
 
     // After 10 full weeks, price drops based on 42 remaining weeks out of 52
     const week10 = calculateDepreciationQuote(
-      account.activated_at,
+      activatedAt,
       DEFAULT_PRICING_CONFIG,
       activatedMs + 10 * MS_PER_WEEK
     )
@@ -47,7 +45,7 @@ describe("store weekly pricing & Google account delivery", () => {
 
     // Deep into the year (48 weeks elapsed), price clamps at the $0.50 floor
     const week48 = calculateDepreciationQuote(
-      account.activated_at,
+      activatedAt,
       DEFAULT_PRICING_CONFIG,
       activatedMs + 48 * MS_PER_WEEK
     )
@@ -56,25 +54,5 @@ describe("store weekly pricing & Google account delivery", () => {
     expect(week48.billable_weeks).toBe(4)
     expect(week48.floor_applied).toBe(true)
     expect(week48.final_usd).toBe(DEFAULT_PRICING_CONFIG.min_floor_price_usd)
-  })
-
-  it("delivers complete Google account credentials on purchase success", () => {
-    const accountListing = GEMINI_SEAT_LISTINGS[1]
-    const account = buildDeliveredGoogleAccount(
-      accountListing,
-      "ORD-TEST99AB",
-      1
-    )
-
-    expect(account.email).toMatch(/@gmail\.com$/)
-    expect(account.password).toContain("99AB")
-    expect(account.recovery_email).toMatch(/@narakcode\.dev$/)
-    expect(account.backup_codes).toHaveLength(4)
-    expect(account.login_url).toBe("https://accounts.google.com")
-
-    const expectedExpiry = new Date(
-      new Date(accountListing.activated_at).getTime() + PLAN_DAYS * MS_PER_DAY
-    ).toISOString()
-    expect(account.expires_at).toBe(expectedExpiry)
   })
 })
