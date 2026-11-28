@@ -4,6 +4,11 @@ export type PaymentMethod = "aba_khqr"
 
 export interface StoreSeatListing {
   id: string
+  /** Live backend public offer UUID when hydrated from storefront-api */
+  offerId?: string
+  /** Authoritative server decimal price string (e.g. "15.00") */
+  serverPrice?: string
+  currency?: string
   sku: string
   shortLabel: string
   label: string
@@ -22,6 +27,8 @@ export interface PricedSeatListing extends StoreSeatListing {
 }
 
 export interface DeliveredGoogleAccount {
+  delivery_type?: "ACTIVATION_CODE" | "PROVIDER_INVITE" | "AUTHORIZED_ACCOUNT"
+  activation_code?: string
   email: string
   password: string
   recovery_email: string
@@ -36,6 +43,9 @@ export interface DeliveredGoogleAccount {
 
 export interface PurchaseReceipt {
   order_id: string
+  backend_order_id?: string
+  csrf_token?: string
+  receipt_status?: string
   status: "completed"
   seat: {
     id: string

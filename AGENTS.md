@@ -77,6 +77,43 @@ pnpm registry:validate  # Validate generated registry.json
 
 A dev server is usually already running behind `https://nrcode.localhost` (see `allowedDevOrigins` in `next.config.ts` and `NEXT_PUBLIC_APP_URL` in `.env.local`). Use that origin to test pages and routes, never `http://localhost:3000` or a raw port. It also makes generated absolute URLs match what the code produces.
 
+## Agent team
+
+Agent definitions live in `.agents/agents/`. The user talks only to `@coordinator`.
+
+### Roles and models
+
+- `@coordinator` — Gemini 4 Neon (`high` thinking for planning and review; `xhigh` only for one deep bug; never send a manual thinking budget).
+- Workers (`@registry-worker`, `@content-worker`, `@ui-worker`) — Gemini 4 Hydrogen. Keep stable rules at the top of every prompt so implicit caching kicks in.
+- `@verifier` — Must run on a different model than the workers (never Hydrogen). Read-only; never edits files.
+
+### Ownership
+
+| Agent | OWNS | MUST NOT TOUCH | REPORTS TO |
+| --- | --- | --- | --- |
+| `@registry-worker` | `src/registry/{components,hooks,blocks,examples,lib,styles}/**`, `src/registry/index.ts`, `src/lib/registry.ts`, `src/utils/registry.ts` | Generated registry outputs, `src/scripts/**`, `src/app/**`, `src/features/**`, `next.config.ts`, `package.json` | `@verifier` |
+| `@content-worker` | `src/features/doc/**`, `src/features/blog/**`, `src/features/portfolio/data/**`, `src/app/(llms)/**`, `src/app/(rss)/**` | `src/registry/**`, `src/scripts/**`, `src/components/**`, `src/styles/**`, `next.config.ts`, `package.json` | `@verifier` |
+| `@ui-worker` | `src/app/(app)/**`, `src/app/(preview)/**`, `src/app/og/**`, `src/components/**`, `src/features/{blocks,icons,portfolio,sponsor,store,tools,vault}/**` (except `src/features/portfolio/data/**`), `src/styles/**`, `src/hooks/**` | `src/registry/**`, `src/features/doc/**`, `src/features/blog/**`, `src/features/portfolio/data/**`, `src/scripts/**`, `next.config.ts`, `package.json` | `@verifier` |
+| `@verifier` | Read-only verification across the repository | Never edits any file | `@coordinator` |
+
+Coordinator-only files (workers report needed changes instead of editing): `next.config.ts`, `src/scripts/**`, `package.json`, `AGENTS.md`, `DESIGN_RULES.md`.
+
+### Done means
+
+- `@registry-worker`: `pnpm registry:build && pnpm registry:validate && pnpm check-types && pnpm lint && pnpm test:run` pass.
+- `@content-worker`: `pnpm check-types && pnpm lint && pnpm test:run` pass; all headings use sentence-case.
+- `@ui-worker`: `pnpm check-types && pnpm lint && pnpm test:run` pass; UI matches `DESIGN_RULES.md` in light mode, dark mode, and 375px width.
+- `@verifier`: Opens every cited file, reruns `pnpm check-types`, `pnpm lint`, `pnpm test:run`, `pnpm registry:build`, and `pnpm registry:validate` (plus `pnpm build` for release checks), pastes the last 20 lines of each command, and rejects any number without a command behind it. Max 2 reject rounds, then escalate remaining failures to the user.
+
+### Never
+
+- Never hand-edit auto-generated registry outputs (`registry.json`, `registry-stats.json`, `src/registry/__index__.tsx`, `src/registry/__blocks__.json`, `public/r/*.json`).
+- Never edit files outside your assigned `OWNS` paths.
+- Never install packages, push, deploy, delete files outside task scope, or spend money without explicit user approval.
+- Never ask for API keys or secrets in chat.
+- Never pretend a test or check ran; if a command fails, report the exact failure and next fix.
+- Never run a 4–5x quota action without warning the user first.
+
 ## UI design cleanup
 
 ### Context

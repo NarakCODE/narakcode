@@ -1,6 +1,7 @@
 "use client"
 
-import { useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
+import Link from "next/link"
 import {
   BookOpenIcon,
   ClapperboardIcon,
@@ -16,6 +17,7 @@ import { SiGooglegemini } from "react-icons/si"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { Spinner } from "@/components/ui/spinner"
 import { ClaudeIcon, OpenAIIcon } from "@/components/icons"
 import {
   PageHeading,
@@ -34,18 +36,33 @@ import {
 } from "@/registry/components/lightbox"
 
 import {
-  buildDeliveredGoogleAccount,
+  cancelOrder,
+  clearPersistedCheckout,
+  fetchCatalogCategories,
+  fetchCatalogProduct,
+  fetchCatalogProducts,
+  loadAnyPersistedCheckout,
+  type ApiCategory,
+  type ApiOrderCreated,
+  type ApiProductDetail,
+  type ApiRevealedDelivery,
+  type PersistedCheckoutState,
+} from "../api"
+import {
   GEMINI_LOGO_URL,
   GEMINI_PLAN_FEATURES,
-  GEMINI_SEAT_LISTINGS,
+  STORE_CARD_BG_URL,
   type ModelLogoKey,
   type PlanFeatureIconKey,
 } from "../data"
 import {
   calculateDepreciationQuote,
   DEFAULT_PRICING_CONFIG,
+  MS_PER_DAY,
+  PLAN_DAYS,
 } from "../pricing-engine"
 import {
+  formatCountdown,
   formatKhr,
   formatUsd,
   type PricedSeatListing,
@@ -53,7 +70,6 @@ import {
 } from "../types"
 import { LightboxDeliveredView, LightboxPaymentView } from "./checkout-popup"
 import { StoreCardAsciiBackground } from "./store-card-ascii-background"
-import { StoreSkyBackground } from "./store-sky-background"
 
 interface StorefrontProps {
   initialNowIso: string
@@ -111,11 +127,97 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
   const [lightboxStep, setLightboxStep] = useState<
     "overview" | "payment" | "delivered"
   >("overview")
-  const [purchaseCountBySeat, setPurchaseCountBySeat] = useState<
-    Record<string, number>
-  >({})
   const [receipt, setReceipt] = useState<PurchaseReceipt | null>(null)
+  const [categories, setCategories] = useState<ApiCategory[]>([])
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string>("all")
+  const [liveProducts, setLiveProducts] = useState<ApiProductDetail[]>([])
+  const [catalogStatus, setCatalogStatus] = useState<
+    "loading" | "ready" | "error"
+  >("loading")
+  const [activeReservation, setActiveReservation] =
+    useState<PersistedCheckoutState | null>(null)
+  const [cancellingBanner, setCancellingBanner] = useState(false)
+  const [bannerNowMs, setBannerNowMs] = useState(() => Date.now())
   const lightboxHandle = useMemo(() => createLightboxHandle(), [])
+  const needsCatalogRefreshRef = useRef(false)
+
+  useEffect(() => {
+    let active = true
+    Promise.resolve().then(() => {
+      if (active) {
+        setActiveReservation(loadAnyPersistedCheckout())
+      }
+    })
+    return () => {
+      active = false
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!activeReservation) return
+    const timer = window.setInterval(() => {
+      const current = loadAnyPersistedCheckout()
+      if (!current) {
+        setActiveReservation(null)
+      } else {
+        setBannerNowMs(Date.now())
+      }
+    }, 1000)
+    return () => window.clearInterval(timer)
+  }, [activeReservation])
+
+  async function loadCatalogData(): Promise<{
+    categories: ApiCategory[]
+    products: ApiProductDetail[]
+  }> {
+    const [cats, summaries] = await Promise.all([
+      fetchCatalogCategories(),
+      fetchCatalogProducts(),
+    ])
+    const details = await Promise.all(
+      summaries.map((summary) => fetchCatalogProduct(summary.slug))
+    )
+    return { categories: cats, products: details }
+  }
+
+  async function refreshLiveCatalog(options?: { silent?: boolean }) {
+    if (!options?.silent) {
+      setCatalogStatus("loading")
+    }
+    try {
+      const data = await loadCatalogData()
+      setCategories(data.categories)
+      setLiveProducts(data.products)
+      setCatalogStatus("ready")
+    } catch {
+      if (!options?.silent) {
+        setCatalogStatus("error")
+      }
+    }
+  }
+
+  useEffect(() => {
+    let active = true
+    Promise.all([fetchCatalogCategories(), fetchCatalogProducts()])
+      .then(async ([cats, summaries]) => {
+        const details = await Promise.all(
+          summaries.map((summary) => fetchCatalogProduct(summary.slug))
+        )
+        if (active) {
+          setCategories(cats)
+          setLiveProducts(details)
+          setCatalogStatus("ready")
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setCatalogStatus("error")
+        }
+      })
+    return () => {
+      active = false
+    }
+  }, [])
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
   const slideSurfaceRefs = useRef<(HTMLDivElement | null)[]>([])
   const slideContentRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -204,55 +306,132 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
     })
   }
 
-  // Order ascending by remaining weeks ($0.50 -> $5.00) for clear weekly value progression.
+  const filteredProducts = useMemo(() => {
+    if (selectedCategoryId === "all") return liveProducts
+    return liveProducts.filter((p) => p.categoryId === selectedCategoryId)
+  }, [liveProducts, selectedCategoryId])
+
   const accounts = useMemo<PricedSeatListing[]>(() => {
-    return [...GEMINI_SEAT_LISTINGS]
-      .map((account) => ({
-        ...account,
-        quote: calculateDepreciationQuote(
-          account.activated_at,
+    const listings: PricedSeatListing[] = []
+    for (const product of filteredProducts) {
+      for (const offer of product.offers) {
+        const expiresMs = new Date(offer.subscriptionExpiresAt).getTime()
+        const activatedIso = new Date(
+          expiresMs - PLAN_DAYS * MS_PER_DAY
+        ).toISOString()
+        const baseQuote = calculateDepreciationQuote(
+          activatedIso,
           DEFAULT_PRICING_CONFIG,
           evaluatedAtMs
-        ),
-      }))
-      .sort(
-        (a, b) =>
-          a.quote.billable_weeks - b.quote.billable_weeks ||
-          a.quote.billable_days - b.quote.billable_days
+        )
+        const priceUsd = Number.parseFloat(offer.price)
+        const finalKhr = Math.round(
+          priceUsd * DEFAULT_PRICING_CONFIG.khr_exchange_rate
+        )
+        const remainingWeeks = Math.max(1, Math.ceil(offer.remainingDays / 7))
+
+        listings.push({
+          id: offer.offerId,
+          offerId: offer.offerId,
+          serverPrice: offer.price,
+          currency: product.currency,
+          sku: `LIVE-${offer.offerId.slice(0, 6).toUpperCase()}`,
+          shortLabel: product.name,
+          label: `${product.name} · ${offer.remainingDays}d left`,
+          tier: product.description,
+          region: "Global",
+          activated_at: activatedIso,
+          highlights: [],
+          stock: 1,
+          backgroundImage: STORE_CARD_BG_URL,
+          featured: listings.length === 0,
+          quote: {
+            ...baseQuote,
+            expires_at: offer.subscriptionExpiresAt,
+            billable_days: offer.remainingDays,
+            billable_weeks: remainingWeeks,
+            final_usd: priceUsd,
+            final_khr: finalKhr,
+            discount_percent_off_default: 0,
+          },
+        })
+      }
+    }
+    return listings
+  }, [evaluatedAtMs, filteredProducts])
+
+  const isLiveSoldOut = catalogStatus === "ready" && accounts.length === 0
+
+  const bannerSecondsLeft = activeReservation
+    ? Math.max(
+        0,
+        Math.floor(
+          (new Date(activeReservation.order.expiresAt).getTime() -
+            bannerNowMs) /
+            1000
+        )
       )
-  }, [evaluatedAtMs])
+    : null
+
+  function handleResumeReservation() {
+    if (!activeReservation) return
+    const index = accounts.findIndex(
+      (a) => a.offerId === activeReservation.offerId
+    )
+    setReceipt(null)
+    setLightboxStep("payment")
+    lightboxHandle.open(index >= 0 ? index : 0)
+  }
+
+  async function handleCancelActiveReservation() {
+    if (!activeReservation || cancellingBanner) return
+    setCancellingBanner(true)
+    try {
+      await cancelOrder(
+        activeReservation.order.orderId,
+        activeReservation.csrfToken
+      )
+      clearPersistedCheckout()
+      setActiveReservation(null)
+      void refreshLiveCatalog({ silent: true })
+    } catch {
+      clearPersistedCheckout()
+      setActiveReservation(null)
+    } finally {
+      setCancellingBanner(false)
+    }
+  }
+
+  function flushPendingCatalogRefresh() {
+    if (!needsCatalogRefreshRef.current) return
+    needsCatalogRefreshRef.current = false
+    void refreshLiveCatalog({ silent: true })
+  }
 
   function handleCloseLightbox() {
     lightboxHandle.close()
     setLightboxStep("overview")
     setReceipt(null)
+    flushPendingCatalogRefresh()
   }
 
   function handleCompletePurchase(
     account: PricedSeatListing,
-    buyerEmail: string
+    buyerEmail: string,
+    liveResult: {
+      order: ApiOrderCreated
+      delivery: ApiRevealedDelivery
+      csrfToken: string
+    }
   ) {
     const purchaseTime = new Date()
-    const freshQuote = calculateDepreciationQuote(
-      account.activated_at,
-      DEFAULT_PRICING_CONFIG,
-      purchaseTime
-    )
-    const nextIndex = (purchaseCountBySeat[account.id] ?? 0) + 1
-    const orderId = `ORD-${purchaseTime.getTime().toString(36).toUpperCase()}`
-    const deliveredAccount = buildDeliveredGoogleAccount(
-      account,
-      orderId,
-      nextIndex
-    )
-
-    setPurchaseCountBySeat((prev) => ({
-      ...prev,
-      [account.id]: nextIndex,
-    }))
+    const { order, delivery, csrfToken } = liveResult
+    const totalUsd = Number(order.total)
 
     setReceipt({
-      order_id: orderId,
+      order_id: order.orderNumber,
+      backend_order_id: order.orderId,
+      csrf_token: csrfToken,
       status: "completed",
       seat: {
         id: account.id,
@@ -262,129 +441,276 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
         activated_at: account.activated_at,
       },
       payment_method: "aba_khqr",
-      buyer_email: buyerEmail.trim() || "buyer@narakcode.dev",
-      total_usd: freshQuote.final_usd,
-      total_khr: freshQuote.final_khr,
-      quote: freshQuote,
-      delivered_account: deliveredAccount,
+      buyer_email: buyerEmail.trim(),
+      total_usd: totalUsd,
+      total_khr: Math.round(
+        totalUsd * DEFAULT_PRICING_CONFIG.khr_exchange_rate
+      ),
+      quote: account.quote,
+      delivered_account: {
+        delivery_type: delivery.deliveryType,
+        activation_code: delivery.activationCode,
+        email: delivery.accountEmail ?? delivery.email ?? "",
+        password: delivery.password ?? "",
+        recovery_email: "",
+        backup_codes: [],
+        plan: delivery.productName,
+        storage_quota: "Authorized digital delivery",
+        activated_at: account.activated_at,
+        expires_at: delivery.subscriptionExpiresAt,
+        login_url:
+          delivery.redeemUrl ??
+          delivery.loginUrl ??
+          "https://gemini.google.com/",
+        security_note:
+          "Keep this delivery secret safe. For security, credentials are never sent by email — use your emailed recovery link to revisit this order.",
+      },
       created_at_utc: purchaseTime.toISOString(),
     })
     setLightboxStep("delivered")
+    needsCatalogRefreshRef.current = true
   }
 
   return (
-    <div data-slot="store-sky" className="text-foreground">
-      {/* Painted ASCII sky spanning full width behind the header and hero */}
-      <StoreSkyBackground />
-
-      {/* Native PageHeading primitive positioned below the open ASCII sky band */}
-      <PageHeading className="pt-28 sm:pt-36">
+    <div className="text-foreground">
+      {/* Native PageHeading primitive */}
+      <PageHeading>
         <PageHeadingTitle>Google AI Pro accounts</PageHeadingTitle>
         <PageHeadingDescription>
           12-month accounts from{" "}
           <span className="font-medium text-foreground tabular-nums">
             {formatUsd(DEFAULT_PRICING_CONFIG.default_retail_price_usd)}
           </span>{" "}
-          — price drops weekly for pre-activated accounts.
+          — price drops weekly for pre-activated accounts.{" "}
+          <Link
+            href="/orders/recover"
+            className="font-medium text-foreground underline decoration-line underline-offset-4 transition-colors duration-150 ease-out [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-foreground"
+          >
+            Recover an order
+          </Link>
         </PageHeadingDescription>
       </PageHeading>
 
-      {/* 4-Column Gemini Account Grid */}
+      {/* Active reservation banner (resumes or cancels unpaid checkout across reloads) */}
+      {activeReservation &&
+        bannerSecondsLeft !== null &&
+        bannerSecondsLeft > 0 && (
+          <div className="screen-line-bottom flex flex-wrap items-center justify-between gap-3 bg-surface px-4 py-3 text-xs sm:px-5">
+            <div className="text-foreground tabular-nums">
+              Active reservation{" "}
+              <span className="font-medium">
+                {activeReservation.order.orderNumber}
+              </span>{" "}
+              · expires in{" "}
+              <span className="font-medium">
+                {formatCountdown(bannerSecondsLeft)}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button
+                type="button"
+                size="xs"
+                disabled={cancellingBanner}
+                onClick={handleResumeReservation}
+                className="transition-transform duration-150 ease-out active:scale-[0.97]"
+              >
+                Resume payment
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="xs"
+                disabled={cancellingBanner}
+                onClick={() => void handleCancelActiveReservation()}
+                className="transition-transform duration-150 ease-out active:scale-[0.97]"
+              >
+                {cancellingBanner && <Spinner className="size-3" aria-hidden />}
+                <span>{cancellingBanner ? "Cancelling..." : "Cancel"}</span>
+              </Button>
+            </div>
+          </div>
+        )}
+
+      {/* Category filter bar (only shown when >1 active category exists) */}
+      {categories.length > 1 && (
+        <nav
+          aria-label="Store categories"
+          className="screen-line-bottom flex overflow-x-auto px-4 sm:px-5"
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedCategoryId("all")}
+            className={cn(
+              "shrink-0 cursor-pointer border-b-2 px-3 py-2.5 text-xs font-medium",
+              selectedCategoryId === "all"
+                ? "border-foreground text-foreground"
+                : "border-transparent text-muted-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground"
+            )}
+          >
+            All
+          </button>
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => setSelectedCategoryId(cat.id)}
+              className={cn(
+                "shrink-0 cursor-pointer border-b-2 px-3 py-2.5 text-xs font-medium",
+                selectedCategoryId === cat.id
+                  ? "border-foreground text-foreground"
+                  : "border-transparent text-muted-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground"
+              )}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </nav>
+      )}
+
+      {/* Live Gemini Account Grid */}
       <section
         aria-label="Available Gemini accounts"
         className="screen-line-bottom"
       >
-        <div className="grid grid-cols-1 divide-y divide-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
-          {accounts.map((account, index) => {
-            const q = account.quote
+        {catalogStatus === "loading" ? (
+          <div className="px-4 py-12 text-sm text-muted-foreground sm:px-5">
+            Loading available offers...
+          </div>
+        ) : catalogStatus === "error" ? (
+          <div className="flex flex-col items-start justify-between gap-4 px-4 py-12 sm:flex-row sm:items-center sm:px-5">
+            <div>
+              <h2 className="text-base font-medium text-foreground">
+                Store temporarily unavailable
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Unable to reach the storefront API. Check your connection and
+                try again.
+              </p>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="lg"
+              className="transition-transform duration-150 ease-out active:scale-[0.97]"
+              onClick={() => void refreshLiveCatalog()}
+            >
+              Retry
+            </Button>
+          </div>
+        ) : isLiveSoldOut ? (
+          <div className="flex flex-col items-start justify-between gap-4 px-4 py-12 sm:flex-row sm:items-center sm:px-5">
+            <div>
+              <h2 className="text-base font-medium text-foreground">
+                Currently sold out
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                All available offers have been allocated. Check back soon or
+                refresh availability.
+              </p>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="lg"
+              className="transition-transform duration-150 ease-out active:scale-[0.97]"
+              onClick={() => void refreshLiveCatalog()}
+            >
+              Refresh stock
+            </Button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 divide-y divide-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
+            {accounts.map((account, index) => {
+              const q = account.quote
 
-            return (
-              <div
-                key={account.id}
-                className={cn(
-                  "flex flex-col px-4 py-6 sm:px-5",
-                  "sm:border-b sm:border-line sm:odd:border-r lg:border-b-0 lg:not-last:border-r lg:odd:border-r-0"
-                )}
-              >
-                {/* Google AI Pro Banner Card with ASCII Artwork Background */}
-                <Card
-                  ref={(el) => {
-                    cardRefs.current[index] = el
-                  }}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`View ${account.label} details`}
-                  onClick={() => openOverviewFromCard(index)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault()
-                      openOverviewFromCard(index)
-                    }
-                  }}
-                  className="relative h-56 cursor-pointer touch-manipulation gap-0 bg-foreground p-5 text-white shadow-none ring-black/10 transition-transform duration-150 ease-out [-webkit-tap-highlight-color:transparent] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-[0.97] dark:ring-white/15 [@media(hover:hover)_and_(pointer:fine)]:hover:ring-white/30"
+              return (
+                <div
+                  key={account.id}
+                  className={cn(
+                    "flex flex-col px-4 py-6 sm:px-5",
+                    "sm:border-b sm:border-line sm:odd:border-r lg:border-b-0 lg:not-last:border-r lg:odd:border-r-0"
+                  )}
                 >
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
+                  {/* Google AI Pro Banner Card with ASCII Artwork Background */}
+                  <Card
+                    ref={(el) => {
+                      cardRefs.current[index] = el
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View ${account.label} details`}
+                    onClick={() => openOverviewFromCard(index)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault()
+                        openOverviewFromCard(index)
+                      }
+                    }}
+                    className="relative h-56 cursor-pointer touch-manipulation gap-0 bg-foreground p-5 text-white shadow-none ring-black/10 transition-transform duration-150 ease-out [-webkit-tap-highlight-color:transparent] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-[0.97] dark:ring-white/15 [@media(hover:hover)_and_(pointer:fine)]:hover:ring-white/30"
                   >
-                    <StoreCardAsciiBackground />
-                    <div className="absolute inset-0 bg-black/35" />
-                  </div>
-
-                  <div className="relative z-1 flex h-full flex-col justify-between">
-                    <div className="flex min-w-0 items-center gap-2">
-                      <img
-                        src={GEMINI_LOGO_URL}
-                        alt=""
-                        aria-hidden
-                        width={20}
-                        height={20}
-                        className="size-5 shrink-0 object-contain select-none"
-                      />
-                      <h2 className="truncate text-xl/tight font-medium tracking-tight text-white">
-                        {account.shortLabel}
-                      </h2>
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
+                    >
+                      <StoreCardAsciiBackground />
+                      <div className="absolute inset-0 bg-black/35" />
                     </div>
 
-                    <div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-2xl font-medium tracking-tight text-white tabular-nums">
-                          {formatUsd(q.final_usd)}
-                        </span>
-                        {q.discount_percent_off_default > 0 && (
-                          <span className="text-sm text-white/65 tabular-nums line-through">
-                            {formatUsd(
-                              DEFAULT_PRICING_CONFIG.default_retail_price_usd
-                            )}
+                    <div className="relative z-1 flex h-full flex-col justify-between">
+                      <div className="flex min-w-0 items-center gap-2">
+                        <img
+                          src={GEMINI_LOGO_URL}
+                          alt=""
+                          aria-hidden
+                          width={20}
+                          height={20}
+                          className="size-5 shrink-0 object-contain select-none"
+                        />
+                        <h2 className="truncate text-xl/tight font-medium tracking-tight text-white">
+                          {account.shortLabel}
+                        </h2>
+                      </div>
+
+                      <div>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-2xl font-medium tracking-tight text-white tabular-nums">
+                            {formatUsd(q.final_usd)}
                           </span>
-                        )}
-                      </div>
+                          {q.discount_percent_off_default > 0 && (
+                            <span className="text-sm text-white/65 tabular-nums line-through">
+                              {formatUsd(
+                                DEFAULT_PRICING_CONFIG.default_retail_price_usd
+                              )}
+                            </span>
+                          )}
+                        </div>
 
-                      <div className="mt-1.5 flex items-center justify-between gap-2 text-xs text-white/85 tabular-nums">
-                        <span>
-                          {q.billable_weeks}{" "}
-                          {q.billable_weeks === 1 ? "week" : "weeks"} left
-                        </span>
-                        <span>{formatKhr(q.final_khr)}</span>
+                        <div className="mt-1.5 flex items-center justify-between gap-2 text-xs text-white/85 tabular-nums">
+                          <span>
+                            {q.billable_weeks}{" "}
+                            {q.billable_weeks === 1 ? "week" : "weeks"} left
+                          </span>
+                          <span>{formatKhr(q.final_khr)}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
 
-                {/* Full-Width Buy Now Button */}
-                <Button
-                  type="button"
-                  size="lg"
-                  onClick={() => openOverviewFromCard(index)}
-                  aria-label={`Buy ${account.shortLabel} (${q.billable_weeks} weeks left)`}
-                  className="mt-3.5 w-full"
-                >
-                  Buy now
-                </Button>
-              </div>
-            )
-          })}
-        </div>
+                  {/* Full-Width Buy Now Button */}
+                  <Button
+                    type="button"
+                    size="lg"
+                    onClick={() => openOverviewFromCard(index)}
+                    aria-label={`Buy ${account.shortLabel} (${q.billable_weeks} weeks left)`}
+                    className="mt-3.5 w-full transition-transform duration-150 ease-out active:scale-[0.97]"
+                  >
+                    Buy now
+                  </Button>
+                </div>
+              )
+            })}
+          </div>
+        )}
       </section>
 
       {/* Unified product overview, KHQR payment & handover Lightbox */}
@@ -394,6 +720,7 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
           if (!open) {
             setLightboxStep("overview")
             setReceipt(null)
+            flushPendingCatalogRefresh()
           }
         }}
       >
@@ -450,6 +777,12 @@ export function Storefront({ initialNowIso }: StorefrontProps) {
                           <LightboxPaymentView
                             seat={account}
                             onBack={() => setLightboxStep("overview")}
+                            onCatalogStale={() =>
+                              void refreshLiveCatalog({ silent: true })
+                            }
+                            onReservationChange={() =>
+                              setActiveReservation(loadAnyPersistedCheckout())
+                            }
                             onCompletePurchase={handleCompletePurchase}
                           />
                         ) : (

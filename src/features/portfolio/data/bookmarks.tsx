@@ -2,6 +2,13 @@ import { BookmarkCategory, type Bookmark } from "../types/bookmarks"
 
 export const BOOKMARKS: Bookmark[] = [
   {
+    title: "All Code Is Slop (Except Mine) — Lauren Tan, SpaceXSI",
+    url: "https://youtu.be/O_zcc6Xl12g?si=V1rcU5naC_xvWnwj",
+    author: "AI Engineer",
+    category: BookmarkCategory.ARTICLE,
+    bookmarkedAt: "2026-11-29",
+  },
+  {
     title: "The Most Realistic Coding Vlog You'll See This Year",
     url: "https://youtu.be/bMhcHUvvNr4?si=jMFzD-9P0Ktrhpv9",
     author: "Jacob Sucks At Code",
@@ -17,11 +24,12 @@ export const BOOKMARKS: Bookmark[] = [
     bookmarkedAt: "2025-06-01",
   },
   {
-    title: "Day in the Life of a Software Engineer",
-    url: "https://youtu.be/M8H2AsTaE4E?si=UmBD35RGBuNoL58A",
-    author: "Jenn Cho",
+    title:
+      "Inside OpenAI's Secret SF HQ: $890K Average Salary? (Tour + Breakdown)",
+    url: "https://youtu.be/TuR-cGxPBjo?si=7Q7WsuqqyJJ2g-_p",
+    author: "Lillian Chiu",
     category: BookmarkCategory.ARTICLE,
-    bookmarkedAt: "2025-06-01",
+    bookmarkedAt: "2026-11-29",
   },
   {
     title: "Stripe Head of Design Katie Dill Reviews Startup Websites",

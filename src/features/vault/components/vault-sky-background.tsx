@@ -13,7 +13,7 @@ import {
 
 const FADE_TRANSITION = "opacity 700ms ease-out"
 
-export function StoreSkyBackground() {
+export function VaultSkyBackground() {
   const { resolvedTheme } = useTheme()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const skyRef = useRef<MountedSky | undefined>(undefined)
